@@ -1,0 +1,101 @@
+/* 
+    Document   : phkondo
+    Created on : 14/Set/2013, 22:52:04
+    Author     : paulo
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+@import url('http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic');
+
+html,
+body {
+  overflow-x: hidden!important;
+  font-family: 'Source Sans Pro', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100%;
+  background: #f9f9f9;
+}
+
+input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+}
+
+table .actions , .amount {
+    white-space: nowrap;
+    text-align: right;
+
+}
+
+.view tr td:first-child{
+    text-align: right;
+
+}
+
+.view tr td:first-child:after{
+    content:":";
+}
+
+.error-message {
+    color: #b94a48;
+
+}
+
+.btn {
+    text-align: left;
+}
+
+.btn-default {
+    padding: 5px;
+
+}
+
+#header {
+    margin-top: 20px;
+}
+
+/*CLIENT THEME */
+.navbar-default .navbar-brand , .navbar-inverse .navbar-brand{
+    color: #428bca;
+}
+
+
+.btn-xs, .btn-group-xs>.btn {
+    padding: 5px 5px;
+}
+/*
+textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {   
+    border-color: rgba(229, 103, 23, 0.8);
+    box-shadow: 0 1px 1px rgba(231, 8, 127, 0.075) inset, 0 0 8px rgba(231, 8, 127, 0.6);
+    outline: 0 none;
+}*/
+
+.pagination {
+    margin:0px;
+}
+
+
+/* 
+    Page: Invoice
+*/
+.invoice {
+  position: relative;
+  width: 90%;
+  margin: 10px auto;
+  
+}
+.invoice-title {
+  margin-top: 0;
+}
+
+.invoice .table>tbody>tr>td, .invoice .table>tbody>tr>th, .invoice .table>tfoot>tr>td, .invoice .table>tfoot>tr>th, .invoice .table>thead>tr>td, .invoice .table>thead>tr>th {
+padding: 0px;
+
+}
+
+/* Change the color of the striped tables */
+.table-striped > tbody > tr:nth-child(odd) > td,
+.table-striped > tbody > tr:nth-child(odd) > th {
+  background-color: #f3f4f5;
+}
