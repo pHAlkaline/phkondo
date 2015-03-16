@@ -1,0 +1,20 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// +--------------------------------------------------------------------------------------------+ //
+// pHKondo Version
+//
+// Holds a static string representing the current version of pHKondo
+//
+// pHKondo(tm) :Condominium management software. 
+// It provides effective mechanism to condominium management, released under [MIT License]
+// Copyright (c) pHAlkaline (http://phalkaline.eu)
+//
+// Licensed under The MIT License
+// Redistributions of files must retain the above copyright notice.
+//
+// @copyright     Copyright (c)  pHAlkaline (http://phalkaline.eu)
+// @link          http://phkondo.net
+// @since         pHKondo v 0.0.1
+// @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
+// +--------------------------------------------------------------------------------------------+ //
+////////////////////////////////////////////////////////////////////////////////////////////////////
+1.0 RC1

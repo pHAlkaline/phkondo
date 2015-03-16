@@ -1,0 +1,80 @@
+/* 
+    Document   : phkondo
+    Created on : 14/Set/2013, 22:52:04
+    Author     : paulo
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+body { 
+        background: white; 
+        font-size: 8pt; 
+    }
+
+    a[href]:after {
+        content: none !important;
+    }
+
+    .view tr td:first-child{
+        text-align: right;
+        width: 16%;
+
+    }
+
+    .view tr td:first-child:after{
+        content:":";
+    }
+
+    /*tr.page-break-after {
+        page-break-after: always;
+    }*/
+
+    /* Default left, right, top, bottom margin is 2cm */
+    /*@page { 
+        margin: 2cm;
+        
+    } /
+
+    /* First page, 10 cm margin on top */
+    /*@page :first {
+        margin-top: 5cm;
+    }
+
+    /* Left pages, a wider margin on the left */
+    /*@page :left {
+        margin-left: 2cm;
+        margin-right: 2cm;
+    }
+
+    @page :right {
+        margin-left: 2cm;
+        margin-right: 2cm;
+    }*/
+    
+    /* Enhancement for printing */
+
+  .invoice {
+    width: 100%;
+    border: 0;
+    margin: 0;
+    padding: 0;
+  }
+  .invoice-col {
+    float: left;
+    width: 33.3333333%;
+  }
+  .table-responsive {
+    overflow: auto;
+  }
+  .table-responsive > .table tr th,
+  .table-responsive > .table tr td {
+    white-space: normal!important;
+  }
+  
+  #debug-kit-toolbar {
+      display: none;
+  }
+  
+  
+
+

@@ -1,0 +1,1625 @@
+# LANGUAGE translation of pHkondo Application
+# Copyright pHAlkaline <contact@phalkaline.eu>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pHKondo V0.1\n"
+"POT-Creation-Date: 2013-10-13 22:26+0000\n"
+"PO-Revision-Date: 2013-10-13 22:26+0000\n"
+"Last-Translator: pHAlkaline <contact@phalkaline>\n"
+"Language-Team: Portuguesa <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.4\n"
+"Language: pt\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+msgid " of "
+msgstr " de "
+
+msgid "%d Byte"
+msgid_plural "%d Bytes"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d dia"
+msgstr[1] "%d dias "
+
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d hora"
+msgstr[1] "%d horas"
+
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d minuto"
+msgstr[1] "%d minutos"
+
+msgid "%d month"
+msgid_plural "%d months"
+msgstr[0] "%d mês"
+msgstr[1] "%d meses"
+
+msgid "%d second"
+msgid_plural "%d seconds"
+msgstr[0] "%d segundo"
+msgstr[1] "%s segundos"
+
+msgid "%d week"
+msgid_plural "%d weeks"
+msgstr[0] "%d semana"
+msgstr[1] "%d semanas"
+
+msgid "%d year"
+msgid_plural "%d years"
+msgstr[0] "%d ano"
+msgstr[1] "% anos"
+
+msgid "%s GB"
+msgstr ""
+
+msgid "%s KB"
+msgstr "%s KB"
+
+msgid "%s MB"
+msgstr ""
+
+msgid "%s TB"
+msgstr ""
+
+msgid "%s ago"
+msgstr "%s após"
+
+msgid "Account"
+msgstr "Conta"
+
+msgid "Account Number"
+msgstr "Número de Conta"
+
+msgid "Account can not be deleted"
+msgstr "Não foi possível apagar Conta"
+
+msgid "Account deleted"
+msgstr "Conta apagada"
+
+msgid "Accounts"
+msgstr "Contas"
+
+msgid "Accounts balance"
+msgstr "Balanço de contas"
+
+msgid "Actions"
+msgstr "Acções"
+
+msgid "Active"
+msgstr "Activo"
+
+msgid "Add Account"
+msgstr "Criar Conta"
+
+msgid "Add Administrator"
+msgstr "Adicionar Administrador"
+
+msgid "Add Budget"
+msgstr "Criar Orçamento"
+
+msgid "Add Condo"
+msgstr "Criar Condomínio"
+
+msgid "Add Entity"
+msgstr "Criar Entidade"
+
+msgid "Add Fiscal Year"
+msgstr "Criar Exercicio"
+
+msgid "Add Fraction"
+msgstr "Criar Fracção"
+
+msgid "Add Insurance"
+msgstr "Criar Seguro"
+
+msgid "Add Maintenance"
+msgstr "Criar Manutenção"
+
+msgid "Add Manager"
+msgstr "Criar Gestor"
+
+msgid "Add Movement"
+msgstr "Criar Movimento"
+
+msgid "Add Movement Category"
+msgstr "Criar Categoria"
+
+msgid "Add Movement Operation"
+msgstr "Criar Operação"
+
+msgid "Add Note"
+msgstr "Criar Nota"
+
+msgid "Add Notes"
+msgstr "Adicionar Notas"
+
+msgid "Add Receipt"
+msgstr "Criar Recibo"
+
+msgid "Add Supplier"
+msgstr "Criar Fornecedor"
+
+msgid "Add User"
+msgstr "Criar Utilizador"
+
+msgid "Address"
+msgstr "Morada"
+
+msgid "Administrator"
+msgstr "Administrador"
+
+msgid "Administrator can not be deleted"
+msgstr "Não foi possível apagar Administrador"
+
+msgid "Administrator deleted"
+msgstr "Administrador apagado"
+
+msgid "Administrators"
+msgstr "Administradores"
+
+msgid "All"
+msgstr "Todos"
+
+msgid "All owners"
+msgstr "Todos os proprietários"
+
+msgid "Amount"
+msgstr "Valor"
+
+msgid "An Internal Error Has Occurred."
+msgstr "Houve um erro interno."
+
+msgid "April"
+msgstr "Abril"
+
+msgid "Are you sure you want to cancel # %s?"
+msgstr "Tem a certeza que quer anular # %s?"
+
+msgid "Are you sure you want to close # %s?"
+msgstr "Tem a certeza que quer fechar # %s?"
+
+msgid "Are you sure you want to delete # %s?"
+msgstr "Tem a certeza que quer apagar # %s?"
+
+msgid "Are you sure you want to remove # %s?"
+msgstr "Tem a certeza que quer remover # %s?"
+
+msgid "Are you sure you want to set receipt # %s as paid? - Payment as %s"
+msgstr "Tem a certeza que quer colocar o recibo # %s como pago? - Forma de Pagamento %s"
+
+msgid "August"
+msgstr "Agosto"
+
+msgid "Balance"
+msgstr "Saldo"
+
+msgid "Balcony"
+msgstr "Balcão"
+
+msgid "Bank"
+msgstr "Banco"
+
+msgid "Begin Date"
+msgstr "Data de Inicio"
+
+msgid "Budget"
+msgstr "Orçamento"
+
+msgid "Budget Date"
+msgstr "Data do Orçamento"
+
+msgid "Budget Status"
+msgstr "Estado"
+
+msgid "Budget Type"
+msgstr "Tipo de Orçamento"
+
+msgid "Budget amount"
+msgstr "Valor orçamento"
+
+msgid "Budget can not be deleted"
+msgstr "Não foi possível apagar Orçamento"
+
+msgid "This Budget can not be deleted, check budget status or existing notes already paid."
+msgstr "Este orçamento não pode ser removido, verifique o estado do orçamento ou a existencia de notas em estado de pago."
+
+msgid "Budget deleted"
+msgstr "Orçamento apagado"
+
+msgid "Budgets"
+msgstr "Orçamentos"
+
+msgid "CakePHP: the rapid development php framework"
+msgstr ""
+
+msgid "Cancel"
+msgstr "Anular"
+
+msgid "Cancel Receipt"
+msgstr "Anular Recibo"
+
+msgid "Client"
+msgstr "Cliente"
+
+msgid "Client Number"
+msgstr "Número de Cliente"
+
+msgid "Close"
+msgstr "Fechar"
+
+msgid "Close Date"
+msgstr "Data de Fecho"
+
+msgid "Comments"
+msgstr "Comentários"
+
+msgid "Common Reserve Fund"
+msgstr "Fundo Comum de Reserva"
+
+msgid "Common Reserve Fund (%)"
+msgstr "Fundo Comum de Reserva (%)"
+
+msgid "Condo"
+msgstr "Condomínio"
+
+msgid "Condo can not be deleted"
+msgstr "Não foi possível apagar Condomínio"
+
+msgid "Condo deleted"
+msgstr "Condomínio apagado"
+
+msgid "Condos"
+msgstr "Condomínios"
+
+msgid "Contact"
+msgstr "Contacto"
+
+msgid "Contacts"
+msgstr "Contactos"
+
+msgid "Content"
+msgstr "Texto"
+
+msgid "SharesDebt"
+msgstr "Contencioso"
+
+msgid "Contract Number"
+msgstr "Número de Contrato"
+
+msgid "Create Notes"
+msgstr "Criar Notas"
+
+msgid "Created"
+msgstr "Data de Criação"
+
+msgid "Current Account"
+msgstr "Conta Corrente"
+
+msgid "December"
+msgstr "Dezembro"
+
+msgid "Delete"
+msgstr "Apagar"
+
+msgid "Delete %s"
+msgstr "Apagar %s"
+
+msgid "Delete Account"
+msgstr "Apagar Conta"
+
+msgid "Delete Administrator"
+msgstr "Remover Administrador"
+
+msgid "Delete Budget"
+msgstr "Apagar Orçamento"
+
+msgid "Delete Condo"
+msgstr "Apagar Condomínio"
+
+msgid "Delete Entity"
+msgstr "Apagar Entidade"
+
+msgid "Delete Fiscal Year"
+msgstr "Apagar Exercicio"
+
+msgid "Delete Fraction"
+msgstr "Apagar Fração"
+
+msgid "Delete Insurance"
+msgstr "Apagar Seguro"
+
+msgid "Delete Maintenance"
+msgstr "Apagar Manutenção"
+
+msgid "Delete Movement"
+msgstr "Apagar Movimento"
+
+msgid "Delete Movement Category"
+msgstr "Apagar Categoria"
+
+msgid "Delete Movement Operation"
+msgstr "Apagar Operação"
+
+msgid "Delete Note"
+msgstr "Apagar Nota"
+
+msgid "Delete Receipt"
+msgstr "Apagar Recibo"
+
+msgid "Delete User"
+msgstr "Apagar Utilizador"
+
+msgid "Description"
+msgstr "Descrição"
+
+msgid "Details"
+msgstr "Detalhes"
+
+msgid "Document"
+msgstr "Documento"
+
+msgid "Document Date"
+msgstr "Data do Documento"
+
+msgid "Draft"
+msgstr "Minuta"
+
+msgid "Drafts"
+msgstr "Minutas"
+
+msgid "Due Date"
+msgstr "Prazo de Pagamento"
+
+msgid "Due Days"
+msgstr "Prazo de Pagamento ( Dias )"
+
+msgid "Edit"
+msgstr "Editar"
+
+msgid "Edit %s"
+msgstr "Editar %s"
+
+msgid "Edit Account"
+msgstr "Editar Conta"
+
+msgid "Edit Administrator"
+msgstr "Editar Administrador"
+
+msgid "Edit Budget"
+msgstr "Editar Orçamento"
+
+msgid "Edit Condo"
+msgstr "Editar Condomínio"
+
+msgid "Edit Entity"
+msgstr "Editar Entidade"
+
+msgid "Edit Fiscal Year"
+msgstr "Editar Exercicio"
+
+msgid "Edit Fraction"
+msgstr "Editar Fracção"
+
+msgid "Edit Insurance"
+msgstr "Editar Seguro"
+
+msgid "Edit Maintenance"
+msgstr "Editar Manutenção"
+
+msgid "Edit Manager"
+msgstr "Editar Gestor"
+
+msgid "Edit Movement"
+msgstr "Editar Movimento"
+
+msgid "Edit Movement Category"
+msgstr "Editar Categoria"
+
+msgid "Edit Movement Operation"
+msgstr "Editar Operação"
+
+msgid "Edit Note"
+msgstr "Editar Nota"
+
+msgid "Edit Owner"
+msgstr "Editar Proprietário"
+
+msgid "Edit Receipt"
+msgstr "Editar Recibo"
+
+msgid "Edit User"
+msgstr "Editar Utilizador"
+
+msgid "Email"
+msgstr "Correio Electronico"
+
+msgid "Empty"
+msgstr "Vazio"
+
+msgid "Enable password change"
+msgstr "Possibilitar alteração de palavra passe"
+
+msgid "End Session"
+msgstr "Sair ( Terminar Sessão )"
+
+msgid "Entities"
+msgstr "Entidades"
+
+msgid "Entity"
+msgstr "Entidade"
+
+msgid "Entity Type"
+msgstr "Tipo de Entidade"
+
+msgid "Entity can not be deleted"
+msgstr "Não foi possível apagar Entidade"
+
+msgid "Entity deleted"
+msgstr "Entidade apagada"
+
+msgid "Error"
+msgstr "Erro"
+
+msgid "Error in field %s"
+msgstr "Erro no campo %s"
+
+msgid "Expenses"
+msgstr "Despesas"
+
+msgid "Expenses detailed"
+msgstr "Despesas detalhado"
+
+msgid "Expenses detailed grouped"
+msgstr "Despesas detalhado por categoria"
+
+msgid "Expenses report"
+msgstr "Relatório de despesas"
+
+msgid "Expiration Date"
+msgstr "Data de Validade"
+
+msgid "February"
+msgstr "Fevereiro"
+
+msgid "Fiscal Year"
+msgstr "Exercicio"
+
+msgid "Fiscal Year active"
+msgstr "Exercicio activo"
+
+msgid "Fiscal Year can not be deleted"
+msgstr "Não foi possivel apagar Exercicio"
+
+msgid "This Fiscal Year can not be deleted, check existing notes already paid."
+msgstr "Esta Exercicio não pode ser removido, verifique a existencia de notas em estado pago."
+
+msgid "Fiscal Year deleted"
+msgstr "Exercicio apagado"
+
+msgid "Fiscal Year is not active"
+msgstr "O exercicio não está activo"
+
+msgid "Fiscal Years"
+msgstr "Exercicios"
+
+msgid "Floor Location"
+msgstr "Localização"
+
+msgid "Fraction"
+msgstr "Fracção"
+
+msgid "Fraction can not be deleted"
+msgstr "Não foi possível apagar Fracção"
+
+msgid "This Fraction can not be deleted, check existing notes already paid."
+msgstr "Esta Fracção não pode ser removida, verifique a existencia de notas em estado pago."
+
+msgid "Fraction deleted"
+msgstr "Fracção apagada"
+
+msgid "Fractions"
+msgstr "Fracções"
+
+msgid "Friday"
+msgstr "Sexta-Feira"
+
+msgid "Functions"
+msgstr "Funções"
+
+msgid "PHKONO - Administração de Condomínios"
+msgstr ""
+
+msgid "Guest"
+msgstr "Convidado"
+
+msgid "Hello "
+msgstr "Olá "
+
+msgid "Home"
+msgstr ""
+
+msgid "Iban"
+msgstr "IBAN"
+
+msgid "Income extra and previous exercices"
+msgstr "Receitas extraordinarias ou de exercicios anteriores"
+
+msgid "Income map"
+msgstr "Mapa de receitas"
+
+msgid "Income report"
+msgstr "Relatório de receitas"
+
+msgid "Income report detailed"
+msgstr "Relatório de receitas detalhado"
+
+msgid "Initial balance"
+msgstr "Saldo inicial"
+
+msgid "Insert Administrator"
+msgstr "Inserir Administrador"
+
+msgid "Insert Owner"
+msgstr "Adicionar Proprietário"
+
+msgid "Insurance"
+msgstr "Seguro"
+
+msgid "Insurance Amount"
+msgstr "Capital Seguro"
+
+msgid "Insurance Company"
+msgstr "Seguradora"
+
+msgid "Insurance Premium"
+msgstr "Prémio"
+
+msgid "Insurance Type"
+msgstr "Tipo de Seguro"
+
+msgid "Insurance can not be deleted"
+msgstr "Não foi possível apagar Seguro"
+
+msgid "Insurance deleted"
+msgstr "Seguro apagado"
+
+msgid "Insurances"
+msgstr "Seguros"
+
+msgid "Invalid %s"
+msgstr "%s Inválido"
+
+msgid "Invalid Budget"
+msgstr "Orçamento Inválido"
+
+msgid "Invalid account"
+msgstr "Conta inválida"
+
+msgid "Invalid account or fiscal year"
+msgstr "Conta ou exercicio inválido"
+
+msgid "Invalid administrator"
+msgstr "Administrador inválido"
+
+msgid "Invalid budget"
+msgstr "Orçamento inválido"
+
+msgid "Invalid condo"
+msgstr "Condomínio inválido"
+
+msgid "Invalid condo or fiscal year"
+msgstr "Condomínio ou exercício inválido"
+
+msgid "Invalid entity"
+msgstr "Entidade inválida"
+
+msgid "Invalid fiscal year"
+msgstr "Exercicio inválido"
+
+msgid "Invalid fraction"
+msgstr "Fracção inválida"
+
+msgid "Invalid insurance"
+msgstr "Seguro inválido"
+
+msgid "Invalid maintenance"
+msgstr "Manutenção inválida"
+
+msgid "Invalid movement"
+msgstr "Movimento inválido"
+
+msgid "Invalid movement category"
+msgstr "Categoria inválida"
+
+msgid "Invalid movement operation"
+msgstr "Operação inválida"
+
+msgid "Invalid note"
+msgstr "Nota inválida"
+
+msgid "Invalid owner"
+msgstr "Proprietário inválido"
+
+msgid "Invalid receipt"
+msgstr "Recibo inválido"
+
+msgid "Invalid request"
+msgstr "Pedido inválido"
+
+msgid "Invalid user"
+msgstr "Utilizador inválido"
+
+msgid "Invalid username or password, try again"
+msgstr "Nome de utilizador ou palavra passe incorrectos, tente outra vez"
+
+msgid "January"
+msgstr "Janeiro"
+
+msgid "July"
+msgstr "Julho"
+
+msgid "June"
+msgstr "Junho"
+
+msgid "Last Inspection"
+msgstr "Última Inspecção"
+
+msgid "List"
+msgstr "Listar"
+
+msgid "List %s"
+msgstr "Listar %s"
+
+msgid "List Accounts"
+msgstr "Listar Contas"
+
+msgid "List Administrators"
+msgstr "Listar Administradores"
+
+msgid "List Budgets"
+msgstr "Listar Orçamentos"
+
+msgid "List Condos"
+msgstr "Listar Condomínios"
+
+msgid "List Entities"
+msgstr "Listar Entidades"
+
+msgid "List Fiscal Years"
+msgstr "Listar Exercicios"
+
+msgid "List Fractions"
+msgstr "Listar Fracções"
+
+msgid "List Insurances"
+msgstr "Listar Seguros"
+
+msgid "List Maintenances"
+msgstr "Listar Manutenções"
+
+msgid "List Movement Categories"
+msgstr "Listar Categorias"
+
+msgid "List Movement Operations"
+msgstr "Listar Operações"
+
+msgid "List Movements"
+msgstr "Listar Movimentos"
+
+msgid "List Notes"
+msgstr "Listar Notas"
+
+msgid "List Owners"
+msgstr "Listar Proprietários"
+
+msgid "List Receipts"
+msgstr "Listar Recibos"
+
+msgid "List Users"
+msgstr "Listar Utilizadores"
+
+msgid "Main Account"
+msgstr "Conta Principal"
+
+msgid "Maintenance"
+msgstr "Manutenção"
+
+msgid "Maintenance can not be deleted"
+msgstr "Não foi possível apagar Manutenção"
+
+msgid "Maintenance deleted"
+msgstr "Manutenção apagada"
+
+msgid "Maintenances"
+msgstr "Manutenções"
+
+msgid "Make document"
+msgstr "Criar documento"
+
+msgid "Manager"
+msgstr "Gestor"
+
+msgid "Managers"
+msgstr "Gestores"
+
+msgid "March"
+msgstr "Março"
+
+msgid "May"
+msgstr "Maio"
+
+msgid "Meeting Draft"
+msgstr "Documento de Reunião"
+
+msgid "Mil Rate"
+msgstr "Permilagem"
+
+msgid "Mil rate"
+msgstr "Permilagem"
+
+msgid "Modified"
+msgstr "Última Modificação"
+
+msgid "Monday"
+msgstr "Segunda-Feira"
+
+msgid "Movement"
+msgstr "Movimento"
+
+msgid "Movement Categories"
+msgstr "Categorias de Movimentos"
+
+msgid "Movement Category"
+msgstr "Categoria"
+
+msgid "Movement Date"
+msgstr "Data de Movimento"
+
+msgid "Movement Operation"
+msgstr "Operação"
+
+msgid "Movement Operations"
+msgstr "Operações de Movimentos"
+
+msgid "Movement Type"
+msgstr "Tipo de Movimento"
+
+msgid "Movement can not be deleted"
+msgstr "Não foi possível apagar Movimento"
+
+msgid "Category can not be deleted"
+msgstr "Não foi possível apagar Categoria"
+
+msgid "Movement category deleted"
+msgstr "Categoria apagada"
+
+msgid "Movement deleted"
+msgstr "Movimento apagado"
+
+msgid "Movement operation can not be deleted"
+msgstr "Não foi possível apagar Operação"
+
+msgid "Movement operation deleted"
+msgstr "Operação apagada"
+
+msgid "Movements"
+msgstr "Movimentos"
+
+msgid "Must be unique"
+msgstr "Deve ser único"
+
+msgid "Name"
+msgstr "Nome"
+
+msgid "New %s"
+msgstr "Criar %s"
+
+msgid "New Account"
+msgstr "Nova Conta"
+
+msgid "New Administrator"
+msgstr "Criar Administrador"
+
+msgid "New Budget"
+msgstr "Criar Orçamento"
+
+msgid "New Condo"
+msgstr "Criar Condomínio"
+
+msgid "New Entity"
+msgstr "Criar Entidade"
+
+msgid "New Fiscal Year"
+msgstr "Criar Exercicio"
+
+msgid "New Fraction"
+msgstr "Criar Fracção"
+
+msgid "New Insurance"
+msgstr "Novo Seguro"
+
+msgid "New Maintenance"
+msgstr "Nova Manutenção"
+
+msgid "New Manager"
+msgstr "Criar Gestor"
+
+msgid "New Movement"
+msgstr "Criar Movimento"
+
+msgid "New Movement Category"
+msgstr "Criar Categoria"
+
+msgid "New Movement Operation"
+msgstr "Criar Operação"
+
+msgid "New Note"
+msgstr "Criar Nota"
+
+msgid "New Owner"
+msgstr "Criar Proprietário"
+
+msgid "New Receipt"
+msgstr "Criar Recibo"
+
+msgid "New Supplier"
+msgstr "Criar Fornecedor"
+
+msgid "New User"
+msgstr "Criar Utilizador"
+
+msgid "Next"
+msgstr "Próximo"
+
+msgid "Next Inspection"
+msgstr "Próxima Inspecção"
+
+msgid "Nib"
+msgstr "NIB"
+
+msgid "No"
+msgstr "Não"
+
+msgid "No movements allowed"
+msgstr "Não é permitido movimentos"
+
+msgid "No movements allowed, choose fiscal year first."
+msgstr "Não são permitidos movimentos, necessita escolher exercicio."
+
+msgid "Not Found"
+msgstr "Não encontrado"
+
+msgid "Note"
+msgstr "Nota"
+
+msgid "Note Status"
+msgstr "Estado"
+
+msgid "Note Type"
+msgstr "Tipo de Nota"
+
+msgid "Note can not be deleted"
+msgstr "Não foi possível apagar Nota"
+
+msgid "Note deleted"
+msgstr "Nota apagada"
+
+msgid "Notes"
+msgstr "Notas"
+
+msgid "November"
+msgstr "Novembro"
+
+msgid "Observations"
+msgstr "Observações"
+
+msgid "October"
+msgstr "Outubro"
+
+msgid "On %s %s"
+msgstr "Em %s %s"
+
+msgid "Open Date"
+msgstr "Data de Abertura"
+
+msgid "Open Document"
+msgstr "Abrir Documento"
+
+msgid "Origin Date"
+msgstr "Data de Origem"
+
+msgid "Other"
+msgstr "Outros"
+
+msgid "Other or quotes without reference"
+msgstr "Quotas livres ou sem orçamento"
+
+msgid "Owner"
+msgstr "Proprietário"
+
+msgid "Owner Percentage"
+msgstr "Percentagem"
+
+msgid "Owner removed"
+msgstr "Proprietário removido"
+
+msgid "Owner was not removed"
+msgstr "Não foi possível remover Proprietário"
+
+msgid "Owners"
+msgstr "Proprietários"
+
+msgid "PDF"
+msgstr "Documento PDF"
+
+msgid "pHkondo Condominium Managment"
+msgstr "pHKondo Administração de Condomínios"
+
+msgid "Condominium"
+msgstr "Condomínio"
+
+msgid "Expenses"
+msgstr "Despesas"
+
+msgid "Income"
+msgstr "Receitas"
+
+msgid "Total Income"
+msgstr "Total Receitas"
+
+msgid "Other Income From Bank Accounts"
+msgstr "Outras Receitas ( Contas )"
+
+msgid "Accounts Initial Values"
+msgstr "Contas Valores Iniciais"
+
+msgid "Accounts Final Values"
+msgstr "Contas Valores Finais"
+
+msgid "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
+msgstr "Página {:page} de {:pages}, a mostrar {:current} registos de {:count} no total, inicia no registo {:start}, termina no registo {:end}"
+
+msgid "Paid"
+msgstr "Pago"
+
+msgid "Paid To"
+msgstr "Recebido Por"
+
+msgid "Cancel By"
+msgstr "Anulado Por"
+
+msgid "Paid shares map"
+msgstr "Mapa de quotas liquidadas"
+
+msgid "Password"
+msgstr "Palavra passe"
+
+msgid "Password change"
+msgstr "Alterar palavra passe"
+
+msgid "Passwords dont match"
+msgstr "Palavra passe não coincide"
+
+msgid "Pay Receipt"
+msgstr "Recibo Pago"
+
+msgid "Payment"
+msgstr "Pagamento : "
+
+msgid "Payment Date"
+msgstr "Data de Pagamento"
+
+msgid "Pending Amount"
+msgstr "Valor em Falta"
+
+msgid "Pick"
+msgstr "Escolha.."
+
+msgid "Pick   Notes"
+msgstr "Escolha Notas"
+
+msgid "Pick Notes"
+msgstr "Adicionar Notas"
+
+msgid "Please correct errors below."
+msgstr "Por favor corrija os erros em baixo."
+
+msgid "Please enter a valid role"
+msgstr "Seleccione uma funcção válida"
+
+msgid "Please enter an valid percentage."
+msgstr "Introduza uma percentagem válida."
+
+msgid "Please enter an valid rate."
+msgstr "Introduza uma taxa valida."
+
+msgid "Policy"
+msgstr "Apólice"
+
+msgid "Previous"
+msgstr "Anterior"
+
+msgid "Print Receipt"
+msgstr "Imprimir Recibo"
+
+msgid "Receipt"
+msgstr "Recibo"
+
+msgid "Receipt Payment Type"
+msgstr "Forma de Pagamento"
+
+msgid "Receipt Status"
+msgstr "Estado"
+
+msgid "Receipt can not be deleted"
+msgstr "Não foi possível apagar Recibo"
+
+msgid "Receipt deleted"
+msgstr "Recibo apagado"
+
+msgid "Receipts"
+msgstr "Recibos"
+
+msgid "Related %s"
+msgstr "%s Relacionados"
+
+msgid "Related Notes"
+msgstr "Notas Relacionadas"
+
+msgid "Remove"
+msgstr "Remover"
+
+msgid "Remove %s"
+msgstr "Remover %s"
+
+msgid "Renewal Date"
+msgstr "Data de Renovação"
+
+msgid "Reports"
+msgstr "Relatórios"
+
+msgid "Representative"
+msgstr "Representante"
+
+msgid "Requested Amount"
+msgstr "Valor Requisitado"
+
+msgid "Return"
+msgstr "Voltar"
+
+msgid "Role"
+msgstr "Função"
+
+msgid "Saturday"
+msgstr "Sábado"
+
+msgid "Scaffold :: "
+msgstr ""
+
+msgid "Search"
+msgstr "Procurar"
+
+msgid "Select one option"
+msgstr "Seleccione uma opção"
+
+msgid "September"
+msgstr "Setembro"
+
+msgid "Share"
+msgstr "Quota"
+
+msgid "Share "
+msgstr "Quota"
+
+msgid "Share Distribution"
+msgstr "Distribuição de Quotas"
+
+msgid "Share Periodicity"
+msgstr "Periodicidade de Quotas"
+
+msgid "Shares"
+msgstr "Quotas"
+
+msgid "Shares map"
+msgstr "Mapa de quotas"
+
+msgid "Start Date"
+msgstr "Data de Início"
+
+msgid "Start Session"
+msgstr "Iniciar Sessão"
+
+msgid "Submit"
+msgstr "Registar"
+
+msgid "Sunday"
+msgstr "Domingo"
+
+msgid "Supplier"
+msgstr "Fornecedor"
+
+msgid "Suppliers"
+msgstr "Fornecedores"
+
+msgid "Swift"
+msgstr ""
+
+msgid "Taxpayer Number"
+msgstr "Número de Contribuinte"
+
+msgid "The %1$s has been %2$s"
+msgstr "O %1$s foi %2$s"
+
+msgid "The %1$s with id: %2$s has been deleted."
+msgstr "O %1$s com o id: %2$s foi removido."
+
+msgid "The account could not be saved. Please, try again."
+msgstr "Não foi possivel registar a conta. Por favor, tente outra vez."
+
+msgid "The account has been saved"
+msgstr "A conta foi registada"
+
+msgid "The administrator could not be saved. Please, try again."
+msgstr "O administrador não foi gravado. Por favor, tente de novo."
+
+msgid "The administrator has been saved"
+msgstr "O administrador foi registado"
+
+msgid "The budget could not be saved. Please, try again."
+msgstr "Não foi possivel registar o orçamento. Por favor, tente outra vez."
+
+msgid "The budget has been saved"
+msgstr "O orçamento foi registado"
+
+msgid "The condo could not be saved. Please, try again."
+msgstr "Não foi possivel registar o condomínio. Por favor, tente outra vez."
+
+msgid "The condo has been saved"
+msgstr "O Condomínio foi registado"
+
+msgid "The entity could not be saved. Please, try again."
+msgstr "Não foi possivel registar entidade. Por favor, tente outra vez."
+
+msgid "The entity has been saved"
+msgstr "A entidade foi registada"
+
+msgid "The fiscal year could not be saved. Please, try again."
+msgstr "Não foi possivel registar exercicio. Por favor, tente outra vez."
+
+msgid "The fiscal year has been saved"
+msgstr "O exercicio foi registado"
+
+msgid "The fraction could not be saved. Please, try again."
+msgstr "Não foi possivel registar a fracção. Por favor, tente outra vez."
+
+msgid "The fraction has been saved"
+msgstr "A fração foi registada"
+
+msgid "The insurance could not be saved. Please, try again."
+msgstr "Não foi possivel registar o seguro. Por favor, tente outra vez."
+
+msgid "The insurance has been saved"
+msgstr "O seguro foi registado"
+
+msgid "The maintenance could not be saved. Please, try again."
+msgstr "Não foi possivel registar a manutenção. Por favor, tente outra vez."
+
+msgid "The maintenance has been saved"
+msgstr "A manutenção foi registada"
+
+msgid "The movement category could not be saved. Please, try again."
+msgstr "A categoria não foi registada. Por favor, tente outra vez."
+
+msgid "The movement category has been saved"
+msgstr "A categoria foi registada"
+
+msgid "The movement could not be saved. Please, try again."
+msgstr "O movimento não foi registado. Por favor, tente outra vez."
+
+msgid "The movement has been saved"
+msgstr "O movimento foi registado"
+
+msgid "The movement operation could not be saved. Please, try again."
+msgstr "A operação não foi registada. Por favor, tente outra vez."
+
+msgid "The movement operation has been saved"
+msgstr "A operação foi registada"
+
+msgid "The note could not be saved. Please, try again."
+msgstr "A nota não foi registada. Por favor, tente outra vez."
+
+msgid "The note has been saved"
+msgstr "A nota foi registada"
+
+msgid "The notes could not be created. Please, try again."
+msgstr "Não foi possivel registar a nota. Por favor, tente outra vez."
+
+msgid "The notes could not be saved. Please, try again."
+msgstr "Não foi possivel registar as notas. Por favor, tente outra vez."
+
+msgid "The notes has been created"
+msgstr "As notas foram criadas"
+
+msgid "The owner could not be found at this fraction. Please, try again."
+msgstr "O proprietário não pertence á fracção."
+
+msgid "The owner could not be related. Please, try again."
+msgstr "O proprietário foi registado, mas não foi relacionado."
+
+msgid "The owner could not be saved. Please, try again."
+msgstr "O proprietario não foi gravado. Por favor, tente de novo."
+
+msgid "The owner has been related"
+msgstr "O proprietário foi registado e relacionado"
+
+msgid "The owner has been saved"
+msgstr "O proprietário foi registado"
+
+msgid "The receipt could not be saved. Please, try again."
+msgstr "Não foi possivel registar o recibo. Por favor, tente outra vez."
+
+msgid "The receipt has been saved"
+msgstr "O recibo foi registado"
+
+msgid "The requested address %s was not found on this server."
+msgstr "O pedido efectuado %s não foi encontrado neste servidor."
+
+msgid "The requested file was not found"
+msgstr "O ficheiro pedido não foi encontrado"
+
+msgid "The user could not be saved. Please, try again."
+msgstr "O utilizador não foi gravado. Por favor, tente de novo."
+
+msgid "The user has been saved"
+msgstr "O utilizador foi registado"
+
+msgid "There was an error deleting the %1$s with id: %2$s"
+msgstr "Houve um erro ao remover o %1$s com o id: %2$s"
+
+msgid "This field cannot be left blank"
+msgstr "Este campo não pode ser vazio"
+
+msgid "Thursday"
+msgstr "Quinta-Feira"
+
+msgid "Title"
+msgstr "Descrição"
+
+msgid "Today, %s"
+msgstr "Hoje, %s"
+
+msgid "Tomorrow, %s"
+msgstr "Amanhã, %s"
+
+msgid "Total Amount"
+msgstr "Valor Total"
+
+msgid "Total amount"
+msgstr "Valor total"
+
+msgid "Total notes"
+msgstr "Total notas"
+
+msgid "Trial balance"
+msgstr "Balancete"
+
+msgid "Trial balance detailed"
+msgstr "Balancete detalhado"
+
+msgid "Tuesday"
+msgstr "Terça-Feira"
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "User"
+msgstr "Utilizador"
+
+msgid "User can not be deleted"
+msgstr "Não foi possível apagar Utilizador"
+
+msgid "User deleted"
+msgstr "Utilizador apagado"
+
+msgid "Username"
+msgstr "Nome de utilizador"
+
+msgid "Users"
+msgstr "Utilizadores"
+
+msgid "Vat Number"
+msgstr "Número de Contribuinte"
+
+msgid "Verify Password"
+msgstr "Confirmar palavra passe"
+
+msgid "View"
+msgstr "Ver"
+
+msgid "View %s"
+msgstr "Ver %s"
+
+msgid "View Condo"
+msgstr "Ver Condomínio"
+
+msgid "Warning: when you cancel a budget, ALL DEBIT NOTES created by this budget will be set as CANCELED, EXCEPT the ones already paid."
+msgstr "Aviso: quando se cancela um orçamento, TODAS AS NOTAS DE DEBITO criadas por esse orçamento serão alteradas para o estado de CANCELADO, EXCEPTO as notas que já foram pagas."
+
+msgid "Warning: when you set a budget as pending, ALL DEBIT NOTES created by this budget will be set as WAITS PAYMENT, EXCEPT the ones already paid."
+msgstr "Aviso: quando se coloca o orçamento como inativo, TODAS AS NOTAS DE DEBITO criadas por esse orçamento serão alteradas para o estado de AGUARDA PAGAMENTO, EXCEPTO as notas que já foram pagas."
+
+msgid "Wednesday"
+msgstr "Quarta-Feira"
+
+msgid "Welcome to pHKondo."
+msgstr "Bem Vindo ao pHKondo"
+
+msgid "Yes"
+msgstr "Sim"
+
+msgid "Yesterday, %s"
+msgstr "Ontem, %s"
+
+msgid "You are not authorized to access that location."
+msgstr "Não está autorizado a aceder a este local."
+
+msgid "about a day ago"
+msgstr "passou um dia"
+
+msgid "about a minute ago"
+msgstr "passou um minuto"
+
+msgid "about a second ago"
+msgstr "passou um segundo"
+
+msgid "about a week ago"
+msgstr "passou uma semana"
+
+msgid "about a year ago"
+msgstr "passou um ano"
+
+msgid "about an hour ago"
+msgstr "passou uma hora"
+
+msgid "boolean"
+msgstr "booleano"
+
+msgid "close date must be after open date"
+msgstr "Data de fecho deve ser após data de abertura"
+
+msgid "date"
+msgstr "data"
+
+msgid "days"
+msgstr "dias"
+
+msgid "empty"
+msgstr "vazio"
+
+msgid "in about a day"
+msgstr "falta um dia"
+
+msgid "in about a minute"
+msgstr "falta um minuto"
+
+msgid "in about a second"
+msgstr "falta um segundo"
+
+msgid "in about a week"
+msgstr "falta uma semana"
+
+msgid "in about a year"
+msgstr "falta um ano"
+
+msgid "in about an hour"
+msgstr "falta uma hora"
+
+msgid "insurances"
+msgstr "seguros"
+
+msgid "invalid active"
+msgstr ""
+
+msgid "invalid close date"
+msgstr "data de fecho inválida"
+
+msgid "invalid date"
+msgstr "Data inválida"
+
+msgid "invalid open date"
+msgstr "data de abertura inválida"
+
+msgid "invalid origin date"
+msgstr "Data de origem inválida"
+
+msgid "just now"
+msgstr "agora"
+
+msgid "maintenances"
+msgstr "manutenções"
+
+msgid "money"
+msgstr "Requer valor númerico"
+
+msgid "next"
+msgstr "proximo"
+
+msgid "notempty"
+msgstr "não é permitido este campo ser vazio"
+
+msgid "numeric"
+msgstr "numérico"
+
+msgid "on %s"
+msgstr "em %s"
+
+msgid "previous"
+msgstr "anterior"
+
+msgid "saved"
+msgstr "registado"
+
+msgid "updated"
+msgstr "actualizado"
+
+msgid "uuid"
+msgstr "identificador único"
+
+msgid "Invoice"
+msgstr "Factura"
+
+msgid "Invoices"
+msgstr "Facturas"
+
+msgid "Invoice Conference Status"
+msgstr "Estado"
+
+msgid "Payment Due Date"
+msgstr "Prazo de Pagamento"
+
+msgid "Invoice Conference"
+msgstr "Conferência de Facturas"
+
+msgid "List Invoices"
+msgstr "Lista Facturas"
+
+msgid "Edit Invoice"
+msgstr "Editar Factura"
+
+msgid "Delete Invoice"
+msgstr "Apagar Factura"
+
+msgid "New Invoice"
+msgstr "Adicionar Factura"
+
+msgid "Add Invoice"
+msgstr "Adicionar Factura"
+
+msgid "Invalid invoice"
+msgstr "Factura inválida"
+
+msgid "The invoice could not be saved. Please, try again."
+msgstr "Não foi possivel registar a factura. Por favor, tente outra vez."
+
+msgid "The invoice has been saved"
+msgstr "A factura foi registada"
+
+msgid "Invoice deleted"
+msgstr "Factura apagada"
+
+msgid "This status requires payment date"
+msgstr "Este estado requer data de pagamento"
+
+msgid "Cancel Motive"
+msgstr "Motivo"
+
+msgid "pHKondo Reports"
+msgstr "Relatórios pHKondo"
+
+msgid "Income Control"
+msgstr "Controlo de Receitas"
+
+msgid "is being used in related record"
+msgstr "está a ser usado por um registo relacionado"
+
+msgid "Category"
+msgstr "Categoria"
+
+msgid "Operation"
+msgsre "Operação"
+
+msgid "Set as Active"
+msgstr "Activar Exercicio"
+
+msgid "Reports Plugin NotFound"
+msgstr "A Extenção de relatórios não está instalada."
+
+msgid "VAT"
+msgstr "NIF"
+
+msgid "Tax"
+msgstr "Taxas"
+
+msgid "Payment Due"
+msgstr "Prazo de Pagamento"
+
+msgid "Payment Methods"
+msgstr "Metodos de Pagamento"
+
+msgid "Maintenance"
+msgstr "Manutenção"
+
+msgid "Maintenance duration %s Hours"
+msgstr "Em manutenção durante %s horas"
+
+msgid "Maintenance start at %s "
+msgstr "A manutenção começa às %s "
+
+
+msgid "This application is now on maintenance mode, back soon as possible!"
+msgstr "A aplicação está em modo de manutenção, volta o mais rápido possível!"
+
+msgid "This application will be on maintenance mode at  %s "
+msgstr "A aplicação vai estar em manutenção em %s "
+
+msgid "Application Offline"
+msgstr "pHKondo Em Manutenção"
+
+msgid "Application Online"
+msgstr "pHKondo Online"
+
+msgid "No records found."
+msgstr "Não foram encontrados registos."
+
+msgid "Warning: Mil rate sum should be 1000"
+msgstr "Aviso: A soma da permilagem deve ser 1000"
+
+msgid "The plugin that allows you to print and create reports is not available."
+msgstr "A extensão que permite apresentar e imprimir relatórios não se encontra instalada."
+
+msgid "Case you wish do have access to our demo version of this plugin contact pHAlkaline."
+msgstr "Caso queria ter acesso ao código da nossa versão demo contacte a pHAlkaline."
+
+msgid "We provide expert services and the know-how to help you quickly implement and leverage the full potential of pHKondo features and functionality." 
+msgstr "pHAlkaline tambem disponibiliza serviços de desenvolvimento à medida das suas necessidades para o pHKondo."
+
+msgid "The plugin that allows you to print and create document drafts is not available."
+msgstr "A extensão que permite apresentar e imprimir documentos não se encontra instalada."
+
+msgid "The plugin that allows you to print and create receipts is not available."
+msgstr "A extensão que permite apresentar e imprimir recibos não se encontra instalada."
+
+msgid "pHKondo Drafts"
+msgstr "pHKondo Minutas"
+
+msgid "Drafts Plugin NotFound"
+msgstr "Extenção minutas não foi encontrada."
+
+msgid "pHKondo Receipts"
+msgstr "pHKondo Recibos"
+
+msgid "Receipts Plugin NotFound"
+msgstr "Extenção recibos não foi encontrada."
+
+msgid "Language"
+msgstr "Idioma"
+
+msgid "Employee"
+msgstr "Colaborador"
+
+msgid "Manager"
+msgstr "Gestor"
+
+msgid "App Administrator"
+msgstr "Administrador"
