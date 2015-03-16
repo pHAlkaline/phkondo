@@ -11,7 +11,7 @@ App::uses('Component', 'Controller');
  * @package  pHAlkaline
  * @version  V1.1
  * @author   Paulo Homem <contact@phalkaline.eu>
- * @license  http://www.opensource.org/licenses/mit-license.php The MIT License
+ * @license  http://opensource.org/licenses/GPL-2.0 The GNU GPL-2.0
  * @link     http://www.phalkaline.eu
  */
 class MaintenanceModeComponent extends Component {
