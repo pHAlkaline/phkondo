@@ -1,0 +1,81 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+msgid "numeric"
+msgstr "Campo do tipo númerico."
+
+msgid "notempty"
+msgstr "Não deve ser vazio."
+
+msgid "uuid"
+msgstr "Identificador único."
+
+msgid "boolean"
+msgstr "Campo do tipo booleano."
+
+msgid "date"
+msgstr "Campo do tipo data."
+
+msgid "invalid budget date"
+msgstr "Data inválida."
+
+msgid "money"
+msgstr "Monetário."
+
+msgid "Please enter an valid percentage."
+msgstr "Percentagem inválida."
+
+msgid "invalid begin date"
+msgstr "Data de início inválida."
+
+msgid "invalid open date"
+msgstr "Data de abertura inválida."
+
+msgid "invalid close date"
+msgstr "Data de fecho inválida."
+
+msgid "close date must be after open date"
+msgstr "Data de fecho deve ser superior a data de abertura."
+
+msgid "invalid active"
+msgstr "Valor inválido."
+
+msgid "Please enter an valid rate."
+msgstr "Valor inválido."
+
+msgid "invalid date"
+msgstr "Data inválida."
+
+msgid "This status requires payment date"
+msgstr "Estado requer data de pagamento."
+
+msgid "invalid origin date"
+msgstr "Data de origem inválida."
+
+msgid "Must be unique"
+msgstr "Deve ser único."
+
+msgid "Empty"
+msgstr "Vazio."
+
+msgid "Passwords dont match"
+msgstr "Palavra passe não corresponde."
+
+msgid "Please enter a valid role"
+msgstr "Função Inválida."
+
+msgid "notEmpty"
+msgstr "Não pode ser vazio."
+

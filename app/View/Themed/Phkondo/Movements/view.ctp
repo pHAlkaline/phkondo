@@ -1,0 +1,84 @@
+
+<div id="page-container" class="row">
+
+    <div id="sidebar" class="col-sm-3 hidden-print collapse navbar-collapse phkondo-navbar">
+
+        <div class="actions">
+
+            <ul class="nav nav-pills nav-stacked">			
+                <li ><?php echo $this->Html->link(__('Edit Movement'), array('action' => 'edit', $movement['Movement']['id']), array('class' => 'btn ')); ?> </li>
+                <li ><?php echo $this->Form->postLink(__('Delete Movement'), array('action' => 'delete', $movement['Movement']['id']), array('class' => 'btn ','confirm'=> __('Are you sure you want to delete # %s?' , $movement['Movement']['description'] ))); ?> </li>
+                 <li ><?php echo $this->Html->link(__('New Movement'), array('action' => 'add'), array('class' => 'btn ')); ?> </li>
+                <li ><?php echo $this->Html->link(__('List Movements'), array('action' => 'index'), array('class' => 'btn ')); ?> </li>
+               
+
+            </ul><!-- /.list-group -->
+
+        </div><!-- /.actions -->
+
+    </div><!-- /#sidebar .span3 -->
+
+    <div id="page-content" class="col-sm-9">
+
+        <div class="movements view">
+
+            <h2><?php echo __('Movement'); ?></h2>
+
+            
+                <table class="table table-hover table-condensed">
+                    <tbody>
+                        <tr>		<td class='col-sm-2'><strong><?php echo __('Movement Date'); ?></strong></td>
+                            <td>
+                                <?php echo $this->Time->format(Configure::read('dateFormatSimple'),$movement['Movement']['movement_date']); ?>
+                                &nbsp;
+                            </td>
+                        </tr><tr>		<td><strong><?php echo __('Description'); ?></strong></td>
+                            <td>
+                                <?php echo h($movement['Movement']['description']); ?>
+                                &nbsp;
+                            </td>
+                        </tr><tr>		<td><strong><?php echo __('Amount'); ?></strong></td>
+                            <td>
+                                <?php echo h($movement['Movement']['amount']); ?>
+                                &nbsp;<?= Configure::read('currencySign'); ?>
+                            </td>
+                        </tr><tr>		<td><strong><?php echo __('Movement Category'); ?></strong></td>
+                            <td>
+                                <?php echo $movement['MovementCategory']['name']; ?>
+                                &nbsp;
+                            </td>
+                        </tr><tr>		<td><strong><?php echo __('Movement Operation'); ?></strong></td>
+                            <td>
+                                <?php echo $movement['MovementOperation']['name']; ?>
+                                &nbsp;
+                            </td>
+                        </tr><tr>		<td><strong><?php echo __('Movement Type'); ?></strong></td>
+                            <td>
+                                <?php echo $movement['MovementType']['name']; ?>
+                                &nbsp;
+                            </td>
+                        </tr><tr>		<td><strong><?php echo __('Document'); ?></strong></td>
+                            <td>
+                                <?php echo h($movement['Movement']['document']); ?>
+                                &nbsp;
+                            </td>
+                        </tr><tr>		<td><strong><?php echo __('Modified'); ?></strong></td>
+                            <td>
+                                <?php echo $this->Time->format(Configure::read('dateFormat'),$movement['Movement']['modified']); ?>
+                                &nbsp;
+                            </td>
+                        </tr><tr>		<td><strong><?php echo __('Created'); ?></strong></td>
+                            <td>
+                                <?php echo $this->Time->format(Configure::read('dateFormat'),$movement['Movement']['created']); ?>
+                                &nbsp;
+                            </td>
+                        </tr>					</tbody>
+                </table><!-- /.table table-hover table-condensed -->
+            
+
+        </div><!-- /.view -->
+
+
+    </div><!-- /#page-content .span9 -->
+
+</div><!-- /#page-container .row-fluid -->
