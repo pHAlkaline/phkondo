@@ -10,7 +10,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?= Router::url('/', true); ?>"><?= __('pHKondo').' - '.Configure::read('Theme.owner_name'); ?></a>
+            <a class="navbar-brand" href="<?= Router::url('/', true); ?>"><?= __('pHKondo').' '.Configure::read('Theme.owner_name'); ?></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
