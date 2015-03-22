@@ -1623,3 +1623,24 @@ msgstr "Gestor"
 
 msgid "App Administrator"
 msgstr "Administrador"
+
+msgid "Expired maintenance"
+msgstr "Manutenção/Inspecção expirado"
+
+msgid "Maintenance to expire soon"
+msgstr "Manutenção/Inspecção a expirar brevemente"
+
+msgid "Fractions with late payment"
+msgstr "Fracções com atraso no pagamento"
+
+msgid "Accounts with negative balance"
+msgstr "Contas com saldo negativo"
+
+msgid "Suppliers with arrears"
+msgstr "Fornecedores com pagamentos em atraso"
+
+msgid "Expired insurance"
+msgstr "Seguro expirado"
+
+msgid "Insurance to expire soon"
+msgstr "Seguro a expirar brevemente"
