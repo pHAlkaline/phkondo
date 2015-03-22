@@ -118,11 +118,11 @@ $has_fiscal_year = (isset($condo['FiscalYear'][0]['title'])) ? true : false;
         }
         ?>
         <?php if (in_array('danger', $viewGlyphiconState)) : ?>
-            <div class="alert alert-danger"><?php echo __('Seguros expirados'); ?></div>
+            <div class="alert alert-danger"><?php echo __('Expired insurance'); ?></div>
         <?php elseif (in_array('warning', $viewGlyphiconState)) : ?>
-            <div class="alert alert-warning"><?php echo __('Seguros a expirar brevemente'); ?></div>
+            <div class="alert alert-warning"><?php echo __('Insurance to expire soon'); ?></div>
         <?php elseif (in_array('info', $viewGlyphiconState)) : ?>
-            <div class="alert alert-info"><?php echo __('Seguros a expirar brevemente'); ?></div>
+            <div class="alert alert-info"><?php echo __('Insurance to expire soon'); ?></div>
         <?php endif; ?>
 
         <?php
@@ -149,15 +149,15 @@ $has_fiscal_year = (isset($condo['FiscalYear'][0]['title'])) ? true : false;
         }
         ?>
         <?php if (in_array('danger', $viewGlyphiconState)) : ?>
-            <div class="alert alert-danger"><?php echo __('Manutenção/Inspecção expirado'); ?></div>
+            <div class="alert alert-danger"><?php echo __('Expired maintenance'); ?></div>
         <?php elseif (in_array('warning', $viewGlyphiconState)) : ?>
-            <div class="alert alert-warning"><?php echo __('Manutenção/Inspecção a expirar brevemente'); ?></div>
+            <div class="alert alert-warning"><?php echo __('Maintenance to expire soon'); ?></div>
         <?php elseif (in_array('info', $viewGlyphiconState)) : ?>
-            <div class="alert alert-info"><?php echo __('Manutenção/Inspecção a expirar brevemente'); ?></div>
+            <div class="alert alert-info"><?php echo __('Maintenance to expire soon'); ?></div>
         <?php endif; ?>
 
         <?php if ($hasSharesDebt) : ?>
-            <div class="alert alert-danger"><?php echo __('Fracções com atraso no pagamento'); ?></div>
+            <div class="alert alert-danger"><?php echo __('Fractions with late payment'); ?></div>
         <?php endif; ?>
 
         <?php
@@ -169,10 +169,10 @@ $has_fiscal_year = (isset($condo['FiscalYear'][0]['title'])) ? true : false;
         }
         ?>
         <?php if (in_array('danger', $viewGlyphiconState)) : ?>
-            <div class="alert alert-danger"><?php echo __('Contas com saldo negativo'); ?></div>
+            <div class="alert alert-danger"><?php echo __('Accounts with negative balance'); ?></div>
         <?php endif; ?>
 <?php if ($hasDebt) : ?>
-            <div class="alert alert-danger"><?php echo __('Fornecedores com pagamentos em atraso'); ?></div>
+            <div class="alert alert-danger"><?php echo __('Suppliers with arrears'); ?></div>
 <?php endif; ?>
 
 
