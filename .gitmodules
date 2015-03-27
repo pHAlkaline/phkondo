@@ -1,3 +1,3 @@
-[submodule "vendors/cakephp"]
-	path = vendors/cakephp
+[submodule "vendor/cakephp"]
+	path = vendor/cakephp
 	url = https://github.com/cakephp/cakephp.git
