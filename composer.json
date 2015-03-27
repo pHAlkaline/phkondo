@@ -18,9 +18,11 @@
                 "source": "https://github.com/pHAlkaline/phkondo.git"
         },
         "require": {
-                "cakephp/cakephp": "2.6.2",
                 "php": ">=5.2.8",
-                "ext-mcrypt": "*"
+                "ext-mcrypt": "*",
+                "cakephp/cakephp": "2.6.2",
+                "cakephp/debug_kit": "2.2.*"
+                
         }
 
 }
