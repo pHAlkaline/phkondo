@@ -1,10 +1,10 @@
 {
         "name": "phalkaline/phkondo",
         "description": "Condominium Management Software",
-        "type": "application",
+        "type": "project",
         "keywords": ["application","php","condominium","management"],
         "homepage": "http://phkondo.net",
-        "license": "GNU GPL V2",
+        "license": "GPL-2.0",
         "authors": [
                 {
                         "name": "pHAlkaline",
@@ -14,6 +14,7 @@
         "support": {
                 "issues": "https://github.com/pHAlkaline/phkondo/issues",
                 "forum": "http://groups.google.com/group/phkondo",
+                "wiki": "https://github.com/pHAlkaline/phkondo/wiki",
                 "source": "https://github.com/pHAlkaline/phkondo.git"
         },
         "require": {
