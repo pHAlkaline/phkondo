@@ -1,0 +1,25 @@
+{
+        "name": "phalkaline/phkondo",
+        "description": "Condominium Management Software",
+        "type": "application",
+        "keywords": ["application","php","condominium","management"],
+        "homepage": "http://phkondo.net",
+        "license": "GNU GPL V2",
+        "authors": [
+                {
+                        "name": "pHAlkaline",
+                        "homepage": "http://phalkaline.eu"
+                }
+        ],
+        "support": {
+                "issues": "https://github.com/pHAlkaline/phkondo/issues",
+                "forum": "http://groups.google.com/group/phkondo",
+                "source": "https://github.com/pHAlkaline/phkondo.git"
+        },
+        "require": {
+                "cakephp/cakephp": "2.6.2",
+                "php": ">=5.2.8",
+                "ext-mcrypt": "*"
+        }
+
+}
