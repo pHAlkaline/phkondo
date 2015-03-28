@@ -28,9 +28,9 @@ Thumbs.db
 /app/tmp/*
 !/app/tmp/
  
-#/app/tmp/cache/*
+/app/tmp/cache/*
 #!/app/tmp/cache/
-#!/app/tmp/cache/empty
+!/app/tmp/cache/empty
 /app/tmp/cache/models/*
 #!/app/tmp/cache/models/
 !/app/tmp/cache/models/empty
@@ -61,9 +61,9 @@ Thumbs.db
 /app/Config/database.php
 /app/Config/email.php
 
-/lib/Cake/*
+/vendor/*
 #!/lib/Cake/
-!/lib/Cake/empty
+!/vendor/empty
 
 /app/Locale/cake.po
 /app/Locale/default.pot
@@ -76,3 +76,4 @@ Thumbs.db
 /app/Plugin/Drafts/
 /app/Plugin/PrintReceipt/
 /app/Plugin/Reports/
+/composer.lock
