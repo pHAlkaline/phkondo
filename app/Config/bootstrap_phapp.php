@@ -47,4 +47,4 @@ Configure::write('MaintenanceMode.site_offline_url', '/pages/offline');
  */
 Configure::write('Access.open', ''); // Keep this clean , use only on emergency.
 
-Configure::write('User.role',array('admin' => __('App Administrator'),'store_admin' => __('Manager'),'colaborator' => __('Employee')));
+Configure::write('User.role',array('admin' => __('App Administrator'),'store_admin' => __n('Manager','Managers',1),'colaborator' => __('Employee')));

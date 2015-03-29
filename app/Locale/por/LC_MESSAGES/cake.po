@@ -162,7 +162,6 @@ msgstr "Outubro"
 msgid "On %s %s"
 msgstr "Em %s %s"
 
-
 msgid "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
 msgstr "Página {:page} de {:pages}, a mostar {:current} registos de {:count} no total, inicia no registo {:start}, termina no registo {:end}"
 

@@ -13,62 +13,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-msgid "numeric"
-msgstr "Campo do tipo númerico."
-
-msgid "notempty"
-msgstr "Não deve ser vazio."
-
-msgid "uuid"
-msgstr "Identificador único."
-
-msgid "boolean"
-msgstr "Campo do tipo booleano."
-
-msgid "date"
-msgstr "Campo do tipo data."
-
-msgid "invalid budget date"
-msgstr "Data inválida."
-
-msgid "money"
-msgstr "Monetário."
-
-msgid "Please enter an valid percentage."
-msgstr "Percentagem inválida."
-
-msgid "invalid begin date"
-msgstr "Data de início inválida."
-
-msgid "invalid open date"
-msgstr "Data de abertura inválida."
-
-msgid "invalid close date"
-msgstr "Data de fecho inválida."
-
-msgid "close date must be after open date"
-msgstr "Data de fecho deve ser superior a data de abertura."
-
-msgid "invalid active"
-msgstr "Valor inválido."
-
-msgid "Please enter an valid rate."
-msgstr "Valor inválido."
-
-msgid "invalid date"
-msgstr "Data inválida."
-
-msgid "This status requires payment date"
-msgstr "Estado requer data de pagamento."
-
-msgid "invalid origin date"
-msgstr "Data de origem inválida."
+msgid "Empty"
+msgstr "Vazio."
 
 msgid "Must be unique"
 msgstr "Deve ser único."
-
-msgid "Empty"
-msgstr "Vazio."
 
 msgid "Passwords dont match"
 msgstr "Palavra passe não corresponde."
@@ -76,6 +25,56 @@ msgstr "Palavra passe não corresponde."
 msgid "Please enter a valid role"
 msgstr "Função Inválida."
 
+msgid "Please enter an valid percentage."
+msgstr "Percentagem inválida."
+
+msgid "Please enter an valid rate."
+msgstr "Valor inválido."
+
+msgid "This status requires payment date"
+msgstr "Estado requer data de pagamento."
+
+msgid "boolean"
+msgstr "Campo do tipo booleano."
+
+msgid "close date must be after open date"
+msgstr "Data de fecho deve ser superior a data de abertura."
+
+msgid "date"
+msgstr "Campo do tipo data."
+
+msgid "invalid active"
+msgstr "Valor inválido."
+
+msgid "invalid begin date"
+msgstr "Data de início inválida."
+
+msgid "invalid budget date"
+msgstr "Data inválida."
+
+msgid "invalid close date"
+msgstr "Data de fecho inválida."
+
+msgid "invalid date"
+msgstr "Data inválida."
+
+msgid "invalid open date"
+msgstr "Data de abertura inválida."
+
+msgid "invalid origin date"
+msgstr "Data de origem inválida."
+
+msgid "money"
+msgstr "Monetário."
+
 msgid "notEmpty"
 msgstr "Não pode ser vazio."
 
+msgid "notempty"
+msgstr "Não deve ser vazio."
+
+msgid "numeric"
+msgstr "Campo do tipo númerico."
+
+msgid "uuid"
+msgstr "Identificador único."

@@ -25,7 +25,7 @@
                             <th><?php echo $this->Paginator->sort('floor_location'); ?></th>
                             <th><?php echo $this->Paginator->sort('description'); ?></th>
                             <th><?php echo $this->Paginator->sort('mil_rate'); ?></th>
-                            <th><?php echo $this->Paginator->sort('Manager.name', __('Manager')); ?></th>
+                            <th><?php echo $this->Paginator->sort('Manager.name', __n('Manager','Managers',1)); ?></th>
                             <th class="actions hidden-print"><?php //echo __('Actions');   ?></th>
                         </tr>
                     </thead>
