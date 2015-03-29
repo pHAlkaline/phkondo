@@ -34,7 +34,7 @@
             
                 <table class="table table-hover table-condensed">
                     <tbody>
-                        <tr>		<td class='col-sm-2'><strong><?php echo __('Manager'); ?></strong></td>
+                        <tr>		<td class='col-sm-2'><strong><?php echo __n('Manager','Managers',1); ?></strong></td>
                             <td>
                                 <?php
                                 if ($fraction['Fraction']['manager_id'] == 0) {

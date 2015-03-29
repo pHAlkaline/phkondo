@@ -104,7 +104,7 @@ class FractionEntitiesController extends AppController {
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __('Condos'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID'))), 'text' => $this->Session->read('Condo.ViewName'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'fractions', 'action' => 'view', $this->Session->read('Condo.Fraction.ViewID'))), 'text' => $this->Session->read('Condo.Fraction.ViewName'), 'active' => ''),
-            array('link' => '', 'text' => __('Managers'), 'active' => 'active')
+            array('link' => '', 'text' => ___n('Manager','Managers',2), 'active' => 'active')
         );
         $this->set(compact('breadcrumbs'));
     }

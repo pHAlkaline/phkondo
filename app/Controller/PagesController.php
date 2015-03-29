@@ -35,7 +35,7 @@ class PagesController extends AppController {
     public function display() {
         $path = func_get_args();
 
-        if (!empty($path[0]) && $path[0] == 'home' && !$this->Auth->loggedIn()) {
+        if (!empty($path[0]) && $path[0] == 'home' && !(bool)  AuthComponent::user()) {
             $path[0] = 'login';
         }
         $count = count($path);

@@ -125,7 +125,7 @@ class EntitiesController extends AppController {
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __('Condos'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID'))), 'text' => $this->Session->read('Condo.ViewName'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'maintenances', 'action' => 'index')), 'text' => __('Maintenances'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'maintenances', 'action' => 'index')), 'text' => __n('Maintenance','Maintenances',2), 'active' => ''),
             array('link' => '', 'text' => __('Suppliers'), 'active' => 'active')
         );
         $this->set(compact('breadcrumbs'));
