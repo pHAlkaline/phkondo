@@ -90,8 +90,17 @@ msgstr "Conta apagada"
 msgid "Accounts"
 msgstr "Contas"
 
+msgid "Accounts Final Values"
+msgstr "Contas Valores Finais"
+
+msgid "Accounts Initial Values"
+msgstr "Contas Valores Iniciais"
+
 msgid "Accounts balance"
 msgstr "Balanço de contas"
+
+msgid "Accounts with negative balance"
+msgstr "Contas com saldo negativo"
 
 msgid "Actions"
 msgstr "Acções"
@@ -122,6 +131,9 @@ msgstr "Criar Fracção"
 
 msgid "Add Insurance"
 msgstr "Criar Seguro"
+
+msgid "Add Invoice"
+msgstr "Adicionar Factura"
 
 msgid "Add Maintenance"
 msgstr "Criar Manutenção"
@@ -180,6 +192,15 @@ msgstr "Valor"
 msgid "An Internal Error Has Occurred."
 msgstr "Houve um erro interno."
 
+msgid "App Administrator"
+msgstr "Administrador"
+
+msgid "Application Offline"
+msgstr "pHKondo Em Manutenção"
+
+msgid "Application Online"
+msgstr "pHKondo Online"
+
 msgid "April"
 msgstr "Abril"
 
@@ -231,9 +252,6 @@ msgstr "Valor orçamento"
 msgid "Budget can not be deleted"
 msgstr "Não foi possível apagar Orçamento"
 
-msgid "This Budget can not be deleted, check budget status or existing notes already paid."
-msgstr "Este orçamento não pode ser removido, verifique o estado do orçamento ou a existencia de notas em estado de pago."
-
 msgid "Budget deleted"
 msgstr "Orçamento apagado"
 
@@ -246,8 +264,23 @@ msgstr ""
 msgid "Cancel"
 msgstr "Anular"
 
+msgid "Cancel By"
+msgstr "Anulado Por"
+
+msgid "Cancel Motive"
+msgstr "Motivo"
+
 msgid "Cancel Receipt"
 msgstr "Anular Recibo"
+
+msgid "Case you wish do have access to our demo version of this plugin contact pHAlkaline."
+msgstr "Caso queria ter acesso ao código da nossa versão demo contacte a pHAlkaline."
+
+msgid "Category"
+msgstr "Categoria"
+
+msgid "Category can not be deleted"
+msgstr "Não foi possível apagar Categoria"
 
 msgid "Client"
 msgstr "Cliente"
@@ -279,6 +312,9 @@ msgstr "Não foi possível apagar Condomínio"
 msgid "Condo deleted"
 msgstr "Condomínio apagado"
 
+msgid "Condominium"
+msgstr "Condomínio"
+
 msgid "Condos"
 msgstr "Condomínios"
 
@@ -290,9 +326,6 @@ msgstr "Contactos"
 
 msgid "Content"
 msgstr "Texto"
-
-msgid "SharesDebt"
-msgstr "Contencioso"
 
 msgid "Contract Number"
 msgstr "Número de Contrato"
@@ -339,6 +372,9 @@ msgstr "Apagar Fração"
 msgid "Delete Insurance"
 msgstr "Apagar Seguro"
 
+msgid "Delete Invoice"
+msgstr "Apagar Factura"
+
 msgid "Delete Maintenance"
 msgstr "Apagar Manutenção"
 
@@ -378,6 +414,9 @@ msgstr "Minuta"
 msgid "Drafts"
 msgstr "Minutas"
 
+msgid "Drafts Plugin NotFound"
+msgstr "Extenção minutas não foi encontrada."
+
 msgid "Due Date"
 msgstr "Prazo de Pagamento"
 
@@ -414,6 +453,9 @@ msgstr "Editar Fracção"
 msgid "Edit Insurance"
 msgstr "Editar Seguro"
 
+msgid "Edit Invoice"
+msgstr "Editar Factura"
+
 msgid "Edit Maintenance"
 msgstr "Editar Manutenção"
 
@@ -443,6 +485,9 @@ msgstr "Editar Utilizador"
 
 msgid "Email"
 msgstr "Correio Electronico"
+
+msgid "Employee"
+msgstr "Colaborador"
 
 msgid "Empty"
 msgstr "Vazio"
@@ -489,6 +534,12 @@ msgstr "Relatório de despesas"
 msgid "Expiration Date"
 msgstr "Data de Validade"
 
+msgid "Expired insurance"
+msgstr "Seguro expirado"
+
+msgid "Expired maintenance"
+msgstr "Manutenção/Inspecção expirado"
+
 msgid "February"
 msgstr "Fevereiro"
 
@@ -500,9 +551,6 @@ msgstr "Exercicio activo"
 
 msgid "Fiscal Year can not be deleted"
 msgstr "Não foi possivel apagar Exercicio"
-
-msgid "This Fiscal Year can not be deleted, check existing notes already paid."
-msgstr "Esta Exercicio não pode ser removido, verifique a existencia de notas em estado pago."
 
 msgid "Fiscal Year deleted"
 msgstr "Exercicio apagado"
@@ -522,23 +570,20 @@ msgstr "Fracção"
 msgid "Fraction can not be deleted"
 msgstr "Não foi possível apagar Fracção"
 
-msgid "This Fraction can not be deleted, check existing notes already paid."
-msgstr "Esta Fracção não pode ser removida, verifique a existencia de notas em estado pago."
-
 msgid "Fraction deleted"
 msgstr "Fracção apagada"
 
 msgid "Fractions"
 msgstr "Fracções"
 
+msgid "Fractions with late payment"
+msgstr "Fracções com atraso no pagamento"
+
 msgid "Friday"
 msgstr "Sexta-Feira"
 
 msgid "Functions"
 msgstr "Funções"
-
-msgid "PHKONO - Administração de Condomínios"
-msgstr ""
 
 msgid "Guest"
 msgstr "Convidado"
@@ -551,6 +596,12 @@ msgstr ""
 
 msgid "Iban"
 msgstr "IBAN"
+
+msgid "Income"
+msgstr "Receitas"
+
+msgid "Income Control"
+msgstr "Controlo de Receitas"
 
 msgid "Income extra and previous exercices"
 msgstr "Receitas extraordinarias ou de exercicios anteriores"
@@ -594,6 +645,9 @@ msgstr "Não foi possível apagar Seguro"
 msgid "Insurance deleted"
 msgstr "Seguro apagado"
 
+msgid "Insurance to expire soon"
+msgstr "Seguro a expirar brevemente"
+
 msgid "Insurances"
 msgstr "Seguros"
 
@@ -633,6 +687,9 @@ msgstr "Fracção inválida"
 msgid "Invalid insurance"
 msgstr "Seguro inválido"
 
+msgid "Invalid invoice"
+msgstr "Factura inválida"
+
 msgid "Invalid maintenance"
 msgstr "Manutenção inválida"
 
@@ -663,6 +720,21 @@ msgstr "Utilizador inválido"
 msgid "Invalid username or password, try again"
 msgstr "Nome de utilizador ou palavra passe incorrectos, tente outra vez"
 
+msgid "Invoice"
+msgstr "Factura"
+
+msgid "Invoice Conference"
+msgstr "Conferência de Facturas"
+
+msgid "Invoice Conference Status"
+msgstr "Estado"
+
+msgid "Invoice deleted"
+msgstr "Factura apagada"
+
+msgid "Invoices"
+msgstr "Facturas"
+
 msgid "January"
 msgstr "Janeiro"
 
@@ -671,6 +743,9 @@ msgstr "Julho"
 
 msgid "June"
 msgstr "Junho"
+
+msgid "Language"
+msgstr "Idioma"
 
 msgid "Last Inspection"
 msgstr "Última Inspecção"
@@ -705,6 +780,9 @@ msgstr "Listar Fracções"
 msgid "List Insurances"
 msgstr "Listar Seguros"
 
+msgid "List Invoices"
+msgstr "Lista Facturas"
+
 msgid "List Maintenances"
 msgstr "Listar Manutenções"
 
@@ -733,7 +811,9 @@ msgid "Main Account"
 msgstr "Conta Principal"
 
 msgid "Maintenance"
-msgstr "Manutenção"
+msgid_plural "Maintenances"
+msgstr[0] "Manutenção"
+msgstr[1] "Manutenções"
 
 msgid "Maintenance can not be deleted"
 msgstr "Não foi possível apagar Manutenção"
@@ -741,17 +821,22 @@ msgstr "Não foi possível apagar Manutenção"
 msgid "Maintenance deleted"
 msgstr "Manutenção apagada"
 
-msgid "Maintenances"
-msgstr "Manutenções"
+msgid "Maintenance duration %s Hours"
+msgstr "Em manutenção durante %s horas"
+
+msgid "Maintenance start at %s "
+msgstr "A manutenção começa às %s "
+
+msgid "Maintenance to expire soon"
+msgstr "Manutenção/Inspecção a expirar brevemente"
 
 msgid "Make document"
 msgstr "Criar documento"
 
 msgid "Manager"
-msgstr "Gestor"
-
-msgid "Managers"
-msgstr "Gestores"
+msgid_plural "Managers"
+msgstr[0] "Gestor"
+msgstr[1] "Gestores"
 
 msgid "March"
 msgstr "Março"
@@ -797,9 +882,6 @@ msgstr "Tipo de Movimento"
 
 msgid "Movement can not be deleted"
 msgstr "Não foi possível apagar Movimento"
-
-msgid "Category can not be deleted"
-msgstr "Não foi possível apagar Categoria"
 
 msgid "Movement category deleted"
 msgstr "Categoria apagada"
@@ -849,6 +931,9 @@ msgstr "Criar Fracção"
 msgid "New Insurance"
 msgstr "Novo Seguro"
 
+msgid "New Invoice"
+msgstr "Adicionar Factura"
+
 msgid "New Maintenance"
 msgstr "Nova Manutenção"
 
@@ -897,6 +982,9 @@ msgstr "Não é permitido movimentos"
 msgid "No movements allowed, choose fiscal year first."
 msgstr "Não são permitidos movimentos, necessita escolher exercicio."
 
+msgid "No records found."
+msgstr "Não foram encontrados registos."
+
 msgid "Not Found"
 msgstr "Não encontrado"
 
@@ -936,11 +1024,17 @@ msgstr "Data de Abertura"
 msgid "Open Document"
 msgstr "Abrir Documento"
 
+msgid "Operation"
+msgstr "Operação"
+
 msgid "Origin Date"
 msgstr "Data de Origem"
 
 msgid "Other"
 msgstr "Outros"
+
+msgid "Other Income From Bank Accounts"
+msgstr "Outras Receitas ( Contas )"
 
 msgid "Other or quotes without reference"
 msgstr "Quotas livres ou sem orçamento"
@@ -963,29 +1057,8 @@ msgstr "Proprietários"
 msgid "PDF"
 msgstr "Documento PDF"
 
-msgid "pHkondo Condominium Managment"
-msgstr "pHKondo Administração de Condomínios"
-
-msgid "Condominium"
-msgstr "Condomínio"
-
-msgid "Expenses"
-msgstr "Despesas"
-
-msgid "Income"
-msgstr "Receitas"
-
-msgid "Total Income"
-msgstr "Total Receitas"
-
-msgid "Other Income From Bank Accounts"
-msgstr "Outras Receitas ( Contas )"
-
-msgid "Accounts Initial Values"
-msgstr "Contas Valores Iniciais"
-
-msgid "Accounts Final Values"
-msgstr "Contas Valores Finais"
+msgid "PHKONO - Administração de Condomínios"
+msgstr ""
 
 msgid "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
 msgstr "Página {:page} de {:pages}, a mostrar {:current} registos de {:count} no total, inicia no registo {:start}, termina no registo {:end}"
@@ -995,9 +1068,6 @@ msgstr "Pago"
 
 msgid "Paid To"
 msgstr "Recebido Por"
-
-msgid "Cancel By"
-msgstr "Anulado Por"
 
 msgid "Paid shares map"
 msgstr "Mapa de quotas liquidadas"
@@ -1019,6 +1089,15 @@ msgstr "Pagamento : "
 
 msgid "Payment Date"
 msgstr "Data de Pagamento"
+
+msgid "Payment Due"
+msgstr "Prazo de Pagamento"
+
+msgid "Payment Due Date"
+msgstr "Prazo de Pagamento"
+
+msgid "Payment Methods"
+msgstr "Metodos de Pagamento"
 
 msgid "Pending Amount"
 msgstr "Valor em Falta"
@@ -1071,6 +1150,9 @@ msgstr "Recibo apagado"
 msgid "Receipts"
 msgstr "Recibos"
 
+msgid "Receipts Plugin NotFound"
+msgstr "Extenção recibos não foi encontrada."
+
 msgid "Related %s"
 msgstr "%s Relacionados"
 
@@ -1088,6 +1170,9 @@ msgstr "Data de Renovação"
 
 msgid "Reports"
 msgstr "Relatórios"
+
+msgid "Reports Plugin NotFound"
+msgstr "A Extenção de relatórios não está instalada."
 
 msgid "Representative"
 msgstr "Representante"
@@ -1116,6 +1201,9 @@ msgstr "Seleccione uma opção"
 msgid "September"
 msgstr "Setembro"
 
+msgid "Set as Active"
+msgstr "Activar Exercicio"
+
 msgid "Share"
 msgstr "Quota"
 
@@ -1133,6 +1221,9 @@ msgstr "Quotas"
 
 msgid "Shares map"
 msgstr "Mapa de quotas"
+
+msgid "SharesDebt"
+msgstr "Contencioso"
 
 msgid "Start Date"
 msgstr "Data de Início"
@@ -1152,8 +1243,14 @@ msgstr "Fornecedor"
 msgid "Suppliers"
 msgstr "Fornecedores"
 
+msgid "Suppliers with arrears"
+msgstr "Fornecedores com pagamentos em atraso"
+
 msgid "Swift"
 msgstr ""
+
+msgid "Tax"
+msgstr "Taxas"
 
 msgid "Taxpayer Number"
 msgstr "Número de Contribuinte"
@@ -1212,6 +1309,12 @@ msgstr "Não foi possivel registar o seguro. Por favor, tente outra vez."
 msgid "The insurance has been saved"
 msgstr "O seguro foi registado"
 
+msgid "The invoice could not be saved. Please, try again."
+msgstr "Não foi possivel registar a factura. Por favor, tente outra vez."
+
+msgid "The invoice has been saved"
+msgstr "A factura foi registada"
+
 msgid "The maintenance could not be saved. Please, try again."
 msgstr "Não foi possivel registar a manutenção. Por favor, tente outra vez."
 
@@ -1266,6 +1369,15 @@ msgstr "O proprietário foi registado e relacionado"
 msgid "The owner has been saved"
 msgstr "O proprietário foi registado"
 
+msgid "The plugin that allows you to print and create document drafts is not available."
+msgstr "A extensão que permite apresentar e imprimir documentos não se encontra instalada."
+
+msgid "The plugin that allows you to print and create receipts is not available."
+msgstr "A extensão que permite apresentar e imprimir recibos não se encontra instalada."
+
+msgid "The plugin that allows you to print and create reports is not available."
+msgstr "A extensão que permite apresentar e imprimir relatórios não se encontra instalada."
+
 msgid "The receipt could not be saved. Please, try again."
 msgstr "Não foi possivel registar o recibo. Por favor, tente outra vez."
 
@@ -1287,8 +1399,26 @@ msgstr "O utilizador foi registado"
 msgid "There was an error deleting the %1$s with id: %2$s"
 msgstr "Houve um erro ao remover o %1$s com o id: %2$s"
 
+msgid "This Budget can not be deleted, check budget status or existing notes already paid."
+msgstr "Este orçamento não pode ser removido, verifique o estado do orçamento ou a existencia de notas em estado de pago."
+
+msgid "This Fiscal Year can not be deleted, check existing notes already paid."
+msgstr "Esta Exercicio não pode ser removido, verifique a existencia de notas em estado pago."
+
+msgid "This Fraction can not be deleted, check existing notes already paid."
+msgstr "Esta Fracção não pode ser removida, verifique a existencia de notas em estado pago."
+
+msgid "This application is now on maintenance mode, back soon as possible!"
+msgstr "A aplicação está em modo de manutenção, volta o mais rápido possível!"
+
+msgid "This application will be on maintenance mode at  %s "
+msgstr "A aplicação vai estar em manutenção em %s "
+
 msgid "This field cannot be left blank"
 msgstr "Este campo não pode ser vazio"
+
+msgid "This status requires payment date"
+msgstr "Este estado requer data de pagamento"
 
 msgid "Thursday"
 msgstr "Quinta-Feira"
@@ -1304,6 +1434,9 @@ msgstr "Amanhã, %s"
 
 msgid "Total Amount"
 msgstr "Valor Total"
+
+msgid "Total Income"
+msgstr "Total Receitas"
 
 msgid "Total amount"
 msgstr "Valor total"
@@ -1338,6 +1471,9 @@ msgstr "Nome de utilizador"
 msgid "Users"
 msgstr "Utilizadores"
 
+msgid "VAT"
+msgstr "NIF"
+
 msgid "Vat Number"
 msgstr "Número de Contribuinte"
 
@@ -1353,11 +1489,17 @@ msgstr "Ver %s"
 msgid "View Condo"
 msgstr "Ver Condomínio"
 
+msgid "Warning: Mil rate sum should be 1000"
+msgstr "Aviso: A soma da permilagem deve ser 1000"
+
 msgid "Warning: when you cancel a budget, ALL DEBIT NOTES created by this budget will be set as CANCELED, EXCEPT the ones already paid."
 msgstr "Aviso: quando se cancela um orçamento, TODAS AS NOTAS DE DEBITO criadas por esse orçamento serão alteradas para o estado de CANCELADO, EXCEPTO as notas que já foram pagas."
 
 msgid "Warning: when you set a budget as pending, ALL DEBIT NOTES created by this budget will be set as WAITS PAYMENT, EXCEPT the ones already paid."
 msgstr "Aviso: quando se coloca o orçamento como inativo, TODAS AS NOTAS DE DEBITO criadas por esse orçamento serão alteradas para o estado de AGUARDA PAGAMENTO, EXCEPTO as notas que já foram pagas."
+
+msgid "We provide expert services and the know-how to help you quickly implement and leverage the full potential of pHKondo features and functionality."
+msgstr "pHAlkaline tambem disponibiliza serviços de desenvolvimento à medida das suas necessidades para o pHKondo."
 
 msgid "Wednesday"
 msgstr "Quarta-Feira"
@@ -1443,11 +1585,11 @@ msgstr "data de abertura inválida"
 msgid "invalid origin date"
 msgstr "Data de origem inválida"
 
+msgid "is being used in related record"
+msgstr "está a ser usado por um registo relacionado"
+
 msgid "just now"
 msgstr "agora"
-
-msgid "maintenances"
-msgstr "manutenções"
 
 msgid "money"
 msgstr "Requer valor númerico"
@@ -1464,6 +1606,18 @@ msgstr "numérico"
 msgid "on %s"
 msgstr "em %s"
 
+msgid "pHKondo Drafts"
+msgstr "pHKondo Minutas"
+
+msgid "pHKondo Receipts"
+msgstr "pHKondo Recibos"
+
+msgid "pHKondo Reports"
+msgstr "Relatórios pHKondo"
+
+msgid "pHkondo Condominium Managment"
+msgstr "pHKondo Administração de Condomínios"
+
 msgid "previous"
 msgstr "anterior"
 
@@ -1475,172 +1629,3 @@ msgstr "actualizado"
 
 msgid "uuid"
 msgstr "identificador único"
-
-msgid "Invoice"
-msgstr "Factura"
-
-msgid "Invoices"
-msgstr "Facturas"
-
-msgid "Invoice Conference Status"
-msgstr "Estado"
-
-msgid "Payment Due Date"
-msgstr "Prazo de Pagamento"
-
-msgid "Invoice Conference"
-msgstr "Conferência de Facturas"
-
-msgid "List Invoices"
-msgstr "Lista Facturas"
-
-msgid "Edit Invoice"
-msgstr "Editar Factura"
-
-msgid "Delete Invoice"
-msgstr "Apagar Factura"
-
-msgid "New Invoice"
-msgstr "Adicionar Factura"
-
-msgid "Add Invoice"
-msgstr "Adicionar Factura"
-
-msgid "Invalid invoice"
-msgstr "Factura inválida"
-
-msgid "The invoice could not be saved. Please, try again."
-msgstr "Não foi possivel registar a factura. Por favor, tente outra vez."
-
-msgid "The invoice has been saved"
-msgstr "A factura foi registada"
-
-msgid "Invoice deleted"
-msgstr "Factura apagada"
-
-msgid "This status requires payment date"
-msgstr "Este estado requer data de pagamento"
-
-msgid "Cancel Motive"
-msgstr "Motivo"
-
-msgid "pHKondo Reports"
-msgstr "Relatórios pHKondo"
-
-msgid "Income Control"
-msgstr "Controlo de Receitas"
-
-msgid "is being used in related record"
-msgstr "está a ser usado por um registo relacionado"
-
-msgid "Category"
-msgstr "Categoria"
-
-msgid "Operation"
-msgsre "Operação"
-
-msgid "Set as Active"
-msgstr "Activar Exercicio"
-
-msgid "Reports Plugin NotFound"
-msgstr "A Extenção de relatórios não está instalada."
-
-msgid "VAT"
-msgstr "NIF"
-
-msgid "Tax"
-msgstr "Taxas"
-
-msgid "Payment Due"
-msgstr "Prazo de Pagamento"
-
-msgid "Payment Methods"
-msgstr "Metodos de Pagamento"
-
-msgid "Maintenance"
-msgstr "Manutenção"
-
-msgid "Maintenance duration %s Hours"
-msgstr "Em manutenção durante %s horas"
-
-msgid "Maintenance start at %s "
-msgstr "A manutenção começa às %s "
-
-
-msgid "This application is now on maintenance mode, back soon as possible!"
-msgstr "A aplicação está em modo de manutenção, volta o mais rápido possível!"
-
-msgid "This application will be on maintenance mode at  %s "
-msgstr "A aplicação vai estar em manutenção em %s "
-
-msgid "Application Offline"
-msgstr "pHKondo Em Manutenção"
-
-msgid "Application Online"
-msgstr "pHKondo Online"
-
-msgid "No records found."
-msgstr "Não foram encontrados registos."
-
-msgid "Warning: Mil rate sum should be 1000"
-msgstr "Aviso: A soma da permilagem deve ser 1000"
-
-msgid "The plugin that allows you to print and create reports is not available."
-msgstr "A extensão que permite apresentar e imprimir relatórios não se encontra instalada."
-
-msgid "Case you wish do have access to our demo version of this plugin contact pHAlkaline."
-msgstr "Caso queria ter acesso ao código da nossa versão demo contacte a pHAlkaline."
-
-msgid "We provide expert services and the know-how to help you quickly implement and leverage the full potential of pHKondo features and functionality." 
-msgstr "pHAlkaline tambem disponibiliza serviços de desenvolvimento à medida das suas necessidades para o pHKondo."
-
-msgid "The plugin that allows you to print and create document drafts is not available."
-msgstr "A extensão que permite apresentar e imprimir documentos não se encontra instalada."
-
-msgid "The plugin that allows you to print and create receipts is not available."
-msgstr "A extensão que permite apresentar e imprimir recibos não se encontra instalada."
-
-msgid "pHKondo Drafts"
-msgstr "pHKondo Minutas"
-
-msgid "Drafts Plugin NotFound"
-msgstr "Extenção minutas não foi encontrada."
-
-msgid "pHKondo Receipts"
-msgstr "pHKondo Recibos"
-
-msgid "Receipts Plugin NotFound"
-msgstr "Extenção recibos não foi encontrada."
-
-msgid "Language"
-msgstr "Idioma"
-
-msgid "Employee"
-msgstr "Colaborador"
-
-msgid "Manager"
-msgstr "Gestor"
-
-msgid "App Administrator"
-msgstr "Administrador"
-
-msgid "Expired maintenance"
-msgstr "Manutenção/Inspecção expirado"
-
-msgid "Maintenance to expire soon"
-msgstr "Manutenção/Inspecção a expirar brevemente"
-
-msgid "Fractions with late payment"
-msgstr "Fracções com atraso no pagamento"
-
-msgid "Accounts with negative balance"
-msgstr "Contas com saldo negativo"
-
-msgid "Suppliers with arrears"
-msgstr "Fornecedores com pagamentos em atraso"
-
-msgid "Expired insurance"
-msgstr "Seguro expirado"
-
-msgid "Insurance to expire soon"
-msgstr "Seguro a expirar brevemente"

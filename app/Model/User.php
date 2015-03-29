@@ -2,6 +2,7 @@
 
 App::uses('AuthComponent', 'Controller/Component');
 App::uses('AppModel', 'Model');
+App::uses('Security', 'Utility');
 
 /**
  * User Model
@@ -96,7 +97,8 @@ class User extends AppModel {
         
         // crypt and truncate password
         if (isset($this->data[$this->alias]['password'])) {
-            $this->data[$this->alias]['password'] = AuthComponent::password(substr($this->data[$this->alias]['password'],0,8));
+            $password=Security::hash(substr($this->data[$this->alias]['password'],0,8), null, true);
+            $this->data[$this->alias]['password'] = $password;
         }
         // truncate username
         if (isset($this->data[$this->alias]['username'])) {
