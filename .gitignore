@@ -1,6 +1,40 @@
-# Test URI
-# Ignore netbeans folder
-nbproject/*
+# User specific & automatically generated files #
+#################################################
+/app/webroot/index.php
+/app/webroot/files
+/app/Config/core.php
+/app/Config/database.php
+/app/Config/bootstrap_phapp.php
+/app/Config/email.php
+/app/tmp
+/app/Test
+/lib
+/plugins
+/vendors
+/build
+/dist
+/tags
+
+# Plugins
+/app/Plugin/DebugKit/
+/app/Plugin/Drafts/
+/app/Plugin/PrintReceipt/
+/app/Plugin/Reports/
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+*.log
+Error.log
+Access.log
+
  
 # Ignore private folder
 /app/private/*
@@ -12,68 +46,21 @@ nbproject/*
 /app/webroot/js/packed/*
 !app/webroot/js/packed/.htaccess
  
-# MAC
-.DS_Store
- 
-# Windows
-Thumbs.db
- 
+# Netbeans project files
+/nbproject
+
 # Eclipse project files
 /.cache
 .project
 /.settings
 .buildpath
- 
-# Cake TMP Dirs
-/app/tmp/*
-!/app/tmp/
- 
-/app/tmp/cache/*
-#!/app/tmp/cache/
-!/app/tmp/cache/empty
-/app/tmp/cache/models/*
-#!/app/tmp/cache/models/
-!/app/tmp/cache/models/empty
-/app/tmp/cache/persistent/*
-#!/app/tmp/cache/persistent/
-!/app/tmp/cache/persistent/empty
-/app/tmp/cache/views/*
-#!/app/tmp/cache/views/
-!/app/tmp/cache/views/empty
- 
-/app/tmp/logs/*
-#!/app/tmp/logs/
-!/app/tmp/logs/empty
- 
-/app/tmp/sessions/*
-#!/app/tmp/sessions/
-!/app/tmp/sessions/empty
- 
-/app/tmp/tests/*
-#!/app/tmp/tests/
-!/app/tmp/tests/empty
-/app/tmp/installed.txt
 
-/tasks.php
-/phkapa_dev-error_log
-/phkapa_dev-access_log
-
-/app/Config/database.php
-/app/Config/email.php
-
+# composer vendor 
 /vendor/*
-#!/lib/Cake/
 !/vendor/empty
 
-/app/Locale/cake.po
-/app/Locale/default.pot
-/app/Locale/cake_dev.pot
+# root files 
 /TODO
 /TODO.php
-/app/Locale/cake.pot
-*.pot
-/app/Plugin/DebugKit/
-/app/Plugin/Drafts/
-/app/Plugin/PrintReceipt/
-/app/Plugin/Reports/
 /composer.lock
+
