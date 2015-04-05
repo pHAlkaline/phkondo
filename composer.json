@@ -30,10 +30,6 @@
         "cakephp/debug_kit": "2.2.*"
 
 
-    },
-    "scripts": {
-        "post-install-cmd": "app\\Console\\Installer::postInstall"
-        
     }
 
 }
