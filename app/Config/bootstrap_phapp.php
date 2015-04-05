@@ -7,7 +7,7 @@
 /** Theme Settings
  * 
  */
-Configure::write('Theme.owner_name', 'Your Name Here');
+Configure::write('Theme.owner_name', '');
 Configure::write('Theme.owner_title', 'Administração ao cuidado de XXXXXX');
 Configure::write('Theme.owner_address', 'Avenida XX de XXXXX NXX Loja A XXXX-XXX XXXXX , Telef: XXXXXXXXX / XXXXXXXXX');
 Configure::write('Theme.base_color', '#428bca');
