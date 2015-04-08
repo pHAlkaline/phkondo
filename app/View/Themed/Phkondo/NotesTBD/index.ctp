@@ -25,8 +25,8 @@ if ($this->Session->read('Condo.Budget.Status') == 1) {
 
                             <th><?php echo $this->Paginator->sort('title'); ?></th>
                             <th><?php echo $this->Paginator->sort('NoteType.name',__('Note Type')); ?></th>
-                            <th><?php echo $this->Paginator->sort('Fraction.description',__('Fraction')); ?></th>
-                            <th><?php echo $this->Paginator->sort('Entity.name',__('Entity')); ?></th>
+                            <th><?php echo $this->Paginator->sort('Fraction.description',__n('Fraction','Fractions',1)); ?></th>
+                            <th><?php echo $this->Paginator->sort('Entity.name',__n('Entity','Entities',1)); ?></th>
                             <th><?php echo $this->Paginator->sort('amount'); ?></th>
                             <!--th><?php //echo $this->Paginator->sort('pending_amount'); ?></th-->
                             <th><?php echo $this->Paginator->sort('due_date'); ?></th>

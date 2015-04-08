@@ -21,17 +21,17 @@
 
         <div class="administrators view">
 
-            <h2><?php echo __('Administrator'); ?></h2>
+            <h2><?php echo __n('Administrator','Administrators',1); ?></h2>
 
             
                 <table class="table table-hover table-condensed">
                     <tbody>
-                        <tr>		<td class='col-sm-2'><strong><?php echo __('Entity'); ?></strong></td>
+                        <tr>		<td class='col-sm-2'><strong><?php echo __n('Entity','Entities',1); ?></strong></td>
                             <td>
                                 <?php echo h($administrator['Entity']['name']); ?>
                                 &nbsp;
                             </td>
-                        </tr><tr>		<td><strong><?php echo __('Fiscal Year'); ?></strong></td>
+                        </tr><tr>		<td><strong><?php echo __n('Fiscal Year','Fiscal Years',1); ?></strong></td>
                             <td>
                                 <?php echo h($administrator['FiscalYear']['title']); ?>
                                 &nbsp;

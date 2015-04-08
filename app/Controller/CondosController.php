@@ -160,12 +160,12 @@ class CondosController extends AppController {
         if (!$this->Session->check('Condo.ViewID')) {
             $breadcrumbs = array(
                 array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
-                array('link' => '', 'text' => __('Condos'), 'active' => 'active')
+                array('link' => '', 'text' => __n('Condo','Condos',2), 'active' => 'active')
             );
         } else {
             $breadcrumbs = array(
                 array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
-                array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __('Condos'), 'active' => ''),
+                array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
                 array('link' => '', 'text' => $this->Session->read('Condo.ViewName'), 'active' => 'active')
             );
         }

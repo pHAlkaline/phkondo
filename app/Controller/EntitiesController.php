@@ -123,10 +123,10 @@ class EntitiesController extends AppController {
 
         $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __('Condos'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID'))), 'text' => $this->Session->read('Condo.ViewName'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'maintenances', 'action' => 'index')), 'text' => __n('Maintenance','Maintenances',2), 'active' => ''),
-            array('link' => '', 'text' => __('Suppliers'), 'active' => 'active')
+            array('link' => '', 'text' => __n('Supplier','Suppliers',2), 'active' => 'active')
         );
         $this->set(compact('breadcrumbs'));
     }
@@ -191,15 +191,15 @@ class EntitiesController extends AppController {
         }
         $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
-            array('link' => '', 'text' => __('Entities'), 'active' => 'active')
+            array('link' => '', 'text' => __n('Entity','Entities',2), 'active' => 'active')
         );
         switch ($this->action) {
             case 'view':
-                $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'entities', 'action' => 'index')), 'text' => __('Entities'), 'active' => '');
+                $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'entities', 'action' => 'index')), 'text' => __n('Entity','Entities',2), 'active' => '');
                 $breadcrumbs[2] = array('link' => '', 'text' => $this->Session->read('Entity.ViewName'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'entities', 'action' => 'index')), 'text' => __('Entities'), 'active' => '');
+                $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'entities', 'action' => 'index')), 'text' => __n('Entity','Entities',2), 'active' => '');
                 $breadcrumbs[2] = array('link' => '', 'text' => $this->Session->read('Entity.ViewName'), 'active' => 'active');
                 
                 break;

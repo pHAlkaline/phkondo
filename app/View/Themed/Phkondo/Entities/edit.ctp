@@ -6,7 +6,7 @@
         <div class="actions">
 
             <ul class="nav nav-pills nav-stacked">
-                <li ><?php echo $this->Html->link(__('View %s',__('Entity')), array('action' => 'view', $this->Form->value('Entity.id')), array('class' => 'btn ')); ?> </li>
+                <li ><?php echo $this->Html->link(__('View %s',__n('Entity','Entities',1)), array('action' => 'view', $this->Form->value('Entity.id')), array('class' => 'btn ')); ?> </li>
                 <?php
                 $deleteDisabled = '';
                 if (!$this->Form->value('Entity.deletable')) {
@@ -14,7 +14,7 @@
                 }
                 ?>
                 
-                <li ><?php echo $this->Form->postLink(__('Delete %s',__('Entity')), array('action' => 'delete', $this->Form->value('Entity.id')), array('class'=>'btn '.$deleteDisabled,'confirm'=>__('Are you sure you want to delete # %s?', $this->Form->value('Entity.name')))); ?></li>
+                <li ><?php echo $this->Form->postLink(__('Delete %s',__n('Entity','Entities',1)), array('action' => 'delete', $this->Form->value('Entity.id')), array('class'=>'btn '.$deleteDisabled,'confirm'=>__('Are you sure you want to delete # %s?', $this->Form->value('Entity.name')))); ?></li>
                 <li ><?php echo $this->Html->link(__('List Entities'), array('action' => 'index'),array('class'=>'btn')); ?></li>
 
             </ul><!-- /.list-group -->

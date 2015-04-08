@@ -5,7 +5,7 @@
         <div class="actions">
 
             <ul class="nav nav-pills nav-stacked">
-                <li ><?php echo $this->Html->link(__('View %s',__('Receipt')), array('action' => 'view', $id),array('class'=>'btn')); ?></li>
+                <li ><?php echo $this->Html->link(__('View %s',__n('Receipt','Receipts',1)), array('action' => 'view', $id),array('class'=>'btn')); ?></li>
                 <li ><?php echo $this->Html->link(__('List Receipts'), array('action' => 'index'),array('class'=>'btn')); ?></li>
 
             </ul><!-- /.list-group -->
@@ -18,7 +18,7 @@
         <div class="notes index">
             <?php echo $this->Form->create('Note'); ?>
             <?php echo $this->Form->hidden('Receipt.amount', array('value' => $receiptAmount)); ?>
-            <h2 class="col-sm-9"><?php echo __('Receipt') . ' ' . $receiptId; ?></h2>
+            <h2 class="col-sm-9"><?php echo __n('Receipt','Receipts',1) . ' ' . $receiptId; ?></h2>
             <div class="actions col-sm-3">
                 <h3 style="float:right;"><?php echo __('Total amount'); ?><span id="addNotesTotalAmount"></span></h3>
 
@@ -39,7 +39,7 @@
                         <th><?php echo __('Document date'); ?></th>
                         <th><?php echo __('Title'); ?></th>
                         <th><?php echo __('Note Type'); ?></th>
-                        <th><?php echo __('Fraction'); ?></th>
+                        <th><?php echo __n('Fraction','Fractions',1); ?></th>
                         <th><?php echo __('Client'); ?></th>
                         <th><?php echo __('Amount'); ?></th>
                         <th><?php echo __('Due Date'); ?></th>

@@ -16,7 +16,7 @@
                     
                 }
                ?>     
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> '.__('Movements'), array('controller' => 'movements', 'action' => 'index'), array('class' =>  'btn '.$movementsDisabled ,'escape'=>false)); ?> </li>
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> '.__n('Movement','Movements',2), array('controller' => 'movements', 'action' => 'index'), array('class' =>  'btn '.$movementsDisabled ,'escape'=>false)); ?> </li>
                 
             </ul><!-- /.list-group -->
 
@@ -28,7 +28,7 @@
 
         <div class="accounts view">
 
-            <h2><?php echo __('Account'); ?></h2>
+            <h2><?php echo __n('Account','Accounts',1); ?></h2>
 
             <div class="table-responsive">
                 <table class="table table-hover table-condensed">
@@ -53,7 +53,7 @@
                                 <?php echo h($account['Account']['balcony']); ?>
                                 &nbsp;
                             </td>
-                        </tr><tr>		<td><strong><?php echo __('Contacts'); ?></strong></td>
+                        </tr><tr>		<td><strong><?php echo __n('Contact','Contacts',2); ?></strong></td>
                             <td>
                                 <?php echo h($account['Account']['contacts']); ?>
                                 &nbsp;

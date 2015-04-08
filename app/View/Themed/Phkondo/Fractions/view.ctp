@@ -13,12 +13,12 @@
                     $deleteDisabled=' disabled';
                 }
                 ?>
-                <li ><?php echo $this->Form->postLink(__('Delete Fraction'), array('action' => 'delete', $fraction['Fraction']['id']), array('class' => 'btn '.$deleteDisabled,'confirm'=> __('Are you sure you want to delete # %s?' , $fraction['Fraction']['fraction'] ))); ?> </li>
+                <li ><?php echo $this->Form->postLink(__('Delete Fraction'), array('action' => 'delete', $fraction['Fraction']['id']), array('class' => 'btn '.$deleteDisabled,'confirm'=> __('Are you sure you want to delete # %s?' , $fraction['Fraction']['description'] ))); ?> </li>
                 <li ><?php echo $this->Html->link(__('New Fraction'), array('action' => 'add'), array('class' => 'btn ')); ?> </li>
                 <li ><?php echo $this->Html->link(__('List Fractions'), array('action' => 'index'), array('class' => 'btn ')); ?> </li>
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> '.__('Owners'), array('controller' => 'fraction_owners', 'action' => 'index'), array('class' => 'btn ','escape'=>false)); ?> </li>
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> '.__n('Owner','Owners',2), array('controller' => 'fraction_owners', 'action' => 'index'), array('class' => 'btn ','escape'=>false)); ?> </li>
                 <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> '.__('Notes'), array('controller' => 'fraction_notes', 'action' => 'index'), array('class' => 'btn ','escape'=>false)); ?> </li>
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> '.__('Insurances'), array('controller' => 'fraction_insurances', 'action' => 'index'), array('class' => 'btn ','escape'=>false)); ?> </li>
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> '.__n('Insurance','Insurances',2), array('controller' => 'fraction_insurances', 'action' => 'index'), array('class' => 'btn ','escape'=>false)); ?> </li>
             </ul><!-- /.list-group -->
 
         </div><!-- /.actions -->
@@ -29,7 +29,7 @@
 
         <div class="fractions view">
 
-            <h2><?php echo __('Fraction'); ?></h2>
+            <h2><?php echo __n('Fraction','Fractions',1); ?></h2>
 
             
                 <table class="table table-hover table-condensed">
@@ -45,7 +45,7 @@
                                 ?>
                                 &nbsp;
                             </td>
-                        </tr><tr>		<td><strong><?php echo __('Fraction'); ?></strong></td>
+                        </tr><tr>		<td><strong><?php echo __n('Fraction','Fractions',1); ?></strong></td>
                             <td>
                                 <?php echo h($fraction['Fraction']['fraction']); ?>
                                 &nbsp;

@@ -6,7 +6,7 @@
         <div class="actions">
 
             <ul class="nav nav-pills nav-stacked">
-                <li ><?php echo $this->Html->link(__('View %s',__('Fiscal Year')), array('action' => 'view', $this->Form->value('FiscalYear.id')), array('class' => 'btn ')); ?> </li>
+                <li ><?php echo $this->Html->link(__('View %s',__n('Fiscal Year','Fiscal Years',1)), array('action' => 'view', $this->Form->value('FiscalYear.id')), array('class' => 'btn ')); ?> </li>
                 
                 <?php 
                         $deleteDisabled='';

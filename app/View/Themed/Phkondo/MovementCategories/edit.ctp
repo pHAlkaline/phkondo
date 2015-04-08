@@ -13,7 +13,7 @@
                     $deleteDisabled = ' disabled';
                 }
                 ?>
-                <li ><?php echo $this->Form->postLink(__('Delete %s',__('Category')), array('action' => 'delete', $this->Form->value('MovementCategory.id')), array('class'=>'btn '.$deleteDisabled,'confirm'=>__('Are you sure you want to delete # %s?', $this->Form->value('MovementCategory.id')))); ?></li>
+                <li ><?php echo $this->Form->postLink(__('Delete %s',__('Category')), array('action' => 'delete', $this->Form->value('MovementCategory.id')), array('class'=>'btn '.$deleteDisabled,'confirm'=>__('Are you sure you want to delete # %s?', $this->Form->value('MovementCategory.name')))); ?></li>
                 <li ><?php echo $this->Html->link(__('List Movement Categories'), array('action' => 'index'),array('class'=>'btn')); ?></li>
             </ul><!-- /.list-group -->
 

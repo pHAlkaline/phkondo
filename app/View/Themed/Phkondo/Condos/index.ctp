@@ -5,7 +5,7 @@
 
         <div class="condos index">
 
-            <h2 class="col-sm-9"><?php echo __('Condos'); ?></h2>
+            <h2 class="col-sm-9"><?php echo __n('Condo','Condos',2); ?></h2>
 
             <div class="actions hidden-print col-sm-3">
                 <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Condo'), array('action' => 'add'), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 0; float: right;', 'escape' => false)); ?>            </div><!-- /.actions -->
@@ -17,7 +17,7 @@
                         <tr>
                             <th><?php echo $this->Paginator->sort('title'); ?></th>
                             <th><?php echo $this->Paginator->sort('address'); ?></th>
-                            <th><?php echo __('Fiscal Year'); //$this->Paginator->sort('FiscalYear.title', __('Fiscal Year'));     ?></th>
+                            <th><?php echo __n('Fiscal Year','Fiscal Years',1); //$this->Paginator->sort('FiscalYear.title', __n('Fiscal Year','Fiscal Years',1));     ?></th>
                             <th class="actions hidden-print hidden-print"><?php //echo __('Actions');    ?></th>
                         </tr>
                     </thead>

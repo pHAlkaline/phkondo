@@ -62,7 +62,7 @@
                                 <?php echo h($maintenance['Maintenance']['next_inspection']); ?>
                                 &nbsp;
                             </td>
-                        </tr><tr>		<td><strong><?php echo __('Supplier'); ?></strong></td>
+                        </tr><tr>		<td><strong><?php echo __n('Supplier','Suppliers',1); ?></strong></td>
                             <td>
                                 <?php echo h($maintenance['Supplier']['name']); ?>
                                 &nbsp;

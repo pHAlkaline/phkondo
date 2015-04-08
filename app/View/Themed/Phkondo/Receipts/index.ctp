@@ -5,7 +5,7 @@
 
         <div class="receipts index">
 
-            <h2 class="col-sm-9"><?php echo __('Receipts'); ?></h2>
+            <h2 class="col-sm-9"><?php echo __n('Receipt','Receipts',2); ?></h2>
             <div class="actions hidden-print col-sm-3">
                 <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> '.__('New Receipt'), array('action' => 'add'), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 0; float: right;', 'escape' => false)); ?>            </div><!-- /.actions -->
             <div class="clearfix"></div>
@@ -15,7 +15,7 @@
                         <tr>
                             <th><?php echo $this->Paginator->sort('document'); ?></th>
                             <th><?php echo $this->Paginator->sort('document_date'); ?></th>
-                            <th><?php echo $this->Paginator->sort('Fraction.description',__('Fraction')); ?></th>
+                            <th><?php echo $this->Paginator->sort('Fraction.description',__n('Fraction','Fractions',1)); ?></th>
                             <th><?php echo $this->Paginator->sort('Client.name',__('Client')); ?></th>
                             <th><?php echo $this->Paginator->sort('ReceiptStatus.name',__('Receipt Status')); ?></th>
                             <th><?php echo $this->Paginator->sort('ReceiptPaymentType.name',__('Receipt Payment Type')); ?></th>
