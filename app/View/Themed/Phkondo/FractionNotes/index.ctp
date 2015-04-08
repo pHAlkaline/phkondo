@@ -22,7 +22,7 @@
                             <th><?php echo $this->Paginator->sort('document_date'); ?></th>
 
                             <th><?php echo $this->Paginator->sort('title'); ?></th>
-                            <th><?php echo $this->Paginator->sort('Entity.name',__('Entity')); ?></th>
+                            <th><?php echo $this->Paginator->sort('Entity.name',__n('Entity','Entities',1)); ?></th>
                             <th><?php echo $this->Paginator->sort('NoteType.name',__('Note Type')); ?></th>
                             <th><?php echo $this->Paginator->sort('due_date'); ?></th>
                             <th><?php echo $this->Paginator->sort('payment_date'); ?></th>

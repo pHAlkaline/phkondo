@@ -47,7 +47,7 @@
                                 <?php echo h($entity['Entity']['address']); ?>
                                 &nbsp;
                             </td>
-                        </tr><tr>		<td><strong><?php echo __('Contacts'); ?></strong></td>
+                        </tr><tr>		<td><strong><?php echo __n('Contact','Contacts',2); ?></strong></td>
                             <td>
                                 <?php echo h($entity['Entity']['contacts']); ?>
                                 &nbsp;

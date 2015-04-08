@@ -14,7 +14,7 @@ foreach ($fractions as $fraction) {
 
         <div class="actions">
             <ul class="nav nav-pills nav-stacked">
-                <li ><?php echo $this->Html->link(__('View %s', __('Budget')), array('controller' => 'budgets', 'action' => 'view', $budget['Budget']['id']), array('class' => 'btn')); ?></li>
+                <li ><?php echo $this->Html->link(__('View %s', __n('Budget','Budgets',1)), array('controller' => 'budgets', 'action' => 'view', $budget['Budget']['id']), array('class' => 'btn')); ?></li>
                 <li ><?php echo $this->Html->link(__('List Budgets'), array('controller' => 'budgets', 'action' => 'index'), array('class' => 'btn')); ?></li>
             </ul><!-- /.list-group -->
         </div><!-- /.actions -->
@@ -36,13 +36,13 @@ foreach ($fractions as $fraction) {
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th><?php echo __('Owner'); ?></th>
-                            <th><?php echo __('Fraction'); ?></th>
+                            <th><?php echo __n('Owner','Owners',1); ?></th>
+                            <th><?php echo __n('Fraction','Fractions',1); ?></th>
                             <th><?php echo __('Description'); ?></th>
                             <th><?php echo __('Mil rate'); ?></th>
                             <th><?php echo __('Amount'); ?></th>
                             <th><?php echo __('Common Reserve Fund'); ?></th>
-                            <th><?php echo __('Shares'); ?></th>
+                            <th><?php echo __n('Share','Shares',2); ?></th>
                             <th><?php echo __('Total'); ?></th>
 
                         </tr>

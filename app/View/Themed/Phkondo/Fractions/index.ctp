@@ -4,7 +4,7 @@
 
         <div class="fractions index">
 
-            <h2 class="col-sm-9"><?php echo __('Fractions'); ?></h2>
+            <h2 class="col-sm-9"><?php echo __n('Fraction','Fractions',2); ?></h2>
              
             <div class="actions hidden-print col-sm-3">
                 <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Fraction'), array('action' => 'add'), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 0; float: right;', 'escape' => false)); ?>            </div><!-- /.actions -->
@@ -12,7 +12,7 @@
             <?php
             $milRate = Set::extract('/Fraction/mil_rate', $fractions);
 
-            if (array_sum($milRate) != 1001 && array_sum($milRate) != 0):
+            if (array_sum($milRate) != 1000 && array_sum($milRate) != 0):
             ?>
             <div class="alert alert-warning" role="alert"><?= __('Warning: Mil rate sum should be 1000'); ?></div>
 
@@ -21,7 +21,7 @@
                 <table class="table table-hover table-condensed">
                     <thead>
                         <tr>
-                            <th><?php echo $this->Paginator->sort('Fraction.length', __('Fraction')); ?></th>
+                            <th><?php echo $this->Paginator->sort('Fraction.length', __n('Fraction','Fractions',1)); ?></th>
                             <th><?php echo $this->Paginator->sort('floor_location'); ?></th>
                             <th><?php echo $this->Paginator->sort('description'); ?></th>
                             <th><?php echo $this->Paginator->sort('mil_rate'); ?></th>
@@ -38,9 +38,8 @@
                                 <td><?php echo h($fraction['Fraction']['mil_rate']); ?>&nbsp;</td>
                                 <td><?php
                                     if ($fraction['Fraction']['manager_id'] == 0) {
-                                        echo '<span style="font-weight:bold;">' . __('All owners') . '</span>';
                                         foreach ($fraction['Entity'] as $manager) {
-                                            echo "<br/>" . $manager['name'];
+                                            echo $manager['name']."<br/>" ;
                                         }
                                     } else {
                                         echo h($fraction['Manager']['name']);
@@ -55,7 +54,7 @@
                                 <td class="actions hidden-print">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $fraction['Fraction']['id']), array('title' => __('Details'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $fraction['Fraction']['id']), array('title' => __('Edit'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
-                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'delete', $fraction['Fraction']['id']), array('title' => __('Remove'), 'class' => 'btn btn-default btn-xs' . $deleteDisabled, 'escape' => false, 'confirm' => __('Are you sure you want to delete # %s?', $fraction['Fraction']['fraction']))); ?>
+                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'delete', $fraction['Fraction']['id']), array('title' => __('Remove'), 'class' => 'btn btn-default btn-xs' . $deleteDisabled, 'escape' => false, 'confirm' => __('Are you sure you want to delete # %s?', $fraction['Fraction']['description']))); ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

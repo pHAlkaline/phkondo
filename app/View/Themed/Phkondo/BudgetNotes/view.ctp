@@ -69,23 +69,23 @@ if ($this->Session->read('Condo.Budget.Status') == 1) {
                                 <?php echo h($note['NoteType']['name']); ?>
                                 &nbsp;
                             </td>
-                        </tr><tr>		<td><strong><?php echo __('Fraction'); ?></strong></td>
+                        </tr><tr>		<td><strong><?php echo __n('Fraction','Fractions',1); ?></strong></td>
                             <td>
                                 <?php echo h($note['Fraction']['fraction']); ?>
                                 &nbsp;
                             </td>
-                        </tr><tr>		<td><strong><?php echo __('Entity'); ?></strong></td>
+                        </tr><tr>		<td><strong><?php echo __n('Entity','Entities',1); ?></strong></td>
                             <td>
                                 <?php echo h($note['Entity']['name']); ?>
                                 &nbsp;
                             </td>
-                        </tr><tr>		<td><strong><?php echo __('Budget'); ?></strong></td>
+                        </tr><tr>		<td><strong><?php echo __n('Budget','Budgets',1); ?></strong></td>
                             <td>
                                 <?php echo h($note['Budget']['title']); ?>
                                 &nbsp;
                             </td>
                         </tr>
-                        <tr>		<td><strong><?php echo __('Fiscal Year'); ?></strong></td>
+                        <tr>		<td><strong><?php echo __n('Fiscal Year','Fiscal Years',1); ?></strong></td>
                             <td>
                                 <?php echo h($note['FiscalYear']['title']); ?>
                                 &nbsp;
@@ -116,7 +116,7 @@ if ($this->Session->read('Condo.Budget.Status') == 1) {
                                 <?php echo h($note['NoteStatus']['name']); ?>
                                 &nbsp;
                             </td>
-                        </tr><tr>		<td><strong><?php echo __('Receipt'); ?></strong></td>
+                        </tr><tr>		<td><strong><?php echo __n('Receipt','Receipts',1); ?></strong></td>
                             <td>
                                 <?php echo h($note['Receipt']['document']); ?>
                                 &nbsp;

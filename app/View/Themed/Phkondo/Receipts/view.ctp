@@ -43,7 +43,7 @@
 
         <div class="receipts view">
 
-            <h2><?php echo __('Receipt'); ?></h2>
+            <h2><?php echo __n('Receipt','Receipts',1); ?></h2>
 
 
             <table class="table table-hover table-condensed">
@@ -54,7 +54,7 @@
                             &nbsp;
                         </td>
                     </tr>
-                    <tr>		<td><strong><?php echo __('Fraction'); ?></strong></td>
+                    <tr>		<td><strong><?php echo __n('Fraction','Fractions',1); ?></strong></td>
                         <td>
                             <?php echo h($receipt['Fraction']['description']); ?>
                             &nbsp;
@@ -151,7 +151,7 @@
                                 <th><?php echo __('Document'); ?></th>
                                 <th><?php echo __('Note Type'); ?></th>
                                 <th><?php echo __('Document Date'); ?></th>
-                                <th><?php echo __('Fraction'); ?></th>
+                                <th><?php echo __n('Fraction','Fractions',1); ?></th>
                                 <th><?php echo __('Title'); ?></th>
                                 <th class="amount"><?php echo __('Amount'); ?></th>
                                 

@@ -467,23 +467,23 @@ class ReceiptsController extends AppController {
     public function beforeRender() {
         $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __('Condos'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID'))), 'text' => $this->Session->read('Condo.ViewName'), 'active' => ''),
-            array('link' => '', 'text' => __('Receipts'), 'active' => 'active')
+            array('link' => '', 'text' => __n('Receipt','Receipts',2), 'active' => 'active')
         );
 
         switch ($this->action) {
             case 'add_notes':
-                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'receipts', 'action' => 'index')), 'text' => __('Receipts'), 'active' => '');
+                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'receipts', 'action' => 'index')), 'text' => __n('Receipt','Receipts',2), 'active' => '');
                 $breadcrumbs[4] = array('link' => Router::url(array('controller' => 'receipts', 'action' => 'view', $this->Session->read('Condo.Receipt.ViewID'))), 'text' => $this->Session->read('Condo.Receipt.ViewName'), 'active' => '');
                 $breadcrumbs[5] = array('link' => '', 'text' => __('Pick   Notes'), 'active' => 'active');
                 break;
             case 'view':
-                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'receipts', 'action' => 'index')), 'text' => __('Receipts'), 'active' => '');
+                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'receipts', 'action' => 'index')), 'text' => __n('Receipt','Receipts',2), 'active' => '');
                 $breadcrumbs[4] = array('link' => '', 'text' => $this->Session->read('Condo.Receipt.ViewName'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'receipts', 'action' => 'index')), 'text' => __('Receipts'), 'active' => '');
+                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'receipts', 'action' => 'index')), 'text' => __n('Receipt','Receipts',2), 'active' => '');
                 $breadcrumbs[4] = array('link' => '', 'text' => $this->Session->read('Condo.Receipt.ViewName'), 'active' => 'active');
                 break;
         }

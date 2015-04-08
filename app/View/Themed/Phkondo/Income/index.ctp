@@ -16,9 +16,9 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><?php echo __('Receipts'); ?>&nbsp;</td>
+                            <td><?php echo __n('Receipt','Receipts',2); ?>&nbsp;</td>
                             <td class="actions hidden-print">
-                                <?php echo $this->Html->link('<span class="glyphicon glyphicon-list-alt"></span> ', array('action' => 'receipts'), array('title'=>__('Receipts'),'class' => 'btn btn-default btn-xs', 'escape' => false)); ?> 
+                                <?php echo $this->Html->link('<span class="glyphicon glyphicon-list-alt"></span> ', array('action' => 'receipts'), array('title'=>__n('Receipt','Receipts',2),'class' => 'btn btn-default btn-xs', 'escape' => false)); ?> 
 
                             </td>
                         </tr>

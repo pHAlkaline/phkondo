@@ -4,7 +4,7 @@
 
         <div class="entities index">
 
-            <h2 class="col-sm-9"><?php echo __('Owners'); ?></h2>
+            <h2 class="col-sm-9"><?php echo __n('Owner','Owners',2); ?></h2>
             <div class="actions hidden-print col-sm-3">
                 <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> '.__('New Owner'), array('action' => 'add'), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 1px; float: right;', 'escape' => false)); ?>
                 </div><!-- /.actions -->
@@ -15,7 +15,7 @@
                         <tr>
                             <th><?php echo __('Name'); ?></th>
                             <th><?php echo __('Address'); ?></th>
-                            <th><?php echo __('Contacts'); ?></th>
+                            <th><?php echo __n('Contact','Contacts',2); ?></th>
                             <th class="amount"><?php echo __('Owner Percentage').' ( % )'; ?></th>
                             <th class="actions hidden-print"><?php //echo __('Actions'); ?></th>
                         </tr>
@@ -30,7 +30,7 @@
                                 <td class="actions hidden-print">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $entity['id']), array('title'=>__('Details'),'class' => 'btn btn-default btn-xs','escape'=>false)); ?>
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $entity['id']), array('title'=>__('Edit'),'class' => 'btn btn-default btn-xs','escape'=>false)); ?>
-                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'remove', $entity['id']), array('title'=>__('Remove'),'title'=>__('Remove'),'class' => 'btn btn-default btn-xs','escape'=>false), __('Are you sure you want to remove # %s?', $entity['id'])); ?>
+                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'remove', $entity['id']), array('title'=>__('Remove'),'title'=>__('Remove'),'class' => 'btn btn-default btn-xs','escape'=>false), __('Are you sure you want to remove # %s?', $entity['name'])); ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

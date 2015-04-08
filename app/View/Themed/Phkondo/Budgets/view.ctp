@@ -43,13 +43,13 @@
 
         <div class="budgets view">
 
-            <h2><?php echo __('Budget'); ?></h2>
+            <h2><?php echo __n('Budget','Budgets',1); ?></h2>
 
 
             <table class="table table-hover table-condensed">
                 <tbody>
                     <tr>		
-                        <td class='col-sm-2'><strong><?php echo __('Fiscal Year'); ?></strong></td>
+                        <td class='col-sm-2'><strong><?php echo __n('Fiscal Year','Fiscal Years',1); ?></strong></td>
                         <td>
                             <?php echo h($budget['FiscalYear']['title']); ?>
                             &nbsp;
@@ -98,7 +98,7 @@
                             <?php echo $this->Time->format(Configure::read('dateFormatSimple'), $budget['Budget']['begin_date']); ?>
                             &nbsp;
                         </td>
-                    </tr><tr>		<td><strong><?php echo __('Shares'); ?></strong></td>
+                    </tr><tr>		<td><strong><?php echo __n('Share','Shares',2); ?></strong></td>
                         <td>
                             <?php echo h($budget['Budget']['shares']); ?>
                             &nbsp;

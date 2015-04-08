@@ -5,7 +5,7 @@
 
         <div class="insurances index">
 
-            <h2 class="col-sm-9"><?php echo __('Insurances'); ?></h2>
+            <h2 class="col-sm-9"><?php echo __n('Insurance','Insurances',2); ?></h2>
             <div class="actions hidden-print col-sm-3">
                 <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> '.__('New Insurance'), array('action' => 'add'), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 0; float: right;', 'escape' => false)); ?>            </div><!-- /.actions -->
             <div class="clearfix"></div>
@@ -16,7 +16,7 @@
                            
                             <th><?php echo $this->Paginator->sort('expiration_date'); ?></th>
                             <th><?php echo $this->Paginator->sort('title'); ?></th>
-                            <th><?php echo $this->Paginator->sort('Fraction.description',__('Fraction')); ?></th>
+                            <th><?php echo $this->Paginator->sort('Fraction.description',__n('Fraction','Fractions',1)); ?></th>
                             <th><?php echo $this->Paginator->sort('insurance_company'); ?></th>
                             <th><?php echo $this->Paginator->sort('policy'); ?></th>
                             <th><?php echo $this->Paginator->sort('InsuranceType.name',__('Insurance Type')); ?></th>

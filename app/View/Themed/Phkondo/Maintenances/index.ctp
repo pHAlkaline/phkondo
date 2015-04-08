@@ -17,7 +17,7 @@
                             <th><?php echo $this->Paginator->sort('renewal_date'); ?></th>
                             <th><?php echo $this->Paginator->sort('last_inspection'); ?></th>
                             <th><?php echo $this->Paginator->sort('next_inspection'); ?></th>
-                            <th><?php echo $this->Paginator->sort('Supplier.name',__('Supplier')); ?></th>
+                            <th><?php echo $this->Paginator->sort('Supplier.name',__n('Supplier','Suppliers',1)); ?></th>
                             <th><?php echo $this->Paginator->sort('active'); ?></th>
                             <th class="actions hidden-print"><?php //echo __('Actions'); ?></th>
                         </tr>

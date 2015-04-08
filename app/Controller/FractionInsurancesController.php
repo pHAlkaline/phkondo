@@ -158,20 +158,20 @@ class FractionInsurancesController extends AppController {
     public function beforeRender() {
         $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __('Condos'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID'))), 'text' => $this->Session->read('Condo.ViewName'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'fractions', 'action' => 'index')), 'text' => __('Fractions'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'fractions', 'action' => 'index')), 'text' => __n('Fraction','Fractions',2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'fractions', 'action' => 'view', $this->Session->read('Condo.Fraction.ViewID'))), 'text' => $this->Session->read('Condo.Fraction.ViewName'), 'active' => ''),
-            array('link' => Router::url(array('action' => 'index')), 'text' => __('Insurances'), 'active' => ''),
+            array('link' => Router::url(array('action' => 'index')), 'text' => __n('Insurance','Insurances',2), 'active' => ''),
         );
 
         switch ($this->action) {
             case 'view':
-                $breadcrumbs[5] = array('link' => Router::url(array('action' => 'index')), 'text' => __('Insurances'), 'active' => '');
+                $breadcrumbs[5] = array('link' => Router::url(array('action' => 'index')), 'text' => __n('Insurance','Insurances',2), 'active' => '');
                 $breadcrumbs[6] = array('link' => '', 'text' => $this->Session->read('Condo.Insurance.ViewName'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[5] = array('link' => Router::url(array('action' => 'index')), 'text' => __('Insurances'), 'active' => '');
+                $breadcrumbs[5] = array('link' => Router::url(array('action' => 'index')), 'text' => __n('Insurance','Insurances',2), 'active' => '');
                 $breadcrumbs[6] = array('link' => '', 'text' => $this->Session->read('Condo.Insurance.ViewName'), 'active' => 'active');
                 break;
         }

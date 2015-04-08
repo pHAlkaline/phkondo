@@ -29,7 +29,7 @@
                 'novalidate' => true));
             ?>
             <fieldset>
-                <h2><?php echo __('Receipts'); ?></h2>
+                <h2><?php echo __n('Receipt','Receipts',2); ?></h2>
                 <div class="form-group">
                     <?php echo $this->Form->input('condo_id', array('empty' => __('All'), 'class' => 'form-control')); ?>
                 </div><!-- .form-group -->
@@ -55,7 +55,7 @@
         <?php if (isset($receipts) && count($receipts)){ ?>
             <div class="receipts index">
 
-                <h2 class="col-sm-9"><?php echo __('Receipts'); ?></h2>
+                <h2 class="col-sm-9"><?php echo __n('Receipt','Receipts',2); ?></h2>
 
                 <div class="clearfix"></div>
                 <div class="table-responsive">
@@ -69,7 +69,7 @@
                                 <th><?php echo __('Payment Date'); ?></th>
                                 <th><?php echo __('Receipt Payment Type'); ?></th>
                                 <th><?php echo __('Client'); ?></th>
-                                <th><?php echo __('Condo'); ?></th>
+                                <th><?php echo __n('Condo','Condos',1); ?></th>
                                 <th class="amount"><?php echo __('Amount'); ?></th>
 
 

@@ -163,17 +163,17 @@ class AdministratorsController extends AppController {
 
         $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __('Condos'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID'))), 'text' => $this->Session->read('Condo.ViewName'), 'active' => ''),
-            array('link' => '', 'text' => __('Administrators'), 'active' => 'active')
+            array('link' => '', 'text' => __n('Administrator','Administrators',2), 'active' => 'active')
         );
         switch ($this->action) {
             case 'view':
-                 $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'administrators', 'action' => 'index')), 'text' => __('Administrators'), 'active' => '');
+                 $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'administrators', 'action' => 'index')), 'text' => __n('Administrator','Administrators',2), 'active' => '');
                 $breadcrumbs[4] = array('link' => '', 'text' => $this->Session->read('Condo.Administrator.ViewName'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'administrators', 'action' => 'index')), 'text' => __('Administrators'), 'active' => '');
+                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'administrators', 'action' => 'index')), 'text' => __n('Administrator','Administrators',2), 'active' => '');
                 $breadcrumbs[4] = array('link' => '', 'text' => $this->Session->read('Condo.Administrator.ViewName'), 'active' => 'active');
                 break;
         }
