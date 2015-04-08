@@ -33,7 +33,7 @@
 
         <div class="fiscalYears view">
 
-            <h2><?php echo __('Fiscal Year'); ?></h2>
+            <h2><?php echo __n('Fiscal Year','Fiscal Years',1); ?></h2>
 
             
                 <table class="table table-hover table-condensed">

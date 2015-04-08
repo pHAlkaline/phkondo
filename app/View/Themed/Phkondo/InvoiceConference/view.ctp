@@ -22,7 +22,7 @@
 
         <div class="invoice_conference view">
 
-            <h2><?php echo __('Invoice'); ?></h2>
+            <h2><?php echo __n('Invoice','Invoices',1); ?></h2>
 
             
                 <table class="table table-hover table-condensed">
@@ -35,7 +35,7 @@
                             </td>
                         </tr>
                         <tr>		
-                            <td><strong><?php echo __('Supplier'); ?></strong></td>
+                            <td><strong><?php echo __n('Supplier','Suppliers',1); ?></strong></td>
                             <td>
                                 <?php echo $invoice_conference['Supplier']['name']; ?>
                                 &nbsp;

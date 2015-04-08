@@ -5,7 +5,7 @@
 
         <div class="administrators index">
 
-            <h2 class="col-sm-9"><?php echo __('Administrators'); ?></h2>
+            <h2 class="col-sm-9"><?php echo __n('Administrator','Administrators',2); ?></h2>
             <div class="actions hidden-print col-sm-3">
                 <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> '.__('Add Administrator'), array('action' => 'add'), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 0; float: right;', 'escape' => false)); ?>            </div><!-- /.actions -->
             <div class="clearfix"></div>
@@ -14,8 +14,8 @@
                     <thead>
                         <tr>
                             
-                            <th><?php echo $this->Paginator->sort('Entity.name',__('Entity')); ?></th>
-                            <th><?php echo $this->Paginator->sort('FiscalYear.title',__('Fiscal Year')); ?></th>
+                            <th><?php echo $this->Paginator->sort('Entity.name',__n('Entity','Entities',1)); ?></th>
+                            <th><?php echo $this->Paginator->sort('FiscalYear.title',__n('Fiscal Year','Fiscal Years',1)); ?></th>
                             <th><?php echo $this->Paginator->sort('title'); ?></th>
                             <th class="actions hidden-print"><?php //echo __('Actions'); ?></th>
                         </tr>
@@ -34,7 +34,7 @@
                                 <td class="actions hidden-print">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $administrator['Administrator']['id']), array('title'=>__('Details'),'class' => 'btn btn-default btn-xs','escape'=>false)); ?>
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $administrator['Administrator']['id']), array('title'=>__('Edit'),'class' => 'btn btn-default btn-xs','escape'=>false)); ?>
-                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'delete', $administrator['Administrator']['id']), array('title'=>__('Remove'),'class' => 'btn btn-default btn-xs','escape'=>false), __('Are you sure you want to remove # %s?', $administrator['Administrator']['id'])); ?>
+                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'delete', $administrator['Administrator']['id']), array('title'=>__('Remove'),'class' => 'btn btn-default btn-xs','escape'=>false), __('Are you sure you want to remove # %s?', $administrator['Administrator']['title'])); ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

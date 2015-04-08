@@ -76,7 +76,7 @@
                             <th><?php echo __('Document'); ?></th>
                             <th><?php echo __('Note Type'); ?></th>
                             <th><?php echo __('Document Date'); ?></th>
-                            <th><?php echo __('Fraction'); ?></th>
+                            <th><?php echo __n('Fraction','Fractions',1); ?></th>
                             <th><?php echo __('Title'); ?></th>
                             <th class="amount"><?php echo __('Amount'); ?></th>
                             <th class="actions"><?php //echo __('Actions');        ?></th>

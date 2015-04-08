@@ -19,7 +19,7 @@
 
                             <th><?php echo $this->Paginator->sort('title'); ?></th>
                             <th><?php echo $this->Paginator->sort('NoteType.name', __('Note Type')); ?></th>
-                            <th><?php echo $this->Paginator->sort('Fraction.description', __('Fraction')); ?></th>
+                            <th><?php echo $this->Paginator->sort('Fraction.description', __n('Fraction','Fractions',1)); ?></th>
                             <th><?php echo $this->Paginator->sort('due_date'); ?></th>
                             <th><?php echo $this->Paginator->sort('payment_date'); ?></th>
                             <th><?php echo $this->Paginator->sort('NoteStatus.name', __('Note Status')); ?></th>

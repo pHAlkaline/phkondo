@@ -195,7 +195,7 @@ class BudgetNotesController extends AppController {
                 $tmpDate = $budget['Budget']['begin_date'];
                 while ($shares <= $note['shares']):
                     $month = CakeTime::format('F', $tmpDate);
-                    $this->request->data['Note']['title'] = __('Share') . ' ' . $shares . ' ' . __($month) . ' ' . $budget['Budget']['title'];
+                    $this->request->data['Note']['title'] = __n('Share','Shares',1) . ' ' . $shares . ' ' . __($month) . ' ' . $budget['Budget']['title'];
                     $this->request->data['Note']['document_date'] = $tmpDate;
                     $this->request->data['Note']['due_date'] = date('Y-m-d', strtotime($tmpDate . ' +' . $budget['Budget']['due_days'] . ' days'));
                     $this->request->data['Note']['note_status_id'] = '1';
@@ -287,9 +287,9 @@ class BudgetNotesController extends AppController {
     public function beforeRender() {
         $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __('Condos'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID'))), 'text' => $this->Session->read('Condo.ViewName'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'budgets', 'action' => 'index')), 'text' => __('Budgets'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'budgets', 'action' => 'index')), 'text' => __n('Budget','Budgets',2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'budgets', 'action' => 'view', $this->Session->read('Condo.Budget.ViewID'))), 'text' => $this->Session->read('Condo.Budget.ViewName'), 'active' => ''),
             array('link' => '', 'text' => __('Notes'), 'active' => 'active')
         );

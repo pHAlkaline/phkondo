@@ -22,7 +22,7 @@
 
         <div class="insurances view">
 
-            <h2><?php echo __('Insurance'); ?></h2>
+            <h2><?php echo __n('Insurance','Insurances',1); ?></h2>
 
             
                 <table class="table table-hover table-condensed">
@@ -32,7 +32,7 @@
                                 <?php echo $this->Time->format(Configure::read('dateFormatSimple'),$insurance['Insurance']['expiration_date']); ?>
                                 &nbsp;
                             </td>
-                        </tr><tr>		<td><strong><?php echo __('Fraction'); ?></strong></td>
+                        </tr><tr>		<td><strong><?php echo __n('Fraction','Fractions',1); ?></strong></td>
                             <td>
                                 <?php echo h($insurance['Fraction']['description']); ?>
                                 &nbsp;

@@ -192,18 +192,18 @@ class FiscalYearsController extends AppController {
     public function beforeRender() {
         $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __('Condos'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID'))), 'text' => $this->Session->read('Condo.ViewName'), 'active' => ''),
-            array('link' => '', 'text' => __('Fiscal Years'), 'active' => 'active')
+            array('link' => '', 'text' => __n('Fiscal Year','Fiscal Years',2), 'active' => 'active')
         );
         
         switch ($this->action) {
             case 'view':
-                 $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'fiscal_years', 'action' => 'index')), 'text' => __('Fiscal Years'), 'active' => '');
+                 $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'fiscal_years', 'action' => 'index')), 'text' => __n('Fiscal Year','Fiscal Years',2), 'active' => '');
                 $breadcrumbs[4] = array('link' => '', 'text' => $this->Session->read('Condo.FiscalYear.ViewName'), 'active' => 'active');
                 break;
             case 'edit':
-                  $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'fiscal_years', 'action' => 'index')), 'text' => __('Fiscal Years'), 'active' => '');
+                  $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'fiscal_years', 'action' => 'index')), 'text' => __n('Fiscal Year','Fiscal Years',2), 'active' => '');
                 $breadcrumbs[4] = array('link' => '', 'text' => $this->Session->read('Condo.FiscalYear.ViewName'), 'active' => 'active');
                 break;
         }

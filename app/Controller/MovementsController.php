@@ -192,20 +192,20 @@ class MovementsController extends AppController {
 
         $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __('Condos'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID'))), 'text' => $this->Session->read('Condo.ViewName'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'accounts', 'action' => 'index')), 'text' => __('Accounts'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'accounts', 'action' => 'index')), 'text' => __n('Account','Accounts',2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'accounts', 'action' => 'view', $this->Session->read('Condo.Account.ViewID'))), 'text' => $this->Session->read('Condo.Account.ViewName'), 'active' => ''),
-            array('link' => '', 'text' => __('Movements'), 'active' => 'active')
+            array('link' => '', 'text' => __n('Movement','Movements',2), 'active' => 'active')
         );
 
         switch ($this->action) {
             case 'view':
-                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'movements', 'action' => 'index')), 'text' => __('Movements'), 'active' => '');
+                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'movements', 'action' => 'index')), 'text' => __n('Movement','Movements',2), 'active' => '');
                 $breadcrumbs[6] = array('link' => '', 'text' => $this->Session->read('Condo.Movement.ViewName'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'movements', 'action' => 'index')), 'text' => __('Movements'), 'active' => '');
+                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'movements', 'action' => 'index')), 'text' => __n('Movement','Movements',2), 'active' => '');
                 $breadcrumbs[6] = array('link' => '', 'text' => $this->Session->read('Condo.Movement.ViewName'), 'active' => 'active');
                 break;
         }

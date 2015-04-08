@@ -473,34 +473,34 @@ class OwnerReceiptsController extends AppController {
     public function beforeRender() {
         $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __('Condos'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID'))), 'text' => $this->Session->read('Condo.ViewName'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'fractions', 'action' => 'index')), 'text' => __('Fractions'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'fractions', 'action' => 'index')), 'text' => __n('Fraction','Fractions',2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'fractions', 'action' => 'view', $this->Session->read('Condo.Fraction.ViewID'))), 'text' => $this->Session->read('Condo.Fraction.ViewName'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'fraction_owners', 'action' => 'index')), 'text' => __('Owners'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'fraction_owners', 'action' => 'index')), 'text' => __n('Owner','Owners',2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'fraction_owners', 'action' => 'view', $this->Session->read('Condo.Owner.ViewID'))), 'text' => $this->Session->read('Condo.Owner.ViewName'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index')), 'text' => __('Receipts'), 'active' => '')
+            array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index')), 'text' => __n('Receipt','Receipts',2), 'active' => '')
         );
         switch ($this->action) {
             case 'add_notes':
-                $breadcrumbs[7] = array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index')), 'text' => __('Receipts'), 'active' => '');
+                $breadcrumbs[7] = array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index')), 'text' => __n('Receipt','Receipts',2), 'active' => '');
                 $breadcrumbs[8] = array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'view', $this->Session->read('Condo.Receipt.ViewID'))), 'text' => $this->Session->read('Condo.Receipt.ViewName'), 'active' => '');
                 $breadcrumbs[9] = array('link' => '', 'text' => __('Pick Notes'), 'active' => 'active');
                 break;
             case 'view':
-                $breadcrumbs[7] = array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index')), 'text' => __('Receipts'), 'active' => '');
+                $breadcrumbs[7] = array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index')), 'text' => __n('Receipt','Receipts',2), 'active' => '');
                 $breadcrumbs[8] = array('link' => '', 'text' => $this->Session->read('Condo.Receipt.ViewName'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[7] = array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index')), 'text' => __('Receipts'), 'active' => '');
+                $breadcrumbs[7] = array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index')), 'text' => __n('Receipt','Receipts',2), 'active' => '');
                 $breadcrumbs[8] = array('link' => '', 'text' => $this->Session->read('Condo.Receipt.ViewName'), 'active' => 'active');
                 break;
             case 'cancel':
-                $breadcrumbs[7] = array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index')), 'text' => __('Receipts'), 'active' => '');
+                $breadcrumbs[7] = array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index')), 'text' => __n('Receipt','Receipts',2), 'active' => '');
                 $breadcrumbs[8] = array('link' => '', 'text' => $this->Session->read('Condo.Receipt.ViewName'), 'active' => 'active');
                 break;
             case 'pay_receipt':
-                $breadcrumbs[7] = array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index')), 'text' => __('Receipts'), 'active' => '');
+                $breadcrumbs[7] = array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index')), 'text' => __n('Receipt','Receipts',2), 'active' => '');
                 $breadcrumbs[8] = array('link' => '', 'text' => $this->Session->read('Condo.Receipt.ViewName'), 'active' => 'active');
                 break;
         }

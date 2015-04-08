@@ -25,7 +25,7 @@
                             <?php if (AuthComponent::user('role') == 'admin' || AuthComponent::user('role') == 'store_admin' || AuthComponent::user('role') == 'colaborator') { ?>
                                 <li>
 
-                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-home"></span> ' . __('Condos'), array('plugin' => '', 'controller' => 'condos', 'action' => 'index'), array('escape' => false)); ?>
+                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-home"></span> ' . __n('Condo','Condos',2), array('plugin' => '', 'controller' => 'condos', 'action' => 'index'), array('escape' => false)); ?>
                                 </li>
 
                             <?php } ?>
@@ -33,7 +33,7 @@
                                 <li role="presentation" class="divider"></li>
                                 <li >
 
-                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-briefcase"></span> ' . __('Entities'), array('plugin' => '', 'controller' => 'entities', 'action' => 'index'), array('escape' => false)); ?>
+                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-briefcase"></span> ' . __n('Entity','Entities',2), array('plugin' => '', 'controller' => 'entities', 'action' => 'index'), array('escape' => false)); ?>
                                 </li>
                                 
 
@@ -51,9 +51,9 @@
                                 $this->getEventManager()->dispatch($event);
                                 if ($event->result['hasCondoDraft'] === true) {
                                     ?>
-                                    <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-file"></span> ' . __('Drafts'), array('plugin' => '', 'controller' => 'drafts', 'action' => 'index'), array('escape' => false)); ?></li>
+                                    <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-file"></span> ' . __n('Draft','Drafts',2), array('plugin' => '', 'controller' => 'drafts', 'action' => 'index'), array('escape' => false)); ?></li>
                                 <?php } else { ?>
-                                    <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-file"></span> ' . __('Drafts'), array('controller' => 'pages', 'action' => 'drafts'), array('class' => 'btn ', 'escape' => false)); ?> </li>
+                                    <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-file"></span> ' . __n('Draft','Drafts',2), array('controller' => 'pages', 'action' => 'drafts'), array('class' => 'btn ', 'escape' => false)); ?> </li>
 
                                 <?php } ?>
                                 <?php if (AuthComponent::user('role') == 'admin') { ?>

@@ -64,7 +64,7 @@ class IncomeController extends AppController {
         switch ($this->action) {
             case 'receipts':
                 $breadcrumbs[1]['active']='';
-                $breadcrumbs[2] = array('link' => '', 'text' => __('Receipts'), 'active' => 'active');
+                $breadcrumbs[2] = array('link' => '', 'text' => __n('Receipt','Receipts',2), 'active' => 'active');
                 break;
             
         }

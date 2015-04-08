@@ -14,7 +14,7 @@
                 <table class="table table-hover table-condensed">
                     <thead>
                         <tr>
-                            <th><?php echo $this->Paginator->sort('Supplier.name',__('Supplier')); ?></th>
+                            <th><?php echo $this->Paginator->sort('Supplier.name',__n('Supplier','Suppliers',1)); ?></th>
                             <th class="amount"><?php echo __('Current Account'); ?></th>
                             <th class="actions hidden-print"><?php //echo __('Actions'); ?></th>
                         </tr>

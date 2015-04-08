@@ -6,7 +6,7 @@
         <div class="actions">
 
             <ul class="nav nav-pills nav-stacked">
-                <li ><?php echo $this->Html->link(__('View %s',__('Receipt')), array('action' => 'view', $this->Form->value('Receipt.id')),array('class'=>'btn')); ?></li>
+                <li ><?php echo $this->Html->link(__('View %s',__n('Receipt','Receipts',1)), array('action' => 'view', $this->Form->value('Receipt.id')),array('class'=>'btn')); ?></li>
                 <li ><?php echo $this->Html->link(__('List Receipts'), array('action' => 'index'),array('class'=>'btn')); ?></li>
 
             </ul><!-- /.list-group -->

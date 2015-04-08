@@ -98,11 +98,11 @@ class MovementOperationsController extends AppController {
 
         $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __('Condos'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID'))), 'text' => $this->Session->read('Condo.ViewName'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'accounts', 'action' => 'index')), 'text' => __('Accounts'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'accounts', 'action' => 'index')), 'text' => __n('Account','Accounts',2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'accounts', 'action' => 'index', $this->Session->read('Condo.Account.ViewID'))), 'text' => $this->Session->read('Condo.Account.ViewName'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'movements', 'action' => 'index')), 'text' => __('Movements'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'movements', 'action' => 'index')), 'text' => __n('Movement','Movements',2), 'active' => ''),
             array('link' => '', 'text' => __('Add Movement Operation'), 'active' => 'active')
         );
         $this->set(compact('breadcrumbs', 'movementId'));

@@ -192,11 +192,11 @@ class OwnerNotesController extends AppController {
     public function beforeRender() {
         $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __('Condos'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID'))), 'text' => $this->Session->read('Condo.ViewName'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'fractions', 'action' => 'index')), 'text' => __('Fractions'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'fractions', 'action' => 'index')), 'text' => __n('Fraction','Fractions',2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'fractions', 'action' => 'view', $this->Session->read('Condo.Fraction.ViewID'))), 'text' => $this->Session->read('Condo.Fraction.ViewName'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'fraction_owners', 'action' => 'index')), 'text' => __('Owners'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'fraction_owners', 'action' => 'index')), 'text' => __n('Owner','Owners',2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'fraction_owners', 'action' => 'view', $this->Session->read('Condo.Owner.ViewID'))), 'text' => $this->Session->read('Condo.Owner.ViewName'), 'active' => ''),
             array('link' => '', 'text' => __('Notes'), 'active' => 'active')
         );

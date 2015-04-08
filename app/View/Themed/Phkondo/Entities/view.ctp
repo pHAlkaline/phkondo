@@ -29,7 +29,7 @@
 
         <div class="entities view">
 
-            <h2><?php echo __('Entity'); ?></h2>
+            <h2><?php echo __n('Entity','Entities',1); ?></h2>
 
             
                 <table class="table table-hover table-condensed">
@@ -59,7 +59,7 @@
                                 <?php echo h($entity['Entity']['address']); ?>
                                 &nbsp;
                             </td>
-                        </tr><tr>		<td><strong><?php echo __('Contacts'); ?></strong></td>
+                        </tr><tr>		<td><strong><?php echo __n('Contact','Contacts',2); ?></strong></td>
                             <td>
                                 <?php echo h($entity['Entity']['contacts']); ?>
                                 &nbsp;
@@ -102,15 +102,15 @@
         <?php if (count($entity['Fraction'])): ?>
          <div class="fractions index">
 
-            <h2 class="col-sm-9"><?php echo __('Fractions'); ?></h2>
+            <h2 class="col-sm-9"><?php echo __n('Fraction','Fractions',2); ?></h2>
             
             <div class="clearfix"></div>
             <div class="table-responsive">
                 <table class="table table-hover table-condensed">
                     <thead>
                         <tr>
-                             <th><?php echo __('Condo'); ?></th>
-                            <th><?php echo __('Fraction'); ?></th>
+                             <th><?php echo __n('Condo','Condos',1); ?></th>
+                            <th><?php echo __n('Fraction','Fractions',1); ?></th>
                             <th><?php echo __('Floor Location'); ?></th>
                             <th><?php echo __('Description'); ?></th>
                             <th><?php echo __('Mil Rate'); ?></th>

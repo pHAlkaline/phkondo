@@ -6,8 +6,8 @@
         <div class="actions">
 
             <ul class="nav nav-pills nav-stacked">
-                <li ><?php echo $this->Form->postLink(__('View %s',__('Owner')), array('action' => 'view', $this->Form->value('Entity.id')), array('class'=>'btn')); ?></li>
-                <li ><?php echo $this->Form->postLink(__('Remove %s',__('Owner')), array('action' => 'remove', $this->Form->value('Entity.id')), array('class'=>'btn', 'confirm'=>__('Are you sure you want to remove # %s?', $this->Form->value('Entity.name')))); ?></li>
+                <li ><?php echo $this->Form->postLink(__('View %s',__n('Owner','Owners',1)), array('action' => 'view', $this->Form->value('Entity.id')), array('class'=>'btn')); ?></li>
+                <li ><?php echo $this->Form->postLink(__('Remove %s',__n('Owner','Owners',1)), array('action' => 'remove', $this->Form->value('Entity.id')), array('class'=>'btn', 'confirm'=>__('Are you sure you want to remove # %s?', $this->Form->value('Entity.name')))); ?></li>
                 <li ><?php echo $this->Html->link(__('List Owners'), array('action' => 'index')); ?></li>
                
             </ul><!-- /.list-group -->

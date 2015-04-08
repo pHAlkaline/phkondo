@@ -6,7 +6,7 @@
         <div class="actions">
 
             <ul class="nav nav-pills nav-stacked">
-                <li ><?php echo $this->Html->link(__('View %s',__('Fraction')), array('action' => 'view',$this->Form->value('Fraction.id')),array('class'=>'btn')); ?></li>
+                <li ><?php echo $this->Html->link(__('View %s',__n('Fraction','Fractions',1)), array('action' => 'view',$this->Form->value('Fraction.id')),array('class'=>'btn')); ?></li>
                 <?php 
                         $deleteDisabled='';
                         if (!$this->Form->value('Fraction.deletable')) { 
@@ -14,7 +14,7 @@
                         }
                             
                             ?>
-                <li ><?php echo $this->Form->postLink(__('Delete Fraction'), array('action' => 'delete', $this->Form->value('Fraction.id')), array('class'=>'btn '.$deleteDisabled,'confirm'=> __('Are you sure you want to delete # %s?', $this->Form->value('Fraction.id')))); ?></li>
+                <li ><?php echo $this->Form->postLink(__('Delete Fraction'), array('action' => 'delete', $this->Form->value('Fraction.id')), array('class'=>'btn '.$deleteDisabled,'confirm'=> __('Are you sure you want to delete # %s?', $this->Form->value('Fraction.description')))); ?></li>
                 <li ><?php echo $this->Html->link(__('List Fractions'), array('action' => 'index'),array('class'=>'btn')); ?></li>
                 
             </ul><!-- /.list-group -->

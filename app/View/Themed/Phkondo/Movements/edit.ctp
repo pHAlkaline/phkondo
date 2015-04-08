@@ -6,8 +6,8 @@
         <div class="actions">
 
             <ul class="nav nav-pills nav-stacked">
-                <li ><?php echo $this->Html->link(__('View %s',__('Movement')), array('action' => 'view',$this->Form->value('Movement.id')),array('class'=>'btn')); ?></li>
-                <li ><?php echo $this->Form->postLink(__('Delete Movement'), array('action' => 'delete', $this->Form->value('Movement.id')), array('class'=>'btn','confirm'=> __('Are you sure you want to delete # %s?', $this->Form->value('Movement.id')))); ?></li>
+                <li ><?php echo $this->Html->link(__('View %s',__n('Movement','Movements',1)), array('action' => 'view',$this->Form->value('Movement.id')),array('class'=>'btn')); ?></li>
+                <li ><?php echo $this->Form->postLink(__('Delete Movement'), array('action' => 'delete', $this->Form->value('Movement.id')), array('class'=>'btn','confirm'=> __('Are you sure you want to delete # %s?', $this->Form->value('Movement.description')))); ?></li>
                 <li ><?php echo $this->Html->link(__('List Movements'), array('action' => 'index'),array('class'=>'btn')); ?></li>
                 <li ><?php echo $this->Html->link(__('New Movement Category'), array('controller' => 'movement_categories', 'action' => 'addFromMovement',$this->Form->value('Movement.id')),array('class'=>'btn')); ?> </li>
               <li ><?php echo $this->Html->link(__('New Movement Operation'), array('controller' => 'movement_operations', 'action' => 'addFromMovement', $this->Form->value('Movement.id')),array('class'=>'btn')); ?> </li>
