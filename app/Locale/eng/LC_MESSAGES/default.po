@@ -65,7 +65,7 @@ msgstr ""
 msgid "%s KB"
 msgstr ""
 
-msgid "%s MB"
+msgid "%s MB"d
 msgstr ""
 
 msgid "%s TB"
@@ -402,6 +402,9 @@ msgid "Document"
 msgstr ""
 
 msgid "Document Date"
+msgstr ""
+
+msgid "Donate Here"
 msgstr ""
 
 msgid "Draft"
