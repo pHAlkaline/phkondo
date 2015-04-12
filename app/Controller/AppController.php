@@ -21,7 +21,7 @@ class AppController extends Controller {
 
     public function beforeFilter() {
        $this->Auth->authenticate = array(  AuthComponent::ALL => array('userModel' => 'User', 'scope' => array("User.active" => 1)),'Form');
-        //$this->Auth->loginRedirect= array('controller' => 'condos', 'action' => 'index');
+        $this->Auth->loginRedirect= array('controller' => 'condos', 'action' => 'index');
         $this->Auth->logoutRedirect = array('controller' => 'pages', 'action' => 'display', 'home');
         $this->Auth->authorize = array('Controller');
         $this->Auth->allow('display');
