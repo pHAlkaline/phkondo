@@ -14,19 +14,19 @@ $has_fiscal_year = (isset($condo['FiscalYear'][0]['title'])) ? true : false;
                 <?php //endif; ?>
                 <li ><?php echo $this->Html->link(__('List Condos'), array('action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
                 <li class="divider">&nbsp;</li>
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Fiscal Year','Fiscal Years',2), array('controller' => 'fiscal_years', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Administrator','Administrators',2), array('controller' => 'administrators', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Fraction','Fractions',2), array('controller' => 'fractions', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Fiscal Year', 'Fiscal Years', 2), array('controller' => 'fiscal_years', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Administrator', 'Administrators', 2), array('controller' => 'administrators', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Fraction', 'Fractions', 2), array('controller' => 'fractions', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
                 <li class="divider">&nbsp;</li>
                 <?php if ($has_fiscal_year): ?>
-                    <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Budget','Budgets',2), array('controller' => 'budgets', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
-                    <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Account','Accounts',2), array('controller' => 'accounts', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
+                    <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Budget', 'Budgets', 2), array('controller' => 'budgets', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
+                    <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Account', 'Accounts', 2), array('controller' => 'accounts', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
                     <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('Invoice Conference'), array('controller' => 'invoice_conference', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
                 <?php endif; ?>
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Receipt','Receipts',2), array('controller' => 'receipts', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Receipt', 'Receipts', 2), array('controller' => 'receipts', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
                 <li class="divider">&nbsp;</li>
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Maintenance','Maintenances',2), array('controller' => 'maintenances', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Insurance','Insurances',2), array('controller' => 'insurances', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Maintenance', 'Maintenances', 2), array('controller' => 'maintenances', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Insurance', 'Insurances', 2), array('controller' => 'insurances', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
                 <li class="divider">&nbsp;</li>
                 <?php if ($has_fiscal_year): ?>
                     <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('Reports'), array('controller' => 'reports', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
@@ -34,11 +34,12 @@ $has_fiscal_year = (isset($condo['FiscalYear'][0]['title'])) ? true : false;
                 <?php
                 $event = new CakeEvent('Phkondo.Draft.hasCondoDraft');
                 $this->getEventManager()->dispatch($event);
-                if ($event->result['hasCondoDraft']===true){ ?>
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Draft','Drafts',2), array('plugin'=>'drafts','controller' => 'condo_drafts', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
+                if ($event->result['hasCondoDraft'] === true) {
+                    ?>
+                    <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Draft', 'Drafts', 2), array('plugin' => 'drafts', 'controller' => 'condo_drafts', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
                 <?php } else { ?>
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Draft','Drafts',2), array('action' => 'drafts'), array('class' => 'btn ', 'escape' => false)); ?> </li>
-                
+                    <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Draft', 'Drafts', 2), array('action' => 'drafts'), array('class' => 'btn ', 'escape' => false)); ?> </li>
+
                 <?php } ?>
 
             </ul><!-- /.list-group -->
@@ -51,7 +52,7 @@ $has_fiscal_year = (isset($condo['FiscalYear'][0]['title'])) ? true : false;
 
         <div class="condos view">
 
-            <h2><?php echo __n('Condo','Condos',1); ?></h2>
+            <h2><?php echo __n('Condo', 'Condos', 1); ?></h2>
             <table class="table table-hover table-condensed">
                 <tbody>
                     <tr>		<td class="col-sm-2"><strong><?php echo __('Title'); ?></strong></td>
@@ -66,7 +67,7 @@ $has_fiscal_year = (isset($condo['FiscalYear'][0]['title'])) ? true : false;
                         </td>
                     </tr><tr>		<td><strong><?php echo __('Address'); ?></strong></td>
                         <td>
-                            <?php echo h($condo['Condo']['address']); ?>
+                            <?php echo nl2br(h($condo['Condo']['address'])); ?>
                             &nbsp;
                         </td>
                     </tr><tr>		<td><strong><?php echo __('Email'); ?></strong></td>
@@ -74,26 +75,34 @@ $has_fiscal_year = (isset($condo['FiscalYear'][0]['title'])) ? true : false;
                             <?php echo h($condo['Condo']['email']); ?>
                             &nbsp;
                         </td>
-                    </tr><tr>		<td><strong><?php echo __('Comments'); ?></strong></td>
+                    </tr>
+                    		
+                        <td><strong><?php echo __n('Fiscal Year', 'Fiscal Years', 1); ?></strong></td>
                         <td>
-                            <?php echo h($condo['Condo']['comments']); ?>
-                            &nbsp;
-                        </td>
-                    </tr><tr>		<td><strong><?php echo __n('Fiscal Year','Fiscal Years',1); ?></strong></td>
-                        <td>
-                            <?php if ($has_fiscal_year) {
+                            <?php
+                            if ($has_fiscal_year) {
                                 echo h($condo['FiscalYear'][0]['title'] . ' ( ' . $this->Time->format(Configure::read('dateFormatSimple'), $condo['FiscalYear'][0]['open_date']) . ' a ' . $this->Time->format(Configure::read('dateFormatSimple'), $condo['FiscalYear'][0]['close_date']) . ' ) ');
                             } else {
                                 echo '<div class="alert alert-warning">' . __('Deve activar um exercicio!!') . '</div>';
-                            } ?>
-                            &nbsp;
-                        </td>
-                    </tr><tr>		<td><strong><?php echo __('Created'); ?></strong></td>
-                        <td>
-<?php echo $this->Time->format(Configure::read('dateFormat'), $condo['Condo']['created']); ?>
+                            }
+                            ?>
                             &nbsp;
                         </td>
                     </tr>
+                    <tr>		<td><strong><?php echo __('Created'); ?></strong></td>
+                        <td>
+                            <?php echo $this->Time->format(Configure::read('dateFormat'), $condo['Condo']['created']); ?>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>		
+                        <td><strong><?php echo __('Comments'); ?></strong></td>
+                        <td>
+                            <?php echo nl2br(h($condo['Condo']['comments'])); ?>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
 
                 </tbody>
             </table><!-- /.table table-hover table-condensed -->
@@ -171,9 +180,9 @@ $has_fiscal_year = (isset($condo['FiscalYear'][0]['title'])) ? true : false;
         <?php if (in_array('danger', $viewGlyphiconState)) : ?>
             <div class="alert alert-danger"><?php echo __('Accounts with negative balance'); ?></div>
         <?php endif; ?>
-<?php if ($hasDebt) : ?>
+        <?php if ($hasDebt) : ?>
             <div class="alert alert-danger"><?php echo __('Suppliers with arrears'); ?></div>
-<?php endif; ?>
+        <?php endif; ?>
 
 
     </div><!-- /#page-content .span9 -->

@@ -17,7 +17,7 @@
                 if (!$budget['Budget']['deletable']) {
                     $deleteDisabled = ' disabled';
                 }
-                
+
                 if (count($budget['Note']) == 0 && $budget['Budget']['budget_status_id'] == 2) {
                     $createNotesDisabled = '';
                 }
@@ -26,12 +26,12 @@
                     $hasNotesDisabled = '';
                 }
                 ?>
-                <li ><?php echo $this->Html->link(__('Edit Budget'), array('action' => 'edit', $budget['Budget']['id']), array('class' => 'btn '.$editDisabled)); ?> </li>
-                <li ><?php echo $this->Form->postLink(__('Delete Budget'), array('action' => 'delete', $budget['Budget']['id']), array('class' => 'btn '.$deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $budget['Budget']['title']))); ?> </li>
+                <li ><?php echo $this->Html->link(__('Edit Budget'), array('action' => 'edit', $budget['Budget']['id']), array('class' => 'btn ' . $editDisabled)); ?> </li>
+                <li ><?php echo $this->Form->postLink(__('Delete Budget'), array('action' => 'delete', $budget['Budget']['id']), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $budget['Budget']['title']))); ?> </li>
                 <li ><?php echo $this->Html->link(__('New Budget'), array('action' => 'add'), array('class' => 'btn ')); ?> </li>
                 <li ><?php echo $this->Html->link(__('List Budgets'), array('action' => 'index'), array('class' => 'btn ')); ?> </li>
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('Create Notes'), array('controller' => 'budget_notes', 'action' => 'create'), array('class' => 'btn '.$createNotesDisabled, 'escape' => false)); ?> </li>
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('Notes'), array('controller' => 'budget_notes', 'action' => 'index'), array('class' => 'btn '.$hasNotesDisabled, 'escape' => false)); ?> </li>
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('Create Notes'), array('controller' => 'budget_notes', 'action' => 'create'), array('class' => 'btn ' . $createNotesDisabled, 'escape' => false)); ?> </li>
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('Notes'), array('controller' => 'budget_notes', 'action' => 'index'), array('class' => 'btn ' . $hasNotesDisabled, 'escape' => false)); ?> </li>
                 <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('Shares map'), array('action' => 'shares_map', $budget['Budget']['id']), array('class' => 'btn ', 'target' => '_blank', 'escape' => false)); ?> </li>
             </ul><!-- /.list-group -->
 
@@ -43,13 +43,13 @@
 
         <div class="budgets view">
 
-            <h2><?php echo __n('Budget','Budgets',1); ?></h2>
+            <h2><?php echo __n('Budget', 'Budgets', 1); ?></h2>
 
 
             <table class="table table-hover table-condensed">
                 <tbody>
                     <tr>		
-                        <td class='col-sm-2'><strong><?php echo __n('Fiscal Year','Fiscal Years',1); ?></strong></td>
+                        <td class='col-sm-2'><strong><?php echo __n('Fiscal Year', 'Fiscal Years', 1); ?></strong></td>
                         <td>
                             <?php echo h($budget['FiscalYear']['title']); ?>
                             &nbsp;
@@ -98,7 +98,7 @@
                             <?php echo $this->Time->format(Configure::read('dateFormatSimple'), $budget['Budget']['begin_date']); ?>
                             &nbsp;
                         </td>
-                    </tr><tr>		<td><strong><?php echo __n('Share','Shares',2); ?></strong></td>
+                    </tr><tr>		<td><strong><?php echo __n('Share', 'Shares', 2); ?></strong></td>
                         <td>
                             <?php echo h($budget['Budget']['shares']); ?>
                             &nbsp;
@@ -123,12 +123,8 @@
                             <?php echo h($budget['Budget']['meeting_draft']); ?>
                             &nbsp;
                         </td>
-                    </tr><tr>		<td><strong><?php echo __('Comments'); ?></strong></td>
-                        <td>
-                            <?php echo h($budget['Budget']['comments']); ?>
-                            &nbsp;
-                        </td>
-                    </tr><tr>		<td><strong><?php echo __('Modified'); ?></strong></td>
+                    </tr>
+                    <tr>		<td><strong><?php echo __('Modified'); ?></strong></td>
                         <td>
                             <?php echo $this->Time->format(Configure::read('dateFormat'), $budget['Budget']['modified']); ?>
                             &nbsp;
@@ -138,7 +134,15 @@
                             <?php echo $this->Time->format(Configure::read('dateFormat'), $budget['Budget']['created']); ?>
                             &nbsp;
                         </td>
-                    </tr>					</tbody>
+                    </tr>
+                    <tr>		
+                        <td><strong><?php echo __('Comments'); ?></strong></td>
+                        <td>
+                            <?php echo nl2br(h($budget['Budget']['comments'])); ?>
+                            &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
             </table><!-- /.table table-hover table-condensed -->
 
 
