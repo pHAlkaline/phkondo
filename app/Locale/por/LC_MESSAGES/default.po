@@ -773,7 +773,7 @@ msgid "List Insurances"
 msgstr "Listar Seguros"
 
 msgid "List Invoices"
-msgstr "Lista Factus"
+msgstr "Lista Faturas"
 
 msgid "List Maintenances"
 msgstr "Listar Manutenções"
