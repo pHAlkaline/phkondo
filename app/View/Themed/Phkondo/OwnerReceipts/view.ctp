@@ -74,7 +74,7 @@
                         </td>
                     </tr><tr>		<td><strong><?php echo __('Address'); ?></strong></td>
                         <td>
-                            <?php echo h($receipt['Receipt']['address']); ?>
+                            <?php echo nl2br(h($receipt['Receipt']['address'])); ?>
                             &nbsp;
                         </td>
                     </tr><tr>		<td><strong><?php echo __('Document Date'); ?></strong></td>
