@@ -44,7 +44,7 @@
                             </td>
                         </tr><tr>		<td><strong><?php echo __('Address'); ?></strong></td>
                             <td>
-                                <?php echo h($entity['Entity']['address']); ?>
+                                <?php echo nl2br(h($entity['Entity']['address'])); ?>
                                 &nbsp;
                             </td>
                         </tr><tr>		<td><strong><?php echo __n('Contact','Contacts',2); ?></strong></td>
@@ -67,12 +67,9 @@
                                 <?php echo h($entity['Entity']['nib']); ?>
                                 &nbsp;
                             </td>
-                        </tr><tr>		<td><strong><?php echo __('Comments'); ?></strong></td>
-                            <td>
-                                <?php echo h($entity['Entity']['comments']); ?>
-                                &nbsp;
-                            </td>
-                        </tr><tr>		<td><strong><?php echo __('Modified'); ?></strong></td>
+                        </tr>
+                       
+                        <tr>		<td><strong><?php echo __('Modified'); ?></strong></td>
                             <td>
                                 <?php echo h($entity['Entity']['modified']); ?>
                                 &nbsp;
@@ -82,7 +79,15 @@
                                 <?php echo h($entity['Entity']['created']); ?>
                                 &nbsp;
                             </td>
-                        </tr>					</tbody>
+                        </tr>
+                        <tr>		
+                            <td><strong><?php echo __('Comments'); ?></strong></td>
+                            <td>
+                                <?php echo nl2br(h($entity['Entity']['comments'])); ?>
+                                &nbsp;
+                            </td>
+                        </tr>
+                    </tbody>
                 </table><!-- /.table table-hover table-condensed -->
             
 

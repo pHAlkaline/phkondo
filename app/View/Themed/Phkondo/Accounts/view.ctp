@@ -6,18 +6,17 @@
 
             <ul class="nav nav-pills nav-stacked">			
                 <li ><?php echo $this->Html->link(__('Edit Account'), array('action' => 'edit', $account['Account']['id']), array('class' => 'btn ')); ?> </li>
-                <li ><?php echo $this->Form->postLink(__('Delete Account'), array('action' => 'delete', $account['Account']['id']), array('class' => 'btn ','confirm'=> __('Are you sure you want to delete # %s?' , $account['Account']['title'] ))); ?> </li>
+                <li ><?php echo $this->Form->postLink(__('Delete Account'), array('action' => 'delete', $account['Account']['id']), array('class' => 'btn ', 'confirm' => __('Are you sure you want to delete # %s?', $account['Account']['title']))); ?> </li>
                 <li ><?php echo $this->Html->link(__('New Account'), array('action' => 'add'), array('class' => 'btn ')); ?> </li>
                 <li ><?php echo $this->Html->link(__('List Accounts'), array('action' => 'index'), array('class' => 'btn ')); ?> </li>
-                <?php 
-                $movementsDisabled='';
-                if (!$this->Session->check('Condo.FiscalYearID')){ 
-                    $movementsDisabled=' disabled';
-                    
+                <?php
+                $movementsDisabled = '';
+                if (!$this->Session->check('Condo.FiscalYearID')) {
+                    $movementsDisabled = ' disabled';
                 }
-               ?>     
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> '.__n('Movement','Movements',2), array('controller' => 'movements', 'action' => 'index'), array('class' =>  'btn '.$movementsDisabled ,'escape'=>false)); ?> </li>
-                
+                ?>     
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Movement', 'Movements', 2), array('controller' => 'movements', 'action' => 'index'), array('class' => 'btn ' . $movementsDisabled, 'escape' => false)); ?> </li>
+
             </ul><!-- /.list-group -->
 
         </div><!-- /.actions -->
@@ -28,7 +27,7 @@
 
         <div class="accounts view">
 
-            <h2><?php echo __n('Account','Accounts',1); ?></h2>
+            <h2><?php echo __n('Account', 'Accounts', 1); ?></h2>
 
             <div class="table-responsive">
                 <table class="table table-hover table-condensed">
@@ -53,7 +52,7 @@
                                 <?php echo h($account['Account']['balcony']); ?>
                                 &nbsp;
                             </td>
-                        </tr><tr>		<td><strong><?php echo __n('Contact','Contacts',2); ?></strong></td>
+                        </tr><tr>		<td><strong><?php echo __n('Contact', 'Contacts', 2); ?></strong></td>
                             <td>
                                 <?php echo h($account['Account']['contacts']); ?>
                                 &nbsp;
@@ -83,12 +82,9 @@
                                 <?php echo h($account['Account']['main_account']); ?>
                                 &nbsp;
                             </td>
-                        </tr><tr>		<td><strong><?php echo __('Comments'); ?></strong></td>
-                            <td>
-                                <?php echo h($account['Account']['comments']); ?>
-                                &nbsp;
-                            </td>
-                        </tr><tr>		<td><strong><?php echo __('Modified'); ?></strong></td>
+                        </tr>
+
+                        <tr>		<td><strong><?php echo __('Modified'); ?></strong></td>
                             <td>
                                 <?php echo $this->Time->format(Configure::read('dateFormat'), $account['Account']['modified']); ?>
                                 &nbsp;
@@ -98,7 +94,15 @@
                                 <?php echo $this->Time->format(Configure::read('dateFormat'), $account['Account']['created']); ?>
                                 &nbsp;
                             </td>
-                        </tr>					</tbody>
+                        </tr>
+                        <tr>
+                            <td><strong><?php echo __('Comments'); ?></strong></td>
+                            <td>
+                                <?php echo nl2br(h($account['Account']['comments'])); ?>
+                                &nbsp;
+                            </td>
+                        </tr>
+                    </tbody>
                 </table><!-- /.table table-hover table-condensed -->
             </div>
 

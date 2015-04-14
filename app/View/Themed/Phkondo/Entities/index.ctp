@@ -23,7 +23,7 @@
                             <tr>
                                 <td><?php echo h($entity['Entity']['name']); ?>&nbsp;</td>
                                 <td><?php echo h($entity['EntityType']['name']); ?></td>
-                                <td><?php echo h($entity['Entity']['address']); ?>&nbsp;</td>
+                                <td><?php echo nl2br(h($entity['Entity']['address'])); ?>&nbsp;</td>
                                 <td><?php echo h($entity['Entity']['email']); ?>&nbsp;</td>
                                 <td class="actions hidden-print">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $entity['Entity']['id']), array('title' => __('Details'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>

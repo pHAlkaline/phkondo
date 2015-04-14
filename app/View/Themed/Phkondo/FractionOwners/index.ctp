@@ -24,7 +24,7 @@
                         <?php foreach ($fraction['Entity'] as $entity): ?>
                             <tr>
                                 <td><?php echo h($entity['name']); ?>&nbsp;</td>
-                                <td><?php echo h($entity['address']); ?>&nbsp;</td>
+                                <td><?php echo nl2br(h($entity['address'])); ?>&nbsp;</td>
                                 <td><?php echo h($entity['contacts']); ?>&nbsp;</td>
                                 <td style="text-align:right;"><?php echo h($entity['EntitiesFraction']['owner_percentage']); ?>&nbsp;&percnt;</td>
                                 <td class="actions hidden-print">

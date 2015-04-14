@@ -100,13 +100,6 @@
                             </td>
                         </tr>
                         <tr>		
-                            <td><strong><?php echo __('Comments'); ?></strong></td>
-                            <td>
-                                <?php echo $invoice_conference['InvoiceConference']['comments']; ?>
-                                &nbsp;
-                            </td>
-                        </tr>
-                        <tr>		
                             <td><strong><?php echo __('Modified'); ?></strong></td>
                             <td>
                                 <?php echo $this->Time->format(Configure::read('dateFormat'), $invoice_conference['InvoiceConference']['modified']); ?>
@@ -119,7 +112,14 @@
                                 <?php echo $this->Time->format(Configure::read('dateFormat'), $invoice_conference['InvoiceConference']['created']); ?>
                                 &nbsp;
                             </td>
-                        </tr>					
+                        </tr>
+                        <tr>		
+                            <td><strong><?php echo __('Comments'); ?></strong></td>
+                            <td>
+                                <?php echo nl2br(h($invoice_conference['InvoiceConference']['comments'])); ?>
+                                &nbsp;
+                            </td>
+                        </tr>
                     </tbody>
                 </table><!-- /.table table-hover table-condensed -->
             
