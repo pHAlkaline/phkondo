@@ -51,8 +51,7 @@
                     <?php echo $this->Form->input('receipt_payment_type_id', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
-                    <?php echo $this->Form->input('payment_date', array('dateFormat'=>'DMY','minYear' => date('Y') - 10,
-    'maxYear' => date('Y') + 1,'class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('payment_date', array('type' => 'text', 'class' => 'form-control datefield')); ?>
                 </div><!-- .form-group -->
 
             </fieldset>

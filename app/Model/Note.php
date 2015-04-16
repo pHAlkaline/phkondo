@@ -143,6 +143,9 @@ class Note extends AppModel {
             //'last' => false, // Stop validation after this rule
             //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
+            'afterDocumentDate' => array(
+                'rule' => array('compareDates', 'due_date'),
+                'message' => 'due date must be after document date'),
         ),
         'payment_date' => array(
             'date' => array(
@@ -153,6 +156,9 @@ class Note extends AppModel {
             //'last' => false, // Stop validation after this rule
             //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
+            'afterDocumentDate' => array(
+                'rule' => array('compareDates', 'payment_date'),
+                'message' => 'payment date must be after document date'),
         ),
         'note_status_id' => array(
             'numeric' => array(
@@ -236,20 +242,29 @@ class Note extends AppModel {
     );
 
     public function beforeDelete($cascade = true) {
-        if (in_array($this->field('note_status_id'),array(2,3))){
+        if (in_array($this->field('note_status_id'), array(2, 3))) {
             return false;
         }
-        if ($this->field('receipt_id') != null){
+        if ($this->field('receipt_id') != null) {
             return false;
         }
-        $this->receipt_id=$this->field('note_status_id');
-        $this->budget_id=$this->field('budget_id');
+        $this->receipt_id = $this->field('note_status_id');
+        $this->budget_id = $this->field('budget_id');
         return true;
     }
-    
+
+    public function beforeSave($options = array()) {
+        if (!empty($this->data['Note']['note_status_id']) && $this->data['Note']['note_status_id']==1){
+            $this->data['Note']['payment_date']=null;
+            $this->data['Note']['receipt_id']=null;
+        }
+       
+        return true;
+    }
+
     public function afterDelete() {
-       $this->_updateReceiptAmount($this->receipt_id);
-       $this->_updateBudgetAmount($this->budget_id);
+        $this->_updateReceiptAmount($this->receipt_id);
+        $this->_updateBudgetAmount($this->budget_id);
     }
 
     function deletable($id = null) {
@@ -270,10 +285,14 @@ class Note extends AppModel {
     }
 
     function editable($record = null) {
-        if (isset($record['note_status_id']) && in_array($record['note_status_id'],array(2,3)) && $record['receipt_id']!='') {
+        if (isset($record['note_status_id']) && in_array($record['note_status_id'], array(2, 3)) && $record['receipt_id'] != '') {
             return false;
         }
         return true;
+    }
+
+    function compareDates($data, $key) {
+        return CakeTime::fromString($data[$key]) >= CakeTime::fromString($this->data[$this->alias]['document_date']);
     }
 
     /**
@@ -307,7 +326,6 @@ class Note extends AppModel {
         return $results;
     }
 
-   
     /**
      * afterSave callback
      * 
@@ -324,10 +342,10 @@ class Note extends AppModel {
         $this->_updateBudgetAmount($this->field('budget_id'));
     }
 
-     // Update Receipt Amount
-    private function _updateReceiptAmount($id=null) {
-       
-      
+    // Update Receipt Amount
+    private function _updateReceiptAmount($id = null) {
+
+
         if ($id != null) {
             $totalDebit = $this->find('first', array(
                 'fields' => array('SUM(Note.amount) AS total'),
@@ -344,16 +362,16 @@ class Note extends AppModel {
     }
 
     // Update Budget Amount
-    private function _updateBudgetAmount($id=null) {
-        
-        
+    private function _updateBudgetAmount($id = null) {
+
+
         if ($id != null) {
             $totalDebit = $this->find('first', array(
                 'fields' => array('SUM(Note.amount) AS total'),
-                'conditions' => array('Note.budget_id' => $id, 'Note.note_type_id' => '2') )
+                'conditions' => array('Note.budget_id' => $id, 'Note.note_type_id' => '2'))
             );
             $totalCredit = $this->find('first', array(
-                'fields' =>array('SUM(Note.amount) AS total'),
+                'fields' => array('SUM(Note.amount) AS total'),
                 'conditions' => array('Note.budget_id' => $id, 'Note.note_type_id' => '1'))
             );
             $total = $totalDebit[0]['total'] - $totalCredit[0]['total'];

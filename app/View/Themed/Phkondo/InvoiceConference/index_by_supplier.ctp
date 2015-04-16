@@ -30,8 +30,8 @@
                             <tr>
                                 <td><?php echo h($invoice_conference['InvoiceConference']['document']); ?>&nbsp;</td>
                                 <td><?php echo h($invoice_conference['InvoiceConference']['description']); ?>&nbsp;</td>
-                                <td><?php echo $this->Time->format(Configure::read('dateFormatSimple'), $invoice_conference['InvoiceConference']['document_date']); ?>&nbsp;</td>
-                                <td><?php echo $this->Time->format(Configure::read('dateFormatSimple'), $invoice_conference['InvoiceConference']['payment_due_date']); ?>&nbsp;</td>
+                                <td><?php echo h( $invoice_conference['InvoiceConference']['document_date']); ?>&nbsp;</td>
+                                <td><?php echo h( $invoice_conference['InvoiceConference']['payment_due_date']); ?>&nbsp;</td>
                                 <td><?php echo h($invoice_conference['InvoiceConferenceStatus']['name']); ?></td>
                                 <td class="amount"><?php echo h($invoice_conference['InvoiceConference']['amount']); ?>&nbsp;<?= Configure::read('currencySign'); ?></td>
                                 <td class="actions hidden-print">

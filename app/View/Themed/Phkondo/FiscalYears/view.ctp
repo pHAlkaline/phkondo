@@ -45,12 +45,12 @@
                             </td>
                         </tr><tr>		<td><strong><?php echo __('Open Date'); ?></strong></td>
                             <td>
-                                <?php echo $this->Time->format(Configure::read('dateFormatSimple'),$fiscalYear['FiscalYear']['open_date']); ?>
+                                <?php echo h($fiscalYear['FiscalYear']['open_date']); ?>
                                 &nbsp;
                             </td>
                         </tr><tr>		<td><strong><?php echo __('Close Date'); ?></strong></td>
                             <td>
-                                <?php echo $this->Time->format(Configure::read('dateFormatSimple'),$fiscalYear['FiscalYear']['close_date']); ?>
+                                <?php echo h($fiscalYear['FiscalYear']['close_date']); ?>
                                 &nbsp;
                             </td>
                         </tr><tr>		<td><strong><?php echo __('Active'); ?></strong></td>
@@ -60,12 +60,12 @@
                             </td>
                         </tr><tr>		<td><strong><?php echo __('Modified'); ?></strong></td>
                             <td>
-                                <?php echo $this->Time->format(Configure::read('dateFormat'),$fiscalYear['FiscalYear']['modified']); ?>
+                                <?php echo h($fiscalYear['FiscalYear']['modified']); ?>
                                 &nbsp;
                             </td>
                         </tr><tr>		<td><strong><?php echo __('Created'); ?></strong></td>
                             <td>
-                                <?php echo $this->Time->format(Configure::read('dateFormat'),$fiscalYear['FiscalYear']['created']); ?>
+                                <?php echo h($fiscalYear['FiscalYear']['created']); ?>
                                 &nbsp;
                             </td>
                         </tr>					</tbody>

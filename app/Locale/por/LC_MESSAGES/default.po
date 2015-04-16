@@ -104,6 +104,9 @@ msgstr "Contas com saldo negativo"
 msgid "Actions"
 msgstr "Acções"
 
+msgid "Please activate one fiscal year."
+msgstr "Deve activar um exercício"
+
 msgid "Active"
 msgstr "Activo"
 
@@ -123,7 +126,7 @@ msgid "Add Entity"
 msgstr "Criar Entidade"
 
 msgid "Add Fiscal Year"
-msgstr "Criar Exercicio"
+msgstr "Criar Exercício"
 
 msgid "Add Fraction"
 msgstr "Criar Fração"
@@ -319,6 +322,9 @@ msgid_plural "Contacts"
 msgstr[0] "Contacto"
 msgstr[1] "Contactos"
 
+msgid "Contacts"
+msgstr "Contactos"
+
 msgid "Content"
 msgstr "Texto"
 
@@ -333,6 +339,9 @@ msgstr "Data de Criação"
 
 msgid "Current Account"
 msgstr "Conta Corrente"
+
+msgid "Date"
+msgstr "Data"
 
 msgid "December"
 msgstr "Dezembro"
@@ -359,7 +368,7 @@ msgid "Delete Entity"
 msgstr "Apagar Entidade"
 
 msgid "Delete Fiscal Year"
-msgstr "Apagar Exercicio"
+msgstr "Apagar Exercício"
 
 msgid "Delete Fraction"
 msgstr "Apagar Fração"
@@ -404,7 +413,7 @@ msgid "Document Date"
 msgstr "Data do Documento"
 
 msgid "Donate Here"
-msgstr "Contribuição, muito Obrigado!"
+msgstr "Faça uma contribuição, muito obrigado!"
 
 msgid "Draft"
 msgid_plural "Drafts"
@@ -442,7 +451,7 @@ msgid "Edit Entity"
 msgstr "Editar Entidade"
 
 msgid "Edit Fiscal Year"
-msgstr "Editar Exercicio"
+msgstr "Editar Exercício"
 
 msgid "Edit Fraction"
 msgstr "Editar Fração"
@@ -541,20 +550,20 @@ msgstr "Fevereiro"
 
 msgid "Fiscal Year"
 msgid_plural "Fiscal Years"
-msgstr[0] "Exercicio"
-msgstr[1] "Exercicios"
+msgstr[0] "Exercício"
+msgstr[1] "Exercícios"
 
 msgid "Fiscal Year active"
-msgstr "Exercicio activo"
+msgstr "Exercício activo"
 
 msgid "Fiscal Year can not be deleted"
-msgstr "Não foi possivel apagar Exercicio"
+msgstr "Não foi possivel apagar Exercício"
 
 msgid "Fiscal Year deleted"
-msgstr "Exercicio apagado"
+msgstr "Exercício apagado"
 
 msgid "Fiscal Year is not active"
-msgstr "O exercicio não está activo"
+msgstr "O exercício não está activo"
 
 msgid "Floor Location"
 msgstr "Localização"
@@ -598,7 +607,7 @@ msgid "Income Control"
 msgstr "Controlo de Receitas"
 
 msgid "Income extra and previous exercices"
-msgstr "Receitas extraordinarias ou de exercicios anteriores"
+msgstr "Receitas extraordinarias ou de exercícios anteriores"
 
 msgid "Income map"
 msgstr "Mapa de receitas"
@@ -654,7 +663,7 @@ msgid "Invalid account"
 msgstr "Conta inválida"
 
 msgid "Invalid account or fiscal year"
-msgstr "Conta ou exercicio inválido"
+msgstr "Conta ou exercício inválido"
 
 msgid "Invalid administrator"
 msgstr "Administrador inválido"
@@ -672,7 +681,7 @@ msgid "Invalid entity"
 msgstr "Entidade inválida"
 
 msgid "Invalid fiscal year"
-msgstr "Exercicio inválido"
+msgstr "Exercício inválido"
 
 msgid "Invalid fraction"
 msgstr "Fração inválida"
@@ -764,7 +773,7 @@ msgid "List Entities"
 msgstr "Listar Entidades"
 
 msgid "List Fiscal Years"
-msgstr "Listar Exercicios"
+msgstr "Listar Exercícios"
 
 msgid "List Fractions"
 msgstr "Listar Frações"
@@ -914,7 +923,7 @@ msgid "New Entity"
 msgstr "Criar Entidade"
 
 msgid "New Fiscal Year"
-msgstr "Criar Exercicio"
+msgstr "Criar Exercício"
 
 msgid "New Fraction"
 msgstr "Criar Fração"
@@ -971,7 +980,7 @@ msgid "No movements allowed"
 msgstr "Não é permitido movimentos"
 
 msgid "No movements allowed, choose fiscal year first."
-msgstr "Não são permitidos movimentos, necessita escolher exercicio."
+msgstr "Não são permitidos movimentos, necessita escolher exercício."
 
 msgid "No records found."
 msgstr "Não foram encontrados registos."
@@ -1188,7 +1197,7 @@ msgid "September"
 msgstr "Setembro"
 
 msgid "Set as Active"
-msgstr "Activar Exercicio"
+msgstr "Activar Exercício"
 
 msgid "Share"
 msgid_plural "Shares"
@@ -1213,6 +1222,9 @@ msgstr "Data de Início"
 msgid "Start Session"
 msgstr "Iniciar Sessão"
 
+msgid "Status"
+msgstr "Estado"
+
 msgid "Submit"
 msgstr "Registar"
 
@@ -1234,7 +1246,7 @@ msgid "Tax"
 msgstr "Taxas"
 
 msgid "Taxpayer Number"
-msgstr "Número de Contribuinte"
+msgstr "NIF"
 
 msgid "The %1$s has been %2$s"
 msgstr "O %1$s foi %2$s"
@@ -1273,10 +1285,10 @@ msgid "The entity has been saved"
 msgstr "A entidade foi registada"
 
 msgid "The fiscal year could not be saved. Please, try again."
-msgstr "Não foi possivel registar exercicio. Por favor, tente outra vez."
+msgstr "Não foi possivel registar exercício. Por favor, tente outra vez."
 
 msgid "The fiscal year has been saved"
-msgstr "O exercicio foi registado"
+msgstr "O exercício foi registado"
 
 msgid "The fraction could not be saved. Please, try again."
 msgstr "Não foi possivel registar a fracção. Por favor, tente outra vez."
@@ -1384,7 +1396,7 @@ msgid "This Budget can not be deleted, check budget status or existing notes alr
 msgstr "Este orçamento não pode ser removido, verifique o estado do orçamento ou a existencia de notas em estado de pago."
 
 msgid "This Fiscal Year can not be deleted, check existing notes already paid."
-msgstr "Esta Exercicio não pode ser removido, verifique a existencia de notas em estado pago."
+msgstr "Esta Exercício não pode ser removido, verifique a existencia de notas em estado pago."
 
 msgid "This Fraction can not be deleted, check existing notes already paid."
 msgstr "Esta Fração não pode ser removida, verifique a existencia de notas em estado pago."
@@ -1456,7 +1468,7 @@ msgid "VAT"
 msgstr "NIF"
 
 msgid "Vat Number"
-msgstr "Número de Contribuinte"
+msgstr "NIF"
 
 msgid "Verify Password"
 msgstr "Confirmar palavra passe"
@@ -1484,6 +1496,9 @@ msgstr "pHAlkaline tambem disponibiliza serviços de desenvolvimento à medida d
 
 msgid "Wednesday"
 msgstr "Quarta-Feira"
+
+msgid "Welcome"
+msgstr ""
 
 msgid "Welcome to pHKondo."
 msgstr "Bem Vindo ao pHKondo"

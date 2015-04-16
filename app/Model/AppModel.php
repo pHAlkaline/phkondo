@@ -12,8 +12,18 @@ App::uses('Model', 'Model');
  */
 class AppModel extends Model {
 
-    public $validationDomain='validation';
-    //public $recursive = -1;
+    public $actsAs = array('DateFormat' => array(
+            'dateFormat' => 'Y-m-d',
+            'databaseFormat' => 'Y-m-d',
+        ),
+        'Containable');
+    public $validationDomain = 'validation';
+
+    public function __construct($id = false, $table = null, $ds = null) {
+        $this->actsAs['DateFormat']['dateFormat'] = Configure::read('dateFormatSimple');
+        $this->actsAs['DateFormat']['databaseFormat'] = Configure::read('databaseDateFormat');
+        parent::__construct($id, $table, $ds);
+    }
 
     public function generateHabtmJoin($joinModel, $joinType = 'INNER') {
         // If the relation does not exist, return an empty array.
@@ -48,5 +58,4 @@ class AppModel extends Model {
         return $joins;
     }
 
-    
 }

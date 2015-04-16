@@ -50,13 +50,13 @@
                             </td>
                         </tr><tr>		<td><strong><?php echo __('Document Date'); ?></strong></td>
                             <td>
-                                <?php echo $this->Time->format(Configure::read('dateFormatSimple'),$note['Note']['document_date']); ?>
+                                <?php echo h($note['Note']['document_date']); ?>
                                 &nbsp;
                             </td>
                         </tr>
                         <tr>		<td><strong><?php echo __('Note Type'); ?></strong></td>
                             <td>
-                                <?php echo $this->Time->format(Configure::read('dateFormatSimple'),$note['NoteType']['name']); ?>
+                                <?php echo h($note['NoteType']['name']); ?>
                                 &nbsp;
                             </td>
                         </tr><tr>		<td><strong><?php echo __n('Fraction','Fractions',1); ?></strong></td>
@@ -93,12 +93,12 @@
                             </td>
                         </tr--><tr>		<td><strong><?php echo __('Due Date'); ?></strong></td>
                             <td>
-                                <?php echo $this->Time->format(Configure::read('dateFormatSimple'), $note['Note']['due_date']); ?>
+                                <?php echo h( $note['Note']['due_date']); ?>
                                 &nbsp;
                             </td>
                         </tr><tr>		<td><strong><?php echo __('Payment Date'); ?></strong></td>
                             <td>
-                                <?php if ($note['Note']['payment_date']) echo $this->Time->format(Configure::read('dateFormatSimple'), $note['Note']['payment_date']); ?>
+                                <?php if ($note['Note']['payment_date']) echo h( $note['Note']['payment_date']); ?>
                                 &nbsp;
                             </td>
                         </tr><tr>		<td><strong><?php echo __('Note Status'); ?></strong></td>
@@ -113,12 +113,12 @@
                             </td>
                         </tr><tr>		<td><strong><?php echo __('Modified'); ?></strong></td>
                             <td>
-                                <?php echo $this->Time->format(Configure::read('dateFormat'),$note['Note']['modified']); ?>
+                                <?php echo h($note['Note']['modified']); ?>
                                 &nbsp;
                             </td>
                         </tr><tr>		<td><strong><?php echo __('Created'); ?></strong></td>
                             <td>
-                                <?php echo $this->Time->format(Configure::read('dateFormat'),$note['Note']['created']); ?>
+                                <?php echo h($note['Note']['created']); ?>
                                 &nbsp;
                             </td>
                         </tr>					</tbody>

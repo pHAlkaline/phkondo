@@ -29,7 +29,7 @@
                             <tr>
                                 <td><?php echo h($receipt['Receipt']['document']); ?>&nbsp;</td>
                                 
-                                <td><?php echo $this->Time->format(Configure::read('dateFormatSimple'),$receipt['Receipt']['document_date']); ?>&nbsp;</td>
+                                <td><?php echo h($receipt['Receipt']['document_date']); ?>&nbsp;</td>
                                 <td>
                                     <?php echo h($receipt['Fraction']['description']);?>
                                 </td>
@@ -44,7 +44,7 @@
                                 </td>
                                 <td><?php 
                                 if ($receipt['Receipt']['payment_date']!=''){
-                                echo $this->Time->format(Configure::read('dateFormatSimple'),$receipt['Receipt']['payment_date']); }?>&nbsp;</td>
+                                echo h($receipt['Receipt']['payment_date']); }?>&nbsp;</td>
                                 
                                 <td class="amount"><?php echo h($receipt['Receipt']['total_amount']); ?>&nbsp;<?= Configure::read('currencySign'); ?></td>
                                  <td class="actions hidden-print">

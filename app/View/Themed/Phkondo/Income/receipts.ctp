@@ -37,7 +37,7 @@
                     <?php echo $this->Form->input('receipt_status_id', array('empty' => __('All'), 'class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
-                    <?php echo $this->Form->input('payment_date', array('dateFormat' => 'DMY', 'class' => 'form-control', 'empty' => false, 'minYear' => date('Y') - 1, 'maxYear' => date('Y'), 'type' => 'date')); ?>
+                    <?php echo $this->Form->input('payment_date', array('type' => 'text', 'class' => 'form-control datefield')); ?>
                 </div><!-- .form-group -->
 
 
@@ -96,7 +96,7 @@
                                     </td>
                                     <td><?php echo h($receipt['Receipt']['document']); ?>&nbsp;</td>
 
-                                    <td><?php echo $this->Time->format(Configure::read('dateFormatSimple'), $receipt['Receipt']['document_date']); ?>&nbsp;</td>
+                                    <td><?php echo h( $receipt['Receipt']['document_date']); ?>&nbsp;</td>
                                     <td>
 
                                         <?php echo h($receipt['ReceiptStatus']['name']).' '.$receipt['CancelUser']['name']; ?>
@@ -104,7 +104,7 @@
                                     </td>
                                     <td><?php
                                         if ($receipt['Receipt']['payment_date'] != '') {
-                                            echo $this->Time->format(Configure::read('dateFormatSimple'), $receipt['Receipt']['payment_date']);
+                                            echo h( $receipt['Receipt']['payment_date']);
                                         }
                                         ?>&nbsp;</td>
                                     <td>

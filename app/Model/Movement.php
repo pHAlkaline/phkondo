@@ -63,7 +63,7 @@ class Movement extends AppModel {
             ),
             'validInterval' => array(
                 'rule' => array('validInterval'),
-                'message' => 'invalid origin date',
+                'message' => 'invalid movement date',
             //'allowEmpty' => false,
             //'required' => false,
             //'last' => false, // Stop validation after this rule
@@ -193,7 +193,6 @@ class Movement extends AppModel {
     function validInterval($data) {
         $fiscalYear = ClassRegistry::init('FiscalYear');
         $fiscalYearCount = $fiscalYear->find('count', array('conditions' => array('and' => array('FiscalYear.open_date <=' => $data['movement_date'], 'FiscalYear.close_date >=' => $data['movement_date'], 'FiscalYear.id' => $this->data[$this->alias]['fiscal_year_id']))));
-        
         return $fiscalYearCount > 0;
     }
 

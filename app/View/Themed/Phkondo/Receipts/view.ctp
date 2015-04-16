@@ -43,59 +43,42 @@
 
         <div class="receipts view">
 
-            <h2><?php echo __n('Receipt','Receipts',1); ?></h2>
+            <h2><?php echo __n('Receipt', 'Receipts', 1); ?></h2>
 
 
             <table class="table table-hover table-condensed">
                 <tbody>
-                    <tr>		<td class='col-sm-2'><strong><?php echo __('Document'); ?></strong></td>
-                        <td>
-                            <?php echo h($receipt['Receipt']['document']); ?>
-                            &nbsp;
-                        </td>
+                    <tr>
+                        <td class='col-sm-2'><strong><?php echo __('Document'); ?></strong></td>
+                        <td><?php echo h($receipt['Receipt']['document']); ?>&nbsp;</td>
                     </tr>
-                    <tr>		<td><strong><?php echo __n('Fraction','Fractions',1); ?></strong></td>
-                        <td>
-                            <?php echo h($receipt['Fraction']['description']); ?>
-                            &nbsp;
-                        </td>
+                    <tr>
+                        <td><strong><?php echo __n('Fraction', 'Fractions', 1); ?></strong></td>
+                        <td><?php echo h($receipt['Fraction']['description']); ?>&nbsp;</td>
                     </tr>
-                    <tr>		<td><strong><?php echo __('Client'); ?></strong></td>
-                        <td>
-                            <?php echo h($receipt['Client']['name']); ?>
-                            &nbsp;
-                        </td>
-                    </tr><tr>		<td><strong><?php echo __('Total Amount'); ?></strong></td>
-                        <td>
-                            <?php echo h($receipt['Receipt']['total_amount']); ?>&nbsp;<?= Configure::read('currencySign'); ?>
-                        </td>
-                    </tr><tr>		<td><strong><?php echo __('Address'); ?></strong></td>
-                        <td>
-                            <?php echo nl2br(h($receipt['Receipt']['address'])); ?>
-                            &nbsp;
-                        </td>
-                    </tr><tr>		<td><strong><?php echo __('Document Date'); ?></strong></td>
-                        <td>
-                            <?php echo $this->Time->format(Configure::read('dateFormatSimple'), $receipt['Receipt']['document_date']); ?>
-                            &nbsp;
-                        </td>
-                    </tr><tr>		<td><strong><?php echo __('Observations'); ?></strong></td>
-                        <td>
-                            <?php echo h($receipt['Receipt']['observations']); ?>
-                            &nbsp;
-                        </td>
+                    <tr>
+                        <td><strong><?php echo __('Client'); ?></strong></td>
+                        <td><?php echo h($receipt['Client']['name']); ?>&nbsp;</td>
                     </tr>
-                    <tr>		<td><strong><?php echo __('Receipt Status'); ?></strong></td>
-                        <td>
-                            <?php echo h($receipt['ReceiptStatus']['name']); ?>
-                            &nbsp;
-                        </td>
+                    <tr>
+                        <td><strong><?php echo __('Total Amount'); ?></strong></td>
+                        <td><?php echo h($receipt['Receipt']['total_amount']); ?>&nbsp;<?= Configure::read('currencySign'); ?></td>
                     </tr>
-                    <tr>		<td><strong><?php echo __('Receipt Payment Type'); ?></strong></td>
-                        <td>
-                            <?php echo h($receipt['ReceiptPaymentType']['name']); ?>
-                            &nbsp;
-                        </td>
+                    <tr>
+                        <td><strong><?php echo __('Address'); ?></strong></td>
+                        <td><?php echo nl2br(h($receipt['Receipt']['address'])); ?>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><strong><?php echo __('Document Date'); ?></strong></td>
+                        <td><?php echo h($receipt['Receipt']['document_date']); ?>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><strong><?php echo __('Receipt Status'); ?></strong></td>
+                        <td><?php echo h($receipt['ReceiptStatus']['name']); ?>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td><strong><?php echo __('Receipt Payment Type'); ?></strong></td>
+                        <td><?php echo h($receipt['ReceiptPaymentType']['name']); ?>&nbsp;</td>
                     </tr>
 
 
@@ -112,29 +95,36 @@
                         <td>
                             <?php
                             if ($receipt['Receipt']['payment_date'] != '') {
-                                echo $this->Time->format(Configure::read('dateFormatSimple'), $receipt['Receipt']['payment_date']);
+                                echo h($receipt['Receipt']['payment_date']);
                             }
                             ?>
                             &nbsp;
                         </td>
                     </tr><tr>		<td><strong><?php echo __('Modified'); ?></strong></td>
                         <td>
-                            <?php echo $this->Time->format(Configure::read('dateFormat'), $receipt['Receipt']['modified']); ?>
+                            <?php echo h($receipt['Receipt']['modified']); ?>
                             &nbsp;
                         </td>
                     </tr><tr>		<td><strong><?php echo __('Created'); ?></strong></td>
                         <td>
-                            <?php echo $this->Time->format(Configure::read('dateFormat'), $receipt['Receipt']['created']); ?>
+                            <?php echo h($receipt['Receipt']['created']); ?>
                             &nbsp;
                         </td>
-                    </tr>					</tbody>
+                    </tr>
+                    <tr>		<td><strong><?php echo __('Observations'); ?></strong></td>
+                        <td>
+                            <?php echo h($receipt['Receipt']['observations']); ?>
+                            &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
             </table><!-- /.table table-hover table-condensed -->
 
 
         </div><!-- /.view -->
 
 
-      <div class="related">
+        <div class="related">
 
             <h3><?php echo __('Notes'); ?></h3>
             <?php
@@ -151,10 +141,10 @@
                                 <th><?php echo __('Document'); ?></th>
                                 <th><?php echo __('Note Type'); ?></th>
                                 <th><?php echo __('Document Date'); ?></th>
-                                <th><?php echo __n('Fraction','Fractions',1); ?></th>
+                                <th><?php echo __n('Fraction', 'Fractions', 1); ?></th>
                                 <th><?php echo __('Title'); ?></th>
                                 <th class="amount"><?php echo __('Amount'); ?></th>
-                                
+
 
                             </tr>
                         </thead>
@@ -167,17 +157,17 @@
                                 <tr>
                                     <td><?php echo $note['document']; ?></td>
                                     <td><?php echo $note['NoteType']['name']; ?></td>
-                                    <td><?php echo $this->Time->format(Configure::read('dateFormatSimple'), $note['document_date']); ?></td>
+                                    <td><?php echo h($note['document_date']); ?></td>
                                     <td><?php echo $note['Fraction']['description']; ?></td>
                                     <td><?php echo $note['title']; ?></td>
                                     <td class="amount"><?php
-                                        if ($note['NoteType']['id'] == 1){
+                                        if ($note['NoteType']['id'] == 1) {
                                             echo '-';
                                         }
                                         echo $note['amount'];
                                         ?>&nbsp;<?= Configure::read('currencySign'); ?></td>
 
-                                    
+
 
                                 </tr>
                             <?php endforeach; ?>
@@ -189,7 +179,7 @@
                                 <td><?php echo __('Total amount'); ?></td>
                                 <td class="amount"><?php echo $receipt['Receipt']['total_amount']; ?>&nbsp;<?= Configure::read('currencySign'); ?></td>
 
-                               
+
                             </tr>
                         </tbody>
                     </table><!-- /.table table-hover table-condensed -->

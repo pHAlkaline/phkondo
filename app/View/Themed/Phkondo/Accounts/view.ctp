@@ -86,12 +86,12 @@
 
                         <tr>		<td><strong><?php echo __('Modified'); ?></strong></td>
                             <td>
-                                <?php echo $this->Time->format(Configure::read('dateFormat'), $account['Account']['modified']); ?>
+                                <?php echo h( $account['Account']['modified']); ?>
                                 &nbsp;
                             </td>
                         </tr><tr>		<td><strong><?php echo __('Created'); ?></strong></td>
                             <td>
-                                <?php echo $this->Time->format(Configure::read('dateFormat'), $account['Account']['created']); ?>
+                                <?php echo h( $account['Account']['created']); ?>
                                 &nbsp;
                             </td>
                         </tr>

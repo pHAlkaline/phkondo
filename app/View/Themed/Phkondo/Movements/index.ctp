@@ -30,7 +30,7 @@ if (isset($movements[0]['Account']['balance'])){
                     <tbody>
                         <?php foreach ($movements as $movement): ?>
                             <tr>
-                                <td><?php echo $this->Time->format(Configure::read('dateFormatSimple'),$movement['Movement']['movement_date']); ?>&nbsp;</td>
+                                <td><?php echo h($movement['Movement']['movement_date']); ?>&nbsp;</td>
                                 <td><?php echo h($movement['Movement']['description']); ?>&nbsp;</td>
                                 <td><?php echo h($movement['MovementCategory']['name']); ?></td>
                                 <td><?php echo h($movement['MovementOperation']['name']); ?></td>

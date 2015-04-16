@@ -36,8 +36,8 @@
                             ?>
                             <tr>
                                 <td><?php echo h($fiscalYear['FiscalYear']['title']); ?>&nbsp;</td>
-                                <td><?php echo $this->Time->format(Configure::read('dateFormatSimple'), $fiscalYear['FiscalYear']['open_date']); ?>&nbsp;</td>
-                                <td><?php echo $this->Time->format(Configure::read('dateFormatSimple'), $fiscalYear['FiscalYear']['close_date']); ?>&nbsp;</td>
+                                <td><?php echo h($fiscalYear['FiscalYear']['open_date']); ?>&nbsp;</td>
+                                <td><?php echo h($fiscalYear['FiscalYear']['close_date']); ?>&nbsp;</td>
                                 <td><?php echo h($fiscalYear['FiscalYear']['active_string']); ?>&nbsp;</td>
                                 <td class="actions hidden-print">
                                      <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-check"></span> ', array('action' => 'active', $fiscalYear['FiscalYear']['id']), array('title' => __('Active'), 'class' => 'btn btn-default btn-xs'.$activeDisabled, 'escape' => false)); ?>

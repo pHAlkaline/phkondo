@@ -30,8 +30,7 @@
 
                 <div class="form-group">
                     <?php
-                    echo $this->Form->input('expiration_date', array('dateFormat' => 'DMY', 'minYear' => date('Y') - 1,
-                        'maxYear' => date('Y') + 500, 'class' => 'form-control'));
+                    echo $this->Form->input('expiration_date', array('type' => 'text', 'class' => 'form-control datefield')); ?>
                     ?>
                 </div><!-- .form-group -->
 

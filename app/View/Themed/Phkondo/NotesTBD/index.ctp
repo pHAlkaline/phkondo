@@ -39,15 +39,15 @@ if ($this->Session->read('Condo.Budget.Status') == 1) {
                         <?php foreach ($notes as $note): ?>
                             <tr>
                                 <td><?php echo h($note['Note']['document']); ?>&nbsp;</td>
-                                <td><?php echo $this->Time->format(Configure::read('dateFormatSimple'),$note['Note']['document_date']); ?>&nbsp;</td>
+                                <td><?php echo h($note['Note']['document_date']); ?>&nbsp;</td>
                                 <td><?php echo h($note['Note']['title']); ?>&nbsp;</td>
                                 <td><?php echo h($note['NoteType']['name']); ?></td>
                                 <td><?php echo h($note['Fraction']['description']); ?></td>
                                 <td><?php echo h($note['Entity']['name']); ?></td>
                                 <td><?php echo h($note['Note']['amount']); ?>&nbsp;<?= Configure::read('currencySign'); ?></td>
                                 <!--td><?php //echo h($note['Note']['pending_amount']); ?>&nbsp;</td-->
-                                <td><?php echo $this->Time->format(Configure::read('dateFormatSimple'),$note['Note']['due_date']); ?>&nbsp;</td>
-                                <td><?php echo $this->Time->format(Configure::read('dateFormatSimple'),$note['Note']['payment_date']); ?>&nbsp;</td>
+                                <td><?php echo h($note['Note']['due_date']); ?>&nbsp;</td>
+                                <td><?php echo h($note['Note']['payment_date']); ?>&nbsp;</td>
                                 <td><?php echo h($note['NoteStatus']['name']); ?>    </td>
                                 <td class="actions hidden-print">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $note['Note']['id']), array('title'=>__('Details'),'class' => 'btn btn-default btn-xs','escape'=>false)); ?>

@@ -92,7 +92,7 @@
                             <tr>
                                 <td><?php echo $note['document']; ?></td>
                                 <td><?php echo $note['NoteType']['name']; ?></td>
-                                <td><?php echo $this->Time->format(Configure::read('dateFormatSimple'), $note['document_date']); ?></td>
+                                <td><?php echo h( $note['document_date']); ?></td>
                                 <td><?php echo $note['Fraction']['description']; ?></td>
                                 <td><?php echo $note['title']; ?></td>
                                 <td class="amount"><?php

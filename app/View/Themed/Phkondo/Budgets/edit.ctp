@@ -69,9 +69,7 @@
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-                    <?php echo $this->Form->input('budget_date', array('dateFormat' => 'DMY', 'minYear' => date('Y') - 10,
-                        'maxYear' => date('Y') + 50, 'class' => 'form-control'));
-                    ?>
+                    <?php echo $this->Form->input('budget_date', array('type' => 'text', 'class' => 'form-control datefield')); ?>
                 </div><!-- .form-group -->
                     <?php if ($this->data['Budget']['budget_status_id'] < 3) { ?> 
                     <div class="form-group">
@@ -82,9 +80,7 @@
                     </div><!-- .form-group -->
 
                     <div class="form-group">
-                        <?php echo $this->Form->input('begin_date', array('dateFormat' => 'DMY', 'minYear' => date('Y') - 10,
-                            'maxYear' => date('Y') + 50, 'class' => 'form-control'));
-                        ?>
+                        <?php echo $this->Form->input('begin_date', array('type' => 'text', 'class' => 'form-control datefield')); ?>
                     </div><!-- .form-group -->
 
                     <div class="form-group">

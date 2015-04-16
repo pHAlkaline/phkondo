@@ -37,13 +37,13 @@ if ($this->Session->read('Condo.Budget.Status') == 2) {
                     <tbody>
                         <?php foreach ($notes as $note): ?>
                             <tr>
-                                <td><?php echo $this->Time->format(Configure::read('dateFormatSimple'), $note['Note']['document_date']); ?>&nbsp;</td>
+                                <td><?php echo h( $note['Note']['document_date']); ?>&nbsp;</td>
                                 <td><?php echo h($note['Note']['title']); ?>&nbsp;</td>
                                 <td><?php echo h($note['NoteType']['name']); ?></td>
                                 <td><?php echo h($note['Fraction']['description']); ?></td>
                                 <td><?php echo h($note['Entity']['name']); ?></td>
-                                <td><?php echo $this->Time->format(Configure::read('dateFormatSimple'), $note['Note']['due_date']); ?>&nbsp;</td>
-                                <td><?php if ($note['Note']['payment_date']) echo $this->Time->format(Configure::read('dateFormatSimple'), $note['Note']['payment_date']); ?>&nbsp;</td>
+                                <td><?php echo h( $note['Note']['due_date']); ?>&nbsp;</td>
+                                <td><?php if ($note['Note']['payment_date']) echo h( $note['Note']['payment_date']); ?>&nbsp;</td>
                                 <td><?php echo h($note['NoteStatus']['name']); ?>    </td>
                                 <td class="amount"><?php echo h($note['Note']['amount']); ?>&nbsp;<?= Configure::read('currencySign'); ?></td>
 

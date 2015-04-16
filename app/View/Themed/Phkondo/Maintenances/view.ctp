@@ -44,12 +44,12 @@
                         </td>
                     </tr><tr>		<td><strong><?php echo __('Start Date'); ?></strong></td>
                         <td>
-                            <?php echo $this->Time->format(Configure::read('dateFormatSimple'), $maintenance['Maintenance']['start_date']); ?>
+                            <?php echo h( $maintenance['Maintenance']['start_date']); ?>
                             &nbsp;
                         </td>
                     </tr><tr>		<td><strong><?php echo __('Renewal Date'); ?></strong></td>
                         <td>
-                            <?php echo $this->Time->format(Configure::read('dateFormatSimple'), $maintenance['Maintenance']['renewal_date']); ?>
+                            <?php echo h( $maintenance['Maintenance']['renewal_date']); ?>
                             &nbsp;
                         </td>
                     </tr><tr>		<td><strong><?php echo __('Last Inspection'); ?></strong></td>
@@ -75,12 +75,12 @@
                         </td>
                     </tr><tr>		<td><strong><?php echo __('Modified'); ?></strong></td>
                         <td>
-                            <?php echo $this->Time->format(Configure::read('dateFormat'), $maintenance['Maintenance']['modified']); ?>
+                            <?php echo h( $maintenance['Maintenance']['modified']); ?>
                             &nbsp;
                         </td>
                     </tr><tr>		<td><strong><?php echo __('Created'); ?></strong></td>
                         <td>
-                            <?php echo $this->Time->format(Configure::read('dateFormat'), $maintenance['Maintenance']['created']); ?>
+                            <?php echo h( $maintenance['Maintenance']['created']); ?>
                             &nbsp;
                         </td>
                     </tr>

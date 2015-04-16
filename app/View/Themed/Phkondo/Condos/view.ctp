@@ -81,9 +81,9 @@ $has_fiscal_year = (isset($condo['FiscalYear'][0]['title'])) ? true : false;
                         <td>
                             <?php
                             if ($has_fiscal_year) {
-                                echo h($condo['FiscalYear'][0]['title'] . ' ( ' . $this->Time->format(Configure::read('dateFormatSimple'), $condo['FiscalYear'][0]['open_date']) . ' a ' . $this->Time->format(Configure::read('dateFormatSimple'), $condo['FiscalYear'][0]['close_date']) . ' ) ');
+                                echo h($condo['FiscalYear'][0]['title'] . ' ( ' . h( $condo['FiscalYear'][0]['open_date']) . ' a ' . h( $condo['FiscalYear'][0]['close_date']) . ' ) ');
                             } else {
-                                echo '<div class="alert alert-warning">' . __('Deve activar um exercicio!!') . '</div>';
+                                echo '<div class="alert alert-warning">' . __('Please activate one fiscal year.') . '</div>';
                             }
                             ?>
                             &nbsp;
@@ -91,7 +91,7 @@ $has_fiscal_year = (isset($condo['FiscalYear'][0]['title'])) ? true : false;
                     </tr>
                     <tr>		<td><strong><?php echo __('Created'); ?></strong></td>
                         <td>
-                            <?php echo $this->Time->format(Configure::read('dateFormat'), $condo['Condo']['created']); ?>
+                            <?php echo h( $condo['Condo']['created']); ?>
                             &nbsp;
                         </td>
                     </tr>
