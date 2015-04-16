@@ -44,6 +44,12 @@ msgstr "Campo do tipo booleano."
 msgid "close date must be after open date"
 msgstr "Data de fecho deve ser superior a data de abertura."
 
+msgid "due date must be after document date"
+msgstr "Prazo de pagamento deve ser superior a data do documento"
+
+msgid "payment date must be after document date"
+msgstr "Data de pagamento deve ser superior a data do documento"
+
 msgid "date"
 msgstr "Campo do tipo data."
 
@@ -61,6 +67,9 @@ msgstr "Data de fecho inválida."
 
 msgid "invalid date"
 msgstr "Data inválida."
+
+msgid "invalid movement date"
+msgstr "Data de movimento inválida."
 
 msgid "invalid open date"
 msgstr "Data de abertura inválida."

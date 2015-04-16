@@ -68,12 +68,12 @@
                    
                     <tr>		<td><strong><?php echo __('Modified'); ?></strong></td>
                         <td>
-                            <?php echo $this->Time->format(Configure::read('dateFormat'), $fraction['Fraction']['modified']); ?>
+                            <?php echo h( $fraction['Fraction']['modified']); ?>
                             &nbsp;
                         </td>
                     </tr><tr>		<td><strong><?php echo __('Created'); ?></strong></td>
                         <td>
-                            <?php echo $this->Time->format(Configure::read('dateFormat'), $fraction['Fraction']['created']); ?>
+                            <?php echo h( $fraction['Fraction']['created']); ?>
                             &nbsp;
                         </td>
                     </tr>

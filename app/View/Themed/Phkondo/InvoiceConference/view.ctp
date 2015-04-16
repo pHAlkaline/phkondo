@@ -60,7 +60,7 @@
                             <td>
                                 <?php 
                                 if (!empty($invoice_conference['InvoiceConference']['document_date'])):
-                                echo $this->Time->format(Configure::read('dateFormatSimple'), $invoice_conference['InvoiceConference']['document_date']);
+                                echo h( $invoice_conference['InvoiceConference']['document_date']);
                                 endif;
                                 ?>
                                 &nbsp;
@@ -71,7 +71,7 @@
                             <td>
                                 <?php 
                                 if (!empty($invoice_conference['InvoiceConference']['payment_due_date'])):
-                                echo $this->Time->format(Configure::read('dateFormatSimple'), $invoice_conference['InvoiceConference']['payment_due_date']); 
+                                echo h( $invoice_conference['InvoiceConference']['payment_due_date']); 
                                 endif;
                                 
                                 ?>
@@ -83,7 +83,7 @@
                             <td>
                                 <?php 
                                 if (!empty($invoice_conference['InvoiceConference']['payment_date'])):
-                                echo $this->Time->format(Configure::read('dateFormatSimple'), $invoice_conference['InvoiceConference']['payment_date']); 
+                                echo h( $invoice_conference['InvoiceConference']['payment_date']); 
                                 endif;
                                 
                                 ?>
@@ -102,14 +102,14 @@
                         <tr>		
                             <td><strong><?php echo __('Modified'); ?></strong></td>
                             <td>
-                                <?php echo $this->Time->format(Configure::read('dateFormat'), $invoice_conference['InvoiceConference']['modified']); ?>
+                                <?php echo h( $invoice_conference['InvoiceConference']['modified']); ?>
                                 &nbsp;
                             </td>
                         </tr>
                         <tr>		
                             <td><strong><?php echo __('Created'); ?></strong></td>
                             <td>
-                                <?php echo $this->Time->format(Configure::read('dateFormat'), $invoice_conference['InvoiceConference']['created']); ?>
+                                <?php echo h( $invoice_conference['InvoiceConference']['created']); ?>
                                 &nbsp;
                             </td>
                         </tr>

@@ -29,7 +29,7 @@
                     <tbody>
                         <tr>		<td class='col-sm-2'><strong><?php echo __('Movement Date'); ?></strong></td>
                             <td>
-                                <?php echo $this->Time->format(Configure::read('dateFormatSimple'),$movement['Movement']['movement_date']); ?>
+                                <?php echo h($movement['Movement']['movement_date']); ?>
                                 &nbsp;
                             </td>
                         </tr><tr>		<td><strong><?php echo __('Description'); ?></strong></td>
@@ -64,12 +64,12 @@
                             </td>
                         </tr><tr>		<td><strong><?php echo __('Modified'); ?></strong></td>
                             <td>
-                                <?php echo $this->Time->format(Configure::read('dateFormat'),$movement['Movement']['modified']); ?>
+                                <?php echo h($movement['Movement']['modified']); ?>
                                 &nbsp;
                             </td>
                         </tr><tr>		<td><strong><?php echo __('Created'); ?></strong></td>
                             <td>
-                                <?php echo $this->Time->format(Configure::read('dateFormat'),$movement['Movement']['created']); ?>
+                                <?php echo h($movement['Movement']['created']); ?>
                                 &nbsp;
                             </td>
                         </tr>					</tbody>

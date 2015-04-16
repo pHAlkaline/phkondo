@@ -29,7 +29,7 @@
                     <tbody>
                         <tr>		<td class='col-sm-2'><strong><?php echo __('Expiration Date'); ?></strong></td>
                             <td>
-                                <?php echo $this->Time->format(Configure::read('dateFormatSimple'),$insurance['Insurance']['expiration_date']); ?>
+                                <?php echo h($insurance['Insurance']['expiration_date']); ?>
                                 &nbsp;
                             </td>
                         </tr><tr>		<td><strong><?php echo __n('Fraction','Fractions',1); ?></strong></td>
@@ -69,12 +69,12 @@
                             </td>
                         </tr><tr>		<td><strong><?php echo __('Modified'); ?></strong></td>
                             <td>
-                                <?php echo $this->Time->format(Configure::read('dateFormat'),$insurance['Insurance']['modified']); ?>
+                                <?php echo h($insurance['Insurance']['modified']); ?>
                                 &nbsp;
                             </td>
                         </tr><tr>		<td><strong><?php echo __('Created'); ?></strong></td>
                             <td>
-                                <?php echo $this->Time->format(Configure::read('dateFormat'),$insurance['Insurance']['created']); ?>
+                                <?php echo h($insurance['Insurance']['created']); ?>
                                 &nbsp;
                             </td>
                         </tr>					</tbody>

@@ -47,12 +47,12 @@
                             </td>
                         </tr><tr>		<td><strong><?php echo __('Modified'); ?></strong></td>
                             <td>
-                                <?php echo $this->Time->format(Configure::read('dateFormat'),$movementOperation['MovementOperation']['modified']); ?>
+                                <?php echo h($movementOperation['MovementOperation']['modified']); ?>
                                 &nbsp;
                             </td>
                         </tr><tr>		<td><strong><?php echo __('Created'); ?></strong></td>
                             <td>
-                                <?php echo $this->Time->format(Configure::read('dateFormat'),$movementOperation['MovementOperation']['created']); ?>
+                                <?php echo h($movementOperation['MovementOperation']['created']); ?>
                                 &nbsp;
                             </td>
                         </tr>					</tbody>

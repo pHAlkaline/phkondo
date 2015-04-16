@@ -27,7 +27,7 @@
                             <tr>
                                 <td><?php echo h($maintenance['Maintenance']['title']); ?>&nbsp;</td>
                                 <td><?php echo h($maintenance['Maintenance']['client_number']); ?>&nbsp;</td>
-                                <td><?php echo $this->Time->format(Configure::read('dateFormatSimple'),$maintenance['Maintenance']['renewal_date']); ?>&nbsp;</td>
+                                <td><?php echo h($maintenance['Maintenance']['renewal_date']); ?>&nbsp;</td>
                                 <td><?php echo h($maintenance['Maintenance']['last_inspection']); ?>&nbsp;</td>
                                 <td><?php echo h($maintenance['Maintenance']['next_inspection']); ?>&nbsp;</td>
                                 <td>

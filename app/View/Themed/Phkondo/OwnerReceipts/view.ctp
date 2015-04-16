@@ -79,13 +79,7 @@
                         </td>
                     </tr><tr>		<td><strong><?php echo __('Document Date'); ?></strong></td>
                         <td>
-                            <?php echo $this->Time->format(Configure::read('dateFormatSimple'), $receipt['Receipt']['document_date']); ?>
-                            &nbsp;
-                        </td>
-                    </tr>
-                    <tr>		<td><strong><?php echo __('Observations'); ?></strong></td>
-                        <td>
-                            <?php echo h($receipt['Receipt']['observations']); ?>
+                            <?php echo h( $receipt['Receipt']['document_date']); ?>
                             &nbsp;
                         </td>
                     </tr>
@@ -112,22 +106,29 @@
                         <td>
                             <?php
                             if ($receipt['Receipt']['payment_date'] != '') {
-                                echo $this->Time->format(Configure::read('dateFormatSimple'), $receipt['Receipt']['payment_date']);
+                                echo h( $receipt['Receipt']['payment_date']);
                             }
                             ?>
                             &nbsp;
                         </td>
                     </tr><tr>		<td><strong><?php echo __('Modified'); ?></strong></td>
                         <td>
-                            <?php echo $this->Time->format(Configure::read('dateFormat'), $receipt['Receipt']['modified']); ?>
+                            <?php echo h( $receipt['Receipt']['modified']); ?>
                             &nbsp;
                         </td>
                     </tr><tr>		<td><strong><?php echo __('Created'); ?></strong></td>
                         <td>
-                            <?php echo $this->Time->format(Configure::read('dateFormat'), $receipt['Receipt']['created']); ?>
+                            <?php echo h( $receipt['Receipt']['created']); ?>
                             &nbsp;
                         </td>
-                    </tr>					</tbody>
+                    </tr>
+                    <tr>		<td><strong><?php echo __('Observations'); ?></strong></td>
+                        <td>
+                            <?php echo h($receipt['Receipt']['observations']); ?>
+                            &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
             </table><!-- /.table table-hover table-condensed -->
 
 
@@ -167,7 +168,7 @@
                                 <tr>
                                     <td><?php echo $note['document']; ?></td>
                                     <td><?php echo $note['NoteType']['name']; ?></td>
-                                    <td><?php echo $this->Time->format(Configure::read('dateFormatSimple'), $note['document_date']); ?></td>
+                                    <td><?php echo h( $note['document_date']); ?></td>
                                     <td><?php echo $note['Fraction']['description']; ?></td>
                                     <td><?php echo $note['title']; ?></td>
                                     <td class="amount"><?php
@@ -175,7 +176,7 @@
                                             echo '-';
                                         }
                                         echo $note['amount'];
-                                        ?>&&nbsp;<?= Configure::read('currencySign'); ?></td>
+                                        ?>&nbsp;<?= Configure::read('currencySign'); ?></td>
 
                                     
 

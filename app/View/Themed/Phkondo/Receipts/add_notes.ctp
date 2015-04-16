@@ -50,14 +50,14 @@
                     <?php foreach ($notes as $key => $note): ?>
                         <tr>
                             <td><?php echo h($note['Note']['document']); ?>&nbsp;</td>
-                            <td><?php echo $this->Time->format(Configure::read('dateFormatSimple'), $note['Note']['document_date']); ?>&nbsp;</td>
+                            <td><?php echo h( $note['Note']['document_date']); ?>&nbsp;</td>
                             <td><?php echo h($note['Note']['title']); ?>&nbsp;</td>
                             <td><?php echo h($note['NoteType']['name']); ?></td>
                             <td><?php echo h($note['Fraction']['fraction']); ?></td>
                             <td><?php echo h($note['Entity']['name']); ?></td>
                             <td><?php echo h($note['Note']['amount']); ?>&nbsp;<?= Configure::read('currencySign'); ?></td>
                             <!--td><?php //echo h($note['Note']['pending_amount']);  ?>&nbsp;</td-->
-                            <td><?php echo $this->Time->format(Configure::read('dateFormatSimple'), $note['Note']['due_date']); ?>&nbsp;</td>
+                            <td><?php echo h( $note['Note']['due_date']); ?>&nbsp;</td>
                             <td class="actions">
                                 <?php echo $this->Form->hidden('Note.' . $note['Note']['id'] . '.type', array('value' => $note['NoteType']['id'])); ?>
                                 <?php echo $this->Form->hidden('Note.' . $note['Note']['id'] . '.amount', array('value' => $note['Note']['amount'])); ?>

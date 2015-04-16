@@ -77,12 +77,12 @@
                    
                     <tr>		<td><strong><?php echo __('Modified'); ?></strong></td>
                         <td>
-                            <?php echo $this->Time->format(Configure::read('dateFormat'), $entity['Entity']['modified']); ?>
+                            <?php echo h( $entity['Entity']['modified']); ?>
                             &nbsp;
                         </td>
                     </tr><tr>		<td><strong><?php echo __('Created'); ?></strong></td>
                         <td>
-                            <?php echo $this->Time->format(Configure::read('dateFormat'), $entity['Entity']['created']); ?>
+                            <?php echo h( $entity['Entity']['created']); ?>
                             &nbsp;
                         </td>
                     </tr>

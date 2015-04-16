@@ -28,15 +28,14 @@
                     <?php echo $this->Form->input('title', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
 
-                <div class="form-group">
-                    <?php echo $this->Form->input('open_date', array('dateFormat'=>'DMY','minYear' => date('Y') - 10,
-    'maxYear' => date('Y') + 50,'class' => 'form-control')); ?>
+                 <div class="form-group">
+                    <?php echo $this->Form->input('open_date', array('type'=>'text', 'class' => 'form-control datefield')); ?>
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-                    <?php echo $this->Form->input('close_date', array('dateFormat'=>'DMY','minYear' => date('Y') - 10,
-    'maxYear' => date('Y') + 50,'class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('close_date', array('type'=>'text', 'class' => 'form-control datefield' )); ?>
                 </div><!-- .form-group -->
+                
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <?php echo $this->Form->input('active', array('class' => '', 'label' => __('Active'), 'div' => array('class' => 'checkbox'), 'checked' => true, 'between' => '', 'after' => '')); ?>

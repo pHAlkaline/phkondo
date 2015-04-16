@@ -32,8 +32,7 @@
                     <?php echo $this->Form->input('fraction_id', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
-                    <?php echo $this->Form->input('expiration_date', array('dateFormat'=>'DMY','minYear' => date('Y')-1,
-    'maxYear' => date('Y') + 50,'class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('expiration_date', array('type' => 'text', 'class' => 'form-control datefield')); ?>
                 </div><!-- .form-group -->
 
                 <div class="form-group">

@@ -7,9 +7,9 @@
 
             <ul class="nav nav-pills nav-stacked">
                 <?php if (count($suppliers) > 1) { ?>
-                    <li><?php echo $this->Html->link(__('List Invoices'), array('action' => 'index'),array('class'=>'btn')); ?></li>
+                    <li><?php echo $this->Html->link(__('List Invoices'), array('action' => 'index'), array('class' => 'btn')); ?></li>
                 <?php } else { ?>
-                    <li><?php echo $this->Html->link(__('List Invoices'), array('action' => 'index_by_supplier', key($suppliers)),array('class'=>'btn')); ?></li>
+                    <li><?php echo $this->Html->link(__('List Invoices'), array('action' => 'index_by_supplier', key($suppliers)), array('class' => 'btn')); ?></li>
                 <?php } ?>
             </ul><!-- /.list-group -->
 
@@ -49,16 +49,10 @@
                     <?php echo $this->Form->input('amount', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
-                    <?php
-                    echo $this->Form->input('document_date', array('dateFormat' => 'DMY', 'minYear' => date('Y') - 10,
-                        'maxYear' => date('Y') + 50, 'class' => 'form-control'));
-                    ?>
+                    <?php echo $this->Form->input('document_date', array('type' => 'text', 'class' => 'form-control datefield')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
-                    <?php
-                    echo $this->Form->input('payment_due_date', array('dateFormat' => 'DMY', 'minYear' => date('Y') - 10,
-                        'maxYear' => date('Y') + 50, 'class' => 'form-control'));
-                    ?>
+                    <?php echo $this->Form->input('payment_due_date', array('type' => 'text', 'class' => 'form-control datefield')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
                     <?php echo $this->Form->input('comments', array('class' => 'form-control')); ?>
@@ -66,24 +60,27 @@
                 <div class="form-group">
                     <?php echo $this->Form->input('invoice_conference_status_id', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
-                <?php 
-                $hidden="hidden";
-                $disabled="disabled";
-               
-                if ($this->Form->value('invoice_conference_status_id')=='5') {
-                    $hidden=null;
-                    $disabled=null;
+                <?php
+                $hidden = "hidden";
+                $disabled = "disabled";
+
+                if ($this->Form->value('invoice_conference_status_id') == '5') {
+                    $hidden = null;
+                    $disabled = null;
                 }
                 ?>
                 <div class="form-group <?php echo $hidden; ?>" id="elem_payment_date">
                     <?php
-                    echo $this->Form->input('payment_date', array('dateFormat' => 'DMY', 'minYear' => date('Y') - 10,
-                        'maxYear' => date('Y') + 50, 'empty' => true, 'class' => 'form-control','disabled'=>$disabled));
+                    echo $this->Form->input('payment_date', array('type' => 'text',  'class' => 'form-control datefield', 'disabled' => $disabled));
                     ?>
                 </div><!-- .form-group -->
 
             </fieldset>
-            <div class="form-group">                 <div class="col-sm-offset-2 col-sm-6">                     <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-large btn-primary pull-right')); ?>                 </div>             </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-6">
+                    <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-large btn-primary pull-right')); ?>
+                </div>
+            </div>
             <?php echo $this->Form->end(); ?>
 
         </div><!-- /.form -->

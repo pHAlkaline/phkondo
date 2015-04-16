@@ -40,43 +40,35 @@
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-                    <?php
-                    echo $this->Form->input('start_date', array('dateFormat' => 'DMY', 'minYear' => date('Y') - 10,
-                        'maxYear' => date('Y') + 50, 'class' => 'form-control'));
-                    ?>
+                    <?php echo $this->Form->input('start_date', array('type' => 'text', 'class' => 'form-control datefield')); ?>
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-                    <?php
-                    echo $this->Form->input('renewal_date', array('dateFormat' => 'DMY', 'minYear' => date('Y') - 1,
-                        'maxYear' => date('Y') + 500, 'class' => 'form-control'));
-                    ?>
+                    <?php echo $this->Form->input('renewal_date', array('type' => 'text', 'class' => 'form-control datefield')); ?>
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-                    <?php
-                    echo $this->Form->input('last_inspection', array('dateFormat' => 'DMY', 'minYear' => date('Y') - 10,
-                        'maxYear' => date('Y'), 'class' => 'form-control'));
-                    ?>
+                    <?php echo $this->Form->input('last_inspection', array('type' => 'text', 'class' => 'form-control datefield')); ?>
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-                    <?php
-                    echo $this->Form->input('next_inspection', array('dateFormat' => 'DMY', 'minYear' => date('Y') - 1,
-                        'maxYear' => date('Y') + 500, 'class' => 'form-control'));
-                    ?>
+                    <?php echo $this->Form->input('next_inspection', array('type' => 'text', 'class' => 'form-control datefield')); ?>
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-<?php echo $this->Form->input('comments', array('class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('comments', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
 
                 <div class="col-sm-offset-2 col-sm-10">
-<?php echo $this->Form->input('active', array('class' => '', 'label' => __('Active'), 'div' => array('class' => 'checkbox'), 'checked' => true, 'between' => '', 'after' => '')); ?>
+                    <?php echo $this->Form->input('active', array('class' => '', 'label' => __('Active'), 'div' => array('class' => 'checkbox'), 'checked' => true, 'between' => '', 'after' => '')); ?>
                 </div>
             </fieldset>
-            <div class="form-group">                 <div class="col-sm-offset-2 col-sm-6">                     <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-large btn-primary pull-right')); ?>                 </div>             </div>
-<?php echo $this->Form->end(); ?>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-6">
+                    <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-large btn-primary pull-right')); ?>
+                </div>
+            </div>
+                    <?php echo $this->Form->end(); ?>
 
         </div><!-- /.form -->
 
