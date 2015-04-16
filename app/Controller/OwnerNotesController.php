@@ -123,7 +123,7 @@ class OwnerNotesController extends AppController {
 
         $noteTypes = $this->Note->NoteType->find('list');
         $fractions = $this->Note->Fraction->find('list', array('conditions' => array('Fraction.id' => $this->Session->read('Condo.Fraction.ViewID'))));
-        if ($this->request->data['Note']['receipt_id']!=null){
+        if (isset($this->request->data['Note']['receipt_id']) && $this->request->data['Note']['receipt_id']!=null){
             $noteStatuses = $this->Note->NoteStatus->find('list', array('conditions' => array('id' => $this->request->data['Note']['note_status_id'])));
         } else {
             $noteStatuses = $this->Note->NoteStatus->find('list', array('conditions' => array('active' => '1')));
@@ -171,8 +171,11 @@ class OwnerNotesController extends AppController {
     }
 
     private function _setDocument() {
-        $doc_date = $this->request->data['Note']['document_date'];
-        $date = new DateTime($doc_date['year'] . '-' . $doc_date['month'] . '-' . $doc_date['day']);
+        if (is_array($this->request->data['Note']['document_date'])) {
+            $dateTmp = $this->request->data['Note']['document_date']['day'] . '-' . $this->request->data['Note']['document_date']['month'] . '-' . $this->request->data['Note']['document_date']['year'];
+            $this->request->data['Note']['document_date'] = $dateTmp;
+        };
+        $date = new DateTime($this->request->data['Note']['document_date']);
         $dateResult = $date->format('Y');
         $document = $this->Note->id . '-' . $this->request->data['Note']['note_type_id'];
         $this->Note->saveField('document', $document);

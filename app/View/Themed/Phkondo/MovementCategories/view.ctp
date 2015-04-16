@@ -45,12 +45,12 @@
                             </td>
                         </tr><tr>		<td><strong><?php echo __('Modified'); ?></strong></td>
                             <td>
-                                <?php echo $this->Time->format(Configure::read('dateFormat'),$movementCategory['MovementCategory']['modified']); ?>
+                                <?php echo h($movementCategory['MovementCategory']['modified']); ?>
                                 &nbsp;
                             </td>
                         </tr><tr>		<td><strong><?php echo __('Created'); ?></strong></td>
                             <td>
-                                <?php echo $this->Time->format(Configure::read('dateFormat'),$movementCategory['MovementCategory']['created']); ?>
+                                <?php echo h($movementCategory['MovementCategory']['created']); ?>
                                 &nbsp;
                             </td>
                         </tr>					</tbody>

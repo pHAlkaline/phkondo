@@ -6,9 +6,9 @@
         <div class="actions">
 
             <ul class="nav nav-pills nav-stacked">
-                <li ><?php echo $this->Html->link(__('List Notes'), array('action' => 'index'),array('class'=>'btn')); ?></li>
-                
-                
+                <li ><?php echo $this->Html->link(__('List Notes'), array('action' => 'index'), array('class' => 'btn')); ?></li>
+
+
             </ul><!-- /.list-group -->
 
         </div><!-- /.actions -->
@@ -19,7 +19,7 @@
 
         <div class="fraction_notes form">
 
-            <?php echo $this->Form->create('Note', array('class' => 'form-horizontal',                 'role' => 'form',                 'inputDefaults' => array(                     'class' => 'form-control',                     'label' => array('class' => 'col-sm-2 control-label'),                     'between' => '<div class="col-sm-6">',                     'after' => '</div>',                     ))); ?>
+            <?php echo $this->Form->create('Note', array('class' => 'form-horizontal', 'role' => 'form', 'inputDefaults' => array('class' => 'form-control', 'label' => array('class' => 'col-sm-2 control-label'), 'between' => '<div class="col-sm-6">', 'after' => '</div>',))); ?>
             <fieldset>
                 <h2><?php echo __('Add Note'); ?></h2>
                 <div class="form-group">
@@ -33,8 +33,8 @@
                 </div><!-- .form-group -->
 
                 <!--div class="form-group">
-                    <?php //echo $this->Form->label('pending_amount', __('Pending Amount'), array('class' => 'control-label')); ?>
-                    <?php //echo $this->Form->input('pending_amount', array('class' => 'form-control')); ?>
+                <?php //echo $this->Form->label('pending_amount', __('Pending Amount'), array('class' => 'control-label')); ?>
+                <?php //echo $this->Form->input('pending_amount', array('class' => 'form-control')); ?>
                 </div--><!-- .form-group -->
 
                 <div class="form-group">
@@ -42,34 +42,36 @@
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-                    <?php echo $this->Form->input('document_date', array('dateFormat'=>'DMY','minYear' => date('Y') - 10,
-    'maxYear' => date('Y') + 50,'class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('document_date', array('type' => 'text', 'class' => 'form-control datefield')); ?>
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-                    <?php echo $this->Form->input('due_date', array('dateFormat'=>'DMY','minYear' => date('Y') - 10,
-    'maxYear' => date('Y') + 50,'class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('due_date', array('type' => 'text', 'class' => 'form-control datefield')); ?>
                 </div><!-- .form-group -->
 
                 <div class="form-group">
                     <?php echo $this->Form->input('note_status_id', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
-                <?php 
-                $hidden="hidden";
-                $disabled="disabled";
-                
-                if ($this->Form->value('note_status_id')=='3') {
-                    $hidden=null;
-                    $disabled=null;
+                <?php
+                $hidden = "hidden";
+                $disabled = "disabled";
+
+                if ($this->Form->value('note_status_id') == '3') {
+                    $hidden = null;
+                    $disabled = null;
                 }
                 ?>
                 <div class="form-group <?php echo $hidden; ?>" id="elem_payment_date">
-                    <?php echo $this->Form->input('payment_date',  array('empty' => '', 'default' => '','dateFormat'=>'DMY','minYear' => date('Y') - 10, 'maxYear' => date('Y') + 50,'class' => 'form-control','disabled'=>$disabled)); ?>
+                    <?php echo $this->Form->input('payment_date', array('type' => 'text', 'class' => 'form-control datefield', 'disabled' => $disabled)); ?>
                 </div><!-- .form-group -->
 
 
             </fieldset>
-            <div class="form-group">                 <div class="col-sm-offset-2 col-sm-6">                     <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-large btn-primary pull-right')); ?>                 </div>             </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-6">
+                    <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-large btn-primary pull-right')); ?>
+                </div>
+            </div>
             <?php echo $this->Form->end(); ?>
 
         </div><!-- /.form -->

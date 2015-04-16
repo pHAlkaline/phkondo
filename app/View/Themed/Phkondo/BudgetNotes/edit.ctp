@@ -59,13 +59,11 @@
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-                    <?php echo $this->Form->input('document_date', array('dateFormat'=>'DMY','minYear' => date('Y') - 10,
-    'maxYear' => date('Y') + 50,'class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('document_date', array('type' => 'text', 'class' => 'form-control datefield')); ?>
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-                    <?php echo $this->Form->input('due_date', array('dateFormat'=>'DMY','minYear' => date('Y') - 10,
-    'maxYear' => date('Y') + 50,'class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('due_date', array('type' => 'text', 'class' => 'form-control datefield')); ?>
                 </div><!-- .form-group -->
 
                 <div class="form-group">
@@ -82,7 +80,7 @@
                 }
                 ?>
                 <div class="form-group <?php echo $hidden; ?>" id="elem_payment_date">
-                    <?php echo $this->Form->input('payment_date',  array('empty' => '', 'default' => '','dateFormat'=>'DMY','minYear' => date('Y') - 10, 'maxYear' => date('Y') + 50,'class' => 'form-control','disabled'=>$disabled)); ?>
+                    <?php echo $this->Form->input('payment_date', array('empty' => '', 'default' => '', 'type' => 'text', 'class' => 'form-control datefield', 'disabled' => $disabled)); ?>
                 </div><!-- .form-group -->
 
             </fieldset>

@@ -117,7 +117,7 @@ class InvoiceConference extends AppModel {
             ),
             'validInterval' => array(
                 'rule' => array('checkFutureDate'),
-                'message' => 'invalid date',
+                'message' => 'due date must be after document date',
             //'allowEmpty' => false,
             //'required' => false,
             //'last' => false, // Stop validation after this rule
@@ -139,7 +139,7 @@ class InvoiceConference extends AppModel {
             ),
             'validInterval' => array(
                 'rule' => array('checkPastDate'),
-                'message' => 'invalid date',
+                'message' => 'payment date must be after document date',
             //'allowEmpty' => false,
             //'required' => false,
             //'last' => false, // Stop validation after this rule

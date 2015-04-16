@@ -73,7 +73,7 @@
                         </td>
                     </tr><tr>		<td><strong><?php echo __('Budget Date'); ?></strong></td>
                         <td>
-                            <?php echo $this->Time->format(Configure::read('dateFormatSimple'), $budget['Budget']['budget_date']); ?>
+                            <?php echo h( $budget['Budget']['budget_date']); ?>
                             &nbsp;
                         </td>
                     </tr><tr>		<td><strong><?php echo __('Requested Amount'); ?></strong></td>
@@ -95,7 +95,7 @@
                     </tr>
                     <tr>		<td><strong><?php echo __('Begin Date'); ?></strong></td>
                         <td>
-                            <?php echo $this->Time->format(Configure::read('dateFormatSimple'), $budget['Budget']['begin_date']); ?>
+                            <?php echo h( $budget['Budget']['begin_date']); ?>
                             &nbsp;
                         </td>
                     </tr><tr>		<td><strong><?php echo __n('Share', 'Shares', 2); ?></strong></td>
@@ -126,12 +126,12 @@
                     </tr>
                     <tr>		<td><strong><?php echo __('Modified'); ?></strong></td>
                         <td>
-                            <?php echo $this->Time->format(Configure::read('dateFormat'), $budget['Budget']['modified']); ?>
+                            <?php echo h( $budget['Budget']['modified']); ?>
                             &nbsp;
                         </td>
                     </tr><tr>		<td><strong><?php echo __('Created'); ?></strong></td>
                         <td>
-                            <?php echo $this->Time->format(Configure::read('dateFormat'), $budget['Budget']['created']); ?>
+                            <?php echo h( $budget['Budget']['created']); ?>
                             &nbsp;
                         </td>
                     </tr>

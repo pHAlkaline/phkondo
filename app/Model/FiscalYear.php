@@ -139,17 +139,36 @@ class FiscalYear extends AppModel {
         $fiscalYearId = null;
         if (isset($this->data[$this->alias]['id']))
             $fiscalYearId = $this->data[$this->alias]['id'];
+        
+        $open_date=date(Configure::read('databaseDateFormat'), strtotime($this->data[$this->alias]['open_date']));
+        $close_date=date(Configure::read('databaseDateFormat'), strtotime($this->data[$this->alias]['close_date']));
         $inInterval = $this->find('count', array('conditions' =>
             array('and' =>
                 array('or' =>
                     array(
-                        array($this->alias . '.open_date between ? and ?' => array($this->data[$this->alias]['open_date'], $this->data[$this->alias]['close_date'])),
-                        array($this->alias . '.close_date between ? and ?' => array($this->data[$this->alias]['open_date'], $this->data[$this->alias]['close_date']))
+                        array(' ? between open_date and close_date' => array($open_date)),
+                        array(' ? between open_date and close_date' => array($close_date))
                     ),
                     $this->alias . '.condo_id' => $this->data[$this->alias]['condo_id'],
                     $this->alias . '.id <>' => $fiscalYearId))
         ));
-        return $inInterval < 1;
+        
+        if ($inInterval > 0) return false;
+        
+        $inInterval = $this->find('count', array('conditions' =>
+            array('and' =>
+                array('or' =>
+                    array(
+                        array($this->alias . '.open_date between ? and ?' => array($open_date, $close_date)),
+                        array($this->alias . '.close_date between ? and ?' => array($open_date, $close_date))
+                    ),
+                    $this->alias . '.condo_id' => $this->data[$this->alias]['condo_id'],
+                    $this->alias . '.id <>' => $fiscalYearId))
+        ));
+        
+        if ($inInterval > 0) return false;
+        
+        return true;
     }
 
     function noActive($data) {
@@ -178,6 +197,8 @@ class FiscalYear extends AppModel {
         );
         return $this->saveField('active', '1');
     }
+    
+   
 
     /**
      * afterFind callback
@@ -218,7 +239,11 @@ class FiscalYear extends AppModel {
         $result = true;
         if ($this->hasPaidNotes($this->id))
             $result = false;
-
+        if ($this->hasMovements($this->id))
+            $result = false;
+        if ($this->field('active'))
+            $result = false;
+        
         return $result;
     }
 
@@ -237,7 +262,8 @@ class FiscalYear extends AppModel {
         return $this->beforeDelete(false);
     }
 
-    function hasPaidNotes($id = null) {
+    
+     function hasPaidNotes($id = null) {
         $this->noAfterFind = true;
         if (!empty($id)) {
             $this->id = $id;
@@ -250,6 +276,21 @@ class FiscalYear extends AppModel {
 
         $notes = ClassRegistry::init('Note')->find('count', array('conditions' => array('Note.fiscal_year_id' => $id, 'Note.note_status_id' => array('2', '3'))));
         return ($notes > 0) ? true : false;
+    }
+    
+    function hasMovements($id = null) {
+        $this->noAfterFind = true;
+        if (!empty($id)) {
+            $this->id = $id;
+        }
+
+        $id = $this->id;
+        if (!$this->exists()) {
+            return false;
+        }
+
+        $movements = ClassRegistry::init('Movement')->find('count', array('conditions' => array('Movement.fiscal_year_id' => $id)));
+        return ($movements > 0) ? true : false;
     }
 
 }

@@ -49,12 +49,12 @@
                             </td>
                         </tr><tr>		<td><strong><?php echo __('Modified'); ?></strong></td>
                             <td>
-                                <?php echo $this->Time->format(Configure::read('dateFormat'),$user['User']['modified']); ?>
+                                <?php echo h($user['User']['modified']); ?>
                                 &nbsp;
                             </td>
                         </tr><tr>		<td><strong><?php echo __('Created'); ?></strong></td>
                             <td>
-                                <?php echo $this->Time->format(Configure::read('dateFormat'),$user['User']['created']); ?>
+                                <?php echo h($user['User']['created']); ?>
                                 &nbsp;
                             </td>
                         </tr>					</tbody>

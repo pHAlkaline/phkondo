@@ -320,6 +320,9 @@ msgid_plural "Contacts"
 msgstr[0] ""
 msgstr[1] ""
 
+msgid "Contacts"
+msgstr "Contactos"
+
 msgid "Content"
 msgstr ""
 
@@ -1216,6 +1219,9 @@ msgstr ""
 msgid "Start Session"
 msgstr ""
 
+msgid "Status"
+msgstr ""
+
 msgid "Submit"
 msgstr ""
 
@@ -1498,6 +1504,9 @@ msgid ""
 msgstr ""
 
 msgid "Wednesday"
+msgstr ""
+
+msgid "Welcome"
 msgstr ""
 
 msgid "Welcome to pHKondo."

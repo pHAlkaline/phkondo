@@ -25,8 +25,8 @@
                             <tr>
                                 <td><?php echo h($movementCategory['MovementCategory']['name']); ?>&nbsp;</td>
                                 <td><?php echo h($movementCategory['MovementCategory']['active_string']); ?>&nbsp;</td>
-                                <td><?php echo $this->Time->format(Configure::read('dateFormat'), $movementCategory['MovementCategory']['modified']); ?>&nbsp;</td>
-                                <td><?php echo $this->Time->format(Configure::read('dateFormat'), $movementCategory['MovementCategory']['created']); ?>&nbsp;</td>
+                                <td><?php echo h( $movementCategory['MovementCategory']['modified']); ?>&nbsp;</td>
+                                <td><?php echo h( $movementCategory['MovementCategory']['created']); ?>&nbsp;</td>
                                 <td class="actions hidden-print">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $movementCategory['MovementCategory']['id']), array('title' => __('Details'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $movementCategory['MovementCategory']['id']), array('title' => __('Edit'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>

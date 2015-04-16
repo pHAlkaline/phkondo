@@ -29,8 +29,8 @@
                                 <td><?php echo $budget['BudgetType']['name']; ?></td>
                                 <td><?php echo $budget['BudgetStatus']['name']; ?></td>
                                 <td><?php echo h($budget['Budget']['title']); ?>&nbsp;</td>
-                                <td><?php echo $this->Time->format(Configure::read('dateFormatSimple'), $budget['Budget']['budget_date']); ?>&nbsp;</td>
-                                <td><?php echo $this->Time->format(Configure::read('dateFormatSimple'), $budget['Budget']['begin_date']); ?>&nbsp;</td>
+                                <td><?php echo h( $budget['Budget']['budget_date']); ?>&nbsp;</td>
+                                <td><?php echo h( $budget['Budget']['begin_date']); ?>&nbsp;</td>
                                 <td><?php echo h($budget['Budget']['shares']); ?>&nbsp;</td>
                                 <td class="amount"><?php echo h($budget['Budget']['amount']); ?>&nbsp;<?= Configure::read('currencySign'); ?></td>
                                 <td class="actions hidden-print">
