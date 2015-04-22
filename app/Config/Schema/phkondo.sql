@@ -62,7 +62,7 @@ CREATE TABLE `accounts_fiscal_years` (
   KEY `ENTITY` (`account_id`),
   KEY `FRACTION` (`fiscal_year_id`),
   CONSTRAINT `accounts_fiscal_years_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `accounts_fiscal_years_ibfk_2` FOREIGN KEY (`fiscal_year_id`) REFERENCES `fiscal_years` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `accounts_fiscal_years_ibfk_2` FOREIGN KEY (`fiscal_year_id`) REFERENCES `fiscal_years` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
