@@ -28,8 +28,10 @@ Configure::write('Language.list',array(
 Configure::write('Config.language', 'eng'); // por - Portuguese , eng - english .....
 Configure::write('Language.list',array('eng'=>'English','por'=>'Portugues')); // 
 Configure::write('Config.timezone', 'Europe/Lisbon'); // Europe/Lisbon
-Configure::write('dateFormat', 'd-m-Y H:i:s'); //
-Configure::write('dateFormatSimple', 'd-m-Y'); //
+Configure::write('databaseDateFormat', 'Y-m-d'); // database dateformat
+Configure::write('dateFormat', 'd-m-Y H:i:s'); // phkondo dateformat with time
+Configure::write('dateFormatSimple', 'd-m-Y'); // phkondo dateformat
+Configure::write('calendarDateFormat', 'dd-mm-yyyy'); // input date fields date format
 Configure::write('currencySign', '&euro;'); // more at http://www.w3schools.com/html/html_entities.asp
 Configure::write('Application.mode', 'app'); // phkapa , demo , use demo for demo mode;
 
