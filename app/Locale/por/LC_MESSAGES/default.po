@@ -1204,6 +1204,9 @@ msgid_plural "Shares"
 msgstr[0] "Quota"
 msgstr[1] "Quotas"
 
+msgid "Shares"
+msgstr "Quotas"
+
 msgid "Share Distribution"
 msgstr "Distribuição de Quotas"
 
