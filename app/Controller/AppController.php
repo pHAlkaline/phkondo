@@ -25,13 +25,15 @@ class AppController extends Controller {
         $this->Auth->logoutRedirect = array('controller' => 'pages', 'action' => 'display', 'home');
         $this->Auth->authorize = array('Controller');
         $this->Auth->allow('display');
+        if (Configure::read('Access.open') === true) {
+            $this->Auth->allow();
+        } 
         if ($this->Session->read('User.language')){
             Configure::write('Config.language', $this->Session->read('User.language'));
         }
     }
 
     public function isAuthorized($user) {
-        
         //debug($this->request->controller);
         if (isset($user['role'])) {
 

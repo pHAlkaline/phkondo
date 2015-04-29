@@ -80,6 +80,12 @@ msgstr "Data de origem inválida."
 msgid "money"
 msgstr "Monetário."
 
+msgid "Next inspection date must be after start date"
+msgstr "Data da próxima inspecção deve ser superior a data de início."
+
+msgid "Next inspection date must be after last inspection date"
+msgstr "Data da próxima inspecção deve ser superior a data da última inspecção."
+
 msgid "notEmpty"
 msgstr "Não pode ser vazio."
 
@@ -88,6 +94,9 @@ msgstr "Não deve ser vazio."
 
 msgid "numeric"
 msgstr "Campo do tipo númerico."
+
+msgid "Renewal date must be after start date"
+msgstr "Data de renovação deve ser superior a data de início."
 
 msgid "uuid"
 msgstr "Identificador único."

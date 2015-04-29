@@ -43,7 +43,14 @@ class CondosController extends AppController {
      * @return void
      */
     public function view($id = null) {
-        $this->Condo->contain('FiscalYear', 'Insurance', 'Maintenance', 'Account');
+        $this->Condo->contain(array(
+                'FiscalYear', 
+                'Insurance', 
+                'Maintenance', 
+                'Account', 
+                'Administrator' => array(
+                    'Entity'=>array(
+                        'fields'=>array('Entity.name')))));
         if (!$this->Condo->exists($id)) {
             $this->Session->setFlash(__('Invalid condo'), 'flash/error');
             $this->redirect(array('action' => 'index'));
