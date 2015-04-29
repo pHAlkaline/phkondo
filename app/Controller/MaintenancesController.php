@@ -100,7 +100,7 @@ class MaintenancesController extends AppController {
             $this->request->data = $this->Maintenance->find('first', $options);
         }
         $condos = $this->Maintenance->Condo->find('list', array('conditions' => array('id' => $this->Session->read('Condo.ViewID'))));
-        $suppliers = $this->Maintenance->Supplier->find('list', array('order'=>'Entity.name','conditions' => array('entity_type_id' => '2')));
+        $suppliers = $this->Maintenance->Supplier->find('list', array('order'=>'name','conditions' => array('entity_type_id' => '2')));
         $this->set(compact('condos', 'suppliers'));
         $this->Session->write('Condo.Maintenance.ViewID', $id);
         $this->Session->write('Condo.Maintenance.ViewName', $this->request->data['Maintenance']['title']);

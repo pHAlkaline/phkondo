@@ -145,6 +145,12 @@ class Condo extends AppModel {
             'exclusive' => '',
             'finderQuery' => '',
             'counterQuery' => ''
+        ),
+        'Administrator' => array(
+            'className' => 'Administrator',
+            'foreignKey' => 'condo_id',
+            'dependent' => false,
+            
         )
     );
 

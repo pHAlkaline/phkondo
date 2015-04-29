@@ -43,10 +43,13 @@ Configure::write('MaintenanceMode.duration', '48'); // Duration in hours
 Configure::write('MaintenanceMode.site_offline_url', '/pages/offline');
 
 /**
- * The settings below can be used to open access to all users or one specified user.
- * - 'All' -> after login , all users have TOTAL access
- * - '{User NAME field}' -> after login this user has total control 
+ * The settings below can be used to open access to pHKondo.
+ * - set to true / false
+ * - true will open pHKondo to all access. 
  */
-Configure::write('Access.open', ''); // Keep this clean , use only on emergency.
+Configure::write('Access.open', false); // For SECURITY keep this FALSE , use only on emergency.
 
+/**
+ * User role settings , do not change unless you know what you are doing 
+ */
 Configure::write('User.role',array('admin' => __('App Administrator'),'store_admin' => __n('Manager','Managers',1),'colaborator' => __('Employee')));
