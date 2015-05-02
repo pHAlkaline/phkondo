@@ -80,6 +80,12 @@ msgstr ""
 msgid "money"
 msgstr ""
 
+msgid "Next inspection date must be after start date"
+msgstr ""
+
+msgid "Next inspection date must be after last inspection date"
+msgstr ""
+
 msgid "notEmpty"
 msgstr ""
 
@@ -87,6 +93,9 @@ msgid "notempty"
 msgstr ""
 
 msgid "numeric"
+msgstr ""
+
+msgid "Renewal date must be after start date"
 msgstr ""
 
 msgid "uuid"

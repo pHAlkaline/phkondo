@@ -61,7 +61,7 @@ class FiscalYearsController extends AppController {
             $this->FiscalYear->create();
             if ($this->FiscalYear->save($this->request->data)) {
                 if ($this->request->data['FiscalYear']['active']=='1'){
-                    $this->_setAccountBalanceByFiscalYear($this->request->data);
+                    $this->_setAccountBalanceByFiscalYear($this->FiscalYear->id);
                 }
                 $this->Session->setFlash(__('The fiscal year has been saved'), 'flash/success');
                 $this->redirect(array('action' => 'view',$this->FiscalYear->id));
@@ -88,7 +88,7 @@ class FiscalYearsController extends AppController {
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->FiscalYear->save($this->request->data)) {
                 if ($this->request->data['FiscalYear']['active']=='1'){
-                    $this->_setAccountBalanceByFiscalYear($this->request->data);
+                    $this->_setAccountBalanceByFiscalYear($this->request->data['FiscalYear']['id']);
                 }
                 $this->Session->setFlash(__('The fiscal year has been saved'), 'flash/success');
                 $this->redirect(array('action' => 'view',$this->FiscalYear->id));
@@ -123,8 +123,7 @@ class FiscalYearsController extends AppController {
             $this->redirect(array('action' => 'index'));
         }
         if ($this->FiscalYear->active()) {
-            $options = array('conditions' => array('FiscalYear.' . $this->FiscalYear->primaryKey => $id));
-            $this->_setAccountBalanceByFiscalYear($this->FiscalYear->read());
+            $this->_setAccountBalanceByFiscalYear($id);
             $this->Session->setFlash(__('Fiscal Year active'), 'flash/success');
             $this->redirect(array('action' => 'index'));
         }
@@ -164,16 +163,14 @@ class FiscalYearsController extends AppController {
         $this->redirect(array('action' => 'view',$id));
     }
     
-    private function _setAccountBalanceByFiscalYear(Array $data){
-        $condo_id = $data['FiscalYear']['condo_id'];
-        $fiscal_year_id = $data['FiscalYear']['id'];
+    private function _setAccountBalanceByFiscalYear($id){
+        $this->FiscalYear->id=$id;
+        $condo_id = $this->FiscalYear->field('condo_id');
         $this->FiscalYear->Condo->recursive=1;
         $this->FiscalYear->Condo->contain('Account');
         $accounts=$this->FiscalYear->Condo->find('first',array('conditions'=>array('Condo.id'=>$condo_id)));
         foreach ($accounts['Account'] as $account){
-            $account_id=$account['id'];
-            //debug($account_id);
-            $this->FiscalYear->Condo->Account->setAccountBalanceByFiscalYear($account_id,$fiscal_year_id);
+            $this->FiscalYear->Condo->Account->setAccountBalanceByFiscalYear($account['id'],$id);
         }
         //exit();
         

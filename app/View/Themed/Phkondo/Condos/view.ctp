@@ -1,5 +1,8 @@
 <?php
 $has_fiscal_year = (isset($condo['FiscalYear'][0]['title'])) ? true : false;
+
+$administrators=Set::extract('/Administrator/Entity/name',$condo);
+$administrators=implode(", ", $administrators)
 ?>
 <div id="page-container" class="row">
 
@@ -70,7 +73,8 @@ $has_fiscal_year = (isset($condo['FiscalYear'][0]['title'])) ? true : false;
                             <?php echo nl2br(h($condo['Condo']['address'])); ?>
                             &nbsp;
                         </td>
-                    </tr><tr>		<td><strong><?php echo __('Email'); ?></strong></td>
+                    </tr>
+                    <tr>		<td><strong><?php echo __('Email'); ?></strong></td>
                         <td>
                             <?php echo h($condo['Condo']['email']); ?>
                             &nbsp;
@@ -88,6 +92,10 @@ $has_fiscal_year = (isset($condo['FiscalYear'][0]['title'])) ? true : false;
                             ?>
                             &nbsp;
                         </td>
+                    </tr>
+                    <tr>		
+                        <td><strong><?php echo __n('Administrator','Administrator',2); ?></strong></td>
+                        <td><?= h($administrators); ?>&nbsp;</td>
                     </tr>
                     <tr>		<td><strong><?php echo __('Created'); ?></strong></td>
                         <td>
