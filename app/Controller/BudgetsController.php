@@ -167,7 +167,7 @@ class BudgetsController extends AppController {
      *
      * @return void
      */
-    public function shares_map($id) {
+    public function shares_map($id=null) {
         if (!$this->Budget->exists($id)) {
             $this->Session->setFlash(__('Invalid budget'), 'flash/error');
             $this->redirect(array('action' => 'index'));
