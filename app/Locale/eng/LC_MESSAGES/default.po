@@ -1201,6 +1201,9 @@ msgid_plural "Shares"
 msgstr[0] ""
 msgstr[1] ""
 
+msgid "Shares"
+msgstr ""
+
 msgid "Share Distribution"
 msgstr ""
 
