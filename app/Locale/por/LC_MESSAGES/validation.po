@@ -23,6 +23,12 @@ msgstr "Vazio."
 msgid "Must be unique"
 msgstr "Deve ser único."
 
+msgid "Next inspection date must be after last inspection date"
+msgstr "Data da próxima inspecção deve ser superior a data da última inspecção."
+
+msgid "Next inspection date must be after start date"
+msgstr "Data da próxima inspecção deve ser superior a data de início."
+
 msgid "Passwords dont match"
 msgstr "Palavra passe não corresponde."
 
@@ -35,6 +41,9 @@ msgstr "Percentagem inválida."
 msgid "Please enter an valid rate."
 msgstr "Valor inválido."
 
+msgid "Renewal date must be after start date"
+msgstr "Data de renovação deve ser superior a data de início."
+
 msgid "This status requires payment date"
 msgstr "Estado requer data de pagamento."
 
@@ -44,14 +53,11 @@ msgstr "Campo do tipo booleano."
 msgid "close date must be after open date"
 msgstr "Data de fecho deve ser superior a data de abertura."
 
-msgid "due date must be after document date"
-msgstr "Prazo de pagamento deve ser superior a data do documento"
-
-msgid "payment date must be after document date"
-msgstr "Data de pagamento deve ser superior a data do documento"
-
 msgid "date"
 msgstr "Campo do tipo data."
+
+msgid "due date must be after document date"
+msgstr "Prazo de pagamento deve ser superior a data do documento"
 
 msgid "invalid active"
 msgstr "Valor inválido."
@@ -80,12 +86,6 @@ msgstr "Data de origem inválida."
 msgid "money"
 msgstr "Monetário."
 
-msgid "Next inspection date must be after start date"
-msgstr "Data da próxima inspecção deve ser superior a data de início."
-
-msgid "Next inspection date must be after last inspection date"
-msgstr "Data da próxima inspecção deve ser superior a data da última inspecção."
-
 msgid "notEmpty"
 msgstr "Não pode ser vazio."
 
@@ -95,8 +95,8 @@ msgstr "Não deve ser vazio."
 msgid "numeric"
 msgstr "Campo do tipo númerico."
 
-msgid "Renewal date must be after start date"
-msgstr "Data de renovação deve ser superior a data de início."
+msgid "payment date must be after document date"
+msgstr "Data de pagamento deve ser superior a data do documento"
 
 msgid "uuid"
 msgstr "Identificador único."
