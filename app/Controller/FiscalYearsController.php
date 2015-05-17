@@ -163,7 +163,7 @@ class FiscalYearsController extends AppController {
         $this->redirect(array('action' => 'view',$id));
     }
     
-    private function _setAccountBalanceByFiscalYear($id){
+    private function _setAccountBalanceByFiscalYear($id=null){
         $this->FiscalYear->id=$id;
         $condo_id = $this->FiscalYear->field('condo_id');
         $this->FiscalYear->Condo->recursive=1;
