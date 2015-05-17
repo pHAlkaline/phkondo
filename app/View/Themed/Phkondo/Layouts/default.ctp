@@ -16,9 +16,11 @@ $clientDescription = __('pHkondo Condominium Management');
             echo $this->Html->meta('icon');
             echo $this->fetch('meta');
             ?>
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+            <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet"  />
             <!-- Optional theme -->
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css" />
+            <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css" rel="stylesheet" />
+            <!-- Optional icons -->
+            <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" />
             <?php
             echo $this->Html->css(array('datepicker/bootstrap-datepicker3.min', 'phkondo'));
             echo $this->Html->css(array('phkondo_print'), null, array('media' => 'print'));

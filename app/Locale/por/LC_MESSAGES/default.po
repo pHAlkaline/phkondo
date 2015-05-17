@@ -104,9 +104,6 @@ msgstr "Contas com saldo negativo"
 msgid "Actions"
 msgstr "Acções"
 
-msgid "Please activate one fiscal year."
-msgstr "Deve activar um exercício"
-
 msgid "Active"
 msgstr "Activo"
 
@@ -1107,6 +1104,9 @@ msgstr "Escolha.."
 msgid "Pick Notes"
 msgstr "Escolha Notas"
 
+msgid "Please activate one fiscal year."
+msgstr "Deve activar um exercício"
+
 msgid "Please correct errors below."
 msgstr "Por favor corrija os erros em baixo."
 
@@ -1204,14 +1204,14 @@ msgid_plural "Shares"
 msgstr[0] "Quota"
 msgstr[1] "Quotas"
 
-msgid "Shares"
-msgstr "Quotas"
-
 msgid "Share Distribution"
 msgstr "Distribuição de Quotas"
 
 msgid "Share Periodicity"
 msgstr "Periodicidade de Quotas"
+
+msgid "Shares"
+msgstr "Quotas"
 
 msgid "Shares map"
 msgstr "Mapa de quotas"

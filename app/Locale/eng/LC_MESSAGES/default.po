@@ -1,6 +1,7 @@
 # LANGUAGE translation of pHkondo Application
 # Copyright pHAlkaline <contact@phalkaline.eu>
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pHKondo V0.1\n"
@@ -65,7 +66,7 @@ msgstr ""
 msgid "%s KB"
 msgstr ""
 
-msgid "%s MB"d
+msgid "%s MB"
 msgstr ""
 
 msgid "%s TB"
@@ -269,9 +270,7 @@ msgstr ""
 msgid "Cancel Receipt"
 msgstr ""
 
-msgid ""
-"Case you wish do have access to our demo version of this plugin contact "
-"pHAlkaline."
+msgid "Case you wish do have access to our demo version of this plugin contact pHAlkaline."
 msgstr ""
 
 msgid "Category"
@@ -337,6 +336,9 @@ msgstr ""
 
 msgid "Current Account"
 msgstr ""
+
+msgid "Date"
+msgstr "Data"
 
 msgid "December"
 msgstr ""
@@ -1054,9 +1056,7 @@ msgstr ""
 msgid "PHKONO - Administração de Condomínios"
 msgstr ""
 
-msgid ""
-"Page {:page} of {:pages}, showing {:current} records out of {:count} total, "
-"starting on record {:start}, ending on {:end}"
+msgid "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
 msgstr ""
 
 msgid "Paid"
@@ -1102,6 +1102,9 @@ msgid "Pick"
 msgstr ""
 
 msgid "Pick Notes"
+msgstr ""
+
+msgid "Please activate one fiscal year."
 msgstr ""
 
 msgid "Please correct errors below."
@@ -1201,13 +1204,13 @@ msgid_plural "Shares"
 msgstr[0] ""
 msgstr[1] ""
 
-msgid "Shares"
-msgstr ""
-
 msgid "Share Distribution"
 msgstr ""
 
 msgid "Share Periodicity"
+msgstr ""
+
+msgid "Shares"
 msgstr ""
 
 msgid "Shares map"
@@ -1362,17 +1365,13 @@ msgstr ""
 msgid "The owner has been saved"
 msgstr ""
 
-msgid ""
-"The plugin that allows you to print and create document drafts is not "
-"available."
+msgid "The plugin that allows you to print and create document drafts is not available."
 msgstr ""
 
-msgid ""
-"The plugin that allows you to print and create receipts is not available."
+msgid "The plugin that allows you to print and create receipts is not available."
 msgstr ""
 
-msgid ""
-"The plugin that allows you to print and create reports is not available."
+msgid "The plugin that allows you to print and create reports is not available."
 msgstr ""
 
 msgid "The receipt could not be saved. Please, try again."
@@ -1396,9 +1395,7 @@ msgstr ""
 msgid "There was an error deleting the %1$s with id: %2$s"
 msgstr ""
 
-msgid ""
-"This Budget can not be deleted, check budget status or existing notes "
-"already paid."
+msgid "This Budget can not be deleted, check budget status or existing notes already paid."
 msgstr ""
 
 msgid "This Fiscal Year can not be deleted, check existing notes already paid."
@@ -1491,19 +1488,13 @@ msgstr ""
 msgid "Warning: Mil rate sum should be 1000"
 msgstr ""
 
-msgid ""
-"Warning: when you cancel a budget, ALL DEBIT NOTES created by this budget "
-"will be set as CANCELED, EXCEPT the ones already paid."
+msgid "Warning: when you cancel a budget, ALL DEBIT NOTES created by this budget will be set as CANCELED, EXCEPT the ones already paid."
 msgstr ""
 
-msgid ""
-"Warning: when you set a budget as pending, ALL DEBIT NOTES created by this "
-"budget will be set as WAITS PAYMENT, EXCEPT the ones already paid."
+msgid "Warning: when you set a budget as pending, ALL DEBIT NOTES created by this budget will be set as WAITS PAYMENT, EXCEPT the ones already paid."
 msgstr ""
 
-msgid ""
-"We provide expert services and the know-how to help you quickly implement "
-"and leverage the full potential of pHKondo features and functionality."
+msgid "We provide expert services and the know-how to help you quickly implement and leverage the full potential of pHKondo features and functionality."
 msgstr ""
 
 msgid "Wednesday"

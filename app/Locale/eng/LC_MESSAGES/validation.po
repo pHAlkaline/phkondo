@@ -23,6 +23,12 @@ msgstr ""
 msgid "Must be unique"
 msgstr ""
 
+msgid "Next inspection date must be after last inspection date"
+msgstr ""
+
+msgid "Next inspection date must be after start date"
+msgstr ""
+
 msgid "Passwords dont match"
 msgstr ""
 
@@ -35,6 +41,9 @@ msgstr ""
 msgid "Please enter an valid rate."
 msgstr ""
 
+msgid "Renewal date must be after start date"
+msgstr ""
+
 msgid "This status requires payment date"
 msgstr ""
 
@@ -44,13 +53,10 @@ msgstr ""
 msgid "close date must be after open date"
 msgstr ""
 
-msgid "due date must be after document date"
-msgstr ""
-
-msgid "payment date must be after document date"
-msgstr ""
-
 msgid "date"
+msgstr ""
+
+msgid "due date must be after document date"
 msgstr ""
 
 msgid "invalid active"
@@ -80,12 +86,6 @@ msgstr ""
 msgid "money"
 msgstr ""
 
-msgid "Next inspection date must be after start date"
-msgstr ""
-
-msgid "Next inspection date must be after last inspection date"
-msgstr ""
-
 msgid "notEmpty"
 msgstr ""
 
@@ -95,7 +95,7 @@ msgstr ""
 msgid "numeric"
 msgstr ""
 
-msgid "Renewal date must be after start date"
+msgid "payment date must be after document date"
 msgstr ""
 
 msgid "uuid"
