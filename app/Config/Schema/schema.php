@@ -458,7 +458,7 @@ class AppSchema extends CakeSchema {
 	public $receipt_notes = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
 		'note_type_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'index'),
-		'document' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 25, 'key' => 'unique', 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'document' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 25, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'fraction_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'index'),
 		'entity_id' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false, 'key' => 'index'),
 		'fiscal_year_id' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false, 'key' => 'index'),
@@ -475,7 +475,6 @@ class AppSchema extends CakeSchema {
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1),
-			'DOCUMENT' => array('column' => 'document', 'unique' => 1),
 			'NOTETYPE' => array('column' => 'note_type_id', 'unique' => 0),
 			'FRACTION' => array('column' => 'fraction_id', 'unique' => 0),
 			'ENTITY' => array('column' => 'entity_id', 'unique' => 0),

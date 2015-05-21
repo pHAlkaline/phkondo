@@ -23,7 +23,7 @@ class InvoiceConferenceController extends AppController {
      * @return void
      */
     public function index() {
-        $this->InvoiceConference->recursive = 0;
+        $this->InvoiceConference->contain(array('Supplier'));
         $this->Paginator->settings = $this->paginate;
         $this->Paginator->settings = $this->Paginator->settings + array(
             'conditions' => array(
@@ -38,7 +38,7 @@ class InvoiceConferenceController extends AppController {
 
 
         $invoice = $this->paginate();
-
+        
         $this->InvoiceConference->virtualFields = array('total_amount' => 'SUM(amount)');
         foreach ($invoice as $key => $supplier) {
 
@@ -63,11 +63,11 @@ class InvoiceConferenceController extends AppController {
      * @return void
      */
     public function index_by_supplier($supplier_id = null) {
+        $this->InvoiceConference->contain(array('Supplier','InvoiceConferenceStatus'));
         if (!$this->InvoiceConference->Supplier->exists($supplier_id)) {
             $this->Session->setFlash(__('Invalid invoice'), 'flash/error');
             $this->redirect(array('action' => 'index'));
         }
-        $this->InvoiceConference->recursive = 0;
         $this->Paginator->settings = $this->paginate;
         $this->Paginator->settings = $this->Paginator->settings + array(
             'order' => array('InvoiceConference.document_date' => 'desc'),
@@ -98,6 +98,7 @@ class InvoiceConferenceController extends AppController {
      * @return void
      */
     public function view($id = null) {
+        $this->InvoiceConference->contain(array('Supplier','InvoiceConferenceStatus'));
         if (!$this->InvoiceConference->exists($id)) {
             $this->Session->setFlash(__('Invalid invoice'), 'flash/error');
             $this->redirect(array('action' => 'index'));

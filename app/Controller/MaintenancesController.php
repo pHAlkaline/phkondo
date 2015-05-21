@@ -23,7 +23,7 @@ class MaintenancesController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Maintenance->recursive = 0;
+        $this->Maintenance->contain('Supplier');
         $this->Paginator->settings = $this->paginate + array(
             'conditions' => array('Maintenance.condo_id' => $this->Session->read('Condo.ViewID'))
         );
@@ -41,6 +41,7 @@ class MaintenancesController extends AppController {
      * @return void
      */
     public function view($id = null) {
+        $this->Maintenance->contain('Supplier');
         if (!$this->Maintenance->exists($id)) {
             $this->Session->setFlash(__('Invalid maintenance'), 'flash/error');
             $this->redirect(array('action' => 'index'));

@@ -191,7 +191,7 @@ msgid "An Internal Error Has Occurred."
 msgstr "Houve um erro interno."
 
 msgid "App Administrator"
-msgstr "Administrador"
+msgstr "Administrador pHKondo"
 
 msgid "Application Offline"
 msgstr "pHKondo Em Manutenção"
@@ -601,7 +601,7 @@ msgid "Income"
 msgstr "Receitas"
 
 msgid "Income Control"
-msgstr "Controlo de Receitas"
+msgstr "Controlo de Caixa"
 
 msgid "Income extra and previous exercices"
 msgstr "Receitas extraordinarias ou de exercícios anteriores"

@@ -30,7 +30,7 @@ class OwnerNotesController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Note->recursive = 0;
+        $this->Note->contain('NoteType','NoteStatus','Fraction');
         $this->Paginator->settings = $this->paginate + array(
             'conditions' => array(
                 'Note.entity_id' => $this->Session->read('Condo.Owner.ViewID'),
@@ -53,6 +53,7 @@ class OwnerNotesController extends AppController {
             $this->Session->setFlash(__('Invalid note'), 'flash/error');
             $this->redirect(array('action' => 'index'));
         }
+        $this->Note->contain('NoteType','NoteStatus','Fraction','Entity','Budget','FiscalYear','Receipt');
         $options = array('conditions' => array(
                 'Note.' . $this->Note->primaryKey => $id,
                 'Note.entity_id' => $this->Session->read('Condo.Owner.ViewID')));
@@ -104,6 +105,7 @@ class OwnerNotesController extends AppController {
             $this->request->data['Note']['fiscal_year_id'] = $this->_getFiscalYear();
             $this->request->data['Note']['entity_id'] = $this->Session->read('Condo.Owner.ViewID');
             if ($this->Note->save($this->request->data)) {
+                $this->_setDocument();
                 $this->Session->setFlash(__('The note has been saved'), 'flash/success');
                 $this->redirect(array('action' => 'view', $this->Note->id));
             } else {

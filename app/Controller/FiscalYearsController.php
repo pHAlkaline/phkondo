@@ -23,7 +23,6 @@ class FiscalYearsController extends AppController {
      * @return void
      */
     public function index() {
-        $this->FiscalYear->recursive = 0;
         $this->Paginator->settings = $this->paginate + array(
             'conditions' => array('FiscalYear.condo_id' => $this->Session->read('Condo.ViewID'))
         );
@@ -166,7 +165,7 @@ class FiscalYearsController extends AppController {
     private function _setAccountBalanceByFiscalYear($id=null){
         $this->FiscalYear->id=$id;
         $condo_id = $this->FiscalYear->field('condo_id');
-        $this->FiscalYear->Condo->recursive=1;
+        //$this->FiscalYear->Condo->recursive=1;
         $this->FiscalYear->Condo->contain('Account');
         $accounts=$this->FiscalYear->Condo->find('first',array('conditions'=>array('Condo.id'=>$condo_id)));
         foreach ($accounts['Account'] as $account){
@@ -179,7 +178,6 @@ class FiscalYearsController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->FiscalYear->recursive = -1;
         if (!$this->Session->check('Condo.ViewID')) {
             $this->Session->setFlash(__('Invalid condo or fiscal year'), 'flash/error');
             $this->redirect(array('controller'=>'condos','action' => 'view',$this->Session->read('Condo.ViewID')));

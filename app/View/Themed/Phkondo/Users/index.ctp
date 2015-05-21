@@ -23,7 +23,7 @@
                             <tr>
                                 <td><?php echo h($user['User']['name']); ?>&nbsp;</td>
                                 <td><?php echo h($user['User']['username']); ?>&nbsp;</td>
-                                <td><?php echo h($roles[$user['User']['role']]); ?>&nbsp;</td>
+                                <td><?php echo h(__($roles[$user['User']['role']])); ?>&nbsp;</td>
                                 <td class="actions hidden-print">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $user['User']['id']), array('class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $user['User']['id']), array('class' => 'btn btn-default btn-xs', 'escape' => false)); ?>

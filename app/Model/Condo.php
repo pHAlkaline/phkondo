@@ -160,7 +160,6 @@ class Condo extends AppModel {
         $condo = $this->find('first', $options);
         $fractions = Set::extract('/Fraction/id', $condo);
         $Note = new Note();
-        $Note->recursive = -1;
         return $hasSharesDebt = $Note->find('count', array(
             'conditions' => array(
                 'Note.fraction_id' => $fractions,

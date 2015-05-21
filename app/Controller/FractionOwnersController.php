@@ -31,10 +31,9 @@ class FractionOwnersController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Fraction->recursive=1;
+        $this->Fraction->contain('Entity');
         $fraction = $this->Fraction->find('first', array('conditions' => array('Fraction.id' => $this->Session->read('Condo.Fraction.ViewID'))));
         $entitiesInFraction = Set::extract('/Entity/id', $fraction);
-        $this->Fraction->Entity->recursive=1;
         $entities = $this->Fraction->Entity->find('list', array('order' => 'Entity.name', 'conditions' => array('Entity.entity_type_id' => '1', array('NOT' => array('Entity.id' => $entitiesInFraction)))));
         $this->set(compact('fraction', 'entities'));
         $this->Session->delete('Condo.Owner');

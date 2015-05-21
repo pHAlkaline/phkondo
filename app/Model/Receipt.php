@@ -1,6 +1,7 @@
 <?php
 
 App::uses('AppModel', 'Model');
+App::uses('CakeTime', 'Utility');
 
 /**
  * Receipt Model
@@ -122,6 +123,34 @@ class Receipt extends AppModel {
             //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
+        'payment_date' => array(
+            'date' => array(
+                'rule' => array('date'),
+            //'message' => 'Your custom message here',
+            'allowEmpty' => true,
+            'required' => false,
+            //'last' => false, // Stop validation after this rule
+            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+            ),
+            'checkPastDate' => array(
+                'rule' => array('checkPastDate'),
+                'message' => 'invalid date',
+            //'allowEmpty' => false,
+            //'required' => false,
+            //'last' => false, // Stop validation after this rule
+            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+            ),
+            'checkDocumentDate' => array(
+                'rule' => array('checkDocumentDate'),
+                'message' => 'payment date must be at or after document date',
+            //'allowEmpty' => false,
+            //'required' => false,
+            //'last' => false, // Stop validation after this rule
+            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+            ),
+            
+           
+        ),
     );
 
     //The Associations below have been created with all possible keys, those that are not needed can be removed
@@ -216,6 +245,35 @@ class Receipt extends AppModel {
             'counterQuery' => ''
         )
     );
+    
+     /**
+     * checkDocumentDate
+     * Custom Validation Rule: Ensures a selected date is after Document Date
+     * 
+     *
+     * @param array $check Contains the value passed from the view to be validated
+     * @return bool True if in the past or today, False otherwise
+     */
+    public function checkDocumentDate($check) {
+        if (!$this->data[$this->alias]['document_date']){
+            $this->data[$this->alias]['document_date']=$this->field('document_date');
+        }
+        $value = array_values($check);
+        return (CakeTime::fromString($this->data[$this->alias]['document_date']) <= CakeTime::fromString($value[0])) ;
+    }
+    
+     /**
+     * checkPastDate
+     * Custom Validation Rule: Ensures a selected date is either the
+     * present day or in the past.
+     *
+     * @param array $check Contains the value passed from the view to be validated
+     * @return bool True if in the past or today, False otherwise
+     */
+    public function checkPastDate($check) {
+        $value = array_values($check);
+        return (CakeTime::fromString($value[0]) <= CakeTime::fromString(date(Configure::read('databaseDateFormat'))));
+    }
 
     /**
      * afterFind callback

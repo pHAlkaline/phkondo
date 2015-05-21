@@ -65,8 +65,8 @@ msgstr "Valor inválido."
 msgid "invalid begin date"
 msgstr "Data de início inválida."
 
-msgid "invalid budget date"
-msgstr "Data inválida."
+msgid "invalid budget date, do not match fiscal year dates"
+msgstr "Data inválida, não coincide com data do exercicio."
 
 msgid "invalid close date"
 msgstr "Data de fecho inválida."
@@ -95,8 +95,8 @@ msgstr "Não deve ser vazio."
 msgid "numeric"
 msgstr "Campo do tipo númerico."
 
-msgid "payment date must be after document date"
-msgstr "Data de pagamento deve ser superior a data do documento"
+msgid "payment date must be at or after document date"
+msgstr "Data de pagamento deve ser igual ou superior a data do documento"
 
 msgid "uuid"
 msgstr "Identificador único."

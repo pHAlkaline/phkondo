@@ -61,7 +61,6 @@ class CondosController extends AppController {
 
 
         $InvoiceConference = $this->InvoiceConference;
-        $InvoiceConference->recursive = 0;
         $InvoiceConference->virtualFields = array('total_amount' => 'SUM(amount)');
         $hasDebt = 0;
         $this->Session->write('Condo.FiscalYearID', null);
@@ -69,7 +68,7 @@ class CondosController extends AppController {
             $hasDebt = $InvoiceConference->field('total_amount', array(
                 'InvoiceConference.condo_id' => $this->Session->read('Condo.ViewID'),
                 'InvoiceConference.document_date <=' => $condo['FiscalYear'][0]['close_date'],
-                'InvoiceConference.payment_due_date <' => date('Y-m-d'),
+                'InvoiceConference.payment_due_date <' => date(Configure::read('databaseDateFormat')),
                 'OR' => array('InvoiceConference.payment_date' => null, 'InvoiceConference.payment_date >' => $condo['FiscalYear'][0]['close_date']),
             ));
             $this->Session->write('Condo.FiscalYearID', $condo['FiscalYear'][0]['id']);
@@ -108,7 +107,6 @@ class CondosController extends AppController {
      * @return void
      */
     public function edit($id = null) {
-        $this->Condo->recursive = -1;
         if (!$this->Condo->exists($id)) {
             $this->Session->setFlash(__('Invalid condo'), 'flash/error');
             $this->redirect(array('action' => 'index'));

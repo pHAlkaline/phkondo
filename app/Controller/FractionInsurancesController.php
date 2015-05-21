@@ -30,7 +30,7 @@ class FractionInsurancesController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Insurance->recursive = 0;
+        $this->Insurance->contain(array('InsuranceType','Fraction'));
         $this->Paginator->settings = $this->paginate + array(
             'conditions' => array('Insurance.fraction_id' => $this->Session->read('Condo.Fraction.ViewID'))
         );
@@ -52,6 +52,7 @@ class FractionInsurancesController extends AppController {
             $this->Session->setFlash(__('Invalid insurance'), 'flash/error');
             $this->redirect(array('action' => 'index'));
         }
+        $this->Insurance->contain(array('InsuranceType','Fraction'));
         $options = array('conditions' => array('Insurance.' . $this->Insurance->primaryKey => $id, 'Insurance.fraction_id' => $this->Session->read('Condo.Fraction.ViewID')));
         $insurance = $this->Insurance->find('first', $options);
         if (!count($insurance)) {
