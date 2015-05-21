@@ -30,7 +30,7 @@ class FractionNotesController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Note->recursive = 0;
+        $this->Note->contain(array('NoteType','Entity','NoteStatus'));
         $this->Paginator->settings = $this->paginate + array(
             'conditions' => array(
                 'Note.fraction_id' => $this->Session->read('Condo.Fraction.ViewID')));
@@ -52,6 +52,7 @@ class FractionNotesController extends AppController {
             $this->Session->setFlash(__('Invalid note'), 'flash/error');
             $this->redirect(array('action' => 'index'));
         }
+        $this->Note->contain(array('NoteType','Entity','Fraction','Budget','FiscalYear','NoteStatus','Receipt'));
         $options = array('conditions' => array(
                 'Note.' . $this->Note->primaryKey => $id,
                 'Note.fraction_id' => $this->Session->read('Condo.Fraction.ViewID')));
@@ -84,6 +85,7 @@ class FractionNotesController extends AppController {
         $noteTypes = $this->Note->NoteType->find('list');
         $fractions = $this->Note->Fraction->find('list', array('conditions' => array('Fraction.id' => $this->Session->read('Condo.Fraction.ViewID'))));
         $noteStatuses = $this->Note->NoteStatus->find('list', array('conditions' => array('active' => '1')));
+        $this->Note->Fraction->contain('Entity');
         $entitiesFilter = $this->Note->Fraction->find('all', array('fields' => array('Fraction.id'), 'conditions' => array('condo_id' => $this->Session->read('Condo.ViewID'), 'Fraction.id' => array_keys($fractions))));
         $entities = $this->Note->Entity->find('list', array('conditions' => array('id' => Set::extract('/Entity/id', $entitiesFilter))));
         $this->set(compact('noteTypes', 'fractions', 'noteStatuses', 'entities'));
@@ -104,6 +106,7 @@ class FractionNotesController extends AppController {
         if ($this->request->is('post') || $this->request->is('put')) {
             $this->request->data['Note']['fiscal_year_id'] = $this->_getFiscalYear();
             if ($this->Note->save($this->request->data)) {
+                $this->_setDocument();
                 $this->Session->setFlash(__('The note has been saved'), 'flash/success');
                 $this->redirect(array('action' => 'view', $this->Note->id));
             } else {
@@ -130,7 +133,9 @@ class FractionNotesController extends AppController {
         } else {
             $noteStatuses = $this->Note->NoteStatus->find('list', array('conditions' => array('active' => '1')));
         }
-        $entities = $this->Note->Entity->find('list', array('conditions' => array('entity_type_id' => '1')));
+        $this->Note->Fraction->contain('Entity');
+        $entitiesFilter = $this->Note->Fraction->find('all', array('fields' => array('Fraction.id'), 'conditions' => array('condo_id' => $this->Session->read('Condo.ViewID'), 'Fraction.id' => array_keys($fractions))));
+        $entities = $this->Note->Entity->find('list', array('conditions' => array('id' => Set::extract('/Entity/id', $entitiesFilter))));
         $this->set(compact('noteTypes', 'fractions', 'noteStatuses', 'entities'));
         $this->Session->write('Condo.FractionNote.ViewID', $id);
         $this->Session->write('Condo.FractionNote.ViewName', $this->request->data['Note']['title']);

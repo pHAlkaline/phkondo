@@ -1,6 +1,6 @@
 <?php
 $showActions = false;
-if ($this->Session->read('Condo.Budget.Status') == 2) {
+if ($this->Session->read('Condo.Budget.Status') == 1) {
     $showActions = true;
 }
 
@@ -52,10 +52,10 @@ if ($this->Session->read('Condo.Budget.Status') == 2) {
                                     $deleteDisabled = null;
                                     $editDisabled = null;
                                     if (!$note['Note']['editable'] || !$showActions) {
-                                        $editDisabled = 'disabled';
+                                        $editDisabled = ' disabled';
                                     }
                                     if (!$note['Note']['deletable'] || !$showActions) {
-                                        $deleteDisabled = 'disabled';
+                                        $deleteDisabled = ' disabled';
                                     }
                                     ?>  
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $note['Note']['id']), array('title' => __('Details'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>

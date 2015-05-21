@@ -23,7 +23,6 @@ class MovementOperationsController extends AppController {
      * @return void
      */
     public function index() {
-        $this->MovementOperation->recursive = 0;
         $this->setFilter(array('MovementOperation.name'));
         $this->set('movementOperations', $this->paginate());
     }

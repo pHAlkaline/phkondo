@@ -26,7 +26,7 @@ class MovementsController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Movement->recursive = 0;
+        $this->Movement->contain(array('MovementCategory','MovementOperation','MovementType','Account'=>array('fields'=>array('balance'))));
         $this->Paginator->settings = $this->paginate + array(
             'conditions' => array(
                 'Movement.account_id' => $this->Session->read('Condo.Account.ViewID'),
@@ -49,6 +49,7 @@ class MovementsController extends AppController {
             $this->Session->setFlash(__('Invalid movement'), 'flash/error');
             $this->redirect(array('action' => 'index'));
         }
+        $this->Movement->contain(array('MovementCategory','MovementOperation','MovementType'));
         $options = array('conditions' => array(
                 'Movement.' . $this->Movement->primaryKey => $id,
                 'Movement.account_id' => $this->Session->read('Condo.Account.ViewID'),
@@ -91,9 +92,8 @@ class MovementsController extends AppController {
                 'Movement.movement_operation_id' => '1'),
                 ));
 
-
         $accounts = $this->Movement->Account->find('list', array('conditions' => array('id' => $this->Session->read('Condo.Account.ViewID'))));
-        $fiscalYears = $this->Movement->FiscalYear->find('list', array('conditions' => array('condo_id'=>$this->Session->read('Condo.Account.ViewID'),'id' => $this->Session->read('Condo.FiscalYearID'))));
+        $fiscalYears = $this->Movement->FiscalYear->find('list', array('conditions' => array('condo_id'=>$this->Session->read('Condo.ViewID'),'id' => $this->Session->read('Condo.FiscalYearID'))));
 
         $movementTypes = $this->Movement->MovementType->find('list', array('conditions' => array('active' => '1')));
 

@@ -185,7 +185,6 @@ class Entity extends AppModel {
         if (!$this->exists()) {
             return false;
         }
-        $this->recursive = -1;
         $this->alias = 'Entity';
 
         $options['joins'] = array(
@@ -215,7 +214,6 @@ class Entity extends AppModel {
             return false;
         }
         $this->Fraction = ClassRegistry::init('Fraction');
-        $this->Fraction->recursive = -1;
         $result = $this->Fraction->find('count', array('conditions' => array('Fraction.manager_id' => $id)));
         return ($result > 0) ? true : false;
     }

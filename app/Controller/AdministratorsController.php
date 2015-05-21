@@ -24,8 +24,7 @@ class AdministratorsController extends AppController {
      * @return void
      */
     public function index() {
-        
-        $this->Administrator->recursive = 0;
+        $this->Administrator->contain('Entity','FiscalYear');
         $this->Paginator->settings = $this->paginate + array(
             'conditions' => array(
                 'Administrator.condo_id' => $this->Session->read('Condo.ViewID'),
@@ -48,6 +47,7 @@ class AdministratorsController extends AppController {
             $this->Session->setFlash(__('Invalid administrator'), 'flash/error');
             $this->redirect(array('action' => 'index'));
         }
+        $this->Administrator->contain('Entity','FiscalYear');
         $options = array('conditions' => array('Administrator.' . $this->Administrator->primaryKey => $id,
                 'Administrator.condo_id' => $this->Session->read('Condo.ViewID'),
                 'Administrator.fiscal_year_id' => $this->Session->read('Condo.FiscalYearID')));
@@ -72,12 +72,19 @@ class AdministratorsController extends AppController {
                 $this->Session->setFlash(__('The administrator could not be saved. Please, try again.'), 'flash/error');
             }
         }
+        $this->Administrator->contain('Entity','FiscalYear');
+        
         $condos = $this->Administrator->Condo->find('list', array('conditions' => array('id' => $this->Session->read('Condo.ViewID'))));
-        $this->Fraction = $this->Administrator->Condo->Fraction;
+        
+        $this->Administrator->contain('Entity','FiscalYear');
         $options = array('conditions' => array(
                 'Administrator.condo_id' => $this->Session->read('Condo.ViewID'),
                 'Administrator.fiscal_year_id' => $this->Session->read('Condo.FiscalYearID')));
         $administrators=$this->Administrator->find('all', $options);
+        
+        $this->Fraction = $this->Administrator->Condo->Fraction;
+        $this->Fraction->contain('Entity');
+        $this->Fraction->noAfterFind=true;
         $fractions = $this->Fraction->find('all', array('conditions' => array('condo_id' => $this->Session->read('Condo.ViewID'))));
         $entities = $this->Administrator->Entity->find('list', array('conditions' => array('id' => Set::extract('/Entity/id', $fractions),'NOT'=>array('id'=>Set::extract('/Entity/id', $administrators)))));
         $fiscalYears = $this->Administrator->FiscalYear->find('list', array('conditions' => array('id' => $this->Session->read('Condo.FiscalYearID'))));
@@ -96,6 +103,7 @@ class AdministratorsController extends AppController {
             $this->Session->setFlash(__('Invalid administrator'), 'flash/error');
             $this->redirect(array('action' => 'index'));
         }
+        $this->Administrator->contain('Entity');
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Administrator->save($this->request->data)) {
                 $this->Session->setFlash(__('The administrator has been saved'), 'flash/success');
@@ -108,15 +116,20 @@ class AdministratorsController extends AppController {
             $this->request->data = $this->Administrator->find('first', $options);
         }
         $condos = $this->Administrator->Condo->find('list', array('conditions' => array('id' => $this->Session->read('Condo.ViewID'))));
-        $this->Fraction = $this->Administrator->Condo->Fraction;
         $options = array('conditions' => array(
                 'Administrator.id <>' => $id,
                 'Administrator.condo_id' => $this->Session->read('Condo.ViewID'),
                 'Administrator.fiscal_year_id' => $this->Session->read('Condo.FiscalYearID')));
         $administrators=$this->Administrator->find('all', $options);
+        
+        $this->Fraction = $this->Administrator->Condo->Fraction;
+        $this->Fraction->contain('Entity');
+        $this->Fraction->noAfterFind=true;
         $fractions = $this->Fraction->find('all', array('conditions' => array('condo_id' => $this->Session->read('Condo.ViewID'))));
+        
         $entities = $this->Administrator->Entity->find('list', array('conditions' => array('id' => Set::extract('/Entity/id', $fractions),'NOT'=>array('id'=>Set::extract('/Entity/id', $administrators)))));
         $fiscalYears = $this->Administrator->FiscalYear->find('list', array('conditions' => array('id' => $this->Session->read('Condo.FiscalYearID'))));
+        
         $this->set(compact('condos', 'entities', 'fiscalYears'));
         $this->Session->write('Condo.Administrator.ViewID', $id);
         $this->Session->write('Condo.Administrator.ViewName', $this->request->data['Entity']['name']);
@@ -150,7 +163,6 @@ class AdministratorsController extends AppController {
     
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Administrator->recursive=1;
         if (!$this->Session->check('Condo.ViewID') || !$this->Session->read('Condo.FiscalYearID')) {
             $this->Session->setFlash(__('Invalid condo or fiscal year'), 'flash/error');
             $this->redirect(array('controller'=>'condos','action' => 'view',$this->Session->read('Condo.ViewID')));

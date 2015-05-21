@@ -101,10 +101,7 @@ class InvoiceConference extends AppModel {
             //'last' => false, // Stop validation after this rule
             //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
-            /*'future' => array(
-                'rule' => array('checkPastDate'),
-                'message' => 'invalid origin date'
-            )*/
+            
         ),
         'payment_due_date' => array(
             'date' => array(
@@ -123,10 +120,7 @@ class InvoiceConference extends AppModel {
             //'last' => false, // Stop validation after this rule
             //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
-            /*'future' => array(
-                'rule' => array('checkPastDate'),
-                'message' => 'invalid origin date'
-            )*/
+            
         ),
         'payment_date' => array(
             'date' => array(
@@ -137,7 +131,7 @@ class InvoiceConference extends AppModel {
             //'last' => false, // Stop validation after this rule
             //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
-            'validInterval' => array(
+            'checkPastDate' => array(
                 'rule' => array('checkPastDate'),
                 'message' => 'payment date must be after document date',
             //'allowEmpty' => false,
@@ -237,7 +231,7 @@ class InvoiceConference extends AppModel {
     public function checkPastDate($check) {
         
         $value = array_values($check);
-        return (CakeTime::fromString($this->data[$this->alias]['document_date']) <= CakeTime::fromString($value[0]) && CakeTime::fromString($value[0]) <= CakeTime::fromString(date('Y-m-d')));
+        return (CakeTime::fromString($this->data[$this->alias]['document_date']) <= CakeTime::fromString($value[0]) && CakeTime::fromString($value[0]) <= CakeTime::fromString(date(Configure::read('databaseDateFormat'))));
     }
     
     /**

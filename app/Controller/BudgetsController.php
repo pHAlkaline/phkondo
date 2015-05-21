@@ -23,7 +23,7 @@ class BudgetsController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Budget->recursive = 0;
+        $this->Budget->contain(array('BudgetType','BudgetStatus'));
         $this->Paginator->settings = $this->paginate + array(
             'conditions' => array('Budget.condo_id' => $this->Session->read('Condo.ViewID'))
         );
@@ -40,7 +40,7 @@ class BudgetsController extends AppController {
      * @return void
      */
     public function view($id = null) {
-
+        $this->Budget->contain(array('Note','BudgetStatus','FiscalYear','BudgetType','SharePeriodicity','ShareDistribution'));
         if (!$this->Budget->exists($id)) {
             $this->Session->setFlash(__('Invalid budget'), 'flash/error');
             $this->redirect(array('action' => 'index'));
@@ -93,7 +93,7 @@ class BudgetsController extends AppController {
             $this->Session->setFlash(__('Invalid budget'), 'flash/error');
             $this->redirect(array('action' => 'index'));
         }
-
+        $this->Budget->contain(array('Note'));
         $options = array('conditions' => array('Budget.' . $this->Budget->primaryKey => $id));
         $budget = $this->Budget->find('first', $options);
         $this->set(compact('budget'));
@@ -208,15 +208,15 @@ class BudgetsController extends AppController {
     }
 
     private function _setNotesStatus() {
-        $modified = date('Y-m-d H:i:s');
+        //$modified = date('Y-m-d H:i:s');
         if ($this->request->data['Budget']['budget_status_id'] == '3') {
             $this->Budget->Note->updateAll(
-                    array('Note.note_status_id' => '4', 'Note.modified' => '"' . $modified . '"'), array('Note.budget_id' => $this->Budget->id, 'Note.note_status_id' => '1')
+                    array('Note.note_status_id' => '4', 'Note.modified=NOW()'), array('Note.budget_id' => $this->Budget->id, 'Note.note_status_id' => '1')
             );
         }
         if ($this->request->data['Budget']['budget_status_id'] == '1') {
             $this->Budget->Note->updateAll(
-                    array('Note.note_status_id' => '1', 'Note.modified' => '"' . $modified . '"'), array('Note.budget_id' => $this->Budget->id, 'Note.note_status_id' => '4')
+                    array('Note.note_status_id' => '1', 'Note.modified=NOW()'), array('Note.budget_id' => $this->Budget->id, 'Note.note_status_id' => '4')
             );
         }
     }

@@ -54,6 +54,7 @@ class BudgetNotesController extends AppController {
             $this->Session->setFlash(__('Invalid note'), 'flash/error');
             $this->redirect(array('action' => 'index'));
         }
+        $this->Note->contain(array('NoteType','Fraction','Entity','Budget','FiscalYear','NoteStatus','Receipt'));
         $options = array('conditions' => array(
                 'Note.' . $this->Note->primaryKey => $id,
                 'Note.budget_id' => $this->Session->read('Condo.Budget.ViewID')));
@@ -73,7 +74,6 @@ class BudgetNotesController extends AppController {
             $this->Note->create();
             $this->request->data['Note']['Document'] = 'null';
             $this->request->data['Note']['fiscal_year_id'] = $this->_getFiscalYear();
-            ;
             if ($this->Note->save($this->request->data)) {
                 $this->_setDocument();
                 $this->Session->setFlash(__('The note has been saved'), 'flash/success');
@@ -109,6 +109,7 @@ class BudgetNotesController extends AppController {
         if ($this->request->is('post') || $this->request->is('put')) {
             $this->request->data['Note']['fiscal_year_id'] = $this->_getFiscalYear();
             if ($this->Note->save($this->request->data)) {
+                $this->_setDocument();
                 $this->Session->setFlash(__('The note has been saved'), 'flash/success');
                 $this->redirect(array('action' => 'view', $this->Note->id));
             } else {
@@ -174,6 +175,7 @@ class BudgetNotesController extends AppController {
      * @return void
      */
     public function create() {
+      
         $budget = $this->Note->Budget->find('first', array('conditions' => array('Budget.id' => $this->Session->read('Condo.Budget.ViewID'), 'Budget.budget_status_id' => '2')));
         if (isset($budget['Note']) && count($budget['Note']) > 0) {
             $this->Session->setFlash(__('Invalid Budget'), 'flash/success');
@@ -197,26 +199,26 @@ class BudgetNotesController extends AppController {
                     $month = CakeTime::format('F', $tmpDate);
                     $this->request->data['Note']['title'] = __n('Share','Shares',1) . ' ' . $shares . ' ' . __($month) . ' ' . $budget['Budget']['title'];
                     $this->request->data['Note']['document_date'] = $tmpDate;
-                    $this->request->data['Note']['due_date'] = date('Y-m-d', strtotime($tmpDate . ' +' . $budget['Budget']['due_days'] . ' days'));
+                    $this->request->data['Note']['due_date'] = date(Configure::read('dateFormatSimple'), strtotime($tmpDate . ' +' . $budget['Budget']['due_days'] . ' days'));
                     $this->request->data['Note']['note_status_id'] = '1';
                     switch ($budget['Budget']['share_periodicity_id']):
                         case 1:
                             $tmpDate = $tmpDate;
                             break;
                         case 2:
-                            $tmpDate = date('Y-m-d', strtotime($tmpDate . ' +1 year'));
+                            $tmpDate = date(Configure::read('dateFormatSimple'), strtotime($tmpDate . ' +1 year'));
                             break;
                         case 3:
-                            $tmpDate = date('Y-m-d', strtotime($tmpDate . ' +6 months'));
+                            $tmpDate = date(Configure::read('dateFormatSimple'), strtotime($tmpDate . ' +6 months'));
                             break;
                         case 4:
-                            $tmpDate = date('Y-m-d', strtotime($tmpDate . ' +3 months'));
+                            $tmpDate = date(Configure::read('dateFormatSimple'), strtotime($tmpDate . ' +3 months'));
                             break;
                         case 5:
-                            $tmpDate = date('Y-m-d', strtotime($tmpDate . ' +1 month'));
+                            $tmpDate = date(Configure::read('dateFormatSimple'), strtotime($tmpDate . ' +1 month'));
                             break;
                         case 6:
-                            $tmpDate = date('Y-m-d', strtotime($tmpDate . ' +1 week'));
+                            $tmpDate = date(Configure::read('dateFormatSimple'), strtotime($tmpDate . ' +1 week'));
                             break;
                         default:
                             break;
@@ -239,6 +241,7 @@ class BudgetNotesController extends AppController {
             $this->redirect(array('controller' => 'budgets', 'action' => 'view', $this->Session->read('Condo.Budget.ViewID')));
         }
 
+        $this->Note->Fraction->contain(array('Entity'));
         $fractions = $this->Note->Fraction->find('all', array('order' => array('Fraction.length' => 'asc', 'Fraction.fraction' => 'asc'), 'conditions' => array('condo_id' => $this->Session->read('Condo.ViewID'))));
         $this->set(compact('fractions', 'budget'));
     }

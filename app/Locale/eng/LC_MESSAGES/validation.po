@@ -65,7 +65,7 @@ msgstr ""
 msgid "invalid begin date"
 msgstr ""
 
-msgid "invalid budget date"
+msgid "invalid budget date, do not match fiscal year dates"
 msgstr ""
 
 msgid "invalid close date"

@@ -23,7 +23,6 @@ class NotesController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Note->recursive = 0;
         $this->Paginator->settings = $this->paginate + array(
             'conditions' => array(
                 'Note.budget_id' => $this->Session->read('Condo.Budget.ViewID')));
@@ -94,6 +93,7 @@ class NotesController extends AppController {
             if ($this->Note->save($this->request->data)) {
                 $this->_setEntity();
                 $this->_setFiscalYear();
+                $this->_setDocument();
                 $this->Session->setFlash(__('The note has been saved'), 'flash/success');
                 $this->redirect(array('action' => 'view', $id));
             } else {
@@ -173,26 +173,26 @@ class NotesController extends AppController {
                 while ($shares <= $note['shares']):
                     $this->request->data['Note']['title'] = __('Share ') . $shares . ' ' . $budget['Budget']['title'];
                     $this->request->data['Note']['document_date'] = $tmpDate;
-                    $this->request->data['Note']['due_date'] = date('Y-m-d', strtotime($tmpDate . ' +' . $budget['Budget']['due_days'] . ' days'));
+                    $this->request->data['Note']['due_date'] = date(Configure::read('dateFormatSimple'), strtotime($tmpDate . ' +' . $budget['Budget']['due_days'] . ' days'));
                     $this->request->data['Note']['note_status_id'] = '1';
                     switch ($budget['Budget']['share_periodicity_id']):
                         case 1:
                             $tmpDate = $tmpDate;
                             break;
                         case 2:
-                            $tmpDate = date('Y-m-d', strtotime($tmpDate . ' +1 year'));
+                            $tmpDate = date(Configure::read('dateFormatSimple'), strtotime($tmpDate . ' +1 year'));
                             break;
                         case 3:
-                            $tmpDate = date('Y-m-d', strtotime($tmpDate . ' +6 months'));
+                            $tmpDate = date(Configure::read('dateFormatSimple'), strtotime($tmpDate . ' +6 months'));
                             break;
                         case 4:
-                            $tmpDate = date('Y-m-d', strtotime($tmpDate . ' +3 months'));
+                            $tmpDate = date(Configure::read('dateFormatSimple'), strtotime($tmpDate . ' +3 months'));
                             break;
                         case 5:
-                            $tmpDate = date('Y-m-d', strtotime($tmpDate . ' +1 month'));
+                            $tmpDate = date(Configure::read('dateFormatSimple'), strtotime($tmpDate . ' +1 month'));
                             break;
                         case 6:
-                            $tmpDate = date('Y-m-d', strtotime($tmpDate . ' +1 week'));
+                            $tmpDate = date(Configure::read('dateFormatSimple'), strtotime($tmpDate . ' +1 week'));
                             break;
                         default:
                             break;

@@ -640,7 +640,6 @@ CREATE TABLE `receipt_notes` (
   `modified` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `DOCUMENT` (`document`),
   KEY `NOTETYPE` (`note_type_id`),
   KEY `FRACTION` (`fraction_id`),
   KEY `ENTITY` (`entity_id`),
