@@ -134,6 +134,29 @@ class UsersController extends AppController {
     public function logout() {
         return $this->redirect($this->Auth->logout());
     }
+    
+   public function isAuthorized($user) {
+
+        //debug($this->request->controller);
+        if (isset($user['role'])) {
+
+            switch ($user['role']) {
+                case 'admin':
+                    return true;
+                    break;
+                case 'store_admin':
+                    return true;
+                    break;
+                default:
+                    return false;
+                    break;
+            }
+        }
+
+
+        return parent::isAuthorized($user);
+    }
+
 
     public function beforeRender() {
         $breadcrumbs = array(
