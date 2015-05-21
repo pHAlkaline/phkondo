@@ -1,8 +1,8 @@
 <?php
 
-CakePlugin::load('PrintReceipt',array('bootstrap'=>true));
-CakePlugin::load('Reports',array('bootstrap'=>true));
-CakePlugin::load('Drafts',array('bootstrap'=>true));
+//CakePlugin::load('PrintReceipt',array('bootstrap'=>true));
+//CakePlugin::load('Reports',array('bootstrap'=>true));
+//CakePlugin::load('Drafts',array('bootstrap'=>true));
 
 /** Theme Settings
  * 
