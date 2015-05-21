@@ -195,12 +195,12 @@ Configure::write('Session', array(
 /**
  * A random string used in security hashing methods.
  */
-Configure::write('Security.salt', 'DYhG93b1qyJfIxfs2guVoUubWwvniR2G0FgaC9mi');
+Configure::write('Security.salt', 'hfQBlzhLcsz2Tf5JMGKg4ntAMRe8UdZbGCeG7BbQtEzEDSeN4OX3mp2zK9emIL');
 
 /**
  * A random numeric string (digits only) used to encrypt/decrypt strings.
  */
-Configure::write('Security.cipherSeed', '66859309657453542496749683645');
+Configure::write('Security.cipherSeed', '808658064474370879757404085663');
 
 /**
  * Apply timestamps with the last modified time to static assets (js, css, images).

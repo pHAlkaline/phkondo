@@ -31,7 +31,7 @@ class OwnerReceiptsController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Receipt->recursive = 0;
+        $this->Receipt->contain('Client','ReceiptStatus','ReceiptPaymentType');
         $this->Paginator->settings = $this->paginate + array(
             'conditions' => array(
                 'Receipt.client_id' => $this->Session->read('Condo.Owner.ViewID'),
@@ -52,11 +52,18 @@ class OwnerReceiptsController extends AppController {
      * @return void
      */
     public function view($id = null) {
-        $this->Receipt->recursive = 2;
         if (!$this->Receipt->exists($id)) {
             $this->Session->setFlash(__('Invalid receipt'), 'flash/error');
             $this->redirect(array('action' => 'index'));
         }
+        $this->Receipt->contain(array(
+            'Fraction',
+            'Client',
+            'ReceiptStatus',
+            'ReceiptPaymentType',
+            'ReceiptNote' => array('NoteType','Fraction'),
+            'Note' => array('NoteType','Fraction')
+            ));
         $options = array('conditions' => array('Receipt.' . $this->Receipt->primaryKey => $id, 'Receipt.client_id' => $this->Session->read('Condo.Owner.ViewID'), 'Receipt.fraction_id' => $this->Session->read('Condo.Fraction.ViewID')));
         $receipt = $this->Receipt->find('first', $options);
         $this->set(compact('receipt'));
@@ -73,7 +80,6 @@ class OwnerReceiptsController extends AppController {
      * @return void
      */
     public function print_receipt($id) {
-        $this->Receipt->recursive = 2;
         if (!$this->Receipt->exists($id)) {
             $this->Session->setFlash(__('Invalid receipt'), 'flash/error');
             $this->redirect(array('action' => 'index'));
@@ -98,12 +104,15 @@ class OwnerReceiptsController extends AppController {
             $this->request->data['Receipt']['address'] = $this->Receipt->Client->field('address');
             $number = $this->_getNextReceiptIndex($this->Session->read('Condo.ViewID'));
             $this->request->data['Receipt']['document'] = $this->Session->read('Condo.ViewID') . Date('Y') . '-' . sprintf('%06d', $number);
-            $this->request->data['Receipt']['document_date'] = date('Y-m-d');
+            $this->request->data['Receipt']['document_date'] = date(Configure::read('dateFormatSimple'));
+            
             if ($this->Receipt->save($this->request->data)) {
                 $this->_setReceiptIndex($this->Session->read('Condo.ViewID'), $number);
                 $this->Session->setFlash(__('The receipt has been saved'), 'flash/success');
                 $this->redirect(array('action' => 'view', $this->Receipt->id));
             } else {
+                debug($this->Receipt->validationErrors);
+                debug($this->request->data);
                 $this->Session->setFlash(__('The receipt could not be saved. Please, try again.'), 'flash/error');
             }
         }
@@ -146,7 +155,7 @@ class OwnerReceiptsController extends AppController {
             $this->_setReceiptAmount($id);
             $this->redirect(array('action' => 'view', $id));
         }
-
+        $this->Receipt->Note->contain(array('NoteType','Entity','Fraction'));
         $notes = $this->Receipt->Note->find('all', array('conditions' => array('Note.fraction_id' => $this->Session->read('Condo.Fraction.ViewID'), 'Note.entity_id' => $this->Receipt->field('client_id'), 'Note.note_status_id' => array(1, 2), 'Note.receipt_id' => '')));
 
         $receiptAmount = $this->Receipt->field('total_amount');
@@ -227,7 +236,9 @@ class OwnerReceiptsController extends AppController {
         $receiptPaymentTypes = $this->Receipt->ReceiptPaymentType->find('list', array('conditions' => array('active' => '1')));
         $this->set(compact('condos', 'fractions', 'clients', 'receiptStatuses', 'receiptPaymentTypes'));
         $this->Session->write('Condo.Receipt.ViewID', $id);
-        $this->Session->write('Condo.Receipt.ViewName', $this->request->data['Receipt']['document']);
+        if ($this->Session->read('Condo.Receipt.ViewName')==''){
+            $this->Session->write('Condo.Receipt.ViewName', $this->request->data['Receipt']['document']);
+        }
     }
 
     /**
@@ -263,7 +274,6 @@ class OwnerReceiptsController extends AppController {
                 'AND' => array(
                     'Receipt.receipt_status_id' => array('1', '2'))
                 ));
-            $this->Receipt->recursive = 2;
             $receipt=$this->Receipt->find('first', $options);
             
             $this->request->data = $receipt; 
@@ -417,7 +427,6 @@ class OwnerReceiptsController extends AppController {
     }
 
     private function _setReceiptAmount($id) {
-        $this->Receipt->recursive = 0;
         $totalDebit = $this->Receipt->Note->find('first', array('fields' =>
             array('SUM(Note.amount) AS total'),
             'conditions' => array('Note.receipt_id' => $id, 'Note.note_type_id' => '2')

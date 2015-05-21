@@ -23,7 +23,6 @@ class AccountsController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Account->recursive = 0;
         $this->Paginator->settings = $this->paginate + array(
             'conditions' => array('Account.condo_id' => $this->Session->read('Condo.ViewID'))
         );

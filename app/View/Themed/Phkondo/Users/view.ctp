@@ -1,7 +1,5 @@
 <?php $roles=Configure::read('User.role'); ?>
-<div id="page-container" class="row">
-
-    <div id="sidebar" class="col-sm-3 hidden-print collapse navbar-collapse phkondo-navbar">
+<div id="sidebar" class="col-sm-3 hidden-print collapse navbar-collapse phkondo-navbar">
 
         <div class="actions">
 
@@ -39,7 +37,7 @@
                             </td>
                         </tr><tr>		<td><strong><?php echo __('Role'); ?></strong></td>
                             <td>
-                                <?php echo h($roles[$user['User']['role']]); ?>
+                                <?php echo h(__($roles[$user['User']['role']])); ?>
                                 &nbsp;
                             </td>
                         </tr><tr>		<td><strong><?php echo __('Active'); ?></strong></td>

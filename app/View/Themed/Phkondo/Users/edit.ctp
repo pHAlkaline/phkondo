@@ -1,4 +1,11 @@
 <?php $this->Html->script('user_edit', false); ?>
+<?php
+$role_options=Configure::read('User.role');
+foreach ($role_options as $key => $value){
+    $role_options[$key]=__($value);
+}
+
+?>
 <div id="page-container" class="row">
 
     <div id="sidebar" class="col-sm-3 hidden-print collapse navbar-collapse phkondo-navbar">
@@ -51,7 +58,7 @@
                     <?php echo $this->Form->input('verify_password', array('disabled' => 'disabled', 'class' => 'form-control', 'maxLength' => '8', 'type' => 'password')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
-                    <?php echo $this->Form->input('role', array('options' => Configure::read('User.role'), 'class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('role', array('options' => $role_options, 'class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="col-sm-offset-2 col-sm-10">
                     <?php echo $this->Form->input('active', array('class' => '', 'label' => __('Active'), 'div' => array('class' => 'checkbox'), 'between' => '', 'after' => '')); ?>

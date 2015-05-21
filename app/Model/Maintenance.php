@@ -74,31 +74,48 @@ class Maintenance extends AppModel {
         ),
         'renewal_date' => array(
             'date' => array(
-                'rule' => array('date', 'dmy'),
+                'rule' => array('date'),
                 'allowEmpty' => true,
                 'required' => false,
             ),
             'after_start_date' => array(
                 'rule' => array('checkAfterStartDate'),
                 'message' => 'Renewal date must be after start date',
+                'allowEmpty' => true,
+                'required' => false,
             ),
-           
+        ),
+        'last_inspection' => array(
+            'date' => array(
+                'rule' => array('date'),
+                'allowEmpty' => true,
+                'required' => false,
+            ),
+            'checkPastDate' => array(
+                'rule' => array('checkPastDate'),
+                'message' => 'invalid date',
+                'allowEmpty' => true,
+                'required' => false,
+            ),
         ),
         'next_inspection' => array(
             'date' => array(
-                'rule' => array('date', 'dmy'),
+                'rule' => array('date'),
                 'allowEmpty' => true,
                 'required' => false,
             ),
             'after_start_date' => array(
                 'rule' => array('checkAfterStartDate'),
                 'message' => 'Next inspection date must be after start date',
+                'allowEmpty' => true,
+                'required' => false,
             ),
             'after_last_inspection_date' => array(
                 'rule' => array('checkAfterLastInspectionDate'),
                 'message' => 'Next inspection date must be after last inspection date',
+                'allowEmpty' => true,
+                'required' => false,
             ),
-           
         ),
     );
 
@@ -175,6 +192,19 @@ class Maintenance extends AppModel {
             return CakeTime::fromString($value['0']) > CakeTime::fromString($this->data['Maintenance']['last_inspection']);
         }
         return true;
+    }
+
+    /**
+     * checkPastDate
+     * Custom Validation Rule: Ensures a selected date is either the
+     * present day or in the past.
+     *
+     * @param array $check Contains the value passed from the view to be validated
+     * @return bool True if in the past or today, False otherwise
+     */
+    public function checkPastDate($check) {
+        $value = array_values($check);
+        return (CakeTime::fromString($value[0]) <= CakeTime::fromString(date(Configure::read('databaseDateFormat'))));
     }
 
 }

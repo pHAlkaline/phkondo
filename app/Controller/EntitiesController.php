@@ -25,6 +25,7 @@ class EntitiesController extends AppController {
      * @return void
      */
     public function index() {
+        $this->Entity->contain(array('EntityType'));
         $this->Paginator->settings = $this->paginate;
         $this->setFilter(array('Entity.name','EntityType.name','Entity.address','Entity.email','Entity.contacts','Entity.vat_number'));
         $this->set('entities', $this->paginate());
@@ -42,7 +43,7 @@ class EntitiesController extends AppController {
             $this->Session->setFlash(__('Invalid entity'), 'flash/error');
             $this->redirect(array('action' => 'index'));
         }
-        $this->Entity->recursive=2;
+        $this->Entity->contain(array('EntityType','Fraction'=>array('Condo','Manager')));
         $this->Entity->bindModel(
         array(
             'hasAndBelongsToMany' => array(

@@ -23,8 +23,7 @@ class MovementCategoriesController extends AppController {
      * @return void
      */
     public function index() {
-        $this->MovementCategory->recursive = 0;
-         $this->Paginator->settings =Set::merge($this->Paginator->settings, 
+        $this->Paginator->settings =Set::merge($this->Paginator->settings, 
                     array('conditions' => array
                     ("AND" => array("MovementCategory.active" => "1")
             )));
@@ -76,9 +75,8 @@ class MovementCategoriesController extends AppController {
      * @return void
      */
     public function addFromMovement($movementId = null) {
-        App::uses('Movement', 'model');
-        $movement = new Movement();
-        if ($movementId != null && !$movement->exists($movementId)) {
+        $this->Movement=  ClassRegistry::init('Movement');
+        if ($movementId != null && !$this->Movement->exists($movementId)) {
             $this->Session->setFlash(__('Invalid movement category'), 'flash/error');
             $this->redirect(array('action' => 'index'));
         }

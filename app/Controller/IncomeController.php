@@ -32,7 +32,6 @@ class IncomeController extends AppController {
 
     public function receipts() {
         $Receipt = new Receipt();
-        $Receipt->recursive = 0;
         $condos = $Receipt->Condo->find('list');
         $receiptStatuses = $Receipt->ReceiptStatus->find('list', array('conditions' => array('active' => '1')));
         $this->set(compact('condos', 'clients', 'receiptStatuses'));
@@ -52,6 +51,7 @@ class IncomeController extends AppController {
                 };
                 $conditions['conditions']['Receipt.payment_date'] = $this->request->data['Receipt']['payment_date'];
             }
+            $Receipt->contain(array('PaymentUser','ReceiptStatus','ReceiptPaymentType','Client','Condo','CancelUser'));
             $this->set('receipts', $Receipt->find('all', $conditions));
             $this->set('hasData', true);
         }
