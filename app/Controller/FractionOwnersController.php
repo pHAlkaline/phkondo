@@ -33,9 +33,7 @@ class FractionOwnersController extends AppController {
     public function index() {
         $this->Fraction->contain('Entity');
         $fraction = $this->Fraction->find('first', array('conditions' => array('Fraction.id' => $this->Session->read('Condo.Fraction.ViewID'))));
-        $entitiesInFraction = Set::extract('/Entity/id', $fraction);
-        $entities = $this->Fraction->Entity->find('list', array('order' => 'Entity.name', 'conditions' => array('Entity.entity_type_id' => '1', array('NOT' => array('Entity.id' => $entitiesInFraction)))));
-        $this->set(compact('fraction', 'entities'));
+        $this->set(compact('fraction'));
         $this->Session->delete('Condo.Owner');
     }
 
@@ -102,10 +100,11 @@ class FractionOwnersController extends AppController {
     public function insert() {
         if ($this->request->is('post') || $this->request->is('put')) {
             $this->request->data['EntitiesFraction']['fraction_id'] = $this->Session->read('Condo.Fraction.ViewID');
-            if (!isset($this->request->data['EntitiesFraction']['entity_id'])) {
+            if (!isset($this->request->data['EntitiesFraction']['client'])) {
                 $this->Session->setFlash(__('Invalid owner'), 'flash/error');
                 $this->redirect(array('action' => 'index'));
             }
+            $this->request->data['EntitiesFraction']['entity_id']=$this->request->data['EntitiesFraction']['client'];
             $this->Fraction->EntitiesFraction->create();
             if ($this->Fraction->EntitiesFraction->save($this->request->data)) {
                 $this->Session->setFlash(__('The owner has been related'), 'flash/success');
@@ -243,6 +242,41 @@ class FractionOwnersController extends AppController {
                 break;
         }
         $this->set(compact('breadcrumbs'));
+    }
+    
+    
+    public function search_clients() {
+        $this->autoRender = false;
+        //$this->RequestHandler->respondAs('json');
+        
+        // get the search term from URL
+        $term = $this->request->query['q'];
+        $page = 1;
+        //if (isset($this->request->query['page'])){
+        //    $page=$this->request->query['page'];
+        //}
+           
+        $this->Fraction->contain('Entity');
+        $fraction = $this->Fraction->find('first', array('conditions' => array('Fraction.id' => $this->Session->read('Condo.Fraction.ViewID'))));
+        $entitiesInFraction = Set::extract('/Entity/id', $fraction);
+        $entities = $this->Fraction->Entity->find('list', array('order' => 'Entity.name', 'conditions' => array('Entity.name LIKE '=>$term,'Entity.entity_type_id' => '1', array('NOT' => array('Entity.id' => $entitiesInFraction)))));
+        
+        $clients = $this->Fraction->Entity->find('all', array(
+            'fields' => array('Entity.id','Entity.name','Entity.address'),
+            'conditions' => array(
+                'Entity.name LIKE' => $term . '%',
+                'Entity.entity_type_id' => '1',
+                array('NOT' => array('Entity.id' => $entitiesInFraction))
+            ),
+            'limit' => 100,
+           // 'offset' => ($page*100)-100,
+        ));
+        $result=array();
+        foreach ($clients as $key => $client){
+            $result[$key]=$client['Entity'];
+        }
+        
+         echo json_encode(array('items'=>$result));
     }
 
 }
