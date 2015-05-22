@@ -12,10 +12,19 @@ $clientDescription = __('pHkondo Condominium Management');
             <?php echo $clientDescription ?>:
             <?php echo $title_for_layout; ?>
         </title>
+
         <?php
         echo $this->Html->meta('icon');
         echo $this->fetch('meta');
-        echo $this->Html->css(array('bootstrap/bootstrap-glyphicons', 'bootstrap/font-awesome.min', 'bootstrap/bootstrap', 'bootstrap/bootstrap-theme', 'datepicker/bootstrap-datepicker3.min', 'phkondo'));
+        echo $this->Html->css(array(
+            'bootstrap/bootstrap-glyphicons',
+            'bootstrap/font-awesome.min',
+            'bootstrap/bootstrap',
+            'bootstrap/bootstrap-theme',
+            'datepicker/bootstrap-datepicker3.min',
+            'select2/select2',
+            'select2/select2.bootstrap',
+            'phkondo'));
         echo $this->Html->css(array('phkondo_print'), null, array('media' => 'print'));
 
         echo $this->fetch('css');
@@ -25,23 +34,45 @@ $clientDescription = __('pHkondo Condominium Management');
         echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.min'));
         echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.pt.min'));
         echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.en-GB.min'));
+        echo $this->Html->script(array('libs/select2/select2'));
+
+
+        switch (Configure::read('Config.language')) {
+            case 'por':
+                echo $this->Html->script(array('libs/select2/select2_locale_pt-PT'));
+                break;
+            case 'eng':
+                echo $this->Html->script(array('libs/select2/select2_locale_en'));
+                break;
+        }
         $phkondo = array(
             'APP_PATH' => Router::url('/', true),
             'APP_LANG' => Configure::read('Config.language'),
             'START_DATE' => date('d-m-Y', strtotime("-1 year", time())),
-            'END_DATE' => date('d-m-Y', strtotime("+1 year", time()))
+            'END_DATE' => date('d-m-Y', strtotime("+1 year", time())),
+            'SEARCH_HERE_FOR_A_CLIENT' => __('Search')
         );
         echo $this->Html->scriptBlock('var phkondo = ' . $this->Js->object($phkondo) . ';');
         echo $this->fetch('script');
         ?>
+
         <script type="text/javascript">
             $(document).ready(function () {
+
+                var phkondolang = 'en-GB';
+                switch (phkondo.APP_LANG) {
+                    case 'por':
+                        phkondolang = 'pt';
+                        break;
+                }
                 $('.datefield').datepicker({
                     format: "<?= Configure::read('calendarDateFormat'); ?>",
                     weekStart: 1,
-                    language: "pt",
+                    language: phkondolang,
                     todayHighlight: true
                 });
+
+                $('select').select2();
 
             });
         </script>
@@ -52,20 +83,20 @@ $clientDescription = __('pHkondo Condominium Management');
         <div id="main-container">
 
             <div id="header" class="container hidden-print">
-                <?php echo $this->element('menu/top_menu', array('headerDescription' => $clientDescription)); ?>
+<?php echo $this->element('menu/top_menu', array('headerDescription' => $clientDescription)); ?>
             </div><!-- #header .container -->
 
             <div id="content" class="container">
                 <div class="no-print">
-                    <?php if (isset($breadcrumbs)) echo $this->element('breadcrumbs', array('breadcrumbs', $breadcrumbs)); ?>
+<?php if (isset($breadcrumbs)) echo $this->element('breadcrumbs', array('breadcrumbs', $breadcrumbs)); ?>
                     <?php echo $this->Session->flash(); ?>
                 </div>
-                <?php echo $this->fetch('content'); ?>
+                    <?php echo $this->fetch('content'); ?>
             </div><!-- #header .container -->
 
             <div id="footer" class="container hidden-print">
                 <div style="text-align: center;">Copyright (c) pHAlkaline (<a href="http://phalkaline.eu" target="_blank">http://phalkaline.eu</a>)</div>
-                <?php //Silence is golden   ?>
+<?php //Silence is golden    ?>
             </div><!-- #footer .container -->
 
         </div><!-- #main-container -->
@@ -73,7 +104,7 @@ $clientDescription = __('pHkondo Condominium Management');
         <!--div class="container">
                 <div class="well">
                         <small>
-        <?php //echo $this->element('sql_dump');   ?>
+<?php //echo $this->element('sql_dump');    ?>
                         </small>
                 </div>
         </div><!-- .container -->
