@@ -57,7 +57,7 @@ class FractionOwnersController extends AppController {
 
         $options = array('conditions' => array(
                 'Entity.id' => $id,
-                ));
+        ));
         $entity = $this->Fraction->Entity->find('first', $options);
 
         $this->set(compact('entity', 'entitiesFraction'));
@@ -104,7 +104,7 @@ class FractionOwnersController extends AppController {
                 $this->Session->setFlash(__('Invalid owner'), 'flash/error');
                 $this->redirect(array('action' => 'index'));
             }
-            $this->request->data['EntitiesFraction']['entity_id']=$this->request->data['EntitiesFraction']['client'];
+            $this->request->data['EntitiesFraction']['entity_id'] = $this->request->data['EntitiesFraction']['client'];
             $this->Fraction->EntitiesFraction->create();
             if ($this->Fraction->EntitiesFraction->save($this->request->data)) {
                 $this->Session->setFlash(__('The owner has been related'), 'flash/success');
@@ -137,21 +137,19 @@ class FractionOwnersController extends AppController {
                 } else {
                     $this->Session->setFlash(__('The owner has been saved but could not be related. Please, try again.'), 'flash/error');
                 }
-                
-                
             } else {
                 $this->Session->setFlash(__('The owner could not be saved. Please, try again.'), 'flash/error');
             }
         }
         $options = array('conditions' => array(
                 'Entity.' . $this->Fraction->Entity->primaryKey => $id,
-                ));
+        ));
         $fraction = $this->Fraction->Entity->find('first', $options);
 
         $options = array('conditions' => array(
                 'EntitiesFraction.fraction_id' => $this->Session->read('Condo.Fraction.ViewID'),
                 'EntitiesFraction.entity_id' => $id,
-                ));
+        ));
         $entitiesFraction = $this->Fraction->EntitiesFraction->find('first', $options);
 
         $this->Session->write('Condo.Owner.ViewID', $id);
@@ -179,14 +177,12 @@ class FractionOwnersController extends AppController {
             $this->Session->setFlash(__('The owner could not be found at this fraction. Please, try again.'), 'flash/error');
             $this->redirect(array('controller' => 'entities', 'action' => 'view', $id));
         }
-        
+
         $event = new CakeEvent('Phkondo.FractionOwner.currentAccount', $this, array(
             'id' => $id,
-            'fraction_id'=>$fraction_id
+            'fraction_id' => $fraction_id
         ));
         $this->getEventManager()->dispatch($event);
-        
-
     }
 
     /**
@@ -218,65 +214,63 @@ class FractionOwnersController extends AppController {
         parent::beforeFilter();
         if (!$this->Session->check('Condo.Fraction.ViewID')) {
             $this->Session->setFlash(__('Invalid fraction'), 'flash/error');
-            $this->redirect(array('controller'=>'fractions','action' => 'index'));
+            $this->redirect(array('controller' => 'fractions', 'action' => 'index'));
         }
     }
 
     public function beforeRender() {
         $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID'))), 'text' => $this->Session->read('Condo.ViewName'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'fractions', 'action' => 'index')), 'text' => __n('Fraction','Fractions',2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'fractions', 'action' => 'index')), 'text' => __n('Fraction', 'Fractions', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'fractions', 'action' => 'view', $this->Session->read('Condo.Fraction.ViewID'))), 'text' => $this->Session->read('Condo.Fraction.ViewName'), 'active' => ''),
-            array('link' => '', 'text' => __n('Owner','Owners',2), 'active' => 'active')
+            array('link' => '', 'text' => __n('Owner', 'Owners', 2), 'active' => 'active')
         );
         switch ($this->action) {
             case 'view':
-                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'fraction_owners', 'action' => 'index')), 'text' => __n('Owner','Owners',2), 'active' => '');
+                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'fraction_owners', 'action' => 'index')), 'text' => __n('Owner', 'Owners', 2), 'active' => '');
                 $breadcrumbs[6] = array('link' => '', 'text' => $this->Session->read('Condo.Owner.ViewName'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'fraction_owners', 'action' => 'index')), 'text' => __n('Owner','Owners',2), 'active' => '');
+                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'fraction_owners', 'action' => 'index')), 'text' => __n('Owner', 'Owners', 2), 'active' => '');
                 $breadcrumbs[6] = array('link' => '', 'text' => $this->Session->read('Condo.Owner.ViewName'), 'active' => 'active');
                 break;
         }
         $this->set(compact('breadcrumbs'));
     }
-    
-    
+
     public function search_clients() {
         $this->autoRender = false;
         //$this->RequestHandler->respondAs('json');
-        
+
         // get the search term from URL
         $term = $this->request->query['q'];
         $page = 1;
         //if (isset($this->request->query['page'])){
         //    $page=$this->request->query['page'];
         //}
-           
-        $this->Fraction->contain('Entity');
+
         $fraction = $this->Fraction->find('first', array('conditions' => array('Fraction.id' => $this->Session->read('Condo.Fraction.ViewID'))));
         $entitiesInFraction = Set::extract('/Entity/id', $fraction);
-        $entities = $this->Fraction->Entity->find('list', array('order' => 'Entity.name', 'conditions' => array('Entity.name LIKE '=>$term,'Entity.entity_type_id' => '1', array('NOT' => array('Entity.id' => $entitiesInFraction)))));
-        
+
         $clients = $this->Fraction->Entity->find('all', array(
-            'fields' => array('Entity.id','Entity.name','Entity.address'),
+            'fields' => array('Entity.id', 'Entity.name', 'Entity.address'),
             'conditions' => array(
                 'Entity.name LIKE' => $term . '%',
                 'Entity.entity_type_id' => '1',
                 array('NOT' => array('Entity.id' => $entitiesInFraction))
             ),
             'limit' => 100,
-           // 'offset' => ($page*100)-100,
+                // 'offset' => ($page*100)-100,
         ));
-        $result=array();
-        foreach ($clients as $key => $client){
-            $result[$key]=$client['Entity'];
-        }
         
-         echo json_encode(array('items'=>$result));
+        $result = array();
+        foreach ($clients as $key => $client) {
+            $result[$key] = $client['Entity'];
+        }
+
+        echo json_encode(array('items' => $result));
     }
 
 }
