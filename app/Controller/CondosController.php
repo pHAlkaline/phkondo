@@ -49,6 +49,7 @@ class CondosController extends AppController {
                 'Maintenance', 
                 'Account', 
                 'Administrator' => array(
+                    'conditions'=>array('Administrator.fiscal_year_id' => $this->Session->read('Condo.FiscalYearID')),
                     'Entity'=>array(
                         'fields'=>array('Entity.name')))));
         if (!$this->Condo->exists($id)) {
