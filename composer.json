@@ -26,7 +26,7 @@
     "require": {
         "php": ">=5.2.8",
         "ext-mcrypt": "*",
-        "cakephp/cakephp": "2.6.4",
+        "cakephp/cakephp": "2.6.7",
         "cakephp/debug_kit": "2.2.*"
 
 
