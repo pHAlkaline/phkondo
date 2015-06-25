@@ -281,7 +281,7 @@ class Receipt extends AppModel {
      * @return bool True if in the past or today, False otherwise
      */
     public function checkDocumentDate($check) {
-        if (!$this->data[$this->alias]['document_date']){
+        if (!isset($this->data[$this->alias]['document_date'])){
             $this->data[$this->alias]['document_date']=$this->field('document_date');
         }
         $value = array_values($check);
