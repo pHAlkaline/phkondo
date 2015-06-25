@@ -21,7 +21,7 @@
 /app/Plugin/Drafts/
 /app/Plugin/PrintReceipt/
 /app/Plugin/Reports/
-
+/app/Plugin/Upload/
 # OS generated files #
 ######################
 .DS_Store
