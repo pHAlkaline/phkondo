@@ -17,11 +17,10 @@
 /tags
 
 # Plugins
-/app/Plugin/DebugKit/
-/app/Plugin/Drafts/
-/app/Plugin/PrintReceipt/
-/app/Plugin/Reports/
-/app/Plugin/Upload/
+/app/Plugin/*
+!/app/Plugin/empty
+
+
 # OS generated files #
 ######################
 .DS_Store
