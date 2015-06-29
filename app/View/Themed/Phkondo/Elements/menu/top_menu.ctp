@@ -56,9 +56,7 @@
                                     <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-file"></span> ' . __n('Draft','Drafts',2), array('controller' => 'pages', 'action' => 'drafts'), array('class' => 'btn ', 'escape' => false)); ?> </li>
 
                                 <?php } ?>
-                                <?php if (AuthComponent::user('role') == 'admin') { ?>
-
-                                    <li role="presentation" class="divider"></li>
+                                <li role="presentation" class="divider"></li>
 
                                     <li >
 
@@ -69,7 +67,7 @@
 
                                         <?php echo $this->Html->link('<span class="glyphicon glyphicon-user"></span> ' . __('Users'), array('plugin' => '', 'controller' => 'users', 'action' => 'index'), array('escape' => false)); ?>
                                     </li>
-                                <?php } ?>
+                               
                             <?php } ?>
 
                             <li role="presentation" class="divider"></li>
