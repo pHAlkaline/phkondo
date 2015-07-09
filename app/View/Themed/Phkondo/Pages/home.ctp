@@ -7,7 +7,7 @@
     <p class="text-primary">É uma excelente ferramenta de apoio à administração de condomínios, gratuito, <a target="_blank" href="https://www.youtube.com/watch?v=Og1WuD8vMTI&amp;t=1490">software livre </a> distribuído sobre <a target="_blank" href="http://opensource.org/licenses/GPL-2.0">liçenca GNU GPL-2.0</a>.</p>
     <p class="text-primary">Sem qualquer limitação tem como principais características a gestão de Exercícios, Fracções Proprietários e Representantes, Orçamentos, Notas de Crédito e Débito (Quotas), Contas Bancárias e Movimentos, Administradores, Conferência de Faturas, Recibos, Manutenção, Seguros, Minutas de Documentos,  e muito mais.</p>
     <p class="text-primary">pHKondo sempre foi publicado sob uma licença Open Source, e para continuar, no futuro isso vai nos custar milhares de horas para desenvolver e testar.</p>
-    <p class="text-primary">Se você acha este software valioso, considere uma doação ou patrocinio de forma a manter o pHKondo GRÁTIS.</p>
+    <p class="text-primary">Se você acha este software valioso, considere uma doação ou patrocinio de forma a manter o pHKondo Open Source.</p>
     <?php endif; ?>
     <?php if ($this->Session->read('User.language')=='eng'): ?>
     <h2>Software for condominium property managers</h2>

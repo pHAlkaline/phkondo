@@ -179,11 +179,20 @@ class CondosController extends AppController {
     }
     
     /**
-     * draft method
+     * drafts method
      *
      * @return void
      */
     public function drafts() {
+        
+    }
+    
+    /**
+     * documents method
+     *
+     * @return void
+     */
+    public function documents() {
         
     }
 
