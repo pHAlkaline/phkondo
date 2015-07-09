@@ -563,7 +563,7 @@ msgid "Fiscal Year is not active"
 msgstr ""
 
 msgid "Floor Location"
-msgstr ""
+msgstr "Location"
 
 msgid "Fraction"
 msgid_plural "Fractions"
