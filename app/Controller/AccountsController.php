@@ -67,7 +67,7 @@ class AccountsController extends AppController {
      */
     public function view($id = null) {
         if (!$this->Account->exists($id)) {
-            $this->Session->setFlash(__('Invalid account'), 'flash/error');
+            $this->Flash->error(__('Invalid account'));
             $this->redirect(array('action' => 'index'));
         }
         $options = array('conditions' => array('Account.' . $this->Account->primaryKey => $id));
@@ -86,10 +86,10 @@ class AccountsController extends AppController {
         if ($this->request->is('post')) {
             $this->Account->create();
             if ($this->Account->save($this->request->data)) {
-                $this->Session->setFlash(__('The account has been saved'), 'flash/success');
+                $this->Flash->success(__('The account has been saved'));
                 $this->redirect(array('action' => 'view', $this->Account->id));
             } else {
-                $this->Session->setFlash(__('The account could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The account could not be saved. Please, try again.'));
             }
         }
         $condos = $this->Account->Condo->find('list', array('conditions' => array('id' => $this->Session->read('Condo.ViewID'))));
@@ -105,15 +105,15 @@ class AccountsController extends AppController {
      */
     public function edit($id = null) {
         if (!$this->Account->exists($id)) {
-            $this->Session->setFlash(__('Invalid account'), 'flash/error');
+            $this->Flash->error(__('Invalid account'));
             $this->redirect(array('action' => 'index'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Account->save($this->request->data)) {
-                $this->Session->setFlash(__('The account has been saved'), 'flash/success');
+                $this->Flash->success(__('The account has been saved'));
                 $this->redirect(array('action' => 'view', $this->Account->id));
             } else {
-                $this->Session->setFlash(__('The account could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The account could not be saved. Please, try again.'));
             }
         } else {
             $options = array('conditions' => array('Account.' . $this->Account->primaryKey => $id));
@@ -139,21 +139,21 @@ class AccountsController extends AppController {
         }
         $this->Account->id = $id;
         if (!$this->Account->exists()) {
-            $this->Session->setFlash(__('Invalid account'), 'flash/error');
+            $this->Flash->error(__('Invalid account'));
             $this->redirect(array('action' => 'index'));
         }
         if ($this->Account->delete()) {
-            $this->Session->setFlash(__('Account deleted'), 'flash/success');
+            $this->Flash->success(__('Account deleted'));
             $this->redirect(array('action' => 'index'));
         }
-        $this->Session->setFlash(__('Account can not be deleted'), 'flash/error');
+        $this->Flash->error(__('Account can not be deleted'));
         $this->redirect(array('action' => 'view', $id));
     }
 
     public function beforeFilter() {
         parent::beforeFilter();
         if (!$this->Session->check('Condo.ViewID') || !$this->Session->read('Condo.FiscalYearID')) {
-            $this->Session->setFlash(__('Invalid condo or fiscal year'), 'flash/error');
+            $this->Flash->error(__('Invalid condo or fiscal year'));
             $this->redirect(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID')));
         }
     }

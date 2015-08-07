@@ -66,7 +66,7 @@ class EntitiesController extends AppController {
      */
     public function view($id = null) {
         if (!$this->Entity->exists($id)) {
-            $this->Session->setFlash(__('Invalid entity'), 'flash/error');
+            $this->Flash->error(__('Invalid entity'));
             $this->redirect(array('action' => 'index'));
         }
         $this->Entity->contain(array('EntityType','Fraction'=>array('Condo','Manager')));
@@ -101,10 +101,10 @@ class EntitiesController extends AppController {
         if ($this->request->is('post')) {
             $this->Entity->create();
             if ($this->Entity->save($this->request->data)) {
-                $this->Session->setFlash(__('The entity has been saved'), 'flash/success');
+                $this->Flash->success(__('The entity has been saved'));
                 $this->redirect(array('action' => 'view',$this->Entity->id));
             } else {
-                $this->Session->setFlash(__('The entity could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The entity could not be saved. Please, try again.'));
             }
         }
         $entityTypes = $this->Entity->EntityType->find('list');
@@ -122,21 +122,21 @@ class EntitiesController extends AppController {
         
         $maintenance = $this->Maintenance;
         if ($maintenanceId != null && !$maintenance->exists($maintenanceId)) {
-            $this->Session->setFlash(__('Invalid entity'), 'flash/error');
+            $this->Flash->error(__('Invalid entity'));
             $this->redirect(array('controller'=>'maintenance','action' => 'index'));
         }
         if ($this->request->is('post')) {
             $this->Entity->create();
             $this->request->data['Entity']['entity_type_id'] = 2; // Client Type
             if ($this->Entity->save($this->request->data)) {
-                $this->Session->setFlash(__('The entity has been saved'), 'flash/success');
+                $this->Flash->success(__('The entity has been saved'));
                 if ($maintenanceId != null) {
                     $this->redirect(array('controller' => 'maintenances', 'action' => 'edit', $maintenanceId));
                 } else {
                     $this->redirect(array('controller' => 'maintenances', 'action' => 'add'));
                 }
             } else {
-                $this->Session->setFlash(__('The entity could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The entity could not be saved. Please, try again.'));
             }
         }
         $entityTypes = $this->Entity->EntityType->find('list', array('conditions' => array('id' => '2')));
@@ -144,7 +144,7 @@ class EntitiesController extends AppController {
         $this->set(compact('entityTypes', 'maintenanceId'));
 
         if (!$this->Session->check('Condo.ViewID')) {
-            $this->Session->setFlash(__('Invalid condo'), 'flash/error');
+            $this->Flash->error(__('Invalid condo'));
             $this->redirect(array('controller'=>'maintenances','action' => 'index'));
         }
 
@@ -167,15 +167,15 @@ class EntitiesController extends AppController {
      */
     public function edit($id = null) {
         if (!$this->Entity->exists($id)) {
-            $this->Session->setFlash(__('Invalid entity'), 'flash/error');
+            $this->Flash->error(__('Invalid entity'));
             $this->redirect(array('action' => 'index'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Entity->save($this->request->data)) {
-                $this->Session->setFlash(__('The entity has been saved'), 'flash/success');
+                $this->Flash->success(__('The entity has been saved'));
                 $this->redirect(array('action' => 'view',$this->Entity->id));
             } else {
-                $this->Session->setFlash(__('The entity could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The entity could not be saved. Please, try again.'));
             }
         } else {
             $options = array('conditions' => array('Entity.' . $this->Entity->primaryKey => $id));
@@ -201,14 +201,14 @@ class EntitiesController extends AppController {
         }
         $this->Entity->id = $id;
         if (!$this->Entity->exists()) {
-            $this->Session->setFlash(__('Invalid entity'), 'flash/error');
+            $this->Flash->error(__('Invalid entity'));
             $this->redirect(array('action' => 'index'));
         }
         if ($this->Entity->delete()) {
-            $this->Session->setFlash(__('Entity deleted'), 'flash/success');
+            $this->Flash->success(__('Entity deleted'));
             $this->redirect(array('action' => 'index'));
         }
-        $this->Session->setFlash(__('Entity can not be deleted'), 'flash/error');
+        $this->Flash->error(__('Entity can not be deleted'));
         $this->redirect(array('action' => 'view',$id));
     }
 

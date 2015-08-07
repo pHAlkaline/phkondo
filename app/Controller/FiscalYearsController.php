@@ -66,7 +66,7 @@ class FiscalYearsController extends AppController {
      */
     public function view($id = null) {
         if (!$this->FiscalYear->exists($id)) {
-            $this->Session->setFlash(__('Invalid fiscal year'), 'flash/error');
+            $this->Flash->error(__('Invalid fiscal year'));
             $this->redirect(array('action' => 'index'));
         }
         $options = array('conditions' => array('FiscalYear.' . $this->FiscalYear->primaryKey => $id));
@@ -88,10 +88,10 @@ class FiscalYearsController extends AppController {
                 if ($this->request->data['FiscalYear']['active']=='1'){
                     $this->_setAccountBalanceByFiscalYear($this->FiscalYear->id);
                 }
-                $this->Session->setFlash(__('The fiscal year has been saved'), 'flash/success');
+                $this->Flash->success(__('The fiscal year has been saved'));
                 $this->redirect(array('action' => 'view',$this->FiscalYear->id));
             } else {
-                $this->Session->setFlash(__('The fiscal year could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The fiscal year could not be saved. Please, try again.'));
             }
         }
         $condos = $this->FiscalYear->Condo->find('list', array('conditions' => array('id' => $this->Session->read('Condo.ViewID'))));
@@ -107,7 +107,7 @@ class FiscalYearsController extends AppController {
      */
     public function edit($id = null) {
         if (!$this->FiscalYear->exists($id)) {
-            $this->Session->setFlash(__('Invalid fiscal year'), 'flash/error');
+            $this->Flash->error(__('Invalid fiscal year'));
             $this->redirect(array('action' => 'index'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
@@ -115,10 +115,10 @@ class FiscalYearsController extends AppController {
                 if ($this->request->data['FiscalYear']['active']=='1'){
                     $this->_setAccountBalanceByFiscalYear($this->request->data['FiscalYear']['id']);
                 }
-                $this->Session->setFlash(__('The fiscal year has been saved'), 'flash/success');
+                $this->Flash->success(__('The fiscal year has been saved'));
                 $this->redirect(array('action' => 'view',$this->FiscalYear->id));
             } else {
-                $this->Session->setFlash(__('The fiscal year could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The fiscal year could not be saved. Please, try again.'));
             }
         } else {
             $options = array('conditions' => array('FiscalYear.' . $this->FiscalYear->primaryKey => $id));
@@ -144,15 +144,15 @@ class FiscalYearsController extends AppController {
         }
         $this->FiscalYear->id = $id;
         if (!$this->FiscalYear->exists()) {
-            $this->Session->setFlash(__('Invalid fiscal year'), 'flash/error');
+            $this->Flash->error(__('Invalid fiscal year'));
             $this->redirect(array('action' => 'index'));
         }
         if ($this->FiscalYear->active()) {
             $this->_setAccountBalanceByFiscalYear($id);
-            $this->Session->setFlash(__('Fiscal Year active'), 'flash/success');
+            $this->Flash->success(__('Fiscal Year active'));
             $this->redirect(array('action' => 'index'));
         }
-        $this->Session->setFlash(__('Fiscal Year is not active'), 'flash/error');
+        $this->Flash->error(__('Fiscal Year is not active'));
         $this->redirect(array('action' => 'index'));
     }
 
@@ -171,20 +171,20 @@ class FiscalYearsController extends AppController {
         
         $this->FiscalYear->id = $id;
         if (!$this->FiscalYear->exists()) {
-            $this->Session->setFlash(__('Invalid fiscal year'), 'flash/error');
+            $this->Flash->error(__('Invalid fiscal year'));
             $this->redirect(array('action' => 'index'));
         }
         
         if (!$this->FiscalYear->deletable()) {
-            $this->Session->setFlash(__('This Fiscal Year can not be deleted, check existing notes already paid.'), 'flash/error');
+            $this->Flash->error(__('This Fiscal Year can not be deleted, check existing notes already paid.'));
             $this->redirect(array('action' => 'view', $id));
         }
 
         if ($this->FiscalYear->delete()) {
-            $this->Session->setFlash(__('Fiscal Year deleted'), 'flash/success');
+            $this->Flash->success(__('Fiscal Year deleted'));
             $this->redirect(array('action' => 'index'));
         }
-        $this->Session->setFlash(__('Fiscal Year can not be deleted'), 'flash/error');
+        $this->Flash->error(__('Fiscal Year can not be deleted'));
         $this->redirect(array('action' => 'view',$id));
     }
     
@@ -205,7 +205,7 @@ class FiscalYearsController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         if (!$this->Session->check('Condo.ViewID')) {
-            $this->Session->setFlash(__('Invalid condo or fiscal year'), 'flash/error');
+            $this->Flash->error(__('Invalid condo or fiscal year'));
             $this->redirect(array('controller'=>'condos','action' => 'view',$this->Session->read('Condo.ViewID')));
         }
     }

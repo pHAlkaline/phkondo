@@ -76,7 +76,7 @@ class OwnerNotesController extends AppController {
      */
     public function view($id = null) {
         if (!$this->Note->exists($id)) {
-            $this->Session->setFlash(__('Invalid note'), 'flash/error');
+            $this->Flash->error(__('Invalid note'));
             $this->redirect(array('action' => 'index'));
         }
         $this->Note->contain('NoteType','NoteStatus','Fraction','Entity','Budget','FiscalYear','Receipt');
@@ -103,10 +103,10 @@ class OwnerNotesController extends AppController {
             $this->request->data['Note']['entity_id'] = $this->Session->read('Condo.Owner.ViewID');
             if ($this->Note->save($this->request->data)) {
                 $this->_setDocument();
-                $this->Session->setFlash(__('The note has been saved'), 'flash/success');
+                $this->Flash->success(__('The note has been saved'));
                 $this->redirect(array('action' => 'view', $this->Note->id));
             } else {
-                $this->Session->setFlash(__('The note could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The note could not be saved. Please, try again.'));
             }
         }
         $noteTypes = $this->Note->NoteType->find('list');
@@ -124,7 +124,7 @@ class OwnerNotesController extends AppController {
      */
     public function edit($id = null) {
         if (!$this->Note->exists($id)) {
-            $this->Session->setFlash(__('Invalid note'), 'flash/error');
+            $this->Flash->error(__('Invalid note'));
             $this->redirect(array('action' => 'index'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
@@ -132,10 +132,10 @@ class OwnerNotesController extends AppController {
             $this->request->data['Note']['entity_id'] = $this->Session->read('Condo.Owner.ViewID');
             if ($this->Note->save($this->request->data)) {
                 $this->_setDocument();
-                $this->Session->setFlash(__('The note has been saved'), 'flash/success');
+                $this->Flash->success(__('The note has been saved'));
                 $this->redirect(array('action' => 'view', $this->Note->id));
             } else {
-                $this->Session->setFlash(__('The note could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The note could not be saved. Please, try again.'));
             }
         } else {
             $options = array('conditions' => array(
@@ -144,7 +144,7 @@ class OwnerNotesController extends AppController {
 
             $this->request->data = $this->Note->find('first', $options);
             if (!$this->Note->editable($this->request->data['Note'])) {
-                $this->Session->setFlash(__('Invalid Note'), 'flash/success');
+                $this->Flash->success(__('Invalid Note'));
                 $this->redirect(array('action' => 'view', $this->Note->id));
             }
         }
@@ -175,15 +175,15 @@ class OwnerNotesController extends AppController {
         }
         $this->Note->id = $id;
         if (!$this->Note->exists()) {
-            $this->Session->setFlash(__('Invalid note'), 'flash/error');
+            $this->Flash->error(__('Invalid note'));
             $this->redirect(array('action' => 'index'));
         }
         
         if ($this->Note->delete()) {
-            $this->Session->setFlash(__('Note deleted'), 'flash/success');
+            $this->Flash->success(__('Note deleted'));
             $this->redirect(array('action' => 'index'));
         }
-        $this->Session->setFlash(__('Note can not be deleted'), 'flash/error');
+        $this->Flash->error(__('Note can not be deleted'));
         $this->redirect(array('action' => 'view', $id));
     }
 
@@ -213,7 +213,7 @@ class OwnerNotesController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         if (!$this->Session->check('Condo.Fraction.ViewID')) {
-             $this->Session->setFlash(__('Invalid fraction'), 'flash/error');
+             $this->Flash->error(__('Invalid fraction'));
             $this->redirect(array('controller'=>'fractions','action' => 'index'));
             
         }

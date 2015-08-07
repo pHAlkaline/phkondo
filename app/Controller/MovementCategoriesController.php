@@ -68,7 +68,7 @@ class MovementCategoriesController extends AppController {
      */
     public function view($id = null) {
         if (!$this->MovementCategory->exists($id)) {
-            $this->Session->setFlash(__('Invalid movement category'), 'flash/error');
+            $this->Flash->error(__('Invalid movement category'));
             $this->redirect(array('action' => 'index'));
         }
         $options = array('conditions' => array('MovementCategory.' . $this->MovementCategory->primaryKey => $id));
@@ -87,10 +87,10 @@ class MovementCategoriesController extends AppController {
         if ($this->request->is('post')) {
             $this->MovementCategory->create();
             if ($this->MovementCategory->save($this->request->data)) {
-                $this->Session->setFlash(__('The movement category has been saved'), 'flash/success');
+                $this->Flash->success(__('The movement category has been saved'));
                 $this->redirect(array('action' => 'view',$this->Movement->id));
             } else {
-                $this->Session->setFlash(__('The movement category could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The movement category could not be saved. Please, try again.'));
             }
         }
     }
@@ -103,25 +103,25 @@ class MovementCategoriesController extends AppController {
     public function addFromMovement($movementId = null) {
         $this->Movement=  ClassRegistry::init('Movement');
         if ($movementId != null && !$this->Movement->exists($movementId)) {
-            $this->Session->setFlash(__('Invalid movement category'), 'flash/error');
+            $this->Flash->error(__('Invalid movement category'));
             $this->redirect(array('action' => 'index'));
         }
         if ($this->request->is('post')) {
             $this->MovementCategory->create();
             if ($this->MovementCategory->save($this->request->data)) {
-                $this->Session->setFlash(__('The movement category has been saved'), 'flash/success');
+                $this->Flash->success(__('The movement category has been saved'));
                 if ($movementId != null) {
                     $this->redirect(array('controller' => 'movements', 'action' => 'edit', $movementId));
                 } else {
                     $this->redirect(array('controller' => 'movements', 'action' => 'add'));
                 }
             } else {
-                $this->Session->setFlash(__('The movement category could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The movement category could not be saved. Please, try again.'));
             }
         }
 
         if (!$this->Session->check('Condo.Account.ViewID')) {
-            $this->Session->setFlash(__('Invalid account'), 'flash/error');
+            $this->Flash->error(__('Invalid account'));
             $this->redirect(array('controller'=>'accounts','action' => 'index'));
         }
 
@@ -147,15 +147,15 @@ class MovementCategoriesController extends AppController {
      */
     public function edit($id = null) {
         if (!$this->MovementCategory->exists($id)) {
-            $this->Session->setFlash(__('Invalid movement category'), 'flash/error');
+            $this->Flash->error(__('Invalid movement category'));
             $this->redirect(array('action' => 'index'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->MovementCategory->save($this->request->data)) {
-                $this->Session->setFlash(__('The movement category has been saved'), 'flash/success');
+                $this->Flash->success(__('The movement category has been saved'));
                 $this->redirect(array('action' => 'view',$id));
             } else {
-                $this->Session->setFlash(__('The movement category could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The movement category could not be saved. Please, try again.'));
             }
         } else {
             $options = array('conditions' => array('MovementCategory.' . $this->MovementCategory->primaryKey => $id));
@@ -179,14 +179,14 @@ class MovementCategoriesController extends AppController {
         }
         $this->MovementCategory->id = $id;
         if (!$this->MovementCategory->exists()) {
-            $this->Session->setFlash(__('Invalid movement category'), 'flash/error');
+            $this->Flash->error(__('Invalid movement category'));
             $this->redirect(array('action' => 'index'));
         }
         if ($this->MovementCategory->delete()) {
-            $this->Session->setFlash(__('Movement category deleted'), 'flash/success');
+            $this->Flash->success(__('Movement category deleted'));
             $this->redirect(array('action' => 'index'));
         }
-        $this->Session->setFlash(__('Movement category can not be deleted'), 'flash/error');
+        $this->Flash->error(__('Movement category can not be deleted'));
         $this->redirect(array('action' => 'view',$id));
     }
     

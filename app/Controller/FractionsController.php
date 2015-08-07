@@ -69,7 +69,7 @@ class FractionsController extends AppController {
      */
     public function view($id = null) {
         if (!$this->Fraction->exists($id)) {
-            $this->Session->setFlash(__('Invalid fraction'), 'flash/error');
+            $this->Flash->error(__('Invalid fraction'));
             $this->redirect(array('action' => 'index'));
         }
         $this->Fraction->contain('Manager');
@@ -89,10 +89,10 @@ class FractionsController extends AppController {
         if ($this->request->is('post')) {
             $this->Fraction->create();
             if ($this->Fraction->save($this->request->data)) {
-                $this->Session->setFlash(__('The fraction has been saved'), 'flash/success');
+                $this->Flash->success(__('The fraction has been saved'));
                 $this->redirect(array('action' => 'view', $this->Fraction->id));
             } else {
-                $this->Session->setFlash(__('The fraction could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The fraction could not be saved. Please, try again.'));
             }
         }
         $condos = $this->Fraction->Condo->find('list', array('conditions' => array('id' => $this->Session->read('Condo.ViewID'))));
@@ -108,15 +108,15 @@ class FractionsController extends AppController {
      */
     public function edit($id = null) {
         if (!$this->Fraction->exists($id)) {
-            $this->Session->setFlash(__('Invalid fraction'), 'flash/error');
+            $this->Flash->error(__('Invalid fraction'));
             $this->redirect(array('action' => 'index'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Fraction->save($this->request->data)) {
-                $this->Session->setFlash(__('The fraction has been saved'), 'flash/success');
+                $this->Flash->success(__('The fraction has been saved'));
                 $this->redirect(array('action' => 'view', $id));
             } else {
-                $this->Session->setFlash(__('The fraction could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The fraction could not be saved. Please, try again.'));
             }
         } else {
             $options = array('conditions' => array('Fraction.' . $this->Fraction->primaryKey => $id));
@@ -150,12 +150,12 @@ class FractionsController extends AppController {
         }
         $this->Fraction->id = $id;
         if (!$this->Fraction->exists()) {
-            $this->Session->setFlash(__('Invalid fraction'), 'flash/error');
+            $this->Flash->error(__('Invalid fraction'));
             $this->redirect(array('action' => 'index'));
         }
         
         if (!$this->Fraction->deletable()) {
-            $this->Session->setFlash(__('This Fraction can not be deleted, check existing notes already paid.'), 'flash/error');
+            $this->Flash->error(__('This Fraction can not be deleted, check existing notes already paid.'));
             $this->redirect(array('action' => 'view', $id));
         }
 
@@ -164,17 +164,17 @@ class FractionsController extends AppController {
         ClassRegistry::init('Insurance')->DeleteAll(array('Insurance.fraction_id' => $id));
         
         if ($this->Fraction->delete()) {
-            $this->Session->setFlash(__('Fraction deleted'), 'flash/success');
+            $this->Flash->success(__('Fraction deleted'));
             $this->redirect(array('action' => 'index'));
         }
-        $this->Session->setFlash(__('Fraction can not be deleted'), 'flash/error');
+        $this->Flash->error(__('Fraction can not be deleted'));
         $this->redirect(array('action' => 'view', $id));
     }
 
     public function beforeFilter() {
         parent::beforeFilter();
         if (!$this->Session->check('Condo.ViewID')) {
-            $this->Session->setFlash(__('Invalid condo'), 'flash/error');
+            $this->Flash->error(__('Invalid condo'));
             $this->redirect(array('controller'=>'condos','action' => 'view',$this->Session->read('Condo.ViewID')));
         }
     }

@@ -86,7 +86,7 @@ msgstr "Data de origem inválida."
 msgid "money"
 msgstr "Monetário."
 
-msgid "notEmpty"
+msgid "NotBlank"
 msgstr "Não pode ser vazio."
 
 msgid "notempty"
