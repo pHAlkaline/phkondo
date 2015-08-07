@@ -77,7 +77,7 @@ class BudgetNotesController extends AppController {
      */
     public function view($id = null) {
         if (!$this->Note->exists($id)) {
-            $this->Session->setFlash(__('Invalid note'), 'flash/error');
+            $this->Flash->error(__('Invalid note'));
             $this->redirect(array('action' => 'index'));
         }
         $this->Note->contain(array('NoteType','Fraction','Entity','Budget','FiscalYear','NoteStatus','Receipt'));
@@ -102,10 +102,10 @@ class BudgetNotesController extends AppController {
             $this->request->data['Note']['fiscal_year_id'] = $this->_getFiscalYear();
             if ($this->Note->save($this->request->data)) {
                 $this->_setDocument();
-                $this->Session->setFlash(__('The note has been saved'), 'flash/success');
+                $this->Flash->success(__('The note has been saved'));
                 $this->redirect(array('action' => 'view', $this->Note->id));
             } else {
-                $this->Session->setFlash(__('The note could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The note could not be saved. Please, try again.'));
             }
         }
         $noteTypes = $this->Note->NoteType->find('list', array('conditions' => array('NoteType.id' => '2')));
@@ -129,17 +129,17 @@ class BudgetNotesController extends AppController {
     public function edit($id = null) {
 
         if (!$this->Note->exists($id)) {
-            $this->Session->setFlash(__('Invalid note'), 'flash/error');
+            $this->Flash->error(__('Invalid note'));
             $this->redirect(array('action' => 'index'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             $this->request->data['Note']['fiscal_year_id'] = $this->_getFiscalYear();
             if ($this->Note->save($this->request->data)) {
                 $this->_setDocument();
-                $this->Session->setFlash(__('The note has been saved'), 'flash/success');
+                $this->Flash->success(__('The note has been saved'));
                 $this->redirect(array('action' => 'view', $this->Note->id));
             } else {
-                $this->Session->setFlash(__('The note could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The note could not be saved. Please, try again.'));
             }
         } else {
             $options = array('conditions' => array(
@@ -148,7 +148,7 @@ class BudgetNotesController extends AppController {
 
             $this->request->data = $this->Note->find('first', $options);
             if (!$this->Note->editable($this->request->data['Note'])) {
-                $this->Session->setFlash(__('Invalid Note'), 'flash/error');
+                $this->Flash->error(__('Invalid Note'));
                 $this->redirect(array('action' => 'view', $this->Note->id));
             }
         }
@@ -181,14 +181,14 @@ class BudgetNotesController extends AppController {
         }
         $this->Note->id = $id;
         if (!$this->Note->exists()) {
-            $this->Session->setFlash(__('Invalid note'), 'flash/error');
+            $this->Flash->error(__('Invalid note'));
             $this->redirect(array('action' => 'index'));
         }
         if ($this->Note->delete()) {
-            $this->Session->setFlash(__('Note deleted'), 'flash/success');
+            $this->Flash->success(__('Note deleted'));
             $this->redirect(array('action' => 'index'));
         }
-        $this->Session->setFlash(__('Note can not be deleted'), 'flash/error');
+        $this->Flash->error(__('Note can not be deleted'));
         $this->redirect(array('action' => 'view', $id));
     }
 
@@ -204,7 +204,7 @@ class BudgetNotesController extends AppController {
       
         $budget = $this->Note->Budget->find('first', array('conditions' => array('Budget.id' => $this->Session->read('Condo.Budget.ViewID'), 'Budget.budget_status_id' => '2')));
         if (isset($budget['Note']) && count($budget['Note']) > 0) {
-            $this->Session->setFlash(__('Invalid Budget'), 'flash/success');
+            $this->Flash->success(__('Invalid Budget'));
             $this->redirect(array('controller' => 'budgets', 'action' => 'index'));
         }
 
@@ -263,7 +263,7 @@ class BudgetNotesController extends AppController {
                     $shares++;
                 endwhile;
             }
-            $this->Session->setFlash(__('The notes has been created'), 'flash/success');
+            $this->Flash->success(__('The notes has been created'));
             $this->redirect(array('controller' => 'budgets', 'action' => 'view', $this->Session->read('Condo.Budget.ViewID')));
         }
 
@@ -281,7 +281,7 @@ class BudgetNotesController extends AppController {
             
         } else {
             $this->Note->deleteAll(array('Note.budget_id' => $budget['Budget']['id']), false);
-            $this->Session->setFlash(__('The notes could not be created. Please, try again.'), 'flash/error');
+            $this->Flash->error(__('The notes could not be created. Please, try again.'));
             $this->redirect(array('action' => 'create'));
         }
     }
@@ -308,7 +308,7 @@ class BudgetNotesController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         if (!$this->Session->check('Condo.ViewID') || !$this->Session->read('Condo.FiscalYearID')) {
-            $this->Session->setFlash(__('Invalid condo or fiscal year'), 'flash/error');
+            $this->Flash->error(__('Invalid condo or fiscal year'));
             $this->redirect(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID')));
         }
     }

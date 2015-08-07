@@ -72,7 +72,7 @@ class MovementsController extends AppController {
      */
     public function view($id = null) {
         if (!$this->Movement->exists($id)) {
-            $this->Session->setFlash(__('Invalid movement'), 'flash/error');
+            $this->Flash->error(__('Invalid movement'));
             $this->redirect(array('action' => 'index'));
         }
         $this->Movement->contain(array('MovementCategory','MovementOperation','MovementType'));
@@ -98,17 +98,17 @@ class MovementsController extends AppController {
                 'Movement.movement_operation_id' => '2'),
                 ));
         if ($closeMovement) {
-            $this->Session->setFlash(__('No movements allowed'), 'flash/error');
+            $this->Flash->error(__('No movements allowed'));
             $this->redirect(array('action' => 'index'));
         }
 
         if ($this->request->is('post')) {
             $this->Movement->create();
             if ($this->Movement->save($this->request->data)) {
-                $this->Session->setFlash(__('The movement has been saved'), 'flash/success');
+                $this->Flash->success(__('The movement has been saved'));
                 $this->redirect(array('action' => 'view', $this->Movement->id));
             } else {
-                $this->Session->setFlash(__('The movement could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The movement could not be saved. Please, try again.'));
             }
         }
         // is first movement for this Condo / FiscalYear ? Yes => movementType = Open , movementOperation = Open/Close
@@ -143,15 +143,15 @@ class MovementsController extends AppController {
     public function edit($id = null) {
 
         if (!$this->Movement->exists($id)) {
-            $this->Session->setFlash(__('Invalid movement'), 'flash/error');
+            $this->Flash->error(__('Invalid movement'));
             $this->redirect(array('action' => 'index'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Movement->save($this->request->data)) {
-                $this->Session->setFlash(__('The movement has been saved'), 'flash/success');
+                $this->Flash->success(__('The movement has been saved'));
                 //$this->redirect(array('action' => 'view', $id));
             } else {
-                $this->Session->setFlash(__('The movement could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The movement could not be saved. Please, try again.'));
             }
         } else {
             $options = array('conditions' => array(
@@ -191,23 +191,23 @@ class MovementsController extends AppController {
         }
         $this->Movement->id = $id;
         if (!$this->Movement->exists()) {
-            $this->Session->setFlash(__('Invalid movement'), 'flash/error');
+            $this->Flash->error(__('Invalid movement'));
             $this->redirect(array('action' => 'index'));
         }
 
         $this->Movement->read();
         if ($this->Movement->data['Movement']['movement_operation_id'] != 1 && $this->Movement->delete()) {
-            $this->Session->setFlash(__('Movement deleted'), 'flash/success');
+            $this->Flash->success(__('Movement deleted'));
             $this->redirect(array('action' => 'index'));
         }
-        $this->Session->setFlash(__('Movement can not be deleted'), 'flash/error');
+        $this->Flash->error(__('Movement can not be deleted'));
         $this->redirect(array('action' => 'view', $id));
     }
 
     public function beforeFilter() {
         parent::beforeFilter();
         if (!$this->Session->check('Condo.Account.ViewID') || !$this->Session->read('Condo.FiscalYearID')) {
-            $this->Session->setFlash(__('Invalid account or fiscal year'), 'flash/error');
+            $this->Flash->error(__('Invalid account or fiscal year'));
             $this->redirect(array('controller'=>'accounts','action' => 'index'));
         }
     }

@@ -86,7 +86,7 @@ msgstr ""
 msgid "money"
 msgstr ""
 
-msgid "notEmpty"
+msgid "NotBlank"
 msgstr ""
 
 msgid "notempty"

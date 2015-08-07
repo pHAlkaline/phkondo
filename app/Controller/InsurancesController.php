@@ -68,14 +68,14 @@ class InsurancesController extends AppController {
      */
     public function view($id = null) {
         if (!$this->Insurance->exists($id)) {
-            $this->Session->setFlash(__('Invalid insurance'), 'flash/error');
+            $this->Flash->error(__('Invalid insurance'));
             $this->redirect(array('action' => 'index'));
         }
         $this->Insurance->contain('Fraction','InsuranceType');
         $options = array('conditions' => array('Insurance.' . $this->Insurance->primaryKey => $id, 'Insurance.condo_id' => $this->Session->read('Condo.ViewID')));
         $insurance = $this->Insurance->find('first', $options);
         if (!count($insurance)) {
-            $this->Session->setFlash(__('Invalid insurance'), 'flash/error');
+            $this->Flash->error(__('Invalid insurance'));
             $this->redirect(array('action' => 'index'));
         }
         $this->set('insurance', $insurance);
@@ -96,10 +96,10 @@ class InsurancesController extends AppController {
         if ($this->request->is('post')) {
             $this->Insurance->create();
             if ($this->Insurance->save($this->request->data)) {
-                $this->Session->setFlash(__('The insurance has been saved'), 'flash/success');
+                $this->Flash->success(__('The insurance has been saved'));
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The insurance could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The insurance could not be saved. Please, try again.'));
             }
         }
         $condos = $this->Insurance->Condo->find('list', array('conditions' => array('id' => $this->Session->read('Condo.ViewID'))));
@@ -117,15 +117,15 @@ class InsurancesController extends AppController {
      */
     public function edit($id = null) {
         if (!$this->Insurance->exists($id)) {
-            $this->Session->setFlash(__('Invalid insurance'), 'flash/error');
+            $this->Flash->error(__('Invalid insurance'));
             $this->redirect(array('action' => 'index'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Insurance->save($this->request->data)) {
-                $this->Session->setFlash(__('The insurance has been saved'), 'flash/success');
+                $this->Flash->success(__('The insurance has been saved'));
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The insurance could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The insurance could not be saved. Please, try again.'));
             }
         } else {
             $options = array('conditions' => array('Insurance.' . $this->Insurance->primaryKey => $id));
@@ -157,21 +157,21 @@ class InsurancesController extends AppController {
         }
         $this->Insurance->id = $id;
         if (!$this->Insurance->exists()) {
-            $this->Session->setFlash(__('Invalid insurance'), 'flash/error');
+            $this->Flash->error(__('Invalid insurance'));
             $this->redirect(array('action' => 'index'));
         }
         if ($this->Insurance->delete()) {
-            $this->Session->setFlash(__('Insurance deleted'), 'flash/success');
+            $this->Flash->success(__('Insurance deleted'));
             $this->redirect(array('action' => 'index'));
         }
-        $this->Session->setFlash(__('Insurance can not be deleted'), 'flash/error');
+        $this->Flash->error(__('Insurance can not be deleted'));
         $this->redirect(array('action' => 'index'));
     }
 
     public function beforeFilter() {
         parent::beforeFilter();
         if (!$this->Session->check('Condo.ViewID')) {
-            $this->Session->setFlash(__('Invalid condo'), 'flash/error');
+            $this->Flash->error(__('Invalid condo'));
             $this->redirect(array('controller'=>'condos','action' => 'view',$this->Session->read('Condo.ViewID')));
         }
     }

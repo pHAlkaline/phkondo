@@ -59,7 +59,7 @@ class FractionEntitiesController extends AppController {
      */
     public function view($id = null) {
         if (!$this->Entity->exists($id)) {
-            $this->Session->setFlash(__('Invalid entity'), 'flash/error');
+            $this->Flash->error(__('Invalid entity'));
             $this->redirect(array('action' => 'index'));
         }
         $options = array('conditions' => array('Entity.' . $this->Entity->primaryKey => $id));
@@ -74,21 +74,21 @@ class FractionEntitiesController extends AppController {
      */
     public function add($fractionId=null) {
         if ($fractionId != null && !$this->Fraction->exists($fractionId)) {
-            $this->Session->setFlash(__('Invalid entity'), 'flash/error');
+            $this->Flash->error(__('Invalid entity'));
             $this->redirect(array('action' => 'index'));
         }
         if ($this->request->is('post')) {
             $this->Entity->create();
             $this->request->data['Entity']['entity_type_id'] = 1; // Client Type
             if ($this->Entity->save($this->request->data)) {
-                $this->Session->setFlash(__('The entity has been saved'), 'flash/success');
+                $this->Flash->success(__('The entity has been saved'));
                 if ($fractionId != null) {
                     $this->redirect(array('controller' => 'fractions', 'action' => 'edit', $fractionId));
                 } else {
                     $this->redirect(array('controller' => 'fractions', 'action' => 'add'));
                 }
             } else {
-                $this->Session->setFlash(__('The entity could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The entity could not be saved. Please, try again.'));
             }
         }
         $entityTypes = $this->Entity->EntityType->find('list', array('conditions' => array('id' => '1')));
@@ -105,15 +105,15 @@ class FractionEntitiesController extends AppController {
      */
     public function edit($fractionId=null) {
         if (!$this->Entity->exists($fractionId)) {
-            $this->Session->setFlash(__('Invalid entity'), 'flash/error');
+            $this->Flash->error(__('Invalid entity'));
             $this->redirect(array('action' => 'index'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Entity->save($this->request->data)) {
-                $this->Session->setFlash(__('The entity has been saved'), 'flash/success');
+                $this->Flash->success(__('The entity has been saved'));
                 $this->redirect(array('action' => 'view', $fractionId));
             } else {
-                $this->Session->setFlash(__('The entity could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The entity could not be saved. Please, try again.'));
             }
         } else {
             $options = array('conditions' => array('Entity.' . $this->Entity->primaryKey => $fractionId));
