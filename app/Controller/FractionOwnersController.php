@@ -72,12 +72,12 @@ class FractionOwnersController extends AppController {
      */
     public function view($id = null) {
         if (!$this->Fraction->Entity->exists($id)) {
-            $this->Session->setFlash(__('Invalid owner'), 'flash/error');
+            $this->Flash->error(__('Invalid owner'));
             $this->redirect(array('action' => 'index'));
         }
         $entitiesFraction = $this->Fraction->EntitiesFraction->find('first', array('conditions' => array('EntitiesFraction.fraction_id' => $this->Session->read('Condo.Fraction.ViewID'), 'EntitiesFraction.entity_id' => $id)));
         if (count($entitiesFraction) == 0) {
-            $this->Session->setFlash(__('The owner could not be found at this fraction. Please, try again.'), 'flash/error');
+            $this->Flash->error(__('The owner could not be found at this fraction. Please, try again.'));
             $this->redirect(array('controller' => 'entities', 'action' => 'view', $id));
         }
 
@@ -101,18 +101,18 @@ class FractionOwnersController extends AppController {
             $this->request->data['Entity']['entity_type_id'] = '1';
             $this->Fraction->Entity->create();
             if ($this->Fraction->Entity->save($this->request->data)) {
-                $this->Session->setFlash(__('The owner has been saved'), 'flash/success');
+                $this->Flash->success(__('The owner has been saved'));
             } else {
-                $this->Session->setFlash(__('The owner could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The owner could not be saved. Please, try again.'));
                 $this->redirect(array('action' => 'index'));
             }
             $this->Fraction->EntitiesFraction->create();
             $this->request->data['EntitiesFraction']['fraction_id'] = $this->Session->read('Condo.Fraction.ViewID');
             $this->request->data['EntitiesFraction']['entity_id'] = $this->Fraction->Entity->id;
             if ($this->Fraction->EntitiesFraction->save($this->request->data)) {
-                $this->Session->setFlash(__('The owner has been saved and related'), 'flash/success');
+                $this->Flash->success(__('The owner has been saved and related'));
             } else {
-                $this->Session->setFlash(__('The owner has been saved but could not be related. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The owner has been saved but could not be related. Please, try again.'));
             }
             $this->redirect(array('action' => 'view', $this->Fraction->Entity->id));
         }
@@ -127,15 +127,15 @@ class FractionOwnersController extends AppController {
         if ($this->request->is('post') || $this->request->is('put')) {
             $this->request->data['EntitiesFraction']['fraction_id'] = $this->Session->read('Condo.Fraction.ViewID');
             if (!isset($this->request->data['EntitiesFraction']['client'])) {
-                $this->Session->setFlash(__('Invalid owner'), 'flash/error');
+                $this->Flash->error(__('Invalid owner'));
                 $this->redirect(array('action' => 'index'));
             }
             $this->request->data['EntitiesFraction']['entity_id'] = $this->request->data['EntitiesFraction']['client'];
             $this->Fraction->EntitiesFraction->create();
             if ($this->Fraction->EntitiesFraction->save($this->request->data)) {
-                $this->Session->setFlash(__('The owner has been related'), 'flash/success');
+                $this->Flash->success(__('The owner has been related'));
             } else {
-                $this->Session->setFlash(__('The owner could not be related. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The owner could not be related. Please, try again.'));
             }
         }
         $this->redirect(array('action' => 'index'));
@@ -150,21 +150,21 @@ class FractionOwnersController extends AppController {
      */
     public function edit($id = null) {
         if (!$this->Fraction->Entity->exists($id)) {
-            $this->Session->setFlash(__('Invalid owner'), 'flash/error');
+            $this->Flash->error(__('Invalid owner'));
             $this->redirect(array('action' => 'index'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
 
             if ($this->Fraction->Entity->save($this->request->data)) {
-                $this->Session->setFlash(__('The owner has been saved'), 'flash/success');
+                $this->Flash->success(__('The owner has been saved'));
                 if ($this->Fraction->EntitiesFraction->save($this->request->data)) {
-                    $this->Session->setFlash(__('The owner has been saved'), 'flash/success');
+                    $this->Flash->success(__('The owner has been saved'));
                     $this->redirect(array('action' => 'view', $id));
                 } else {
-                    $this->Session->setFlash(__('The owner has been saved but could not be related. Please, try again.'), 'flash/error');
+                    $this->Flash->error(__('The owner has been saved but could not be related. Please, try again.'));
                 }
             } else {
-                $this->Session->setFlash(__('The owner could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The owner could not be saved. Please, try again.'));
             }
         }
         $options = array('conditions' => array(
@@ -195,12 +195,12 @@ class FractionOwnersController extends AppController {
         $id = $this->Session->read('Condo.Owner.ViewID');
         $fraction_id = $this->Session->read('Condo.Fraction.ViewID');
         if (!$this->Fraction->Entity->exists($id)) {
-            $this->Session->setFlash(__('Invalid owner'), 'flash/error');
+            $this->Flash->error(__('Invalid owner'));
             $this->redirect(array('action' => 'index'));
         }
         $entitiesFraction = $this->Fraction->EntitiesFraction->find('first', array('conditions' => array('EntitiesFraction.fraction_id' => $fraction_id, 'EntitiesFraction.entity_id' => $id)));
         if (count($entitiesFraction) == 0) {
-            $this->Session->setFlash(__('The owner could not be found at this fraction. Please, try again.'), 'flash/error');
+            $this->Flash->error(__('The owner could not be found at this fraction. Please, try again.'));
             $this->redirect(array('controller' => 'entities', 'action' => 'view', $id));
         }
 
@@ -225,21 +225,21 @@ class FractionOwnersController extends AppController {
         }
         $this->Fraction->Entity->id = $id;
         if (!$this->Fraction->Entity->exists()) {
-            $this->Session->setFlash(__('Invalid owner'), 'flash/error');
+            $this->Flash->error(__('Invalid owner'));
             $this->redirect(array('action' => 'index'));
         }
         if ($this->Fraction->EntitiesFraction->deleteAll(array('EntitiesFraction.entity_id' => $id, 'EntitiesFraction.fraction_id' => $this->Session->read('Condo.Fraction.ViewID')), false)) {
-            $this->Session->setFlash(__('Owner removed'), 'flash/success');
+            $this->Flash->success(__('Owner removed'));
             $this->redirect(array('action' => 'index'));
         }
-        $this->Session->setFlash(__('Owner was not removed'), 'flash/error');
+        $this->Flash->error(__('Owner was not removed'));
         $this->redirect(array('action' => 'view', $id));
     }
 
     public function beforeFilter() {
         parent::beforeFilter();
         if (!$this->Session->check('Condo.Fraction.ViewID')) {
-            $this->Session->setFlash(__('Invalid fraction'), 'flash/error');
+            $this->Flash->error(__('Invalid fraction'));
             $this->redirect(array('controller' => 'fractions', 'action' => 'index'));
         }
     }

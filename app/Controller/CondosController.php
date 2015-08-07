@@ -79,7 +79,7 @@ class CondosController extends AppController {
                     'Entity'=>array(
                         'fields'=>array('Entity.name')))));
         if (!$this->Condo->exists($id)) {
-            $this->Session->setFlash(__('Invalid condo'), 'flash/error');
+            $this->Flash->error(__('Invalid condo'));
             $this->redirect(array('action' => 'index'));
         }
         $options = array('conditions' => array('Condo.' . $this->Condo->primaryKey => $id));
@@ -118,10 +118,10 @@ class CondosController extends AppController {
                 //debug($this->request->data);
                 $this->Condo->ReceiptCounter->create();
                 $this->Condo->ReceiptCounter->save(array('ReceiptCounter' => array('condo_id' => $this->Condo->id, 'counter' => 0)));
-                $this->Session->setFlash(__('The condo has been saved'), 'flash/success');
+                $this->Flash->success(__('The condo has been saved'));
                 $this->redirect(array('action' => 'view', $this->Condo->id));
             } else {
-                $this->Session->setFlash(__('The condo could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The condo could not be saved. Please, try again.'));
             }
         }
     }
@@ -135,15 +135,15 @@ class CondosController extends AppController {
      */
     public function edit($id = null) {
         if (!$this->Condo->exists($id)) {
-            $this->Session->setFlash(__('Invalid condo'), 'flash/error');
+            $this->Flash->error(__('Invalid condo'));
             $this->redirect(array('action' => 'index'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Condo->save($this->request->data)) {
-                $this->Session->setFlash(__('The condo has been saved'), 'flash/success');
+                $this->Flash->success(__('The condo has been saved'));
                 $this->redirect(array('action' => 'view', $this->Condo->id));
             } else {
-                $this->Session->setFlash(__('The condo could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The condo could not be saved. Please, try again.'));
             }
         } else {
             $options = array('conditions' => array('Condo.' . $this->Condo->primaryKey => $id));
@@ -167,14 +167,14 @@ class CondosController extends AppController {
         }
         $this->Condo->id = $id;
         if (!$this->Condo->exists()) {
-            $this->Session->setFlash(__('Invalid condo'), 'flash/error');
+            $this->Flash->error(__('Invalid condo'));
             $this->redirect(array('action' => 'index'));
         }
         if ($this->Condo->delete()) {
-            $this->Session->setFlash(__('Condo deleted'), 'flash/success');
+            $this->Flash->success(__('Condo deleted'));
             $this->redirect(array('action' => 'index'));
         }
-        $this->Session->setFlash(__('Condo can not be deleted, please check the existence of already paid notes'), 'flash/error');
+        $this->Flash->error(__('Condo can not be deleted, please check the existence of already paid notes'));
         $this->redirect(array('action' => 'view', $id));
     }
     

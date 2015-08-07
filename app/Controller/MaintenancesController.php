@@ -69,13 +69,13 @@ class MaintenancesController extends AppController {
     public function view($id = null) {
         $this->Maintenance->contain('Supplier');
         if (!$this->Maintenance->exists($id)) {
-            $this->Session->setFlash(__('Invalid maintenance'), 'flash/error');
+            $this->Flash->error(__('Invalid maintenance'));
             $this->redirect(array('action' => 'index'));
         }
         $options = array('conditions' => array('Maintenance.' . $this->Maintenance->primaryKey => $id));
         $maintenance=$this->Maintenance->find('first', $options);
         if (!count($maintenance)){
-            $this->Session->setFlash(__('Invalid maintenance'), 'flash/error');
+            $this->Flash->error(__('Invalid maintenance'));
             $this->redirect(array('action' => 'index'));
         }
         $this->set('maintenance', $maintenance);
@@ -92,10 +92,10 @@ class MaintenancesController extends AppController {
         if ($this->request->is('post')) {
             $this->Maintenance->create();
             if ($this->Maintenance->save($this->request->data)) {
-                $this->Session->setFlash(__('The maintenance has been saved'), 'flash/success');
+                $this->Flash->success(__('The maintenance has been saved'));
                 $this->redirect(array('action' => 'view',$this->Maintenance->id));
             } else {
-                $this->Session->setFlash(__('The maintenance could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The maintenance could not be saved. Please, try again.'));
             }
         }
         $condos = $this->Maintenance->Condo->find('list', array('conditions' => array('id' => $this->Session->read('Condo.ViewID'))));
@@ -112,15 +112,15 @@ class MaintenancesController extends AppController {
      */
     public function edit($id = null) {
         if (!$this->Maintenance->exists($id)) {
-            $this->Session->setFlash(__('Invalid maintenance'), 'flash/error');
+            $this->Flash->error(__('Invalid maintenance'));
             $this->redirect(array('action' => 'index'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Maintenance->save($this->request->data)) {
-                $this->Session->setFlash(__('The maintenance has been saved'), 'flash/success');
+                $this->Flash->success(__('The maintenance has been saved'));
                 $this->redirect(array('action' => 'view',$id));
             } else {
-                $this->Session->setFlash(__('The maintenance could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The maintenance could not be saved. Please, try again.'));
             }
         } else {
             $options = array('conditions' => array('Maintenance.' . $this->Maintenance->primaryKey => $id));
@@ -147,14 +147,14 @@ class MaintenancesController extends AppController {
         }
         $this->Maintenance->id = $id;
         if (!$this->Maintenance->exists()) {
-            $this->Session->setFlash(__('Invalid maintenance'), 'flash/error');
+            $this->Flash->error(__('Invalid maintenance'));
             $this->redirect(array('action' => 'index'));
         }
         if ($this->Maintenance->delete()) {
-            $this->Session->setFlash(__('Maintenance deleted'), 'flash/success');
+            $this->Flash->success(__('Maintenance deleted'));
             $this->redirect(array('action' => 'index'));
         }
-        $this->Session->setFlash(__('Maintenance can not be deleted'), 'flash/error');
+        $this->Flash->error(__('Maintenance can not be deleted'));
         $this->redirect(array('action' => 'view',$id));
     }
 
@@ -162,7 +162,7 @@ class MaintenancesController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         if (!$this->Session->check('Condo.ViewID')) {
-            $this->Session->setFlash(__('Invalid condo'), 'flash/error');
+            $this->Flash->error(__('Invalid condo'));
             $this->redirect(array('controller'=>'condos','action' => 'view',$this->Session->read('Condo.ViewID')));
         }
     }

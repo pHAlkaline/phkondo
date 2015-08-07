@@ -68,7 +68,7 @@ class BudgetsController extends AppController {
     public function view($id = null) {
         $this->Budget->contain(array('Note','BudgetStatus','FiscalYear','BudgetType','SharePeriodicity','ShareDistribution'));
         if (!$this->Budget->exists($id)) {
-            $this->Session->setFlash(__('Invalid budget'), 'flash/error');
+            $this->Flash->error(__('Invalid budget'));
             $this->redirect(array('action' => 'index'));
         }
         $options = array('conditions' => array('Budget.' . $this->Budget->primaryKey => $id));
@@ -92,10 +92,10 @@ class BudgetsController extends AppController {
             $this->Budget->create();
             $this->request->data['Budget']['requested_amount'] = $this->request->data['Budget']['amount'];
             if ($this->Budget->save($this->request->data)) {
-                $this->Session->setFlash(__('The budget has been saved'), 'flash/success');
+                $this->Flash->success(__('The budget has been saved'));
                 $this->redirect(array('action' => 'view', $this->Budget->id));
             } else {
-                $this->Session->setFlash(__('The budget could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The budget could not be saved. Please, try again.'));
             }
         }
         $condos = $this->Budget->Condo->find('list', array('conditions' => array('id' => $this->Session->read('Condo.ViewID'))));
@@ -116,7 +116,7 @@ class BudgetsController extends AppController {
      */
     public function edit($id = null) {
         if (!$this->Budget->exists($id)) {
-            $this->Session->setFlash(__('Invalid budget'), 'flash/error');
+            $this->Flash->error(__('Invalid budget'));
             $this->redirect(array('action' => 'index'));
         }
         $this->Budget->contain(array('Note'));
@@ -131,17 +131,17 @@ class BudgetsController extends AppController {
 
             if ($this->Budget->save($this->request->data)) {
                 $this->_setNotesStatus();
-                $this->Session->setFlash(__('The budget has been saved'), 'flash/success');
+                $this->Flash->success(__('The budget has been saved'));
                 $this->redirect(array('action' => 'view', $this->Budget->id));
             } else {
-                $this->Session->setFlash(__('The budget could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The budget could not be saved. Please, try again.'));
             }
         } else {
             $this->request->data = $budget;
         }
 
         if ($this->request->data['Budget']['fiscal_year_id'] != $this->Session->read('Condo.FiscalYearID')) {
-            $this->Session->setFlash(__('Invalid budget'), 'flash/error');
+            $this->Flash->error(__('Invalid budget'));
             $this->redirect(array('action' => 'index'));
             ;
         }
@@ -171,20 +171,20 @@ class BudgetsController extends AppController {
         }
         $this->Budget->id = $id;
         if (!$this->Budget->exists()) {
-            $this->Session->setFlash(__('Invalid budget'), 'flash/error');
+            $this->Flash->error(__('Invalid budget'));
             $this->redirect(array('action' => 'index'));
         }
 
         if (!$this->Budget->deletable()) {
-            $this->Session->setFlash(__('This Budget can not be deleted, check budget status or existing notes already paid.'), 'flash/error');
+            $this->Flash->error(__('This Budget can not be deleted, check budget status or existing notes already paid.'));
             $this->redirect(array('action' => 'view', $id));
         }
 
         if ($this->Budget->Note->DeleteAll(array('Note.budget_id' => $id), false) && $this->Budget->delete()) {
-            $this->Session->setFlash(__('Budget deleted'), 'flash/success');
+            $this->Flash->success(__('Budget deleted'));
             $this->redirect(array('action' => 'index'));
         }
-        $this->Session->setFlash(__('Budget can not be deleted'), 'flash/error');
+        $this->Flash->error(__('Budget can not be deleted'));
         $this->redirect(array('action' => 'view', $id));
     }
 
@@ -195,7 +195,7 @@ class BudgetsController extends AppController {
      */
     public function shares_map($id=null) {
         if (!$this->Budget->exists($id)) {
-            $this->Session->setFlash(__('Invalid budget'), 'flash/error');
+            $this->Flash->error(__('Invalid budget'));
             $this->redirect(array('action' => 'index'));
         }
 
@@ -208,7 +208,7 @@ class BudgetsController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         if (!$this->Session->check('Condo.ViewID') || !$this->Session->read('Condo.FiscalYearID')) {
-            $this->Session->setFlash(__('Invalid condo or fiscal year'), 'flash/error');
+            $this->Flash->error(__('Invalid condo or fiscal year'));
             $this->redirect(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID')));
         }
     }

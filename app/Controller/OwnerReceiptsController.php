@@ -79,7 +79,7 @@ class OwnerReceiptsController extends AppController {
      */
     public function view($id = null) {
         if (!$this->Receipt->exists($id)) {
-            $this->Session->setFlash(__('Invalid receipt'), 'flash/error');
+            $this->Flash->error(__('Invalid receipt'));
             $this->redirect(array('action' => 'index'));
         }
         $this->Receipt->contain(array(
@@ -107,7 +107,7 @@ class OwnerReceiptsController extends AppController {
      */
     public function print_receipt($id) {
         if (!$this->Receipt->exists($id)) {
-            $this->Session->setFlash(__('Invalid receipt'), 'flash/error');
+            $this->Flash->error(__('Invalid receipt'));
             $this->redirect(array('action' => 'index'));
         }
         
@@ -134,12 +134,12 @@ class OwnerReceiptsController extends AppController {
             
             if ($this->Receipt->save($this->request->data)) {
                 $this->_setReceiptIndex($this->Session->read('Condo.ViewID'), $number);
-                $this->Session->setFlash(__('The receipt has been saved'), 'flash/success');
+                $this->Flash->success(__('The receipt has been saved'));
                 $this->redirect(array('action' => 'view', $this->Receipt->id));
             } else {
                 debug($this->Receipt->validationErrors);
                 debug($this->request->data);
-                $this->Session->setFlash(__('The receipt could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The receipt could not be saved. Please, try again.'));
             }
         }
         $condos = $this->Receipt->Condo->find('list', array('conditions' => array('Condo.id' => $this->Session->read('Condo.ViewID'))));
@@ -158,7 +158,7 @@ class OwnerReceiptsController extends AppController {
     public function add_notes($id) {
 
         if (!$this->Receipt->editable($id)) {
-            $this->Session->setFlash(__('Invalid receipt'), 'flash/error');
+            $this->Flash->error(__('Invalid receipt'));
             $this->redirect(array('action' => 'view', $id));
         }
 
@@ -170,7 +170,7 @@ class OwnerReceiptsController extends AppController {
                     $noteOk = $this->Receipt->Note->find('count', array('conditions' => array('Note.id' => $key, 'Note.receipt_id' => null)));
 
                     if ($noteOk == 0) {
-                        $this->Session->setFlash(__('The notes could not be saved. Please, try again.'), 'flash/error');
+                        $this->Flash->error(__('The notes could not be saved. Please, try again.'));
                         return;
                     }
                     $this->Receipt->Note->id = $key;
@@ -198,14 +198,14 @@ class OwnerReceiptsController extends AppController {
      */
     public function remove_note($id = null) {
         if (!$this->Receipt->Note->exists($id)) {
-            $this->Session->setFlash(__('Invalid note'), 'flash/error');
+            $this->Flash->error(__('Invalid note'));
             $this->redirect(array('action' => 'index'));
            
         }
         $this->Receipt->Note->id = $id;
         $receipt = $this->Receipt->Note->field('receipt_id');
         if ($receipt != $this->Session->read('Condo.Receipt.ViewID')) {
-            $this->Session->setFlash(__('Invalid note'), 'flash/error');
+            $this->Flash->error(__('Invalid note'));
             $this->redirect(array('action' => 'edit', $receipt));
         }
         $this->Receipt->Note->id = $id;
@@ -226,29 +226,29 @@ class OwnerReceiptsController extends AppController {
     public function pay_receipt($id = null) {
 
         if (!$this->Receipt->exists($id)) {
-            $this->Session->setFlash(__('Invalid receipt'), 'flash/error');
+            $this->Flash->error(__('Invalid receipt'));
             $this->redirect(array('action' => 'index'));
         }
 
 
         if (!$this->Receipt->payable($id)) {
-            $this->Session->setFlash(__('Invalid receipt'), 'flash/error');
+            $this->Flash->error(__('Invalid receipt'));
             $this->redirect(array('action' => 'view', $id));
         }
 
         if (!empty($this->request->data) && ($this->request->is('post') || $this->request->is('put'))) {
             if ($this->Receipt->save($this->request->data)) {
                 $this->close($id);
-                $this->Session->setFlash(__('The receipt has been saved'), 'flash/success');
+                $this->Flash->success(__('The receipt has been saved'));
                 $this->redirect(array('action' => 'view', $id));
             } else {
-                $this->Session->setFlash(__('The receipt could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The receipt could not be saved. Please, try again.'));
             }
         } else {
             $options = array('conditions' => array('Receipt.' . $this->Receipt->primaryKey => $id, 'OR' => array('Receipt.receipt_status_id' => array('2'))));
             $this->request->data = $this->Receipt->find('first', $options);
             if (empty($this->request->data)) {
-                $this->Session->setFlash(__('Invalid receipt'), 'flash/error');
+                $this->Flash->error(__('Invalid receipt'));
             $this->redirect(array('action' => 'index'));
             }
         }
@@ -276,21 +276,21 @@ class OwnerReceiptsController extends AppController {
      */
     public function edit($id = null) {
         if (!$this->Receipt->exists($id)) {
-            $this->Session->setFlash(__('Invalid receipt'), 'flash/error');
+            $this->Flash->error(__('Invalid receipt'));
             $this->redirect(array('action' => 'index'));
         }
 
         if (!$this->Receipt->editable($id)) {
-            $this->Session->setFlash(__('Invalid receipt'), 'flash/error');
+            $this->Flash->error(__('Invalid receipt'));
             $this->redirect(array('action' => 'view', $id));
         }
 
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Receipt->save($this->request->data)) {
-                $this->Session->setFlash(__('The receipt has been saved'), 'flash/success');
+                $this->Flash->success(__('The receipt has been saved'));
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The receipt could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The receipt could not be saved. Please, try again.'));
             }
         } else {
             $options = array('conditions' => array(
@@ -306,7 +306,7 @@ class OwnerReceiptsController extends AppController {
             $this->set(compact('receipt'));
         
             if (empty($this->request->data)) {
-                $this->Session->setFlash(__('Invalid receipt'), 'flash/error');
+                $this->Flash->error(__('Invalid receipt'));
             $this->redirect(array('action' => 'index'));
             }
         }
@@ -337,22 +337,22 @@ class OwnerReceiptsController extends AppController {
             throw new MethodNotAllowedException();
         }
         if (!$this->Receipt->exists($id)) {
-            $this->Session->setFlash(__('Invalid receipt'), 'flash/error');
+            $this->Flash->error(__('Invalid receipt'));
             $this->redirect(array('action' => 'index'));
         }
 
 
         if (!$this->Receipt->deletable($id)) {
-            $this->Session->setFlash(__('Invalid receipt'), 'flash/error');
+            $this->Flash->error(__('Invalid receipt'));
             $this->redirect(array('action' => 'view', $id));
         }
         $this->_removeFromNote($id);
         if ($this->Receipt->delete()) {
 
-            $this->Session->setFlash(__('Receipt deleted'), 'flash/success');
+            $this->Flash->success(__('Receipt deleted'));
             $this->redirect(array('action' => 'index'));
         }
-        $this->Session->setFlash(__('Receipt can not be deleted'), 'flash/error');
+        $this->Flash->error(__('Receipt can not be deleted'));
         $this->redirect(array('action' => 'view', $id));
     }
 
@@ -365,13 +365,13 @@ class OwnerReceiptsController extends AppController {
      */
     public function close($id = null) {
         if (!$this->Receipt->exists($id)) {
-            $this->Session->setFlash(__('Invalid receipt'), 'flash/error');
+            $this->Flash->error(__('Invalid receipt'));
             $this->redirect(array('action' => 'index'));
         }
 
 
         if (!$this->Receipt->closeable()) {
-            $this->Session->setFlash(__('Invalid receipt'), 'flash/error');
+            $this->Flash->error(__('Invalid receipt'));
             $this->redirect(array('action' => 'view', $id));
         }
 
@@ -389,13 +389,13 @@ class OwnerReceiptsController extends AppController {
      */
     public function cancel($id = null) {
         if (!$this->Receipt->exists($id)) {
-            $this->Session->setFlash(__('Invalid receipt'), 'flash/error');
+            $this->Flash->error(__('Invalid receipt'));
             $this->redirect(array('action' => 'index'));
         }
 
 
         if (!$this->Receipt->cancelable($id)) {
-            $this->Session->setFlash(__('Invalid receipt'), 'flash/error');
+            $this->Flash->error(__('Invalid receipt'));
             $this->redirect(array('action' => 'view', $id));
         }
 
@@ -404,16 +404,16 @@ class OwnerReceiptsController extends AppController {
                 $this->Receipt->saveField('cancel_user_id', AuthComponent::user('id'));
                 $this->_transferNotes($id);
                 $this->_removeFromNote($id);
-                $this->Session->setFlash(__('The receipt has been saved'), 'flash/success');
+                $this->Flash->success(__('The receipt has been saved'));
                 $this->redirect(array('action' => 'view', $id));
             } else {
-                $this->Session->setFlash(__('The receipt could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The receipt could not be saved. Please, try again.'));
             }
         } else {
             $options = array('conditions' => array('Receipt.id' => $id));
             $this->request->data = $this->Receipt->find('first', $options);
             if (empty($this->request->data)) {
-                $this->Session->setFlash(__('Invalid receipt'), 'flash/error');
+                $this->Flash->error(__('Invalid receipt'));
             $this->redirect(array('action' => 'index'));
             }
         }
@@ -500,7 +500,7 @@ class OwnerReceiptsController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         if (!$this->Session->check('Condo.Fraction.ViewID')) {
-            $this->Session->setFlash(__('Invalid fraction'), 'flash/error');
+            $this->Flash->error(__('Invalid fraction'));
             $this->redirect(array('controller' => 'fractions', 'action' => 'index'));
         }
     }

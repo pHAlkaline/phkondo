@@ -91,7 +91,7 @@ class InvoiceConferenceController extends AppController {
     public function index_by_supplier($supplier_id = null) {
         $this->InvoiceConference->contain(array('Supplier','InvoiceConferenceStatus'));
         if (!$this->InvoiceConference->Supplier->exists($supplier_id)) {
-            $this->Session->setFlash(__('Invalid invoice'), 'flash/error');
+            $this->Flash->error(__('Invalid invoice'));
             $this->redirect(array('action' => 'index'));
         }
         $this->Paginator->settings = $this->paginate;
@@ -126,7 +126,7 @@ class InvoiceConferenceController extends AppController {
     public function view($id = null) {
         $this->InvoiceConference->contain(array('Supplier','InvoiceConferenceStatus'));
         if (!$this->InvoiceConference->exists($id)) {
-            $this->Session->setFlash(__('Invalid invoice'), 'flash/error');
+            $this->Flash->error(__('Invalid invoice'));
             $this->redirect(array('action' => 'index'));
         }
         $options = array('conditions' => array(
@@ -148,17 +148,17 @@ class InvoiceConferenceController extends AppController {
      */
     public function add($supplier_id = null) {
         if ($supplier_id != null && !$this->InvoiceConference->Supplier->exists($supplier_id)) {
-            $this->Session->setFlash(__('Invalid invoice'), 'flash/error');
+            $this->Flash->error(__('Invalid invoice'));
             $this->redirect(array('action' => 'index'));
         };
         if ($this->request->is('post')) {
 
             $this->InvoiceConference->create();
             if ($this->InvoiceConference->save($this->request->data)) {
-                $this->Session->setFlash(__('The invoice has been saved'), 'flash/success');
+                $this->Flash->success(__('The invoice has been saved'));
                 $this->redirect(array('action' => 'view', $this->InvoiceConference->id));
             } else {
-                $this->Session->setFlash(__('The invoice could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The invoice could not be saved. Please, try again.'));
             }
         }
 
@@ -185,16 +185,16 @@ class InvoiceConferenceController extends AppController {
     public function edit($id = null) {
 
         if (!$this->InvoiceConference->exists($id)) {
-            $this->Session->setFlash(__('Invalid invoice'), 'flash/error');
+            $this->Flash->error(__('Invalid invoice'));
             $this->redirect(array('action' => 'index'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
 
             if ($this->InvoiceConference->save($this->request->data)) {
-                $this->Session->setFlash(__('The invoice has been saved'), 'flash/success');
+                $this->Flash->success(__('The invoice has been saved'));
                 $this->redirect(array('action' => 'index_by_supplier', $this->request->data['InvoiceConference']['supplier_id']));
             } else {
-                $this->Session->setFlash(__('The invoice could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The invoice could not be saved. Please, try again.'));
             }
         } else {
             $options = array('conditions' => array(
@@ -229,23 +229,23 @@ class InvoiceConferenceController extends AppController {
         }
         $this->InvoiceConference->id = $id;
         if (!$this->InvoiceConference->exists()) {
-            $this->Session->setFlash(__('Invalid invoice'), 'flash/error');
+            $this->Flash->error(__('Invalid invoice'));
             $this->redirect(array('action' => 'index'));
         }
 
         $this->InvoiceConference->read();
         if ($this->InvoiceConference->delete()) {
-            $this->Session->setFlash(__('Invoice deleted'), 'flash/success');
+            $this->Flash->success(__('Invoice deleted'));
             $this->redirect(array('action' => 'index'));
         }
-        $this->Session->setFlash(__('Invoice can not be deleted'), 'flash/error');
+        $this->Flash->error(__('Invoice can not be deleted'));
         $this->redirect(array('action' => 'view', $id));
     }
 
     public function beforeFilter() {
         parent::beforeFilter();
         if (!$this->Session->check('Condo.ViewID') || !$this->Session->read('Condo.FiscalYearID')) {
-            $this->Session->setFlash(__('Invalid condo or fiscal year'), 'flash/error');
+            $this->Flash->error(__('Invalid condo or fiscal year'));
             $this->redirect(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID')));
         }
     }

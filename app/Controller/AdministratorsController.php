@@ -70,7 +70,7 @@ class AdministratorsController extends AppController {
      */
     public function view($id = null) {
         if (!$this->Administrator->exists($id)) {
-            $this->Session->setFlash(__('Invalid administrator'), 'flash/error');
+            $this->Flash->error(__('Invalid administrator'));
             $this->redirect(array('action' => 'index'));
         }
         $this->Administrator->contain('Entity','FiscalYear');
@@ -92,10 +92,10 @@ class AdministratorsController extends AppController {
         if ($this->request->is('post')) {
             $this->Administrator->create();
             if ($this->Administrator->save($this->request->data)) {
-                $this->Session->setFlash(__('The administrator has been saved'), 'flash/success');
+                $this->Flash->success(__('The administrator has been saved'));
                 $this->redirect(array('action' => 'view',$this->Administrator->id));
             } else {
-                $this->Session->setFlash(__('The administrator could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The administrator could not be saved. Please, try again.'));
             }
         }
         $this->Administrator->contain('Entity','FiscalYear');
@@ -126,16 +126,16 @@ class AdministratorsController extends AppController {
      */
     public function edit($id = null) {
         if (!$this->Administrator->exists($id)) {
-            $this->Session->setFlash(__('Invalid administrator'), 'flash/error');
+            $this->Flash->error(__('Invalid administrator'));
             $this->redirect(array('action' => 'index'));
         }
         $this->Administrator->contain('Entity');
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Administrator->save($this->request->data)) {
-                $this->Session->setFlash(__('The administrator has been saved'), 'flash/success');
+                $this->Flash->success(__('The administrator has been saved'));
                 $this->redirect(array('action' => 'view',$this->Administrator->id));
             } else {
-                $this->Session->setFlash(__('The administrator could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The administrator could not be saved. Please, try again.'));
             }
         } else {
             $options = array('conditions' => array('Administrator.' . $this->Administrator->primaryKey => $id));
@@ -175,14 +175,14 @@ class AdministratorsController extends AppController {
         }
         $this->Administrator->id = $id;
         if (!$this->Administrator->exists()) {
-            $this->Session->setFlash(__('Invalid administrator'), 'flash/error');
+            $this->Flash->error(__('Invalid administrator'));
             $this->redirect(array('action' => 'index'));
         }
         if ($this->Administrator->delete()) {
-            $this->Session->setFlash(__('Administrator deleted'), 'flash/success');
+            $this->Flash->success(__('Administrator deleted'));
             $this->redirect(array('action' => 'index'));
         }
-        $this->Session->setFlash(__('Administrator can not be deleted'), 'flash/error');
+        $this->Flash->error(__('Administrator can not be deleted'));
         $this->redirect(array('action' => 'view',$id));
     }
     
@@ -190,7 +190,7 @@ class AdministratorsController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         if (!$this->Session->check('Condo.ViewID') || !$this->Session->read('Condo.FiscalYearID')) {
-            $this->Session->setFlash(__('Invalid condo or fiscal year'), 'flash/error');
+            $this->Flash->error(__('Invalid condo or fiscal year'));
             $this->redirect(array('controller'=>'condos','action' => 'view',$this->Session->read('Condo.ViewID')));
         }
     }

@@ -62,7 +62,7 @@ class MovementOperationsController extends AppController {
      */
     public function view($id = null) {
         if (!$this->MovementOperation->exists($id)) {
-            $this->Session->setFlash(__('Invalid movement operation'), 'flash/error');
+            $this->Flash->error(__('Invalid movement operation'));
             $this->redirect(array('action' => 'index'));
         }
         $options = array('conditions' => array('MovementOperation.' . $this->MovementOperation->primaryKey => $id));
@@ -81,10 +81,10 @@ class MovementOperationsController extends AppController {
         if ($this->request->is('post')) {
             $this->MovementOperation->create();
             if ($this->MovementOperation->save($this->request->data)) {
-                $this->Session->setFlash(__('The movement operation has been saved'), 'flash/success');
+                $this->Flash->success(__('The movement operation has been saved'));
                 $this->redirect(array('action' => 'view', $this->MovementOperation->id));
             } else {
-                $this->Session->setFlash(__('The movement operation could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The movement operation could not be saved. Please, try again.'));
             }
         }
     }
@@ -98,25 +98,25 @@ class MovementOperationsController extends AppController {
         App::uses('Movement', 'model');
         $movement = new Movement();
         if ($movementId != null && !$movement->exists($movementId)) {
-            $this->Session->setFlash(__('Invalid movement operation'), 'flash/error');
+            $this->Flash->error(__('Invalid movement operation'));
             $this->redirect(array('action' => 'index'));
         }
         if ($this->request->is('post')) {
             $this->MovementOperation->create();
             if ($this->MovementOperation->save($this->request->data)) {
-                $this->Session->setFlash(__('The movement operation has been saved'), 'flash/success');
+                $this->Flash->success(__('The movement operation has been saved'));
                 if ($movementId != null) {
                     $this->redirect(array('controller' => 'movements', 'action' => 'edit', $movementId));
                 } else {
                     $this->redirect(array('controller' => 'movements', 'action' => 'add'));
                 }
             } else {
-                $this->Session->setFlash(__('The movement operation could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The movement operation could not be saved. Please, try again.'));
             }
         }
 
         if (!$this->Session->check('Condo.Account.ViewID')) {
-            $this->Session->setFlash(__('Invalid account'), 'flash/error');
+            $this->Flash->error(__('Invalid account'));
             $this->redirect(array('controller'=>'accounts','action' => 'index'));
             
         }
@@ -142,15 +142,15 @@ class MovementOperationsController extends AppController {
      */
     public function edit($id = null) {
         if (!$this->MovementOperation->exists($id)) {
-            $this->Session->setFlash(__('Invalid movement operation'), 'flash/error');
+            $this->Flash->error(__('Invalid movement operation'));
             $this->redirect(array('action' => 'index'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->MovementOperation->save($this->request->data)) {
-                $this->Session->setFlash(__('The movement operation has been saved'), 'flash/success');
+                $this->Flash->success(__('The movement operation has been saved'));
                 $this->redirect(array('action' => 'view', $this->MovementOperation->id));
             } else {
-                $this->Session->setFlash(__('The movement operation could not be saved. Please, try again.'), 'flash/error');
+                $this->Flash->error(__('The movement operation could not be saved. Please, try again.'));
             }
         } else {
             $options = array('conditions' => array('MovementOperation.' . $this->MovementOperation->primaryKey => $id));
@@ -174,15 +174,15 @@ class MovementOperationsController extends AppController {
         }
         $this->MovementOperation->id = $id;
         if (!$this->MovementOperation->exists()) {
-            $this->Session->setFlash(__('Invalid movement operation'), 'flash/error');
+            $this->Flash->error(__('Invalid movement operation'));
             $this->redirect(array('action' => 'index'));
         }
         if ($this->MovementOperation->delete()) {
-            $this->Session->setFlash(__('Movement operation deleted'), 'flash/success');
+            $this->Flash->success(__('Movement operation deleted'));
             $this->redirect(array('action' => 'index'));
         }
 
-         $this->Session->setFlash(__('Movement operation can not be deleted'), 'flash/error');
+         $this->Flash->error(__('Movement operation can not be deleted'));
         $this->redirect(array('action' => 'view',$id));
     }
 

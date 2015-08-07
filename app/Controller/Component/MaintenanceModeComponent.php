@@ -50,7 +50,7 @@ class MaintenanceModeComponent extends Component {
     public $components = array('Session');
 
     /**
-     * The name of the element used for SessionComponent::setFlash
+     * The name of the element used for FlashComponent::flash
      *
      * @var string
      * @access public
@@ -109,7 +109,7 @@ class MaintenanceModeComponent extends Component {
         
         // Maintenance mode scheduled show message!!    
         if ($this->hasSchedule()) {
-            $this->Session->setFlash(__('This application will be on maintenance mode at  %s ', Configure::read('MaintenanceMode.start')), $this->flashElement);
+            $this->Flash->warning(__('This application will be on maintenance mode at  %s ', Configure::read('MaintenanceMode.start')));
         }
     }
 
