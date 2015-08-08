@@ -116,7 +116,7 @@ $clientDescription = __('pHkondo Condominium Management');
             <div id="content" class="container">
                 <div class="no-print">
 <?php if (isset($breadcrumbs)) echo $this->element('breadcrumbs', array('breadcrumbs', $breadcrumbs)); ?>
-                    <?php echo $this->Session->flash(); ?>
+                    <?php echo $this->Flash->render(); ?>
                 </div>
                     <?php echo $this->fetch('content'); ?>
             </div><!-- #header .container -->
