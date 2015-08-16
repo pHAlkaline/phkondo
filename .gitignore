@@ -9,6 +9,7 @@
 /app/Config/email.php
 /app/tmp
 /app/files
+!/app/files/emppty
 /app/Test
 /lib
 /plugins
