@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * pHKondo : pHKondo software for condominium property managers (http://phalkaline.eu)
@@ -25,7 +26,6 @@
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
-
 App::uses('AppModel', 'Model');
 App::uses('Note', 'Model');
 
@@ -38,7 +38,7 @@ App::uses('Note', 'Model');
  */
 class Condo extends AppModel {
 
-    public $actsAs = array('Containable');
+    public $actsAs = array( 'Containable' );
 
     /**
      * Display field
@@ -61,8 +61,8 @@ class Condo extends AppModel {
      */
     public $validate = array(
         'title' => array(
-            'notempty' => array(
-                'rule' => array('notempty'),
+            'notBlank' => array(
+                'rule' => array('notBlank'),
             //'message' => 'Your custom message here',
             //'allowEmpty' => false,
             //'required' => false,
@@ -81,8 +81,8 @@ class Condo extends AppModel {
             ),
         ),
         'address' => array(
-            'notempty' => array(
-                'rule' => array('notempty'),
+            'notBlank' => array(
+                'rule' => array('notBlank'),
             //'message' => 'Your custom message here',
             //'allowEmpty' => false,
             //'required' => false,
@@ -90,6 +90,7 @@ class Condo extends AppModel {
             //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
+        
     );
 
     //The Associations below have been created with all possible keys, those that are not needed can be removed
@@ -176,8 +177,8 @@ class Condo extends AppModel {
             'className' => 'Administrator',
             'foreignKey' => 'condo_id',
             'dependent' => false,
-            
-        )
+        ),
+       
     );
 
     public function hasSharesDebt($id = null) {
@@ -218,15 +219,13 @@ class Condo extends AppModel {
         if (!$this->exists()) {
             return false;
         }
-        
+
         $fractions = ClassRegistry::init('Fraction')->find('list', array('conditions' => array('Fraction.condo_id' => $id)));
         $fractions = array_keys($fractions);
         $notes = ClassRegistry::init('Note')->deleteAll(array('Note.fraction_id' => $fractions));
-        $receipts = ClassRegistry::init('Receipt')->find('list', array('fields'=>array('id','id'),'conditions' => array('Receipt.condo_id' => $id)));
+        $receipts = ClassRegistry::init('Receipt')->find('list', array('fields' => array('id', 'id'), 'conditions' => array('Receipt.condo_id' => $id)));
         $receipts = array_keys($receipts);
         $notes = ClassRegistry::init('Note')->deleteAll(array('Note.receipt_id' => $receipts));
-        
-        
     }
 
     function hasPaidNotes($id = null) {
@@ -246,4 +245,12 @@ class Condo extends AppModel {
         return ($notes > 0) ? true : false;
     }
 
+    
+    
+    public function beforeSave($options = array()){
+        //debug($this->Behaviors->Upload->settings[$this->alias]['photo']['path']);
+        parent::beforeSave($options);
+    }
+    
+   
 }

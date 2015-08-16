@@ -26,9 +26,11 @@
  * 
  */
 
+//CakePlugin::load('DebugKit');
 //CakePlugin::load('PrintReceipt',array('bootstrap'=>true));
 //CakePlugin::load('Reports',array('bootstrap'=>true));
 //CakePlugin::load('Drafts',array('bootstrap'=>true));
+//CakePlugin::load('Attachments',array('bootstrap'=>true));
 
 /** Theme Settings
  * 
@@ -59,7 +61,7 @@ Configure::write('dateFormat', 'Y-m-d H:i:s'); // phkondo dateformat with time
 Configure::write('dateFormatSimple', 'Y-m-d'); // phkondo dateformat
 Configure::write('calendarDateFormat', 'yyyy-mm-dd'); // input date fields date format
 Configure::write('currencySign', '&euro;'); // more at http://www.w3schools.com/html/html_entities.asp
-Configure::write('Application.mode', 'app'); // phkapa , demo , use demo for demo mode;
+Configure::write('Application.mode', 'app'); // demo , use demo for demo mode;
 
 /**
  * The settings for maintenance component 

@@ -68,8 +68,8 @@ class Account extends AppModel {
             ),
         ),
         'title' => array(
-            'notempty' => array(
-                'rule' => array('notempty'),
+            'notBlank' => array(
+                'rule' => array('notBlank'),
             //'message' => 'Your custom message here',
             //'allowEmpty' => false,
             //'required' => false,
@@ -78,8 +78,8 @@ class Account extends AppModel {
             ),
         ),
         'bank' => array(
-            'notempty' => array(
-                'rule' => array('notempty'),
+            'notBlank' => array(
+                'rule' => array('notBlank'),
                 //'message' => 'Your custom message here',
                 'allowEmpty' => true,
                 //'required' => false,
@@ -88,8 +88,8 @@ class Account extends AppModel {
             ),
         ),
         'balcony' => array(
-            'notempty' => array(
-                'rule' => array('notempty'),
+            'notBlank' => array(
+                'rule' => array('notBlank'),
                 //'message' => 'Your custom message here',
                 'allowEmpty' => true,
                 //'required' => false,
@@ -98,8 +98,8 @@ class Account extends AppModel {
             ),
         ),
         'contacts' => array(
-            'notempty' => array(
-                'rule' => array('notempty'),
+            'notBlank' => array(
+                'rule' => array('notBlank'),
                 //'message' => 'Your custom message here',
                 'allowEmpty' => true,
                 //'required' => false,
