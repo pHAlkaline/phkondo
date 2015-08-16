@@ -4,10 +4,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pHKondo V0.1\n"
+"Project-Id-Version: pHKondo V1.1\n"
 "POT-Creation-Date: 2015-03-01 22:26+0000\n"
 "PO-Revision-Date: 2015-04-08 17:43+0100\n"
-"Last-Translator: Paulo Homem <contact@phalkaline.eu>\n"
+"Last-Translator: pHAlkaline <contact@phalkaline.eu>\n"
 "Language-Team: English <contact@phalkaline.eu>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -217,6 +217,11 @@ msgstr ""
 msgid "Are you sure you want to set receipt # %s as paid? - Payment as %s"
 msgstr ""
 
+msgid "Attachment"
+msgid_plural "Attachments"
+msgstr[0] ""
+msgstr[1] ""
+
 msgid "August"
 msgstr ""
 
@@ -270,7 +275,7 @@ msgstr ""
 msgid "Cancel Receipt"
 msgstr ""
 
-msgid "Case you wish do have access to our demo version of this plugin contact pHAlkaline."
+msgid "Case you wish to have access to this plugin contact pHAlkaline."
 msgstr ""
 
 msgid "Category"
@@ -404,6 +409,9 @@ msgid "Details"
 msgstr ""
 
 msgid "Document"
+msgstr ""
+
+msgid "Documents"
 msgstr ""
 
 msgid "Document Date"
@@ -1119,6 +1127,9 @@ msgstr ""
 msgid "Please enter an valid rate."
 msgstr ""
 
+msgid "Plugin NotFound"
+msgstr ""
+
 msgid "Policy"
 msgstr ""
 
@@ -1494,7 +1505,7 @@ msgstr ""
 msgid "Warning: when you set a budget as pending, ALL DEBIT NOTES created by this budget will be set as WAITS PAYMENT, EXCEPT the ones already paid."
 msgstr ""
 
-msgid "We provide expert services and the know-how to help you quickly implement and leverage the full potential of pHKondo features and functionality."
+msgid "pHAlkaline provides services in customization & new features."
 msgstr ""
 
 msgid "Wednesday"
@@ -1596,7 +1607,7 @@ msgstr ""
 msgid "next"
 msgstr ""
 
-msgid "notempty"
+msgid "notBlank"
 msgstr ""
 
 msgid "numeric"

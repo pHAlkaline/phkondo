@@ -28,7 +28,7 @@
 /**
  * Description of DateformatBehavior
  *
- * @author Paulo Homem <contact@phalkaline.eu>
+ * @author pHAlkaline <contact@phalkaline.eu>
  */
 class DateformatBehavior extends ModelBehavior {
 

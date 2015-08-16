@@ -77,7 +77,7 @@ class FractionsController extends AppController {
         $fraction = $this->Fraction->find('first', $options);
         $this->set(compact('fraction'));
         $this->Session->write('Condo.Fraction.ViewID', $id);
-        $this->Session->write('Condo.Fraction.ViewName', $fraction['Fraction']['property']);
+        $this->Session->write('Condo.Fraction.ViewName', $fraction['Fraction']['fraction']);
     }
 
     /**

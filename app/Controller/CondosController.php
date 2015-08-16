@@ -21,7 +21,7 @@
  * @copyright     Copyright (c) pHAlkaline . (http://phalkaline.eu)
  * @link          http://phkondo.net pHKondo Project
  * @package       app.Controller
- * @since         pHKondo v 0.0.1
+ * @since         pHKondo v 1.0.1
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
@@ -184,15 +184,14 @@ class CondosController extends AppController {
      * @return void
      */
     public function drafts() {
-        
     }
     
     /**
-     * documents method
+     * attachments method
      *
      * @return void
      */
-    public function documents() {
+    public function attachments() {
         
     }
 
