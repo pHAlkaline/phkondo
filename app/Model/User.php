@@ -57,8 +57,8 @@ class User extends AppModel {
      */
     public $validate = array(
         'name' => array(
-            'notempty' => array(
-                'rule' => array('notempty'),
+            'notBlank' => array(
+                'rule' => array('notBlank'),
                 'message' => 'Empty',
             //'allowEmpty' => false,
             //'required' => false,
@@ -75,8 +75,8 @@ class User extends AppModel {
             ),
         ),
         'username' => array(
-            'notempty' => array(
-                'rule' => array('notempty'),
+            'notBlank' => array(
+                'rule' => array('notBlank'),
                 'message' => 'Empty',
             //'allowEmpty' => false,
             //'required' => false,
@@ -93,8 +93,8 @@ class User extends AppModel {
             ),
         ),
         'password' => array(
-            'notempty' => array(
-                'rule' => array('notempty'),
+            'notBlank' => array(
+                'rule' => array('notBlank'),
                 'message' => 'Empty',
             //'allowEmpty' => false,
             //'required' => false,

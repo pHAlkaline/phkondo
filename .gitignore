@@ -8,6 +8,7 @@
 /app/Config/bootstrap_phapp.php
 /app/Config/email.php
 /app/tmp
+/app/files
 /app/Test
 /lib
 /plugins

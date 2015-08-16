@@ -71,8 +71,8 @@ class Note extends AppModel {
             ),
         ),
         'document' => array(
-            'notempty' => array(
-                'rule' => array('notempty'),
+            'notBlank' => array(
+                'rule' => array('notBlank'),
                 //'message' => 'Your custom message here',
                 //'allowEmpty' => true,
                 'required' => false,
@@ -141,8 +141,8 @@ class Note extends AppModel {
             ),
         ),
         'title' => array(
-            'notempty' => array(
-                'rule' => array('notempty'),
+            'notBlank' => array(
+                'rule' => array('notBlank'),
             //'message' => 'Your custom message here',
             //'allowEmpty' => false,
             //'required' => false,
