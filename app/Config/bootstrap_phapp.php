@@ -26,7 +26,7 @@
  * 
  */
 
-//CakePlugin::load('DebugKit');
+CakePlugin::load('DebugKit');
 //CakePlugin::load('PrintReceipt',array('bootstrap'=>true));
 //CakePlugin::load('Reports',array('bootstrap'=>true));
 //CakePlugin::load('Drafts',array('bootstrap'=>true));
