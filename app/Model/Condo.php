@@ -38,7 +38,7 @@ App::uses('Note', 'Model');
  */
 class Condo extends AppModel {
 
-    public $actsAs = array( 'Containable' );
+    public $actsAs = array( 'Containable','Feedback.Commentable');
 
     /**
      * Display field

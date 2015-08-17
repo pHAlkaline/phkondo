@@ -116,6 +116,9 @@ msgstr "Adicionar Administrador"
 msgid "Add Budget"
 msgstr "Criar Orçamento"
 
+msgid "Add Comment"
+msgstr "Adicionar Comentário"
+
 msgid "Add Condo"
 msgstr "Criar Condomínio"
 

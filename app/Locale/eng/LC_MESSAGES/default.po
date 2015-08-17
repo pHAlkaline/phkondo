@@ -116,6 +116,9 @@ msgstr ""
 msgid "Add Budget"
 msgstr ""
 
+msgid "Add Comment"
+msgstr ""
+
 msgid "Add Condo"
 msgstr ""
 

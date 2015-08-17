@@ -43,7 +43,7 @@ class CondosController extends AppController {
      *
      * @var array
      */
-    public $components = array('Paginator');
+    public $components = array('Paginator','Feedback.Comments' => array('on' => array('view')));
 
     /**
      * index method
@@ -70,6 +70,7 @@ class CondosController extends AppController {
      */
     public function view($id = null) {
         $this->Condo->contain(array(
+                'Comment',
                 'FiscalYear', 
                 'Insurance', 
                 'Maintenance', 

@@ -40,9 +40,7 @@
                     <?php echo $this->Form->input('email', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
 
-                <div class="form-group">
-                    <?php echo $this->Form->input('comments', array('class' => 'form-control')); ?>
-                </div><!-- .form-group -->
+              
             </fieldset>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-6">
