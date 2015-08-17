@@ -41,7 +41,7 @@ class FractionsController extends AppController {
      *
      * @var array
      */
-    public $components = array('Paginator');
+    public $components = array('Paginator','Feedback.Comments' => array('on' => array('view')));
 
     /**
      * index method
@@ -72,7 +72,7 @@ class FractionsController extends AppController {
             $this->Flash->error(__('Invalid fraction'));
             $this->redirect(array('action' => 'index'));
         }
-        $this->Fraction->contain('Manager');
+        $this->Fraction->contain('Manager','Comment');
         $options = array('conditions' => array('Fraction.' . $this->Fraction->primaryKey => $id));
         $fraction = $this->Fraction->find('first', $options);
         $this->set(compact('fraction'));

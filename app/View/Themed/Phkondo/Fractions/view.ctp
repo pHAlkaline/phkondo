@@ -1,4 +1,4 @@
-
+<?php $this->Html->script('fraction_view', false); ?>
 <div id="page-container" class="row">
 
     <div id="sidebar" class="col-sm-3 hidden-print collapse navbar-collapse phkondo-navbar">
@@ -79,19 +79,18 @@
                             &nbsp;
                         </td>
                     </tr>
-                    <tr>		
-                        <td><strong><?php echo __('Comments'); ?></strong></td>
-                        <td>
-                            <?php echo nl2br(h($fraction['Fraction']['comments'])); ?>
-                            &nbsp;
-                        </td>
-                    </tr>
+                   
                 </tbody>
             </table><!-- /.table table-hover table-condensed -->
 
 
         </div><!-- /.view -->
-
+        <div class="clearfix content-action-menu pull-right">
+            <?php echo $this->Html->link('<span class="glyphicon glyphicon-comment"></span> ', '#', array('title' => __('View %s', __('Comments')), 'id' => 'viewCommentsBtn', 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
+        </div>
+        <div class="clearfix comments hide">
+        <?php echo $this->Comments->display_for($fraction); ?>
+        </div>
 
     </div><!-- /#page-content .span9 -->
 

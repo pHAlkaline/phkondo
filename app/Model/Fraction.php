@@ -37,6 +37,8 @@ App::uses('AppModel', 'Model');
  * @property Entity $Entity
  */
 class Fraction extends AppModel {
+    
+     public $actsAs = array('Feedback.Commentable');
 
     public $virtualFields = array(
         'length' => 'CHAR_LENGTH(fraction)'
