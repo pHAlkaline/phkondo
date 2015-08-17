@@ -1,0 +1,32 @@
+#error-page
+{
+    margin-top: 50px;
+	background-color: #F2F2F2;
+}
+
+#error-page > p
+{
+    font-size: 12px;
+    line-height: 18px;
+	margin: auto;
+	text-align: center;
+}
+
+#validation-errors
+{
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #DFDFDF;
+    border-radius: 11px 11px 11px 11px;
+    color: #333333;
+    font-family: sans-serif;
+    margin: 2em auto;
+    padding: 1em 2em;
+    width: 700px;
+}
+
+#validation-errors > p
+{
+    font-size: 12px;
+    line-height: 18px;
+    margin: 25px 0 20px;
+}
