@@ -120,6 +120,8 @@ $administrators = implode(", ", $administrators);
         <div class="clearfix comments hide">
         <?php echo $this->Comments->display_for($condo); ?>
         </div>
+        <div class="clearfix"><br/><br/></div>
+        <div >
         <?php
         $viewGlyphiconState = array();
         foreach ($condo['Insurance'] as $insurance) {
@@ -193,7 +195,7 @@ $administrators = implode(", ", $administrators);
         <?php if ($hasDebt) : ?>
             <div class="alert alert-danger"><?php echo __('Suppliers with arrears'); ?></div>
         <?php endif; ?>
-
+        </div>
     </div><!-- /#page-content .span9 -->
 
 </div><!-- /#page-container .row-fluid -->
