@@ -18,6 +18,7 @@
  */
 
 $projDescription = '';
+$cakeDescription = '';
 ?>
 <!DOCTYPE html>
 <html>
