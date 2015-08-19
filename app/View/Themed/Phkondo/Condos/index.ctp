@@ -78,7 +78,7 @@
                                 <td class="actions hidden-print hidden-print">
                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $condo['Condo']['id']), array('title' => __('Details'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $condo['Condo']['id']), array('title' => __('Edit'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
-                                    <?php if (AuthComponent::user('role')=='admin'): ?>
+                                    <?php if (in_array(AuthComponent::user('role'), array('admin','store_admin'))): ?>
                                         <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'delete', $condo['Condo']['id']), array('title' => __('Remove'), 'class' => 'btn btn-default btn-xs', 'escape' => false,'confirm'=> __('Are you sure you want to delete # %s?' , $condo['Condo']['title'] ))); ?>
                                     <?php endif; ?>
                                 </td>
