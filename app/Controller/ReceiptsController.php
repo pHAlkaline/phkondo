@@ -127,7 +127,7 @@ class ReceiptsController extends AppController {
                 $this->Flash->success(__('The receipt has been saved'));
                 $this->redirect(array('action' => 'view', $this->Receipt->id));
             } else {
-                debug($this->Receipt->validationErrors);
+                //debug($this->Receipt->validationErrors);
                 $this->Flash->error(__('The receipt could not be saved. Please, try again.'));
             }
         }

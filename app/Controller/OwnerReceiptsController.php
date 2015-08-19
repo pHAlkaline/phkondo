@@ -137,8 +137,8 @@ class OwnerReceiptsController extends AppController {
                 $this->Flash->success(__('The receipt has been saved'));
                 $this->redirect(array('action' => 'view', $this->Receipt->id));
             } else {
-                debug($this->Receipt->validationErrors);
-                debug($this->request->data);
+                //debug($this->Receipt->validationErrors);
+                //debug($this->request->data);
                 $this->Flash->error(__('The receipt could not be saved. Please, try again.'));
             }
         }
