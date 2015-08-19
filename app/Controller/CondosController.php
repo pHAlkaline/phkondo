@@ -166,6 +166,10 @@ class CondosController extends AppController {
         if (!$this->request->is('post')) {
             throw new MethodNotAllowedException();
         }
+        if (in_array(AuthComponent::user('role'), array('admin','store_admin'))){
+            throw new MethodNotAllowedException();
+        }
+                
         $this->Condo->id = $id;
         if (!$this->Condo->exists()) {
             $this->Flash->error(__('Invalid condo'));
