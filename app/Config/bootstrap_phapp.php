@@ -26,13 +26,10 @@
  * 
  */
 
-CakePlugin::load('Migrations');
-CakePlugin::load('DebugKit');
-CakePlugin::load('Feedback');
-//CakePlugin::load('PrintReceipt',array('bootstrap'=>true));
-//CakePlugin::load('Reports',array('bootstrap'=>true));
-//CakePlugin::load('Drafts',array('bootstrap'=>true));
-//CakePlugin::load('Attachments',array('bootstrap'=>true));
+CakePlugin::load('PrintReceipt',array('bootstrap'=>true));
+CakePlugin::load('Reports',array('bootstrap'=>true));
+CakePlugin::load('Drafts',array('bootstrap'=>true));
+CakePlugin::load('Attachments',array('bootstrap'=>true));
 
 
 /** Theme Settings
