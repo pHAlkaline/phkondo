@@ -110,8 +110,6 @@ CakeLog::config('error', array(
 ));
 
 
-CakePlugin::load('Migrations');
-CakePlugin::load('DebugKit');
 CakePlugin::load('Feedback');
 
 require 'bootstrap_phapp.php';
