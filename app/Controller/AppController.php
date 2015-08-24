@@ -32,7 +32,12 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller {
 
     public $theme = "phkondo";
-    public $components = array('DebugKit.Toolbar', 'Session', 'Flash', 'Auth', 'MaintenanceMode');
+    public $components = array(
+        //'DebugKit.Toolbar', 
+        'Session', 
+        'Flash', 
+        'Auth', 
+        'MaintenanceMode');
     public $paginate = array(
         'limit' => 50,
     );
