@@ -145,7 +145,7 @@ class UsersController extends AppController {
     }
 
     public function login() {
-
+        $this->layout = "login";
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
                 if ($this->data['User']['language'] != '') {
@@ -185,6 +185,7 @@ class UsersController extends AppController {
 
 
     public function beforeRender() {
+        parent::beforeRender();
         $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'users', 'action' => 'index')), 'text' => __('Users'), 'active' => 'active'),

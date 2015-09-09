@@ -37,7 +37,9 @@
 /** Theme Settings
  * 
  */
-Configure::write('Theme.owner_name', '');
+Configure::write('Theme.owner_name', 'pHkondo');
+Configure::write('Theme.owner_name_abbrv', 'pHk');
+Configure::write('Theme.owner_description', 'pHkondo Condominium Management');
 Configure::write('Theme.owner_title', 'Administração ao cuidado de XXXXXX');
 Configure::write('Theme.owner_address', 'Avenida XX de XXXXX NXX Loja A XXXX-XXX XXXXX , Telef: XXXXXXXXX / XXXXXXXXX');
 Configure::write('Theme.base_color', '#428bca');
@@ -77,9 +79,14 @@ Configure::write('MaintenanceMode.site_offline_url', '/pages/offline');
  * - set to true / false
  * - true will open pHKondo to all access. 
  */
-Configure::write('Access.open', false); // For SECURITY keep this FALSE , use only on emergency.
+Configure::write('Access.open', true); // For SECURITY keep this FALSE , use only on emergency.
 
 /**
  * User role settings , do not change unless you know what you are doing 
  */
 Configure::write('User.role',array('admin' => __('App Administrator'),'store_admin' => __n('Manager','Managers',1),'colaborator' => __('Employee')));
+
+/**
+ * 
+ */
+Configure::write('Access.open', true); // For SECURITY keep this FALSE , use only on emergency.
