@@ -55,6 +55,7 @@ class PagesController extends AppController {
 
         if (!empty($path[0]) && $path[0] == 'home' && !(bool)  AuthComponent::user()) {
             $path[0] = 'login';
+            $this->layout = "login";
         }
         $count = count($path);
         if (!$count) {
@@ -76,6 +77,7 @@ class PagesController extends AppController {
     }
     
     public function beforeRender() {
+        parent::beforeRender();
         $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
                 
