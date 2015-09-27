@@ -3,7 +3,7 @@
 
     <div id="page-content" class="col-sm-12">
 
-        <div class="fiscalYears index">
+        <div class="index">
 
             <h2 class="col-sm-9"><?php echo __n('Fiscal Year','Fiscal Years',2); ?></h2>
             <div class="actions hidden-print col-sm-3">

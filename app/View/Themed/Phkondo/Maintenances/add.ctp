@@ -60,7 +60,7 @@
                 </div><!-- .form-group -->
 
                 <div class="col-sm-offset-2 col-sm-10">
-                    <?php echo $this->Form->input('active', array('class' => '', 'label' => __('Active'), 'div' => array('class' => 'checkbox'), 'checked' => true, 'between' => '', 'after' => '')); ?>
+                    <?php echo $this->Form->input('active', array('class' => '', 'label' => __('Active'), 'div' => array('class' => 'checkbox'),  'between' => '', 'after' => '')); ?>
                 </div>
             </fieldset>
             <div class="form-group">

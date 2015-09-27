@@ -1,3 +1,4 @@
+<?php
 /**
  *
  * pHKondo : pHKondo software for condominium property managers (http://phalkaline.eu)
@@ -19,48 +20,51 @@
  *
  * @copyright     Copyright (c) pHAlkaline . (http://phalkaline.eu)
  * @link          http://phkondo.net pHKondo Project
- * @package       app.View.Themed.webroot.js
+ * @@package      app.View.Themed.Layouts
  * @since         pHKondo v 0.0.1
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
+?>
+<!DOCTYPE html>
+<html >
 
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <?php echo $this->Html->charset(); ?>
+        <title>
+            <?php echo Configure::read('Theme.owner_name'); ?>:
+            <?php echo $title_for_layout; ?>
+        </title>
 
-$(function(){
-    $( "input[type='checkbox']" ).change(function() {
-        $("#addNotesTotalAmount").html(' '+totalAmount());
-    // Check input( $( this ).val() ) for validity here
-    });
-    
-    $("#addNotesTotalAmount").html(' '+totalAmount());
+        <?php
+        echo $this->Html->meta('icon');
+        echo $this->fetch('meta');
+        echo $this->Html->css(array(
+            'bootstrap/bootstrap-glyphicons',
+            'bootstrap/font-awesome.min',
+            'bootstrap/bootstrap',
+            'bootstrap/bootstrap-theme',
+            'phkondo'));
+        echo $this->Html->css(array('phkondo_print'), null, array('media' => 'print'));
+        echo $this->fetch('css');
+        ?>
+        <?php
+        echo $this->Html->script(array('libs/jquery-2.1.3.min', 'libs/bootstrap.min'));
+        ?>
 
-});
+        <script type="text/javascript">
+            $(document).ready(function () {
 
-function totalAmount(){
-    var totalAmount=0;
-    var boxes = $(":checkbox:checked");
-    boxes.each(function() {
-        var index=$( this ).attr('id').replace(/[^0-9]/g, '');
-        var type=$( "#Note"+index+"Type" ).val(); 
         
-        switch (type){
-            case "1":
-                totalAmount = parseFloat(totalAmount) - parseFloat($( "#Note"+index+"Amount" ).val());
-                break;
-            case "2":
-                totalAmount =  parseFloat(totalAmount) + parseFloat($( "#Note"+index+"Amount" ).val());
-                break;
-            default:
-                break;
-        }
+            });
+        </script>
+    </head>
+
+    <body class="hold-transition login-page">
+       <?php echo $this->fetch('content'); ?>
+
         
-        
-     
-        
-        
-        totalAmount = totalAmount.toFixed(2);
-        
-        
-    });
-    return (parseFloat($("#ReceiptAmount").val()) + parseFloat(totalAmount)).toFixed(2);
-}
+    </body>
+   
+</html>

@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * pHKondo : pHKondo software for condominium property managers (http://phalkaline.eu)
@@ -25,7 +26,6 @@
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
-
 App::uses('AppController', 'Controller');
 
 /**
@@ -35,13 +35,13 @@ App::uses('AppController', 'Controller');
  * @property PaginatorComponent $Paginator
  */
 class FractionsController extends AppController {
-    
+
     /**
      * Components
      *
      * @var array
      */
-    public $components = array('Paginator','Feedback.Comments' => array('on' => array('view')));
+    public $components = array('Paginator', 'Feedback.Comments' => array('on' => array('view')));
 
     /**
      * index method
@@ -49,14 +49,23 @@ class FractionsController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Fraction->contain('Entity','Manager');
+        $this->Fraction->contain('Entity', 'Manager');
         $this->Paginator->settings = $this->paginate + array(
             'conditions' => array('Fraction.condo_id' => $this->Session->read('Condo.ViewID')),
         );
-       
-        $this->setFilter(array('Fraction.fraction','Fraction.floor_location','Fraction.description','Fraction.mil_rate','Manager.name'));
+
+        $this->setFilter(array('Fraction.fraction', 'Fraction.floor_location', 'Fraction.description', 'Fraction.mil_rate', 'Manager.name'));
+        $fractions = $this->paginate();
         
-        $this->set('fractions', $this->paginate());
+        $milRateWarning=false;
+        $milRate = Set::extract('/Fraction/mil_rate', $fractions);
+        if ($this->Session->read('Condo.'.$this->Session->read('Condo.ViewName').'.Fraction.milrate')!='show' && array_sum($milRate) != 1000 && array_sum($milRate) != 0){
+            $this->Session->write('Condo.'.$this->Session->read('Condo.ViewName').'.Fraction.milrate','show');
+            $milRateWarning=true;
+        }
+            
+        $this->set(compact('fractions', 'milRateWarning'));
+        
         $this->Session->delete('Condo.Fraction');
     }
 
@@ -72,7 +81,7 @@ class FractionsController extends AppController {
             $this->Flash->error(__('Invalid fraction'));
             $this->redirect(array('action' => 'index'));
         }
-        $this->Fraction->contain('Manager','Comment');
+        $this->Fraction->contain('Manager', 'Comment');
         $options = array('conditions' => array('Fraction.' . $this->Fraction->primaryKey => $id));
         $fraction = $this->Fraction->find('first', $options);
         $this->set(compact('fraction'));
@@ -122,11 +131,11 @@ class FractionsController extends AppController {
             $options = array('conditions' => array('Fraction.' . $this->Fraction->primaryKey => $id));
             $this->request->data = $this->Fraction->find('first', $options);
         }
-        $condos = $this->Fraction->Condo->find('list',array('conditions'=>array('Condo.id'=>$this->request->data['Fraction']['condo_id'])));
+        $condos = $this->Fraction->Condo->find('list', array('conditions' => array('Condo.id' => $this->request->data['Fraction']['condo_id'])));
 
         $this->Session->write('Condo.Fraction.ViewID', $id);
         $this->Session->write('Condo.Fraction.ViewName', $this->request->data['Fraction']['description']);
-        
+
         $this->Fraction->contain('Entity');
         $fraction = $this->Fraction->find('first', array('conditions' => array('Fraction.id' => $this->Session->read('Condo.Fraction.ViewID'))));
         $entitiesInFraction = Set::extract('/Entity/id', $fraction);
@@ -153,7 +162,7 @@ class FractionsController extends AppController {
             $this->Flash->error(__('Invalid fraction'));
             $this->redirect(array('action' => 'index'));
         }
-        
+
         if (!$this->Fraction->deletable()) {
             $this->Flash->error(__('This Fraction can not be deleted, check existing notes already paid.'));
             $this->redirect(array('action' => 'view', $id));
@@ -162,7 +171,7 @@ class FractionsController extends AppController {
         ClassRegistry::init('Note')->DeleteAll(array('Note.fraction_id' => $id));
         ClassRegistry::init('Receipt')->DeleteAll(array('Receipt.fraction_id' => $id));
         ClassRegistry::init('Insurance')->DeleteAll(array('Insurance.fraction_id' => $id));
-        
+
         if ($this->Fraction->delete()) {
             $this->Flash->success(__('Fraction deleted'));
             $this->redirect(array('action' => 'index'));
@@ -175,24 +184,24 @@ class FractionsController extends AppController {
         parent::beforeFilter();
         if (!$this->Session->check('Condo.ViewID')) {
             $this->Flash->error(__('Invalid condo'));
-            $this->redirect(array('controller'=>'condos','action' => 'view',$this->Session->read('Condo.ViewID')));
+            $this->redirect(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID')));
         }
     }
 
     public function beforeRender() {
         $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID'))), 'text' => $this->Session->read('Condo.ViewName'), 'active' => ''),
-            array('link' => '', 'text' => __n('Fraction','Fractions',2), 'active' => 'active')
+            array('link' => '', 'text' => __n('Fraction', 'Fractions', 2), 'active' => 'active')
         );
         switch ($this->action) {
             case 'view':
-                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'fractions', 'action' => 'index')), 'text' => __n('Fraction','Fractions',2), 'active' => '');
+                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'fractions', 'action' => 'index')), 'text' => __n('Fraction', 'Fractions', 2), 'active' => '');
                 $breadcrumbs[4] = array('link' => '', 'text' => $this->Session->read('Condo.Fraction.ViewName'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'fractions', 'action' => 'index')), 'text' => __n('Fraction','Fractions',2), 'active' => '');
+                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'fractions', 'action' => 'index')), 'text' => __n('Fraction', 'Fractions', 2), 'active' => '');
                 $breadcrumbs[4] = array('link' => '', 'text' => $this->Session->read('Condo.Fraction.ViewName'), 'active' => 'active');
                 break;
         }

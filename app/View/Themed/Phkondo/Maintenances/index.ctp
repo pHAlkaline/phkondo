@@ -2,7 +2,7 @@
 <div id="page-container" class="row">
       <div id="page-content" class="col-sm-12">
 
-        <div class="maintenances index">
+        <div class="index">
 
             <h2 class="col-sm-9"><?php echo __n('Maintenance','Maintenances',2); ?></h2>
             <div class="actions hidden-print col-sm-3">

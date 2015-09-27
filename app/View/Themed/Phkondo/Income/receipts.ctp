@@ -53,7 +53,7 @@
         </div><!-- /.form -->
 
         <?php if (isset($receipts) && count($receipts)){ ?>
-            <div class="receipts index">
+            <div class="index">
 
                 <h2 class="col-sm-9"><?php echo __n('Receipt','Receipts',2); ?></h2>
 

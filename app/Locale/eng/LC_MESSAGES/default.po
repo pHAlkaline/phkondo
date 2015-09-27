@@ -107,6 +107,9 @@ msgstr ""
 msgid "Active"
 msgstr ""
 
+msgid "Add"
+msgstr ""
+
 msgid "Add Account"
 msgstr ""
 
@@ -912,6 +915,21 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
+msgid "New"
+msgstr ""
+
+msgid "Management"
+msgstr "Administração"
+
+msgid "Config"
+msgstr "Configuração"
+
+msgid "Select"
+msgstr "Seleccionar"
+
+msgid "Alerts"
+msgstr "Alertas"
+
 msgid "New %s"
 msgstr ""
 
@@ -1011,8 +1029,10 @@ msgstr ""
 msgid "Note deleted"
 msgstr ""
 
-msgid "Notes"
-msgstr ""
+msgid "Note"
+msgid_plural "Notes"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "November"
 msgstr ""
@@ -1033,6 +1053,9 @@ msgid "Open Document"
 msgstr ""
 
 msgid "Operation"
+msgstr ""
+
+msgid "Options"
 msgstr ""
 
 msgid "Origin Date"

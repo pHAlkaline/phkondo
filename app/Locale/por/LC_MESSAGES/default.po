@@ -104,11 +104,17 @@ msgstr "Contas com saldo negativo"
 msgid "Actions"
 msgstr "Acções"
 
+msgid "Add"
+msgstr "Adicionar"
+
+msgid "Alerts"
+msgstr "Alertas"
+
 msgid "Active"
 msgstr "Activo"
 
 msgid "Add Account"
-msgstr "Criar Conta"
+msgstr "Adicionar Conta"
 
 msgid "Add Administrator"
 msgstr "Adicionar Administrador"
@@ -144,7 +150,7 @@ msgid "Add Manager"
 msgstr "Criar Gestor"
 
 msgid "Add Movement"
-msgstr "Criar Movimento"
+msgstr "Adicionar Movimento"
 
 msgid "Add Movement Category"
 msgstr "Criar Categoria"
@@ -510,7 +516,7 @@ msgid "Enable password change"
 msgstr "Possibilitar alteração de palavra passe"
 
 msgid "End Session"
-msgstr "Sair ( Terminar Sessão )"
+msgstr "Terminar Sessão"
 
 msgid "Entity"
 msgid_plural "Entities"
@@ -877,7 +883,7 @@ msgid "Movement Categories"
 msgstr "Categorias de Movimentos"
 
 msgid "Movement Category"
-msgstr "Categoria"
+msgstr "Categoria de Movimento"
 
 msgid "Movement Date"
 msgstr "Data de Movimento"
@@ -911,6 +917,9 @@ msgstr "Deve ser único"
 
 msgid "Name"
 msgstr "Nome"
+
+msgid "New"
+msgstr "Criar"
 
 msgid "New %s"
 msgstr "Criar %s"
@@ -996,9 +1005,6 @@ msgstr "Não foram encontrados registos."
 msgid "Not Found"
 msgstr "Não encontrado"
 
-msgid "Note"
-msgstr "Nota"
-
 msgid "Note Status"
 msgstr "Estado"
 
@@ -1011,8 +1017,10 @@ msgstr "Não foi possível apagar Nota"
 msgid "Note deleted"
 msgstr "Nota apagada"
 
-msgid "Notes"
-msgstr "Notas"
+msgid "Note"
+msgid_plural "Notes"
+msgstr[0] "Nota"
+msgstr[1] "Notas"
 
 msgid "November"
 msgstr "Novembro"
@@ -1034,6 +1042,9 @@ msgstr "Abrir Documento"
 
 msgid "Operation"
 msgstr "Operação"
+
+msgid "Options"
+msgstr "Opções"
 
 msgid "Origin Date"
 msgstr "Data de Origem"
@@ -1167,6 +1178,9 @@ msgstr "%s Relacionados"
 
 msgid "Related Notes"
 msgstr "Notas Relacionadas"
+
+msgid "Remember Me"
+msgstr "Reconhecer-me"
 
 msgid "Remove"
 msgstr "Remover"
@@ -1606,6 +1620,15 @@ msgstr "está a ser usado por um registo relacionado"
 
 msgid "just now"
 msgstr "agora"
+
+msgid "Management"
+msgstr "Administração"
+
+msgid "Config"
+msgstr "Configuração"
+
+msgid "Select"
+msgstr "Seleccionar"
 
 msgid "money"
 msgstr "Requer valor númerico"

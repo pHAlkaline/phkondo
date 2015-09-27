@@ -15,7 +15,7 @@
                 <li ><?php echo $this->Html->link(__('New Receipt'), array('action' => 'add'), array('class' => 'btn')); ?></li>
                 <li ><?php echo $this->Form->postLink(__('Delete Receipt'), array('action' => 'delete', $this->Form->value('Receipt.id')), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $this->Form->value('Receipt.id')))); ?></li>
                 <li ><?php echo $this->Html->link(__('List Receipts'), array('action' => 'index'), array('class' => 'btn')); ?></li>
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('Add Notes'), array('action' => 'add_notes', $this->Form->value('Receipt.id')), array('class' => 'btn ', 'escape' => false)); ?> </li>
+                <!--li ><?php //echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('Add Notes'), array('action' => 'add_notes', $this->Form->value('Receipt.id')), array('class' => 'btn ', 'escape' => false)); ?> </li-->
 
             </ul><!-- /.list-group -->
 
@@ -60,82 +60,84 @@
 
         </div><!-- /.form -->
         <div class="related">
+            <a name="AddNotes"></a>
+            <?php $this->Html->script('receipt_add_notes', false); ?>
+            <div id="page-container" class="row">
+                
+                <div id="page-content" class="col-sm-12">
 
-        <h3><?php echo __('Notes'); ?></h3>
-        <?php
-        if (!empty($receipt['ReceiptNote'])) {
-            $receipt['Note'] = $receipt['ReceiptNote'];
-        }
-        ?>
-        <?php if (!empty($receipt['Note'])): ?>
+                    <div class="index">
+                        <?php echo $this->Form->create('Note',array('url' => array('controller' => 'owner_receipts', 'action' => 'add_notes', $this->Form->value('Receipt.id')))); ?>
+                        <?php echo $this->Form->hidden('Receipt.amount', array('value' => $receiptAmount)); ?>
+                        <h2 class="col-sm-9"><?php echo __n('Receipt', 'Receipts', 1) . ' ' . $receiptId; ?></h2>
+                        <div class="actions col-sm-3">
+                            <h3 style="float:right;"><?php echo __('Total amount'); ?><span id="addNotesTotalAmount"></span></h3>
 
-            <div class="table-responsive">
-                <table class="table table-hover table-condensed">
-                    <thead>
-                        <tr>
-                            <th><?php echo __('Document'); ?></th>
-                            <th><?php echo __('Note Type'); ?></th>
-                            <th><?php echo __('Document Date'); ?></th>
-                            <th><?php echo __n('Fraction','Fractions',1); ?></th>
-                            <th><?php echo __('Title'); ?></th>
-                            <th class="amount"><?php echo __('Amount'); ?></th>
-                            <th class="actions"><?php //echo __('Actions');        ?></th>
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $i = 0;
-                        foreach ($receipt['Note'] as $note):
-                            //debug($note);
-                            ?>
-                            <tr>
-                                <td><?php echo $note['document']; ?></td>
-                                <td><?php echo $note['NoteType']['name']; ?></td>
-                                <td><?php echo h( $note['document_date']); ?></td>
-                                <td><?php echo $note['Fraction']['description']; ?></td>
-                                <td><?php echo $note['title']; ?></td>
-                                <td class="amount"><?php
-                                    if ($note['NoteType']['id'] == 1){
-                                        echo '-';
-                                    }
-                                    echo $note['amount'];
-                                    ?>&nbsp;<?= Configure::read('currencySign'); ?></td>
+                        </div><!-- /.actions -->
+                        <h2 class="col-sm-9"><?php echo __('Pick Notes'); ?></h2>
+                        <div class="actions col-sm-3">
+                            <?php if (count($notes)): ?>
+                                <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 0; float: right;')); ?>            
+                            <?php endif; ?>
 
-                                <td class="actions">
-                                    <?php
-                                    $editDisabled = '';
-                                    if (!$receipt['Receipt']['editable']) {
-                                        $editDisabled = 'disabled';
+                        </div><!-- /.actions -->
+
+                        <table class="table table-hover table-condensed">
+                            <thead>
+                                <tr>
+                                    <th><?php echo __('Document'); ?></th>
+                                    <th><?php echo __('Document date'); ?></th>
+                                    <th><?php echo __('Title'); ?></th>
+                                    <th><?php echo __('Note Type'); ?></th>
+                                    <th><?php echo __n('Fraction', 'Fractions', 1); ?></th>
+                                    <th><?php echo __('Client'); ?></th>
+                                    <th><?php echo __('Amount'); ?></th>
+                                    <th><?php echo __('Due Date'); ?></th>
+                                    <th class="actions"><?php echo __('Pick'); ?></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($notes as $key => $note): ?>
+                                    <tr>
+                                        <td><?php echo h($note['Note']['document']); ?>&nbsp;</td>
+                                        <td><?php echo h($note['Note']['document_date']); ?>&nbsp;</td>
+                                        <td><?php echo h($note['Note']['title']); ?>&nbsp;</td>
+                                        <td><?php echo h($note['NoteType']['name']); ?></td>
+                                        <td><?php echo h($note['Fraction']['fraction']); ?></td>
+                                        <td><?php echo h($note['Entity']['name']); ?></td>
+                                        <td><?php echo h($note['Note']['amount']); ?>&nbsp;<?= Configure::read('currencySign'); ?></td>
+                                        <!--td><?php //echo h($note['Note']['pending_amount']);   ?>&nbsp;</td-->
+                                        <td><?php echo h($note['Note']['due_date']); ?>&nbsp;</td>
+                                        <td class="actions">
+                                            <?php
+                                    $checked = '';
+                                    if ($note['Note']['receipt_id'] != '') {
+                                        $checked = 'checked';
                                     }
                                     ?>
-                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('controller' => 'owner_receipts', 'action' => 'remove_note', $note['id']), array('title' => __('Remove'), 'class' => 'btn btn-default btn-xs ' . $editDisabled, 'escape' => false), __('Are you sure you want to remove # %s?', $note['document'])); ?>
-
-                                </td>
-
-                            </tr>
-                        <?php endforeach; ?>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><?php echo __('Total amount'); ?></td>
-                            <td class="amount"><?php echo $receipt['Receipt']['total_amount']; ?>&nbsp;<?= Configure::read('currencySign'); ?></td>
-
-                            <td class="actions">
-                            </td>
-
-                        </tr>
-                    </tbody>
-                </table><!-- /.table table-hover table-condensed -->
-            </div>    
-
-        <?php endif; ?>
+                                            <?php echo $this->Form->hidden('Note.' . $note['Note']['id'] . '.type', array('value' => $note['NoteType']['id'])); ?>
+                                            <?php echo $this->Form->hidden('Note.' . $note['Note']['id'] . '.amount', array('value' => $note['Note']['amount'])); ?>
+                                            <?php echo $this->Form->checkbox('Note.' . $note['Note']['id'] . '.check', array('hiddenField' => false, 'checked' => $checked)); ?>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
 
 
-    </div><!-- /.related -->
+                        <?php echo $this->Form->end(); ?>
+
+                    </div><!-- /.index -->
+
+                </div><!-- /#page-content .col-sm-9 -->
+
+            </div><!-- /#page-container .row-fluid -->
+
+
+
+        </div><!-- /.related -->
     </div><!-- /#page-content .col-sm-9 -->
-    
+
 
 </div><!-- /#page-container .row-fluid -->

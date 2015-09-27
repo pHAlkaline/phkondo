@@ -1,7 +1,7 @@
 <div id="page-container" class="row">
      <div id="page-content" class="col-sm-12">
 
-        <div class="invoice_conference index">
+        <div class="index">
 
             <h2 class="col-sm-9"><?php echo $this->Session->read('Condo.InvoiceConference.SupplierName'); ?></h2>
            

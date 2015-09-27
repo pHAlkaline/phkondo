@@ -2,7 +2,7 @@
    
     <div id="page-content" class="col-sm-12">
 
-        <div class="invoice_conference index">
+        <div class="index">
 
             <h2 class="col-sm-9"><?php echo __('Invoice Conference'); ?></h2>
             <div class="actions hidden-print col-sm-3">

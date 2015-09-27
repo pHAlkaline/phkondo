@@ -159,7 +159,7 @@ class InvoiceConference extends AppModel {
             ),
             'checkPastDate' => array(
                 'rule' => array('checkPastDate'),
-                'message' => 'payment date must be after document date',
+                'message' => 'invalid date.',
             //'allowEmpty' => false,
             //'required' => false,
             //'last' => false, // Stop validation after this rule
