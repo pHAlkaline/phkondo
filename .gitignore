@@ -18,6 +18,11 @@
 /dist
 /tags
 
+# Themes
+/app/View/Themed/*
+!/app/View/Themed/Phkondo
+!/app/View/Themed/empty
+
 # Plugins
 /app/Plugin/*
 !/app/Plugin/Feedback
