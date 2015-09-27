@@ -3,7 +3,7 @@
    
     <div id="page-content" class="col-sm-12">
 
-        <div class="receipts index">
+        <div class="index">
 
             <h2 class="col-sm-9"><?php echo __n('Receipt','Receipts',2); ?></h2>
             <div class="actions hidden-print col-sm-3">

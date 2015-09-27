@@ -3,7 +3,7 @@
    
     <div id="page-content" class="col-sm-12">
 
-        <div class="condos index">
+        <div class="index">
 
             <h2 class="col-sm-9"><?php echo __n('Condo','Condos',2); ?></h2>
 

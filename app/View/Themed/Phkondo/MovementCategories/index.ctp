@@ -3,7 +3,7 @@
 
     <div id="page-content" class="col-sm-12">
 
-        <div class="movementCategories index">
+        <div class="index">
 
             <h2 class="col-sm-9"><?php echo __('Movement Categories'); ?></h2>
             <div class="actions hidden-print col-sm-3">

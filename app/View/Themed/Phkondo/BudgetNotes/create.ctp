@@ -22,7 +22,7 @@ foreach ($fractions as $fraction) {
     </div><!-- /#sidebar .col-sm-3 -->
     <div id="page-content" class="col-sm-9">
 
-        <div class="notes index">
+        <div class="index">
 
             <h2 ><?php echo __('Create Notes'); ?></h2>
 
@@ -57,16 +57,11 @@ foreach ($fractions as $fraction) {
                                 if ($fraction['Fraction']['manager_id'] != null && $fraction['Fraction']['manager_id'] != $entity['id']) {
                                     continue;
                                 }
-                                //debug($entity['EntitiesFraction']['owner_percentage']);
                                 $ownerPercentage = ($entity['EntitiesFraction']['owner_percentage'] / 100);
-                                //debug($fraction['Fraction']['manager_id']);
                                 if ($fraction['Fraction']['manager_id'] != null) {
                                     $ownerPercentage = 1; // 1 = 100%
                                 }
                                 $ownerPercentage = $this->Number->precision($ownerPercentage, 2);
-                                //debug($entity);
-                                //debug('owner'.$ownerPercentage);
-                                //debug($entity['EntitiesFraction']['owner_percentage']);
                                 ?>
                                 <?php echo $this->Form->hidden('Note.' . $row . '.fraction_id', array('value' => $fraction['Fraction']['id'])); ?>
                                 <?php echo $this->Form->hidden('Note.' . $row . '.entity_id', array('value' => $entity['id'])); ?>

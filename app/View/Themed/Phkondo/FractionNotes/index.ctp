@@ -2,14 +2,14 @@
    
     <div id="page-content" class="col-sm-12">
 
-        <div class="fraction_notes index">
+        <div class="index">
             <?php
             $fractionDescription = '';
             if (isset($notes[0]['Fraction']['description'])) {
                 $fractionDescription = $notes[0]['Fraction']['description'];
             };
             ?>
-            <h2 class="col-sm-9"><?php echo __('Notes') . ' ' . $fractionDescription; ?></h2>
+            <h2 class="col-sm-9"><?php echo __n('Note','Notes',2) . ' ' . $fractionDescription; ?></h2>
             <div class="actions hidden-print col-sm-3">
                 <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> '.__('New Note'), array('action' => 'add'), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 0; float: right;', 'escape' => false)); ?>
             </div><!-- /.actions -->

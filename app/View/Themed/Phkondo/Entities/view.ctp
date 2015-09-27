@@ -104,7 +104,7 @@
 
         </div><!-- /.view -->
         <?php if (count($entity['Fraction'])): ?>
-         <div class="fractions index">
+         <div class="index">
 
             <h2 class="col-sm-9"><?php echo __n('Fraction','Fractions',2); ?></h2>
             

@@ -2,31 +2,31 @@
 
     <div id="page-content" class="col-sm-12">
 
-        <div class="fractions index">
+        <div class="index">
 
-            <h2 class="col-sm-9"><?php echo __n('Fraction','Fractions',2); ?></h2>
-             
+            <h2 class="col-sm-9"><?php echo __n('Fraction', 'Fractions', 2); ?></h2>
+
             <div class="actions hidden-print col-sm-3">
                 <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Fraction'), array('action' => 'add'), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 0; float: right;', 'escape' => false)); ?>            </div><!-- /.actions -->
             <div class="clearfix"></div>
             <?php
-            $milRate = Set::extract('/Fraction/mil_rate', $fractions);
-
-            if (array_sum($milRate) != 1000 && array_sum($milRate) != 0):
-            ?>
-            <div class="alert alert-warning" role="alert"><?= __('Warning: Mil rate sum should be 1000'); ?></div>
+            if ($milRateWarning):
+                ?>
+                <div class="alert alert-warning alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <?= __('Warning: Mil rate sum should be 1000'); ?></div>
 
             <?php endif; ?>
             <div class="table-responsive">
                 <table class="table table-hover table-condensed">
                     <thead>
                         <tr>
-                            <th><?php echo $this->Paginator->sort('Fraction.length', __n('Fraction','Fractions',1)); ?></th>
+                            <th><?php echo $this->Paginator->sort('Fraction.length', __n('Fraction', 'Fractions', 1)); ?></th>
                             <th><?php echo $this->Paginator->sort('floor_location'); ?></th>
                             <th><?php echo $this->Paginator->sort('description'); ?></th>
                             <th><?php echo $this->Paginator->sort('mil_rate'); ?></th>
-                            <th><?php echo $this->Paginator->sort('Manager.name', __n('Manager','Managers',1)); ?></th>
-                            <th class="actions hidden-print"><?php //echo __('Actions');   ?></th>
+                            <th><?php echo $this->Paginator->sort('Manager.name', __n('Manager', 'Managers', 1)); ?></th>
+                            <th class="actions hidden-print"><?php //echo __('Actions');     ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -39,7 +39,7 @@
                                 <td><?php
                                     if ($fraction['Fraction']['manager_id'] == 0) {
                                         foreach ($fraction['Entity'] as $manager) {
-                                            echo $manager['name']."<br/>" ;
+                                            echo $manager['name'] . "<br/>";
                                         }
                                     } else {
                                         echo h($fraction['Manager']['name']);
@@ -75,7 +75,7 @@
                 echo $this->Paginator->next(__('Next') . ' >', array('tag' => 'li'), null, array('class' => 'disabled', 'tag' => 'li', 'disabledTag' => 'a'));
                 ?>
             </ul><!-- /.pagination -->
-           
+
         </div><!-- /.index -->
 
     </div><!-- /#page-content .col-sm-9 -->

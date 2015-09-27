@@ -9,7 +9,7 @@
                 <li ><?php echo $this->Form->postLink(__('Remove %s', __n('Owner', 'Owners', 1)), array('action' => 'remove', $entity['Entity']['id']), array('class' => 'btn ', 'confirm' => __('Are you sure you want to remove # %s?', $entity['Entity']['name']))); ?> </li>
                 <li ><?php echo $this->Html->link(__('New Owner'), array('action' => 'add'), array('class' => 'btn ')); ?> </li>
                 <li ><?php echo $this->Html->link(__('List Owners'), array('action' => 'index'), array('class' => 'btn ')); ?> </li>
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('Notes'), array('controller' => 'owner_notes', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Note','Notes',2), array('controller' => 'owner_notes', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
                 <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Receipt', 'Receipts', 2), array('controller' => 'owner_receipts', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
                 <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('Current Account'), array('action' => 'current_account'), array('target' => '_blank', 'class' => '', 'escape' => false)); ?> </li>
 

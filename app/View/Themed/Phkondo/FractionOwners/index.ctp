@@ -3,7 +3,7 @@
 
     <div id="page-content" class="col-sm-12">
 
-        <div class="entities index">
+        <div class="index">
 
             <h2 class="col-sm-9"><?php echo __n('Owner', 'Owners', 2); ?></h2>
             <div class="actions hidden-print col-sm-3">

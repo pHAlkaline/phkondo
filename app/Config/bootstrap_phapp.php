@@ -26,20 +26,21 @@
  * 
  */
 
-//CakePlugin::load('DebugKit');
-//CakePlugin::load('Migrations');
-//CakePlugin::load('PrintReceipt',array('bootstrap'=>true));
-//CakePlugin::load('Reports',array('bootstrap'=>true));
-//CakePlugin::load('Drafts',array('bootstrap'=>true));
-//CakePlugin::load('Attachments',array('bootstrap'=>true));
+CakePlugin::load('DebugKit');
+CakePlugin::load('Migrations');
+CakePlugin::load('PrintReceipt',array('bootstrap'=>true));
+CakePlugin::load('Reports',array('bootstrap'=>true));
+CakePlugin::load('Drafts',array('bootstrap'=>true));
+CakePlugin::load('Attachments',array('bootstrap'=>true));
 
 
 /** Theme Settings
  * 
  */
-Configure::write('Theme.owner_name', 'pHkondo');
-Configure::write('Theme.owner_name_abbrv', 'pHk');
-Configure::write('Theme.owner_description', 'pHkondo Condominium Management');
+Configure::write('Theme.name', 'adminlte');
+Configure::write('Theme.owner_name', 'pHKondo');
+Configure::write('Theme.owner_name_abbrv', 'PHK');
+Configure::write('Theme.owner_description', 'Condogest Condominium Management');
 Configure::write('Theme.owner_title', 'Administração ao cuidado de XXXXXX');
 Configure::write('Theme.owner_address', 'Avenida XX de XXXXX NXX Loja A XXXX-XXX XXXXX , Telef: XXXXXXXXX / XXXXXXXXX');
 Configure::write('Theme.base_color', '#428bca');
@@ -51,19 +52,18 @@ Configure::write('Theme.base_color', '#428bca');
 /**
  * Languages available
  */
-Configure::write('Config.language', 'eng'); 
+Configure::write('Config.language', 'por'); 
 Configure::write('Language.list',array(
     'eng'=>'English',
     'por'=>'Português',
    
     )); 
-Configure::write('Config.language', 'eng'); // por - Portuguese , eng - english .....
-Configure::write('Language.list',array('eng'=>'English','por'=>'Portugues')); // 
+ 
 Configure::write('Config.timezone', 'Europe/Lisbon'); // Europe/Lisbon
 Configure::write('databaseDateFormat', 'Y-m-d'); // database dateformat
-Configure::write('dateFormat', 'Y-m-d H:i:s'); // phkondo dateformat with time
-Configure::write('dateFormatSimple', 'Y-m-d'); // phkondo dateformat
-Configure::write('calendarDateFormat', 'yyyy-mm-dd'); // input date fields date format
+Configure::write('dateFormat', 'd-m-Y H:i:s'); // phkondo dateformat with time
+Configure::write('dateFormatSimple', 'd-m-Y'); // phkondo dateformat
+Configure::write('calendarDateFormat', 'dd-mm-yyyy'); // input date fields date format
 Configure::write('currencySign', '&euro;'); // more at http://www.w3schools.com/html/html_entities.asp
 Configure::write('Application.mode', 'app'); // app, demo -> use demo for demo mode;
 

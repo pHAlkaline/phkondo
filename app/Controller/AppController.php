@@ -30,18 +30,18 @@ App::uses('Controller', 'Controller');
 
 class AppController extends Controller {
 
-    public $theme = "condogest";
+    public $theme = null;
     public $components = array(
-        //'DebugKit.Toolbar', 
+        'DebugKit.Toolbar',
         'Session',
         'Flash',
         'Auth',
+        'Cookie',
         'MaintenanceMode');
-    public $paginate = array(
-        'limit' => 50,
-    );
 
     public function beforeFilter() {
+        
+        $this->theme = Configure::read('Theme.name');
         $this->Auth->authenticate = array(AuthComponent::ALL => array('userModel' => 'User', 'scope' => array("User.active" => 1)), 'Form');
         $this->Auth->loginRedirect = Router::url(array('plugin' => null, 'controller' => 'condos', 'action' => 'index'), true);
         $this->Auth->logoutRedirect = Router::url(array('plugin' => null, 'controller' => 'users', 'action' => 'login'), true);
@@ -51,8 +51,30 @@ class AppController extends Controller {
         if (Configure::read('Access.open') === true) {
             $this->Auth->allow();
         }
+        $this->rememberMe();
         if ($this->Session->read('User.language')) {
             Configure::write('Config.language', $this->Session->read('User.language'));
+        }
+    }
+    
+    private function rememberMe(){
+        // set cookie options
+        $this->Cookie->httpOnly = true;
+
+        if (!$this->Auth->loggedIn() && $this->Cookie->read('rememberMe')) {
+            $cookie = $this->Cookie->read('rememberMe');
+
+            $this->loadModel('User'); // If the User model is not loaded already
+            $user = $this->User->find('first', array(
+                'conditions' => array(
+                    'User.username' => $cookie['username'],
+                    'User.password' => $cookie['password']
+                )
+            ));
+
+            if ($user && !$this->Auth->login($user['User'])) {
+                Router::url(array('plugin' => null, 'controller' => 'condos', 'action' => 'index'), true); // destroy session & cookie
+            }
         }
     }
 
@@ -101,8 +123,6 @@ class AppController extends Controller {
 
             $this->set('keyword', $keyword);
         }
-        
     }
 
-    
 }

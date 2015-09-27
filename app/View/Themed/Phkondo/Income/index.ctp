@@ -2,7 +2,7 @@
 <div id="page-container" class="row">
     <div id="page-content" class="col-sm-12">
 
-        <div class="drafts index">
+        <div class="index">
 
             <h2 class="col-sm-9"><?php echo __('Income Control'); ?>&nbsp;</h2>
             <div class="clearfix"></div>
