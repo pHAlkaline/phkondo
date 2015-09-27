@@ -56,7 +56,7 @@ class OwnerNotesController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Note->contain('NoteType','NoteStatus','Fraction');
+        $this->Note->contain('NoteType','NoteStatus','Fraction','Entity');
         $this->Paginator->settings = $this->paginate + array(
             'conditions' => array(
                 'Note.entity_id' => $this->Session->read('Condo.Owner.ViewID'),
@@ -229,16 +229,16 @@ class OwnerNotesController extends AppController {
             array('link' => Router::url(array('controller' => 'fractions', 'action' => 'view', $this->Session->read('Condo.Fraction.ViewID'))), 'text' => $this->Session->read('Condo.Fraction.ViewName'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'fraction_owners', 'action' => 'index')), 'text' => __n('Owner','Owners',2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'fraction_owners', 'action' => 'view', $this->Session->read('Condo.Owner.ViewID'))), 'text' => $this->Session->read('Condo.Owner.ViewName'), 'active' => ''),
-            array('link' => '', 'text' => __('Notes'), 'active' => 'active')
+            array('link' => '', 'text' => __n('Note','Notes',2), 'active' => 'active')
         );
 
         switch ($this->action) {
             case 'view':
-                $breadcrumbs[7] = array('link' => Router::url(array('controller' => 'owner_notes', 'action' => 'index')), 'text' => __('Notes'), 'active' => '');
+                $breadcrumbs[7] = array('link' => Router::url(array('controller' => 'owner_notes', 'action' => 'index')), 'text' => __n('Note','Notes',2), 'active' => '');
                 $breadcrumbs[8] = array('link' => '', 'text' => $this->Session->read('Condo.OwnerNote.ViewName'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[7] = array('link' => Router::url(array('controller' => 'owner_notes', 'action' => 'index')), 'text' => __('Notes'), 'active' => '');
+                $breadcrumbs[7] = array('link' => Router::url(array('controller' => 'owner_notes', 'action' => 'index')), 'text' => __n('Note','Notes',2), 'active' => '');
                 $breadcrumbs[8] = array('link' => '', 'text' => $this->Session->read('Condo.OwnerNote.ViewName'), 'active' => 'active');
                 break;
         }

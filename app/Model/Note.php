@@ -182,9 +182,12 @@ class Note extends AppModel {
             //'last' => false, // Stop validation after this rule
             //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
+            'pastDate' => array(
+                'rule' => array('checkPastDate', 'payment_date'),
+                'message' => 'invalid date.'),
             'afterDocumentDate' => array(
                 'rule' => array('compareDates', 'payment_date'),
-                'message' => 'payment date must be after document date'),
+                'message' => 'payment date must be at or after document date'),
         ),
         'note_status_id' => array(
             'numeric' => array(
@@ -319,6 +322,18 @@ class Note extends AppModel {
 
     function compareDates($data, $key) {
         return CakeTime::fromString($data[$key]) >= CakeTime::fromString($this->data[$this->alias]['document_date']);
+    }
+    
+    /**
+     * checkPastDate
+     * Custom Validation Rule: Ensures a selected date is either the
+     * present day or in the past.
+     *
+     * @param array $check Contains the value passed from the view to be validated
+     * @return bool True if in the past or today, False otherwise
+     */
+    public function checkPastDate($data, $key) {
+        return CakeTime::fromString($data[$key]) <= CakeTime::fromString(date(Configure::read('databaseDateFormat')));
     }
 
     /**

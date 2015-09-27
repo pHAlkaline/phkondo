@@ -98,5 +98,8 @@ msgstr "Campo do tipo númerico."
 msgid "payment date must be at or after document date"
 msgstr "Data de pagamento deve ser igual ou superior a data do documento"
 
+msgid "invalid date."
+msgstr "Data inválida."
+
 msgid "uuid"
 msgstr "Identificador único."

@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * pHKondo : pHKondo software for condominium property managers (http://phalkaline.eu)
@@ -25,7 +26,6 @@
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
-
 App::uses('AppController', 'Controller');
 App::uses('CakeEvent', 'Event');
 
@@ -57,7 +57,7 @@ class OwnerReceiptsController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Receipt->contain('Client','ReceiptStatus','ReceiptPaymentType');
+        $this->Receipt->contain('Client', 'ReceiptStatus', 'ReceiptPaymentType');
         $this->Paginator->settings = $this->paginate + array(
             'conditions' => array(
                 'Receipt.client_id' => $this->Session->read('Condo.Owner.ViewID'),
@@ -87,9 +87,9 @@ class OwnerReceiptsController extends AppController {
             'Client',
             'ReceiptStatus',
             'ReceiptPaymentType',
-            'ReceiptNote' => array('NoteType','Fraction'),
-            'Note' => array('NoteType','Fraction')
-            ));
+            'ReceiptNote' => array('NoteType', 'Fraction'),
+            'Note' => array('NoteType', 'Fraction')
+        ));
         $options = array('conditions' => array('Receipt.' . $this->Receipt->primaryKey => $id, 'Receipt.client_id' => $this->Session->read('Condo.Owner.ViewID'), 'Receipt.fraction_id' => $this->Session->read('Condo.Fraction.ViewID')));
         $receipt = $this->Receipt->find('first', $options);
         $this->set(compact('receipt'));
@@ -97,7 +97,6 @@ class OwnerReceiptsController extends AppController {
         $this->Session->write('Condo.Receipt.ViewName', $receipt['Receipt']['document']);
     }
 
-    
     /**
      * print_receipt method
      *
@@ -110,7 +109,7 @@ class OwnerReceiptsController extends AppController {
             $this->Flash->error(__('Invalid receipt'));
             $this->redirect(array('action' => 'index'));
         }
-        
+
         $event = new CakeEvent('Phkondo.Receipt.print', $this, array(
             'id' => $id,
         ));
@@ -131,11 +130,11 @@ class OwnerReceiptsController extends AppController {
             $number = $this->_getNextReceiptIndex($this->Session->read('Condo.ViewID'));
             $this->request->data['Receipt']['document'] = $this->Session->read('Condo.ViewID') . Date('Y') . '-' . sprintf('%06d', $number);
             $this->request->data['Receipt']['document_date'] = date(Configure::read('dateFormatSimple'));
-            
+
             if ($this->Receipt->save($this->request->data)) {
                 $this->_setReceiptIndex($this->Session->read('Condo.ViewID'), $number);
                 $this->Flash->success(__('The receipt has been saved'));
-                $this->redirect(array('action' => 'view', $this->Receipt->id));
+                $this->redirect(array('action' => 'edit', $this->Receipt->id));
             } else {
                 //debug($this->Receipt->validationErrors);
                 //debug($this->request->data);
@@ -156,13 +155,24 @@ class OwnerReceiptsController extends AppController {
      * @return void
      */
     public function add_notes($id) {
-
         if (!$this->Receipt->editable($id)) {
             $this->Flash->error(__('Invalid receipt'));
             $this->redirect(array('action' => 'view', $id));
         }
 
         if ($this->request->is('post') && isset($this->request->data['Note'])) {
+
+            $this->Receipt->Note->updateAll(
+                    array(
+                'Note.receipt_id' => null,
+                'Note.pending_amount' => 0
+                    ), array(
+                'Note.fraction_id' => $this->Session->read('Condo.Fraction.ViewID'),
+                'Note.entity_id' => $this->Receipt->field('client_id'),
+                'Note.note_status_id' => array(1, 2),
+                'Note.receipt_id' => $id)
+            );
+            $this->_setReceiptAmount($id);
             foreach ($this->request->data['Note'] as $key => $note) {
 
                 if (isset($note['check'])) {
@@ -171,22 +181,24 @@ class OwnerReceiptsController extends AppController {
 
                     if ($noteOk == 0) {
                         $this->Flash->error(__('The notes could not be saved. Please, try again.'));
+                        $this->redirect(array('action' => 'edit', $id, '#'=>'AddNotes'));
                         return;
                     }
                     $this->Receipt->Note->id = $key;
                     $this->Receipt->Note->saveField('receipt_id', $id, array('callbacks' => false));
                     $this->Receipt->Note->saveField('pending_amount', '0', array('callbacks' => false));
+                 
                 }
             }
             $this->_setReceiptAmount($id);
-            $this->redirect(array('action' => 'view', $id));
+            $this->redirect(array('action' => 'edit', $id, '#'=>'AddNotes'));
         }
-        $this->Receipt->Note->contain(array('NoteType','Entity','Fraction'));
+        $this->Receipt->Note->contain(array('NoteType', 'Entity', 'Fraction'));
         $notes = $this->Receipt->Note->find('all', array('conditions' => array('Note.fraction_id' => $this->Session->read('Condo.Fraction.ViewID'), 'Note.entity_id' => $this->Receipt->field('client_id'), 'Note.note_status_id' => array(1, 2), 'Note.receipt_id' => '')));
 
         $receiptAmount = $this->Receipt->field('total_amount');
         $receiptId = $this->Receipt->field('document');
-        $this->set(compact('notes', 'receiptAmount', 'receiptId','id'));
+        $this->set(compact('notes', 'receiptAmount', 'receiptId', 'id'));
     }
 
     /**
@@ -200,7 +212,6 @@ class OwnerReceiptsController extends AppController {
         if (!$this->Receipt->Note->exists($id)) {
             $this->Flash->error(__('Invalid note'));
             $this->redirect(array('action' => 'index'));
-           
         }
         $this->Receipt->Note->id = $id;
         $receipt = $this->Receipt->Note->field('receipt_id');
@@ -249,20 +260,31 @@ class OwnerReceiptsController extends AppController {
             $this->request->data = $this->Receipt->find('first', $options);
             if (empty($this->request->data)) {
                 $this->Flash->error(__('Invalid receipt'));
-            $this->redirect(array('action' => 'index'));
+                $this->redirect(array('action' => 'index'));
             }
         }
 
 
-
+        
         $condos = $this->Receipt->Condo->find('list', array('conditions' => array('id' => $this->Session->read('Condo.ViewID'))));
         $fractions = $this->Receipt->Fraction->find('list', array('conditions' => array('id' => $this->Session->read('Condo.Fraction.ViewID'))));
         $clients = $this->Receipt->Client->find('list', array('order' => 'Client.name', 'conditions' => array('id' => $this->Session->read('Condo.Owner.ViewID'))));
         $receiptStatuses = $this->Receipt->ReceiptStatus->find('list', array('conditions' => array('id' => array('3'), 'active' => '1')));
         $receiptPaymentTypes = $this->Receipt->ReceiptPaymentType->find('list', array('conditions' => array('active' => '1')));
-        $this->set(compact('condos', 'fractions', 'clients', 'receiptStatuses', 'receiptPaymentTypes'));
+        
+        $notes = $this->Receipt->Note->find('all', array(
+            'contain'=>array('NoteType','Fraction'),
+            'conditions' => array(
+                'Note.receipt_id' => $id,
+                'Note.fraction_id' => $this->Session->read('Condo.Fraction.ViewID'),
+                'Note.entity_id' => $this->request->data['Receipt']['client_id'],
+                
+                
+            ))
+        );
+        $this->set(compact('condos', 'fractions', 'clients', 'receiptStatuses', 'receiptPaymentTypes','notes'));
         $this->Session->write('Condo.Receipt.ViewID', $id);
-        if ($this->Session->read('Condo.Receipt.ViewName')==''){
+        if ($this->Session->read('Condo.Receipt.ViewName') == '') {
             $this->Session->write('Condo.Receipt.ViewName', $this->request->data['Receipt']['document']);
         }
     }
@@ -294,20 +316,20 @@ class OwnerReceiptsController extends AppController {
             }
         } else {
             $options = array('conditions' => array(
-                'Receipt.' . $this->Receipt->primaryKey => $id,
-                'Receipt.client_id' => $this->Session->read('Condo.Owner.ViewID'),
-                'Receipt.fraction_id' => $this->Session->read('Condo.Fraction.ViewID'),
-                'AND' => array(
-                    'Receipt.receipt_status_id' => array('1', '2'))
-                ));
-            $receipt=$this->Receipt->find('first', $options);
-            
-            $this->request->data = $receipt; 
+                    'Receipt.' . $this->Receipt->primaryKey => $id,
+                    'Receipt.client_id' => $this->Session->read('Condo.Owner.ViewID'),
+                    'Receipt.fraction_id' => $this->Session->read('Condo.Fraction.ViewID'),
+                    'AND' => array(
+                        'Receipt.receipt_status_id' => array('1', '2'))
+            ));
+            $this->Receipt->contain(array('Note' => array('NoteType', 'Fraction')));
+            $receipt = $this->Receipt->find('first', $options);
+            $this->request->data = $receipt;
             $this->set(compact('receipt'));
-        
+
             if (empty($this->request->data)) {
                 $this->Flash->error(__('Invalid receipt'));
-            $this->redirect(array('action' => 'index'));
+                $this->redirect(array('action' => 'index'));
             }
         }
 
@@ -318,8 +340,23 @@ class OwnerReceiptsController extends AppController {
         $clients = $this->Receipt->Client->find('list', array('order' => 'Client.name', 'conditions' => array('id' => $this->request->data['Receipt']['client_id'])));
         $receiptStatuses = $this->Receipt->ReceiptStatus->find('list', array('conditions' => array('id' => array('1', '2'), 'active' => '1')));
         $receiptPaymentTypes = $this->Receipt->ReceiptPaymentType->find('list', array('conditions' => array('active' => '1')));
+
+        $this->Receipt->Note->contain(array('NoteType', 'Entity', 'Fraction'));
+        $notes = $this->Receipt->Note->find('all', array(
+            'conditions' => array(
+                'OR' => array('Note.receipt_id IS NULL','Note.receipt_id' => $id),
+                'AND' => array(
+                    'Note.fraction_id' => $this->Session->read('Condo.Fraction.ViewID'),
+                    'Note.entity_id' => $this->Receipt->field('client_id'),
+                    'Note.note_status_id' => array(1, 2)),
+                
+            ))
+        );
+        $receiptAmount = 0; //$this->Receipt->field('total_amount');
+        $receiptId = $this->Receipt->field('document');
+        $this->set(compact('notes', 'receiptAmount', 'receiptId', 'id'));
         $this->set(compact('condos', 'fractions', 'clients', 'receiptStatuses', 'receiptPaymentTypes'));
-        
+
         $this->Session->write('Condo.Receipt.ViewID', $id);
         $this->Session->write('Condo.Receipt.ViewName', $this->request->data['Receipt']['document']);
     }
@@ -414,7 +451,7 @@ class OwnerReceiptsController extends AppController {
             $this->request->data = $this->Receipt->find('first', $options);
             if (empty($this->request->data)) {
                 $this->Flash->error(__('Invalid receipt'));
-            $this->redirect(array('action' => 'index'));
+                $this->redirect(array('action' => 'index'));
             }
         }
 
@@ -422,7 +459,19 @@ class OwnerReceiptsController extends AppController {
         $fractions = $this->Receipt->Fraction->find('list', array('conditions' => array('id' => $this->request->data['Receipt']['fraction_id'])));
         $clients = $this->Receipt->Client->find('list', array('order' => 'Client.name', 'conditions' => array('id' => $this->request->data['Receipt']['client_id'])));
         $receiptStatuses = $this->Receipt->ReceiptStatus->find('list', array('conditions' => array('id' => array('4'), 'active' => '1')));
-        $this->set(compact('condos', 'fractions', 'clients', 'receiptStatuses', 'receiptPaymentTypes'));
+        $receiptPaymentTypes = $this->Receipt->ReceiptPaymentType->find('list', array('conditions' => array('active' => '1')));
+        $notes = $this->Receipt->Note->find('all', array(
+            'contain'=>array('NoteType','Fraction'),
+            'conditions' => array(
+                'Note.receipt_id' => $id,
+                'Note.fraction_id' => $this->Session->read('Condo.Fraction.ViewID'),
+                'Note.entity_id' => $this->request->data['Receipt']['client_id'],
+               
+                
+            ))
+        );
+       
+        $this->set(compact('condos', 'fractions', 'clients', 'receiptStatuses', 'receiptPaymentTypes', 'notes'));
         $this->Session->write('Condo.Receipt.ViewID', $id);
         $this->Session->write('Condo.Receipt.ViewName', $this->request->data['Receipt']['document']);
     }
@@ -430,7 +479,7 @@ class OwnerReceiptsController extends AppController {
     private function _transferNotes($id) {
         $options = array('conditions' => array('Note.receipt_id' => $id));
         $notes = $this->Receipt->Note->find('all', $options);
-        if (count($notes)==0) {
+        if (count($notes) == 0) {
             return true;
         }
         foreach ($notes as $key => $note) {
@@ -508,34 +557,34 @@ class OwnerReceiptsController extends AppController {
     public function beforeRender() {
         $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID'))), 'text' => $this->Session->read('Condo.ViewName'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'fractions', 'action' => 'index')), 'text' => __n('Fraction','Fractions',2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'fractions', 'action' => 'index')), 'text' => __n('Fraction', 'Fractions', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'fractions', 'action' => 'view', $this->Session->read('Condo.Fraction.ViewID'))), 'text' => $this->Session->read('Condo.Fraction.ViewName'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'fraction_owners', 'action' => 'index')), 'text' => __n('Owner','Owners',2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'fraction_owners', 'action' => 'index')), 'text' => __n('Owner', 'Owners', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'fraction_owners', 'action' => 'view', $this->Session->read('Condo.Owner.ViewID'))), 'text' => $this->Session->read('Condo.Owner.ViewName'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index')), 'text' => __n('Receipt','Receipts',2), 'active' => '')
+            array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index')), 'text' => __n('Receipt', 'Receipts', 2), 'active' => '')
         );
         switch ($this->action) {
             case 'add_notes':
-                $breadcrumbs[7] = array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index')), 'text' => __n('Receipt','Receipts',2), 'active' => '');
+                $breadcrumbs[7] = array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index')), 'text' => __n('Receipt', 'Receipts', 2), 'active' => '');
                 $breadcrumbs[8] = array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'view', $this->Session->read('Condo.Receipt.ViewID'))), 'text' => $this->Session->read('Condo.Receipt.ViewName'), 'active' => '');
                 $breadcrumbs[9] = array('link' => '', 'text' => __('Pick Notes'), 'active' => 'active');
                 break;
             case 'view':
-                $breadcrumbs[7] = array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index')), 'text' => __n('Receipt','Receipts',2), 'active' => '');
+                $breadcrumbs[7] = array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index')), 'text' => __n('Receipt', 'Receipts', 2), 'active' => '');
                 $breadcrumbs[8] = array('link' => '', 'text' => $this->Session->read('Condo.Receipt.ViewName'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[7] = array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index')), 'text' => __n('Receipt','Receipts',2), 'active' => '');
+                $breadcrumbs[7] = array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index')), 'text' => __n('Receipt', 'Receipts', 2), 'active' => '');
                 $breadcrumbs[8] = array('link' => '', 'text' => $this->Session->read('Condo.Receipt.ViewName'), 'active' => 'active');
                 break;
             case 'cancel':
-                $breadcrumbs[7] = array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index')), 'text' => __n('Receipt','Receipts',2), 'active' => '');
+                $breadcrumbs[7] = array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index')), 'text' => __n('Receipt', 'Receipts', 2), 'active' => '');
                 $breadcrumbs[8] = array('link' => '', 'text' => $this->Session->read('Condo.Receipt.ViewName'), 'active' => 'active');
                 break;
             case 'pay_receipt':
-                $breadcrumbs[7] = array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index')), 'text' => __n('Receipt','Receipts',2), 'active' => '');
+                $breadcrumbs[7] = array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index')), 'text' => __n('Receipt', 'Receipts', 2), 'active' => '');
                 $breadcrumbs[8] = array('link' => '', 'text' => $this->Session->read('Condo.Receipt.ViewName'), 'active' => 'active');
                 break;
         }

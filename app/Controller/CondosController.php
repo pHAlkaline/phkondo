@@ -44,7 +44,7 @@ class CondosController extends AppController {
      * @var array
      */
     public $components = array('Paginator','Feedback.Comments' => array('on' => array('view')));
-
+    
     /**
      * index method
      *
@@ -52,12 +52,12 @@ class CondosController extends AppController {
      */
     public function index() {
         $this->Condo->contain('FiscalYear', 'Insurance', 'Maintenance');
-        $this->Paginator->settings = Set::merge($this->Paginator->settings, array('conditions' => array
+        $this->Paginator->settings = Set::merge($this->Paginator->settings, array('limit'=>50,'conditions' => array
                         ("AND" => array("Condo.active" => "1")
         )));
         $this->setFilter(array('Condo.title', 'Condo.address'));
 
-        $this->set('condos', $this->paginate());
+        $this->set('condos', $this->Paginator->paginate('Condo'));
         $this->Session->delete('Condo');
     }
 
@@ -125,6 +125,7 @@ class CondosController extends AppController {
                 $this->Flash->error(__('The condo could not be saved. Please, try again.'));
             }
         }
+        $this->Session->delete('Condo');
     }
 
     /**

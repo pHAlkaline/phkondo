@@ -7,7 +7,7 @@ if (isset($movements[0]['Account']['balance'])){
 <div id="page-container" class="row">
     <div id="page-content" class="col-sm-12">
 
-        <div class="movements index">
+        <div class="index">
 
             <h2 class="col-sm-9"><?php echo __n('Movement','Movements',2).' ('.__('Balance').':'.$balance.')'; ?></h2>
             <div class="actions hidden-print col-sm-3">

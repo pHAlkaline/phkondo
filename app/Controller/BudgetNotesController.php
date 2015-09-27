@@ -320,15 +320,15 @@ class BudgetNotesController extends AppController {
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID'))), 'text' => $this->Session->read('Condo.ViewName'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'budgets', 'action' => 'index')), 'text' => __n('Budget','Budgets',2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'budgets', 'action' => 'view', $this->Session->read('Condo.Budget.ViewID'))), 'text' => $this->Session->read('Condo.Budget.ViewName'), 'active' => ''),
-            array('link' => '', 'text' => __('Notes'), 'active' => 'active')
+            array('link' => '', 'text' => __n('Note','Notes',2), 'active' => 'active')
         );
         switch ($this->action) {
             case 'view':
-                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'budget_notes', 'action' => 'index')), 'text' => __('Notes'), 'active' => '');
+                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'budget_notes', 'action' => 'index')), 'text' => __n('Note','Notes',2), 'active' => '');
                 $breadcrumbs[6] = array('link' => '', 'text' => $this->Session->read('Condo.BudgetNote.ViewName'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'budget_notes', 'action' => 'index')), 'text' => __('Notes'), 'active' => '');
+                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'budget_notes', 'action' => 'index')), 'text' => __n('Note','Notes',2), 'active' => '');
                 $breadcrumbs[6] = array('link' => '', 'text' => $this->Session->read('Condo.BudgetNote.ViewName'), 'active' => 'active');
                 break;
         }

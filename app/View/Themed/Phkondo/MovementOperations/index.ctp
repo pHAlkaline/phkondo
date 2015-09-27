@@ -2,7 +2,7 @@
 <div id="page-container" class="row">
     <div id="page-content" class="col-sm-12">
 
-        <div class="movementOperations index">
+        <div class="index">
 
             <h2 class="col-sm-9"><?php echo __('Movement Operations'); ?></h2>
             <div class="actions hidden-print col-sm-3">

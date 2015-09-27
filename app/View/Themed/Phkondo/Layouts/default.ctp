@@ -107,11 +107,11 @@
         <div id="main-container">
 
             <div id="header" class="container hidden-print">
-                <?php echo $this->element('menu/top_menu', array('headerDescription' => $clientDescription)); ?>
+                <?php echo $this->element('menu/top_menu', array('headerDescription' => '')); ?>
             </div><!-- #header .container -->
 
             <div id="content" class="container">
-                <div class="no-print">
+                <div class="hidden-print">
                     <?php if (isset($breadcrumbs)) echo $this->element('breadcrumbs', array('breadcrumbs', $breadcrumbs)); ?>
                     <?php echo $this->Flash->render(); ?>
                 </div>

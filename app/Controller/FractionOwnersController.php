@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * pHKondo : pHKondo software for condominium property managers (http://phalkaline.eu)
@@ -25,7 +26,6 @@
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
-
 App::uses('AppController', 'Controller');
 App::uses('Note', 'Model');
 
@@ -109,6 +109,7 @@ class FractionOwnersController extends AppController {
             $this->Fraction->EntitiesFraction->create();
             $this->request->data['EntitiesFraction']['fraction_id'] = $this->Session->read('Condo.Fraction.ViewID');
             $this->request->data['EntitiesFraction']['entity_id'] = $this->Fraction->Entity->id;
+            $this->request->data['EntitiesFraction']['owner_percentage'] = 0;
             if ($this->Fraction->EntitiesFraction->save($this->request->data)) {
                 $this->Flash->success(__('The owner has been saved and related'));
             } else {
@@ -131,11 +132,18 @@ class FractionOwnersController extends AppController {
                 $this->redirect(array('action' => 'index'));
             }
             $this->request->data['EntitiesFraction']['entity_id'] = $this->request->data['EntitiesFraction']['client'];
+            $this->Fraction->EntitiesFraction->validator()->add(
+                    'owner_percentage', array(
+                'valid_owner' => array(
+                    'rule' => array('isUnique', array('entity_id', 'fraction_id'), false),
+                    'message' => 'Invalid owner.',
+            )));
+
             $this->Fraction->EntitiesFraction->create();
             if ($this->Fraction->EntitiesFraction->save($this->request->data)) {
-                $this->Flash->success(__('The owner has been related'));
+                $this->Flash->success(__('The owner has been saved'));
             } else {
-                $this->Flash->error(__('The owner could not be related. Please, try again.'));
+                 $this->Flash->error(__('The owner could not be saved. Please, try again.'));
             }
         }
         $this->redirect(array('action' => 'index'));
@@ -155,14 +163,15 @@ class FractionOwnersController extends AppController {
         }
         if ($this->request->is('post') || $this->request->is('put')) {
 
-            if ($this->Fraction->Entity->save($this->request->data)) {
+
+            $this->Fraction->EntitiesFraction->validator()->add(
+                    'owner_percentage', array(
+                'valid_percentage' => array(
+                    'rule' => array('range', -0.01, 100.01),
+                    'message' => 'Please enter an valid percentage.',
+            )));
+            if ($this->Fraction->EntitiesFraction->save($this->request->data) && $this->Fraction->Entity->save($this->request->data)) {
                 $this->Flash->success(__('The owner has been saved'));
-                if ($this->Fraction->EntitiesFraction->save($this->request->data)) {
-                    $this->Flash->success(__('The owner has been saved'));
-                    $this->redirect(array('action' => 'view', $id));
-                } else {
-                    $this->Flash->error(__('The owner has been saved but could not be related. Please, try again.'));
-                }
             } else {
                 $this->Flash->error(__('The owner could not be saved. Please, try again.'));
             }
@@ -269,7 +278,6 @@ class FractionOwnersController extends AppController {
     public function search_clients() {
         $this->autoRender = false;
         //$this->RequestHandler->respondAs('json');
-
         // get the search term from URL
         $term = $this->request->query['q'];
         $page = 1;
@@ -290,7 +298,7 @@ class FractionOwnersController extends AppController {
             'limit' => 100,
                 // 'offset' => ($page*100)-100,
         ));
-        
+
         $result = array();
         foreach ($clients as $key => $client) {
             $result[$key] = $client['Entity'];

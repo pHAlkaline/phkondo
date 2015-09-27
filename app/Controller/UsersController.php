@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * pHKondo : pHKondo software for condominium property managers (http://phalkaline.eu)
@@ -25,7 +26,6 @@
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
-
 App::uses('AppController', 'Controller');
 
 /**
@@ -148,9 +148,10 @@ class UsersController extends AppController {
         $this->layout = "login";
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
-                if ($this->data['User']['language'] != '') {
+                if (isset($this->data['User']['language']) && $this->data['User']['language'] != '') {
                     $this->Session->write('User.language', $this->data['User']['language']);
                 }
+                $this->rememberMe();
                 return $this->redirect($this->Auth->redirectUrl()); //$this->Auth->redirectUrl()
             }
             $this->Flash->error(__('Invalid username or password, try again'));
@@ -158,10 +159,26 @@ class UsersController extends AppController {
     }
 
     public function logout() {
+        $this->Cookie->delete('rememberMe');
         return $this->redirect($this->Auth->logout());
     }
-    
-   public function isAuthorized($user) {
+
+    public function rememberMe() {
+        if (isset($this->request->data['User']['rememberMe']) && $this->request->data['User']['rememberMe']) {
+            // After what time frame should the cookie expire
+            $cookieTime = "12 months"; // You can do e.g: 1 week, 17 weeks, 14 days
+            // remove "remember me checkbox"
+            unset($this->request->data['User']['rememberMe']);
+
+            // hash the user's password
+            $this->request->data['User']['password'] = $this->Auth->password($this->request->data['User']['password']);
+
+            // write the cookie
+            $this->Cookie->write('rememberMe', $this->request->data['User'], true, $cookieTime);
+        }
+    }
+
+    public function isAuthorized($user) {
 
         //debug($this->request->controller);
         if (isset($user['role'])) {
@@ -182,7 +199,6 @@ class UsersController extends AppController {
 
         return parent::isAuthorized($user);
     }
-
 
     public function beforeRender() {
         parent::beforeRender();

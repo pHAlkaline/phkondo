@@ -44,7 +44,7 @@ foreach ($role_options as $key => $value) {
                     <?php echo $this->Form->input('role', array('options' => $role_options, 'class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="col-sm-offset-2 col-sm-10">
-                    <?php echo $this->Form->input('active', array('class' => '', 'label' => __('Active'), 'div' => array('class' => 'checkbox'), 'checked' => true, 'between' => '', 'after' => '')); ?>
+                    <?php echo $this->Form->input('active', array('class' => '', 'label' => __('Active'), 'div' => array('class' => 'checkbox'),  'between' => '', 'after' => '')); ?>
                 </div>
 
             </fieldset>

@@ -42,7 +42,7 @@ if ($this->Session->read('Condo.Budget.Status') == 1) {
 
         <div class="budget_notes view">
 
-            <h2><?php echo __('Note'); ?></h2>
+            <h2><?php echo __n('Note','Notes',1); ?></h2>
 
             
                 <table class="table table-hover table-condensed">

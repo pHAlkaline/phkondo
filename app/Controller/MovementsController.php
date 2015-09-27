@@ -52,7 +52,7 @@ class MovementsController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Movement->contain(array('MovementCategory','MovementOperation','MovementType','Account'=>array('fields'=>array('balance'))));
+        $this->Movement->contain(array('MovementCategory','MovementOperation','MovementType','Account'=>array('fields'=>array('title','balance'))));
         $this->Paginator->settings = $this->paginate + array(
             'conditions' => array(
                 'Movement.account_id' => $this->Session->read('Condo.Account.ViewID'),
@@ -75,7 +75,7 @@ class MovementsController extends AppController {
             $this->Flash->error(__('Invalid movement'));
             $this->redirect(array('action' => 'index'));
         }
-        $this->Movement->contain(array('MovementCategory','MovementOperation','MovementType'));
+        $this->Movement->contain(array('MovementCategory','MovementOperation','MovementType','Account'=>array('fields'=>array('title')),'FiscalYear'=>array('fields'=>array('title'))));
         $options = array('conditions' => array(
                 'Movement.' . $this->Movement->primaryKey => $id,
                 'Movement.account_id' => $this->Session->read('Condo.Account.ViewID'),

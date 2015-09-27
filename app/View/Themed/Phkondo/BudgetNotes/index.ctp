@@ -9,9 +9,9 @@ if ($this->Session->read('Condo.Budget.Status') == 1) {
 
     <div id="page-content" class="col-sm-12">
 
-        <div class="budget_notes index">
+        <div class="index">
 
-            <h2 class="col-sm-9"><?php echo __('Notes'); ?></h2>
+            <h2 class="col-sm-9"><?php echo __n('Note','Notes',2); ?></h2>
             <?php if ($showActions) : ?>
                 <div class="actions hidden-print col-sm-3">
                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Note'), array('action' => 'add'), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 0; float: right;', 'escape' => false)); ?>
@@ -25,7 +25,7 @@ if ($this->Session->read('Condo.Budget.Status') == 1) {
                             <th><?php echo $this->Paginator->sort('document_date'); ?></th>
                             <th><?php echo $this->Paginator->sort('title'); ?></th>
                             <th><?php echo $this->Paginator->sort('NoteType.name', __('Note Type')); ?></th>
-                            <th><?php echo $this->Paginator->sort('Fraction.description', 'Fraction'); ?></th>
+                            <th><?php echo $this->Paginator->sort('Fraction.description', __('Fraction','Fractions',1)); ?></th>
                             <th><?php echo $this->Paginator->sort('Entity.name', __n('Entity','Entities',1)); ?></th>
                             <th><?php echo $this->Paginator->sort('due_date'); ?></th>
                             <th><?php echo $this->Paginator->sort('payment_date'); ?></th>

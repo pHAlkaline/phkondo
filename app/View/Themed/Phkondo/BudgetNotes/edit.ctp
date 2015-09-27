@@ -6,7 +6,7 @@
        <div class="actions">
 
             <ul class="nav nav-pills nav-stacked">
-                <li ><?php echo $this->Html->link(__('View %s',__('Note')), array('action' => 'view', $this->Form->value('Note.id')),array('class'=>'btn')); ?></li>
+                <li ><?php echo $this->Html->link(__('View %s',__n('Note','Notes',1)), array('action' => 'view', $this->Form->value('Note.id')),array('class'=>'btn')); ?></li>
                 <?php 
                 $deleteDisabled='';
                 if(!$this->Form->value('Note.deletable')) {
