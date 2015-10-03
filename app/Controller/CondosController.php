@@ -208,15 +208,17 @@ class CondosController extends AppController {
                 array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
                 array('link' => '', 'text' => __n('Condo','Condos',2), 'active' => 'active')
             );
+            $headerTitle=__('Condos');
         } else {
             $breadcrumbs = array(
                 array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
                 array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
                 array('link' => '', 'text' => $this->Session->read('Condo.ViewName'), 'active' => 'active')
             );
+            $headerTitle=$this->Session->read('Condo.ViewName');
         }
 
-        $this->set(compact('breadcrumbs'));
+        $this->set(compact('breadcrumbs','headerTitle'));
     }
 
 }

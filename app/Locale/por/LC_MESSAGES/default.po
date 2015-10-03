@@ -89,6 +89,9 @@ msgstr "Não foi possível apagar Conta"
 msgid "Account deleted"
 msgstr "Conta apagada"
 
+msgid "Accounting"
+msgstr "Contabilidade"
+
 msgid "Accounts Final Values"
 msgstr "Contas Valores Finais"
 
@@ -175,6 +178,9 @@ msgstr "Criar Utilizador"
 
 msgid "Address"
 msgstr "Morada"
+
+msgid "Administration"
+msgstr "Administração"
 
 msgid "Administrator"
 msgid_plural "Administrators"
@@ -350,6 +356,9 @@ msgstr "Data de Criação"
 
 msgid "Current Account"
 msgstr "Conta Corrente"
+
+msgid "Danger"
+msgstr "Critico"
 
 msgid "Date"
 msgstr "Data"
@@ -602,6 +611,9 @@ msgstr "Sexta-Feira"
 msgid "Functions"
 msgstr "Funções"
 
+msgid "General"
+msgstr "Geral"
+
 msgid "Guest"
 msgstr "Convidado"
 
@@ -628,6 +640,9 @@ msgstr "Mapa de receitas"
 
 msgid "Income report"
 msgstr "Relatório de receitas"
+
+msgid "Info"
+msgstr "Informação"
 
 msgid "Income report detailed"
 msgstr "Relatório de receitas detalhado"
@@ -1668,3 +1683,11 @@ msgstr "actualizado"
 
 msgid "uuid"
 msgstr "identificador único"
+
+msgid "Warning"
+msgstr "Aviso"
+
+msgid "Write and Press enter to post comment."
+msgstr "Escreva e Prima Enter para inserir comentário."
+
+

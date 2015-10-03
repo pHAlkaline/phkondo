@@ -26,18 +26,18 @@
  * 
  */
 
-CakePlugin::load('DebugKit');
-CakePlugin::load('Migrations');
-CakePlugin::load('PrintReceipt',array('bootstrap'=>true));
-CakePlugin::load('Reports',array('bootstrap'=>true));
-CakePlugin::load('Drafts',array('bootstrap'=>true));
-CakePlugin::load('Attachments',array('bootstrap'=>true));
+//CakePlugin::load('DebugKit');
+//CakePlugin::load('Migrations');
+//CakePlugin::load('PrintReceipt',array('bootstrap'=>true));
+//CakePlugin::load('Reports',array('bootstrap'=>true));
+//CakePlugin::load('Drafts',array('bootstrap'=>true));
+//CakePlugin::load('Attachments',array('bootstrap'=>true));
 
 
 /** Theme Settings
  * 
  */
-Configure::write('Theme.name', 'adminlte');
+Configure::write('Theme.name', 'phkondo');
 Configure::write('Theme.owner_name', 'pHKondo');
 Configure::write('Theme.owner_name_abbrv', 'PHK');
 Configure::write('Theme.owner_description', 'Condogest Condominium Management');
