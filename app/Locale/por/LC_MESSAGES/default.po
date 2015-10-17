@@ -1262,6 +1262,9 @@ msgstr "Mapa de quotas"
 msgid "SharesDebt"
 msgstr "Contencioso"
 
+msgid "Sign In"
+msgstr "Iniciar Sessão"
+
 msgid "Size"
 msgstr "Tamanho"
 

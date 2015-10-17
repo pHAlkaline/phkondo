@@ -1,6 +1,6 @@
 <div class="login-box">
     <div class="login-logo">
-        <a href="/"><b><?php echo Configure::read('Theme.owner_name'); ?>&nbsp;</b></a>
+        <b><?php echo Configure::read('Theme.owner_name'); ?>&nbsp;</b>
     </div><!-- /.login-logo -->
     <div class="login-box-body">
         <?php echo $this->Flash->render(); ?>
@@ -21,15 +21,15 @@
         </div>
        
         <div class="row">
-            <div class="col-xs-8">
+            <div class="col-xs-6">
                 <div class="checkbox icheck">
                     <label>
                         <input type="checkbox" name="data[User][rememberMe]" id="UserRememberMe"><?php echo ' '.__('Remember Me'); ?>
                     </label>
                 </div>
             </div><!-- /.col -->
-            <div class="col-xs-4">
-                <?php echo $this->Form->button(__('Sign In'), array('type' => 'submit', 'class' => 'btn btn-primary btn-block btn-flat')); ?>
+            <div class="col-xs-6">
+                <?php echo $this->Form->button(__('Sign In'), array('type' => 'submit', 'class' => 'btn btn-primary pull-right')); ?>
 
             </div><!-- /.col -->
         </div>
