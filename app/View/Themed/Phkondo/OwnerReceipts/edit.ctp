@@ -15,7 +15,7 @@
                 <li ><?php echo $this->Html->link(__('New Receipt'), array('action' => 'add'), array('class' => 'btn')); ?></li>
                 <li ><?php echo $this->Form->postLink(__('Delete Receipt'), array('action' => 'delete', $this->Form->value('Receipt.id')), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $this->Form->value('Receipt.id')))); ?></li>
                 <li ><?php echo $this->Html->link(__('List Receipts'), array('action' => 'index'), array('class' => 'btn')); ?></li>
-                <!--li ><?php //echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('Add Notes'), array('action' => 'add_notes', $this->Form->value('Receipt.id')), array('class' => 'btn ', 'escape' => false)); ?> </li-->
+                <!--li ><?php //echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('Add Notes'), array('action' => 'add_notes', $this->Form->value('Receipt.id')), array('class' => 'btn ', 'escape' => false));  ?> </li-->
 
             </ul><!-- /.list-group -->
 
@@ -63,11 +63,11 @@
             <a name="AddNotes"></a>
             <?php $this->Html->script('receipt_add_notes', false); ?>
             <div id="page-container" class="row">
-                
+
                 <div id="page-content" class="col-sm-12">
 
                     <div class="index">
-                        <?php echo $this->Form->create('Note',array('url' => array('controller' => 'owner_receipts', 'action' => 'add_notes', $this->Form->value('Receipt.id')))); ?>
+                        <?php echo $this->Form->create('Note', array('url' => array('controller' => 'owner_receipts', 'action' => 'add_notes', $this->Form->value('Receipt.id')))); ?>
                         <?php echo $this->Form->hidden('Receipt.amount', array('value' => $receiptAmount)); ?>
                         <h2 class="col-sm-9"><?php echo __n('Receipt', 'Receipts', 1) . ' ' . $receiptId; ?></h2>
                         <div class="actions col-sm-3">
@@ -107,15 +107,15 @@
                                         <td><?php echo h($note['Fraction']['fraction']); ?></td>
                                         <td><?php echo h($note['Entity']['name']); ?></td>
                                         <td><?php echo h($note['Note']['amount']); ?>&nbsp;<?= Configure::read('currencySign'); ?></td>
-                                        <!--td><?php //echo h($note['Note']['pending_amount']);   ?>&nbsp;</td-->
+                                        <!--td><?php //echo h($note['Note']['pending_amount']);    ?>&nbsp;</td-->
                                         <td><?php echo h($note['Note']['due_date']); ?>&nbsp;</td>
                                         <td class="actions">
                                             <?php
-                                    $checked = '';
-                                    if ($note['Note']['receipt_id'] != '') {
-                                        $checked = 'checked';
-                                    }
-                                    ?>
+                                            $checked = '';
+                                            if ($note['Note']['receipt_id'] != '') {
+                                                $checked = 'checked';
+                                            }
+                                            ?>
                                             <?php echo $this->Form->hidden('Note.' . $note['Note']['id'] . '.type', array('value' => $note['NoteType']['id'])); ?>
                                             <?php echo $this->Form->hidden('Note.' . $note['Note']['id'] . '.amount', array('value' => $note['Note']['amount'])); ?>
                                             <?php echo $this->Form->checkbox('Note.' . $note['Note']['id'] . '.check', array('hiddenField' => false, 'checked' => $checked)); ?>

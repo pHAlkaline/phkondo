@@ -325,7 +325,7 @@ class ReceiptsController extends AppController {
 
 
         $condos = $this->Receipt->Condo->find('list', array('conditions' => array('id' => $this->Session->read('Condo.ViewID'))));
-        $fractions = $this->Receipt->Fraction->find('list', array('conditions' => array('id' => $this->request->data['Receipt']['fraction_id'])));
+        $fractions = $this->Receipt->Fraction->find('list', array('conditions' => array('Fraction.id' => $this->request->data['Receipt']['fraction_id'])));
         $clients = $this->Receipt->Client->find('list', array('order' => 'Client.name', 'conditions' => array('id' => $this->request->data['Receipt']['client_id'])));
         $receiptStatuses = $this->Receipt->ReceiptStatus->find('list', array('conditions' => array('id' => array('1', '2'), 'active' => '1')));
         $receiptPaymentTypes = $this->Receipt->ReceiptPaymentType->find('list', array('conditions' => array('active' => '1')));
@@ -335,7 +335,7 @@ class ReceiptsController extends AppController {
             'conditions' => array(
                 'OR' => array('Note.receipt_id IS NULL', 'Note.receipt_id' => $id),
                 'AND' => array(
-                    'Note.fraction_id' => $this->Session->read('Condo.Fraction.ViewID'),
+                    'Note.fraction_id' => $this->Receipt->field('fraction_id'),
                     'Note.entity_id' => $this->Receipt->field('client_id'),
                     'Note.note_status_id' => array(1, 2)),
             ))
@@ -343,8 +343,8 @@ class ReceiptsController extends AppController {
         $receiptAmount = 0; //$this->Receipt->field('total_amount');
         $receiptId = $this->Receipt->field('document');
         $this->set(compact('notes', 'receiptAmount', 'receiptId', 'id'));
-
         $this->set(compact('condos', 'fractions', 'clients', 'receiptStatuses', 'receiptPaymentTypes'));
+        
         $this->Session->write('Condo.Receipt.ViewID', $id);
         $this->Session->write('Condo.Receipt.ViewName', $this->request->data['Receipt']['document']);
     }
