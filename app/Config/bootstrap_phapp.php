@@ -26,7 +26,7 @@
  * 
  */
 
-//CakePlugin::load('DebugKit');
+CakePlugin::load('DebugKit');
 //CakePlugin::load('Migrations');
 //CakePlugin::load('PrintReceipt',array('bootstrap'=>true));
 //CakePlugin::load('Reports',array('bootstrap'=>true));
@@ -52,7 +52,7 @@ Configure::write('Theme.base_color', '#428bca');
 /**
  * Languages available
  */
-Configure::write('Config.language', 'por'); 
+Configure::write('Config.language', 'eng'); 
 Configure::write('Language.list',array(
     'eng'=>'English',
     'por'=>'Português',
