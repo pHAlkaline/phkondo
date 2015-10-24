@@ -59,6 +59,7 @@
             <?php echo $this->Form->end(); ?>
 
         </div><!-- /.form -->
+        <?php if (count($notes)): ?>
         <div class="related">
             <a name="AddNotes"></a>
             <?php $this->Html->script('receipt_add_notes', false); ?>
@@ -137,6 +138,7 @@
 
 
         </div><!-- /.related -->
+        <?php endif; ?>
     </div><!-- /#page-content .col-sm-9 -->
 
 
