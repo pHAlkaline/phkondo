@@ -331,7 +331,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 msgid "Contacts"
-msgstr "Contactos"
+msgstr ""
 
 msgid "Content"
 msgstr ""
@@ -349,7 +349,7 @@ msgid "Current Account"
 msgstr ""
 
 msgid "Date"
-msgstr "Data"
+msgstr ""
 
 msgid "December"
 msgstr ""
@@ -919,16 +919,16 @@ msgid "New"
 msgstr ""
 
 msgid "Management"
-msgstr "Administração"
+msgstr ""
 
 msgid "Config"
-msgstr "Configuração"
+msgstr ""
 
 msgid "Select"
-msgstr "Seleccionar"
+msgstr ""
 
 msgid "Alerts"
-msgstr "Alertas"
+msgstr ""
 
 msgid "New %s"
 msgstr ""
