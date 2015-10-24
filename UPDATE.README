@@ -1,9 +1,1 @@
-DebugKit Plugin is now disabled by default
-Home page message update
-pHKondo is now Migrations Plugin ready
-Removal of Condos only allowed to Administratos
-Allows multiple comments to Condos and Properties
-pHKondo is now Attachments ready for Attachment Plugin
-pHKondo compatible with framework update
-Several BugFixes and WarningFixes
-CakePHP framework update
+Use packagist , github or your merge Tool to compare with previous versions on code and sql.
