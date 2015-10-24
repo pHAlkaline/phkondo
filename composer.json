@@ -24,12 +24,12 @@
 
     },
     "require": {
-        "php": ">=5.2.8",
+        "php": ">=5.3",
         "ext-mcrypt": "*",
         "cakephp/cakephp": "2.7.5"
     },
     "require-dev": {
-        "php": ">=5.2.8",
+        "php": ">=5.3",
         "ext-mcrypt": "*",
         "cakephp/cakephp": "2.7.5",
         "cakephp/debug_kit": "2.2.*"
