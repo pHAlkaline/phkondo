@@ -63,7 +63,8 @@ class AppController extends Controller {
 
         if (!$this->Auth->loggedIn() && $this->Cookie->read('rememberMe')) {
             $cookie = $this->Cookie->read('rememberMe');
-
+            $user=false;
+            if (isset($cookie['username']) && isset($cookie['password'])){
             $this->loadModel('User'); // If the User model is not loaded already
             $user = $this->User->find('first', array(
                 'conditions' => array(
@@ -71,6 +72,7 @@ class AppController extends Controller {
                     'User.password' => $cookie['password']
                 )
             ));
+            }
 
             if ($user && !$this->Auth->login($user['User'])) {
                 Router::url(array('plugin' => null, 'controller' => 'condos', 'action' => 'index'), true); // destroy session & cookie
