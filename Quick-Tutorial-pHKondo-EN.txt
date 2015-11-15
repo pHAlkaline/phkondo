@@ -1,0 +1,59 @@
+pHKondo workflow
+
+Add condo(s) -> New condo 
+Enter condo details
+
+Go to Properties 
+Add properties -> New Property
+Enter Property Details
+
+Go to Owners
+Add owners -> New Owner
+Or use Insert Owner to search for owners already on your database
+
+Go back to condo details
+Go to Administrators
+Add administrators -> Add Administrator
+* Administrator is the owner(s) selected to be a direct link between the Condo management company/service and all the owners in several matters, like bank account control, maintenance, complains .... 
+
+Go back to condo details
+Go to Fiscal Years
+Add fiscal year -> New Fiscal Year
+* Fiscal Year is used to setup your management period, it can be whatever period you want not necessary a year.
+It's used to control:
+- Account Balance by fiscal year, Budgets ...
+- Reports for Balance , Income , Expenses, In Debt, Shares Maps
+
+Go back to condo details
+Go to Accounts
+Add bank accounts -> New Account
+Enter Account Details
+
+Go to Movements
+Add account movements -> New Movement
+* Every movement will belong to the active fiscal year
+* For every fiscal year you must create the first and last movement described below, this will allow pHKondo to make account reports based on fiscal year.
+* The first movement should be:
+Initial amount for opening balance on active fiscal year
+Opening / Closing on Category
+Opening Balance on Movement Operation
+Movement type: Credit if open balance is 0 or superior, Debit if open balance is < 0 
+* The last movement should be:
+Opening / Closing on Category
+Closing Balance on Movement Operation
+
+Go back to condo details
+Go to Budgets
+Add budgets -> New Budget
+Set your budgets and use the Amount, Common Reserve Fund (%), Begin Date, Shares, Share Periodicity, Share Distribution and Due Days fields to later create automatic debit notes based on budget for condo owners. 
+For automatic debit notes ( Create Notes ) budget must be in active status.
+
+
+.. After this you can
+Go to Receipts to manage condo income payments with receipts
+Go to Invoice Conference to manage condo debts/suppliers payments
+Go to Maintenances to manage condo maintenance schedules
+Go to Insurances to manage condo and property insurances
+Go to Attachments to manage documents
+Go to Reports for Balance , Income , Expenses, In Debt, Shares Maps, Contact Lists ...
+Go to Drafts to make some document drafts you may require
