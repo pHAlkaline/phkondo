@@ -1,59 +1,62 @@
 pHKondo fluxo de trabalho
 
 Adicionar condomínio (s) -> Criar Condomínio
-Selecione detalhes do condomínio
+Ver detalhes do condomínio
 
-Vá para Frações
-Adicione propriedades -> Criar Fração
-Digite Detalhes sobre a propriedade
+Entrar nas Frações
+Adicionar propriedades -> Criar Fração
+Ver detalhes da fração
 
-Ir para Proprietários
+Entrar nos Proprietários
 Adicionar proprietários -> Criar Proprietário
 Ou use Adicionar Proprietário para pesquisar proprietários já registados na sua base de dados
 
 Regresse aos detalhes do condomínio
-Ir para Administradores
+Entar nos Administradores
 Adicionar administradores -> Adicionar Administrador
-* Administrador é o proprietário (s) selecionado para ter uma relação direta entre a gestão do Condomínio/empresa/serviço e todos os proprietários em vários assuntos, como conta bancária controlo, manutenção, queixas.
+* Administrador é o proprietário(s) selecionado que serve de elo de ligação/representante entre a gestão do Condomínio/empresa/serviço e todos os proprietários.
 
 Regresse aos detalhes do condomínio
-Ir para Exercícios
+Entrar nos Exercícios
 Adicionar exercício -> Criar exercício
-* Exercício/Ano Fiscal é usado para configurar o seu período de gestão, que pode o período que entender, não necessariamente um ano.
-É usado para controlar:
+* Exercício/Ano Fiscal é usado para configurar períodos de gestão, pode o período que entender, não necessariamente um ano.
+É usado para controlar e agrupar dados em:
 - Saldos de contas bancárias, Orçamentos...
 - Relatórios para Balancete, receitas, despesas, em dívida, mapa de quotas
 
 Regresse aos detalhes do condomínio
-Ir para contas
+Entrar nas contas
 Adicionar contas bancárias -> Nova Conta
-Digite Detalhes da conta
+Ver detalhes da conta
 
-Ir para Movimentos
+Entrar nos Movimentos
 Adicionar movimentos de conta -> Criar Movimento
-* Cada movimento terá de pertencer ao exercício ativo
-* Para cada exercício você deve criar o primeiro e último movimento descrito abaixo, isso permitirá que o pHKondo possa realizar os relatórios baseados em exercício.
+* Cada movimento tem de pertencer ao exercício ativo
+* Para cada exercício é necessário criar o primeiro movimento ( no inicio do ano fiscal ) e o último movimento ( no final do ano fiscal ) , isso permitirá que o pHKondo possa realizar os relatórios baseados nos intervalos ( inicio / fim ) do exercício.
 * O primeiro movimento deve ser:
-Montante inicial para balanço de abertura no ano fiscal
-Abertura / Encerramento na Categoria
-Saldo na Operação Movimento
-Tipo de movimento: Crédito se balança aberto é 0 ou superior, se Debito saldo em aberto é <0
+O montante inicial no balanço de abertura no ano fiscal
+Abertura / Fecho no campo Categoria
+Abertura Balancete no campo Operação Movimento
+Tipo de movimento: Crédito se saldo de conta no inicio do exercicio é 0 ou superior, Débito se saldo de conta no inicio do exercicio é < 0
+
 * O último movimento deve ser:
-Abertura / Fecho de Categoria
-Abertura Balancete na Operação
+Abertura / Encerramento no campo Categoria
+Fecho Balancete no campo Operação Movimento
 
 Regresse aos detalhes do condomínio
-Ir para Orçamentos
-Criar orçamentos -> Criar Orçamento
-Defina os seus orçamentos, use os campos da Valor, Fundo Comum de Reserva%), Data de Início, Quotas, Periodicidade, Distribuição, Prazo de pagamento para depois criar notas de débito de forma automática automática, com base nas características do orçamento.
-Para notas de débito automático (Criar Notes) orçamento deve estar no estado ativo.
+Entrar nos Orçamentos
+Adicionar orçamentos -> Criar Orçamento
+Defina os seus orçamentos.
+Defina bem os campos da Valor, Fundo Comum de Reserva (%), Data de Início, Quotas, Periodicidade, Distribuição, Prazo de pagamento. Vai possibilitar criar notas de débito de forma automática.
+Para notas de débito automático entre em Criar Notas, atenção que o orçamento deve estar no estado ativo.
 
 
-.. Após isso, você pode
-Ir para Recibos para gerir Pagamentos/Recibos
-Ir para a Conferência de faturas para gerir dívidas do condomínio / pagamentos a fornecedores
-Ir para Manutenções para gerir as programações de manutenção ao condomínio
-Ir para Seguros de gerir seguros de condomínio e frações
-Ir para Anexos para gerir os documentos anexados
-Ir para os relatórios para Balancete, Receitas, Despesas, Conta Corrente, Mapas...
-Ir para Minutas para imprimir alguns documentos usados na gestão do condomínio...
+.. extras
+Entrar em Recibos para gerir Pagamentos/Recibos.
+Entrar em Conferência de faturas para gerir dívidas do condomínio / pagamentos a fornecedores.
+Entrar em Manutenções para gerir as programações de manutenção ao condomínio.
+Entrar em Seguros de gerir seguros de condomínio e frações.
+Entrar em Anexos para gerir os documentos anexados.
+Entrar em os relatórios para Balancete, Receitas, Despesas, Conta Corrente, Mapas.
+Entrar em Minutas para imprimir alguns documentos usados na gestão do condomínio.
+... 
