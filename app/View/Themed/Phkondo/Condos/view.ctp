@@ -112,9 +112,9 @@ $administrators = implode(", ", $administrators);
                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-down"></span> ', '#CommentsIndex', array('title' => __('View %s', __('Comments')), 'id' => 'viewCommentsBtn', 'class' => ' ', 'escape' => false)); ?>
                 </div></div>
             <div class="panel-body collapse" id="CommentsIndex">
-                
-                    <?php echo $this->Comments->display_for($condo); ?>
-                
+
+                <?php echo $this->Comments->display_for($condo); ?>
+
             </div>
         </div>
         <div class="panel panel-default">
@@ -125,102 +125,102 @@ $administrators = implode(", ", $administrators);
                 </div>
             </div>
             <div class="panel-body collapse" id="AlertsIndex">
-                
-                    <?php
-                    $viewGlyphiconState = array();
-                    foreach ($condo['Insurance'] as $insurance) {
 
-                        if ($insurance['expire_out'] > -30) {
+                <?php
+                $viewGlyphiconState = array();
+                foreach ($condo['Insurance'] as $insurance) {
 
-                            $viewGlyphiconState[] = 'info';
-                        }
-                        if ($insurance['expire_out'] > -15) {
-                            $viewGlyphiconState[] = 'warning';
-                        }
-                        if ($insurance['expire_out'] > 0) {
-                            $viewGlyphiconState[] = 'danger';
-                        }
+                    if ($insurance['expire_out'] > -30) {
+
+                        $viewGlyphiconState[] = 'info';
                     }
-                    ?>
-                    <?php if (in_array('danger', $viewGlyphiconState)) : ?>
-                        <div class="alert alert-danger">
-                             <?php echo $this->Html->link(__('Expired insurance'),array('controller'=>'insurances','action'=>'index'), array('title' => __('Expired insurance'), 'class' => '', 'style'=>'color:inherit;','escape' => false)); ?>
-                        </div>
-                    <?php elseif (in_array('warning', $viewGlyphiconState)) : ?>
-                        <div class="alert alert-warning">
-                            <?php echo $this->Html->link(__('Insurance to expire soon'),array('controller'=>'insurances','action'=>'index'), array('title' => __('Insurance to expire soon'), 'class' => '', 'style'=>'color:inherit;','escape' => false)); ?>
-                       </div>
-                    <?php elseif (in_array('info', $viewGlyphiconState)) : ?>
-                        <div class="alert alert-info">
-                            <?php echo $this->Html->link(__('Insurance to expire soon'),array('controller'=>'insurances','action'=>'index'), array('title' => __('Insurance to expire soon'), 'class' => '', 'style'=>'color:inherit;','escape' => false)); ?>
-                        </div>
-                    <?php endif; ?>
-
-                    <?php
-                    $viewGlyphiconState = array();
-                    foreach ($condo['Maintenance'] as $maintenance) {
-                        if ($maintenance['expire_out'] > -30) {
-                            $viewGlyphiconState[] = 'info';
-                        }
-                        if ($maintenance['expire_out'] > -15) {
-                            $viewGlyphiconState[] = 'warning';
-                        }
-                        if ($maintenance['expire_out'] > 0) {
-                            $viewGlyphiconState[] = 'danger';
-                        }
-                        if ($maintenance['next_inspection_out'] > -30) {
-                            $viewGlyphiconState[] = 'info';
-                        }
-                        if ($maintenance['next_inspection_out'] > -15) {
-                            $viewGlyphiconState[] = 'warning';
-                        }
-                        if ($maintenance['next_inspection_out'] > 0) {
-                            $viewGlyphiconState[] = 'danger';
-                        }
+                    if ($insurance['expire_out'] > -15) {
+                        $viewGlyphiconState[] = 'warning';
                     }
-                    ?>
-                    <?php if (in_array('danger', $viewGlyphiconState)) : ?>
-                          <div class="alert alert-danger">
-                              <?php echo $this->Html->link(__('Maintenance expired'),array('controller'=>'maintenances','action'=>'index'), array('title' => __('Maintenance expired'), 'class' => '', 'style'=>'color:inherit;','escape' => false)); ?>
-                          </div>
-                                  <?php elseif (in_array('warning', $viewGlyphiconState)) : ?>
-                     <div class="alert alert-warning">
-                         <?php echo $this->Html->link(__('Maintenance to expire soon'),array('controller'=>'maintenances','action'=>'index'), array('title' => __('Maintenance to expire soon'), 'class' => '', 'style'=>'color:inherit;','escape' => false)); ?>
-                     </div>
-                             <?php elseif (in_array('info', $viewGlyphiconState)) : ?>
-                         <div class="alert alert-info">
-                             <?php echo $this->Html->link(__('Maintenance to expire soon'),array('controller'=>'maintenances','action'=>'index'), array('title' => __('Maintenance to expire soon'), 'class' => '', 'style'=>'color:inherit;','escape' => false)); ?>
-                         </div>
-                                 <?php endif; ?>
-
-                    <?php if ($hasSharesDebt) : ?>
-                        <div class="alert alert-danger">
-                            <?php echo $this->Html->link(__('Fractions with late payment'),array('controller'=>'fractions','action'=>'index'), array('title' => __('Fractions with late payment'), 'class' => '', 'style'=>'color:inherit;','escape' => false)); ?>
+                    if ($insurance['expire_out'] > 0) {
+                        $viewGlyphiconState[] = 'danger';
+                    }
+                }
+                ?>
+                <?php if (in_array('danger', $viewGlyphiconState)) : ?>
+                    <div class="alert alert-danger">
+                        <?php echo $this->Html->link(__('Expired insurance'), array('controller' => 'insurances', 'action' => 'index'), array('title' => __('Expired insurance'), 'class' => '', 'style' => 'color:inherit;', 'escape' => false)); ?>
                     </div>
-                    <?php endif; ?>
+                <?php elseif (in_array('warning', $viewGlyphiconState)) : ?>
+                    <div class="alert alert-warning">
+                        <?php echo $this->Html->link(__('Insurance to expire soon'), array('controller' => 'insurances', 'action' => 'index'), array('title' => __('Insurance to expire soon'), 'class' => '', 'style' => 'color:inherit;', 'escape' => false)); ?>
+                    </div>
+                <?php elseif (in_array('info', $viewGlyphiconState)) : ?>
+                    <div class="alert alert-info">
+                        <?php echo $this->Html->link(__('Insurance to expire soon'), array('controller' => 'insurances', 'action' => 'index'), array('title' => __('Insurance to expire soon'), 'class' => '', 'style' => 'color:inherit;', 'escape' => false)); ?>
+                    </div>
+                <?php endif; ?>
 
-                    <?php
-                    $viewGlyphiconState = array();
-                    foreach ($condo['Account'] as $account) {
-                        if ($account['balance'] < 0) {
-                            $viewGlyphiconState[] = 'danger';
-                        }
+                <?php
+                $viewGlyphiconState = array();
+                foreach ($condo['Maintenance'] as $maintenance) {
+                    if ($maintenance['expire_out'] > -10) {
+                        $viewGlyphiconState[] = 'info';
                     }
-                    ?>
-                    <?php if (in_array('danger', $viewGlyphiconState)) : ?>
-                        <div class="alert alert-danger">
-                            <?php echo $this->Html->link( __('Accounts with negative balance'),array('controller'=>'accounts','action'=>'index'), array('title' =>  __('Accounts with negative balance'), 'class' => '', 'style'=>'color:inherit;','escape' => false)); ?>
-               
-                           
-                        </div>
-                    <?php endif; ?>
-                    <?php if ($hasDebt) : ?>
-                        <div class="alert alert-danger">
-                             <?php echo $this->Html->link(  __('Suppliers with arrears'),array('controller'=>'invoice_conference','action'=>'index'), array('title' =>   __('Suppliers with arrears'), 'class' => '', 'style'=>'color:inherit;','escape' => false)); ?>
-               
-                        </div>
-                    <?php endif; ?>
-                
+                    if ($maintenance['expire_out'] > -5) {
+                        $viewGlyphiconState[] = 'warning';
+                    }
+                    if ($maintenance['expire_out'] > 0) {
+                        $viewGlyphiconState[] = 'danger';
+                    }
+                    if ($maintenance['next_inspection_out'] > -10) {
+                        $viewGlyphiconState[] = 'info';
+                    }
+                    if ($maintenance['next_inspection_out'] > -5) {
+                        $viewGlyphiconState[] = 'warning';
+                    }
+                    if ($maintenance['next_inspection_out'] > 0) {
+                        $viewGlyphiconState[] = 'danger';
+                    }
+                }
+                ?>
+                <?php if (in_array('danger', $viewGlyphiconState)) : ?>
+                    <div class="alert alert-danger">
+                        <?php echo $this->Html->link(__('Expired maintenance'), array('controller' => 'maintenances', 'action' => 'index'), array('title' => __('Expired maintenance'), 'class' => '', 'style' => 'color:inherit;', 'escape' => false)); ?>
+                    </div>
+                <?php elseif (in_array('warning', $viewGlyphiconState)) : ?>
+                    <div class="alert alert-warning">
+                        <?php echo $this->Html->link(__('Maintenance to expire soon'), array('controller' => 'maintenances', 'action' => 'index'), array('title' => __('Maintenance to expire soon'), 'class' => '', 'style' => 'color:inherit;', 'escape' => false)); ?>
+                    </div>
+                <?php elseif (in_array('info', $viewGlyphiconState)) : ?>
+                    <div class="alert alert-info">
+                        <?php echo $this->Html->link(__('Maintenance to expire soon'), array('controller' => 'maintenances', 'action' => 'index'), array('title' => __('Maintenance to expire soon'), 'class' => '', 'style' => 'color:inherit;', 'escape' => false)); ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php if ($hasSharesDebt) : ?>
+                    <div class="alert alert-danger">
+                        <?php echo $this->Html->link(__('Fractions with late payment'), array('controller' => 'fractions', 'action' => 'index'), array('title' => __('Fractions with late payment'), 'class' => '', 'style' => 'color:inherit;', 'escape' => false)); ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php
+                $viewGlyphiconState = array();
+                foreach ($condo['Account'] as $account) {
+                    if ($account['balance'] < 0) {
+                        $viewGlyphiconState[] = 'danger';
+                    }
+                }
+                ?>
+                <?php if (in_array('danger', $viewGlyphiconState)) : ?>
+                    <div class="alert alert-danger">
+                        <?php echo $this->Html->link(__('Accounts with negative balance'), array('controller' => 'accounts', 'action' => 'index'), array('title' => __('Accounts with negative balance'), 'class' => '', 'style' => 'color:inherit;', 'escape' => false)); ?>
+
+
+                    </div>
+                <?php endif; ?>
+                <?php if ($hasDebt) : ?>
+                    <div class="alert alert-danger">
+                        <?php echo $this->Html->link(__('Suppliers with arrears'), array('controller' => 'invoice_conference', 'action' => 'index'), array('title' => __('Suppliers with arrears'), 'class' => '', 'style' => 'color:inherit;', 'escape' => false)); ?>
+
+                    </div>
+                <?php endif; ?>
+
             </div>
         </div>
     </div><!-- /#page-content .span9 -->

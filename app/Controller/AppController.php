@@ -40,7 +40,9 @@ class AppController extends Controller {
         'MaintenanceMode');
 
     public function beforeFilter() {
-        
+        if ($this->Session->read('User.language')) {
+            Configure::write('Config.language', $this->Session->read('User.language'));
+        }
         $this->theme = Configure::read('Theme.name');
         $this->Auth->authenticate = array(AuthComponent::ALL => array('userModel' => 'User', 'scope' => array("User.active" => 1)), 'Form');
         $this->Auth->loginRedirect = Router::url(array('plugin' => null, 'controller' => 'condos', 'action' => 'index'), true);
@@ -52,9 +54,7 @@ class AppController extends Controller {
             $this->Auth->allow();
         }
         $this->rememberMe();
-        if ($this->Session->read('User.language')) {
-            Configure::write('Config.language', $this->Session->read('User.language'));
-        }
+        
     }
     
     private function rememberMe(){
