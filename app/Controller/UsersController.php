@@ -146,16 +146,21 @@ class UsersController extends AppController {
 
     public function login() {
         $this->layout = "login";
+        if (isset($this->request->data['User']['language']) && $this->request->data['User']['language'] != '') {
+            $this->Session->write('User.language', $this->request->data['User']['language']);
+            Configure::write('Config.language', $this->Session->read('User.language'));
+        }
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
-                if (isset($this->data['User']['language']) && $this->data['User']['language'] != '') {
-                    $this->Session->write('User.language', $this->data['User']['language']);
-                }
                 $this->rememberMe();
                 return $this->redirect($this->Auth->redirectUrl()); //$this->Auth->redirectUrl()
             }
             $this->Flash->error(__('Invalid username or password, try again'));
         }
+        if (!isset($this->request->data['User']['language'])) {
+            $this->request->data['User']['language']=Configure::read('Config.language');
+        }
+        
     }
 
     public function logout() {
