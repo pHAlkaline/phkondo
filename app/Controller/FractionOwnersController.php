@@ -272,7 +272,8 @@ class FractionOwnersController extends AppController {
                 $breadcrumbs[6] = array('link' => '', 'text' => $this->Session->read('Condo.Owner.ViewName'), 'active' => 'active');
                 break;
         }
-        $this->set(compact('breadcrumbs'));
+        $headerTitle=$this->Session->read('Condo.ViewName');
+        $this->set(compact('breadcrumbs','headerTitle'));
     }
 
     public function search_clients() {

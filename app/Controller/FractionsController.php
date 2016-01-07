@@ -205,7 +205,8 @@ class FractionsController extends AppController {
                 $breadcrumbs[4] = array('link' => '', 'text' => $this->Session->read('Condo.Fraction.ViewName'), 'active' => 'active');
                 break;
         }
-        $this->set(compact('breadcrumbs'));
+        $headerTitle=$this->Session->read('Condo.ViewName');
+        $this->set(compact('breadcrumbs','headerTitle'));
     }
 
 }

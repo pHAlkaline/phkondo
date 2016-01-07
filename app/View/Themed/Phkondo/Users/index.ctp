@@ -20,6 +20,13 @@
                     </thead>
                     <tbody>
                         <?php foreach ($users as $user): ?>
+                         <?php 
+                                $deletable='disabled';
+                                if ($user['User']['deletable']){
+                                    $deletable='';
+                                }
+                                
+                                ?>
                             <tr>
                                 <td><?php echo h($user['User']['name']); ?>&nbsp;</td>
                                 <td><?php echo h($user['User']['username']); ?>&nbsp;</td>
@@ -27,7 +34,7 @@
                                 <td class="actions hidden-print">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $user['User']['id']), array('class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $user['User']['id']), array('class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
-                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'delete', $user['User']['id']), array('title' => __('Remove'), 'class' => 'btn btn-default btn-xs', 'escape' => false, 'confirm' => __('Are you sure you want to delete # %s?', $user['User']['name']))); ?>
+                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'delete', $user['User']['id']), array('title' => __('Remove'), 'class' => 'btn btn-default btn-xs '.$deletable, 'escape' => false, 'confirm' => __('Are you sure you want to delete # %s?', $user['User']['name']))); ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

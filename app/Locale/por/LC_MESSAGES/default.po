@@ -653,7 +653,7 @@ msgstr "Saldo inicial"
 msgid "Insert Administrator"
 msgstr "Inserir Administrador"
 
-msgid "Insert Owner"
+msgid "Add Owner"
 msgstr "Adicionar Proprietário"
 
 msgid "Insurance"
