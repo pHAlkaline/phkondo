@@ -27,11 +27,11 @@
  */
 
 CakePlugin::load('DebugKit');
-CakePlugin::load('Migrations');
-CakePlugin::load('PrintReceipt',array('bootstrap'=>true));
-CakePlugin::load('Reports',array('bootstrap'=>true));
-CakePlugin::load('Drafts',array('bootstrap'=>true));
-CakePlugin::load('Attachments',array('bootstrap'=>true));
+//CakePlugin::load('Migrations');
+//CakePlugin::load('PrintReceipt',array('bootstrap'=>true));
+//CakePlugin::load('Reports',array('bootstrap'=>true));
+//CakePlugin::load('Drafts',array('bootstrap'=>true));
+//CakePlugin::load('Attachments',array('bootstrap'=>true));
 
 
 /** Theme Settings
@@ -40,7 +40,7 @@ CakePlugin::load('Attachments',array('bootstrap'=>true));
 Configure::write('Theme.name', 'phkondo');
 Configure::write('Theme.owner_name', 'pHKondo');
 Configure::write('Theme.owner_name_abbrv', 'PHK');
-Configure::write('Theme.owner_description', 'Condogest Condominium Management');
+Configure::write('Theme.owner_description', 'pHKondo Condominium Management');
 Configure::write('Theme.owner_title', 'Administração ao cuidado de XXXXXX');
 Configure::write('Theme.owner_address', 'Avenida XX de XXXXX NXX Loja A XXXX-XXX XXXXX , Telef: XXXXXXXXX / XXXXXXXXX');
 Configure::write('Theme.base_color', '#428bca');
@@ -52,14 +52,14 @@ Configure::write('Theme.base_color', '#428bca');
 /**
  * Languages available
  */
-Configure::write('Config.language', 'por'); 
+Configure::write('Config.language', 'eng'); 
 Configure::write('Language.list',array(
     'eng'=>'English',
     'por'=>'Português',
    
     )); 
  
-Configure::write('Config.timezone', 'Europe/Lisbon'); // Europe/Lisbon
+Configure::write('Config.timezone', 'Europe/London'); // Europe/Lisbon
 Configure::write('databaseDateFormat', 'Y-m-d'); // database dateformat
 Configure::write('dateFormat', 'd-m-Y H:i:s'); // phkondo dateformat with time
 Configure::write('dateFormatSimple', 'd-m-Y'); // phkondo dateformat
