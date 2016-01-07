@@ -51,7 +51,7 @@
                 )));
                 ?>
                 <fieldset>
-                    <h2><?php echo __('Insert Owner'); ?></h2>
+                    <h2><?php echo __('Add Owner'); ?></h2>
                     
                     <div class="form-group">
                         <?php echo $this->Form->input('client', array('class' => 'form-control')); ?>

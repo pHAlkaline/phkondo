@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * pHKondo : pHKondo software for condominium property managers (http://phalkaline.eu)
@@ -118,6 +119,17 @@ class User extends AppModel {
             )
         )
     );
+    
+    public $hasMany = array(
+        'PaidRecipt' => array(
+            'className' => 'Receipt',
+            'foreignKey' => 'payment_user_id',
+        ),
+        'CancelRecipt' => array(
+            'className' => 'Receipt',
+            'foreignKey' => 'cancel_user_id',
+        )
+    );
 
     public function beforeSave($options = array()) {
         
@@ -150,10 +162,22 @@ class User extends AppModel {
      * @return array
      */
     public function afterFind($results, $primary = false) {
-       if (isset($results[0][$this->alias]['active'])) {
+        if (isset($results[0][$this->alias])) {
+            foreach ($results as $key => $val) {
+                if (isset($results[$key][$this->alias]['id'])) {
+                    $results[$key][$this->alias]['deletable'] = $this->canDelete($results[$key][$this->alias]['id']);
+                }
+            }
+        }
+
+        if (isset($results['id'])) {
+            $results['deletable'] = $this->canDelete($results['id']);
+        }
+
+        if (isset($results[0][$this->alias]['active'])) {
             foreach ($results as $key => $val) {
                 if (isset($results[$key][$this->alias]['active'])) {
-                    $results[$key][$this->alias]['active_string']= ($results[$key][$this->alias]['active']) ? __('Active') : null;
+                    $results[$key][$this->alias]['active_string'] = ($results[$key][$this->alias]['active']) ? __('Active') : null;
                 }
             }
         }

@@ -349,6 +349,7 @@ class OwnerReceiptsController extends AppController {
                     'Note.fraction_id' => $this->Session->read('Condo.Fraction.ViewID'),
                     'Note.entity_id' => $this->Receipt->field('client_id'),
                     'Note.note_status_id' => array(1, 2)),
+                
             ))
         );
         $receiptAmount = 0; //$this->Receipt->field('total_amount');

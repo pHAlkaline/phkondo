@@ -635,7 +635,7 @@ msgstr ""
 msgid "Insert Administrator"
 msgstr ""
 
-msgid "Insert Owner"
+msgid "Add Owner"
 msgstr ""
 
 msgid "Insurance"

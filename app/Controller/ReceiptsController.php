@@ -343,6 +343,7 @@ class ReceiptsController extends AppController {
         $receiptAmount = 0; //$this->Receipt->field('total_amount');
         $receiptId = $this->Receipt->field('document');
         $this->set(compact('notes', 'receiptAmount', 'receiptId', 'id'));
+
         $this->set(compact('condos', 'fractions', 'clients', 'receiptStatuses', 'receiptPaymentTypes'));
         
         $this->Session->write('Condo.Receipt.ViewID', $id);
