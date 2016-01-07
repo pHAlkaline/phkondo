@@ -27,11 +27,11 @@
  */
 
 CakePlugin::load('DebugKit');
-//CakePlugin::load('Migrations');
-//CakePlugin::load('PrintReceipt',array('bootstrap'=>true));
-//CakePlugin::load('Reports',array('bootstrap'=>true));
-//CakePlugin::load('Drafts',array('bootstrap'=>true));
-//CakePlugin::load('Attachments',array('bootstrap'=>true));
+CakePlugin::load('Migrations');
+CakePlugin::load('PrintReceipt',array('bootstrap'=>true));
+CakePlugin::load('Reports',array('bootstrap'=>true));
+CakePlugin::load('Drafts',array('bootstrap'=>true));
+CakePlugin::load('Attachments',array('bootstrap'=>true));
 
 
 /** Theme Settings
@@ -52,7 +52,7 @@ Configure::write('Theme.base_color', '#428bca');
 /**
  * Languages available
  */
-Configure::write('Config.language', 'eng'); 
+Configure::write('Config.language', 'por'); 
 Configure::write('Language.list',array(
     'eng'=>'English',
     'por'=>'Português',
@@ -65,7 +65,7 @@ Configure::write('dateFormat', 'd-m-Y H:i:s'); // phkondo dateformat with time
 Configure::write('dateFormatSimple', 'd-m-Y'); // phkondo dateformat
 Configure::write('calendarDateFormat', 'dd-mm-yyyy'); // input date fields date format
 Configure::write('currencySign', '&euro;'); // more at http://www.w3schools.com/html/html_entities.asp
-Configure::write('Application.mode', 'app'); // app, demo -> use demo for demo mode;
+Configure::write('Application.mode', 'demo'); // app, demo -> use demo for demo mode;
 
 /**
  * The settings for maintenance component 
