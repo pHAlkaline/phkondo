@@ -264,7 +264,7 @@ msgid "Budget Status"
 msgstr "Estado"
 
 msgid "Budget Type"
-msgstr "Tipo de Orçamento"
+msgstr "Tipo"
 
 msgid "Budget amount"
 msgstr "Valor orçamento"
@@ -447,10 +447,10 @@ msgid "Drafts Plugin NotFound"
 msgstr "Extenção minutas não foi encontrada."
 
 msgid "Due Date"
-msgstr "Prazo de Pagamento"
+msgstr "Prazo"
 
 msgid "Due Days"
-msgstr "Prazo de Pagamento ( Dias )"
+msgstr "Prazo ( Dias )"
 
 msgid "Edit"
 msgstr "Editar"
@@ -533,7 +533,7 @@ msgstr[0] "Entidade"
 msgstr[1] "Entidades"
 
 msgid "Entity Type"
-msgstr "Tipo de Entidade"
+msgstr "Tipo"
 
 msgid "Entity can not be deleted"
 msgstr "Não foi possível apagar Entidade"
@@ -671,7 +671,7 @@ msgid "Insurance Premium"
 msgstr "Prémio"
 
 msgid "Insurance Type"
-msgstr "Tipo de Seguro"
+msgstr "Tipo"
 
 msgid "Insurance can not be deleted"
 msgstr "Não foi possível apagar Seguro"
@@ -910,7 +910,7 @@ msgid "Movement Operations"
 msgstr "Operações de Movimentos"
 
 msgid "Movement Type"
-msgstr "Tipo de Movimento"
+msgstr "Tipo"
 
 msgid "Movement can not be deleted"
 msgstr "Não foi possível apagar Movimento"
@@ -1024,7 +1024,7 @@ msgid "Note Status"
 msgstr "Estado"
 
 msgid "Note Type"
-msgstr "Tipo de Nota"
+msgstr "Tipo"
 
 msgid "Note can not be deleted"
 msgstr "Não foi possível apagar Nota"
@@ -1124,7 +1124,7 @@ msgid "Payment Date"
 msgstr "Data de Pagamento"
 
 msgid "Payment Due"
-msgstr "Prazo de Pagamento"
+msgstr "Prazo"
 
 msgid "Payment Due Date"
 msgstr "Prazo de Pagamento"

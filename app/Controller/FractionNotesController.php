@@ -56,13 +56,18 @@ class FractionNotesController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Note->contain(array('NoteType','Entity','NoteStatus'));
-        $this->Paginator->settings = $this->paginate + array(
-            'conditions' => array(
-                'Note.fraction_id' => $this->Session->read('Condo.Fraction.ViewID')));
         $this->setFilter(array('Note.document','Note.title','NoteType.name','Entity.name','Note.amount', 'NoteStatus.name'));
         
-        $this->set('notes', $this->paginate());
+        $options['conditions'] = ['Note.fraction_id' => $this->Session->read('Condo.Fraction.ViewID')];
+        if (isset($this->paginate['conditions'])) {
+            $options['conditions'] = array_merge($this->paginate['conditions'], $options['conditions']);
+        }
+        $this->Paginator->settings = array(
+            'Note' => array(
+                'conditions'=>$options['conditions'],
+                //'requiresAcessLevel' => true,
+                'contain'=>array('NoteType','Entity','NoteStatus')));
+        $this->set('notes', $this->paginate('Note'));
         $this->Session->delete('Condo.FractionNote');
     }
 
