@@ -43,6 +43,13 @@ class ReceiptsController extends AppController {
      * @var array
      */
     public $components = array('Paginator', 'RequestHandler');
+    
+    /**
+     * Uses
+     *
+     * @var array
+     */
+    public $uses = array('Receipt');
 
     /**
      * index method
