@@ -102,7 +102,7 @@ class AppController extends Controller {
     }
 
     public function setFilter($fields) {
-        $this->set('keyword', __('Search'));
+        $this->set('keyword', '');
         if (isset($this->request->params['named']['keyword'])) {
             $keyword = $this->request->params['named']['keyword'];
         }
@@ -125,6 +125,7 @@ class AppController extends Controller {
 
             $this->set('keyword', $keyword);
         }
+        
     }
 
 }
