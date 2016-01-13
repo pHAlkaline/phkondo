@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * pHKondo : pHKondo software for condominium property managers (http://phalkaline.eu)
@@ -25,7 +26,6 @@
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
-
 App::uses('AppController', 'Controller');
 
 /**
@@ -56,16 +56,22 @@ class BudgetNotesController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Note->contain('Fraction', 'NoteType', 'Entity', 'NoteStatus');
-        $this->Paginator->settings = $this->paginate + array(
-            'conditions' => array(
-                'Note.budget_id' => $this->Session->read('Condo.Budget.ViewID')),
-            'order' => array('Note.id' => 'asc', 'Note.document_date' => 'asc', 'Note.document' => 'asc'));
-
         $this->setFilter(array('Note.document', 'Note.title', 'NoteType.name', 'Entity.name', 'Note.amount', 'NoteStatus.name'));
-
-        $this->set('notes', $this->paginate());
-        $this->Session->delete('Condo.BudgetNotes');
+        $options['conditions'] = ['Note.budget_id' => $this->Session->read('Condo.Budget.ViewID')];
+        $options['order'] = ['Note.id' => 'asc', 'Note.document_date' => 'asc', 'Note.document' => 'asc'];
+        if (isset($this->paginate['conditions'])) {
+            $options['conditions'] = array_merge($this->paginate['conditions'], $options['conditions']);
+        }
+        if (isset($this->paginate['order'])) {
+            $options['order'] = array_merge($this->paginate['order'], $options['order']);
+        }
+        $this->Paginator->settings = array(
+            'Note' => array(
+                'conditions' => $options['conditions'],
+                //'requiresAcessLevel' => true,
+                'contain' => array('NoteType', 'Entity', 'NoteStatus', 'Fraction')));
+        $this->set('notes', $this->paginate('Note'));
+        $this->Session->delete('Condo.BudgetNote');
     }
 
     /**
@@ -80,7 +86,7 @@ class BudgetNotesController extends AppController {
             $this->Flash->error(__('Invalid note'));
             $this->redirect(array('action' => 'index'));
         }
-        $this->Note->contain(array('NoteType','Fraction','Entity','Budget','FiscalYear','NoteStatus','Receipt'));
+        $this->Note->contain(array('NoteType', 'Fraction', 'Entity', 'Budget', 'FiscalYear', 'NoteStatus', 'Receipt'));
         $options = array('conditions' => array(
                 'Note.' . $this->Note->primaryKey => $id,
                 'Note.budget_id' => $this->Session->read('Condo.Budget.ViewID')));
@@ -201,7 +207,7 @@ class BudgetNotesController extends AppController {
      * @return void
      */
     public function create() {
-      
+
         $budget = $this->Note->Budget->find('first', array('conditions' => array('Budget.id' => $this->Session->read('Condo.Budget.ViewID'), 'Budget.budget_status_id' => '2')));
         if (empty($budget)) {
             $this->Flash->error(__('Invalid Budget'));
@@ -214,7 +220,7 @@ class BudgetNotesController extends AppController {
 
         if ($this->request->is('post')) {
             $notes = $this->request->data['Note'];
-            
+
             unset($notes['Budget']);
             App::uses('CakeTime', 'Utility');
             foreach ($notes as $key => $note) {
@@ -227,7 +233,7 @@ class BudgetNotesController extends AppController {
                 $tmpDate = $budget['Budget']['begin_date'];
                 while ($shares <= $note['shares']):
                     $month = CakeTime::format('F', $tmpDate);
-                    $this->request->data['Note']['title'] = __n('Share','Shares',1) . ' ' . $shares . ' ' . __($month) . ' ' . $budget['Budget']['title'];
+                    $this->request->data['Note']['title'] = __n('Share', 'Shares', 1) . ' ' . $shares . ' ' . __($month) . ' ' . $budget['Budget']['title'];
                     $this->request->data['Note']['document_date'] = $tmpDate;
                     $this->request->data['Note']['due_date'] = date(Configure::read('dateFormatSimple'), strtotime($tmpDate . ' +' . $budget['Budget']['due_days'] . ' days'));
                     $this->request->data['Note']['note_status_id'] = '1';
@@ -281,8 +287,7 @@ class BudgetNotesController extends AppController {
         $this->request->data['Note']['Document'] = 'null';
         $this->request->data['Note']['fiscal_year_id'] = $this->_getFiscalYear();
         if ($this->Note->save($this->request->data)) {
-           $this->_setDocument();
-            
+            $this->_setDocument();
         } else {
             $this->Note->deleteAll(array('Note.budget_id' => $budget['Budget']['id']), false);
             $this->Flash->error(__('The notes could not be created. Please, try again.'));
@@ -320,19 +325,19 @@ class BudgetNotesController extends AppController {
     public function beforeRender() {
         $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID'))), 'text' => $this->Session->read('Condo.ViewName'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'budgets', 'action' => 'index')), 'text' => __n('Budget','Budgets',2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'budgets', 'action' => 'index')), 'text' => __n('Budget', 'Budgets', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'budgets', 'action' => 'view', $this->Session->read('Condo.Budget.ViewID'))), 'text' => $this->Session->read('Condo.Budget.ViewName'), 'active' => ''),
-            array('link' => '', 'text' => __n('Note','Notes',2), 'active' => 'active')
+            array('link' => '', 'text' => __n('Note', 'Notes', 2), 'active' => 'active')
         );
         switch ($this->action) {
             case 'view':
-                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'budget_notes', 'action' => 'index')), 'text' => __n('Note','Notes',2), 'active' => '');
+                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'budget_notes', 'action' => 'index')), 'text' => __n('Note', 'Notes', 2), 'active' => '');
                 $breadcrumbs[6] = array('link' => '', 'text' => $this->Session->read('Condo.BudgetNote.ViewName'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'budget_notes', 'action' => 'index')), 'text' => __n('Note','Notes',2), 'active' => '');
+                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'budget_notes', 'action' => 'index')), 'text' => __n('Note', 'Notes', 2), 'active' => '');
                 $breadcrumbs[6] = array('link' => '', 'text' => $this->Session->read('Condo.BudgetNote.ViewName'), 'active' => 'active');
                 break;
         }
