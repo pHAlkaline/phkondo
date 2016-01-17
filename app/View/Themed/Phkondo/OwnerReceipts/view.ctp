@@ -30,7 +30,7 @@
                 <li ><?php echo $this->Form->postLink(__('Pay Receipt'), array('action' => 'pay_receipt', $receipt['Receipt']['id']), array('class' => 'btn ' . $payDisabled, 'confirm' => __('Are you sure you want to set receipt # %s as paid? - Payment as %s', $receipt['Receipt']['document'], $receipt['ReceiptPaymentType']['name']))); ?></li>
                 <li ><?php echo $this->Form->postLink(__('Cancel Receipt'), array('action' => 'cancel', $receipt['Receipt']['id']), array('class' => 'btn ' . $cancelDisabled, 'confirm' => __('Are you sure you want to cancel # %s?', $receipt['Receipt']['document']))); ?> </li>
                 <li ><?php echo $this->Html->link(__('Print Receipt'), array('action' => 'print_receipt', $receipt['Receipt']['id']), array('target' => '_blank', 'class' => '', 'escape' => false)); ?> </li>
-                <!--li ><?php //echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('Add Notes'), array('action' => 'add_notes', $receipt['Receipt']['id']), array('class' => 'btn ' . $editDisabled, 'escape' => false)); ?> </li-->
+                <!--li ><?php //echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('New Notes'), array('action' => 'add_notes', $receipt['Receipt']['id']), array('class' => 'btn ' . $editDisabled, 'escape' => false)); ?> </li-->
 
             </ul><!-- /.list-group -->
 

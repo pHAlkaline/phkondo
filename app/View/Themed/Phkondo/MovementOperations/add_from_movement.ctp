@@ -33,7 +33,7 @@
             );
             ?>
             <fieldset>
-                <h2><?php echo __('Add Movement Operation'); ?></h2>
+                <h2><?php echo __('New Movement Operation'); ?></h2>
                 <div class="form-group">
 <?php echo $this->Form->input('name', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->

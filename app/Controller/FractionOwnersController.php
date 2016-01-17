@@ -42,7 +42,7 @@ class FractionOwnersController extends AppController {
      *
      * @var array
      */
-    public $components = array('Paginator', 'RequestHandler');
+    public $components = array('Paginator', 'RequestHandler','Feedback.Comments' => array('on' => array('view')));
 
     /**
      * Uses
@@ -84,8 +84,9 @@ class FractionOwnersController extends AppController {
         $options = array('conditions' => array(
                 'Entity.id' => $id,
         ));
+         $this->Fraction->Entity->contain(array(
+                'Comment'));
         $entity = $this->Fraction->Entity->find('first', $options);
-
         $this->set(compact('entity', 'entitiesFraction'));
         $this->Session->write('Condo.Owner.ViewID', $id);
         $this->Session->write('Condo.Owner.ViewName', $entity['Entity']['name']);
