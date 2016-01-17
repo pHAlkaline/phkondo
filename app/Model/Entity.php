@@ -34,6 +34,8 @@ App::uses('AppModel', 'Model');
  * @property EntityType $EntityType
  */
 class Entity extends AppModel {
+    
+     public $actsAs = array('Feedback.Commentable');
 
     /**
      * Display field

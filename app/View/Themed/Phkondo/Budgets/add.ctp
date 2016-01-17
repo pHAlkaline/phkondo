@@ -30,7 +30,7 @@
             )));
             ?>
             <fieldset>
-                <h2><?php echo __('Add Budget'); ?></h2>
+                <h2><?php echo __('New Budget'); ?></h2>
                 <div class="form-group">
 <?php echo $this->Form->input('condo_id', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->

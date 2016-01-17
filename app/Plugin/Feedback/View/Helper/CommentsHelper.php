@@ -56,13 +56,12 @@ class CommentsHelper extends AppHelper
 		}
 
 		$output = '';
-
+                
 		if (isset($data['Comment']) && !empty($data['Comment']))
 		{
 			$output .= $this->_View->element('Feedback.comment_index', array('comments' => $data['Comment']));
 		}
-
-		if ($options['showForm'])
+                if ($options['showForm'])
 		{
 			App::uses($options['model'], 'Model');
 			$Model = ClassRegistry::init($options['model']);

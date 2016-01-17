@@ -556,6 +556,9 @@ msgstr ""
 msgid "Expired maintenance"
 msgstr ""
 
+msgid "Expired maintenance inspection"
+msgstr ""
+
 msgid "February"
 msgstr ""
 
@@ -837,6 +840,9 @@ msgid "Maintenance duration %s Hours"
 msgstr ""
 
 msgid "Maintenance start at %s "
+msgstr ""
+
+msgid "Maintenance inspection to expire soon"
 msgstr ""
 
 msgid "Maintenance to expire soon"

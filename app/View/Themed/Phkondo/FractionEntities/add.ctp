@@ -24,7 +24,7 @@
 
             <?php echo $this->Form->create('Entity', array('inputDefaults' => array('label' => false), 'class' => 'form form-horizontal')); ?>
             <fieldset>
-                <h2><?php echo __('Add Manager'); ?></h2>
+                <h2><?php echo __('New Manager'); ?></h2>
                 <div class="form-group">
                     <?php echo $this->Form->input('name', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->

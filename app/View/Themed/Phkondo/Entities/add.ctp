@@ -32,7 +32,7 @@
             );
             ?>
             <fieldset>
-                <h2><?php echo __('Add Entity'); ?></h2>
+                <h2><?php echo __('New Entity'); ?></h2>
                 <div class="form-group">
                     <?php echo $this->Form->input('name', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
