@@ -565,8 +565,11 @@ msgstr "Data de Validade"
 msgid "Expired insurance"
 msgstr "Seguro expirado"
 
+msgid "Expired maintenance inspection"
+msgstr "Manutenção/Inspecção expirada"
+
 msgid "Expired maintenance"
-msgstr "Manutenção/Inspecção expirado"
+msgstr "Manutenção expirada"
 
 msgid "February"
 msgstr "Fevereiro"
@@ -858,6 +861,9 @@ msgid "Maintenance start at %s "
 msgstr "A manutenção começa às %s "
 
 msgid "Maintenance to expire soon"
+msgstr "Manutenção a expirar brevemente"
+
+msgid "Maintenance inspection to expire soon"
 msgstr "Manutenção/Inspecção a expirar brevemente"
 
 msgid "Make document"

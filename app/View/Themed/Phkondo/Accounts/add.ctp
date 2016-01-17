@@ -28,10 +28,10 @@
                     'after' => '</div>',
             ))); ?>
             <fieldset>
-                <h2><?php echo __('Add Account'); ?></h2>
+                <h2><?php echo __('New Account'); ?></h2>
                 <div class="form-group">
                     <?php echo $this->Form->input('condo_id', array('class' => 'form-control')); ?>
-                </div><!-- .form-group -->
+                </div><!-- .form-grouwp -->
 
                 <div class="form-group">
                     <?php echo $this->Form->input('title', array('class' => 'form-control')); ?>

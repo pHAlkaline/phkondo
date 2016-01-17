@@ -96,7 +96,7 @@ class MovementOperationsController extends AppController {
      */
     public function addFromMovement($movementId = null) {
         $this->Movement=  ClassRegistry::init('Movement');
-        if ($movementId != null && !$movement->exists($movementId)) {
+        if ($movementId != null && !$this->Movement->exists($movementId)) {
             $this->Flash->error(__('Invalid movement operation'));
             $this->redirect(array('action' => 'index'));
         }

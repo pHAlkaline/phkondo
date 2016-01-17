@@ -31,7 +31,7 @@
                     'after' => '</div>',
                     ))); ?>
             <fieldset>
-                <h2><?php echo __('Add Supplier'); ?></h2>
+                <h2><?php echo __('New Supplier'); ?></h2>
                 <div class="form-group">
                     <?php echo $this->Form->input('name', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
