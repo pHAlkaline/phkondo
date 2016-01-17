@@ -30,6 +30,9 @@ $(function(){
         
         var isShare=this.id.match(/Shares/);
         var val=$( this ).val();
+        if (val=='' || isNaN(val)){
+            val=0
+        }
         val = parseFloat(val).toFixed(2);
         if (isShare){ 
             val = parseFloat(val).toFixed(0); 

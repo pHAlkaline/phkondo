@@ -34,7 +34,7 @@
                                 <td class="actions hidden-print">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $administrator['Administrator']['id']), array('title'=>__('Details'),'class' => 'btn btn-default btn-xs','escape'=>false)); ?>
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $administrator['Administrator']['id']), array('title'=>__('Edit'),'class' => 'btn btn-default btn-xs','escape'=>false)); ?>
-                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'delete', $administrator['Administrator']['id']), array('title'=>__('Remove'),'class' => 'btn btn-default btn-xs','escape'=>false), __('Are you sure you want to remove # %s?', $administrator['Administrator']['title'])); ?>
+                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'delete', $administrator['Administrator']['id']), array('title'=>__('Remove'),'class' => 'btn btn-default btn-xs','escape'=>false), __('Are you sure you want to delete # %s?', $administrator['Administrator']['title'])); ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

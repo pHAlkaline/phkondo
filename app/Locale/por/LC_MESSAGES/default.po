@@ -1699,4 +1699,5 @@ msgstr "Aviso"
 msgid "Write and Press enter to post comment."
 msgstr "Escreva e Prima Enter para inserir comentário."
 
-
+msgid "Setup"
+msgstr "Configuração"
