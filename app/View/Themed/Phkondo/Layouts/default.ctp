@@ -97,7 +97,8 @@
                 });
 
                 $('select').select2();
-
+                $("li.disabled").find('a').removeAttr("href");
+                $("li.disabled").find('a').removeAttr("onclick");
             });
         </script>
     </head>

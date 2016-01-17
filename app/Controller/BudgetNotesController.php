@@ -207,7 +207,7 @@ class BudgetNotesController extends AppController {
      * @return void
      */
     public function create() {
-
+        $this->Note->Budget->contain(array('Note','BudgetStatus','FiscalYear','BudgetType','SharePeriodicity','ShareDistribution'));
         $budget = $this->Note->Budget->find('first', array('conditions' => array('Budget.id' => $this->Session->read('Condo.Budget.ViewID'), 'Budget.budget_status_id' => '2')));
         if (empty($budget)) {
             $this->Flash->error(__('Invalid Budget'));
