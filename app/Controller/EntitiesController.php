@@ -38,12 +38,12 @@ class EntitiesController extends AppController {
     
     public $uses = array ('Entity','Maintenance');
 
-    /**
+   /**
      * Components
      *
      * @var array
      */
-    public $components = array('Paginator');
+    public $components = array('Paginator','Feedback.Comments' => array('on' => array('view')));
 
     /**
      * index method
@@ -69,7 +69,7 @@ class EntitiesController extends AppController {
             $this->Flash->error(__('Invalid entity'));
             $this->redirect(array('action' => 'index'));
         }
-        $this->Entity->contain(array('EntityType','Fraction'=>array('Condo','Manager')));
+        $this->Entity->contain(array('Comment','EntityType','Fraction'=>array('Condo','Manager')));
         $this->Entity->bindModel(
         array(
             'hasAndBelongsToMany' => array(
