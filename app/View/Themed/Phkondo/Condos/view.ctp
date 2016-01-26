@@ -94,7 +94,7 @@ $administrators = implode(", ", $administrators);
                     </dd>
 
                     <dt><strong><?php echo __n('Administrator', 'Administrator', 2); ?></strong></dt>
-                    <dd><?= h($administrators); ?>&nbsp;</dd>
+                    <dd><?php echo  h($administrators); ?>&nbsp;</dd>
                     <dt><strong><?php echo __('Created'); ?></strong></dt>
                     <dd>
                         <?php echo h($condo['Condo']['created']); ?>

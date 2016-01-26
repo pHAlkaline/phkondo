@@ -14,7 +14,7 @@
                 ?>
                 <div class="alert alert-warning alert-dismissible" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    <?= __('Warning: Mil rate sum should be 1000'); ?></div>
+                    <?php echo  __('Warning: Mil rate sum should be 1000'); ?></div>
 
             <?php endif; ?>
             <div class="table-responsive">

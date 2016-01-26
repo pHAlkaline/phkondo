@@ -60,12 +60,12 @@
                         </tr><tr>		<td><strong><?php echo __('Insurance Amount'); ?></strong></td>
                             <td>
                                 <?php echo h($insurance['Insurance']['insurance_amount']); ?>
-                                &nbsp;<?= Configure::read('currencySign'); ?>
+                                &nbsp;<?php echo  Configure::read('currencySign'); ?>
                             </td>
                         </tr><tr>		<td><strong><?php echo __('Insurance Premium'); ?></strong></td>
                             <td>
                                 <?php echo h($insurance['Insurance']['insurance_premium']); ?>
-                                &nbsp;<?= Configure::read('currencySign'); ?>
+                                &nbsp;<?php echo  Configure::read('currencySign'); ?>
                             </td>
                         </tr><tr>		<td><strong><?php echo __('Modified'); ?></strong></td>
                             <td>

@@ -43,7 +43,7 @@
                                         echo h( $receipt['Receipt']['payment_date']);
                                     }
                                     ?>&nbsp;</td>
-                                <td class="amount"><?php echo h($receipt['Receipt']['total_amount']); ?>&nbsp;<?= Configure::read('currencySign'); ?></td>
+                                <td class="amount"><?php echo h($receipt['Receipt']['total_amount']); ?>&nbsp;<?php echo  Configure::read('currencySign'); ?></td>
 
                                 <td class="actions hidden-print">
                                     <?php 

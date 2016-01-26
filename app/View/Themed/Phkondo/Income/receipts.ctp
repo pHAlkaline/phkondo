@@ -119,7 +119,7 @@
                                         <?php echo h($receipt['Condo']['title']); ?>
                                     </td>
                                     
-                                    <td class="amount"><?php echo h($total_amount); ?>&nbsp;<?= Configure::read('currencySign'); ?></td>
+                                    <td class="amount"><?php echo h($total_amount); ?>&nbsp;<?php echo  Configure::read('currencySign'); ?></td>
 
                                 </tr>
                             <?php endforeach; ?>
@@ -132,7 +132,7 @@
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
                                 <td><strong><?php echo __('Total Amount'); ?></strong></td>
-                                <td class="amount"><strong><?php echo h($amount_sum); ?>&nbsp;<?= Configure::read('currencySign'); ?></strong></td>
+                                <td class="amount"><strong><?php echo h($amount_sum); ?>&nbsp;<?php echo  Configure::read('currencySign'); ?></strong></td>
 
                             </tr>
                         </tbody>
@@ -143,7 +143,7 @@
          <?php
     } elseif (isset($hasData) && $hasData==true) {
         ?>
-            <div class="alert alert-info" role="alert"><?= __('No records found.'); ?></div>
+            <div class="alert alert-info" role="alert"><?php echo  __('No records found.'); ?></div>
        
     <?php } ?>
 

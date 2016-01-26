@@ -43,7 +43,7 @@
                                 <td><?php echo h( $note['Note']['due_date']); ?>&nbsp;</td>
                                 <td><?php if ($note['Note']['payment_date']) echo h( $note['Note']['payment_date']); ?>&nbsp;</td>
                                 <td><?php echo h($note['NoteStatus']['name']); ?>    </td>
-                                <td class="amount"><?php echo h($note['Note']['amount']); ?>&nbsp;<?= Configure::read('currencySign'); ?></td>
+                                <td class="amount"><?php echo h($note['Note']['amount']); ?>&nbsp;<?php echo  Configure::read('currencySign'); ?></td>
                                 
                                 <td class="actions hidden-print">
                                    <?php

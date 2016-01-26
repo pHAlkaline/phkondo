@@ -35,7 +35,7 @@ if (isset($movements[0]['Account']['balance'])){
                                 <td><?php echo h($movement['MovementCategory']['name']); ?></td>
                                 <td><?php echo h($movement['MovementOperation']['name']); ?></td>
                                 <td><?php echo h($movement['MovementType']['name']); ?></td>
-                                <td class="amount"><?php if ($movement['MovementType']['id']==2) echo '-'; echo h($movement['Movement']['amount']); ?>&nbsp;<?= Configure::read('currencySign'); ?></td>
+                                <td class="amount"><?php if ($movement['MovementType']['id']==2) echo '-'; echo h($movement['Movement']['amount']); ?>&nbsp;<?php echo  Configure::read('currencySign'); ?></td>
                                 
                                 <td class="actions hidden-print">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $movement['Movement']['id']), array('title'=>__('Details'),'class' => 'btn btn-default btn-xs','escape'=>false)); ?>

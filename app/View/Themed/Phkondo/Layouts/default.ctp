@@ -90,7 +90,7 @@
                         break;
                 }
                 $('.datefield').datepicker({
-                    format: "<?= Configure::read('calendarDateFormat'); ?>",
+                    format: "<?php echo  Configure::read('calendarDateFormat'); ?>",
                     weekStart: 1,
                     language: phkondolang,
                     todayHighlight: true

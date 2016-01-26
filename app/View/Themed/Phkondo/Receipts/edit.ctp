@@ -107,7 +107,7 @@
                                         <td><?php echo h($note['NoteType']['name']); ?></td>
                                         <td><?php echo h($note['Fraction']['fraction']); ?></td>
                                         <td><?php echo h($note['Entity']['name']); ?></td>
-                                        <td><?php echo h($note['Note']['amount']); ?>&nbsp;<?= Configure::read('currencySign'); ?></td>
+                                        <td><?php echo h($note['Note']['amount']); ?>&nbsp;<?php echo  Configure::read('currencySign'); ?></td>
                                         <!--td><?php //echo h($note['Note']['pending_amount']);    ?>&nbsp;</td-->
                                         <td><?php echo h($note['Note']['due_date']); ?>&nbsp;</td>
                                         <td class="actions">

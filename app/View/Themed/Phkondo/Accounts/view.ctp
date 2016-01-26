@@ -40,7 +40,7 @@
                         </tr><tr>		<td><strong><?php echo __('Balance'); ?></strong></td>
                             <td>
                                 <?php echo h($account['Account']['balance']); ?>
-                                &nbsp;<?= Configure::read('currencySign'); ?>
+                                &nbsp;<?php echo  Configure::read('currencySign'); ?>
                             </td>
                         </tr><tr>		<td><strong><?php echo __('Bank'); ?></strong></td>
                             <td>
