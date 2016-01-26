@@ -1,7 +1,7 @@
 
 <div class="jumbotron">
-    <h1><?= __('pHkondo'); ?></h1>
-    <p><?= __('Welcome'); ?></p>
+    <h1><?php echo  __('pHkondo'); ?></h1>
+    <p><?php echo  __('Welcome'); ?></p>
     <?php if ($this->Session->read('User.language')=='por'){ ?>
     <h2>Software para Gestão e Administração de Condomínios</h2>
     <p class="text-primary">É uma excelente ferramenta de apoio à administração de condomínios, gratuito, <a target="_blank" href="https://www.youtube.com/watch?v=Og1WuD8vMTI&amp;t=1490">software livre </a> distribuído sobre <a target="_blank" href="http://opensource.org/licenses/GPL-2.0">liçenca GNU GPL-2.0</a>.</p>
@@ -17,7 +17,7 @@
       and to continue this will cost many hours of dedication to develop, test and support. 
       If you find pHKondo valuable, we would appreciate it if you would consider a donation.</p>
     <?php } ?>
-    <p><a class="btn btn-primary btn-lg" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3XPHC4Z3YJW88" target="_blank" role="button"><?= __('Donate Here') ?></a></p>
+    <p><a class="btn btn-primary btn-lg" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3XPHC4Z3YJW88" target="_blank" role="button"><?php echo  __('Donate Here') ?></a></p>
 </div>
 
 

@@ -23,7 +23,7 @@
                         <?php foreach ($invoice as $invoice_conference): ?>
                             <tr>
                                 <td><?php echo h($invoice_conference['Supplier']['name']); ?></td>
-                                <td class="amount"><?php echo h($invoice_conference['InvoiceConference']['total_amount']); ?>&nbsp;<?= Configure::read('currencySign'); ?></td>
+                                <td class="amount"><?php echo h($invoice_conference['InvoiceConference']['total_amount']); ?>&nbsp;<?php echo  Configure::read('currencySign'); ?></td>
                                 <td class="actions hidden-print">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'index_by_supplier', $invoice_conference['InvoiceConference']['supplier_id']), array('title'=>__('Details'),'class' => 'btn btn-default btn-xs','escape'=>false)); ?>
                                     

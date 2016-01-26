@@ -10,7 +10,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?= Router::url('/', true); ?>"><?= Configure::read('Theme.owner_name'); ?></a>
+            <a class="navbar-brand" href="<?php echo  Router::url('/', true); ?>"><?php echo  Configure::read('Theme.owner_name'); ?></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
