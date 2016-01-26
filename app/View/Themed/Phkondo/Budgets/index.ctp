@@ -32,7 +32,7 @@
                                 <td><?php echo h( $budget['Budget']['budget_date']); ?>&nbsp;</td>
                                 <td><?php echo h( $budget['Budget']['begin_date']); ?>&nbsp;</td>
                                 <td><?php echo h($budget['Budget']['shares']); ?>&nbsp;</td>
-                                <td class="amount"><?php echo h($budget['Budget']['amount']); ?>&nbsp;<?= Configure::read('currencySign'); ?></td>
+                                <td class="amount"><?php echo h($budget['Budget']['amount']); ?>&nbsp;<?php echo  Configure::read('currencySign'); ?></td>
                                 <td class="actions hidden-print">
                                     <?php 
                                     $editDisabled='';

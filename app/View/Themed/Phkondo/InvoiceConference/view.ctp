@@ -52,7 +52,7 @@
                             <td><strong><?php echo __('Amount'); ?></strong></td>
                             <td>
                                 <?php echo h($invoice_conference['InvoiceConference']['amount']); ?>
-                                &nbsp;<?= Configure::read('currencySign'); ?>
+                                &nbsp;<?php echo  Configure::read('currencySign'); ?>
                             </td>
                         </tr>
                         <tr>		

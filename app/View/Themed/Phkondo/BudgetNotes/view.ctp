@@ -94,7 +94,7 @@ if ($this->Session->read('Condo.Budget.Status') == 1) {
                         <tr>		<td><strong><?php echo __('Amount'); ?></strong></td>
                             <td>
                                 <?php echo h($note['Note']['amount']); ?>
-                                &nbsp;<?= Configure::read('currencySign'); ?>
+                                &nbsp;<?php echo  Configure::read('currencySign'); ?>
                             </td>
                         </tr><!--tr>		<td><strong><?php //echo __('Pending Amount'); ?></strong></td>
                             <td>

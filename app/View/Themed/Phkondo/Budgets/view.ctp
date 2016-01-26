@@ -79,12 +79,12 @@
                     </tr><tr>		<td><strong><?php echo __('Requested Amount'); ?></strong></td>
                         <td>
                             <?php echo h($budget['Budget']['requested_amount']); ?>
-                            &nbsp;<?= Configure::read('currencySign'); ?>
+                            &nbsp;<?php echo  Configure::read('currencySign'); ?>
                         </td>
                     </tr><tr>		<td><strong><?php echo __('Amount'); ?></strong></td>
                         <td>
                             <?php echo h($budget['Budget']['amount']); ?>
-                            &nbsp;<?= Configure::read('currencySign'); ?>
+                            &nbsp;<?php echo  Configure::read('currencySign'); ?>
                         </td>
                     </tr>
                     <tr>		<td><strong><?php echo __('Common Reserve Fund (%)'); ?></strong></td>

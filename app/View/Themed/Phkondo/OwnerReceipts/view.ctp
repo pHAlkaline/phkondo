@@ -70,7 +70,7 @@
                     <tr>		<td><strong><?php echo __('Total Amount'); ?></strong></td>
                         <td>
                             <?php echo h($receipt['Receipt']['total_amount']); ?>
-                            &nbsp;<?= Configure::read('currencySign'); ?>
+                            &nbsp;<?php echo  Configure::read('currencySign'); ?>
                         </td>
                     </tr><tr>		<td><strong><?php echo __('Address'); ?></strong></td>
                         <td>
@@ -176,7 +176,7 @@
                                             echo '-';
                                         }
                                         echo $note['amount'];
-                                        ?>&nbsp;<?= Configure::read('currencySign'); ?></td>
+                                        ?>&nbsp;<?php echo  Configure::read('currencySign'); ?></td>
 
                                     
 
@@ -188,7 +188,7 @@
                                 <td></td>
                                 <td></td>
                                 <td><?php echo __('Total amount'); ?></td>
-                                <td class="amount"><?php echo $receipt['Receipt']['total_amount']; ?>&nbsp;<?= Configure::read('currencySign'); ?></td>
+                                <td class="amount"><?php echo $receipt['Receipt']['total_amount']; ?>&nbsp;<?php echo  Configure::read('currencySign'); ?></td>
 
                                
                             </tr>
