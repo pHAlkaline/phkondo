@@ -41,13 +41,7 @@ class Insurance extends AppModel {
     'expire_out' => 'DATEDIFF(NOW(),expiration_date)'
 );
 
-    /**
-     * Use table
-     *
-     * @var mixed False or table name
-     */
-    public $useTable = 'insurance';
-
+    
     /**
      * Display field
      *

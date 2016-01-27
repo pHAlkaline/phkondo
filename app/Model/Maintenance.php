@@ -42,13 +42,6 @@ class Maintenance extends AppModel {
     );
 
     /**
-     * Use table
-     *
-     * @var mixed False or table name
-     */
-    public $useTable = 'maintenance';
-
-    /**
      * Display field
      *
      * @var string

@@ -305,13 +305,13 @@ CREATE TABLE `fractions` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `insurance`
+-- Table structure for table `insurances`
 --
 
 DROP TABLE IF EXISTS `insurance`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `insurance` (
+CREATE TABLE `insurances` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `condo_id` int(11) DEFAULT NULL,
   `fraction_id` int(11) DEFAULT NULL,
@@ -328,9 +328,9 @@ CREATE TABLE `insurance` (
   KEY `CONDO` (`condo_id`),
   KEY `FRACTION` (`fraction_id`),
   KEY `INSURANCETYPE` (`insurance_type_id`),
-  CONSTRAINT `insurance_ibfk_1` FOREIGN KEY (`condo_id`) REFERENCES `condos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `insurance_ibfk_2` FOREIGN KEY (`fraction_id`) REFERENCES `fractions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `insurance_ibfk_3` FOREIGN KEY (`insurance_type_id`) REFERENCES `insurance_types` (`id`) ON UPDATE CASCADE
+  CONSTRAINT `insurances_ibfk_1` FOREIGN KEY (`condo_id`) REFERENCES `condos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `insurances_ibfk_2` FOREIGN KEY (`fraction_id`) REFERENCES `fractions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `insurances_ibfk_3` FOREIGN KEY (`insurance_type_id`) REFERENCES `insurance_types` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -403,13 +403,13 @@ CREATE TABLE `invoice_conferences` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `maintenance`
+-- Table structure for table `maintenances`
 --
 
-DROP TABLE IF EXISTS `maintenance`;
+DROP TABLE IF EXISTS `maintenances`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `maintenance` (
+CREATE TABLE `maintenances` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `condo_id` int(11) NOT NULL,
   `title` varchar(50) NOT NULL,
@@ -427,8 +427,8 @@ CREATE TABLE `maintenance` (
   PRIMARY KEY (`id`),
   KEY `CONDO` (`condo_id`),
   KEY `SUPPLIER` (`supplier_id`),
-  CONSTRAINT `maintenance_ibfk_1` FOREIGN KEY (`condo_id`) REFERENCES `condos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `maintenance_ibfk_2` FOREIGN KEY (`supplier_id`) REFERENCES `entities` (`id`) ON UPDATE CASCADE
+  CONSTRAINT `maintenances_ibfk_1` FOREIGN KEY (`condo_id`) REFERENCES `condos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `maintenances_ibfk_2` FOREIGN KEY (`supplier_id`) REFERENCES `entities` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
