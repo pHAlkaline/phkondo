@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * pHKondo : pHKondo software for condominium property managers (http://phalkaline.eu)
@@ -25,9 +26,7 @@
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
-
 App::uses('AppController', 'Controller');
-
 
 /**
  * Attachments Controller
@@ -49,36 +48,36 @@ class AttachmentsController extends AppController {
      * @return void
      */
     public function index() {
-         $breadcrumbs = array(
+        $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID'))), 'text' => $this->Session->read('Condo.ViewName'), 'active' => ''),
-            array('link' => '', 'text' => __n('Attachment','Attachments',2), 'active' => 'active')
+            array('link' => '', 'text' => __n('Attachment', 'Attachments', 2), 'active' => 'active')
         );
-      
+
 
         $this->set(compact('breadcrumbs'));
-       $this->render('notfound'); 
+        $this->render('notfound');
     }
-    
-   /**
+
+    /**
      * fraction_attachments method
      *
      * @return void
      */
     public function fraction_attachments() {
-         $breadcrumbs = array(
+        $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID'))), 'text' => $this->Session->read('Condo.ViewName'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'fractions', 'action' => 'index')), 'text' => __n('Fraction','Fractions',2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'fractions', 'action' => 'index')), 'text' => __n('Fraction', 'Fractions', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'fractions', 'action' => 'view', $this->Session->read('Condo.Fraction.ViewID'))), 'text' => $this->Session->read('Condo.Fraction.ViewName'), 'active' => ''),
-            array('link' => '', 'text' => __n('Attachment','Attachments',2), 'active' => 'active')
+            array('link' => '', 'text' => __n('Attachment', 'Attachments', 2), 'active' => 'active')
         );
-      
+
 
         $this->set(compact('breadcrumbs'));
-       $this->render('notfound'); 
+        $this->render('notfound');
     }
 
     public function beforeFilter() {
@@ -90,7 +89,7 @@ class AttachmentsController extends AppController {
     }
 
     public function beforeRender() {
-       
+        
     }
 
 }
