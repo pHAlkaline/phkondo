@@ -49,12 +49,28 @@ class AccountsController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Paginator->settings = $this->paginate + array(
-            'conditions' => array('Account.condo_id' => $this->Session->read('Condo.ViewID'))
-        );
         $this->setFilter(array('Account.title', 'Account.bank', 'Account.balcony'));
-
-        $this->set('accounts', $this->paginate());
+        
+        $options['conditions'] = ['Account.condo_id' => $this->Session->read('Condo.ViewID')];
+        //$options['order'] = null;
+        
+        
+        if (isset($this->paginate['conditions'])) {
+            $options['conditions'] = array_merge($this->paginate['conditions'], $options['conditions']);
+        }
+        
+        /*if (isset($this->paginate['order'])) {
+            $options['order'] = array_merge($this->paginate['order'], $options['order']);
+        }*/
+        
+        $this->Paginator->settings = array(
+            'Account' => array(
+                'conditions' => $options['conditions'],
+                //'requiresAcessLevel' => true,
+                //'contain' => null
+                ));
+        
+        $this->set('accounts', $this->paginate('Accounts'));
         $this->Session->delete('Condo.Account');
     }
 
