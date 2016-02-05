@@ -36,8 +36,14 @@ define('WWW_ROOT', ROOT . DS . APP_DIR . DS . WEBROOT_DIR . DS);
  * outside of the distributed structure.
  * Full path to the directory containing "cake". Do not add trailing directory separator
  */
-if (!defined('CAKE_CORE_INCLUDE_PATH')) {
-	define('CAKE_CORE_INCLUDE_PATH', ROOT . DS . 'lib');
+/**
+ * This auto-detects CakePHP as a composer installed library.
+ * You may remove this if you are not planning to use composer (not recommended, though).
+ */
+$vendorPath = ROOT . DS . 'vendor' . DS . 'cakephp' . DS . 'cakephp' . DS .'lib';
+$dispatcher = 'Cake' . DS . 'Console' . DS . 'ShellDispatcher.php';
+if (!defined('CAKE_CORE_INCLUDE_PATH') && file_exists($vendorPath . DS . $dispatcher)) {
+	define('CAKE_CORE_INCLUDE_PATH', $vendorPath);
 }
 
 require APP_DIR . DS . WEBROOT_DIR . DS . 'index.php';
