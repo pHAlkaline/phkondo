@@ -6,6 +6,6 @@
         <p class="text-info"><?php echo __('Case you wish to have access to this plugin contact pHAlkaline.'); ?></p>
         <p class="text-info"><?php echo __('pHAlkaline provides services in customization & new features.'); ?></p>
 
-        <p><a class="btn  " href="http://phalkaline.eu" target="_blank" role="button"><?php echo __('phAlkaline'); ?></a></p>
+        <p><a class="btn  " href="http://phalkaline.eu" target="_blank" role="button"><?php echo __('http://phalkaline.eu'); ?></a></p>
     </div>
 </div>
