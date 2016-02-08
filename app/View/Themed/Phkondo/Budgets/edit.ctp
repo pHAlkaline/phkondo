@@ -32,7 +32,7 @@
                 <li ><?php echo $this->Html->link(__('List Budgets'), array('action' => 'index'), array('class' => 'btn ')); ?> </li>
                 <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('Create Notes'), array('controller' => 'budget_notes', 'action' => 'create'), array('class' => 'btn ' . $createNotesDisabled, 'escape' => false)); ?> </li>
                 <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Note','Notes',2), array('controller' => 'budget_notes', 'action' => 'index'), array('class' => 'btn ' . $hasNotesDisabled, 'escape' => false)); ?> </li>
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('Shares map'), array('action' => 'shares_map', $budget['Budget']['id']), array('class' => 'btn ', 'target' => '_blank', 'escape' => false)); ?> </li>
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('Settled Shares Map'), array('action' => 'shares_map', $budget['Budget']['id']), array('class' => 'btn ', 'target' => '_blank', 'escape' => false)); ?> </li>
             </ul><!-- /.list-group -->
 
         </div><!-- /.actions -->

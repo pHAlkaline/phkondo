@@ -1105,7 +1105,7 @@ msgstr ""
 msgid "Paid To"
 msgstr ""
 
-msgid "Paid shares map"
+msgid "Settled Shares Map"
 msgstr ""
 
 msgid "Password"
@@ -1256,7 +1256,7 @@ msgstr ""
 msgid "Shares"
 msgstr ""
 
-msgid "Shares map"
+msgid "Shares Map"
 msgstr ""
 
 msgid "SharesDebt"

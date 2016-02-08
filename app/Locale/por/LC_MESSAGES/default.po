@@ -1108,7 +1108,7 @@ msgstr "Pago"
 msgid "Paid To"
 msgstr "Recebido Por"
 
-msgid "Paid shares map"
+msgid "Settled Shares Map"
 msgstr "Mapa de quotas liquidadas"
 
 msgid "Password"
