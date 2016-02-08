@@ -1701,3 +1701,6 @@ msgstr "Escreva e Prima Enter para inserir comentário."
 
 msgid "Setup"
 msgstr "Configuração"
+
+msgid "This plugin is not included on this release."
+msgstr "Este plugin não está incluído nesta versão do pHKondo."
