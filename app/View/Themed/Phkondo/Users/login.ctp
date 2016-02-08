@@ -11,6 +11,9 @@
             'role' => 'form',
         ));
         ?>
+        <?php if (Configure::write('Application.mode') == 'demo') { ?>
+            <p>Username: demo , Password: demo</p>
+        <?php } ?>
         <div class="form-group has-feedback">
             <?php echo $this->Form->input('username', array('div' => null, 'class' => 'form-control', 'placeholder' => 'username', 'type' => 'username')); ?>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
