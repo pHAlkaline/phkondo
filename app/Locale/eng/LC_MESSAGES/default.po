@@ -1674,3 +1674,6 @@ msgstr ""
 
 msgid "uuid"
 msgstr ""
+
+msgid "This plugin is not included on this release."
+msgstr ""

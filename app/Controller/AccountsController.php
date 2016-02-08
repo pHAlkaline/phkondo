@@ -70,7 +70,7 @@ class AccountsController extends AppController {
                 //'contain' => null
                 ));
         
-        $this->set('accounts', $this->paginate('Accounts'));
+        $this->set('accounts', $this->paginate('Account'));
         $this->Session->delete('Condo.Account');
     }
 
