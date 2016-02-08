@@ -43,7 +43,7 @@ foreach ($role_options as $key => $value){
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-                    <?php echo $this->Form->input('username', array('class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('username', array('class' => 'form-control','maxLength' => '40')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
@@ -52,10 +52,10 @@ foreach ($role_options as $key => $value){
 
                 </div><!-- .form-group -->
                 <div class="form-group">
-                    <?php echo $this->Form->input('password', array('disabled' => 'disabled', 'class' => 'form-control', 'maxLength' => '8', 'type' => 'password')); ?>
+                    <?php echo $this->Form->input('password', array('disabled' => 'disabled', 'class' => 'form-control', 'maxLength' => '40', 'type' => 'password')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
-                    <?php echo $this->Form->input('verify_password', array('disabled' => 'disabled', 'class' => 'form-control', 'maxLength' => '8', 'type' => 'password')); ?>
+                    <?php echo $this->Form->input('verify_password', array('disabled' => 'disabled', 'class' => 'form-control', 'maxLength' => '40', 'type' => 'password')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
                     <?php echo $this->Form->input('role', array('options' => $role_options, 'class' => 'form-control')); ?>

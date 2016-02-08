@@ -54,24 +54,24 @@ class AppController extends Controller {
             $this->Auth->allow();
         }
         $this->rememberMe();
-        
+
     }
-    
-    private function rememberMe(){
+
+    private function rememberMe() {
         // set cookie options
         $this->Cookie->httpOnly = true;
 
         if (!$this->Auth->loggedIn() && $this->Cookie->read('rememberMe')) {
             $cookie = $this->Cookie->read('rememberMe');
-            $user=false;
-            if (isset($cookie['username']) && isset($cookie['password'])){
-            $this->loadModel('User'); // If the User model is not loaded already
-            $user = $this->User->find('first', array(
-                'conditions' => array(
-                    'User.username' => $cookie['username'],
-                    'User.password' => $cookie['password']
-                )
-            ));
+            $user = false;
+            if (isset($cookie['username']) && isset($cookie['password'])) {
+                $this->loadModel('User'); // If the User model is not loaded already
+                $user = $this->User->find('first', array(
+                    'conditions' => array(
+                        'User.username' => $cookie['username'],
+                        'User.password' => $cookie['password']
+                    )
+                ));
             }
 
             if ($user && !$this->Auth->login($user['User'])) {
@@ -125,7 +125,6 @@ class AppController extends Controller {
 
             $this->set('keyword', $keyword);
         }
-        
     }
 
 }
