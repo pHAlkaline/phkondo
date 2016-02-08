@@ -11,6 +11,9 @@
             'role' => 'form',
         ));
         ?>
+        <?php if (Configure::write('Application.mode') == 'demo') { ?>
+            <p>Username: demo , Password: demo</p>
+        <?php } ?>
         <div class="form-group has-feedback">
             <?php echo $this->Form->input('username', array('div' => null, 'class' => 'form-control', 'placeholder' => 'username', 'type' => 'username')); ?>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -24,12 +27,12 @@
             <?php echo $this->Form->input('language', array('div' => null, 'class' => 'form-control', 'placeholder' => 'language', 'options' => Configure::read('Language.list'))); ?>
             <span class="glyphicon glyphicon-flag form-control-feedback"></span>
         </div><!-- .form-group -->
-       
+
         <div class="row">
             <div class="col-xs-6">
                 <div class="checkbox icheck">
                     <label>
-                        <input type="checkbox" name="data[User][rememberMe]" id="UserRememberMe"><?php echo ' '.__('Remember Me'); ?>
+                        <input type="checkbox" name="data[User][rememberMe]" id="UserRememberMe"><?php echo ' ' . __('Remember Me'); ?>
                     </label>
                 </div>
             </div><!-- /.col -->
