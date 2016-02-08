@@ -773,8 +773,8 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(40) NOT NULL,
-  `username` varchar(8) DEFAULT NULL,
-  `password` varchar(50) DEFAULT NULL,
+  `username` varchar(40) DEFAULT NULL,
+  `password` varchar(40) DEFAULT NULL,
   `role` varchar(20) DEFAULT NULL,
   `active` tinyint(1) NOT NULL DEFAULT '1',
   `modified` datetime DEFAULT NULL,
