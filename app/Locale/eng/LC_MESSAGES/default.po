@@ -423,7 +423,7 @@ msgstr ""
 msgid "Document Date"
 msgstr ""
 
-msgid "Donate Here"
+msgid "Contribute Here"
 msgstr ""
 
 msgid "Draft"
