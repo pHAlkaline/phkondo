@@ -435,8 +435,8 @@ msgstr "Documentos"
 msgid "Document Date"
 msgstr "Data do Documento"
 
-msgid "Donate Here"
-msgstr "Faça uma contribuição, muito obrigado!"
+msgid "Contribute Here"
+msgstr "Contribue aqui, Obrigado!"
 
 msgid "Draft"
 msgid_plural "Drafts"
