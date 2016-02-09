@@ -1,6 +1,6 @@
 <ol class="breadcrumb hidden-print">
     
-    <?php if (count($breadcrumbs)) { ?>
+     <?php if (isset($breadcrumbs) && count($breadcrumbs)) { ?>
 
         <?php foreach ($breadcrumbs as $crumb): ?>
             <?php if ($crumb['active']) { ?>
