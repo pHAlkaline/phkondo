@@ -51,7 +51,7 @@ class AccountsController extends AppController {
     public function index() {
         $this->setFilter(array('Account.title', 'Account.bank', 'Account.balcony'));
         
-        $options['conditions'] = ['Account.condo_id' => $this->Session->read('Condo.ViewID')];
+        $options['conditions'] = array('Account.condo_id' => $this->Session->read('Condo.ViewID'));
         //$options['order'] = null;
         
         
