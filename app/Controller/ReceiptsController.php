@@ -43,7 +43,7 @@ class ReceiptsController extends AppController {
      * @var array
      */
     public $components = array('Paginator', 'RequestHandler');
-    
+
     /**
      * Uses
      *
@@ -162,13 +162,13 @@ class ReceiptsController extends AppController {
      */
     public function add_notes($id) {
 
-       if (!$this->Receipt->editable($id)) {
+        if (!$this->Receipt->editable($id)) {
             $this->Flash->error(__('Invalid receipt'));
             $this->redirect(array('action' => 'view', $id));
         }
 
         if ($this->request->is('post') && isset($this->request->data['Note'])) {
-           $this->Receipt->Note->updateAll(
+            $this->Receipt->Note->updateAll(
                     array(
                 'Note.receipt_id' => null,
                 'Note.pending_amount' => 0
@@ -187,17 +187,16 @@ class ReceiptsController extends AppController {
 
                     if ($noteOk == 0) {
                         $this->Flash->error(__('The notes could not be saved. Please, try again.'));
-                        $this->redirect(array('action' => 'edit', $id, '#'=>'AddNotes'));
+                        $this->redirect(array('action' => 'edit', $id, '#' => 'AddNotes'));
                         return;
                     }
                     $this->Receipt->Note->id = $key;
                     $this->Receipt->Note->saveField('receipt_id', $id, array('callbacks' => false));
                     $this->Receipt->Note->saveField('pending_amount', '0', array('callbacks' => false));
-                 
                 }
             }
             $this->_setReceiptAmount($id);
-            $this->redirect(array('action' => 'edit', $id, '#'=>'AddNotes'));
+            $this->redirect(array('action' => 'edit', $id, '#' => 'AddNotes'));
         }
         $this->Receipt->Note->contain(array('NoteType', 'Entity', 'Fraction'));
         $notes = $this->Receipt->Note->find('all', array('conditions' => array('Note.fraction_id' => $this->Session->read('Condo.Fraction.ViewID'), 'Note.entity_id' => $this->Receipt->field('client_id'), 'Note.note_status_id' => array(1, 2), 'Note.receipt_id' => '')));
@@ -352,7 +351,7 @@ class ReceiptsController extends AppController {
         $this->set(compact('notes', 'receiptAmount', 'receiptId', 'id'));
 
         $this->set(compact('condos', 'fractions', 'clients', 'receiptStatuses', 'receiptPaymentTypes'));
-        
+
         $this->Session->write('Condo.Receipt.ViewID', $id);
         $this->Session->write('Condo.Receipt.ViewName', $this->request->data['Receipt']['document']);
     }
