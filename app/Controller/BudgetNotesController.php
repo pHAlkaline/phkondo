@@ -104,7 +104,7 @@ class BudgetNotesController extends AppController {
     public function add() {
         if ($this->request->is('post')) {
             $this->Note->create();
-            $this->request->data['Note']['Document'] = 'null';
+            $this->request->data['Note']['document'] = 'null';
             $this->request->data['Note']['fiscal_year_id'] = $this->_getFiscalYear();
             if ($this->Note->save($this->request->data)) {
                 $this->_setDocument();
@@ -284,7 +284,7 @@ class BudgetNotesController extends AppController {
 
     private function _addNote() {
         $this->Note->create();
-        $this->request->data['Note']['Document'] = 'null';
+        $this->request->data['Note']['document'] = 'null';
         $this->request->data['Note']['fiscal_year_id'] = $this->_getFiscalYear();
         if ($this->Note->save($this->request->data)) {
             $this->_setDocument();
