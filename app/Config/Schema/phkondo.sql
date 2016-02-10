@@ -308,7 +308,7 @@ CREATE TABLE `fractions` (
 -- Table structure for table `insurances`
 --
 
-DROP TABLE IF EXISTS `insurance`;
+DROP TABLE IF EXISTS `insurances`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `insurances` (
@@ -561,7 +561,7 @@ DROP TABLE IF EXISTS `notes`;
 CREATE TABLE `notes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `note_type_id` int(11) NOT NULL,
-  `document` varchar(25) NOT NULL,
+  `document` varchar(25) DEFAULT NULL,
   `fraction_id` int(11) NOT NULL,
   `entity_id` int(11) DEFAULT NULL,
   `fiscal_year_id` int(11) DEFAULT NULL,
@@ -577,7 +577,6 @@ CREATE TABLE `notes` (
   `modified` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `DOCUMENT` (`document`),
   KEY `NOTETYPE` (`note_type_id`),
   KEY `FRACTION` (`fraction_id`),
   KEY `ENTITY` (`entity_id`),
@@ -624,7 +623,7 @@ DROP TABLE IF EXISTS `receipt_notes`;
 CREATE TABLE `receipt_notes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `note_type_id` int(11) NOT NULL,
-  `document` varchar(25) NOT NULL,
+  `document` varchar(25) DEFAULT NULL,
   `fraction_id` int(11) NOT NULL,
   `entity_id` int(11) DEFAULT NULL,
   `fiscal_year_id` int(11) DEFAULT NULL,
@@ -711,7 +710,6 @@ CREATE TABLE `receipts` (
   `modified` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `DOCUMENT` (`document`),
   KEY `CONDO` (`condo_id`),
   KEY `CLIENT` (`client_id`),
   KEY `RECEIPTSTATUS` (`receipt_status_id`),
