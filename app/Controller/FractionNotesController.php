@@ -105,6 +105,7 @@ class FractionNotesController extends AppController {
             $this->Note->create();
             $this->request->data['Note']['document'] = 'null';
             $this->request->data['Note']['fiscal_year_id'] = $this->_getFiscalYear();
+            $this->request->data['Note']['pending_amount'] = $this->request->data['Note']['amount'];
             if ($this->Note->save($this->request->data)) {
                 $this->_setDocument();
                 $this->Flash->success(__('The note has been saved'));
