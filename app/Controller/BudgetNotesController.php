@@ -57,8 +57,8 @@ class BudgetNotesController extends AppController {
      */
     public function index() {
         $this->setFilter(array('Note.document', 'Note.title', 'NoteType.name', 'Entity.name', 'Note.amount', 'NoteStatus.name'));
-        $options['conditions'] = ['Note.budget_id' => $this->Session->read('Condo.Budget.ViewID')];
-        $options['order'] = ['Note.id' => 'asc', 'Note.document_date' => 'asc', 'Note.document' => 'asc'];
+        $options['conditions'] = array('Note.budget_id' => $this->Session->read('Condo.Budget.ViewID'));
+        $options['order'] = array('Note.id' => 'asc', 'Note.document_date' => 'asc', 'Note.document' => 'asc');
         if (isset($this->paginate['conditions'])) {
             $options['conditions'] = array_merge($this->paginate['conditions'], $options['conditions']);
         }
