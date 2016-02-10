@@ -40,7 +40,7 @@ CakePlugin::load('DebugKit');
 Configure::write('Theme.name', 'phkondo');
 Configure::write('Theme.owner_name', 'pHKondo');
 Configure::write('Theme.owner_name_abbrv', 'PHK');
-Configure::write('Theme.owner_description', 'pHKondo Condominium Management');
+Configure::write('Theme.owner_description', 'Condominium Management');
 Configure::write('Theme.owner_title', 'Administração ao cuidado de XXXXXX');
 Configure::write('Theme.owner_address', 'Avenida XX de XXXXX NXX Loja A XXXX-XXX XXXXX , Telef: XXXXXXXXX / XXXXXXXXX');
 Configure::write('Theme.base_color', '#428bca');
