@@ -98,7 +98,6 @@ class OwnerNotesController extends AppController {
     public function add() {
         if ($this->request->is('post')) {
             $this->Note->create();
-            $this->request->data['Note']['document'] = 'null';
             $this->request->data['Note']['fiscal_year_id'] = $this->_getFiscalYear();
             $this->request->data['Note']['pending_amount'] = $this->request->data['Note']['amount'];
             $this->request->data['Note']['entity_id'] = $this->Session->read('Condo.Owner.ViewID');
