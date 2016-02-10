@@ -58,7 +58,7 @@ class FractionNotesController extends AppController {
     public function index() {
         $this->setFilter(array('Note.document','Note.title','NoteType.name','Entity.name','Note.amount', 'NoteStatus.name'));
         
-        $options['conditions'] = ['Note.fraction_id' => $this->Session->read('Condo.Fraction.ViewID')];
+        $options['conditions'] = array('Note.fraction_id' => $this->Session->read('Condo.Fraction.ViewID'));
         if (isset($this->paginate['conditions'])) {
             $options['conditions'] = array_merge($this->paginate['conditions'], $options['conditions']);
         }
