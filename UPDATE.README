@@ -2,5 +2,5 @@ WARNING:
 Always make a backup.
 Be very careful when updating app/Config directory files.
 Take very special attention to core.php , do not update salt and cipherSeed.
-When you have made small changes or your own version, pHAlkaline strongly suggest the use of a diff software, like winmerge , melddiff or similar.
-For personalized version your merge Tool to compare with previous versions ( code and sql ).
+Take very special attention to database schema.
+pHAlkaline strongly suggest the use of a diff software, like winmerge , melddiff or similar to see code and db schema changes.
