@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * pHKondo : pHKondo software for condominium property managers (http://phalkaline.eu)
@@ -25,7 +26,6 @@
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
-
 App::uses('AppController', 'Controller');
 
 /**
@@ -49,7 +49,7 @@ class BudgetsController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Budget->contain(array('BudgetType','BudgetStatus'));
+        $this->Budget->contain(array('BudgetType', 'BudgetStatus'));
         $this->Paginator->settings = $this->paginate + array(
             'conditions' => array('Budget.condo_id' => $this->Session->read('Condo.ViewID'))
         );
@@ -66,7 +66,7 @@ class BudgetsController extends AppController {
      * @return void
      */
     public function view($id = null) {
-        $this->Budget->contain(array('Note','BudgetStatus','FiscalYear','BudgetType','SharePeriodicity','ShareDistribution'));
+        $this->Budget->contain(array('Note', 'BudgetStatus', 'FiscalYear', 'BudgetType', 'SharePeriodicity', 'ShareDistribution'));
         if (!$this->Budget->exists($id)) {
             $this->Flash->error(__('Invalid budget'));
             $this->redirect(array('action' => 'index'));
@@ -143,7 +143,6 @@ class BudgetsController extends AppController {
         if ($this->request->data['Budget']['fiscal_year_id'] != $this->Session->read('Condo.FiscalYearID')) {
             $this->Flash->error(__('Invalid budget'));
             $this->redirect(array('action' => 'index'));
-            ;
         }
         $condos = $this->Budget->Condo->find('list', array('conditions' => array('id' => $this->Session->read('Condo.ViewID'))));
         $fiscalYears = $this->Budget->FiscalYear->find('list', array('conditions' => array('id' => $this->Session->read('Condo.FiscalYearID'))));
@@ -193,7 +192,7 @@ class BudgetsController extends AppController {
      *
      * @return void
      */
-    public function shares_map($id=null) {
+    public function shares_map($id = null) {
         if (!$this->Budget->exists($id)) {
             $this->Flash->error(__('Invalid budget'));
             $this->redirect(array('action' => 'index'));
@@ -216,17 +215,17 @@ class BudgetsController extends AppController {
     public function beforeRender() {
         $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID'))), 'text' => $this->Session->read('Condo.ViewName'), 'active' => ''),
-            array('link' => '', 'text' => __n('Budget','Budgets',2), 'active' => 'active')
+            array('link' => '', 'text' => __n('Budget', 'Budgets', 2), 'active' => 'active')
         );
         switch ($this->action) {
             case 'view':
-                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'budgets', 'action' => 'index')), 'text' => __n('Budget','Budgets',2), 'active' => '');
+                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'budgets', 'action' => 'index')), 'text' => __n('Budget', 'Budgets', 2), 'active' => '');
                 $breadcrumbs[4] = array('link' => '', 'text' => $this->Session->read('Condo.Budget.ViewName'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'budgets', 'action' => 'index')), 'text' => __n('Budget','Budgets',2), 'active' => '');
+                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'budgets', 'action' => 'index')), 'text' => __n('Budget', 'Budgets', 2), 'active' => '');
                 $breadcrumbs[4] = array('link' => '', 'text' => $this->Session->read('Condo.Budget.ViewName'), 'active' => 'active');
                 break;
         }
@@ -234,17 +233,26 @@ class BudgetsController extends AppController {
     }
 
     private function _setNotesStatus() {
-        //$modified = date('Y-m-d H:i:s');
-        if ($this->request->data['Budget']['budget_status_id'] == '3') {
-            $this->Budget->Note->updateAll(
-                    array('Note.note_status_id' => '4', 'Note.modified=NOW()'), array('Note.budget_id' => $this->Budget->id, 'Note.note_status_id' => '1')
-            );
+        $now = date(Configure::read('databaseDateFormat').' H:i:s');
+        $now = "'" . $now . "'";
+        switch ($this->request->data['Budget']['budget_status_id']) {
+            case '1':
+                $this->Budget->Note->updateAll(
+                        array('Note.note_status_id' => '1', 'Note.modified' => $now), array('Note.budget_id' => $this->Budget->id, 'Note.note_status_id' => '4')
+                );
+                break;
+            case '2':
+                $this->Budget->Note->updateAll(
+                        array('Note.note_status_id' => '1', 'Note.modified' => $now), array('Note.budget_id' => $this->Budget->id, 'Note.note_status_id' => '4')
+                );
+                break;
+            case '4':
+                $this->Budget->Note->updateAll(
+                        array('Note.note_status_id' => '4', 'Note.modified' => $now), array('Note.budget_id' => $this->Budget->id, 'Note.note_status_id' => '1')
+                );
+                break;
         }
-        if ($this->request->data['Budget']['budget_status_id'] == '1') {
-            $this->Budget->Note->updateAll(
-                    array('Note.note_status_id' => '1', 'Note.modified=NOW()'), array('Note.budget_id' => $this->Budget->id, 'Note.note_status_id' => '4')
-            );
-        }
+        
     }
 
 }
