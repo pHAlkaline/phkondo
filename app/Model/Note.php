@@ -398,7 +398,7 @@ class Note extends AppModel {
             );
             $total = $totalDebit[0]['total'] - $totalCredit[0]['total'];
             $this->Receipt->id = $id;
-            $this->Receipt->saveField('total_amount', $total);
+            $this->Receipt->saveField('total_amount', $total, false);
         }
     }
 
