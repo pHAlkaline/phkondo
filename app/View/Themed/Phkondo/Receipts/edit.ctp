@@ -69,7 +69,7 @@
                     <div class="index">
                         <?php echo $this->Form->create('Note', array('url' => array('controller' => 'receipts', 'action' => 'add_notes', $this->Form->value('Receipt.id')))); ?>
                         <?php echo $this->Form->hidden('Receipt.amount', array('value' => $receiptAmount)); ?>
-                        <?php echo $this->Form->hidden('Fraction.id', array('value' => $notes[0]['Note']['fraction_id'])); ?>
+                        <?php echo $this->Form->hidden('Fraction.id', array('value' => $this->Form->value('Receipt.fraction_id'))); ?>
                         <h2 class="col-sm-9"><?php echo __n('Receipt', 'Receipts', 1) . ' ' . $receiptId; ?></h2>
                         <div class="actions col-sm-3">
                             <h3 style="float:right;"><?php echo __('Total amount'); ?><span id="addNotesTotalAmount"></span></h3>

@@ -68,7 +68,8 @@
                 <div id="page-content" class="col-sm-12">
 
                     <div class="index">
-                        <?php echo $this->Form->create('Note', array('url' => array('controller' => 'owner_receipts', 'action' => 'add_notes', $this->Form->value('Receipt.id')))); ?>
+                        <?php echo $this->Form->create('Note', array(
+                            'url' => array('controller' => 'owner_receipts', 'action' => 'add_notes', $this->Form->value('Receipt.id')))); ?>
                         <?php echo $this->Form->hidden('Receipt.amount', array('value' => $receiptAmount)); ?>
                         <h2 class="col-sm-9"><?php echo __n('Receipt', 'Receipts', 1) . ' ' . $receiptId; ?></h2>
                         <div class="actions col-sm-3">
@@ -79,7 +80,8 @@
                         <h2 class="col-sm-9"><?php echo __('Pick Notes'); ?></h2>
                         <div class="actions col-sm-3">
                             <?php if (count($notes)): ?>
-                                <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 0; float: right;')); ?>            
+                                <?php echo $this->Form->submit(__('Submit'), array(
+                                    'class' => 'btn btn-primary', 'style' => 'margin: 14px 0; float: right;')); ?>            
                             <?php endif; ?>
 
                         </div><!-- /.actions -->
