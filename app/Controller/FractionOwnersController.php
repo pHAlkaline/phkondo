@@ -87,6 +87,7 @@ class FractionOwnersController extends AppController {
          $this->Fraction->Entity->contain(array(
                 'Comment'));
         $entity = $this->Fraction->Entity->find('first', $options);
+
         $this->set(compact('entity', 'entitiesFraction'));
         $this->Session->write('Condo.Owner.ViewID', $id);
         $this->Session->write('Condo.Owner.ViewName', $entity['Entity']['name']);
