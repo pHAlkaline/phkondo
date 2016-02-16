@@ -233,8 +233,8 @@ class BudgetsController extends AppController {
     }
 
     private function _setNotesStatus() {
-        $now = date(Configure::read('databaseDateFormat').' H:i:s');
-        $now = "'" . $now . "'";
+        $db = $this->Budget->getDataSource();
+        $now = $db->value(date(Configure::read('databaseDateFormat') . ' H:i:s'), 'string');
         switch ($this->request->data['Budget']['budget_status_id']) {
             case '1':
                 $this->Budget->Note->updateAll(
@@ -252,7 +252,6 @@ class BudgetsController extends AppController {
                 );
                 break;
         }
-        
     }
 
 }
