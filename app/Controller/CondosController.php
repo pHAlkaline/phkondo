@@ -167,7 +167,7 @@ class CondosController extends AppController {
         if (!$this->request->is('post')) {
             throw new MethodNotAllowedException();
         }
-        if (in_array(AuthComponent::user('role'), array('admin','store_admin'))){
+        if (!in_array(AuthComponent::user('role'), array('admin','store_admin'))){
             throw new MethodNotAllowedException();
         }
                 
