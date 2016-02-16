@@ -45,7 +45,10 @@
                 </div><!-- .form-group -->
                 <div class="form-group">
                     <?php echo $this->Form->input('observations', array('class' => 'form-control')); ?>
-                </div><!-- .form-group -->                
+                </div><!-- .form-group --> 
+                <div class="form-group">
+                    <?php echo $this->Form->input('document_date', array('type' => 'text', 'class' => 'form-control datefield')); ?>
+                </div><!-- .form-group -->
                 <div class="form-group">
                     <?php echo $this->Form->input('receipt_status_id', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
@@ -54,7 +57,11 @@
                 </div><!-- .form-group -->
 
             </fieldset>
-            <div class="form-group">                 <div class="col-sm-offset-2 col-sm-6">                     <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-large btn-primary pull-right')); ?>                 </div>             </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-6">
+                    <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-large btn-primary pull-right')); ?>
+                </div>
+            </div>
             <?php echo $this->Form->end(); ?>
 
         </div><!-- /.form -->
