@@ -124,7 +124,7 @@ $administrators = implode(", ", $administrators);
                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-down"></span> ', '#AlertsIndex', array('title' => __('View %s', __('Alerts')), 'id' => 'viewAlertsBtn', 'class' => ' ', 'escape' => false)); ?>
                 </div>
             </div>
-            <div class="panel-body collapse" id="AlertsIndex">
+            <div class="panel-body collapse in" id="AlertsIndex">
 
                 <?php
                 $viewGlyphiconState = array();
