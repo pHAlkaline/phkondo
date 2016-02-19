@@ -1,0 +1,36 @@
+# LANGUAGE translation of pHkondo Application
+# Copyright pHAlkaline <contact@phalkaline.eu>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pHKondo V1.1\n"
+"POT-Creation-Date: 2015-03-01 22:26+0000\n"
+"PO-Revision-Date: 2015-04-08 17:43+0100\n"
+"Last-Translator: pHAlkaline <contact@phalkaline.eu>\n"
+"Language-Team: English <contact@phalkaline.eu>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.4\n"
+"Language: pt\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+msgid "Failed, record was not deleted."
+msgstr "Não foi possível remover."
+
+msgid "Record deleted."
+msgstr "Registo removido."
+
+msgid "Invalid request."
+msgstr "Pedido inválido."
+
+msgid "You cannot vote more than once!"
+msgstr "Não pode votar mais de uma vez!"
+
+msgid "There was an error while saving your vote."
+msgstr "Não foi possível registar o seu voto."
+
+msgid "Thanks for voting!"
+msgstr "Obrigado pelo seu voto!"
