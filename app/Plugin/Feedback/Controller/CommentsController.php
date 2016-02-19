@@ -91,13 +91,13 @@ class CommentsController extends FeedbackAppController {
         }
         $this->Comment->id = $id;
         if (!$this->Comment->exists()) {
-            throw new NotFoundException(__('Invalid request.'));
+            throw new NotFoundException(__d('feedback','Invalid request.'));
         }
         if ($this->Comment->delete()) {
-            $this->Flash->success(__('Success, record deleted.'));
+            $this->Flash->success(__d('feedback','Record deleted.'));
             $this->redirect($redirect );
         }
-        $this->Flash->error(__('Failed, record was not deleted.'));
+        $this->Flash->error(__d('feedback','Failed, record was not deleted.'));
 
         $this->redirect($redirect);
     }

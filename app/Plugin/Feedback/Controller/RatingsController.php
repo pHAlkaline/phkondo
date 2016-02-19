@@ -71,7 +71,7 @@ class RatingsController extends FeedbackAppController
 			$output = array
 				(
 					'success' => false,
-					'message' => __('You cannot vote more than once!'),
+					'message' => __d('feedback','You cannot vote more than once!'),
 					'data' => array(),
 				);
 
@@ -100,7 +100,7 @@ class RatingsController extends FeedbackAppController
 			$output = array
 				(
 					'success' => false,
-					'message' => __('There was an error while saving your vote'),
+					'message' => __d('feedback','There was an error while saving your vote.'),
 					'data' => array(),
 				);
 			$this->set('output', $output);
@@ -115,7 +115,7 @@ class RatingsController extends FeedbackAppController
 		$output = array
 			(
 				'success' => true,
-				'message' => __('Thanks for voting!'),
+				'message' => __d('feedback','Thanks for voting!'),
 				'data' => $updated['RatingSummary'],
 			);
 		$this->set('output', $output);
