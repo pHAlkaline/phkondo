@@ -68,7 +68,7 @@ UNLOCK tables;
 
 LOCK tables `invoice_conference_statuses` WRITE;
 /*!40000 ALTER TABLE `invoice_conference_statuses` DISABLE KEYS */;
-INSERT INTO `invoice_conference_statuses` ( `id`, `name`, `active`, `modified`, `created`) VALUES (1, 'Receipt',1,NOW() ,NOW());
+INSERT INTO `invoice_conference_statuses` ( `id`, `name`, `active`, `modified`, `created`) VALUES (1, 'Reception',1,NOW() ,NOW());
 INSERT INTO `invoice_conference_statuses` ( `id`, `name`, `active`, `modified`, `created`) VALUES (2, 'Conference',1,NOW() ,NOW());
 INSERT INTO `invoice_conference_statuses` ( `id`, `name`, `active`, `modified`, `created`) VALUES (3, 'Approval',1,NOW() ,NOW());
 INSERT INTO `invoice_conference_statuses` ( `id`, `name`, `active`, `modified`, `created`) VALUES (4, 'Payment',1,NOW() ,NOW());
