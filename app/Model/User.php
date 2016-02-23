@@ -135,12 +135,12 @@ class User extends AppModel {
         
         // crypt and truncate password
         if (isset($this->data[$this->alias]['password'])) {
-            $password=Security::hash(substr($this->data[$this->alias]['password'],0,8), null, true);
+            $password=Security::hash(substr($this->data[$this->alias]['password'],0,32), null, true);
             $this->data[$this->alias]['password'] = $password;
         }
         // truncate username
         if (isset($this->data[$this->alias]['username'])) {
-            $this->data[$this->alias]['username'] = substr($this->data[$this->alias]['username'],0,8);
+            $this->data[$this->alias]['username'] = substr($this->data[$this->alias]['username'],0,32);
         }
         return true;
     }

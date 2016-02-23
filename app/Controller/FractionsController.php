@@ -63,7 +63,6 @@ class FractionsController extends AppController {
             $this->Session->write('Condo.'.$this->Session->read('Condo.ViewName').'.Fraction.milrate','show');
             $milRateWarning=true;
         }
-            
         $this->set(compact('fractions', 'milRateWarning'));
         
         $this->Session->delete('Condo.Fraction');
@@ -99,6 +98,7 @@ class FractionsController extends AppController {
             $this->Fraction->create();
             if ($this->Fraction->save($this->request->data)) {
                 $this->Flash->success(__('The fraction has been saved'));
+                $this->Session->delete('Condo.'.$this->Session->read('Condo.ViewName').'.Fraction.milrate');
                 $this->redirect(array('action' => 'view', $this->Fraction->id));
             } else {
                 $this->Flash->error(__('The fraction could not be saved. Please, try again.'));
@@ -123,6 +123,7 @@ class FractionsController extends AppController {
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Fraction->save($this->request->data)) {
                 $this->Flash->success(__('The fraction has been saved'));
+                $this->Session->delete('Condo.'.$this->Session->read('Condo.ViewName').'.Fraction.milrate');
                 $this->redirect(array('action' => 'view', $id));
             } else {
                 $this->Flash->error(__('The fraction could not be saved. Please, try again.'));
