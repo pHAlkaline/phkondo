@@ -1067,7 +1067,7 @@ msgstr ""
 msgid "Origin Date"
 msgstr ""
 
-msgid "Other"
+msgid "Others"
 msgstr ""
 
 msgid "Other Income From Bank Accounts"
@@ -1676,4 +1676,52 @@ msgid "uuid"
 msgstr ""
 
 msgid "This plugin is not included on this release."
+msgstr ""
+
+msgid "Matrix Registration"
+msgstr ""
+
+msgid "Land Registry"
+msgstr ""
+
+msgid "Land Registry Year"
+msgstr ""
+
+msgid "List Fraction Types"
+msgstr ""
+
+msgid "Add Fraction Type"
+msgstr ""
+
+msgid "Delete Fraction Type"
+msgstr ""
+
+msgid "Edit Fraction Type"
+msgstr ""
+
+msgid "Invalid movement category"
+msgstr ""
+
+msgid "Fraction Type"
+msgstr ""
+
+msgid "Fraction Types"
+msgstr ""
+
+msgid "Fraction Type deleted"
+msgstr ""
+
+msgid "New Fraction Type"
+msgstr ""
+
+msgid "The fraction type could not be saved. Please, try again."
+msgstr ""
+
+msgid "The fraction type has been saved"
+msgstr ""
+
+msgid "The owner has been saved and related"
+msgstr ""
+
+msgid "The owner has been saved but could not be related. Please, try again."
 msgstr ""

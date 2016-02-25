@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * pHKondo : pHKondo software for condominium property managers (http://phalkaline.eu)
@@ -70,7 +71,7 @@ class FiscalYearsController extends AppController {
             $this->redirect(array('action' => 'index'));
         }
         $options = array('conditions' => array('FiscalYear.' . $this->FiscalYear->primaryKey => $id));
-        $fiscalYear= $this->FiscalYear->find('first', $options);
+        $fiscalYear = $this->FiscalYear->find('first', $options);
         $this->set('fiscalYear', $fiscalYear);
         $this->Session->write('Condo.FiscalYear.ViewID', $id);
         $this->Session->write('Condo.FiscalYear.ViewName', $fiscalYear['FiscalYear']['title']);
@@ -85,11 +86,11 @@ class FiscalYearsController extends AppController {
         if ($this->request->is('post')) {
             $this->FiscalYear->create();
             if ($this->FiscalYear->save($this->request->data)) {
-                if ($this->request->data['FiscalYear']['active']=='1'){
+                if ($this->request->data['FiscalYear']['active'] == '1') {
                     $this->_setAccountBalanceByFiscalYear($this->FiscalYear->id);
                 }
                 $this->Flash->success(__('The fiscal year has been saved'));
-                $this->redirect(array('action' => 'view',$this->FiscalYear->id));
+                $this->redirect(array('action' => 'view', $this->FiscalYear->id));
             } else {
                 $this->Flash->error(__('The fiscal year could not be saved. Please, try again.'));
             }
@@ -112,11 +113,11 @@ class FiscalYearsController extends AppController {
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->FiscalYear->save($this->request->data)) {
-                if ($this->request->data['FiscalYear']['active']=='1'){
+                if ($this->request->data['FiscalYear']['active'] == '1') {
                     $this->_setAccountBalanceByFiscalYear($this->request->data['FiscalYear']['id']);
                 }
                 $this->Flash->success(__('The fiscal year has been saved'));
-                $this->redirect(array('action' => 'view',$this->FiscalYear->id));
+                $this->redirect(array('action' => 'view', $this->FiscalYear->id));
             } else {
                 $this->Flash->error(__('The fiscal year could not be saved. Please, try again.'));
             }
@@ -129,7 +130,7 @@ class FiscalYearsController extends AppController {
         $this->Session->write('Condo.FiscalYear.ViewID', $id);
         $this->Session->write('Condo.FiscalYear.ViewName', $this->request->data['FiscalYear']['title']);
     }
-    
+
     /**
      * active method
      *
@@ -149,6 +150,7 @@ class FiscalYearsController extends AppController {
         }
         if ($this->FiscalYear->active()) {
             $this->_setAccountBalanceByFiscalYear($id);
+            $this->Session->write('Condo.FiscalYearID', $id);
             $this->Flash->success(__('Fiscal Year active'));
             $this->redirect(array('action' => 'index'));
         }
@@ -168,13 +170,13 @@ class FiscalYearsController extends AppController {
         if (!$this->request->is('post')) {
             throw new MethodNotAllowedException();
         }
-        
+
         $this->FiscalYear->id = $id;
         if (!$this->FiscalYear->exists()) {
             $this->Flash->error(__('Invalid fiscal year'));
             $this->redirect(array('action' => 'index'));
         }
-        
+
         if (!$this->FiscalYear->deletable()) {
             $this->Flash->error(__('This Fiscal Year can not be deleted, check existing notes already paid.'));
             $this->redirect(array('action' => 'view', $id));
@@ -185,17 +187,17 @@ class FiscalYearsController extends AppController {
             $this->redirect(array('action' => 'index'));
         }
         $this->Flash->error(__('Fiscal Year can not be deleted'));
-        $this->redirect(array('action' => 'view',$id));
+        $this->redirect(array('action' => 'view', $id));
     }
-    
-    private function _setAccountBalanceByFiscalYear($id=null){
-        $this->FiscalYear->id=$id;
+
+    private function _setAccountBalanceByFiscalYear($id = null) {
+        $this->FiscalYear->id = $id;
         $condo_id = $this->FiscalYear->field('condo_id');
         //$this->FiscalYear->Condo->recursive=1;
         $this->FiscalYear->Condo->contain('Account');
-        $accounts=$this->FiscalYear->Condo->find('first',array('conditions'=>array('Condo.id'=>$condo_id)));
-        foreach ($accounts['Account'] as $account){
-            $this->FiscalYear->Condo->Account->setAccountBalanceByFiscalYear($account['id'],$id);
+        $accounts = $this->FiscalYear->Condo->find('first', array('conditions' => array('Condo.id' => $condo_id)));
+        foreach ($accounts['Account'] as $account) {
+            $this->FiscalYear->Condo->Account->setAccountBalanceByFiscalYear($account['id'], $id);
         }
         //exit();
         
@@ -206,25 +208,25 @@ class FiscalYearsController extends AppController {
         parent::beforeFilter();
         if (!$this->Session->check('Condo.ViewID')) {
             $this->Flash->error(__('Invalid condo or fiscal year'));
-            $this->redirect(array('controller'=>'condos','action' => 'view',$this->Session->read('Condo.ViewID')));
+            $this->redirect(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID')));
         }
     }
-    
+
     public function beforeRender() {
         $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID'))), 'text' => $this->Session->read('Condo.ViewName'), 'active' => ''),
-            array('link' => '', 'text' => __n('Fiscal Year','Fiscal Years',2), 'active' => 'active')
+            array('link' => '', 'text' => __n('Fiscal Year', 'Fiscal Years', 2), 'active' => 'active')
         );
-        
+
         switch ($this->action) {
             case 'view':
-                 $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'fiscal_years', 'action' => 'index')), 'text' => __n('Fiscal Year','Fiscal Years',2), 'active' => '');
+                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'fiscal_years', 'action' => 'index')), 'text' => __n('Fiscal Year', 'Fiscal Years', 2), 'active' => '');
                 $breadcrumbs[4] = array('link' => '', 'text' => $this->Session->read('Condo.FiscalYear.ViewName'), 'active' => 'active');
                 break;
             case 'edit':
-                  $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'fiscal_years', 'action' => 'index')), 'text' => __n('Fiscal Year','Fiscal Years',2), 'active' => '');
+                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'fiscal_years', 'action' => 'index')), 'text' => __n('Fiscal Year', 'Fiscal Years', 2), 'active' => '');
                 $breadcrumbs[4] = array('link' => '', 'text' => $this->Session->read('Condo.FiscalYear.ViewName'), 'active' => 'active');
                 break;
         }

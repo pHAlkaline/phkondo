@@ -14,7 +14,7 @@
                 ?>
                 <div class="alert alert-warning alert-dismissible" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    <?php echo  __('Warning: Mil rate sum should be 1000'); ?></div>
+                    <?php echo __('Warning: Mil rate sum should be 1000'); ?></div>
 
             <?php endif; ?>
             <div class="table-responsive">
@@ -26,7 +26,9 @@
                             <th><?php echo $this->Paginator->sort('description'); ?></th>
                             <th><?php echo $this->Paginator->sort('mil_rate'); ?></th>
                             <th><?php echo $this->Paginator->sort('Manager.name', __n('Manager', 'Managers', 1)); ?></th>
-                            <th class="actions hidden-print"><?php //echo __('Actions');     ?></th>
+                            <th><?php echo $this->Paginator->sort('FractionType.name', __('Fraction Type')); ?></th>
+
+                            <th class="actions hidden-print"><?php //echo __('Actions');      ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,6 +53,7 @@
                                     }
                                     ?>
                                 </td>
+                                <td><?php echo h($fraction['FractionType']['name']); ?>&nbsp;</td>
                                 <td class="actions hidden-print">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $fraction['Fraction']['id']), array('title' => __('Details'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $fraction['Fraction']['id']), array('title' => __('Edit'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>

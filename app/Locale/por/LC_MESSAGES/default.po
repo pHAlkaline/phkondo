@@ -1070,7 +1070,7 @@ msgstr "Opções"
 msgid "Origin Date"
 msgstr "Data de Origem"
 
-msgid "Other"
+msgid "Others"
 msgstr "Outros"
 
 msgid "Other Income From Bank Accounts"
@@ -1704,3 +1704,84 @@ msgstr "Configuração"
 
 msgid "This plugin is not included on this release."
 msgstr "Este plugin não está incluído nesta versão do pHKondo."
+
+msgid "Matrix Registration"
+msgstr "Registo Matricial"
+
+msgid "Land Registry"
+msgstr "Registo Predial"
+
+msgid "Land Registry Year"
+msgstr "Ano de Registo Predial"
+
+msgid "List Fraction Types"
+msgstr "Listar Tipos de Fração"
+
+msgid "Add Fraction Type"
+msgstr "Criar Tipo de Fração"
+
+msgid "Delete Fraction Type"
+msgstr "Apagar Tipo de Fração"
+
+msgid "Edit Fraction Type"
+msgstr "Editar Tipo de Fração"
+
+msgid "Invalid Fraction Type"
+msgstr "Tipo de Fração inválida"
+
+msgid "Fraction Type"
+msgstr "Tipo de Fração"
+
+msgid "Fraction Types"
+msgstr "Tipos de Fração"
+
+msgid "Fraction Type deleted"
+msgstr "Tipo de Fração apagada"
+
+msgid "New Fraction Type"
+msgstr "Criar Tipo de Fração"
+
+msgid "The fraction type could not be saved. Please, try again."
+msgstr "O tipo de fração não foi registado. Por favor, tente outra vez."
+
+msgid "The fraction type has been saved"
+msgstr "O tipo de fração foi registado"
+
+msgid "The owner has been saved and related"
+msgstr "O proprietário foi criado e relacionado."
+
+msgid "The owner has been saved but could not be related. Please, try again."
+msgstr "O proprietário foi criado mas não foi possível relacionar."
+
+msgid "List Insurance Types"
+msgstr "Listar Tipos de Seguro"
+
+msgid "Add Insurance Type"
+msgstr "Criar Tipo de Seguro"
+
+msgid "Delete Insurance Type"
+msgstr "Apagar Tipo de Seguro"
+
+msgid "Edit Insurance Type"
+msgstr "Editar Tipo de Seguro"
+
+msgid "Invalid Insurance Type"
+msgstr "Tipo de Seguro inválido"
+
+msgid "Insurance Type"
+msgstr "Tipo de Seguro"
+
+msgid "Insurance Types"
+msgstr "Tipos de Seguro"
+
+msgid "Insurance Type deleted"
+msgstr "Tipo de Seguro apagado"
+
+msgid "New Insurance Type"
+msgstr "Criar Tipo de Seguro"
+
+msgid "The insurance type could not be saved. Please, try again."
+msgstr "O tipo de fração não foi registado. Por favor, tente outra vez."
+
+msgid "The insurance type has been saved"
+msgstr "O tipo de fração foi registado"

@@ -17,10 +17,10 @@
                 <li ><?php echo $this->Html->link(__('New Fraction'), array('action' => 'add'), array('class' => 'btn ')); ?> </li>
                 <li ><?php echo $this->Html->link(__('List Fractions'), array('action' => 'index'), array('class' => 'btn ')); ?> </li>
                 <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Owner', 'Owners', 2), array('controller' => 'fraction_owners', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Note','Notes',2), array('controller' => 'fraction_notes', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Note', 'Notes', 2), array('controller' => 'fraction_notes', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
                 <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Insurance', 'Insurances', 2), array('controller' => 'fraction_insurances', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Attachment','Attachments',2), array('plugin'=>'attachments','controller' => 'fraction_attachments', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
-                
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Attachment', 'Attachments', 2), array('plugin' => 'attachments', 'controller' => 'fraction_attachments', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
+
             </ul><!-- /.list-group -->
 
         </div><!-- /.actions -->
@@ -47,12 +47,20 @@
                             ?>
                             &nbsp;
                         </td>
-                    </tr><tr>		<td><strong><?php echo __n('Fraction', 'Fractions', 1); ?></strong></td>
+                    </tr>
+                    <tr>		<td><strong><?php echo __n('Fraction', 'Fractions', 1); ?></strong></td>
                         <td>
                             <?php echo h($fraction['Fraction']['fraction']); ?>
                             &nbsp;
                         </td>
-                    </tr><tr>		<td><strong><?php echo __('Floor Location'); ?></strong></td>
+                    </tr>
+                    <tr>		<td><strong><?php echo __n('Fraction Type', 'Fraction Types', 1); ?></strong></td>
+                        <td>
+                            <?php echo h($fraction['FractionType']['name']); ?>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr><td><strong><?php echo __('Floor Location'); ?></strong></td>
                         <td>
                             <?php echo h($fraction['Fraction']['floor_location']); ?>
                             &nbsp;
@@ -67,19 +75,19 @@
                             <?php echo h($fraction['Fraction']['mil_rate']); ?>
                             &nbsp;
                         </td>
-                   
+
                     <tr>		<td><strong><?php echo __('Modified'); ?></strong></td>
                         <td>
-                            <?php echo h( $fraction['Fraction']['modified']); ?>
+                            <?php echo h($fraction['Fraction']['modified']); ?>
                             &nbsp;
                         </td>
                     </tr><tr>		<td><strong><?php echo __('Created'); ?></strong></td>
                         <td>
-                            <?php echo h( $fraction['Fraction']['created']); ?>
+                            <?php echo h($fraction['Fraction']['created']); ?>
                             &nbsp;
                         </td>
                     </tr>
-                   
+
                 </tbody>
             </table><!-- /.table table-hover table-condensed -->
 
@@ -89,7 +97,7 @@
             <?php echo $this->Html->link('<span class="glyphicon glyphicon-comment"></span> ', '#', array('title' => __('View %s', __('Comments')), 'id' => 'viewCommentsBtn', 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
         </div>
         <div class="clearfix comments hide">
-        <?php echo $this->Comments->display_for($fraction); ?>
+            <?php echo $this->Comments->display_for($fraction); ?>
         </div>
 
     </div><!-- /#page-content .span9 -->

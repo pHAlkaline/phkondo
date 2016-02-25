@@ -103,3 +103,9 @@ msgstr "Data inválida."
 
 msgid "uuid"
 msgstr "Identificador único."
+
+msgid "Minimum 8 characters long"
+msgstr "Minimo de 8 caracteres."
+
+msgid "Must contain one upper, one lower, 1 digit or special character"
+msgstr "Deve conter pelo menos uma maiuscula , uma minuscula, um digito ou caracter especial."

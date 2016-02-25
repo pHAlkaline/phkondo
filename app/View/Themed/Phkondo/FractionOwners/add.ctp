@@ -18,7 +18,7 @@
 
         <div class="entities form">
 
-            <?php echo $this->Form->create('Entity', array('class' => 'form-horizontal',                 'role' => 'form',                 'inputDefaults' => array(                     'class' => 'form-control',                     'label' => array('class' => 'col-sm-2 control-label'),                     'between' => '<div class="col-sm-6">',                     'after' => '</div>',                     ))); ?>
+            <?php echo $this->Form->create('Entity', array('class' => 'form-horizontal', 'role' => 'form', 'inputDefaults' => array('class' => 'form-control', 'label' => array('class' => 'col-sm-2 control-label'), 'between' => '<div class="col-sm-6">', 'after' => '</div>',))); ?>
             <fieldset>
                 <h2><?php echo __('New Owner'); ?></h2>
                 <div class="form-group">
@@ -26,6 +26,9 @@
                 </div><!-- .form-group -->
                 <div class="form-group">
                     <?php echo $this->Form->input('vat_number', array('class' => 'form-control')); ?>
+                </div><!-- .form-group -->
+                <div class="form-group">
+                    <?php echo $this->Form->input('EntitiesFraction.owner_percentage', array('class' => 'form-control', 'min' => '0.00', 'max' => '100.00')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
                     <?php echo $this->Form->input('representative', array('class' => 'form-control')); ?>

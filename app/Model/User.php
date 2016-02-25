@@ -102,6 +102,18 @@ class User extends AppModel {
             //'last' => false, // Stop validation after this rule
             //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
+            'minimum' => array(
+                'rule' => array('minLength', '8'),
+                'message' => 'Minimum 8 characters long',
+            ),
+            'strong' => array(
+                'rule' => '/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/i',
+                'message' => 'Must contain one upper, one lower, 1 digit or special character',
+            //'allowEmpty' => false,
+            //'required' => false,
+            //'last' => false, // Stop validation after this rule
+            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+            ),
         ),
         'verify_password' => array(
             'matchPasswords' => array(

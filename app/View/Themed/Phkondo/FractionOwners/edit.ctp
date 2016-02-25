@@ -18,7 +18,7 @@
 
     <div id="page-content" class="col-sm-9">
 
-        <div class="entities form">
+        <div class="fraction-type form">
 
             <?php echo $this->Form->create('Entity', array('class' => 'form-horizontal',                 'role' => 'form',                 'inputDefaults' => array(                     'class' => 'form-control',                     'label' => array('class' => 'col-sm-2 control-label'),                     'between' => '<div class="col-sm-6">',                     'after' => '</div>',                     ))); ?>
             <fieldset>

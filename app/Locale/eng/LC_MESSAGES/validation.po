@@ -100,3 +100,10 @@ msgstr ""
 
 msgid "uuid"
 msgstr ""
+
+msgid "Minimum 8 characters long"
+msgstr ""
+
+msgid "Must contain one upper, one lower, 1 digit or special character"
+msgstr ""
+
