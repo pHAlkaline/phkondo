@@ -42,7 +42,7 @@ class FractionOwnersController extends AppController {
      *
      * @var array
      */
-    public $components = array('Paginator', 'RequestHandler','Feedback.Comments' => array('on' => array('view')));
+    public $components = array('Paginator', 'RequestHandler', 'Feedback.Comments' => array('on' => array('view')));
 
     /**
      * Uses
@@ -57,7 +57,7 @@ class FractionOwnersController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Fraction->contain('Entity');
+        $this->Fraction->contain('Entity', 'Manager');
         $fraction = $this->Fraction->find('first', array('conditions' => array('Fraction.id' => $this->Session->read('Condo.Fraction.ViewID'))));
         $this->set(compact('fraction'));
         $this->Session->delete('Condo.Owner');
@@ -84,8 +84,8 @@ class FractionOwnersController extends AppController {
         $options = array('conditions' => array(
                 'Entity.id' => $id,
         ));
-         $this->Fraction->Entity->contain(array(
-                'Comment'));
+        $this->Fraction->Entity->contain(array(
+            'Comment'));
         $entity = $this->Fraction->Entity->find('first', $options);
 
         $this->set(compact('entity', 'entitiesFraction'));
@@ -103,6 +103,7 @@ class FractionOwnersController extends AppController {
             $this->request->data['Entity']['entity_type_id'] = '1';
             $this->Fraction->Entity->create();
             if ($this->Fraction->Entity->save($this->request->data)) {
+
                 $this->Flash->success(__('The owner has been saved'));
             } else {
                 $this->Flash->error(__('The owner could not be saved. Please, try again.'));
@@ -111,7 +112,6 @@ class FractionOwnersController extends AppController {
             $this->Fraction->EntitiesFraction->create();
             $this->request->data['EntitiesFraction']['fraction_id'] = $this->Session->read('Condo.Fraction.ViewID');
             $this->request->data['EntitiesFraction']['entity_id'] = $this->Fraction->Entity->id;
-            $this->request->data['EntitiesFraction']['owner_percentage'] = 0;
             if ($this->Fraction->EntitiesFraction->save($this->request->data)) {
                 $this->Flash->success(__('The owner has been saved and related'));
             } else {
@@ -145,7 +145,7 @@ class FractionOwnersController extends AppController {
             if ($this->Fraction->EntitiesFraction->save($this->request->data)) {
                 $this->Flash->success(__('The owner has been saved'));
             } else {
-                 $this->Flash->error(__('The owner could not be saved. Please, try again.'));
+                $this->Flash->error(__('The owner could not be saved. Please, try again.'));
             }
         }
         $this->redirect(array('action' => 'index'));
@@ -274,8 +274,8 @@ class FractionOwnersController extends AppController {
                 $breadcrumbs[6] = array('link' => '', 'text' => $this->Session->read('Condo.Owner.ViewName'), 'active' => 'active');
                 break;
         }
-        $headerTitle=$this->Session->read('Condo.ViewName');
-        $this->set(compact('breadcrumbs','headerTitle'));
+        $headerTitle = $this->Session->read('Condo.ViewName');
+        $this->set(compact('breadcrumbs', 'headerTitle'));
     }
 
     public function search_clients() {

@@ -81,6 +81,12 @@ $administrators = implode(", ", $administrators);
                         &nbsp;
                     </dd>
 
+                    <dt><strong><?php echo __('Matrix Registration'); ?></strong></dt>
+                    <dd><?php echo h($condo['Condo']['matrix_registration']); ?>&nbsp;</dd>
+                    <dt><strong><?php echo __('Land Registry'); ?></strong></dt>
+                    <dd><?php echo h($condo['Condo']['land_registry']); ?>&nbsp;</dd>
+                    <dt><strong><?php echo __('Land Registry Year'); ?></strong></dt>
+                    <dd><?php echo h($condo['Condo']['land_registry_year']); ?>&nbsp;</dd>
                     <dt><strong><?php echo __n('Fiscal Year', 'Fiscal Years', 1); ?></strong></dt>
                     <dd>
                         <?php
@@ -94,12 +100,18 @@ $administrators = implode(", ", $administrators);
                     </dd>
 
                     <dt><strong><?php echo __n('Administrator', 'Administrator', 2); ?></strong></dt>
-                    <dd><?php echo  h($administrators); ?>&nbsp;</dd>
+                    <dd><?php echo h($administrators); ?>&nbsp;</dd>
+                    <dt><strong><?php echo __('Comments'); ?></strong></dt>
+                    <dd><?php echo h($condo['Condo']['comments']); ?>&nbsp;</dd>
                     <dt><strong><?php echo __('Created'); ?></strong></dt>
                     <dd>
                         <?php echo h($condo['Condo']['created']); ?>
                         &nbsp;
                     </dd>
+
+
+
+
 
                 </dl>
 
@@ -124,7 +136,7 @@ $administrators = implode(", ", $administrators);
                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-down"></span> ', '#AlertsIndex', array('title' => __('View %s', __('Alerts')), 'id' => 'viewAlertsBtn', 'class' => ' ', 'escape' => false)); ?>
                 </div>
             </div>
-            <div class="panel-body collapse in" id="AlertsIndex">
+            <div class="panel-body collapse" id="AlertsIndex">
 
                 <?php
                 $viewGlyphiconState = array();

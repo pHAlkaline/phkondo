@@ -9,7 +9,7 @@ $(function () {
             url: phkondo.APP_PATH + 'fraction_owners/search_clients',
             // url: "https://api.github.com/search/repositories",
             dataType: 'json',
-            quietMillis: 250,
+            quietMillis: 1500,
             data: function (term, page) { // page is the one-based page number tracked by Select2
                 return {
                     q: term, //search term
@@ -32,6 +32,9 @@ $(function () {
     });
 
     function repoFormatResult(item) {
+        if (typeof item.name == 'undefined'){
+        item.name = '...';
+        }
         var markup = '<div class="row-fluid">' +
                 '<div class="span10">' +
                 '<div class="row-fluid">' +

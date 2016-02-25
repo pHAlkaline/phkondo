@@ -49,13 +49,14 @@ class FractionsController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Fraction->contain('Entity', 'Manager');
-        $this->Paginator->settings = $this->paginate + array(
+        $this->Fraction->contain('Entity', 'Manager','FractionType');
+        $this->Paginator->settings = array_merge($this->paginate,array(
             'conditions' => array('Fraction.condo_id' => $this->Session->read('Condo.ViewID')),
-        );
-
-        $this->setFilter(array('Fraction.fraction', 'Fraction.floor_location', 'Fraction.description', 'Fraction.mil_rate', 'Manager.name'));
-        $fractions = $this->paginate();
+            'limit'=>100000
+        ));
+        
+        $this->setFilter(array('Fraction.fraction', 'Fraction.floor_location', 'Fraction.description', 'Fraction.mil_rate', 'Manager.name', 'FractionType.name'));
+        $fractions = $this->Paginator->paginate();
         
         $milRateWarning=false;
         $milRate = Set::extract('/Fraction/mil_rate', $fractions);
@@ -63,6 +64,7 @@ class FractionsController extends AppController {
             $this->Session->write('Condo.'.$this->Session->read('Condo.ViewName').'.Fraction.milrate','show');
             $milRateWarning=true;
         }
+            
         $this->set(compact('fractions', 'milRateWarning'));
         
         $this->Session->delete('Condo.Fraction');
@@ -80,7 +82,7 @@ class FractionsController extends AppController {
             $this->Flash->error(__('Invalid fraction'));
             $this->redirect(array('action' => 'index'));
         }
-        $this->Fraction->contain('Manager', 'Comment');
+        $this->Fraction->contain('Manager', 'Comment','FractionType');
         $options = array('conditions' => array('Fraction.' . $this->Fraction->primaryKey => $id));
         $fraction = $this->Fraction->find('first', $options);
         $this->set(compact('fraction'));
@@ -105,7 +107,8 @@ class FractionsController extends AppController {
             }
         }
         $condos = $this->Fraction->Condo->find('list', array('conditions' => array('id' => $this->Session->read('Condo.ViewID'))));
-        $this->set(compact('condos', 'managers'));
+        $fractionTypes = $this->Fraction->FractionType->find('list', array('conditions' => array('active' =>'1')));
+        $this->set(compact('condos', 'fractionTypes'));
     }
 
     /**
@@ -142,8 +145,9 @@ class FractionsController extends AppController {
         $entitiesInFraction = Set::extract('/Entity/id', $fraction);
 
         $managers = $this->Fraction->Manager->find('list', array('order' => 'Manager.name', 'conditions' => array('Manager.entity_type_id' => '1', 'Manager.id' => $entitiesInFraction)));
-
-        $this->set(compact('condos', 'managers'));
+        $fractionTypes = $this->Fraction->FractionType->find('list', array('conditions' => array('active' =>'1')));
+        
+        $this->set(compact('condos', 'managers', 'fractionTypes'));
     }
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * pHKondo : pHKondo software for condominium property managers (http://phalkaline.eu)
@@ -35,9 +36,7 @@ App::uses('AppModel', 'Model');
  */
 class Account extends AppModel {
     
-    
-
-    /**
+ /**
      * Display field
      *
      * @var string
@@ -155,7 +154,26 @@ class Account extends AppModel {
             'order' => ''
         )
     );
-    
+
+    /**
+     * hasMany associations
+     *
+     * @var array
+     */
+    public $hasMany = array(
+        'Movement' => array(
+            'className' => 'Movement',
+            'foreignKey' => 'account_id',
+            'dependent' => false,
+            'conditions' => '',
+            'fields' => '',
+            'order' => '',
+            'limit' => '',
+            'offset' => '',
+            'exclusive' => '',
+            'finderQuery' => '',
+            'counterQuery' => ''));
+
     /**
      * hasAndBelongsToMany associations
      *
@@ -163,6 +181,7 @@ class Account extends AppModel {
      */
     public $hasAndBelongsToMany = array(
         'FiscalYear' => array(
+            'dependent' => true,
             'className' => 'FiscalYear',
             'joinTable' => 'accounts_fiscal_years',
             'foreignKey' => 'account_id',
@@ -176,33 +195,31 @@ class Account extends AppModel {
             'finderQuery' => '',
         )
     );
-    
-    
-    public function setAccountBalanceByFiscalYear($id=null,$fiscal_year_id=null){
-        if ($id != null && $fiscal_year_id!= null) {
-            $this->Movement=  ClassRegistry::init('Movement');
+
+    public function setAccountBalanceByFiscalYear($id = null, $fiscal_year_id = null) {
+        if ($id != null && $fiscal_year_id != null) {
+            $this->Movement = ClassRegistry::init('Movement');
             $totalDebit = $this->Movement->find('first', array('fields' =>
                 array('SUM(amount) AS total'),
-                'conditions' => array('account_id' => $id,'fiscal_year_id' => $fiscal_year_id, 'movement_type_id' => '1')
+                'conditions' => array('account_id' => $id, 'fiscal_year_id' => $fiscal_year_id, 'movement_type_id' => '1')
                     )
             );
             $totalCredit = $this->Movement->find('first', array('fields' =>
                 array('SUM(amount) AS total'),
-                'conditions' => array('account_id' => $id,'fiscal_year_id' => $fiscal_year_id, 'movement_type_id' => '2')
+                'conditions' => array('account_id' => $id, 'fiscal_year_id' => $fiscal_year_id, 'movement_type_id' => '2')
                     )
             );
             $total = $totalDebit[0]['total'] - $totalCredit[0]['total'];
-            $accountBalance=$this->AccountsFiscalYear->find('first',
-                    array('conditions' => 
-                        array('account_id' => $id,'fiscal_year_id' => $fiscal_year_id)));
-            if (count($accountBalance)==0){
-                $accountBalance['AccountsFiscalYear']['account_id']=$id;
-                $accountBalance['AccountsFiscalYear']['fiscal_year_id']=$fiscal_year_id;
+            $accountBalance = $this->AccountsFiscalYear->find('first', array('conditions' =>
+                array('account_id' => $id, 'fiscal_year_id' => $fiscal_year_id)));
+            if (count($accountBalance) == 0) {
+                $accountBalance['AccountsFiscalYear']['account_id'] = $id;
+                $accountBalance['AccountsFiscalYear']['fiscal_year_id'] = $fiscal_year_id;
                 $this->AccountsFiscalYear->create();
             }
-            $accountBalance['AccountsFiscalYear']['balance']=$total;
+            $accountBalance['AccountsFiscalYear']['balance'] = $total;
             $this->AccountsFiscalYear->save($accountBalance);
-            
+
             $this->id = $id;
             $this->saveField('balance', $total);
         }
