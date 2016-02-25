@@ -59,7 +59,7 @@ class MovementsController extends AppController {
                 'Movement.fiscal_year_id' => $this->Session->read('Condo.FiscalYearID'))
         );
         $this->setFilter(array('Movement.description', 'Movement.amount', 'Movement.document', 'Movement.document', 'MovementCategory.name', 'MovementType.name', 'MovementOperation.name'));
-        $this->set('movements', $this->paginate());
+        $this->set('movements', $this->Paginator->paginate('Movement'));
         $this->Session->delete('Condo.Movement');
     }
 

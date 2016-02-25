@@ -94,6 +94,16 @@ class Fraction extends AppModel {
             //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
+        'fraction_type_id' => array(
+            'numeric' => array(
+                'rule' => array('numeric'),
+                //'message' => 'Your custom message here',
+               
+            //'required' => false,
+            //'last' => false, // Stop validation after this rule
+            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+            ),
+        ),
         'floor_location' => array(
             'notBlank' => array(
                 'rule' => array('notBlank'),
@@ -131,6 +141,13 @@ class Fraction extends AppModel {
             'className' => 'Entity',
             'foreignKey' => 'manager_id',
             'conditions' => array('entity_type_id' => '1'),
+            'fields' => array('id', 'name'),
+            'order' => ''
+        ),
+        'FractionType' => array(
+            'className' => 'FractionType',
+            'foreignKey' => 'fraction_type_id',
+            'conditions' => '',
             'fields' => array('id', 'name'),
             'order' => ''
         )

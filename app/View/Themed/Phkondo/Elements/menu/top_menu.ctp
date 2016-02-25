@@ -1,5 +1,3 @@
-
-
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -10,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?php echo  Router::url('/', true); ?>"><?php echo  Configure::read('Theme.owner_name'); ?></a>
+            <a class="navbar-brand" href="<?php echo Router::url('/', true); ?>"><?php echo Configure::read('Theme.owner_name'); ?></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -24,18 +22,22 @@
                         <ul class="dropdown-menu">
                             <?php if (AuthComponent::user('role') == 'admin' || AuthComponent::user('role') == 'store_admin' || AuthComponent::user('role') == 'colaborator') { ?>
                                 <li>
-
-                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-home"></span> ' . __n('Condo','Condos',2), array('plugin' => '', 'controller' => 'condos', 'action' => 'index'), array('escape' => false)); ?>
+                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-home"></span> ' . __n('Condo', 'Condos', 2), array('plugin' => '', 'controller' => 'condos', 'action' => 'index'), array('escape' => false)); ?>
                                 </li>
-
                             <?php } ?>
                             <?php if (AuthComponent::user('role') == 'admin' || AuthComponent::user('role') == 'store_admin') { ?>
+                                <li >
+                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-th"></span> ' . __('Income Control'), array('plugin' => '', 'controller' => 'income', 'action' => 'index'), array('escape' => false)); ?>
+                                </li>
+                             <?php } ?>
+                            
+                                    <?php if (AuthComponent::user('role') == 'admin' || AuthComponent::user('role') == 'store_admin') { ?>
                                 <li role="presentation" class="divider"></li>
                                 <li >
 
-                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-briefcase"></span> ' . __n('Entity','Entities',2), array('plugin' => '', 'controller' => 'entities', 'action' => 'index'), array('escape' => false)); ?>
+                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-briefcase"></span> ' . __n('Entity', 'Entities', 2), array('plugin' => '', 'controller' => 'entities', 'action' => 'index'), array('escape' => false)); ?>
                                 </li>
-                                
+
 
                                 <li >
 
@@ -46,28 +48,28 @@
 
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-cog"></span> ' . __('Movement Operations'), array('plugin' => '', 'controller' => 'movement_operations', 'action' => 'index'), array('escape' => false)); ?>
                                 </li>
+                                <li >
+
+                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-home"></span> ' . __('Fraction Types'), array('plugin' => '', 'controller' => 'fraction_types', 'action' => 'index'), array('escape' => false)); ?>
+                                </li>
+                                <li >
+
+                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-asterisk"></span> ' . __('Insurance Types'), array('plugin' => '', 'controller' => 'insurance_types', 'action' => 'index'), array('escape' => false)); ?>
+                                </li>
                                 <?php
                                 $event = new CakeEvent('Phkondo.Draft.hasCondoDraft');
                                 $this->getEventManager()->dispatch($event);
                                 if ($event->result['hasCondoDraft'] === true) {
                                     ?>
-                                    <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-file"></span> ' . __n('Draft','Drafts',2), array('plugin' => '', 'controller' => 'drafts', 'action' => 'index'), array('escape' => false)); ?></li>
+                                    <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-file"></span> ' . __n('Draft', 'Drafts', 2), array('plugin' => '', 'controller' => 'drafts', 'action' => 'index'), array('escape' => false)); ?></li>
                                 <?php } else { ?>
-                                    <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-file"></span> ' . __n('Draft','Drafts',2), array('plugin' => '', 'controller' => 'pages', 'action' => 'drafts'), array('class' => 'btn ', 'escape' => false)); ?> </li>
+                                    <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-file"></span> ' . __n('Draft', 'Drafts', 2), array('plugin' => '', 'controller' => 'pages', 'action' => 'drafts'), array('class' => 'btn ', 'escape' => false)); ?> </li>
 
                                 <?php } ?>
-                                <li role="presentation" class="divider"></li>
+                               <li >
+                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-user"></span> ' . __('Users'), array('plugin' => '', 'controller' => 'users', 'action' => 'index'), array('escape' => false)); ?>
+                                </li>
 
-                                    <li >
-
-                                        <?php echo $this->Html->link('<span class="glyphicon glyphicon-th"></span> ' . __('Income Control'), array('plugin' => '', 'controller' => 'income', 'action' => 'index'), array('escape' => false)); ?>
-                                    </li>
-
-                                    <li >
-
-                                        <?php echo $this->Html->link('<span class="glyphicon glyphicon-user"></span> ' . __('Users'), array('plugin' => '', 'controller' => 'users', 'action' => 'index'), array('escape' => false)); ?>
-                                    </li>
-                               
                             <?php } ?>
 
                             <li role="presentation" class="divider"></li>
@@ -85,8 +87,8 @@
                 <form method="get" class="navbar-form navbar-right" role="search" action="<?php echo $this->request->here; ?>">
                     <div class="form-group">
                         <input type="text" class="form-control"  name="keyword" onblur="if (this.value == '')
-                                        this.value = '<?php echo __('Search'); ?>';" onfocus="if (this.value == '<?php echo __('Search'); ?>')
-                                                    this.value = '';" value="<?php echo $keyword ?>" >
+                                    this.value = '<?php echo __('Search'); ?>';" onfocus="if (this.value == '<?php echo __('Search'); ?>')
+                                                this.value = '';" value="<?php echo $keyword ?>" >
                     </div>
                     <button type="submit" class="btn btn-default"><?php echo __('Search'); ?></button>
                 </form>

@@ -38,6 +38,18 @@
                 <div class="form-group">
                     <?php echo $this->Form->input('email', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
+                <div class="form-group ">
+                    <?php echo $this->Form->input('matrix_registration', array('class' => 'form-control')); ?>
+                </div>
+                <div class="form-group ">
+                    <?php echo $this->Form->input('land_registry', array('class' => 'form-control')); ?>
+                </div>
+                <div class="form-group ">
+                    <?php echo $this->Form->input('land_registry_year', array('class' => 'form-control')); ?>
+                </div>
+                <div class="form-group ">
+                    <?php echo $this->Form->input('comments', array('class' => 'form-control')); ?>
+                </div>
 
               
             </fieldset>

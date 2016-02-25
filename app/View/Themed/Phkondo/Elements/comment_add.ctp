@@ -24,8 +24,8 @@
     ?>
     <?php
     echo $this->Form->input('Comment.author_name', array('type' => 'hidden', 'value' => AuthComponent::user('name')));
-    echo $this->Form->input('Comment.author_email', array('type' => 'hidden', 'value' => 'user@phkondo.net'));
-    echo $this->Form->input('Comment.author_website', array('type' => 'hidden', 'value' => 'http://phkondo.net'));
+    echo $this->Form->input('Comment.author_email', array('type' => 'hidden', 'value' => 'user@user.net'));
+    echo $this->Form->input('Comment.author_website', array('type' => 'hidden', 'value' => 'http://user.net'));
     echo $this->Form->input('Comment.remember_info', array('type' => 'hidden', 'value' => true));
     echo $this->Form->input('Comment.hairy_pot', array('type' => 'hidden'));
     echo $this->Form->input('Comment.foreign_model', array('type' => 'hidden', 'value' => $foreign_model));

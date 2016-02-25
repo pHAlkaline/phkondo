@@ -18,7 +18,7 @@
                             <th><?php echo __('Address'); ?></th>
                             <th><?php echo __n('Contact', 'Contacts', 2); ?></th>
                             <th class="amount"><?php echo __('Owner Percentage') . ' ( % )'; ?></th>
-                            <th class="actions hidden-print"><?php //echo __('Actions');   ?></th>
+                            <th class="actions hidden-print"><?php //echo __('Actions');    ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -52,14 +52,19 @@
                 ?>
                 <fieldset>
                     <h2><?php echo __('New Owner'); ?></h2>
-                    
+
                     <div class="form-group">
                         <?php echo $this->Form->input('client', array('class' => 'form-control')); ?>
                     </div><!-- .form-group -->
-                  
+                    <div class="form-group">
+                        <?php echo $this->Form->input('owner_percentage', array('min' => '0.00', 'max' => '100.00')); ?>
+                    </div><!-- .form-group -->
+
 
                 </fieldset>
-                <?php echo $this->Form->submit(__('Submit'), array('escape' => false, 'class' => 'btn btn-large btn-primary')); ?>
+                <div class="form-group col-sm-12">
+                        <?php echo $this->Form->submit(__('Submit'), array('escape' => false, 'class' => 'btn btn-large btn-primary pull-right')); ?>
+                    </div>
                 <?php echo $this->Form->end(); ?>
 
             </div><!-- /.form -->
@@ -67,3 +72,4 @@
         </div><!-- /#page-content .col-sm-9 -->
 
     </div><!-- /#page-container .row-fluid -->
+</div>
