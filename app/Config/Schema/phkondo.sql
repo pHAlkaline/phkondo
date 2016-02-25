@@ -182,12 +182,15 @@ CREATE TABLE `condos` (
   `taxpayer_number` varchar(9) NOT NULL,
   `address` text NOT NULL,
   `email` varchar(50) DEFAULT NULL,
+  `land_registry_year` int(11) DEFAULT NULL,
   `comments` text,
   `active` tinyint(1) NOT NULL DEFAULT '1',
   `modified` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
+  `matrix_registration` varchar(45) DEFAULT NULL,
+  `land_registry` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -290,6 +293,7 @@ CREATE TABLE `fractions` (
   `condo_id` int(11) NOT NULL,
   `manager_id` int(11) DEFAULT NULL,
   `fraction` varchar(10) NOT NULL,
+  `fraction_type_id` int(11) NOT NULL DEFAULT '1',
   `floor_location` varchar(20) NOT NULL,
   `description` varchar(50) DEFAULT NULL,
   `mil_rate` decimal(6,2) DEFAULT NULL,
@@ -299,11 +303,28 @@ CREATE TABLE `fractions` (
   PRIMARY KEY (`id`),
   KEY `MANAGER` (`manager_id`),
   KEY `CONDO` (`condo_id`),
-  CONSTRAINT `fractions_ibfk_1` FOREIGN KEY (`manager_id`) REFERENCES `entities` (`id`) ON UPDATE CASCADE,
-  CONSTRAINT `fractions_ibfk_2` FOREIGN KEY (`condo_id`) REFERENCES `condos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+  KEY `fk_fractions_1_idx` (`fraction_type_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `fraction_types`
+--
+
+DROP TABLE IF EXISTS `fraction_types`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fraction_types` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL DEFAULT '',
+  `active` tinyint(1) NOT NULL DEFAULT '1',
+  `modified` datetime DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 --
 -- Table structure for table `insurances`
 --
