@@ -38,6 +38,7 @@ class AppController extends Controller {
         'Auth',
         'Cookie',
         'MaintenanceMode');
+    public $phkRequestData = array();
 
     public function beforeFilter() {
         if ($this->Session->read('User.language')) {
@@ -54,7 +55,6 @@ class AppController extends Controller {
             $this->Auth->allow();
         }
         $this->rememberMe();
-
     }
 
     private function rememberMe() {
@@ -124,6 +124,19 @@ class AppController extends Controller {
             )));
 
             $this->set('keyword', $keyword);
+        }
+    }
+
+    public function getPhkRequestVars($key = '') {
+        if (isset($this->phkRequestData[$key])) {
+            return $this->phkRequestData[$key];
+        }
+        return null;
+    }
+
+    public function setPhkRequestVars($values = '') {
+        foreach ($values as $key => $value) {
+            $this->phkRequestData[$key] = $value;
         }
     }
 
