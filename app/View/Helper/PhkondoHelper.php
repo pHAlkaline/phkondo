@@ -33,16 +33,16 @@ class PhkondoHelper extends AppHelper {
     private $_hasFiscalYear = null;
     var $helpers = array('Session');
     
-    public function hasFiscalYear() {
+    public function hasFiscalYear($condo_id='') {
         if ($this->_hasFiscalYear !== null) {
             return $this->_hasFiscalYear;
         }
-        if ($this->Session->read('Condo.ViewID') == '') {
+        if ($condo_id == '') {
             $this->_hasFiscalYear = false;
         } else {
             App::import("Model", "FiscalYear");
             $fiscalYear = new FiscalYear();
-            $fiscalYearResult=$fiscalYear->find("first",array('FiscalYear.active'=>1,'FiscalYear.condo_id'=>$this->Session->read('Condo.ViewID')));
+            $fiscalYearResult=$fiscalYear->find("first",array('FiscalYear.active'=>1,'FiscalYear.condo_id'=>$condo_id));
             if (count($fiscalYearResult)){
                 $this->_hasFiscalYear = true;
             }

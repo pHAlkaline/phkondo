@@ -27,6 +27,11 @@
             <?php echo $this->Form->input('language', array('div' => null, 'class' => 'form-control', 'placeholder' => 'language', 'options' => Configure::read('Language.list'))); ?>
             <span class="glyphicon glyphicon-flag form-control-feedback"></span>
         </div><!-- .form-group -->
+        <div class="form-group has-feedback">
+
+            <?php echo $this->Form->input('theme', array('div' => null, 'class' => 'form-control', 'placeholder' => 'theme', 'options' => Configure::read('Theme.list'))); ?>
+            <span class="glyphicon glyphicon-flag form-control-feedback"></span>
+        </div><!-- .form-group -->
        
         <div class="row">
             <div class="col-xs-6">

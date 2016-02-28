@@ -1,5 +1,7 @@
 $(function () {
-    $('#viewCommentsBtn').click(function () {
+    
+
+$('#viewCommentsBtn').click(function () {
         $('.comments').toggleClass("hide");
     });
 
@@ -13,8 +15,6 @@ $(function () {
     } else {
         // No hash found
     }
-
-
 
 });
 
