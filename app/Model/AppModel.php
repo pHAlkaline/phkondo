@@ -28,7 +28,7 @@
 App::uses('Model', 'Model');
 
 class AppModel extends Model {
-    public $recursive=-1;
+    public $recursive = -1;
     public $actsAs = array('DateFormat' => array(
             'dateFormat' => 'Y-m-d',
             'databaseFormat' => 'Y-m-d',

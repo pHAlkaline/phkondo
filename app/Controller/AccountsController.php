@@ -51,7 +51,7 @@ class AccountsController extends AppController {
     public function index() {
         $this->setFilter(array('Account.title', 'Account.bank', 'Account.balcony'));
         
-        $options['conditions'] = array('Account.condo_id' => $this->Session->read('Condo.ViewID'));
+        $options['conditions'] = array('Account.condo_id' => $this->getPhkRequestVar('condo_id'));
         //$options['order'] = null;
         
         
@@ -71,7 +71,7 @@ class AccountsController extends AppController {
                 ));
         
         $this->set('accounts', $this->paginate('Account'));
-        $this->Session->delete('Condo.Account');
+        
     }
 
     /**
@@ -86,11 +86,11 @@ class AccountsController extends AppController {
             $this->Flash->error(__('Invalid account'));
             $this->redirect(array('action' => 'index'));
         }
-        $options = array('conditions' => array('Account.' . $this->Account->primaryKey => $id));
+        $options = array('conditions' => array('Account.id'=> $id));
         $account = $this->Account->find('first', $options);
         $this->set(compact('account'));
-        $this->Session->write('Condo.Account.ViewID', $id);
-        $this->Session->write('Condo.Account.ViewName', $account['Account']['title']);
+        $this->setPhkRequestVar('account_id', $id);
+        $this->setPhkRequestVar('account_text', $account['Account']['title']);
     }
 
     /**
@@ -103,12 +103,12 @@ class AccountsController extends AppController {
             $this->Account->create();
             if ($this->Account->save($this->request->data)) {
                 $this->Flash->success(__('The account has been saved'));
-                $this->redirect(array('action' => 'view', $this->Account->id));
+                $this->redirect(array('action' => 'view', $this->Account->id,'?'=>$this->request->query));
             } else {
                 $this->Flash->error(__('The account could not be saved. Please, try again.'));
             }
         }
-        $condos = $this->Account->Condo->find('list', array('conditions' => array('id' => $this->Session->read('Condo.ViewID'))));
+        $condos = $this->Account->Condo->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('condo_id'))));
         $this->set(compact('condos'));
     }
 
@@ -132,13 +132,13 @@ class AccountsController extends AppController {
                 $this->Flash->error(__('The account could not be saved. Please, try again.'));
             }
         } else {
-            $options = array('conditions' => array('Account.' . $this->Account->primaryKey => $id));
+            $options = array('conditions' => array('Account.id' => $id));
             $this->request->data = $this->Account->find('first', $options);
         }
         $condos = $this->Account->Condo->find('list');
         $this->set(compact('condos'));
-        $this->Session->write('Condo.Account.ViewID', $id);
-        $this->Session->write('Condo.Account.ViewName', $this->request->data['Account']['title']);
+        $this->setPhkRequestVar('account_id', $id);
+        $this->setPhkRequestVar('account_text', $this->request->data['Account']['title']);
     }
 
     /**
@@ -156,21 +156,21 @@ class AccountsController extends AppController {
         $this->Account->id = $id;
         if (!$this->Account->exists()) {
             $this->Flash->error(__('Invalid account'));
-            $this->redirect(array('action' => 'index'));
+            $this->redirect(array('action' => 'index','?'=>$this->request->query));
         }
         if ($this->Account->delete()) {
             $this->Flash->success(__('Account deleted'));
-            $this->redirect(array('action' => 'index'));
+            $this->redirect(array('action' => 'index','?'=>$this->request->query));
         }
         $this->Flash->error(__('Account can not be deleted'));
-        $this->redirect(array('action' => 'view', $id));
+        $this->redirect(array('action' => 'view', $id,'?'=>$this->request->query));
     }
 
     public function beforeFilter() {
         parent::beforeFilter();
-        if (!$this->Session->check('Condo.ViewID') || !$this->Session->read('Condo.FiscalYearID')) {
+        if (!$this->getPhkRequestVar('condo_id') || !$this->getPhkRequestVar('has_fiscal_year')) {
             $this->Flash->error(__('Invalid condo or fiscal year'));
-            $this->redirect(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID')));
+            $this->redirect(array('controller' => 'condos', 'action' => 'index'));
         }
     }
 
@@ -178,17 +178,17 @@ class AccountsController extends AppController {
         $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index'),true), 'text' => __('Home'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'index'),true), 'text' => __n('Condo','Condos',2), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID')),true), 'text' => $this->Session->read('Condo.ViewName'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id')),true), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
             array('link' => '', 'text' => __n('Account','Accounts',2), 'active' => 'active')
         );
         switch ($this->action) {
             case 'view':
-                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'accounts', 'action' => 'index'),true), 'text' => __n('Account','Accounts',2), 'active' => '');
-                $breadcrumbs[4] = array('link' => '', 'text' => $this->Session->read('Condo.Account.ViewName'), 'active' => 'active');
+                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'accounts', 'action' => 'index','?'=>$this->request->query),true), 'text' => __n('Account','Accounts',2), 'active' => '');
+                $breadcrumbs[4] = array('link' => '', 'text' => $this->getPhkRequestVar('account_text'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'accounts', 'action' => 'index'),true), 'text' => __n('Account','Accounts',2), 'active' => '');
-                $breadcrumbs[4] = array('link' => '', 'text' => $this->Session->read('Condo.Account.ViewName'), 'active' => 'active');
+                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'accounts', 'action' => 'index','?'=>$this->request->query),true), 'text' => __n('Account','Accounts',2), 'active' => '');
+                $breadcrumbs[4] = array('link' => '', 'text' => $this->getPhkRequestVar('account_text'), 'active' => 'active');
                 break;
         }
         $this->set(compact('breadcrumbs'));
