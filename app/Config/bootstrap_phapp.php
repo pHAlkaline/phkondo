@@ -38,6 +38,12 @@ CakePlugin::load('DebugKit');
  * 
  */
 Configure::write('Theme.name', 'phkondo');
+Configure::write('Theme.list',array(
+    'Phkondo'=>'pHKondo',
+    'GreenAdm'=>'GreenAdm',
+    'SBAdmin'=>'SBAdmin',
+   
+    ));
 Configure::write('Theme.owner_name', 'pHKondo');
 Configure::write('Theme.owner_name_abbrv', 'PHK');
 Configure::write('Theme.owner_description', 'Condominium Management');

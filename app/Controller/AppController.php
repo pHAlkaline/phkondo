@@ -33,6 +33,7 @@ class AppController extends Controller {
     public $theme = null;
     public $components = array(
         'DebugKit.Toolbar',
+        'Paginator',
         'Session',
         'Flash',
         'Auth',
@@ -41,10 +42,12 @@ class AppController extends Controller {
     public $phkRequestData = array();
 
     public function beforeFilter() {
+        $this->Paginator->settings['paramType'] = 'querystring';
         if ($this->Session->read('User.language')) {
             Configure::write('Config.language', $this->Session->read('User.language'));
         }
-        $this->theme = Configure::read('Theme.name');
+
+        $this->theme = $this->getTheme();
         $this->Auth->authenticate = array(AuthComponent::ALL => array('userModel' => 'User', 'scope' => array("User.active" => 1)), 'Form');
         $this->Auth->loginRedirect = Router::url(array('plugin' => null, 'controller' => 'condos', 'action' => 'index'), true);
         $this->Auth->logoutRedirect = Router::url(array('plugin' => null, 'controller' => 'users', 'action' => 'login'), true);
@@ -55,6 +58,12 @@ class AppController extends Controller {
             $this->Auth->allow();
         }
         $this->rememberMe();
+        $this->setPhkRequestVars($this->request->query);
+    }
+
+    public function beforeRender() {
+        $phkRequestData = $this->phkRequestData;
+        $this->set(compact('phkRequestData'));
     }
 
     private function rememberMe() {
@@ -71,7 +80,7 @@ class AppController extends Controller {
                         'User.username' => $cookie['username'],
                         'User.password' => $cookie['password']
                     )
-                ));
+                        ));
             }
 
             if ($user && !$this->Auth->login($user['User'])) {
@@ -103,26 +112,28 @@ class AppController extends Controller {
 
     public function setFilter($fields) {
         $this->set('keyword', '');
-        if (isset($this->request->params['named']['keyword'])) {
-            $keyword = $this->request->params['named']['keyword'];
-        }
+        /* if (isset($this->request->params['named']['keyword'])) {
+          $keyword = $this->request->params['named']['keyword'];
+          }
+          if (isset($this->request->data['keyword'])) {
+          $keyword = $this->request->data['keyword'];
+          } */
         if (isset($this->request->query['keyword'])) {
             $keyword = $this->request->query['keyword'];
         }
 
+
         if (isset($keyword) && ($keyword == '' || $keyword == __('Search'))) {
             unset($keyword);
         }
-
         if (isset($keyword)) {
             $arrayConditions = array();
             foreach ($fields as $field) {
                 $arrayConditions[$field . ' LIKE'] = "%" . $keyword . "%";
             }
-            $this->Paginator->settings = Set::merge($this->Paginator->settings, array('conditions' => array
-                            ("OR" => $arrayConditions
-            )));
-
+            $this->Paginator->settings['conditions'] = Set::merge($this->Paginator->settings['conditions'], array
+                        ("OR" => $arrayConditions
+                    ));
             $this->set('keyword', $keyword);
         }
     }
@@ -138,6 +149,10 @@ class AppController extends Controller {
         foreach ($values as $key => $value) {
             $this->phkRequestData[$key] = $value;
         }
+    }
+
+    private function getTheme() {
+        return Configure::read('Theme.name');
     }
 
 }
