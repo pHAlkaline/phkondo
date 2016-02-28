@@ -42,6 +42,7 @@ class AppController extends Controller {
     public $phkRequestData = array();
 
     public function beforeFilter() {
+        
         $this->Paginator->settings['paramType'] = 'querystring';
         if ($this->Session->read('User.language')) {
             Configure::write('Config.language', $this->Session->read('User.language'));
@@ -67,7 +68,7 @@ class AppController extends Controller {
     }
 
     private function rememberMe() {
-        // set cookie options
+// set cookie options
         $this->Cookie->httpOnly = true;
 
         if (!$this->Auth->loggedIn() && $this->Cookie->read('rememberMe')) {
@@ -90,7 +91,7 @@ class AppController extends Controller {
     }
 
     public function isAuthorized($user) {
-        //debug($this->request->controller);
+//debug($this->request->controller);
         if (isset($user['role'])) {
 
             switch ($user['role']) {
@@ -106,7 +107,7 @@ class AppController extends Controller {
             }
         }
 
-        // Default deny
+// Default deny
         return false;
     }
 
@@ -138,16 +139,66 @@ class AppController extends Controller {
         }
     }
 
-    public function getPhkRequestVars($key = '') {
+    public function getPhkRequestVar($key = '') {
         if (isset($this->phkRequestData[$key])) {
             return $this->phkRequestData[$key];
         }
+        throw new BadRequestException('Missig request var ' . $key);
         return null;
     }
+    
 
-    public function setPhkRequestVars($values = '') {
+    public function setPhkRequestVars($values = null) {
         foreach ($values as $key => $value) {
-            $this->phkRequestData[$key] = $value;
+            $this->setPhkRequestVar($key, $value);
+        }
+    }
+
+    public function setPhkRequestVar($key, $value) {
+        $this->phkRequestData[$key] = $value;
+        $this->setCondoData();
+        $this->setFiscalYearData();
+        $this->setAccountData();
+    }
+
+    private function setCondoData() {
+        if (isset($this->phkRequestData['condo_id']) && !isset($this->phkRequestData['condo_text'])) {
+
+            App::import("Model", "Condo");
+            $condo = new Condo();
+            $result = $condo->find("first", array('Condo.id' => $this->phkRequestData['condo_id']));
+            $this->phkRequestData['condo_id'] = $result['Condo']['id'];
+            $this->phkRequestData['condo_text'] = $result['Condo']['title'];
+        }
+    }
+
+    public function setFiscalYearData() {
+        
+        if (isset($this->phkRequestData['condo_id']) && !isset($this->phkRequestData['fiscal_year_text'])) {
+            $this->phkRequestData['fiscal_year_id'] = '';
+            $this->phkRequestData['fiscal_year_text'] = '';
+            $this->phkRequestData['has_fiscal_year'] = false;
+            App::import("Model", "FiscalYear");
+            $fiscalYear = new FiscalYear();
+            $fiscalYearResult = $fiscalYear->find("first", array('conditions'=>array('FiscalYear.active' => 1, 'FiscalYear.condo_id' => $this->phkRequestData['condo_id'])));
+            if (count($fiscalYearResult)) {
+                $this->phkRequestData['fiscal_year_id'] = $fiscalYearResult['FiscalYear']['id'];
+                $this->phkRequestData['fiscal_year_text'] = $fiscalYearResult['FiscalYear']['title'];
+                $this->phkRequestData['has_fiscal_year'] = true;
+            }
+        }
+    }
+    
+    public function setAccountData() {
+        if (isset($this->phkRequestData['account_id']) && !isset($this->phkRequestData['account_text'])) {
+            App::import("Model", "Account");
+            $account = new Account();
+            $result = $account->find("first", array('Account.id' => $this->phkRequestData['account_id']));
+            if (count($result)) {
+                $this->phkRequestData['account_id'] = $result['Account']['id'];
+                $this->phkRequestData['account_text'] = $result['Account']['title'];
+                
+            }
         }
     }
 

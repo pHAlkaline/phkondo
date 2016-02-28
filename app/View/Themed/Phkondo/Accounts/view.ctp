@@ -5,17 +5,17 @@
         <div class="actions">
 
             <ul class="nav nav-pills nav-stacked">			
-                <li ><?php echo $this->Html->link(__('Edit Account'), array('action' => 'edit', $account['Account']['id']), array('class' => 'btn ')); ?> </li>
-                <li ><?php echo $this->Form->postLink(__('Delete Account'), array('action' => 'delete', $account['Account']['id']), array('class' => 'btn ', 'confirm' => __('Are you sure you want to delete # %s?', $account['Account']['title']))); ?> </li>
-                <li ><?php echo $this->Html->link(__('New Account'), array('action' => 'add'), array('class' => 'btn ')); ?> </li>
-                <li ><?php echo $this->Html->link(__('List Accounts'), array('action' => 'index'), array('class' => 'btn ')); ?> </li>
+                <li ><?php echo $this->Html->link(__('Edit Account'), array('action' => 'edit', $account['Account']['id'],'?'=>$this->request->query), array('class' => 'btn ')); ?> </li>
+                <li ><?php echo $this->Form->postLink(__('Delete Account'), array('action' => 'delete', $account['Account']['id'],'?'=>$this->request->query), array('class' => 'btn ', 'confirm' => __('Are you sure you want to delete # %s?', $account['Account']['title']))); ?> </li>
+                <li ><?php echo $this->Html->link(__('New Account'), array('action' => 'add','?'=>$this->request->query), array('class' => 'btn ')); ?> </li>
+                <li ><?php echo $this->Html->link(__('List Accounts'), array('action' => 'index','?'=>$this->request->query), array('class' => 'btn ')); ?> </li>
                 <?php
                 $movementsDisabled = '';
                 if (!$this->Session->check('Condo.FiscalYearID')) {
                     $movementsDisabled = ' disabled';
                 }
                 ?>     
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Movement', 'Movements', 2), array('controller' => 'movements', 'action' => 'index'), array('class' => 'btn ' . $movementsDisabled, 'escape' => false)); ?> </li>
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Movement', 'Movements', 2), array('controller' => 'movements', 'action' => 'index','?'=>array_merge(array('account_id'=>$account['Account']['id']),$this->request->query)), array('class' => 'btn ' . $movementsDisabled, 'escape' => false)); ?> </li>
 
             </ul><!-- /.list-group -->
 

@@ -5,9 +5,9 @@
         <div class="actions">
 
             <ul class="nav nav-pills nav-stacked">
-                <li ><?php echo $this->Html->link(__('View %s', __n('Account', 'Accounts', 1)), array('action' => 'view', $this->Form->value('Account.id')), array('class' => 'btn')); ?></li>
-                <li ><?php echo $this->Form->postLink(__('Delete Account'), array('action' => 'delete', $this->Form->value('Account.id')), array('class' => 'btn', 'confirm' => __('Are you sure you want to delete # %s?', $this->Form->value('Account.title')))); ?></li>
-                <li ><?php echo $this->Html->link(__('List Accounts'), array('action' => 'index'), array('class' => 'btn')); ?></li>
+                <li ><?php echo $this->Html->link(__('View %s', __n('Account', 'Accounts', 1)), array('action' => 'view', $this->Form->value('Account.id'),'?'=>$this->request->query), array('class' => 'btn')); ?></li>
+                <li ><?php echo $this->Form->postLink(__('Delete Account'), array('action' => 'delete', $this->Form->value('Account.id'),'?'=>$this->request->query), array('class' => 'btn', 'confirm' => __('Are you sure you want to delete # %s?', $this->Form->value('Account.title')))); ?></li>
+                <li ><?php echo $this->Html->link(__('List Accounts'), array('action' => 'index','?'=>$this->request->query), array('class' => 'btn')); ?></li>
 
             </ul><!-- /.list-group -->
 
