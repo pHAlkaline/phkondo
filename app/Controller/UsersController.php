@@ -153,14 +153,17 @@ class UsersController extends AppController {
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
                 $this->rememberMe();
+                if (isset($this->request->data['User']['theme']) && $this->request->data['User']['theme'] != '') {
+                    $this->setTheme();
+                }
+
                 return $this->redirect($this->Auth->redirectUrl()); //$this->Auth->redirectUrl()
             }
             $this->Flash->error(__('Invalid username or password, try again'));
         }
         if (!isset($this->request->data['User']['language'])) {
-            $this->request->data['User']['language']=Configure::read('Config.language');
+            $this->request->data['User']['language'] = Configure::read('Config.language');
         }
-        
     }
 
     public function logout() {
@@ -229,6 +232,24 @@ class UsersController extends AppController {
                 break;
         }
         $this->set(compact('breadcrumbs'));
+    }
+
+    private function setTheme() {
+
+
+        if ($this->request->data['User']['theme']) {
+            App::uses('Folder', 'Utility');
+            $theme_path = APP . 'View' . DS . 'Themed' . DS . $this->request->data['User']['theme'];
+            $folder = new Folder($theme_path);
+            if (is_null($folder->path)) {
+                $this->Session->delete('User.theme');
+                Configure::write('Theme.name', 'Phkondo');
+                $this->Flash->error(__('Selected Theme not found.'));
+            }
+        } else {
+            $this->Session->write('User.theme', $this->request->data['User']['theme']);
+            Configure::write('Config.theme', $this->Session->read('User.theme'));
+        }
     }
 
 }

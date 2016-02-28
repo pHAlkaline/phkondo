@@ -29,9 +29,9 @@
                                 <li >
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-th"></span> ' . __('Income Control'), array('plugin' => '', 'controller' => 'income', 'action' => 'index'), array('escape' => false)); ?>
                                 </li>
-                             <?php } ?>
-                            
-                                    <?php if (AuthComponent::user('role') == 'admin' || AuthComponent::user('role') == 'store_admin') { ?>
+                            <?php } ?>
+
+                            <?php if (AuthComponent::user('role') == 'admin' || AuthComponent::user('role') == 'store_admin') { ?>
                                 <li role="presentation" class="divider"></li>
                                 <li >
 
@@ -66,7 +66,7 @@
                                     <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-file"></span> ' . __n('Draft', 'Drafts', 2), array('plugin' => '', 'controller' => 'pages', 'action' => 'drafts'), array('class' => 'btn ', 'escape' => false)); ?> </li>
 
                                 <?php } ?>
-                               <li >
+                                <li >
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-user"></span> ' . __('Users'), array('plugin' => '', 'controller' => 'users', 'action' => 'index'), array('escape' => false)); ?>
                                 </li>
 
@@ -84,13 +84,23 @@
 
             <?php endif; ?>
             <?php if (isset($keyword)) : ?>
-                <form method="get" class="navbar-form navbar-right" role="search" action="<?php echo $this->request->here; ?>">
-                    <div class="form-group">
-                        <input type="text" class="form-control"  name="keyword" onblur="if (this.value == '')
-                                    this.value = '<?php echo __('Search'); ?>';" onfocus="if (this.value == '<?php echo __('Search'); ?>')
-                                                this.value = '';" value="<?php echo $keyword ?>" >
-                    </div>
-                    <button type="submit" class="btn btn-default"><?php echo __('Search'); ?></button>
+                <?php echo $this->Form->create(null, array('class' => 'navbar-form navbar-right', 'role' => 'search', 'type' => 'get', 'url' => $this->request->here)); ?>
+                        <!--form method="post" class="navbar-form navbar-right" role="search" action="<?php //echo $this->request->here();   ?>"-->
+                <div class="form-group">
+                    <?php
+                    foreach ($this->request->query as $key => $value):
+                        if ($key != 'keyword'):
+                            echo $this->Form->hidden($key, array('value' => $value));
+                        endif;
+                    endforeach;
+                    ?>
+                    <input type="text" 
+                           class="form-control"  
+                           name="keyword" 
+                           onblur="if (this.value == '') this.value = '<?php echo __('Search'); ?>';" 
+                           onfocus="if (this.value == '<?php echo __('Search'); ?>') this.value = '';" value="<?php echo $keyword ?>" >
+                </div>
+                <button type="submit" class="btn btn-default"><?php echo __('Search'); ?></button>
                 </form>
             <?php endif; ?>
 
