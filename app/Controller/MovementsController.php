@@ -36,9 +36,6 @@ App::uses('AppController', 'Controller');
  */
 class MovementsController extends AppController {
 
-    public $paginate = array(
-        'limit' => 500);
-
     /**
      * Components
      *
@@ -52,8 +49,10 @@ class MovementsController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Movement->contain(array('MovementCategory','MovementOperation','MovementType','Account'=>array('fields'=>array('title','balance'))));
-        $this->Paginator->settings = $this->paginate + array(
+        
+        $this->Paginator->settings = $this->Paginator->settings + array(
+            'contain'=>array('MovementCategory','MovementOperation','MovementType','Account'=>array('fields'=>array('title','balance'))),
+            'limit' => 100,
             'conditions' => array(
                 'Movement.account_id' => $this->Session->read('Condo.Account.ViewID'),
                 'Movement.fiscal_year_id' => $this->Session->read('Condo.FiscalYearID'))

@@ -111,6 +111,7 @@ class AppController extends Controller {
     }
 
     public function setFilter($fields) {
+        
         $this->set('keyword', '');
         /* if (isset($this->request->params['named']['keyword'])) {
           $keyword = $this->request->params['named']['keyword'];
@@ -134,8 +135,10 @@ class AppController extends Controller {
             $this->Paginator->settings['conditions'] = Set::merge($this->Paginator->settings['conditions'], array
                         ("OR" => $arrayConditions
                     ));
+            
             $this->set('keyword', $keyword);
         }
+        
     }
 
     public function getPhkRequestVars($key = '') {
