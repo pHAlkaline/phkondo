@@ -11,7 +11,7 @@ if (isset($movements[0]['Account']['balance'])){
 
             <h2 class="col-sm-9"><?php echo __n('Movement','Movements',2).' ('.__('Balance').':'.$balance.')'; ?></h2>
             <div class="actions hidden-print col-sm-3">
-                <?php echo $this->Html->link( '<span class="glyphicon glyphicon-plus-sign"></span> '.__('New Movement'), array('action' => 'add'), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 0; float: right;', 'escape' => false)); ?>
+                <?php echo $this->Html->link( '<span class="glyphicon glyphicon-plus-sign"></span> '.__('New Movement'), array('action' => 'add','?'=>$this->request->query), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 0; float: right;', 'escape' => false)); ?>
             </div><!-- /.actions -->
                 <div class="clearfix"></div>
                 <table class="table table-hover table-condensed">
@@ -38,10 +38,10 @@ if (isset($movements[0]['Account']['balance'])){
                                 <td class="amount"><?php if ($movement['MovementType']['id']==2) echo '-'; echo h($movement['Movement']['amount']); ?>&nbsp;<?php echo  Configure::read('currencySign'); ?></td>
                                 
                                 <td class="actions hidden-print">
-                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $movement['Movement']['id']), array('title'=>__('Details'),'class' => 'btn btn-default btn-xs','escape'=>false)); ?>
-                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $movement['Movement']['id']), array('title'=>__('Edit'),'class' => 'btn btn-default btn-xs','escape'=>false)); ?>
+                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $movement['Movement']['id'],'?'=>$this->request->query), array('title'=>__('Details'),'class' => 'btn btn-default btn-xs','escape'=>false)); ?>
+                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $movement['Movement']['id'],'?'=>$this->request->query), array('title'=>__('Edit'),'class' => 'btn btn-default btn-xs','escape'=>false)); ?>
                                     <?php if ($movement['MovementOperation']['id']!='1') { ?>
-                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'delete', $movement['Movement']['id']), array('title'=>__('Remove'),'class' => 'btn btn-default btn-xs','escape'=>false,'confirm'=> __('Are you sure you want to delete # %s?' , $movement['Movement']['description'] ))); ?>
+                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'delete', $movement['Movement']['id'],'?'=>$this->request->query), array('title'=>__('Remove'),'class' => 'btn btn-default btn-xs','escape'=>false,'confirm'=> __('Are you sure you want to delete # %s?' , $movement['Movement']['description'] ))); ?>
                                     <?php } ?>
                                 </td>
                             </tr>

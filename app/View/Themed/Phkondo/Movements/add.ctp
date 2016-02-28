@@ -6,9 +6,9 @@
         <div class="actions">
 
             <ul class="nav nav-pills nav-stacked">
-                <li ><?php echo $this->Html->link(__('List Movements'), array('action' => 'index'), array('class' => 'btn')); ?></li>
-                <li ><?php echo $this->Html->link(__('New Movement Category'), array('controller' => 'movement_categories', 'action' => 'addFromMovement'), array('class' => 'btn')); ?> </li>
-                <li ><?php echo $this->Html->link(__('New Movement Operation'), array('controller' => 'movement_operations', 'action' => 'addFromMovement'), array('class' => 'btn')); ?> </li>
+                <li ><?php echo $this->Html->link(__('List Movements'), array('action' => 'index','?'=>$this->request->query), array('class' => 'btn')); ?></li>
+                <li ><?php echo $this->Html->link(__('New Movement Category'), array('controller' => 'movement_categories', 'action' => 'addFromMovement','?'=>$this->request->query), array('class' => 'btn')); ?> </li>
+                <li ><?php echo $this->Html->link(__('New Movement Operation'), array('controller' => 'movement_operations', 'action' => 'addFromMovement','?'=>$this->request->query), array('class' => 'btn')); ?> </li>
             </ul><!-- /.list-group -->
 
         </div><!-- /.actions -->
