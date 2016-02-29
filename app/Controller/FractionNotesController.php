@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * pHKondo : pHKondo software for condominium property managers (http://phalkaline.eu)
@@ -25,7 +26,6 @@
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
-
 App::uses('AppController', 'Controller');
 
 /**
@@ -56,18 +56,14 @@ class FractionNotesController extends AppController {
      * @return void
      */
     public function index() {
-        $this->setFilter(array('Note.document','Note.title','NoteType.name','Entity.name','Note.amount', 'NoteStatus.name'));
-        
-        $options['conditions'] = array('Note.fraction_id' => $this->Session->read('Condo.Fraction.ViewID'));
-        if (isset($this->paginate['conditions'])) {
-            $options['conditions'] = array_merge($this->paginate['conditions'], $options['conditions']);
-        }
-        $this->Paginator->settings = array(
+        $this->Paginator->settings = $this->Paginator->settings + array(
             'Note' => array(
-                'conditions'=>$options['conditions'],
+                'conditions' => array('Note.fraction_id' => $this->Session->read('Condo.Fraction.ViewID')),
                 //'requiresAcessLevel' => true,
-                'contain'=>array('NoteType','Entity','NoteStatus')));
-        $this->set('notes', $this->paginate('Note'));
+                'contain' => array('NoteType', 'Entity', 'NoteStatus')));
+
+        $this->setFilter(array('Note.document', 'Note.title', 'NoteType.name', 'Entity.name', 'Note.amount', 'NoteStatus.name'));
+        $this->set('notes', $this->Paginator->paginate('Note'));
         $this->Session->delete('Condo.FractionNote');
     }
 
@@ -83,7 +79,7 @@ class FractionNotesController extends AppController {
             $this->Flash->error(__('Invalid note'));
             $this->redirect(array('action' => 'index'));
         }
-        $this->Note->contain(array('NoteType','Entity','Fraction','Budget','FiscalYear','NoteStatus','Receipt'));
+        $this->Note->contain(array('NoteType', 'Entity', 'Fraction', 'Budget', 'FiscalYear', 'NoteStatus', 'Receipt'));
         $options = array('conditions' => array(
                 'Note.' . $this->Note->primaryKey => $id,
                 'Note.fraction_id' => $this->Session->read('Condo.Fraction.ViewID')));
@@ -92,7 +88,6 @@ class FractionNotesController extends AppController {
         $this->set('note', $note);
         $this->Session->write('Condo.FractionNote.ViewID', $id);
         $this->Session->write('Condo.FractionNote.ViewName', $note['Note']['title']);
-        
     }
 
     /**
@@ -131,7 +126,7 @@ class FractionNotesController extends AppController {
      */
     public function edit($id = null) {
         if (!$this->Note->exists($id)) {
-             $this->Flash->error(__('Invalid note'));
+            $this->Flash->error(__('Invalid note'));
             $this->redirect(array('action' => 'index'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
@@ -159,7 +154,7 @@ class FractionNotesController extends AppController {
         $noteTypes = $this->Note->NoteType->find('list');
         $fractions = $this->Note->Fraction->find('list', array('conditions' => array('Fraction.id' => $this->Session->read('Condo.Fraction.ViewID'))));
 
-         if (isset($this->request->data['Note']['receipt_id']) && $this->request->data['Note']['receipt_id']!=null){
+        if (isset($this->request->data['Note']['receipt_id']) && $this->request->data['Note']['receipt_id'] != null) {
             $noteStatuses = $this->Note->NoteStatus->find('list', array('conditions' => array('id' => $this->request->data['Note']['note_status_id'])));
         } else {
             $noteStatuses = $this->Note->NoteStatus->find('list', array('conditions' => array('active' => '1')));
@@ -186,7 +181,7 @@ class FractionNotesController extends AppController {
         }
         $this->Note->id = $id;
         if (!$this->Note->exists()) {
-             $this->Flash->error(__('Invalid note'));
+            $this->Flash->error(__('Invalid note'));
             $this->redirect(array('action' => 'index'));
         }
         if ($this->Note->delete()) {
@@ -197,7 +192,6 @@ class FractionNotesController extends AppController {
         $this->redirect(array('action' => 'view', $id));
     }
 
-    
     private function _getFiscalYear() {
         $this->Note->Fraction->id = $this->request->data['Note']['fraction_id'];
         $condoId = $this->Note->Fraction->field('condo_id');
@@ -210,7 +204,7 @@ class FractionNotesController extends AppController {
     }
 
     private function _setDocument() {
-         if (is_array($this->request->data['Note']['document_date'])) {
+        if (is_array($this->request->data['Note']['document_date'])) {
             $dateTmp = $this->request->data['Note']['document_date']['day'] . '-' . $this->request->data['Note']['document_date']['month'] . '-' . $this->request->data['Note']['document_date']['year'];
             $this->request->data['Note']['document_date'] = $dateTmp;
         };
@@ -225,27 +219,27 @@ class FractionNotesController extends AppController {
         parent::beforeFilter();
         if (!$this->Session->check('Condo.Fraction.ViewID')) {
             $this->Flash->error(__('Invalid fraction'));
-            $this->redirect(array('controller'=>'fractions','action' => 'index'));
+            $this->redirect(array('controller' => 'fractions', 'action' => 'index'));
         }
     }
 
     public function beforeRender() {
         $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID'))), 'text' => $this->Session->read('Condo.ViewName'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'fractions', 'action' => 'index')), 'text' => __n('Fraction','Fractions',2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'fractions', 'action' => 'index')), 'text' => __n('Fraction', 'Fractions', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'fractions', 'action' => 'view', $this->Session->read('Condo.Fraction.ViewID'))), 'text' => $this->Session->read('Condo.Fraction.ViewName'), 'active' => ''),
-            array('link' => '', 'text' => __n('Note','Notes',2), 'active' => 'active')
+            array('link' => '', 'text' => __n('Note', 'Notes', 2), 'active' => 'active')
         );
-        
+
         switch ($this->action) {
             case 'view':
-                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'fraction_notes', 'action' => 'index')), 'text' => __n('Note','Notes',2), 'active' => '');
+                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'fraction_notes', 'action' => 'index')), 'text' => __n('Note', 'Notes', 2), 'active' => '');
                 $breadcrumbs[6] = array('link' => '', 'text' => $this->Session->read('Condo.FractionNote.ViewName'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'fraction_notes', 'action' => 'index')), 'text' => __n('Note','Notes',2), 'active' => '');
+                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'fraction_notes', 'action' => 'index')), 'text' => __n('Note', 'Notes', 2), 'active' => '');
                 $breadcrumbs[6] = array('link' => '', 'text' => $this->Session->read('Condo.FractionNote.ViewName'), 'active' => 'active');
                 break;
         }

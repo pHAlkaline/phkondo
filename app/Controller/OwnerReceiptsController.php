@@ -58,7 +58,8 @@ class OwnerReceiptsController extends AppController {
      */
     public function index() {
         $this->Receipt->contain('Client', 'ReceiptStatus', 'ReceiptPaymentType');
-        $this->Paginator->settings = $this->paginate + array(
+        $this->Paginator->settings = $this->Paginator->settings + array(
+            'contain'=>array('Client', 'ReceiptStatus', 'ReceiptPaymentType'),
             'conditions' => array(
                 'Receipt.client_id' => $this->Session->read('Condo.Owner.ViewID'),
                 'Receipt.fraction_id' => $this->Session->read('Condo.Fraction.ViewID'))
@@ -66,7 +67,7 @@ class OwnerReceiptsController extends AppController {
         $this->setFilter(array('Receipt.document', 'Client.name', 'ReceiptStatus.name', 'ReceiptPaymentType.name', 'Receipt.total_amount'));
 
 
-        $this->set('receipts', $this->paginate());
+        $this->set('receipts', $this->Paginator->paginate('Receipt'));
         $this->Session->delete('Condo.Receipt');
     }
 

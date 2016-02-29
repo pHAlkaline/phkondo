@@ -57,7 +57,6 @@ class ReceiptsController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Receipt->contain(array('Fraction', 'Client', 'ReceiptStatus', 'ReceiptPaymentType'));
         $this->Paginator->settings = $this->Paginator->settings + array(
             'contain'=>array('Fraction', 'Client', 'ReceiptStatus', 'ReceiptPaymentType'),
             'conditions' => array(

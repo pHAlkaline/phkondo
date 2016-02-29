@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * pHKondo : pHKondo software for condominium property managers (http://phalkaline.eu)
@@ -25,7 +26,6 @@
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
-
 App::uses('AppController', 'Controller');
 
 /**
@@ -49,16 +49,15 @@ class InsuranceTypesController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Paginator->settings =Set::merge($this->Paginator->settings, 
-                    array('conditions' => array
-                    ("AND" => array("InsuranceType.active" => "1")
-            )));
+        $this->Paginator->settings = $this->Paginator->settings +
+                array('conditions' => array
+                        ("AND" => array("InsuranceType.active" => "1")
+                ));
         $this->setFilter(array('InsuranceType.name'));
-       
-        $this->set('insuranceTypes', $this->paginate());
+
+        $this->set('insuranceTypes', $this->Paginator->paginate('InsuranceType'));
     }
-    
-    
+
     /**
      * view method
      *
@@ -72,7 +71,7 @@ class InsuranceTypesController extends AppController {
             $this->redirect(array('action' => 'index'));
         }
         $options = array('conditions' => array('InsuranceType.' . $this->InsuranceType->primaryKey => $id));
-        $insuranceType=$this->InsuranceType->find('first', $options);
+        $insuranceType = $this->InsuranceType->find('first', $options);
         $this->set('insuranceType', $insuranceType);
         $this->Session->write('InsuranceType.ViewID', $id);
         $this->Session->write('InsuranceType.ViewName', $insuranceType['InsuranceType']['name']);
@@ -88,14 +87,13 @@ class InsuranceTypesController extends AppController {
             $this->InsuranceType->create();
             if ($this->InsuranceType->save($this->request->data)) {
                 $this->Flash->success(__('The insurance type has been saved'));
-                $this->redirect(array('action' => 'view',$this->InsuranceType->id));
+                $this->redirect(array('action' => 'view', $this->InsuranceType->id));
             } else {
                 $this->Flash->error(__('The insurance type could not be saved. Please, try again.'));
             }
         }
     }
 
-   
     /**
      * edit method
      *
@@ -111,7 +109,7 @@ class InsuranceTypesController extends AppController {
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->InsuranceType->save($this->request->data)) {
                 $this->Flash->success(__('The insurance type has been saved'));
-                $this->redirect(array('action' => 'view',$id));
+                $this->redirect(array('action' => 'view', $id));
             } else {
                 $this->Flash->error(__('The insurance type could not be saved. Please, try again.'));
             }
@@ -145,9 +143,9 @@ class InsuranceTypesController extends AppController {
             $this->redirect(array('action' => 'index'));
         }
         $this->Flash->error(__('Insurance type can not be deleted'));
-        $this->redirect(array('action' => 'view',$id));
+        $this->redirect(array('action' => 'view', $id));
     }
-    
+
     public function beforeRender() {
         if (isset($this->viewVars['breadcrumbs'])) {
             return;
@@ -164,11 +162,10 @@ class InsuranceTypesController extends AppController {
             case 'edit':
                 $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'insurance_types', 'action' => 'index')), 'text' => __('Insurance Types'), 'active' => '');
                 $breadcrumbs[2] = array('link' => '', 'text' => $this->Session->read('InsuranceType.ViewName'), 'active' => 'active');
-                
+
                 break;
         }
         $this->set(compact('breadcrumbs'));
-
     }
 
 }
