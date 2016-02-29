@@ -56,13 +56,14 @@ class FractionInsurancesController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Insurance->contain(array('InsuranceType','Fraction'));
-        $this->Paginator->settings = $this->paginate + array(
+        $this->Paginator->settings = $this->Paginator->settings + array(
+            'contain' => array('InsuranceType','Fraction'),
             'conditions' => array('Insurance.fraction_id' => $this->Session->read('Condo.Fraction.ViewID'))
         );
+        
         $this->setFilter(array('Insurance.title', 'Insurance.insurance_company', 'Insurance.policy', 'InsuranceType.name'));
 
-        $this->set('insurances', $this->paginate());
+        $this->set('insurances', $this->Paginator->paginate('Insurance'));
         $this->Session->delete('Condo.Insurance');
     }
 

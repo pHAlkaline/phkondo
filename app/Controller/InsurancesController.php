@@ -49,13 +49,13 @@ class InsurancesController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Insurance->contain('Fraction','InsuranceType');
-        $this->Paginator->settings = $this->paginate + array(
+        $this->Paginator->settings = $this->Paginator->settings  + array(
+            'contain'=>array('Fraction','InsuranceType'),
             'conditions' => array('Insurance.condo_id' => $this->Session->read('Condo.ViewID'))
         );
         $this->setFilter(array('Insurance.title','Insurance.insurance_company','Insurance.policy','InsuranceType.name'));
         
-        $this->set('insurances', $this->paginate());
+        $this->set('insurances', $this->Paginator->paginate('Insurance'));
         $this->Session->delete('Condo.Insurance');
     }
 

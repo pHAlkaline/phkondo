@@ -57,21 +57,25 @@ class BudgetNotesController extends AppController {
      * @return void
      */
     public function index() {
-        $this->setFilter(array('Note.document', 'Note.title', 'NoteType.name', 'Entity.name', 'Note.amount', 'NoteStatus.name'));
         $options['conditions'] = array('Note.budget_id' => $this->Session->read('Condo.Budget.ViewID'));
         $options['order'] = array('Note.id' => 'asc', 'Note.document_date' => 'asc', 'Note.document' => 'asc');
-        if (isset($this->paginate['conditions'])) {
-            $options['conditions'] = array_merge($this->paginate['conditions'], $options['conditions']);
+        
+        if (isset($this->Paginator->paginate['conditions'])) {
+            $options['conditions'] = array_merge($this->Paginator->paginate['conditions'], $options['conditions']);
         }
-        if (isset($this->paginate['order'])) {
-            $options['order'] = array_merge($this->paginate['order'], $options['order']);
+        if (isset($this->Paginator->paginate['order'])) {
+            $options['order'] = array_merge($this->Paginator->paginate['order'], $options['order']);
         }
         $this->Paginator->settings = array(
             'Note' => array(
                 'conditions' => $options['conditions'],
+                'order' => $options['order'],
                 //'requiresAcessLevel' => true,
                 'contain' => array('NoteType', 'Entity', 'NoteStatus', 'Fraction')));
-        $this->set('notes', $this->paginate('Note'));
+        
+        
+        $this->setFilter(array('Note.document', 'Note.title', 'NoteType.name', 'Entity.name', 'Note.amount', 'NoteStatus.name'));
+        $this->set('notes', $this->Paginator->paginate('Note'));
         $this->Session->delete('Condo.BudgetNote');
     }
 

@@ -49,13 +49,13 @@ class MaintenancesController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Maintenance->contain('Supplier');
-        $this->Paginator->settings = $this->paginate + array(
+        $this->Paginator->settings = $this->Paginator->settings + array(
+            'contain' => array ('Supplier'),
             'conditions' => array('Maintenance.condo_id' => $this->Session->read('Condo.ViewID'))
         );
         $this->setFilter(array('Maintenance.title','Maintenance.client_number', 'Supplier.name'));
         
-        $this->set('maintenances', $this->paginate());
+        $this->set('maintenances', $this->Paginator->paginate('Maintenance'));
         $this->Session->delete('Condo.Maintenance');
     }
 
