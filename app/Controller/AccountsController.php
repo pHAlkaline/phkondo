@@ -49,14 +49,6 @@ class AccountsController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Paginator->settings = $this->Paginator->settings + array(
-            'limit' => 100,
-            'conditions' => array(
-                'Account.condo_id' => $this->Session->read('Condo.ViewID'))
-        );
-        
-        $this->setFilter(array('Account.title', 'Account.bank', 'Account.balcony'));
-        
         $options['conditions'] = array('Account.condo_id' => $this->getPhkRequestVar('condo_id'));
         //$options['order'] = null;
         
@@ -75,7 +67,7 @@ class AccountsController extends AppController {
                 //'requiresAcessLevel' => true,
                 //'contain' => null
                 ));
-        
+        $this->setFilter(array('Account.title', 'Account.bank', 'Account.balcony'));
         $this->set('accounts', $this->paginate('Account'));
         
     }
@@ -90,7 +82,7 @@ class AccountsController extends AppController {
     public function view($id = null) {
         if (!$this->Account->exists($id)) {
             $this->Flash->error(__('Invalid account'));
-            $this->redirect(array('action' => 'index'));
+            $this->redirect(array('action' => 'index','?'=>$this->request->query));
         }
         $options = array('conditions' => array('Account.id'=> $id));
         $account = $this->Account->find('first', $options);
@@ -128,12 +120,12 @@ class AccountsController extends AppController {
     public function edit($id = null) {
         if (!$this->Account->exists($id)) {
             $this->Flash->error(__('Invalid account'));
-            $this->redirect(array('action' => 'index'));
+            $this->redirect(array('action' => 'index','?'=>$this->request->query));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Account->save($this->request->data)) {
                 $this->Flash->success(__('The account has been saved'));
-                $this->redirect(array('action' => 'view', $this->Account->id));
+                $this->redirect(array('action' => 'view', $id, '?'=>$this->request->query));
             } else {
                 $this->Flash->error(__('The account could not be saved. Please, try again.'));
             }
@@ -176,7 +168,7 @@ class AccountsController extends AppController {
         parent::beforeFilter();
         if (!$this->getPhkRequestVar('condo_id') || !$this->getPhkRequestVar('has_fiscal_year')) {
             $this->Flash->error(__('Invalid condo or fiscal year'));
-            $this->redirect(array('controller' => 'condos', 'action' => 'index'));
+            $this->redirect(array('controller' => 'condos', 'action' => 'index','?'=>$this->request->query));
         }
     }
 
