@@ -50,12 +50,14 @@ class BudgetsController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Budget->contain(array('BudgetType', 'BudgetStatus'));
-        $this->Paginator->settings = $this->paginate + array(
-            'conditions' => array('Budget.condo_id' => $this->Session->read('Condo.ViewID'))
+        
+        $this->Paginator->settings = $this->Paginator->settings + array(
+            'contain' => array('BudgetType', 'BudgetStatus'),
+            'conditions' => array(
+                'Budget.condo_id' => $this->Session->read('Condo.ViewID'))
         );
         $this->setFilter(array('Budget.title', 'BudgetType.name'));
-        $this->set('budgets', $this->paginate());
+        $this->set('budgets', $this->Paginator->paginate('Budget'));
         $this->Session->delete('Condo.Budget');
     }
 

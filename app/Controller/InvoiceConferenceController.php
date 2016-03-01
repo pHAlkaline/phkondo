@@ -49,9 +49,8 @@ class InvoiceConferenceController extends AppController {
      * @return void
      */
     public function index() {
-        $this->InvoiceConference->contain(array('Supplier'));
-        $this->Paginator->settings = $this->paginate;
         $this->Paginator->settings = $this->Paginator->settings + array(
+            'contain'=>array('Supplier'),
             'conditions' => array(
                 'InvoiceConference.condo_id' => $this->Session->read('Condo.ViewID'),
             //'InvoiceConference.fiscal_year_id' => $this->Session->read('Condo.FiscalYearID')
@@ -63,7 +62,7 @@ class InvoiceConferenceController extends AppController {
         $this->setFilter(array('Supplier.name', 'Supplier.email', 'Supplier.vat_number'));
 
 
-        $invoice = $this->paginate();
+        $invoice = $this->Paginator->paginate('InvoiceConference');
         
         $this->InvoiceConference->virtualFields = array('total_amount' => 'SUM(amount)');
         foreach ($invoice as $key => $supplier) {

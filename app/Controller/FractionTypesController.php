@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * pHKondo : pHKondo software for condominium property managers (http://phalkaline.eu)
@@ -25,7 +26,6 @@
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
-
 App::uses('AppController', 'Controller');
 
 /**
@@ -49,16 +49,15 @@ class FractionTypesController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Paginator->settings =Set::merge($this->Paginator->settings, 
-                    array('conditions' => array
-                    ("AND" => array("FractionType.active" => "1")
-            )));
+        $this->Paginator->settings = $this->Paginator->settings +
+                array('conditions' => array
+                        ("AND" => array("FractionType.active" => "1")
+                ));
         $this->setFilter(array('FractionType.name'));
-       
+
         $this->set('fractionTypes', $this->paginate());
     }
-    
-    
+
     /**
      * view method
      *
@@ -72,7 +71,7 @@ class FractionTypesController extends AppController {
             $this->redirect(array('action' => 'index'));
         }
         $options = array('conditions' => array('FractionType.' . $this->FractionType->primaryKey => $id));
-        $fractionType=$this->FractionType->find('first', $options);
+        $fractionType = $this->FractionType->find('first', $options);
         $this->set('fractionType', $fractionType);
         $this->Session->write('FractionType.ViewID', $id);
         $this->Session->write('FractionType.ViewName', $fractionType['FractionType']['name']);
@@ -88,14 +87,13 @@ class FractionTypesController extends AppController {
             $this->FractionType->create();
             if ($this->FractionType->save($this->request->data)) {
                 $this->Flash->success(__('The fraction type has been saved'));
-                $this->redirect(array('action' => 'view',$this->FractionType->id));
+                $this->redirect(array('action' => 'view', $this->FractionType->id));
             } else {
                 $this->Flash->error(__('The fraction type could not be saved. Please, try again.'));
             }
         }
     }
 
-   
     /**
      * edit method
      *
@@ -111,7 +109,7 @@ class FractionTypesController extends AppController {
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->FractionType->save($this->request->data)) {
                 $this->Flash->success(__('The fraction type has been saved'));
-                $this->redirect(array('action' => 'view',$id));
+                $this->redirect(array('action' => 'view', $id));
             } else {
                 $this->Flash->error(__('The fraction type could not be saved. Please, try again.'));
             }
@@ -145,9 +143,9 @@ class FractionTypesController extends AppController {
             $this->redirect(array('action' => 'index'));
         }
         $this->Flash->error(__('Fraction type can not be deleted'));
-        $this->redirect(array('action' => 'view',$id));
+        $this->redirect(array('action' => 'view', $id));
     }
-    
+
     public function beforeRender() {
         if (isset($this->viewVars['breadcrumbs'])) {
             return;
@@ -164,11 +162,10 @@ class FractionTypesController extends AppController {
             case 'edit':
                 $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'fraction_types', 'action' => 'index')), 'text' => __('Fraction Types'), 'active' => '');
                 $breadcrumbs[2] = array('link' => '', 'text' => $this->Session->read('FractionType.ViewName'), 'active' => 'active');
-                
+
                 break;
         }
         $this->set(compact('breadcrumbs'));
-
     }
 
 }

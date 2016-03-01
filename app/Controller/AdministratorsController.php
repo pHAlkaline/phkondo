@@ -50,14 +50,14 @@ class AdministratorsController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Administrator->contain('Entity','FiscalYear');
-        $this->Paginator->settings = $this->paginate + array(
+        $this->Paginator->settings = $this->Paginator->settings + array(
+            'contain'=>array('Entity','FiscalYear'),
             'conditions' => array(
                 'Administrator.condo_id' => $this->Session->read('Condo.ViewID'),
                 'Administrator.fiscal_year_id' => $this->Session->read('Condo.FiscalYearID'))
         );
         $this->setFilter(array('Administrator.title','Entity.name','Entity.email','Entity.representative'));
-        $this->set('administrators', $this->paginate());
+        $this->set('administrators', $this->Paginator->paginate('Administrator'));
         $this->Session->delete('Condo.Administrator');
     }
 
