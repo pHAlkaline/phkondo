@@ -159,17 +159,18 @@ class AppController extends Controller {
 
     public function setPhkRequestVar($key, $value) {
         $this->phkRequestData[$key] = $value;
+        $this->setAccountData();
         $this->setCondoData();
         $this->setFiscalYearData();
-        $this->setAccountData();
+       
+       
     }
 
     private function setCondoData() {
         if (isset($this->phkRequestData['condo_id']) && !isset($this->phkRequestData['condo_text'])) {
-
             App::import("Model", "Condo");
             $condo = new Condo();
-            $result = $condo->find("first", array('Condo.id' => $this->phkRequestData['condo_id']));
+            $result = $condo->find("first", array('conditions'=>array('Condo.id' => $this->phkRequestData['condo_id'])));
             $this->phkRequestData['condo_id'] = $result['Condo']['id'];
             $this->phkRequestData['condo_text'] = $result['Condo']['title'];
         }
@@ -196,7 +197,7 @@ class AppController extends Controller {
         if (isset($this->phkRequestData['account_id']) && !isset($this->phkRequestData['account_text'])) {
             App::import("Model", "Account");
             $account = new Account();
-            $result = $account->find("first", array('Account.id' => $this->phkRequestData['account_id']));
+            $result = $account->find("first", array('conditions'=>array('Account.id' => $this->phkRequestData['account_id'])));
             if (count($result)) {
                 $this->phkRequestData['account_id'] = $result['Account']['id'];
                 $this->phkRequestData['account_text'] = $result['Account']['title'];
