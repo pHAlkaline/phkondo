@@ -217,9 +217,9 @@ class FractionNotesController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        if (!$this->Session->check('Condo.Fraction.ViewID')) {
-            $this->Flash->error(__('Invalid fraction'));
-            $this->redirect(array('controller' => 'fractions', 'action' => 'index'));
+        if (!$this->getPhkRequestVar('condo_id')) {
+            $this->Flash->error(__('Invalid condo'));
+            $this->redirect(array('controller' => 'condos', 'action' => 'index','?'=>$this->request->query));
         }
     }
 

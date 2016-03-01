@@ -18,7 +18,7 @@ $administrators = implode(", ", $administrators);
                 <?php endif; ?>
                 <li ><?php echo $this->Html->link(__('List Condos'), array('action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
                 <li class="divider">&nbsp;</li>
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Fraction', 'Fractions', 2), array('controller' => 'fractions', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Fraction', 'Fractions', 2), array('controller' => 'fractions', 'action' => 'index','?'=>array('condo_id'=>$condo['Condo']['id'])), array('class' => 'btn ', 'escape' => false)); ?> </li>
                 <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Administrator', 'Administrators', 2), array('controller' => 'administrators', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
                 <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Fiscal Year', 'Fiscal Years', 2), array('controller' => 'fiscal_years', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
                 <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Receipt', 'Receipts', 2), array('controller' => 'receipts', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
@@ -122,12 +122,14 @@ $administrators = implode(", ", $administrators);
             <div class="panel-heading"  data-toggle="collapse" data-target="#CommentsIndex"><strong><?php echo __('Comments'); ?></strong> 
                 <div class="clearfix content-action-menu pull-right">
                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-down"></span> ', '#CommentsIndex', array('title' => __('View %s', __('Comments')), 'id' => 'viewCommentsBtn', 'class' => ' ', 'escape' => false)); ?>
-                </div></div>
+                </div>
+            </div>
             <div class="panel-body collapse" id="CommentsIndex">
 
                 <?php echo $this->Comments->display_for($condo); ?>
 
             </div>
+            
         </div>
         <div class="panel panel-default">
             <!-- Default panel contents -->
