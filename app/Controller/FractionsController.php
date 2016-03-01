@@ -51,7 +51,7 @@ class FractionsController extends AppController {
     public function index() {
         $this->Paginator->settings = $this->Paginator->settings + array(
             'contain' => array('Entity', 'Manager','FractionType'),
-            'conditions' => array('Fraction.condo_id' => $this->Session->read('Condo.ViewID')),
+            'conditions' => array('Fraction.condo_id' => $this->getPhkRequestVar('condo_id')),
             'limit'=>100000
         );
         
@@ -60,14 +60,13 @@ class FractionsController extends AppController {
         
         $milRateWarning=false;
         $milRate = Set::extract('/Fraction/mil_rate', $fractions);
-        if ($this->Session->read('Condo.'.$this->Session->read('Condo.ViewName').'.Fraction.milrate')!='show' && array_sum($milRate) != 1000 && array_sum($milRate) != 0){
-            $this->Session->write('Condo.'.$this->Session->read('Condo.ViewName').'.Fraction.milrate','show');
+        if ($this->Session->read('Condo.'.$this->getPhkRequestVar('condo_id').'.Fraction.milrate')!='show' && array_sum($milRate) != 1000 && array_sum($milRate) != 0){
+            $this->Session->write('Condo.'.$this->getPhkRequestVar('condo_id').'.Fraction.milrate','show');
             $milRateWarning=true;
         }
             
         $this->set(compact('fractions', 'milRateWarning'));
         
-        $this->Session->delete('Condo.Fraction');
     }
 
     /**
@@ -80,14 +79,15 @@ class FractionsController extends AppController {
     public function view($id = null) {
         if (!$this->Fraction->exists($id)) {
             $this->Flash->error(__('Invalid fraction'));
-            $this->redirect(array('action' => 'index'));
+            $this->redirect(array('action' => 'index','?'=>$this->request->query));
         }
         $this->Fraction->contain('Manager', 'Comment','FractionType');
-        $options = array('conditions' => array('Fraction.' . $this->Fraction->primaryKey => $id));
+        $options = array('conditions' => array('Fraction.id' => $id));
         $fraction = $this->Fraction->find('first', $options);
         $this->set(compact('fraction'));
-        $this->Session->write('Condo.Fraction.ViewID', $id);
-        $this->Session->write('Condo.Fraction.ViewName', $fraction['Fraction']['fraction']);
+        $this->setPhkRequestVar('fraction_id', $id);
+        $this->setPhkRequestVar('fraction_text', $fraction['Fraction']['fraction']);
+        
     }
 
     /**
@@ -100,13 +100,13 @@ class FractionsController extends AppController {
             $this->Fraction->create();
             if ($this->Fraction->save($this->request->data)) {
                 $this->Flash->success(__('The fraction has been saved'));
-                $this->Session->delete('Condo.'.$this->Session->read('Condo.ViewName').'.Fraction.milrate');
-                $this->redirect(array('action' => 'view', $this->Fraction->id));
+                $this->Session->delete('Condo.'.$this->getPhkRequestVar('condo_id').'.Fraction.milrate');
+                $this->redirect(array('action' => 'view', $this->Fraction->id, '?'=>$this->request->query));
             } else {
                 $this->Flash->error(__('The fraction could not be saved. Please, try again.'));
             }
         }
-        $condos = $this->Fraction->Condo->find('list', array('conditions' => array('id' => $this->Session->read('Condo.ViewID'))));
+        $condos = $this->Fraction->Condo->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('condo_id'))));
         $fractionTypes = $this->Fraction->FractionType->find('list', array('conditions' => array('active' =>'1')));
         $this->set(compact('condos', 'fractionTypes'));
     }
@@ -121,27 +121,27 @@ class FractionsController extends AppController {
     public function edit($id = null) {
         if (!$this->Fraction->exists($id)) {
             $this->Flash->error(__('Invalid fraction'));
-            $this->redirect(array('action' => 'index'));
+            $this->redirect(array('action' => 'index','?'=>$this->request->query));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Fraction->save($this->request->data)) {
                 $this->Flash->success(__('The fraction has been saved'));
-                $this->Session->delete('Condo.'.$this->Session->read('Condo.ViewName').'.Fraction.milrate');
-                $this->redirect(array('action' => 'view', $id));
+                $this->Session->delete('Condo.'.$this->getPhkRequestVar('condo_id').'.Fraction.milrate');
+                $this->redirect(array('action' => 'view', $id, '?'=>$this->request->query));
             } else {
                 $this->Flash->error(__('The fraction could not be saved. Please, try again.'));
             }
         } else {
-            $options = array('conditions' => array('Fraction.' . $this->Fraction->primaryKey => $id));
+            $options = array('conditions' => array('Fraction.id' => $id));
             $this->request->data = $this->Fraction->find('first', $options);
         }
         $condos = $this->Fraction->Condo->find('list', array('conditions' => array('Condo.id' => $this->request->data['Fraction']['condo_id'])));
 
-        $this->Session->write('Condo.Fraction.ViewID', $id);
-        $this->Session->write('Condo.Fraction.ViewName', $this->request->data['Fraction']['description']);
-
+        $this->setPhkRequestVar('fraction_id', $id);
+        $this->setPhkRequestVar('fraction_text', $this->request->data['Fraction']['fraction']);
+        
         $this->Fraction->contain('Entity');
-        $fraction = $this->Fraction->find('first', array('conditions' => array('Fraction.id' => $this->Session->read('Condo.Fraction.ViewID'))));
+        $fraction = $this->Fraction->find('first', array('conditions' => array('Fraction.id'=>$id)));
         $entitiesInFraction = Set::extract('/Entity/id', $fraction);
 
         $managers = $this->Fraction->Manager->find('list', array('order' => 'Manager.name', 'conditions' => array('Manager.entity_type_id' => '1', 'Manager.id' => $entitiesInFraction)));
@@ -165,12 +165,12 @@ class FractionsController extends AppController {
         $this->Fraction->id = $id;
         if (!$this->Fraction->exists()) {
             $this->Flash->error(__('Invalid fraction'));
-            $this->redirect(array('action' => 'index'));
+            $this->redirect(array('action' => 'index','?'=>$this->request->query));
         }
 
         if (!$this->Fraction->deletable()) {
             $this->Flash->error(__('This Fraction can not be deleted, check existing notes already paid.'));
-            $this->redirect(array('action' => 'view', $id));
+            $this->redirect(array('action' => 'view', $id,'?'=>$this->request->query));
         }
 
         ClassRegistry::init('Note')->DeleteAll(array('Note.fraction_id' => $id));
@@ -179,17 +179,17 @@ class FractionsController extends AppController {
 
         if ($this->Fraction->delete()) {
             $this->Flash->success(__('Fraction deleted'));
-            $this->redirect(array('action' => 'index'));
+            $this->redirect(array('action' => 'index','?'=>$this->request->query));
         }
         $this->Flash->error(__('Fraction can not be deleted'));
-        $this->redirect(array('action' => 'view', $id));
+        $this->redirect(array('action' => 'view', $id,'?'=>$this->request->query));
     }
 
     public function beforeFilter() {
         parent::beforeFilter();
-        if (!$this->Session->check('Condo.ViewID')) {
+        if (!$this->getPhkRequestVar('condo_id')) {
             $this->Flash->error(__('Invalid condo'));
-            $this->redirect(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID')));
+            $this->redirect(array('controller' => 'condos', 'action' => 'index','?'=>$this->request->query));
         }
     }
 
@@ -197,20 +197,20 @@ class FractionsController extends AppController {
         $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID'))), 'text' => $this->Session->read('Condo.ViewName'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view',$this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
             array('link' => '', 'text' => __n('Fraction', 'Fractions', 2), 'active' => 'active')
         );
         switch ($this->action) {
             case 'view':
-                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'fractions', 'action' => 'index')), 'text' => __n('Fraction', 'Fractions', 2), 'active' => '');
-                $breadcrumbs[4] = array('link' => '', 'text' => $this->Session->read('Condo.Fraction.ViewName'), 'active' => 'active');
+                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'fractions', 'action' => 'index','?'=>$this->request->query)), 'text' => __n('Fraction', 'Fractions', 2), 'active' => '');
+                $breadcrumbs[4] = array('link' => '', 'text' => $this->getPhkRequestVar('fraction_text'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'fractions', 'action' => 'index')), 'text' => __n('Fraction', 'Fractions', 2), 'active' => '');
-                $breadcrumbs[4] = array('link' => '', 'text' => $this->Session->read('Condo.Fraction.ViewName'), 'active' => 'active');
+                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'fractions', 'action' => 'index','?'=>$this->request->query)), 'text' => __n('Fraction', 'Fractions', 2), 'active' => '');
+                $breadcrumbs[4] = array('link' => '', 'text' => $this->getPhkRequestVar('fraction_text'), 'active' => 'active');
                 break;
         }
-        $headerTitle=$this->Session->read('Condo.ViewName');
+        $headerTitle=$this->getPhkRequestVar('condo_text');
         $this->set(compact('breadcrumbs','headerTitle'));
     }
 
