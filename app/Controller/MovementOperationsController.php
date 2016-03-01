@@ -50,7 +50,7 @@ class MovementOperationsController extends AppController {
      */
     public function index() {
         $this->setFilter(array('MovementOperation.name'));
-        $this->set('movementOperations', $this->paginate());
+        $this->set('movementOperations', $this->Paginator->paginate('MovementOperations'));
     }
 
     /**

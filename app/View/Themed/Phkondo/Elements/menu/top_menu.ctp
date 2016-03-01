@@ -89,7 +89,7 @@
                 <div class="form-group">
                     <?php
                     foreach ($this->request->query as $key => $value):
-                        if ($key != 'keyword'):
+                        if ($key != 'keyword' && $key != 'page'):
                             echo $this->Form->hidden($key, array('value' => $value));
                         endif;
                     endforeach;

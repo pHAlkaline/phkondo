@@ -49,6 +49,12 @@ class AccountsController extends AppController {
      * @return void
      */
     public function index() {
+        $this->Paginator->settings = $this->Paginator->settings + array(
+            'limit' => 100,
+            'conditions' => array(
+                'Account.condo_id' => $this->Session->read('Condo.ViewID'))
+        );
+        
         $this->setFilter(array('Account.title', 'Account.bank', 'Account.balcony'));
         
         $options['conditions'] = array('Account.condo_id' => $this->getPhkRequestVar('condo_id'));

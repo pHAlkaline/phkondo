@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * pHKondo : pHKondo software for condominium property managers (http://phalkaline.eu)
@@ -25,7 +26,6 @@
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
-
 App::uses('AppController', 'Controller');
 
 /**
@@ -49,16 +49,15 @@ class MovementCategoriesController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Paginator->settings =Set::merge($this->Paginator->settings, 
-                    array('conditions' => array
-                    ("AND" => array("MovementCategory.active" => "1")
-            )));
+        $this->Paginator->settings = $this->Paginator->settings +
+                array('conditions' => array
+                        ("AND" => array("MovementCategory.active" => "1")
+                ));
         $this->setFilter(array('MovementCategory.name'));
-       
+
         $this->set('movementCategories', $this->paginate());
     }
-    
-    
+
     /**
      * view method
      *
@@ -72,7 +71,7 @@ class MovementCategoriesController extends AppController {
             $this->redirect(array('action' => 'index'));
         }
         $options = array('conditions' => array('MovementCategory.' . $this->MovementCategory->primaryKey => $id));
-        $movementCategory=$this->MovementCategory->find('first', $options);
+        $movementCategory = $this->MovementCategory->find('first', $options);
         $this->set('movementCategory', $movementCategory);
         $this->Session->write('MovementCategory.ViewID', $id);
         $this->Session->write('MovementCategory.ViewName', $movementCategory['MovementCategory']['name']);
@@ -88,7 +87,7 @@ class MovementCategoriesController extends AppController {
             $this->MovementCategory->create();
             if ($this->MovementCategory->save($this->request->data)) {
                 $this->Flash->success(__('The movement category has been saved'));
-                $this->redirect(array('action' => 'view',$this->Movement->id));
+                $this->redirect(array('action' => 'view', $this->Movement->id));
             } else {
                 $this->Flash->error(__('The movement category could not be saved. Please, try again.'));
             }
@@ -101,7 +100,7 @@ class MovementCategoriesController extends AppController {
      * @return void
      */
     public function addFromMovement($movementId = null) {
-        $this->Movement=  ClassRegistry::init('Movement');
+        $this->Movement = ClassRegistry::init('Movement');
         if ($movementId != null && !$this->Movement->exists($movementId)) {
             $this->Flash->error(__('Invalid movement category'));
             $this->redirect(array('action' => 'index'));
@@ -122,20 +121,19 @@ class MovementCategoriesController extends AppController {
 
         if (!$this->Session->check('Condo.Account.ViewID')) {
             $this->Flash->error(__('Invalid account'));
-            $this->redirect(array('controller'=>'accounts','action' => 'index'));
+            $this->redirect(array('controller' => 'accounts', 'action' => 'index'));
         }
 
         $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID'))), 'text' => $this->Session->read('Condo.ViewName'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'accounts', 'action' => 'index')), 'text' => __n('Account','Accounts',2), 'active' => ''),
-            
+            array('link' => Router::url(array('controller' => 'accounts', 'action' => 'index')), 'text' => __n('Account', 'Accounts', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'accounts', 'action' => 'index', $this->Session->read('Condo.Account.ViewID'))), 'text' => $this->Session->read('Condo.Account.ViewName'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'movements', 'action' => 'index')), 'text' => __n('Movement','Movements',2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'movements', 'action' => 'index')), 'text' => __n('Movement', 'Movements', 2), 'active' => ''),
             array('link' => '', 'text' => __('Add Movement Category'), 'active' => 'active')
         );
-        $this->set(compact('breadcrumbs','movementId'));
+        $this->set(compact('breadcrumbs', 'movementId'));
     }
 
     /**
@@ -153,7 +151,7 @@ class MovementCategoriesController extends AppController {
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->MovementCategory->save($this->request->data)) {
                 $this->Flash->success(__('The movement category has been saved'));
-                $this->redirect(array('action' => 'view',$id));
+                $this->redirect(array('action' => 'view', $id));
             } else {
                 $this->Flash->error(__('The movement category could not be saved. Please, try again.'));
             }
@@ -187,9 +185,9 @@ class MovementCategoriesController extends AppController {
             $this->redirect(array('action' => 'index'));
         }
         $this->Flash->error(__('Movement category can not be deleted'));
-        $this->redirect(array('action' => 'view',$id));
+        $this->redirect(array('action' => 'view', $id));
     }
-    
+
     public function beforeRender() {
         if (isset($this->viewVars['breadcrumbs'])) {
             return;
@@ -206,11 +204,10 @@ class MovementCategoriesController extends AppController {
             case 'edit':
                 $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'movement_categories', 'action' => 'index')), 'text' => __('Movement Categories'), 'active' => '');
                 $breadcrumbs[2] = array('link' => '', 'text' => $this->Session->read('MovementCategory.ViewName'), 'active' => 'active');
-                
+
                 break;
         }
         $this->set(compact('breadcrumbs'));
-
     }
 
 }

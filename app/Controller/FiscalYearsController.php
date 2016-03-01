@@ -50,7 +50,7 @@ class FiscalYearsController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Paginator->settings = $this->paginate + array(
+        $this->Paginator->settings = $this->Paginator->settings + array(
             'conditions' => array('FiscalYear.condo_id' => $this->Session->read('Condo.ViewID'))
         );
         $this->setFilter(array('FiscalYear.title'));
