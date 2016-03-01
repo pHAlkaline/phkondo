@@ -51,10 +51,12 @@ class EntitiesController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Entity->contain(array('EntityType'));
-        $this->Paginator->settings = $this->paginate;
+        $this->Paginator->settings = $this->Paginator->settings + array(
+            'contain' => array('EntityType')
+        );
+        
         $this->setFilter(array('Entity.name','EntityType.name','Entity.address','Entity.email','Entity.contacts','Entity.vat_number'));
-        $this->set('entities', $this->paginate());
+        $this->set('entities', $this->Paginator->paginate('Entity'));
     }
 
     /**

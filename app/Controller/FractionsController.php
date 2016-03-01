@@ -49,14 +49,14 @@ class FractionsController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Fraction->contain('Entity', 'Manager','FractionType');
-        $this->Paginator->settings = array_merge($this->paginate,array(
+        $this->Paginator->settings = $this->Paginator->settings + array(
+            'contain' => array('Entity', 'Manager','FractionType'),
             'conditions' => array('Fraction.condo_id' => $this->Session->read('Condo.ViewID')),
             'limit'=>100000
-        ));
+        );
         
         $this->setFilter(array('Fraction.fraction', 'Fraction.floor_location', 'Fraction.description', 'Fraction.mil_rate', 'Manager.name', 'FractionType.name'));
-        $fractions = $this->Paginator->paginate();
+        $fractions = $this->Paginator->paginate('Fraction');
         
         $milRateWarning=false;
         $milRate = Set::extract('/Fraction/mil_rate', $fractions);

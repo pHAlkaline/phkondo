@@ -51,10 +51,15 @@ class CondosController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Condo->contain('FiscalYear', 'Insurance', 'Maintenance');
-        $this->Paginator->settings = Set::merge($this->Paginator->settings, array('limit'=>50,'conditions' => array
-                        ("AND" => array("Condo.active" => "1")
-        )));
+        
+        
+        $this->Paginator->settings = $this->Paginator->settings + array(
+            'contain' => array('FiscalYear', 'Insurance', 'Maintenance'),
+            'limit'=>50,
+            'conditions' => array(
+                "AND" => array("Condo.active" => "1"))
+        );
+        
         $this->setFilter(array('Condo.title', 'Condo.address'));
 
         $this->set('condos', $this->Paginator->paginate('Condo'));

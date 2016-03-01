@@ -57,13 +57,14 @@ class ReceiptsController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Receipt->contain(array('Fraction', 'Client', 'ReceiptStatus', 'ReceiptPaymentType'));
-        $this->Paginator->settings = $this->paginate + array(
+        $this->Paginator->settings = $this->Paginator->settings + array(
+            'contain'=>array('Fraction', 'Client', 'ReceiptStatus', 'ReceiptPaymentType'),
             'conditions' => array(
-                'Receipt.condo_id' => $this->Session->read('Condo.ViewID')),
+                'Receipt.condo_id' => $this->Session->read('Condo.ViewID'),
+                ),
         );
         $this->setFilter(array('Receipt.document', 'Client.name', 'ReceiptStatus.name', 'ReceiptPaymentType.name', 'Receipt.total_amount'));
-        $this->set('receipts', $this->paginate());
+        $this->set('receipts', $this->Paginator->paginate('Receipt'));
         $this->Session->delete('Condo.Receipt');
     }
 

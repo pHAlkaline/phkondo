@@ -56,14 +56,14 @@ class OwnerNotesController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Note->contain('NoteType','NoteStatus','Fraction','Entity');
-        $this->Paginator->settings = $this->paginate + array(
+        $this->Paginator->settings = $this->Paginator->settings  + array(
+            'contain'=>array('NoteType','NoteStatus','Fraction','Entity'),
             'conditions' => array(
                 'Note.entity_id' => $this->Session->read('Condo.Owner.ViewID'),
                 'Note.fraction_id' => $this->Session->read('Condo.Fraction.ViewID')));
         $this->setFilter(array('Note.document','Note.title','NoteType.name','Entity.name','Note.amount', 'NoteStatus.name'));
         
-        $this->set('notes', $this->paginate());
+        $this->set('notes', $this->Paginator->paginate('Note'));
         $this->Session->delete('Condo.OwnerNote');
     }
 
