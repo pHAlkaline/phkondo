@@ -6,7 +6,7 @@ $(function () {
         placeholder: phkondo.SEARCH_HERE_FOR_A_CLIENT,
         minimumInputLength: 3,
         ajax: {
-            url: phkondo.APP_PATH + 'fraction_owners/search_clients',
+            url: phkondo.APP_PATH + 'fraction_owners/search_clients/?fraction_id='+$('#EntitiesFractionFractionId').val(),
             // url: "https://api.github.com/search/repositories",
             dataType: 'json',
             quietMillis: 1500,
