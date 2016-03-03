@@ -6,7 +6,7 @@
         <div class="actions">
 
             <ul class="nav nav-pills nav-stacked">
-                <li ><?php echo $this->Html->link(__('List Owners'), array('action' => 'index')); ?></li>
+                <li ><?php echo $this->Html->link(__('List Owners'), array('action' => 'index','?'=>$this->request->query)); ?></li>
 
             </ul><!-- /.list-group -->
 
