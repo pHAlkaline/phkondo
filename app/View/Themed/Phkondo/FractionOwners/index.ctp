@@ -7,7 +7,7 @@
 
             <h2 class="col-sm-9"><?php echo __n('Owner', 'Owners', 2); ?></h2>
             <div class="actions hidden-print col-sm-3">
-                <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Owner'), array('action' => 'add'), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 1px; float: right;', 'escape' => false)); ?>
+                <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Owner'), array('action' => 'add','?'=>$this->request->query), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 1px; float: right;', 'escape' => false)); ?>
             </div><!-- /.actions -->
             <div class="clearfix"></div>
             <div class="table-responsive">
@@ -29,9 +29,9 @@
                                 <td><?php echo h($entity['contacts']); ?>&nbsp;</td>
                                 <td style="text-align:right;"><?php echo h($entity['EntitiesFraction']['owner_percentage']); ?>&nbsp;&percnt;</td>
                                 <td class="actions hidden-print">
-                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $entity['id']), array('title' => __('Details'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
-                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $entity['id']), array('title' => __('Edit'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
-                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'remove', $entity['id']), array('title' => __('Remove'), 'title' => __('Remove'), 'class' => 'btn btn-default btn-xs', 'escape' => false), __('Are you sure you want to remove # %s?', $entity['name'])); ?>
+                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $entity['id'],'?'=>$this->request->query), array('title' => __('Details'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
+                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $entity['id'],'?'=>$this->request->query), array('title' => __('Edit'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
+                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'remove', $entity['id'],'?'=>$this->request->query), array('title' => __('Remove'), 'title' => __('Remove'), 'class' => 'btn btn-default btn-xs', 'escape' => false), __('Are you sure you want to remove # %s?', $entity['name'])); ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -41,7 +41,7 @@
             <div class="entities form hidden-print">
 
                 <?php
-                echo $this->Form->create('EntitiesFraction', array('url' => array('controller' => 'fraction_owners', 'action' => 'insert'), 'class' => 'form-horizontal',
+                echo $this->Form->create('EntitiesFraction', array('url' => array('controller' => 'fraction_owners', 'action' => 'insert','?'=>$this->request->query), 'class' => 'form-horizontal',
                     'role' => 'form',
                     'inputDefaults' => array(
                         'class' => 'form-control',
@@ -49,6 +49,7 @@
                         'between' => '<div class="col-sm-6">',
                         'after' => '</div>',
                 )));
+                echo $this->Form->hidden('fraction_id', array('class' => 'form-control','value'=>$phkRequestData['fraction_id'])); 
                 ?>
                 <fieldset>
                     <h2><?php echo __('New Owner'); ?></h2>

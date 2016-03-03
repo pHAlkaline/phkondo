@@ -159,6 +159,7 @@ class AppController extends Controller {
 
     public function setPhkRequestVar($key, $value) {
         $this->phkRequestData[$key] = $value;
+        $this->setFractionData();
         $this->setAccountData();
         $this->setCondoData();
         $this->setFiscalYearData();
@@ -201,6 +202,21 @@ class AppController extends Controller {
             if (count($result)) {
                 $this->phkRequestData['account_id'] = $result['Account']['id'];
                 $this->phkRequestData['account_text'] = $result['Account']['title'];
+                $this->phkRequestData['condo_id'] = $result['Account']['condo_id'];
+                
+            }
+        }
+    }
+    
+    public function setFractionData() {
+        if (isset($this->phkRequestData['fraction_id']) && !isset($this->phkRequestData['fraction_text'])) {
+            App::import("Model", "Fraction");
+            $fraction = new Fraction();
+            $result = $fraction->find("first", array('conditions'=>array('Fraction.id' => $this->phkRequestData['fraction_id'])));
+            if (count($result)) {
+                $this->phkRequestData['fraction_id'] = $result['Fraction']['id'];
+                $this->phkRequestData['fraction_text'] = $result['Fraction']['description'];
+                $this->phkRequestData['condo_id'] = $result['Fraction']['condo_id'];
                 
             }
         }
