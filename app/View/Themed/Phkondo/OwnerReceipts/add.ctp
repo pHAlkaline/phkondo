@@ -6,7 +6,7 @@
         <div class="actions">
 
             <ul class="nav nav-pills nav-stacked">
-                <li ><?php echo $this->Html->link(__('List Receipts'), array('action' => 'index'),array('class'=>'btn')); ?></li>
+                <li ><?php echo $this->Html->link(__('List Receipts'), array('action' => 'index','?' => $this->request->query),array('class'=>'btn')); ?></li>
 
             </ul><!-- /.list-group -->
 
@@ -18,7 +18,14 @@
 
         <div class="receipts form">
 
-            <?php echo $this->Form->create('Receipt', array('class' => 'form-horizontal',                 'role' => 'form',                 'inputDefaults' => array(                     'class' => 'form-control',                     'label' => array('class' => 'col-sm-2 control-label'),                     'between' => '<div class="col-sm-6">',                     'after' => '</div>',                     ))); ?>
+            <?php echo $this->Form->create('Receipt', array(
+                'class' => 'form-horizontal',
+                'role' => 'form',
+                'inputDefaults' => array(
+                    'class' => 'form-control',
+                    'label' => array('class' => 'col-sm-2 control-label'),
+                    'between' => '<div class="col-sm-6">',
+                    'after' => '</div>'))); ?>
             <fieldset>
                 <h2><?php echo __('New Receipt'); ?></h2>
                 <div class="form-group">
