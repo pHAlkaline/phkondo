@@ -86,8 +86,8 @@ class OwnerNotesController extends AppController {
 
         $note = $this->Note->find('first', $options);
         $this->set(compact('note'));
-        $this->setPhkRequestVar('owner_note_id',$id);
-        $this->setPhkRequestVar('owner_note_text',$note['Note']['title']);
+        $this->setPhkRequestVar('note_id',$id);
+        $this->setPhkRequestVar('note_text',$note['Note']['title']);
     }
 
     /**
@@ -159,8 +159,8 @@ class OwnerNotesController extends AppController {
             $noteStatuses = $this->Note->NoteStatus->find('list', array('conditions' => array('active' => '1')));
         }
         $this->set(compact('noteTypes', 'fractions', 'noteStatuses'));
-        $this->setPhkRequestVar('owner_note_id',$id);
-        $this->setPhkRequestVar('owner_note_text',$this->request->data['Note']['title']);
+        $this->setPhkRequestVar('note_id',$id);
+        $this->setPhkRequestVar('note_text',$this->request->data['Note']['title']);
     }
 
     /**
@@ -237,11 +237,11 @@ class OwnerNotesController extends AppController {
         switch ($this->action) {
             case 'view':
                 $breadcrumbs[7] = array('link' => Router::url(array('controller' => 'owner_notes', 'action' => 'index','?'=>$this->request->query)), 'text' => __n('Note','Notes',2), 'active' => '');
-                $breadcrumbs[8] = array('link' => '', 'text' => $this->getPhkRequestVar('owner_note_text'), 'active' => 'active');
+                $breadcrumbs[8] = array('link' => '', 'text' => $this->getPhkRequestVar('note_text'), 'active' => 'active');
                 break;
             case 'edit':
                 $breadcrumbs[7] = array('link' => Router::url(array('controller' => 'owner_notes', 'action' => 'index','?'=>$this->request->query)), 'text' => __n('Note','Notes',2), 'active' => '');
-                $breadcrumbs[8] = array('link' => '', 'text' => $this->getPhkRequestVar('owner_note_text'), 'active' => 'active');
+                $breadcrumbs[8] = array('link' => '', 'text' => $this->getPhkRequestVar('note_text'), 'active' => 'active');
                 break;
         }
         $this->set(compact('breadcrumbs'));

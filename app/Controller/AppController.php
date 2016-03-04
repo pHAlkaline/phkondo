@@ -159,6 +159,8 @@ class AppController extends Controller {
 
     public function setPhkRequestVar($key, $value) {
         $this->phkRequestData[$key] = $value;
+        $this->setReceiptData();
+        $this->setNoteData();
         $this->setOwnerData();
         $this->setFractionData();
         $this->setAccountData();
@@ -235,6 +237,39 @@ class AppController extends Controller {
             }
         }
     }
+    
+    public function setNoteData() {
+        if (isset($this->phkRequestData['note_id']) && !isset($this->phkRequestData['note_text'])) {
+            App::import("Model", "Note");
+            $note = new Note();
+            $result = $note->find("first", array('conditions'=>array('Note.id' => $this->phkRequestData['note_id'])));
+            if (count($result)) {
+                $this->phkRequestData['note_id'] = $result['Note']['id'];
+                $this->phkRequestData['note_text'] = $result['Note']['document'];
+                $this->phkRequestData['owner_id'] = $result['Note']['entity_id'];
+                $this->phkRequestData['fraction_id'] = $result['Note']['fraction_id'];
+               
+                
+            }
+        }
+    }
+    
+    public function setReceiptData() {
+        if (isset($this->phkRequestData['receipt_id']) && !isset($this->phkRequestData['receipt_text'])) {
+            App::import("Model", "Receipt");
+            $receipt = new Receipt();
+            $result = $receipt->find("first", array('conditions'=>array('Receipt.id' => $this->phkRequestData['receipt_id'])));
+            if (count($result)) {
+                $this->phkRequestData['receipt_id'] = $result['Receipt']['id'];
+                $this->phkRequestData['receipt_text'] = $result['Receipt']['document'];
+                $this->phkRequestData['owner_id'] = $result['Receipt']['client_id'];
+                $this->phkRequestData['fraction_id'] = $result['Receipt']['fraction_id'];
+                $this->phkRequestData['condo_id'] = $result['Receipt']['condo_id'];
+                
+            }
+        }
+    }
+    
 
     private function getTheme() {
         return Configure::read('Theme.name');
