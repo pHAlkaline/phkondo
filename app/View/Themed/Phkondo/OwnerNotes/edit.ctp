@@ -6,16 +6,16 @@
         <div class="actions">
 
             <ul class="nav nav-pills nav-stacked">
-                <li ><?php echo $this->Html->link(__('View %s',__n('Note','Notes',1)), array('action' => 'view', $this->Form->value('Note.id')),array('class'=>'btn')); ?></li>
-                <?php 
-                $deleteDisabled='';
-                if(!$this->Form->value('Note.deletable')) {
-                    $deleteDisabled='disabled';
-                } 
+                <li ><?php echo $this->Html->link(__('View %s', __n('Note', 'Notes', 1)), array('action' => 'view', $this->Form->value('Note.id'), '?' => $this->request->query), array('class' => 'btn')); ?></li>
+                <?php
+                $deleteDisabled = '';
+                if (!$this->Form->value('Note.deletable')) {
+                    $deleteDisabled = 'disabled';
+                }
                 ?>
-                <li ><?php echo $this->Form->postLink(__('Delete Note'), array('action' => 'delete', $this->Form->value('Note.id')), array('class'=>'btn '.$deleteDisabled,'confirm'=> __('Are you sure you want to delete # %s?', $this->Form->value('Note.title')))); ?></li>
-                <li ><?php echo $this->Html->link(__('List Notes'), array('action' => 'index'),array('class'=>'btn')); ?></li>
-                
+                <li ><?php echo $this->Form->postLink(__('Delete Note'), array('action' => 'delete', $this->Form->value('Note.id'), '?' => $this->request->query), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $this->Form->value('Note.title')))); ?></li>
+                <li ><?php echo $this->Html->link(__('List Notes'), array('action' => 'index', '?' => $this->request->query), array('class' => 'btn')); ?></li>
+
             </ul><!-- /.list-group -->
 
         </div><!-- /.actions -->
@@ -26,7 +26,19 @@
 
         <div class="fraction_notes form">
 
-            <?php echo $this->Form->create('Note', array('class' => 'form-horizontal',                 'role' => 'form',                 'inputDefaults' => array(                     'class' => 'form-control',                     'label' => array('class' => 'col-sm-2 control-label'),                     'between' => '<div class="col-sm-6">',                     'after' => '</div>',                     ))); ?>
+            <?php
+            echo $this->Form->create('Note', array(
+                'class' => 'form-horizontal',
+                'role' => 'form',
+                'inputDefaults' => array(
+                    'class' => 'form-control',
+                    'label' => array(
+                        'class' => 'col-sm-2 control-label'),
+                    'between' => '<div class="col-sm-6">',
+                    'after' => '</div>')
+                    )
+            );
+            ?>
             <fieldset>
                 <h2><?php echo __('Edit Note'); ?></h2>
                 <?php echo $this->Form->input('id'); ?>
@@ -41,8 +53,8 @@
                 </div><!-- .form-group -->
 
                 <!--div class="form-group">
-                    <?php //echo $this->Form->label('pending_amount', __('Pending Amount'), array('class' => 'control-label')); ?>
-                    <?php //echo $this->Form->input('pending_amount', array('class' => 'form-control')); ?>
+                <?php //echo $this->Form->label('pending_amount', __('Pending Amount'), array('class' => 'control-label'));  ?>
+                <?php //echo $this->Form->input('pending_amount', array('class' => 'form-control'));  ?>
                 </div--><!-- .form-group -->
 
                 <div class="form-group">
@@ -60,17 +72,17 @@
                 <div class="form-group">
                     <?php echo $this->Form->input('note_status_id', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
-                <?php 
-                $hidden="hidden";
-                $disabled="disabled";
-                
-                if ($this->Form->value('note_status_id')=='3') {
-                    $hidden=null;
-                    $disabled=null;
+                <?php
+                $hidden = "hidden";
+                $disabled = "disabled";
+
+                if ($this->Form->value('note_status_id') == '3') {
+                    $hidden = null;
+                    $disabled = null;
                 }
                 ?>
                 <div class="form-group <?php echo $hidden; ?>" id="elem_payment_date">
-                    <?php echo $this->Form->input('payment_date', array('type' => 'text', 'class' => 'form-control datefield','disabled'=>$disabled)); ?>
+                    <?php echo $this->Form->input('payment_date', array('type' => 'text', 'class' => 'form-control datefield', 'disabled' => $disabled)); ?>
                 </div><!-- .form-group -->
 
             </fieldset>
