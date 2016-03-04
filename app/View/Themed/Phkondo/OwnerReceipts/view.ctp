@@ -23,13 +23,13 @@
                     $cancelDisabled = ' disabled';
                 }
                 ?>
-                <li ><?php echo $this->Html->link(__('Edit Receipt'), array('action' => 'edit', $receipt['Receipt']['id']), array('class' => 'btn ' . $editDisabled)); ?> </li>
-                <li ><?php echo $this->Form->postLink(__('Delete Receipt'), array('action' => 'delete', $receipt['Receipt']['id']), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $receipt['Receipt']['document']))); ?> </li>
-                <li ><?php echo $this->Html->link(__('New Receipt'), array('action' => 'add'), array('class' => 'btn ')); ?> </li>
-                <li ><?php echo $this->Html->link(__('List Receipts'), array('action' => 'index'), array('class' => 'btn ')); ?> </li>
-                <li ><?php echo $this->Form->postLink(__('Pay Receipt'), array('action' => 'pay_receipt', $receipt['Receipt']['id']), array('class' => 'btn ' . $payDisabled, 'confirm' => __('Are you sure you want to set receipt # %s as paid? - Payment as %s', $receipt['Receipt']['document'], $receipt['ReceiptPaymentType']['name']))); ?></li>
-                <li ><?php echo $this->Form->postLink(__('Cancel Receipt'), array('action' => 'cancel', $receipt['Receipt']['id']), array('class' => 'btn ' . $cancelDisabled, 'confirm' => __('Are you sure you want to cancel # %s?', $receipt['Receipt']['document']))); ?> </li>
-                <li ><?php echo $this->Html->link(__('Print Receipt'), array('action' => 'print_receipt', $receipt['Receipt']['id']), array('target' => '_blank', 'class' => '', 'escape' => false)); ?> </li>
+                <li ><?php echo $this->Html->link(__('Edit Receipt'), array('action' => 'edit', $receipt['Receipt']['id'],'?' => $this->request->query), array('class' => 'btn ' . $editDisabled)); ?> </li>
+                <li ><?php echo $this->Form->postLink(__('Delete Receipt'), array('action' => 'delete', $receipt['Receipt']['id'],'?' => $this->request->query), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $receipt['Receipt']['document']))); ?> </li>
+                <li ><?php echo $this->Html->link(__('New Receipt'), array('action' => 'add','?' => $this->request->query), array('class' => 'btn ')); ?> </li>
+                <li ><?php echo $this->Html->link(__('List Receipts'), array('action' => 'index','?' => $this->request->query), array('class' => 'btn ')); ?> </li>
+                <li ><?php echo $this->Form->postLink(__('Pay Receipt'), array('action' => 'pay_receipt', $receipt['Receipt']['id'],'?' => $this->request->query), array('class' => 'btn ' . $payDisabled, 'confirm' => __('Are you sure you want to set receipt # %s as paid? - Payment as %s', $receipt['Receipt']['document'], $receipt['ReceiptPaymentType']['name']))); ?></li>
+                <li ><?php echo $this->Form->postLink(__('Cancel Receipt'), array('action' => 'cancel', $receipt['Receipt']['id'],'?' => $this->request->query), array('class' => 'btn ' . $cancelDisabled, 'confirm' => __('Are you sure you want to cancel # %s?', $receipt['Receipt']['document']))); ?> </li>
+                <li ><?php echo $this->Html->link(__('Print Receipt'), array('action' => 'print_receipt', $receipt['Receipt']['id'],'?' => $this->request->query), array('target' => '_blank', 'class' => '', 'escape' => false)); ?> </li>
                 <!--li ><?php //echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('New Notes'), array('action' => 'add_notes', $receipt['Receipt']['id']), array('class' => 'btn ' . $editDisabled, 'escape' => false)); ?> </li-->
 
             </ul><!-- /.list-group -->
