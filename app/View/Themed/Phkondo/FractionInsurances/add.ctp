@@ -6,7 +6,7 @@
         <div class="actions">
 
             <ul class="nav nav-pills nav-stacked">
-                <li ><?php echo $this->Html->link(__('List Insurances'), array('action' => 'index')); ?></li>
+                <li ><?php echo $this->Html->link(__('List Insurances'), array('action' => 'index','?'=>$this->request->query)); ?></li>
                 
             </ul><!-- /.list-group -->
 
@@ -57,9 +57,9 @@
                 </div><!-- .form-group -->
 
                
-            </fieldset>
-            <?php echo $this->Form->submit('Submit', array('class' => 'btn btn-large btn-primary')); ?>
+            <div class="form-group">                 <div class="col-sm-offset-2 col-sm-6">                     <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-large btn-primary pull-right')); ?>                 </div>             </div>
             <?php echo $this->Form->end(); ?>
+
 
         </div><!-- /.form -->
 

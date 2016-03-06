@@ -15,10 +15,10 @@
                     $deleteDisabled = 'disabled';
                 }
                 ?>  
-                <li ><?php echo $this->Html->link(__('Edit Note'), array('action' => 'edit', $note['Note']['id']), array('class' => 'btn '.$editDisabled)); ?> </li>
-                <li ><?php echo $this->Form->postLink(__('Delete Note'), array('action' => 'delete', $note['Note']['id']), array('class' => 'btn '.$deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $note['Note']['title']))); ?> </li>
-                <li ><?php echo $this->Html->link(__('New Note'), array('action' => 'add'), array('class' => 'btn ')); ?> </li>
-                <li ><?php echo $this->Html->link(__('List Notes'), array('action' => 'index'), array('class' => 'btn ')); ?> </li>
+                <li ><?php echo $this->Html->link(__('Edit Note'), array('action' => 'edit', $note['Note']['id'],'?'=>$this->request->query), array('class' => 'btn '.$editDisabled)); ?> </li>
+                <li ><?php echo $this->Form->postLink(__('Delete Note'), array('action' => 'delete', $note['Note']['id'],'?'=>$this->request->query), array('class' => 'btn '.$deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $note['Note']['title']))); ?> </li>
+                <li ><?php echo $this->Html->link(__('New Note'), array('action' => 'add','?'=>$this->request->query), array('class' => 'btn ')); ?> </li>
+                <li ><?php echo $this->Html->link(__('List Notes'), array('action' => 'index','?'=>$this->request->query), array('class' => 'btn ')); ?> </li>
 
 
             </ul><!-- /.list-group -->
