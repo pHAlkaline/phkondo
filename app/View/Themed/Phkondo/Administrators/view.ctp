@@ -6,9 +6,9 @@
         <div class="actions">
 
             <ul class="nav nav-pills nav-stacked">			
-                <li ><?php echo $this->Html->link(__('Edit Administrator'), array('action' => 'edit', $administrator['Administrator']['id']), array('class' => 'btn ')); ?> </li>
-                <li ><?php echo $this->Form->postLink(__('Delete Administrator'), array('action' => 'delete', $administrator['Administrator']['id']), array('class' => 'btn ','confirm'=> __('Are you sure you want to delete # %s?' , $administrator['Administrator']['title'] ))); ?> </li>
-                <li ><?php echo $this->Html->link(__('List Administrators'), array('action' => 'index'), array('class' => 'btn ')); ?> </li>
+                <li ><?php echo $this->Html->link(__('Edit Administrator'), array('action' => 'edit', $administrator['Administrator']['id'],'?'=>$this->request->query), array('class' => 'btn ')); ?> </li>
+                <li ><?php echo $this->Form->postLink(__('Delete Administrator'), array('action' => 'delete', $administrator['Administrator']['id'],'?'=>$this->request->query), array('class' => 'btn ','confirm'=> __('Are you sure you want to delete # %s?' , $administrator['Administrator']['title'] ))); ?> </li>
+                <li ><?php echo $this->Html->link(__('List Administrators'), array('action' => 'index','?'=>$this->request->query), array('class' => 'btn ')); ?> </li>
 
 
             </ul><!-- /.list-group -->

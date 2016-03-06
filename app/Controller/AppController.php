@@ -163,6 +163,7 @@ class AppController extends Controller {
         $this->setOwnerData();
         $this->setFractionData();
         $this->setAccountData();
+        $this->setAdministratorData();
         $this->setCondoData();
         $this->setFiscalYearData();
     }
@@ -271,6 +272,18 @@ class AppController extends Controller {
         }
     }
 
+     private function setAdministratorData() {
+        if (isset($this->phkRequestData['administrator_id']) && !isset($this->phkRequestData['administrator_text'])) {
+            App::import("Model", "Administrator");
+            $administrator = new Administrator();
+            $administrator->contain('Entity');
+            $result = $administrator->find("first", array('conditions' => array('Administrator.id' => $this->phkRequestData['administrator_id'])));
+            $this->phkRequestData['administrator_id'] = $result['Administrator']['id'];
+            $this->phkRequestData['administrator_text'] = $result['Entity']['name'];
+        }
+    }
+     
+  
     private function getTheme() {
         return Configure::read('Theme.name');
     }
