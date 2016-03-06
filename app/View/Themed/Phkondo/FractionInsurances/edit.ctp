@@ -6,10 +6,10 @@
         <div class="actions">
 
             <ul class="nav nav-pills nav-stacked">
-               <li ><?php echo $this->Html->link(__('New Insurance'), array('action' => 'index'),array('class'=>'btn')); ?></li>
+               <li ><?php echo $this->Html->link(__('New Insurance'), array('action' => 'index','?'=>$this->request->query),array('class'=>'btn')); ?></li>
                
-                <li ><?php echo $this->Form->postLink(__('Delete Insurance'), array('action' => 'delete', $this->Form->value('Insurance.id')), array('class'=>'btn','confirm'=>__('Are you sure you want to delete # %s?', $this->Form->value('Insurance.title')))); ?></li>
-                <li ><?php echo $this->Html->link(__('List Insurances'), array('action' => 'index'),array('class'=>'btn')); ?></li>
+                <li ><?php echo $this->Form->postLink(__('Delete Insurance'), array('action' => 'delete', $this->Form->value('Insurance.id'),'?'=>$this->request->query), array('class'=>'btn','confirm'=>__('Are you sure you want to delete # %s?', $this->Form->value('Insurance.title')))); ?></li>
+                <li ><?php echo $this->Html->link(__('List Insurances'), array('action' => 'index','?'=>$this->request->query),array('class'=>'btn')); ?></li>
                
             </ul><!-- /.list-group -->
 

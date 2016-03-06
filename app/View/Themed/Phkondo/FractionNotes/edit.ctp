@@ -6,15 +6,15 @@
         <div class="actions">
 
             <ul class="nav nav-pills nav-stacked">
-                <li ><?php echo $this->Html->link(__('View %s',__n('Note','Notes',1)), array('action' => 'view', $this->Form->value('Note.id')),array('class'=>'btn')); ?></li>
+                <li ><?php echo $this->Html->link(__('View %s',__n('Note','Notes',1)), array('action' => 'view', $this->Form->value('Note.id'),'?'=>$this->request->query),array('class'=>'btn')); ?></li>
                 <?php 
                 $deleteDisabled='';
                 if(!$this->Form->value('Note.deletable')) {
                     $deleteDisabled='disabled';
                 } 
                 ?>
-                <li ><?php echo $this->Form->postLink(__('Delete Note'), array('action' => 'delete', $this->Form->value('Note.id')), array('class'=>'btn '.$deleteDisabled,'confirm'=> __('Are you sure you want to delete # %s?', $this->Form->value('Note.title')))); ?></li>
-                <li ><?php echo $this->Html->link(__('List Notes'), array('action' => 'index'),array('class'=>'btn')); ?></li>
+                <li ><?php echo $this->Form->postLink(__('Delete Note'), array('action' => 'delete', $this->Form->value('Note.id'),'?'=>$this->request->query), array('class'=>'btn '.$deleteDisabled,'confirm'=> __('Are you sure you want to delete # %s?', $this->Form->value('Note.title')))); ?></li>
+                <li ><?php echo $this->Html->link(__('List Notes'), array('action' => 'index','?'=>$this->request->query),array('class'=>'btn')); ?></li>
                 
             </ul><!-- /.list-group -->
 
