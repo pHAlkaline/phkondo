@@ -211,7 +211,7 @@ class BudgetsController extends AppController {
         parent::beforeFilter();
         if (!$this->Session->check('Condo.ViewID') || !$this->Session->read('Condo.FiscalYearID')) {
             $this->Flash->error(__('Invalid condo or fiscal year'));
-            $this->redirect(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID')));
+            $this->redirect(array('controller'=>'condos','action' => 'index'));
         }
     }
 

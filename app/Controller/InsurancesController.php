@@ -172,7 +172,7 @@ class InsurancesController extends AppController {
         parent::beforeFilter();
         if (!$this->Session->check('Condo.ViewID')) {
             $this->Flash->error(__('Invalid condo'));
-            $this->redirect(array('controller'=>'condos','action' => 'view',$this->Session->read('Condo.ViewID')));
+            $this->redirect(array('controller'=>'condos','action' => 'index'));
         }
     }
 
