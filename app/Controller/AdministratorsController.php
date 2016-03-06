@@ -190,7 +190,7 @@ class AdministratorsController extends AppController {
         parent::beforeFilter();
         if (!$this->getPhkRequestVar('condo_id') || !$this->getPhkRequestVar('fiscal_year_id')) {
             $this->Flash->error(__('Invalid condo or fiscal year'));
-            $this->redirect(array('controller'=>'condos','action' => 'view',$this->getPhkRequestVar('condo_id')));
+            $this->redirect(array('controller'=>'condos','action' => 'index'));
         }
     }
 

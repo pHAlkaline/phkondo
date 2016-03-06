@@ -168,7 +168,7 @@ class AccountsController extends AppController {
         parent::beforeFilter();
         if (!$this->getPhkRequestVar('condo_id') || !$this->getPhkRequestVar('has_fiscal_year')) {
             $this->Flash->error(__('Invalid condo or fiscal year'));
-            $this->redirect(array('controller' => 'condos', 'action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('controller' => 'condos', 'action' => 'index'));
         }
     }
 

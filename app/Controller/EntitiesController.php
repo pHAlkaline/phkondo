@@ -147,7 +147,7 @@ class EntitiesController extends AppController {
 
         if (!$this->Session->check('Condo.ViewID')) {
             $this->Flash->error(__('Invalid condo'));
-            $this->redirect(array('controller'=>'maintenances','action' => 'index'));
+           $this->redirect(array('controller'=>'condos','action' => 'index'));
         }
 
         $breadcrumbs = array(
