@@ -42,7 +42,7 @@ class AppController extends Controller {
     public $phkRequestData = array();
 
     public function beforeFilter() {
-        
+
         $this->Paginator->settings['paramType'] = 'querystring';
         if ($this->Session->read('User.language')) {
             Configure::write('Config.language', $this->Session->read('User.language'));
@@ -81,7 +81,7 @@ class AppController extends Controller {
                         'User.username' => $cookie['username'],
                         'User.password' => $cookie['password']
                     )
-                        ));
+                ));
             }
 
             if ($user && !$this->Auth->login($user['User'])) {
@@ -112,7 +112,7 @@ class AppController extends Controller {
     }
 
     public function setFilter($fields) {
-        
+
         $this->set('keyword', '');
         /* if (isset($this->request->params['named']['keyword'])) {
           $keyword = $this->request->params['named']['keyword'];
@@ -135,11 +135,10 @@ class AppController extends Controller {
             }
             $this->Paginator->settings['conditions'] = Set::merge($this->Paginator->settings['conditions'], array
                         ("OR" => $arrayConditions
-                    ));
-            
+            ));
+
             $this->set('keyword', $keyword);
         }
-        
     }
 
     public function getPhkRequestVar($key = '') {
@@ -149,7 +148,6 @@ class AppController extends Controller {
         throw new BadRequestException('Missig request var ' . $key);
         return null;
     }
-    
 
     public function setPhkRequestVars($values = null) {
         foreach ($values as $key => $value) {
@@ -159,36 +157,35 @@ class AppController extends Controller {
 
     public function setPhkRequestVar($key, $value) {
         $this->phkRequestData[$key] = $value;
-        $this->setReceiptData();
+        $this->setInsuranceData();
         $this->setNoteData();
+        $this->setReceiptData();
         $this->setOwnerData();
         $this->setFractionData();
         $this->setAccountData();
         $this->setCondoData();
         $this->setFiscalYearData();
-       
-       
     }
 
     private function setCondoData() {
         if (isset($this->phkRequestData['condo_id']) && !isset($this->phkRequestData['condo_text'])) {
             App::import("Model", "Condo");
             $condo = new Condo();
-            $result = $condo->find("first", array('conditions'=>array('Condo.id' => $this->phkRequestData['condo_id'])));
+            $result = $condo->find("first", array('conditions' => array('Condo.id' => $this->phkRequestData['condo_id'])));
             $this->phkRequestData['condo_id'] = $result['Condo']['id'];
             $this->phkRequestData['condo_text'] = $result['Condo']['title'];
         }
     }
 
     public function setFiscalYearData() {
-        
+
         if (isset($this->phkRequestData['condo_id']) && !isset($this->phkRequestData['fiscal_year_text'])) {
             $this->phkRequestData['fiscal_year_id'] = '';
             $this->phkRequestData['fiscal_year_text'] = '';
             $this->phkRequestData['has_fiscal_year'] = false;
             App::import("Model", "FiscalYear");
             $fiscalYear = new FiscalYear();
-            $fiscalYearResult = $fiscalYear->find("first", array('conditions'=>array('FiscalYear.active' => 1, 'FiscalYear.condo_id' => $this->phkRequestData['condo_id'])));
+            $fiscalYearResult = $fiscalYear->find("first", array('conditions' => array('FiscalYear.active' => 1, 'FiscalYear.condo_id' => $this->phkRequestData['condo_id'])));
             if (count($fiscalYearResult)) {
                 $this->phkRequestData['fiscal_year_id'] = $fiscalYearResult['FiscalYear']['id'];
                 $this->phkRequestData['fiscal_year_text'] = $fiscalYearResult['FiscalYear']['title'];
@@ -196,80 +193,83 @@ class AppController extends Controller {
             }
         }
     }
-    
+
     public function setAccountData() {
         if (isset($this->phkRequestData['account_id']) && !isset($this->phkRequestData['account_text'])) {
             App::import("Model", "Account");
             $account = new Account();
-            $result = $account->find("first", array('conditions'=>array('Account.id' => $this->phkRequestData['account_id'])));
+            $result = $account->find("first", array('conditions' => array('Account.id' => $this->phkRequestData['account_id'])));
             if (count($result)) {
                 $this->phkRequestData['account_id'] = $result['Account']['id'];
                 $this->phkRequestData['account_text'] = $result['Account']['title'];
                 $this->phkRequestData['condo_id'] = $result['Account']['condo_id'];
-                
             }
         }
     }
-    
+
     public function setFractionData() {
         if (isset($this->phkRequestData['fraction_id']) && !isset($this->phkRequestData['fraction_text'])) {
             App::import("Model", "Fraction");
             $fraction = new Fraction();
-            $result = $fraction->find("first", array('conditions'=>array('Fraction.id' => $this->phkRequestData['fraction_id'])));
+            $result = $fraction->find("first", array('conditions' => array('Fraction.id' => $this->phkRequestData['fraction_id'])));
             if (count($result)) {
                 $this->phkRequestData['fraction_id'] = $result['Fraction']['id'];
                 $this->phkRequestData['fraction_text'] = $result['Fraction']['description'];
                 $this->phkRequestData['condo_id'] = $result['Fraction']['condo_id'];
-                
             }
         }
     }
-    
+
     public function setOwnerData() {
         if (isset($this->phkRequestData['owner_id']) && !isset($this->phkRequestData['owner_text'])) {
             App::import("Model", "Entity");
             $entity = new Entity();
-            $result = $entity->find("first", array('conditions'=>array('Entity.id' => $this->phkRequestData['owner_id'])));
+            $result = $entity->find("first", array('conditions' => array('Entity.id' => $this->phkRequestData['owner_id'])));
             if (count($result)) {
                 $this->phkRequestData['owner_id'] = $result['Entity']['id'];
                 $this->phkRequestData['owner_text'] = $result['Entity']['name'];
-                
             }
         }
     }
-    
+
     public function setNoteData() {
         if (isset($this->phkRequestData['note_id']) && !isset($this->phkRequestData['note_text'])) {
             App::import("Model", "Note");
             $note = new Note();
-            $result = $note->find("first", array('conditions'=>array('Note.id' => $this->phkRequestData['note_id'])));
+            $result = $note->find("first", array('conditions' => array('Note.id' => $this->phkRequestData['note_id'])));
             if (count($result)) {
                 $this->phkRequestData['note_id'] = $result['Note']['id'];
                 $this->phkRequestData['note_text'] = $result['Note']['document'];
                 $this->phkRequestData['owner_id'] = $result['Note']['entity_id'];
                 $this->phkRequestData['fraction_id'] = $result['Note']['fraction_id'];
-               
-                
             }
         }
     }
-    
+
     public function setReceiptData() {
         if (isset($this->phkRequestData['receipt_id']) && !isset($this->phkRequestData['receipt_text'])) {
             App::import("Model", "Receipt");
             $receipt = new Receipt();
-            $result = $receipt->find("first", array('conditions'=>array('Receipt.id' => $this->phkRequestData['receipt_id'])));
+            $result = $receipt->find("first", array('conditions' => array('Receipt.id' => $this->phkRequestData['receipt_id'])));
             if (count($result)) {
                 $this->phkRequestData['receipt_id'] = $result['Receipt']['id'];
                 $this->phkRequestData['receipt_text'] = $result['Receipt']['document'];
                 $this->phkRequestData['owner_id'] = $result['Receipt']['client_id'];
                 $this->phkRequestData['fraction_id'] = $result['Receipt']['fraction_id'];
                 $this->phkRequestData['condo_id'] = $result['Receipt']['condo_id'];
-                
             }
         }
     }
-    
+
+    private function setInsuranceData() {
+        if (isset($this->phkRequestData['insurance_id']) && !isset($this->phkRequestData['insurance_text'])) {
+            App::import("Model", "Insurance");
+            $insurance = new Insurance();
+            $result = $insurance->find("first", array('conditions' => array('Insurance.id' => $this->phkRequestData['insurance_id'])));
+            $this->phkRequestData['insurance_id'] = $result['Insurance']['id'];
+            $this->phkRequestData['insurance_text'] = $result['Insurance']['title'];
+        }
+    }
 
     private function getTheme() {
         return Configure::read('Theme.name');

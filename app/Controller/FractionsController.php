@@ -86,7 +86,7 @@ class FractionsController extends AppController {
         $fraction = $this->Fraction->find('first', $options);
         $this->set(compact('fraction'));
         $this->setPhkRequestVar('fraction_id', $id);
-        $this->setPhkRequestVar('fraction_text', $fraction['Fraction']['fraction']);
+        
         
     }
 
@@ -138,7 +138,7 @@ class FractionsController extends AppController {
         $condos = $this->Fraction->Condo->find('list', array('conditions' => array('Condo.id' => $this->request->data['Fraction']['condo_id'])));
 
         $this->setPhkRequestVar('fraction_id', $id);
-        $this->setPhkRequestVar('fraction_text', $this->request->data['Fraction']['fraction']);
+        
         
         $this->Fraction->contain('Entity');
         $fraction = $this->Fraction->find('first', array('conditions' => array('Fraction.id'=>$id)));

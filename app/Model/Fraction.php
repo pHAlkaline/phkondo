@@ -207,9 +207,7 @@ class Fraction extends AppModel {
     );
 
     public function beforeFind($queryData) {
-
-
-        if (is_array($queryData['order'][0])) {
+        if (isset($queryData['order'][0]) && is_array($queryData['order'][0])) {
             if (isset($queryData['order'][0]['length']) && !isset($queryData['order'][0]['Fraction.frction'])) {
                 $sticky = array('Fraction.fraction' => $queryData['order'][0]['length']);
                 $queryData['order'][0] = $queryData['order'][0] + $sticky;
