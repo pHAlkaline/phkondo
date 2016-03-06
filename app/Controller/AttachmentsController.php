@@ -84,7 +84,7 @@ class AttachmentsController extends AppController {
         parent::beforeFilter();
         if (!$this->Session->check('Condo.ViewID')) {
             $this->Flash->error(__('Invalid condo'));
-            $this->redirect(array('action' => 'index'));
+            $this->redirect(array('controller'=>'condos','action' => 'index'));
         }
     }
 

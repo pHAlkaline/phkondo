@@ -171,7 +171,7 @@ class FractionInsurancesController extends AppController {
         parent::beforeFilter();
         if (!$this->getPhkRequestVar('condo_id')) {
             $this->Flash->error(__('Invalid condo'));
-            $this->redirect(array('controller' => 'condos', 'action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('controller'=>'condos','action' => 'index'));
         }
     }
 
