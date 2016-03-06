@@ -6,7 +6,7 @@
         <div class="actions">
 
             <ul class="nav nav-pills nav-stacked">
-                <li ><?php echo $this->Html->link(__('View %s',__n('Fiscal Year','Fiscal Years',1)), array('action' => 'view', $this->Form->value('FiscalYear.id')), array('class' => 'btn ')); ?> </li>
+                <li ><?php echo $this->Html->link(__('View %s',__n('Fiscal Year','Fiscal Years',1)), array('action' => 'view', $this->Form->value('FiscalYear.id'),'?'=>$this->request->query), array('class' => 'btn ')); ?> </li>
                 
                 <?php 
                         $deleteDisabled='';
@@ -15,8 +15,8 @@
                         }
                             
                             ?>
-                <li ><?php echo $this->Form->postLink(__('Delete Fiscal Year'), array('action' => 'delete', $this->Form->value('FiscalYear.id')), array('class' => 'btn '.$deleteDisabled,'confirm'=> __('Are you sure you want to delete # %s?' ,  $this->Form->value('FiscalYear.title')))); ?> </li>
-                <li ><?php echo $this->Html->link(__('List Fiscal Years'), array('action' => 'index'), array('class' => 'btn ')); ?> </li>
+                <li ><?php echo $this->Form->postLink(__('Delete Fiscal Year'), array('action' => 'delete', $this->Form->value('FiscalYear.id'),'?'=>$this->request->query), array('class' => 'btn '.$deleteDisabled,'confirm'=> __('Are you sure you want to delete # %s?' ,  $this->Form->value('FiscalYear.title')))); ?> </li>
+                <li ><?php echo $this->Html->link(__('List Fiscal Years'), array('action' => 'index','?'=>$this->request->query), array('class' => 'btn ')); ?> </li>
                
             </ul><!-- /.list-group -->
 
