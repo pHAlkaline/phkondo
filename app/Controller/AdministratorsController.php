@@ -53,12 +53,12 @@ class AdministratorsController extends AppController {
         $this->Paginator->settings = $this->Paginator->settings + array(
             'contain'=>array('Entity','FiscalYear'),
             'conditions' => array(
-                'Administrator.condo_id' => $this->Session->read('Condo.ViewID'),
-                'Administrator.fiscal_year_id' => $this->Session->read('Condo.FiscalYearID'))
+                'Administrator.condo_id' => $this->getPhkRequestVar('condo_id'),
+                'Administrator.fiscal_year_id' => $this->getPhkRequestVar('fiscal_year_id'))
         );
         $this->setFilter(array('Administrator.title','Entity.name','Entity.email','Entity.representative'));
         $this->set('administrators', $this->Paginator->paginate('Administrator'));
-        $this->Session->delete('Condo.Administrator');
+        
     }
 
     /**
@@ -71,16 +71,16 @@ class AdministratorsController extends AppController {
     public function view($id = null) {
         if (!$this->Administrator->exists($id)) {
             $this->Flash->error(__('Invalid administrator'));
-            $this->redirect(array('action' => 'index'));
+            $this->redirect(array('action' => 'index','?'=>$this->request->query));
         }
         $this->Administrator->contain('Entity','FiscalYear');
         $options = array('conditions' => array('Administrator.' . $this->Administrator->primaryKey => $id,
-                'Administrator.condo_id' => $this->Session->read('Condo.ViewID'),
-                'Administrator.fiscal_year_id' => $this->Session->read('Condo.FiscalYearID')));
+                'Administrator.condo_id' => $this->getPhkRequestVar('condo_id'),
+                'Administrator.fiscal_year_id' => $this->getPhkRequestVar('fiscal_year_id')));
         $administrator=$this->Administrator->find('first', $options);
         $this->set('administrator', $administrator);
-        $this->Session->write('Condo.Administrator.ViewID', $id);
-        $this->Session->write('Condo.Administrator.ViewName', $administrator['Entity']['name']);
+        $this->setPhkRequestVar('administrator_id',$id);
+       
     }
 
     /**
@@ -93,27 +93,27 @@ class AdministratorsController extends AppController {
             $this->Administrator->create();
             if ($this->Administrator->save($this->request->data)) {
                 $this->Flash->success(__('The administrator has been saved'));
-                $this->redirect(array('action' => 'view',$this->Administrator->id));
+                $this->redirect(array('action' => 'view',$this->Administrator->id,'?'=>$this->request->query));
             } else {
                 $this->Flash->error(__('The administrator could not be saved. Please, try again.'));
             }
         }
         $this->Administrator->contain('Entity','FiscalYear');
         
-        $condos = $this->Administrator->Condo->find('list', array('conditions' => array('id' => $this->Session->read('Condo.ViewID'))));
+        $condos = $this->Administrator->Condo->find('list', array('conditions' => array('id' =>  $this->getPhkRequestVar('condo_id'))));
         
         $this->Administrator->contain('Entity','FiscalYear');
         $options = array('conditions' => array(
-                'Administrator.condo_id' => $this->Session->read('Condo.ViewID'),
-                'Administrator.fiscal_year_id' => $this->Session->read('Condo.FiscalYearID')));
+                'Administrator.condo_id' => $this->getPhkRequestVar('condo_id'),
+                'Administrator.fiscal_year_id' => $this->getPhkRequestVar('fiscal_year_id')));
         $administrators=$this->Administrator->find('all', $options);
         
         $this->Fraction = $this->Administrator->Condo->Fraction;
         $this->Fraction->contain('Entity');
         $this->Fraction->noAfterFind=true;
-        $fractions = $this->Fraction->find('all', array('conditions' => array('condo_id' => $this->Session->read('Condo.ViewID'))));
+        $fractions = $this->Fraction->find('all', array('conditions' => array('condo_id' => $this->getPhkRequestVar('condo_id'))));
         $entities = $this->Administrator->Entity->find('list', array('conditions' => array('id' => Set::extract('/Entity/id', $fractions),'NOT'=>array('id'=>Set::extract('/Entity/id', $administrators)))));
-        $fiscalYears = $this->Administrator->FiscalYear->find('list', array('conditions' => array('id' => $this->Session->read('Condo.FiscalYearID'))));
+        $fiscalYears = $this->Administrator->FiscalYear->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('fiscal_year_id'))));
         $this->set(compact('condos', 'entities', 'fiscalYears'));
     }
 
@@ -127,13 +127,13 @@ class AdministratorsController extends AppController {
     public function edit($id = null) {
         if (!$this->Administrator->exists($id)) {
             $this->Flash->error(__('Invalid administrator'));
-            $this->redirect(array('action' => 'index'));
+            $this->redirect(array('action' => 'index','?'=>$this->request->query));
         }
         $this->Administrator->contain('Entity');
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Administrator->save($this->request->data)) {
                 $this->Flash->success(__('The administrator has been saved'));
-                $this->redirect(array('action' => 'view',$this->Administrator->id));
+                $this->redirect(array('action' => 'view',$this->Administrator->id,'?'=>$this->request->query));
             } else {
                 $this->Flash->error(__('The administrator could not be saved. Please, try again.'));
             }
@@ -141,24 +141,23 @@ class AdministratorsController extends AppController {
             $options = array('conditions' => array('Administrator.' . $this->Administrator->primaryKey => $id));
             $this->request->data = $this->Administrator->find('first', $options);
         }
-        $condos = $this->Administrator->Condo->find('list', array('conditions' => array('id' => $this->Session->read('Condo.ViewID'))));
+        $condos = $this->Administrator->Condo->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('condo_id'))));
         $options = array('conditions' => array(
                 'Administrator.id <>' => $id,
-                'Administrator.condo_id' => $this->Session->read('Condo.ViewID'),
-                'Administrator.fiscal_year_id' => $this->Session->read('Condo.FiscalYearID')));
+                'Administrator.condo_id' => $this->getPhkRequestVar('condo_id'),
+                'Administrator.fiscal_year_id' => $this->getPhkRequestVar('fiscal_year_id')));
         $administrators=$this->Administrator->find('all', $options);
         
         $this->Fraction = $this->Administrator->Condo->Fraction;
         $this->Fraction->contain('Entity');
         $this->Fraction->noAfterFind=true;
-        $fractions = $this->Fraction->find('all', array('conditions' => array('condo_id' => $this->Session->read('Condo.ViewID'))));
+        $fractions = $this->Fraction->find('all', array('conditions' => array('condo_id' => $this->getPhkRequestVar('condo_id'))));
         
         $entities = $this->Administrator->Entity->find('list', array('conditions' => array('id' => Set::extract('/Entity/id', $fractions),'NOT'=>array('id'=>Set::extract('/Entity/id', $administrators)))));
-        $fiscalYears = $this->Administrator->FiscalYear->find('list', array('conditions' => array('id' => $this->Session->read('Condo.FiscalYearID'))));
+        $fiscalYears = $this->Administrator->FiscalYear->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('fiscal_year_id'))));
         
         $this->set(compact('condos', 'entities', 'fiscalYears'));
-        $this->Session->write('Condo.Administrator.ViewID', $id);
-        $this->Session->write('Condo.Administrator.ViewName', $this->request->data['Entity']['name']);
+        $this->setPhkRequestVar('administrator_id',$id);
     }
 
     /**
@@ -176,22 +175,22 @@ class AdministratorsController extends AppController {
         $this->Administrator->id = $id;
         if (!$this->Administrator->exists()) {
             $this->Flash->error(__('Invalid administrator'));
-            $this->redirect(array('action' => 'index'));
+            $this->redirect(array('action' => 'index','?'=>$this->request->query));
         }
         if ($this->Administrator->delete()) {
             $this->Flash->success(__('Administrator deleted'));
-            $this->redirect(array('action' => 'index'));
+            $this->redirect(array('action' => 'index','?'=>$this->request->query));
         }
         $this->Flash->error(__('Administrator can not be deleted'));
-        $this->redirect(array('action' => 'view',$id));
+        $this->redirect(array('action' => 'view',$id,'?'=>$this->request->query));
     }
     
     
     public function beforeFilter() {
         parent::beforeFilter();
-        if (!$this->Session->check('Condo.ViewID') || !$this->Session->read('Condo.FiscalYearID')) {
+        if (!$this->getPhkRequestVar('condo_id') || !$this->getPhkRequestVar('fiscal_year_id')) {
             $this->Flash->error(__('Invalid condo or fiscal year'));
-            $this->redirect(array('controller'=>'condos','action' => 'view',$this->Session->read('Condo.ViewID')));
+            $this->redirect(array('controller'=>'condos','action' => 'view',$this->getPhkRequestVar('condo_id')));
         }
     }
 
@@ -201,18 +200,18 @@ class AdministratorsController extends AppController {
 
         $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID'))), 'text' => $this->Session->read('Condo.ViewName'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view',$this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
             array('link' => '', 'text' => __n('Administrator','Administrators',2), 'active' => 'active')
         );
         switch ($this->action) {
             case 'view':
-                 $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'administrators', 'action' => 'index')), 'text' => __n('Administrator','Administrators',2), 'active' => '');
-                $breadcrumbs[4] = array('link' => '', 'text' => $this->Session->read('Condo.Administrator.ViewName'), 'active' => 'active');
+                 $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'administrators', 'action' => 'index','?'=>$this->request->query)), 'text' => __n('Administrator','Administrators',2), 'active' => '');
+                $breadcrumbs[4] = array('link' => '', 'text' => $this->getPhkRequestVar('administrator_text'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'administrators', 'action' => 'index')), 'text' => __n('Administrator','Administrators',2), 'active' => '');
-                $breadcrumbs[4] = array('link' => '', 'text' => $this->Session->read('Condo.Administrator.ViewName'), 'active' => 'active');
+                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'administrators', 'action' => 'index','?'=>$this->request->query)), 'text' => __n('Administrator','Administrators',2), 'active' => '');
+                $breadcrumbs[4] = array('link' => '', 'text' => $this->getPhkRequestVar('administrator_text'), 'active' => 'active');
                 break;
         }
         $this->set(compact('breadcrumbs'));
