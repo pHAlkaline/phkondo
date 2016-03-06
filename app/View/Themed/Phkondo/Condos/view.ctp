@@ -19,7 +19,7 @@ $administrators = implode(", ", $administrators);
                 <li ><?php echo $this->Html->link(__('List Condos'), array('action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
                 <li class="divider">&nbsp;</li>
                 <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Fraction', 'Fractions', 2), array('controller' => 'fractions', 'action' => 'index','?'=>array('condo_id'=>$condo['Condo']['id'])), array('class' => 'btn ', 'escape' => false)); ?> </li>
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Administrator', 'Administrators', 2), array('controller' => 'administrators', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Administrator', 'Administrators', 2), array('controller' => 'administrators', 'action' => 'index','?'=>array('condo_id'=>$condo['Condo']['id'])), array('class' => 'btn ', 'escape' => false)); ?> </li>
                 <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Fiscal Year', 'Fiscal Years', 2), array('controller' => 'fiscal_years', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
                 <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Receipt', 'Receipts', 2), array('controller' => 'receipts', 'action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
                 <li class="divider">&nbsp;</li>
