@@ -178,7 +178,7 @@ class AppController extends Controller {
         }
     }
 
-    public function setFiscalYearData() {
+    private function setFiscalYearData() {
 
         if (isset($this->phkRequestData['condo_id']) && !isset($this->phkRequestData['fiscal_year_text'])) {
             $this->phkRequestData['fiscal_year_id'] = '';
@@ -195,7 +195,7 @@ class AppController extends Controller {
         }
     }
 
-    public function setAccountData() {
+    private function setAccountData() {
         if (isset($this->phkRequestData['account_id']) && !isset($this->phkRequestData['account_text'])) {
             App::import("Model", "Account");
             $account = new Account();
@@ -208,7 +208,7 @@ class AppController extends Controller {
         }
     }
 
-    public function setFractionData() {
+    private function setFractionData() {
         if (isset($this->phkRequestData['fraction_id']) && !isset($this->phkRequestData['fraction_text'])) {
             App::import("Model", "Fraction");
             $fraction = new Fraction();
@@ -221,7 +221,7 @@ class AppController extends Controller {
         }
     }
 
-    public function setOwnerData() {
+    private function setOwnerData() {
         if (isset($this->phkRequestData['owner_id']) && !isset($this->phkRequestData['owner_text'])) {
             App::import("Model", "Entity");
             $entity = new Entity();
@@ -233,7 +233,7 @@ class AppController extends Controller {
         }
     }
 
-    public function setNoteData() {
+    private function setNoteData() {
         if (isset($this->phkRequestData['note_id']) && !isset($this->phkRequestData['note_text'])) {
             App::import("Model", "Note");
             $note = new Note();
@@ -247,7 +247,7 @@ class AppController extends Controller {
         }
     }
 
-    public function setReceiptData() {
+    private function setReceiptData() {
         if (isset($this->phkRequestData['receipt_id']) && !isset($this->phkRequestData['receipt_text'])) {
             App::import("Model", "Receipt");
             $receipt = new Receipt();
@@ -272,7 +272,7 @@ class AppController extends Controller {
         }
     }
 
-     private function setAdministratorData() {
+    private function setAdministratorData() {
         if (isset($this->phkRequestData['administrator_id']) && !isset($this->phkRequestData['administrator_text'])) {
             App::import("Model", "Administrator");
             $administrator = new Administrator();

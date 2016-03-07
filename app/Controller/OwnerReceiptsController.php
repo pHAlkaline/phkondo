@@ -190,14 +190,15 @@ class OwnerReceiptsController extends AppController {
                 }
             }
             $this->_setReceiptAmount($id);
-            $this->redirect(array('action' => 'edit', $id, '?' => $this->request->query, '#' => 'AddNotes'));
+            //$this->redirect(array('action' => 'edit', $id, '?' => $this->request->query, '#' => 'AddNotes'));
         }
-        $this->Receipt->Note->contain(array('NoteType', 'Entity', 'Fraction'));
-        $notes = $this->Receipt->Note->find('all', array('conditions' => array('Note.fraction_id' => $this->getPhkRequestVar('fraction_id'), 'Note.entity_id' => $this->Receipt->field('client_id'), 'Note.note_status_id' => array(1, 2), 'Note.receipt_id' => '')));
+        $this->redirect(array('action' => 'edit', $id, '?' => $this->request->query, '#' => 'AddNotes'));
+        //$this->Receipt->Note->contain(array('NoteType', 'Entity', 'Fraction'));
+        //$notes = $this->Receipt->Note->find('all', array('conditions' => array('Note.fraction_id' => $this->getPhkRequestVar('fraction_id'), 'Note.entity_id' => $this->Receipt->field('client_id'), 'Note.note_status_id' => array(1, 2), 'Note.receipt_id' => '')));
 
-        $receiptAmount = $this->Receipt->field('total_amount');
-        $receiptId = $this->Receipt->field('document');
-        $this->set(compact('notes', 'receiptAmount', 'receiptId', 'id'));
+        //$receiptAmount = $this->Receipt->field('total_amount');
+        //$receiptId = $this->Receipt->field('document');
+        //$this->set(compact('notes', 'receiptAmount', 'receiptId', 'id'));
     }
 
     /**
@@ -207,7 +208,7 @@ class OwnerReceiptsController extends AppController {
      * @param string $id
      * @return void
      */
-    public function remove_note($id = null) {
+    /*public function remove_note($id = null) {
         if (!$this->Receipt->Note->exists($id)) {
             $this->Flash->error(__('Invalid note'));
             $this->redirect(array('action' => 'index', '?' => $this->request->query));
@@ -224,7 +225,7 @@ class OwnerReceiptsController extends AppController {
         $this->Receipt->Note->saveField('pending_amount', $restoreAmount, array('callbacks' => false));
         $this->_setReceiptAmount($receipt);
         $this->redirect(array('action' => 'edit', $receipt, '?' => $this->request->query));
-    }
+    }*/
 
     /**
      * pay_receipt method

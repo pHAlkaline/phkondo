@@ -15,7 +15,7 @@
                     $movementsDisabled = ' disabled';
                 }
                 ?>     
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Movement', 'Movements', 2), array('controller' => 'movements', 'action' => 'index','?'=>array_merge(array('account_id'=>$account['Account']['id']),$this->request->query)), array('class' => 'btn ' . $movementsDisabled, 'escape' => false)); ?> </li>
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Movement', 'Movements', 2), array('controller' => 'movements', 'action' => 'index','?'=>array('account_id'=>$account['Account']['id'])), array('class' => 'btn ' . $movementsDisabled, 'escape' => false)); ?> </li>
 
             </ul><!-- /.list-group -->
 

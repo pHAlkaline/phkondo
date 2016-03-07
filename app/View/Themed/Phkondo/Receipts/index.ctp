@@ -7,7 +7,7 @@
 
             <h2 class="col-sm-9"><?php echo __n('Receipt','Receipts',2); ?></h2>
             <div class="actions hidden-print col-sm-3">
-                <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> '.__('New Receipt'), array('action' => 'add'), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 0; float: right;', 'escape' => false)); ?>            </div><!-- /.actions -->
+                <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> '.__('New Receipt'), array('action' => 'add','?'=>$this->request->query), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 0; float: right;', 'escape' => false)); ?>            </div><!-- /.actions -->
             <div class="clearfix"></div>
             <div class="table-responsive">
                 <table class="table table-hover table-condensed">
@@ -68,12 +68,12 @@
                                     
         
                                     ?>
-                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $receipt['Receipt']['id']), array('title' => __('Details'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
-                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $receipt['Receipt']['id']), array('title' => __('Edit'), 'class' => 'btn btn-default btn-xs '.$editDisabled, 'escape' => false)); ?>
-                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'delete', $receipt['Receipt']['id']), array('title' => __('Delete'), 'class' => 'btn btn-default btn-xs '.$deleteDisabled, 'escape' => false, 'confirm' => __('Are you sure you want to delete # %s?', $receipt['Receipt']['document']))); ?>
-                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-euro"></span> ', array('action' => 'pay_receipt', $receipt['Receipt']['id']), array('title' => __('Paid'), 'class' => 'btn btn-default btn-xs '.$payDisabled, 'escape' => false, 'confirm'=> __('Are you sure you want to set receipt # %s as paid? - Payment as %s', $receipt['Receipt']['id'], $receipt['ReceiptPaymentType']['name']))); ?>
-                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-ban-circle"></span> ', array('action' => 'cancel', $receipt['Receipt']['id']), array('title' => __('Cancel'), 'class' => 'btn btn-default btn-xs '.$cancelDisabled, 'escape' => false, 'confirm' => __('Are you sure you want to cancel # %s?', $receipt['Receipt']['document']))); ?>
-                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-print"></span> ', array('action' => 'print_receipt', $receipt['Receipt']['id']), array('target' => '_blank', 'title' => __('Print'), 'class' => 'btn btn-default btn-xs', 'escape' => false)) ?>
+                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $receipt['Receipt']['id'],'?'=>$this->request->query), array('title' => __('Details'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
+                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $receipt['Receipt']['id'],'?'=>$this->request->query), array('title' => __('Edit'), 'class' => 'btn btn-default btn-xs '.$editDisabled, 'escape' => false)); ?>
+                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'delete', $receipt['Receipt']['id'],'?'=>$this->request->query), array('title' => __('Delete'), 'class' => 'btn btn-default btn-xs '.$deleteDisabled, 'escape' => false, 'confirm' => __('Are you sure you want to delete # %s?', $receipt['Receipt']['document']))); ?>
+                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-euro"></span> ', array('action' => 'pay_receipt', $receipt['Receipt']['id'],'?'=>$this->request->query), array('title' => __('Paid'), 'class' => 'btn btn-default btn-xs '.$payDisabled, 'escape' => false, 'confirm'=> __('Are you sure you want to set receipt # %s as paid? - Payment as %s', $receipt['Receipt']['id'], $receipt['ReceiptPaymentType']['name']))); ?>
+                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-ban-circle"></span> ', array('action' => 'cancel', $receipt['Receipt']['id'],'?'=>$this->request->query), array('title' => __('Cancel'), 'class' => 'btn btn-default btn-xs '.$cancelDisabled, 'escape' => false, 'confirm' => __('Are you sure you want to cancel # %s?', $receipt['Receipt']['document']))); ?>
+                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-print"></span> ', array('action' => 'print_receipt', $receipt['Receipt']['id'],'?'=>$this->request->query), array('target' => '_blank', 'title' => __('Print'), 'class' => 'btn btn-default btn-xs', 'escape' => false)) ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
