@@ -159,6 +159,7 @@ class AppController extends Controller {
         $this->phkRequestData[$key] = $value;
         $this->setInvoiceData();
         $this->setInsuranceData();
+        $this->setMaintenanceData();
         $this->setNoteData();
         $this->setReceiptData();
         $this->setOwnerData();
@@ -276,16 +277,6 @@ class AppController extends Controller {
         }
     }
 
-    private function setInsuranceData() {
-        if (isset($this->phkRequestData['insurance_id']) && !isset($this->phkRequestData['insurance_text'])) {
-            App::import("Model", "Insurance");
-            $insurance = new Insurance();
-            $result = $insurance->find("first", array('conditions' => array('Insurance.id' => $this->phkRequestData['insurance_id'])));
-            $this->phkRequestData['insurance_id'] = $result['Insurance']['id'];
-            $this->phkRequestData['insurance_text'] = $result['Insurance']['title'];
-        }
-    }
-
     private function setAdministratorData() {
         if (isset($this->phkRequestData['administrator_id']) && !isset($this->phkRequestData['administrator_text'])) {
             App::import("Model", "Administrator");
@@ -307,6 +298,31 @@ class AppController extends Controller {
             $this->phkRequestData['supplier_id'] = $result['InvoiceConference']['supplier_id'];
         }
     }
+    
+    private function setMaintenanceData() {
+        if (isset($this->phkRequestData['maintenance_id']) && !isset($this->phkRequestData['maintenance_text'])) {
+            App::import("Model", "Maintenance");
+            $maintenance = new Maintenance();
+            $result = $maintenance->find("first", array('conditions' => array('Maintenance.id' => $this->phkRequestData['maintenance_id'])));
+            if (count($result)) {
+                $this->phkRequestData['maintenance_id'] = $result['Maintenance']['id'];
+                $this->phkRequestData['maintenance_text'] = $result['Maintenance']['title'];
+            }
+        }
+    }
+    
+    private function setInsuranceData() {
+        if (isset($this->phkRequestData['insurance_id']) && !isset($this->phkRequestData['insurance_text'])) {
+            App::import("Model", "Insurance");
+            $insurance = new Insurance();
+            $result = $insurance->find("first", array('conditions' => array('Insurance.id' => $this->phkRequestData['insurance_id'])));
+            if (count($result)) {
+                $this->phkRequestData['insurance_id'] = $result['Insurance']['id'];
+                $this->phkRequestData['insurance_text'] = $result['Insurance']['title'];
+            }
+        }
+    }
+
 
     private function getTheme() {
         return Configure::read('Theme.name');

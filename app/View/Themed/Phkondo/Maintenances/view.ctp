@@ -6,10 +6,10 @@
         <div class="actions">
 
             <ul class="nav nav-pills nav-stacked">			
-                <li ><?php echo $this->Html->link(__('Edit Maintenance'), array('action' => 'edit', $maintenance['Maintenance']['id']), array('class' => 'btn ')); ?> </li>
-                <li ><?php echo $this->Form->postLink(__('Delete Maintenance'), array('action' => 'delete', $maintenance['Maintenance']['id']), array('class' => 'btn ', 'confirm' => __('Are you sure you want to delete # %s?', $maintenance['Maintenance']['title']))); ?> </li>
-                <li ><?php echo $this->Html->link(__('New Maintenance'), array('action' => 'add'), array('class' => 'btn ')); ?> </li>
-                <li ><?php echo $this->Html->link(__('List Maintenances'), array('action' => 'index'), array('class' => 'btn ')); ?> </li>
+                <li ><?php echo $this->Html->link(__('Edit Maintenance'), array('action' => 'edit', $maintenance['Maintenance']['id'], '?' => $this->request->query), array('class' => 'btn ')); ?> </li>
+                <li ><?php echo $this->Form->postLink(__('Delete Maintenance'), array('action' => 'delete', $maintenance['Maintenance']['id'], '?' => $this->request->query), array('class' => 'btn ', 'confirm' => __('Are you sure you want to delete # %s?', $maintenance['Maintenance']['title']))); ?> </li>
+                <li ><?php echo $this->Html->link(__('New Maintenance'), array('action' => 'add', '?' => $this->request->query), array('class' => 'btn ')); ?> </li>
+                <li ><?php echo $this->Html->link(__('List Maintenances'), array('action' => 'index', '?' => $this->request->query), array('class' => 'btn ')); ?> </li>
 
 
             </ul><!-- /.list-group -->
@@ -44,12 +44,12 @@
                         </td>
                     </tr><tr>		<td><strong><?php echo __('Start Date'); ?></strong></td>
                         <td>
-                            <?php echo h( $maintenance['Maintenance']['start_date']); ?>
+                            <?php echo h($maintenance['Maintenance']['start_date']); ?>
                             &nbsp;
                         </td>
                     </tr><tr>		<td><strong><?php echo __('Renewal Date'); ?></strong></td>
                         <td>
-                            <?php echo h( $maintenance['Maintenance']['renewal_date']); ?>
+                            <?php echo h($maintenance['Maintenance']['renewal_date']); ?>
                             &nbsp;
                         </td>
                     </tr><tr>		<td><strong><?php echo __('Last Inspection'); ?></strong></td>
@@ -68,19 +68,19 @@
                             &nbsp;
                         </td>
                     </tr>
-                   <tr>		<td><strong><?php echo __('Active'); ?></strong></td>
+                    <tr>		<td><strong><?php echo __('Active'); ?></strong></td>
                         <td>
                             <?php echo h($maintenance['Maintenance']['active_string']); ?>
                             &nbsp;
                         </td>
                     </tr><tr>		<td><strong><?php echo __('Modified'); ?></strong></td>
                         <td>
-                            <?php echo h( $maintenance['Maintenance']['modified']); ?>
+                            <?php echo h($maintenance['Maintenance']['modified']); ?>
                             &nbsp;
                         </td>
                     </tr><tr>		<td><strong><?php echo __('Created'); ?></strong></td>
                         <td>
-                            <?php echo h( $maintenance['Maintenance']['created']); ?>
+                            <?php echo h($maintenance['Maintenance']['created']); ?>
                             &nbsp;
                         </td>
                     </tr>
