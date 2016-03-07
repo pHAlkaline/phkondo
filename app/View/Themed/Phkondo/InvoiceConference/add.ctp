@@ -7,9 +7,9 @@
 
             <ul class="nav nav-pills nav-stacked">
                 <?php if (count($suppliers) > 1) { ?>
-                    <li><?php echo $this->Html->link(__('List Invoices'), array('action' => 'index'), array('class' => 'btn')); ?></li>
+                    <li><?php echo $this->Html->link(__('List Invoices'), array('action' => 'index','?'=>$this->request->query), array('class' => 'btn')); ?></li>
                 <?php } else { ?>
-                    <li><?php echo $this->Html->link(__('List Invoices'), array('action' => 'index_by_supplier', key($suppliers)), array('class' => 'btn')); ?></li>
+                    <li><?php echo $this->Html->link(__('List Invoices'), array('action' => 'index_by_supplier', key($suppliers),'?'=>$this->request->query), array('class' => 'btn')); ?></li>
                 <?php } ?>
             </ul><!-- /.list-group -->
 

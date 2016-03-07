@@ -6,7 +6,7 @@
             <h2 class="col-sm-9"><?php echo $this->Session->read('Condo.InvoiceConference.SupplierName'); ?></h2>
            
             <div class="actions hidden-print col-sm-3">
-                <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Invoice'), array('action' => 'add',$supplier_id), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 0; float: right;', 'escape' => false)); ?>            
+                <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Invoice'), array('action' => 'add',$supplier_id,'?'=>$this->request->query), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 0; float: right;', 'escape' => false)); ?>            
             </div><!-- /.actions -->
             
             <div class="clearfix"></div>
@@ -35,9 +35,9 @@
                                 <td><?php echo h($invoice_conference['InvoiceConferenceStatus']['name']); ?></td>
                                 <td class="amount"><?php echo h($invoice_conference['InvoiceConference']['amount']); ?>&nbsp;<?php echo  Configure::read('currencySign'); ?></td>
                                 <td class="actions hidden-print">
-                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $invoice_conference['InvoiceConference']['id']), array('title' => __('Details'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
-                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $invoice_conference['InvoiceConference']['id']), array('title' => __('Edit'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
-                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'delete', $invoice_conference['InvoiceConference']['id']), array('title' => __('Remove'), 'class' => 'btn btn-default btn-xs', 'escape' => false,'confirm'=> __('Are you sure you want to delete # %s?' , $invoice_conference['InvoiceConference']['description'] ))); ?>
+                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $invoice_conference['InvoiceConference']['id'],'?'=>$this->request->query), array('title' => __('Details'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
+                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $invoice_conference['InvoiceConference']['id'],'?'=>$this->request->query), array('title' => __('Edit'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
+                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'delete', $invoice_conference['InvoiceConference']['id'],'?'=>$this->request->query), array('title' => __('Remove'), 'class' => 'btn btn-default btn-xs', 'escape' => false,'confirm'=> __('Are you sure you want to delete # %s?' , $invoice_conference['InvoiceConference']['description'] ))); ?>
 
                                 </td>
                             </tr>
