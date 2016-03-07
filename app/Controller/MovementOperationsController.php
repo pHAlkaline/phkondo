@@ -98,36 +98,35 @@ class MovementOperationsController extends AppController {
         $this->Movement=  ClassRegistry::init('Movement');
         if ($movementId != null && !$this->Movement->exists($movementId)) {
             $this->Flash->error(__('Invalid movement operation'));
-            $this->redirect(array('action' => 'index'));
+             $this->redirect(array('controller' => 'movements', 'action' => 'index','?'=>$this->request->query));
         }
         if ($this->request->is('post')) {
             $this->MovementOperation->create();
             if ($this->MovementOperation->save($this->request->data)) {
                 $this->Flash->success(__('The movement operation has been saved'));
                 if ($movementId != null) {
-                    $this->redirect(array('controller' => 'movements', 'action' => 'edit', $movementId));
+                    $this->redirect(array('controller' => 'movements', 'action' => 'edit', $movementId,'?'=>$this->request->query));
                 } else {
-                    $this->redirect(array('controller' => 'movements', 'action' => 'add'));
+                    $this->redirect(array('controller' => 'movements', 'action' => 'add','?'=>$this->request->query));
                 }
             } else {
                 $this->Flash->error(__('The movement operation could not be saved. Please, try again.'));
             }
         }
 
-        if (!$this->Session->check('Condo.Account.ViewID')) {
+        if (!$this->getPhkRequestVar('account_id')) {
             $this->Flash->error(__('Invalid account'));
-            $this->redirect(array('controller'=>'accounts','action' => 'index'));
-            
+            $this->redirect(array('controller' => 'accounts', 'action' => 'index'));
         }
 
         $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID'))), 'text' => $this->Session->read('Condo.ViewName'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'accounts', 'action' => 'index')), 'text' => __n('Account','Accounts',2), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'accounts', 'action' => 'index', $this->Session->read('Condo.Account.ViewID'))), 'text' => $this->Session->read('Condo.Account.ViewName'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'movements', 'action' => 'index')), 'text' => __n('Movement','Movements',2), 'active' => ''),
-            array('link' => '', 'text' => __('Add Movement Operation'), 'active' => 'active')
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'accounts', 'action' => 'index','?'=>array('condo_id'=>$this->getPhkRequestVar('condo_id')))), 'text' => __n('Account', 'Accounts', 2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'accounts', 'action' => 'view', $this->getPhkRequestVar('account_id'),'?'=>array('condo_id'=>$this->getPhkRequestVar('condo_id')))), 'text' => $this->getPhkRequestVar('account_text'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'movements', 'action' => 'index','?'=>$this->request->query)), 'text' => __n('Movement', 'Movements', 2), 'active' => ''),
+             array('link' => '', 'text' => __('Add Movement Operation'), 'active' => 'active')
         );
         $this->set(compact('breadcrumbs', 'movementId'));
     }
