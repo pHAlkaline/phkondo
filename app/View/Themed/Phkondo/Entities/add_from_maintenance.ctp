@@ -8,9 +8,9 @@
             <ul class="nav nav-pills nav-stacked">
 
                 <?php if (isset($maintenanceId) && $maintenanceId != null) { ?>
-                    <li ><?php echo $this->Html->link(__('Return'), array('controller' => 'maintenances', 'action' => 'edit', $maintenanceId),array('class'=>'btn')); ?></li>
+                    <li ><?php echo $this->Html->link(__('Return'), array('controller' => 'maintenances', 'action' => 'edit', $maintenanceId,'?'=>$this->request->query),array('class'=>'btn')); ?></li>
                 <?php } else { ?>
-                    <li ><?php echo $this->Html->link(__('Return'), array('controller' => 'maintenances', 'action' => 'add'),array('class'=>'btn')); ?></li>
+                    <li ><?php echo $this->Html->link(__('Return'), array('controller' => 'maintenances', 'action' => 'add','?'=>$this->request->query),array('class'=>'btn')); ?></li>
                 <?php } ?>
             </ul>
 

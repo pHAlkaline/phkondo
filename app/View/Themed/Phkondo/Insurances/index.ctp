@@ -7,7 +7,7 @@
 
             <h2 class="col-sm-9"><?php echo __n('Insurance','Insurances',2); ?></h2>
             <div class="actions hidden-print col-sm-3">
-                <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> '.__('New Insurance'), array('action' => 'add'), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 0; float: right;', 'escape' => false)); ?>            </div><!-- /.actions -->
+                <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> '.__('New Insurance'), array('action' => 'add','?'=>$this->request->query), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 0; float: right;', 'escape' => false)); ?>            </div><!-- /.actions -->
             <div class="clearfix"></div>
             <div class="table-responsive">
                 <table class="table table-hover table-condensed">
@@ -33,9 +33,9 @@
                                 <td><?php echo h($insurance['Insurance']['policy']); ?>&nbsp;</td>
                                 <td><?php echo h($insurance['InsuranceType']['name']); ?></td>
                                 <td class="actions hidden-print">
-                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $insurance['Insurance']['id']), array('title'=>__('Details'),'class' => 'btn btn-default btn-xs','escape'=>false)); ?>
-                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $insurance['Insurance']['id']), array('title'=>__('Edit'),'class' => 'btn btn-default btn-xs','escape'=>false)); ?>
-                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'delete', $insurance['Insurance']['id']), array('title'=>__('Remove'),'class' => 'btn btn-default btn-xs','escape'=>false,'confirm'=> __('Are you sure you want to delete # %s?' , $insurance['Insurance']['title'] ))); ?>
+                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $insurance['Insurance']['id'],'?'=>$this->request->query), array('title'=>__('Details'),'class' => 'btn btn-default btn-xs','escape'=>false)); ?>
+                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $insurance['Insurance']['id'],'?'=>$this->request->query), array('title'=>__('Edit'),'class' => 'btn btn-default btn-xs','escape'=>false)); ?>
+                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'delete', $insurance['Insurance']['id'],'?'=>$this->request->query), array('title'=>__('Remove'),'class' => 'btn btn-default btn-xs','escape'=>false,'confirm'=> __('Are you sure you want to delete # %s?' , $insurance['Insurance']['title'] ))); ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

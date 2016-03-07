@@ -8,9 +8,9 @@
             <ul class="nav nav-pills nav-stacked">
 
                 <?php if (isset($fractionId) && $fractionId != null) { ?>
-                    <li ><?php echo $this->Html->link(__('Return'), array('controller' => 'fractions', 'action' => 'edit', $fractionId), array('class' => 'btn')); ?></li>
+                    <li ><?php echo $this->Html->link(__('Return'), array('controller' => 'fractions', 'action' => 'edit', $fractionId,'?'=>$this->request->query), array('class' => 'btn')); ?></li>
                 <?php } else { ?>
-                    <li ><?php echo $this->Html->link(__('Return'), array('controller' => 'fractions', 'action' => 'add'), array('class' => 'btn')); ?></li>
+                    <li ><?php echo $this->Html->link(__('Return'), array('controller' => 'fractions', 'action' => 'add','?'=>$this->request->query), array('class' => 'btn')); ?></li>
                 <?php } ?>
             </ul>
 
@@ -35,7 +35,7 @@
             <fieldset>
                 <h2><?php echo __('New Manager'); ?></h2>
                 <div class="form-group">
-<?php echo $this->Form->input('name', array('class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('name', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
 
                 <div class="form-group">
@@ -45,36 +45,36 @@
                     <?php echo $this->Form->input('representative', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
-<?php echo $this->Form->input('address', array('class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('address', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-<?php echo $this->Form->input('contacts', array('class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('contacts', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-<?php echo $this->Form->input('email', array('class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('email', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-<?php echo $this->Form->input('bank', array('class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('bank', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-<?php echo $this->Form->input('nib', array('class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('nib', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-<?php echo $this->Form->input('comments', array('class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('comments', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
 
             </fieldset>
             <div class="form-group"> 
                 <div class="col-sm-offset-2 col-sm-6"> 
-            <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-large btn-primary pull-right')); ?>
+                    <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-large btn-primary pull-right')); ?>
                 </div> 
             </div>
-<?php echo $this->Form->end(); ?>
+            <?php echo $this->Form->end(); ?>
 
         </div>
 
