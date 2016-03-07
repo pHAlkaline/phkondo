@@ -7,9 +7,9 @@
 
             <ul class="nav nav-pills nav-stacked">
                 <?php if (isset($movementId) && $movementId != null) { ?>
-                    <li ><?php echo $this->Html->link(__('Return'), array('controller' => 'movements', 'action' => 'edit', $movementId),array('class'=>'btn')); ?></li>
+                    <li ><?php echo $this->Html->link(__('Return'), array('controller' => 'movements', 'action' => 'edit', $movementId,'?'=>$this->request->query),array('class'=>'btn')); ?></li>
                 <?php } else { ?>
-                    <li ><?php echo $this->Html->link(__('Return'), array('controller' => 'movements', 'action' => 'add'),array('class'=>'btn')); ?></li>
+                    <li ><?php echo $this->Html->link(__('Return'), array('controller' => 'movements', 'action' => 'add','?'=>$this->request->query),array('class'=>'btn')); ?></li>
                 <?php } ?>
             </ul><!-- /.list-group -->
 
