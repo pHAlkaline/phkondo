@@ -6,7 +6,7 @@
 
             <h2 class="col-sm-9"><?php echo __('Invoice Conference'); ?></h2>
             <div class="actions hidden-print col-sm-3">
-                <?php echo $this->Html->link( '<span class="glyphicon glyphicon-plus-sign"></span> '.__('New Invoice'), array('action' => 'add'), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 0; float: right;', 'escape' => false)); ?>
+                <?php echo $this->Html->link( '<span class="glyphicon glyphicon-plus-sign"></span> '.__('New Invoice'), array('action' => 'add','?'=>$this->request->query), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 0; float: right;', 'escape' => false)); ?>
                 
             </div><!-- /.actions -->
             <div class="clearfix"></div>
@@ -25,7 +25,7 @@
                                 <td><?php echo h($invoice_conference['Supplier']['name']); ?></td>
                                 <td class="amount"><?php echo h($invoice_conference['InvoiceConference']['total_amount']); ?>&nbsp;<?php echo  Configure::read('currencySign'); ?></td>
                                 <td class="actions hidden-print">
-                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'index_by_supplier', $invoice_conference['InvoiceConference']['supplier_id']), array('title'=>__('Details'),'class' => 'btn btn-default btn-xs','escape'=>false)); ?>
+                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'index_by_supplier', $invoice_conference['InvoiceConference']['supplier_id'],'?'=>$this->request->query), array('title'=>__('Details'),'class' => 'btn btn-default btn-xs','escape'=>false)); ?>
                                     
                                    
                                 </td>

@@ -157,10 +157,12 @@ class AppController extends Controller {
 
     public function setPhkRequestVar($key, $value) {
         $this->phkRequestData[$key] = $value;
+        $this->setInvoiceData();
         $this->setInsuranceData();
         $this->setNoteData();
         $this->setReceiptData();
         $this->setOwnerData();
+        $this->setSupplierData();
         $this->setFractionData();
         $this->setAccountData();
         $this->setAdministratorData();
@@ -233,6 +235,18 @@ class AppController extends Controller {
         }
     }
 
+    private function setSupplierData() {
+        if (isset($this->phkRequestData['supplier_id']) && !isset($this->phkRequestData['supplier_text'])) {
+            App::import("Model", "Entity");
+            $entity = new Entity();
+            $result = $entity->find("first", array('conditions' => array('Entity.id' => $this->phkRequestData['supplier_id'])));
+            if (count($result)) {
+                $this->phkRequestData['supplier_id'] = $result['Entity']['id'];
+                $this->phkRequestData['supplier_text'] = $result['Entity']['name'];
+            }
+        }
+    }
+
     private function setNoteData() {
         if (isset($this->phkRequestData['note_id']) && !isset($this->phkRequestData['note_text'])) {
             App::import("Model", "Note");
@@ -282,8 +296,18 @@ class AppController extends Controller {
             $this->phkRequestData['administrator_text'] = $result['Entity']['name'];
         }
     }
-     
-  
+
+    private function setInvoiceData() {
+        if (isset($this->phkRequestData['invoice_id']) && !isset($this->phkRequestData['invoice_text'])) {
+            App::import("Model", "InvoiceConference");
+            $invoice = new InvoiceConference();
+            $result = $invoice->find("first", array('conditions' => array('InvoiceConference.id' => $this->phkRequestData['invoice_id'])));
+            $this->phkRequestData['invoice_id'] = $result['InvoiceConference']['id'];
+            $this->phkRequestData['invoice_text'] = $result['InvoiceConference']['description'] . ' ( ' . $result['InvoiceConference']['document'] . ' ) ';
+            $this->phkRequestData['supplier_id'] = $result['InvoiceConference']['supplier_id'];
+        }
+    }
+
     private function getTheme() {
         return Configure::read('Theme.name');
     }
