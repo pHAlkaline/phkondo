@@ -51,12 +51,12 @@ class MaintenancesController extends AppController {
     public function index() {
         $this->Paginator->settings = $this->Paginator->settings + array(
             'contain' => array ('Supplier'),
-            'conditions' => array('Maintenance.condo_id' => $this->Session->read('Condo.ViewID'))
+            'conditions' => array('Maintenance.condo_id' => $this->getPhkRequestVar('condo_id'))
         );
         $this->setFilter(array('Maintenance.title','Maintenance.client_number', 'Supplier.name'));
         
         $this->set('maintenances', $this->Paginator->paginate('Maintenance'));
-        $this->Session->delete('Condo.Maintenance');
+        
     }
 
     /**
@@ -70,17 +70,17 @@ class MaintenancesController extends AppController {
         $this->Maintenance->contain('Supplier');
         if (!$this->Maintenance->exists($id)) {
             $this->Flash->error(__('Invalid maintenance'));
-            $this->redirect(array('action' => 'index'));
+            $this->redirect(array('action' => 'index','?'=>$this->request->query));
         }
         $options = array('conditions' => array('Maintenance.' . $this->Maintenance->primaryKey => $id));
         $maintenance=$this->Maintenance->find('first', $options);
         if (!count($maintenance)){
             $this->Flash->error(__('Invalid maintenance'));
-            $this->redirect(array('action' => 'index'));
+            $this->redirect(array('action' => 'index','?'=>$this->request->query));
         }
         $this->set('maintenance', $maintenance);
-        $this->Session->write('Condo.Maintenance.ViewID', $id);
-        $this->Session->write('Condo.Maintenance.ViewName', $maintenance['Maintenance']['title']);
+        $this->setPhkRequestVar('maintenance_id',$id);
+        
     }
 
     /**
@@ -93,12 +93,12 @@ class MaintenancesController extends AppController {
             $this->Maintenance->create();
             if ($this->Maintenance->save($this->request->data)) {
                 $this->Flash->success(__('The maintenance has been saved'));
-                $this->redirect(array('action' => 'view',$this->Maintenance->id));
+                $this->redirect(array('action' => 'view',$this->Maintenance->id,'?'=>$this->request->query));
             } else {
                 $this->Flash->error(__('The maintenance could not be saved. Please, try again.'));
             }
         }
-        $condos = $this->Maintenance->Condo->find('list', array('conditions' => array('id' => $this->Session->read('Condo.ViewID'))));
+        $condos = $this->Maintenance->Condo->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('condo_id'))));
         $suppliers = $this->Maintenance->Supplier->find('list', array('order'=>'Supplier.name','conditions' => array('entity_type_id' => '2')));
         $this->set(compact('condos', 'suppliers'));
     }
@@ -113,12 +113,12 @@ class MaintenancesController extends AppController {
     public function edit($id = null) {
         if (!$this->Maintenance->exists($id)) {
             $this->Flash->error(__('Invalid maintenance'));
-            $this->redirect(array('action' => 'index'));
+            $this->redirect(array('action' => 'index','?'=>$this->request->query));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Maintenance->save($this->request->data)) {
                 $this->Flash->success(__('The maintenance has been saved'));
-                $this->redirect(array('action' => 'view',$id));
+                $this->redirect(array('action' => 'view',$id,'?'=>$this->request->query));
             } else {
                 $this->Flash->error(__('The maintenance could not be saved. Please, try again.'));
             }
@@ -126,11 +126,10 @@ class MaintenancesController extends AppController {
             $options = array('conditions' => array('Maintenance.' . $this->Maintenance->primaryKey => $id));
             $this->request->data = $this->Maintenance->find('first', $options);
         }
-        $condos = $this->Maintenance->Condo->find('list', array('conditions' => array('id' => $this->Session->read('Condo.ViewID'))));
+        $condos = $this->Maintenance->Condo->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('condo_id'))));
         $suppliers = $this->Maintenance->Supplier->find('list', array('order'=>'name','conditions' => array('entity_type_id' => '2')));
         $this->set(compact('condos', 'suppliers'));
-        $this->Session->write('Condo.Maintenance.ViewID', $id);
-        $this->Session->write('Condo.Maintenance.ViewName', $this->request->data['Maintenance']['title']);
+        $this->setPhkRequestVar('maintenance_id',$id);
     }
 
     /**
@@ -148,40 +147,40 @@ class MaintenancesController extends AppController {
         $this->Maintenance->id = $id;
         if (!$this->Maintenance->exists()) {
             $this->Flash->error(__('Invalid maintenance'));
-            $this->redirect(array('action' => 'index'));
+            $this->redirect(array('action' => 'index','?'=>$this->request->query));
         }
         if ($this->Maintenance->delete()) {
             $this->Flash->success(__('Maintenance deleted'));
-            $this->redirect(array('action' => 'index'));
+            $this->redirect(array('action' => 'index','?'=>$this->request->query));
         }
         $this->Flash->error(__('Maintenance can not be deleted'));
-        $this->redirect(array('action' => 'view',$id));
+        $this->redirect(array('action' => 'view',$id,'?'=>$this->request->query));
     }
 
     
     public function beforeFilter() {
         parent::beforeFilter();
-        if (!$this->Session->check('Condo.ViewID')) {
+        if (!$this->getPhkRequestVar('condo_id')) {
             $this->Flash->error(__('Invalid condo'));
-            $this->redirect(array('controller'=>'condos','action' => 'index'));
+            $this->redirect(array('controller' => 'condos', 'action' => 'index'));
         }
     }
-    
+
     public function beforeRender() {
-       $breadcrumbs = array(
+        $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID'))), 'text' => $this->Session->read('Condo.ViewName'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view',$this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
             array('link' => '', 'text' => __n('Maintenance','Maintenances',2), 'active' => 'active')
         );
        switch ($this->action) {
             case 'view':
-                 $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'maintenances', 'action' => 'index')), 'text' => __n('Maintenance','Maintenances',2), 'active' => '');
-                $breadcrumbs[4] = array('link' => '', 'text' => $this->Session->read('Condo.Maintenance.ViewName'), 'active' => 'active');
+                 $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'maintenances', 'action' => 'index','?'=>$this->request->query)), 'text' => __n('Maintenance','Maintenances',2), 'active' => '');
+                $breadcrumbs[4] = array('link' => '', 'text' => $this->getPhkRequestVar('maintenance_text'), 'active' => 'active');
                 break;
             case 'edit':
-                   $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'maintenances', 'action' => 'index')), 'text' => __n('Maintenance','Maintenances',2), 'active' => '');
-                $breadcrumbs[4] = array('link' => '', 'text' => $this->Session->read('Condo.Maintenance.ViewName'), 'active' => 'active');
+                   $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'maintenances', 'action' => 'index','?'=>$this->request->query)), 'text' => __n('Maintenance','Maintenances',2), 'active' => '');
+                $breadcrumbs[4] = array('link' => '', 'text' => $this->getPhkRequestVar('maintenance_text'), 'active' => 'active');
                
                 break;
         }

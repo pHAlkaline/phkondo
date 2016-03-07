@@ -125,7 +125,7 @@ class EntitiesController extends AppController {
         $maintenance = $this->Maintenance;
         if ($maintenanceId != null && !$maintenance->exists($maintenanceId)) {
             $this->Flash->error(__('Invalid entity'));
-            $this->redirect(array('controller'=>'maintenance','action' => 'index'));
+            $this->redirect(array('controller'=>'maintenance','action' => 'index','?'=>$this->request->query));
         }
         if ($this->request->is('post')) {
             $this->Entity->create();
@@ -133,9 +133,9 @@ class EntitiesController extends AppController {
             if ($this->Entity->save($this->request->data)) {
                 $this->Flash->success(__('The entity has been saved'));
                 if ($maintenanceId != null) {
-                    $this->redirect(array('controller' => 'maintenances', 'action' => 'edit', $maintenanceId));
+                    $this->redirect(array('controller' => 'maintenances', 'action' => 'edit', $maintenanceId,'?'=>$this->request->query));
                 } else {
-                    $this->redirect(array('controller' => 'maintenances', 'action' => 'add'));
+                    $this->redirect(array('controller' => 'maintenances', 'action' => 'add','?'=>$this->request->query));
                 }
             } else {
                 $this->Flash->error(__('The entity could not be saved. Please, try again.'));
@@ -145,7 +145,7 @@ class EntitiesController extends AppController {
 
         $this->set(compact('entityTypes', 'maintenanceId'));
 
-        if (!$this->Session->check('Condo.ViewID')) {
+        if (!$this->getPhkRequestVar('condo_id')) {
             $this->Flash->error(__('Invalid condo'));
            $this->redirect(array('controller'=>'condos','action' => 'index'));
         }
@@ -153,8 +153,8 @@ class EntitiesController extends AppController {
         $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID'))), 'text' => $this->Session->read('Condo.ViewName'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'maintenances', 'action' => 'index')), 'text' => __n('Maintenance','Maintenances',2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'maintenances', 'action' => 'index','?'=>$this->request->query)), 'text' => __n('Maintenance','Maintenances',2), 'active' => ''),
             array('link' => '', 'text' => __n('Supplier','Suppliers',2), 'active' => 'active')
         );
         $this->set(compact('breadcrumbs'));
