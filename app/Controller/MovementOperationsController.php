@@ -68,8 +68,10 @@ class MovementOperationsController extends AppController {
         $options = array('conditions' => array('MovementOperation.' . $this->MovementOperation->primaryKey => $id));
         $movementOperation = $this->MovementOperation->find('first', $options);
         $this->set('movementOperation', $movementOperation);
-        $this->Session->write('MovementOperation.ViewID', $id);
-        $this->Session->write('MovementOperation.ViewName', $movementOperation['MovementOperation']['name']);
+        
+        $this->setPhkRequestVar('movement_operation_id', $id);
+        $this->setPhkRequestVar('movement_operation_text', $movementOperation['MovementOperation']['name']);
+        
     }
 
     /**
@@ -154,8 +156,10 @@ class MovementOperationsController extends AppController {
             $options = array('conditions' => array('MovementOperation.' . $this->MovementOperation->primaryKey => $id));
             $this->request->data = $this->MovementOperation->find('first', $options);
         }
-        $this->Session->write('MovementOperation.ViewID', $id);
-        $this->Session->write('MovementOperation.ViewName', $this->request->data['MovementOperation']['name']);
+        
+        $this->setPhkRequestVar('movement_operation_id', $id);
+        $this->setPhkRequestVar('movement_operation_text', $this->request->data['MovementOperation']['name']);
+        
     }
 
     /**
@@ -195,11 +199,11 @@ class MovementOperationsController extends AppController {
         switch ($this->action) {
             case 'view':
                 $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'movement_operations', 'action' => 'index')), 'text' => __('Movement Operations'), 'active' => '');
-                $breadcrumbs[2] = array('link' => '', 'text' => $this->Session->read('MovementOperation.ViewName'), 'active' => 'active');
+                $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('movement_operation_text'), 'active' => 'active');
                 break;
             case 'edit':
                 $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'movement_operations', 'action' => 'index')), 'text' => __('Movement Operations'), 'active' => '');
-                $breadcrumbs[2] = array('link' => '', 'text' => $this->Session->read('MovementOperation.ViewName'), 'active' => 'active');
+                $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('movement_operation_text'), 'active' => 'active');
 
                 break;
         }

@@ -73,8 +73,8 @@ class InsuranceTypesController extends AppController {
         $options = array('conditions' => array('InsuranceType.' . $this->InsuranceType->primaryKey => $id));
         $insuranceType = $this->InsuranceType->find('first', $options);
         $this->set('insuranceType', $insuranceType);
-        $this->Session->write('InsuranceType.ViewID', $id);
-        $this->Session->write('InsuranceType.ViewName', $insuranceType['InsuranceType']['name']);
+        $this->setPhkRequestVar('insurance_type_id', $id);
+        $this->setPhkRequestVar('insurance_type_text', $insuranceType['InsuranceType']['name']);
     }
 
     /**
@@ -117,8 +117,9 @@ class InsuranceTypesController extends AppController {
             $options = array('conditions' => array('InsuranceType.' . $this->InsuranceType->primaryKey => $id));
             $this->request->data = $this->InsuranceType->find('first', $options);
         }
-        $this->Session->write('InsuranceType.ViewID', $id);
-        $this->Session->write('InsuranceType.ViewName', $this->request->data['InsuranceType']['name']);
+        $this->setPhkRequestVar('insurance_type_id', $id);
+        $this->setPhkRequestVar('insurance_type_text', $this->request->data['InsuranceType']['name']);
+        
     }
 
     /**
@@ -147,6 +148,7 @@ class InsuranceTypesController extends AppController {
     }
 
     public function beforeRender() {
+        parent::beforeRender();
         if (isset($this->viewVars['breadcrumbs'])) {
             return;
         }
@@ -157,11 +159,11 @@ class InsuranceTypesController extends AppController {
         switch ($this->action) {
             case 'view':
                 $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'insurance_types', 'action' => 'index')), 'text' => __('Insurance Types'), 'active' => '');
-                $breadcrumbs[2] = array('link' => '', 'text' => $this->Session->read('InsuranceType.ViewName'), 'active' => 'active');
+                $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('insurance_type_text'), 'active' => 'active');
                 break;
             case 'edit':
                 $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'insurance_types', 'action' => 'index')), 'text' => __('Insurance Types'), 'active' => '');
-                $breadcrumbs[2] = array('link' => '', 'text' => $this->Session->read('InsuranceType.ViewName'), 'active' => 'active');
+                $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('insurance_type_text'), 'active' => 'active');
 
                 break;
         }

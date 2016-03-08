@@ -68,8 +68,9 @@ class UsersController extends AppController {
         $options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
         $user = $this->User->find('first', $options);
         $this->set('user', $user);
-        $this->Session->write('User.ViewID', $id);
-        $this->Session->write('User.ViewName', $user['User']['name']);
+        $this->setPhkRequestVar('user_id', $id);
+        $this->setPhkRequestVar('user_text', $user['User']['name']);
+        
     }
 
     /**
@@ -115,8 +116,9 @@ class UsersController extends AppController {
         unset($this->request->data['User']['edpassword']);
         unset($this->request->data['User']['password']);
         unset($this->request->data['User']['verify_password']);
-        $this->Session->write('User.ViewID', $id);
-        $this->Session->write('User.ViewName', $this->request->data['User']['name']);
+        $this->setPhkRequestVar('user_id', $id);
+        $this->setPhkRequestVar('user_text',  $this->request->data['User']['name']);
+        
     }
 
     /**
@@ -217,11 +219,11 @@ class UsersController extends AppController {
         switch ($this->action) {
             case 'view':
                 $breadcrumbs[1]['active'] = '';
-                $breadcrumbs[2] = array('link' => '', 'text' => $this->Session->read('User.ViewName'), 'active' => 'active');
+                $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('user_text'), 'active' => 'active');
                 break;
             case 'edit':
                 $breadcrumbs[1]['active'] = '';
-                $breadcrumbs[2] = array('link' => '', 'text' => $this->Session->read('User.ViewName'), 'active' => 'active');
+                $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('user_text'), 'active' => 'active');
                 break;
             case 'add':
                 $breadcrumbs[1]['active'] = '';
