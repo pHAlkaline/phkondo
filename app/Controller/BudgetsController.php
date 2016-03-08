@@ -54,11 +54,11 @@ class BudgetsController extends AppController {
         $this->Paginator->settings = $this->Paginator->settings + array(
             'contain' => array('BudgetType', 'BudgetStatus'),
             'conditions' => array(
-                'Budget.condo_id' => $this->Session->read('Condo.ViewID'))
+                'Budget.condo_id' => $this->getPhkRequestVar('condo_id'))
         );
         $this->setFilter(array('Budget.title', 'BudgetType.name'));
         $this->set('budgets', $this->Paginator->paginate('Budget'));
-        $this->Session->delete('Condo.Budget');
+        
     }
 
     /**
@@ -72,14 +72,14 @@ class BudgetsController extends AppController {
         $this->Budget->contain(array('Note', 'BudgetStatus', 'FiscalYear', 'BudgetType', 'SharePeriodicity', 'ShareDistribution'));
         if (!$this->Budget->exists($id)) {
             $this->Flash->error(__('Invalid budget'));
-            $this->redirect(array('action' => 'index'));
+            $this->redirect(array('action' => 'index','?'=>$this->request->query));
         }
         $options = array('conditions' => array('Budget.' . $this->Budget->primaryKey => $id));
         $budget = $this->Budget->find('first', $options);
         $this->set(compact('budget'));
-        $this->Session->write('Condo.Budget.ViewID', $id);
-        $this->Session->write('Condo.Budget.ViewName', $budget['Budget']['title']);
-        $this->Session->write('Condo.Budget.Status', $budget['Budget']['budget_status_id']);
+        $this->setPhkRequestVar('budget_id',$id);
+        $this->setPhkRequestVar('budget_text',$budget['Budget']['title']);
+        $this->setPhkRequestVar('budget_status',$budget['Budget']['budget_status_id']);
     }
 
     /**
@@ -96,13 +96,13 @@ class BudgetsController extends AppController {
             $this->request->data['Budget']['requested_amount'] = $this->request->data['Budget']['amount'];
             if ($this->Budget->save($this->request->data)) {
                 $this->Flash->success(__('The budget has been saved'));
-                $this->redirect(array('action' => 'view', $this->Budget->id));
+                $this->redirect(array('action' => 'view', $this->Budget->id,'?'=>$this->request->query));
             } else {
                 $this->Flash->error(__('The budget could not be saved. Please, try again.'));
             }
         }
-        $condos = $this->Budget->Condo->find('list', array('conditions' => array('id' => $this->Session->read('Condo.ViewID'))));
-        $fiscalYears = $this->Budget->FiscalYear->find('list', array('conditions' => array('id' => $this->Session->read('Condo.FiscalYearID'))));
+        $condos = $this->Budget->Condo->find('list', array('conditions' => array('id' => $this->phkRequestData['condo_id'])));
+        $fiscalYears = $this->Budget->FiscalYear->find('list', array('conditions' => array('id' => $this->phkRequestData['fiscal_year_id'])));
         $budgetTypes = $this->Budget->BudgetType->find('list');
         $budgetStatuses = $this->Budget->BudgetStatus->find('list', array('conditions' => array('id' => array('1', '2'))));
         $sharePeriodicities = $this->Budget->SharePeriodicity->find('list');
@@ -120,7 +120,7 @@ class BudgetsController extends AppController {
     public function edit($id = null) {
         if (!$this->Budget->exists($id)) {
             $this->Flash->error(__('Invalid budget'));
-            $this->redirect(array('action' => 'index'));
+            $this->redirect(array('action' => 'index','?'=>$this->request->query));
         }
         $this->Budget->contain(array('Note'));
         $options = array('conditions' => array('Budget.' . $this->Budget->primaryKey => $id));
@@ -135,7 +135,7 @@ class BudgetsController extends AppController {
             if ($this->Budget->save($this->request->data)) {
                 $this->_setNotesStatus();
                 $this->Flash->success(__('The budget has been saved'));
-                $this->redirect(array('action' => 'view', $this->Budget->id));
+                $this->redirect(array('action' => 'view', $this->Budget->id,'?'=>$this->request->query));
             } else {
                 $this->Flash->error(__('The budget could not be saved. Please, try again.'));
             }
@@ -143,20 +143,21 @@ class BudgetsController extends AppController {
             $this->request->data = $budget;
         }
 
-        if ($this->request->data['Budget']['fiscal_year_id'] != $this->Session->read('Condo.FiscalYearID')) {
+        if ($this->request->data['Budget']['fiscal_year_id'] != $this->getPhkRequestVar('fiscal_year_id')) {
             $this->Flash->error(__('Invalid budget'));
-            $this->redirect(array('action' => 'index'));
+            $this->redirect(array('action' => 'index','?'=>$this->request->query));
         }
-        $condos = $this->Budget->Condo->find('list', array('conditions' => array('id' => $this->Session->read('Condo.ViewID'))));
-        $fiscalYears = $this->Budget->FiscalYear->find('list', array('conditions' => array('id' => $this->Session->read('Condo.FiscalYearID'))));
+        $condos = $this->Budget->Condo->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('condo_id'))));
+        $fiscalYears = $this->Budget->FiscalYear->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('fiscal_year_id'))));
         $budgetTypes = $this->Budget->BudgetType->find('list');
         $budgetStatuses = $this->Budget->BudgetStatus->find('list');
         $sharePeriodicities = $this->Budget->SharePeriodicity->find('list');
         $shareDistributions = $this->Budget->ShareDistribution->find('list');
         $this->set(compact('condos', 'fiscalYears', 'budgetTypes', 'budgetStatuses', 'sharePeriodicities', 'shareDistributions'));
-        $this->Session->write('Condo.Budget.ViewID', $id);
-        $this->Session->write('Condo.Budget.ViewName', $this->request->data['Budget']['title']);
-        $this->Session->write('Condo.Budget.Status', $this->request->data['Budget']['budget_status_id']);
+        $this->setPhkRequestVar('budget_id',$id);
+        $this->setPhkRequestVar('budget_text',$this->request->data['Budget']['title']);
+        $this->setPhkRequestVar('budget_status',$this->request->data['Budget']['budget_status_id']);
+       
     }
 
     /**
@@ -174,20 +175,20 @@ class BudgetsController extends AppController {
         $this->Budget->id = $id;
         if (!$this->Budget->exists()) {
             $this->Flash->error(__('Invalid budget'));
-            $this->redirect(array('action' => 'index'));
+            $this->redirect(array('action' => 'index','?'=>$this->request->query));
         }
 
         if (!$this->Budget->deletable()) {
             $this->Flash->error(__('This Budget can not be deleted, check budget status or existing notes already paid.'));
-            $this->redirect(array('action' => 'view', $id));
+            $this->redirect(array('action' => 'view', $id,'?'=>$this->request->query));
         }
 
         if ($this->Budget->Note->DeleteAll(array('Note.budget_id' => $id), false) && $this->Budget->delete()) {
             $this->Flash->success(__('Budget deleted'));
-            $this->redirect(array('action' => 'index'));
+            $this->redirect(array('action' => 'index','?'=>$this->request->query));
         }
         $this->Flash->error(__('Budget can not be deleted'));
-        $this->redirect(array('action' => 'view', $id));
+        $this->redirect(array('action' => 'view', $id,'?'=>$this->request->query));
     }
 
     /**
@@ -198,7 +199,7 @@ class BudgetsController extends AppController {
     public function shares_map($id = null) {
         if (!$this->Budget->exists($id)) {
             $this->Flash->error(__('Invalid budget'));
-            $this->redirect(array('action' => 'index'));
+            $this->redirect(array('action' => 'index','?'=>$this->request->query));
         }
 
         $event = new CakeEvent('Phkondo.Budget.sharesMap', $this, array(
@@ -209,27 +210,28 @@ class BudgetsController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        if (!$this->Session->check('Condo.ViewID') || !$this->Session->read('Condo.FiscalYearID')) {
+        if (!$this->getPhkRequestVar('condo_id') || !$this->getPhkRequestVar('fiscal_year_id')) {
             $this->Flash->error(__('Invalid condo or fiscal year'));
             $this->redirect(array('controller'=>'condos','action' => 'index'));
         }
     }
 
     public function beforeRender() {
+        parent::beforeRender();
         $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID'))), 'text' => $this->Session->read('Condo.ViewName'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
             array('link' => '', 'text' => __n('Budget', 'Budgets', 2), 'active' => 'active')
         );
         switch ($this->action) {
             case 'view':
-                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'budgets', 'action' => 'index')), 'text' => __n('Budget', 'Budgets', 2), 'active' => '');
-                $breadcrumbs[4] = array('link' => '', 'text' => $this->Session->read('Condo.Budget.ViewName'), 'active' => 'active');
+                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'budgets', 'action' => 'index','?'=>$this->request->query)), 'text' => __n('Budget', 'Budgets', 2), 'active' => '');
+                $breadcrumbs[4] = array('link' => '', 'text' => $this->getPhkRequestVar('budget_text'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'budgets', 'action' => 'index')), 'text' => __n('Budget', 'Budgets', 2), 'active' => '');
-                $breadcrumbs[4] = array('link' => '', 'text' => $this->Session->read('Condo.Budget.ViewName'), 'active' => 'active');
+                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'budgets', 'action' => 'index','?'=>$this->request->query)), 'text' => __n('Budget', 'Budgets', 2), 'active' => '');
+                $breadcrumbs[4] = array('link' => '', 'text' => $this->getPhkRequestVar('budget_text'), 'active' => 'active');
                 break;
         }
         $this->set(compact('breadcrumbs'));

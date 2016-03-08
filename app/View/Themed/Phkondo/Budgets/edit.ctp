@@ -26,12 +26,12 @@
                     $hasNotesDisabled = '';
                 }
                 ?>
-                <li ><?php echo $this->Html->link(__('Edit Budget'), array('action' => 'edit', $budget['Budget']['id']), array('class' => 'btn ' . $editDisabled)); ?> </li>
-                <li ><?php echo $this->Form->postLink(__('Delete Budget'), array('action' => 'delete', $budget['Budget']['id']), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $budget['Budget']['title']))); ?> </li>
-                <li ><?php echo $this->Html->link(__('New Budget'), array('action' => 'add'), array('class' => 'btn ')); ?> </li>
-                <li ><?php echo $this->Html->link(__('List Budgets'), array('action' => 'index'), array('class' => 'btn ')); ?> </li>
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('Create Notes'), array('controller' => 'budget_notes', 'action' => 'create'), array('class' => 'btn ' . $createNotesDisabled, 'escape' => false)); ?> </li>
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Note','Notes',2), array('controller' => 'budget_notes', 'action' => 'index'), array('class' => 'btn ' . $hasNotesDisabled, 'escape' => false)); ?> </li>
+                <li ><?php echo $this->Html->link(__('Edit Budget'), array('action' => 'edit', $budget['Budget']['id'],'?'=>$this->request->query), array('class' => 'btn ' . $editDisabled)); ?> </li>
+                <li ><?php echo $this->Form->postLink(__('Delete Budget'), array('action' => 'delete', $budget['Budget']['id'],'?'=>$this->request->query), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $budget['Budget']['title']))); ?> </li>
+                <li ><?php echo $this->Html->link(__('New Budget'), array('action' => 'add','?'=>$this->request->query), array('class' => 'btn ')); ?> </li>
+                <li ><?php echo $this->Html->link(__('List Budgets'), array('action' => 'index','?'=>$this->request->query), array('class' => 'btn ')); ?> </li>
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('Create Notes'), array('controller' => 'budget_notes', 'action' => 'create','?'=>array('budget_id'=>$budget['Budget']['id'])), array('class' => 'btn ' . $createNotesDisabled, 'escape' => false)); ?> </li>
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Note','Notes',2), array('controller' => 'budget_notes', 'action' => 'index','?'=>array('budget_id'=>$budget['Budget']['id'])), array('class' => 'btn ' . $hasNotesDisabled, 'escape' => false)); ?> </li>
                 <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('Settled Shares Map'), array('action' => 'shares_map', $budget['Budget']['id']), array('class' => 'btn ', 'target' => '_blank', 'escape' => false)); ?> </li>
             </ul><!-- /.list-group -->
 

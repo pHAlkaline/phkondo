@@ -14,8 +14,8 @@ foreach ($fractions as $fraction) {
 
         <div class="actions">
             <ul class="nav nav-pills nav-stacked">
-                <li ><?php echo $this->Html->link(__('View %s', __n('Budget','Budgets',1)), array('controller' => 'budgets', 'action' => 'view', $budget['Budget']['id']), array('class' => 'btn')); ?></li>
-                <li ><?php echo $this->Html->link(__('List Budgets'), array('controller' => 'budgets', 'action' => 'index'), array('class' => 'btn')); ?></li>
+                <li ><?php echo $this->Html->link(__('View %s', __n('Budget','Budgets',1)), array('controller' => 'budgets', 'action' => 'view', $budget['Budget']['id'],'?'=>$this->request->query), array('class' => 'btn')); ?></li>
+                <li ><?php echo $this->Html->link(__('List Budgets'), array('controller' => 'budgets', 'action' => 'index','?'=>$this->request->query), array('class' => 'btn')); ?></li>
             </ul><!-- /.list-group -->
         </div><!-- /.actions -->
 

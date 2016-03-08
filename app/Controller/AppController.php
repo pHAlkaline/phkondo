@@ -166,6 +166,7 @@ class AppController extends Controller {
         $this->setSupplierData();
         $this->setFractionData();
         $this->setAccountData();
+        $this->setBudgetData();
         $this->setAdministratorData();
         $this->setCondoData();
         $this->setFiscalYearData();
@@ -298,7 +299,7 @@ class AppController extends Controller {
             $this->phkRequestData['supplier_id'] = $result['InvoiceConference']['supplier_id'];
         }
     }
-    
+
     private function setMaintenanceData() {
         if (isset($this->phkRequestData['maintenance_id']) && !isset($this->phkRequestData['maintenance_text'])) {
             App::import("Model", "Maintenance");
@@ -310,7 +311,7 @@ class AppController extends Controller {
             }
         }
     }
-    
+
     private function setInsuranceData() {
         if (isset($this->phkRequestData['insurance_id']) && !isset($this->phkRequestData['insurance_text'])) {
             App::import("Model", "Insurance");
@@ -323,6 +324,19 @@ class AppController extends Controller {
         }
     }
 
+    private function setBudgetData() {
+        if (isset($this->phkRequestData['budget_id']) && !isset($this->phkRequestData['budget_text'])) {
+            App::import("Model", "Budget");
+            $budget = new Budget();
+            $result = $budget->find("first", array('conditions' => array('Budget.id' => $this->phkRequestData['budget_id'])));
+            if (count($result)) {
+                $this->phkRequestData['budget_id'] = $result['Budget']['id'];
+                $this->phkRequestData['budget_text'] = $result['Budget']['title'];
+                $this->phkRequestData['budget_status'] = $result['Budget']['budget_status_id'];
+                $this->phkRequestData['condo_id'] = $result['Budget']['condo_id'];
+            }
+        }
+    }
 
     private function getTheme() {
         return Configure::read('Theme.name');
