@@ -63,7 +63,7 @@ class CondosController extends AppController {
         $this->setFilter(array('Condo.title', 'Condo.address'));
 
         $this->set('condos', $this->Paginator->paginate('Condo'));
-        $this->Session->delete('Condo');
+        
     }
 
     /**
@@ -81,7 +81,7 @@ class CondosController extends AppController {
                 'Maintenance', 
                 'Account', 
                 'Administrator' => array(
-                    'conditions'=>array('Administrator.fiscal_year_id' => $this->Session->read('Condo.FiscalYearID')),
+                    'conditions'=>array('Administrator.fiscal_year_id' => $this->getPhkRequestVar('fiscal_year_id')),
                     'Entity'=>array(
                         'fields'=>array('Entity.name')))));
         if (!$this->Condo->exists($id)) {
@@ -96,20 +96,17 @@ class CondosController extends AppController {
         $InvoiceConference = $this->InvoiceConference;
         $InvoiceConference->virtualFields = array('total_amount' => 'SUM(amount)');
         $hasDebt = 0;
-        $this->Session->write('Condo.FiscalYearID', null);
         if (isset($condo['FiscalYear']) && count($condo['FiscalYear'])) {
             $hasDebt = $InvoiceConference->field('total_amount', array(
-                'InvoiceConference.condo_id' => $this->Session->read('Condo.ViewID'),
+                'InvoiceConference.condo_id' => $this->getPhkRequestVar('condo_id'),
                 'InvoiceConference.document_date <=' => $condo['FiscalYear'][0]['close_date'],
                 'InvoiceConference.payment_due_date <' => date(Configure::read('databaseDateFormat')),
                 'OR' => array('InvoiceConference.payment_date' => null, 'InvoiceConference.payment_date >' => $condo['FiscalYear'][0]['close_date']),
             ));
-            $this->Session->write('Condo.FiscalYearID', $condo['FiscalYear'][0]['id']);
+            
         }
         $this->set(compact('condo', 'hasSharesDebt', 'hasDebt'));
 
-        $this->Session->write('Condo.ViewID', $id);
-        $this->Session->write('Condo.ViewName', $condo['Condo']['title']);
     }
 
     /**
@@ -130,7 +127,7 @@ class CondosController extends AppController {
                 $this->Flash->error(__('The condo could not be saved. Please, try again.'));
             }
         }
-        $this->Session->delete('Condo');
+        
     }
 
     /**
@@ -156,8 +153,7 @@ class CondosController extends AppController {
             $options = array('conditions' => array('Condo.' . $this->Condo->primaryKey => $id));
             $this->request->data = $this->Condo->find('first', $options);
         }
-        $this->Session->write('Condo.ViewID', $id);
-        $this->Session->write('Condo.ViewName', $this->request->data['Condo']['title']);
+        
     }
 
     /**
@@ -207,8 +203,8 @@ class CondosController extends AppController {
     }
 
     public function beforeRender() {
-
-        if (!$this->Session->check('Condo.ViewID')) {
+        parent::beforeRender();
+        if (!$this->getPhkRequestVar('condo_id')) {
             $breadcrumbs = array(
                 array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
                 array('link' => '', 'text' => __n('Condo','Condos',2), 'active' => 'active')
@@ -218,9 +214,9 @@ class CondosController extends AppController {
             $breadcrumbs = array(
                 array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
                 array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
-                array('link' => '', 'text' => $this->Session->read('Condo.ViewName'), 'active' => 'active')
+                array('link' => '', 'text' => $this->getPhkRequestVar('condo_text'), 'active' => 'active')
             );
-            $headerTitle=$this->Session->read('Condo.ViewName');
+            $headerTitle=$this->getPhkRequestVar('condo_text');
         }
 
         $this->set(compact('breadcrumbs','headerTitle'));

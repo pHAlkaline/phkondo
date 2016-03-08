@@ -73,8 +73,9 @@ class FractionTypesController extends AppController {
         $options = array('conditions' => array('FractionType.' . $this->FractionType->primaryKey => $id));
         $fractionType = $this->FractionType->find('first', $options);
         $this->set('fractionType', $fractionType);
-        $this->Session->write('FractionType.ViewID', $id);
-        $this->Session->write('FractionType.ViewName', $fractionType['FractionType']['name']);
+        $this->setPhkRequestVar('fraction_type_id', $id);
+        $this->setPhkRequestVar('fraction_type_text', $fractionType['FractionType']['name']);
+       
     }
 
     /**
@@ -117,8 +118,8 @@ class FractionTypesController extends AppController {
             $options = array('conditions' => array('FractionType.' . $this->FractionType->primaryKey => $id));
             $this->request->data = $this->FractionType->find('first', $options);
         }
-        $this->Session->write('FractionType.ViewID', $id);
-        $this->Session->write('FractionType.ViewName', $this->request->data['FractionType']['name']);
+        $this->setPhkRequestVar('fraction_type_id', $id);
+        $this->setPhkRequestVar('fraction_type_text', $this->request->data['FractionType']['name']);
     }
 
     /**
@@ -147,6 +148,7 @@ class FractionTypesController extends AppController {
     }
 
     public function beforeRender() {
+        parent::beforeRender();
         if (isset($this->viewVars['breadcrumbs'])) {
             return;
         }
@@ -157,11 +159,11 @@ class FractionTypesController extends AppController {
         switch ($this->action) {
             case 'view':
                 $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'fraction_types', 'action' => 'index')), 'text' => __('Fraction Types'), 'active' => '');
-                $breadcrumbs[2] = array('link' => '', 'text' => $this->Session->read('FractionType.ViewName'), 'active' => 'active');
+                $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('fraction_type_text'), 'active' => 'active');
                 break;
             case 'edit':
                 $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'fraction_types', 'action' => 'index')), 'text' => __('Fraction Types'), 'active' => '');
-                $breadcrumbs[2] = array('link' => '', 'text' => $this->Session->read('FractionType.ViewName'), 'active' => 'active');
+                $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('fraction_type_text'), 'active' => 'active');
 
                 break;
         }

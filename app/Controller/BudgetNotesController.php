@@ -158,7 +158,7 @@ class BudgetNotesController extends AppController {
             }
         }
         $noteTypes = $this->Note->NoteType->find('list');
-        $fractions = $this->Note->Fraction->find('list', array('order' => array('Fraction.length' => 'asc', 'Fraction.fraction' => 'asc'), 'conditions' => array('condo_id' => $this->Session->read('Condo.ViewID'))));
+        $fractions = $this->Note->Fraction->find('list', array('order' => array('Fraction.length' => 'asc', 'Fraction.fraction' => 'asc'), 'conditions' => array('condo_id' => $this->getPhkRequestVar('condo_id'))));
         $budgets = $this->Note->Budget->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('budget_id'))));
         $fiscalYears = $this->Note->FiscalYear->find('list', array('conditions' => array('id' => Set::extract('/Budget/id', $budgets))));
         $entitiesFilter = $this->Note->Fraction->find('all', array('fields' => array('Fraction.id'), 'conditions' => array('condo_id' => $this->getPhkRequestVar('condo_id')))); //'Fraction.id' => $this->request->data['Note']['fraction_id']

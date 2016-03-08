@@ -73,8 +73,10 @@ class MovementCategoriesController extends AppController {
         $options = array('conditions' => array('MovementCategory.' . $this->MovementCategory->primaryKey => $id));
         $movementCategory = $this->MovementCategory->find('first', $options);
         $this->set('movementCategory', $movementCategory);
-        $this->Session->write('MovementCategory.ViewID', $id);
-        $this->Session->write('MovementCategory.ViewName', $movementCategory['MovementCategory']['name']);
+        
+        $this->setPhkRequestVar('movement_category_id', $id);
+        $this->setPhkRequestVar('movement_category_text', $movementCategory['MovementCategory']['name']);
+        
     }
 
     /**
@@ -159,8 +161,9 @@ class MovementCategoriesController extends AppController {
             $options = array('conditions' => array('MovementCategory.' . $this->MovementCategory->primaryKey => $id));
             $this->request->data = $this->MovementCategory->find('first', $options);
         }
-        $this->Session->write('MovementCategory.ViewID', $id);
-        $this->Session->write('MovementCategory.ViewName', $this->request->data['MovementCategory']['name']);
+        $this->setPhkRequestVar('movement_category_id', $id);
+        $this->setPhkRequestVar('movement_category_text',  $this->request->data['MovementCategory']['name']);
+        
     }
 
     /**
@@ -199,11 +202,11 @@ class MovementCategoriesController extends AppController {
         switch ($this->action) {
             case 'view':
                 $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'movement_categories', 'action' => 'index')), 'text' => __('Movement Categories'), 'active' => '');
-                $breadcrumbs[2] = array('link' => '', 'text' => $this->Session->read('MovementCategory.ViewName'), 'active' => 'active');
+                $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('movement_category_text'), 'active' => 'active');
                 break;
             case 'edit':
                 $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'movement_categories', 'action' => 'index')), 'text' => __('Movement Categories'), 'active' => '');
-                $breadcrumbs[2] = array('link' => '', 'text' => $this->Session->read('MovementCategory.ViewName'), 'active' => 'active');
+                $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('movement_category_text'), 'active' => 'active');
 
                 break;
         }
