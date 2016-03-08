@@ -51,7 +51,7 @@ class IncomeController extends AppController {
      */
     public function index() {
         $Condo = new Condo();
-        $options = array('conditions' => array('Condo.' . $Condo->primaryKey => $this->Session->read('Condo.ViewID')));
+        $options = array('conditions' => array('Condo.' . $Condo->primaryKey => $this->getPhkRequestVar('condo_id')));
         $condo = $Condo->find('first', $options);
         $this->set(compact('condo'));
     }
@@ -86,7 +86,7 @@ class IncomeController extends AppController {
     public function beforeRender() {
         $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'income', 'action' => 'index')), 'text' => __('Income Control'), 'active' => 'active'));
+            array('link' => Router::url(array('controller' => 'income', 'action' => 'index','?'=>$this->request->query)), 'text' => __('Income Control'), 'active' => 'active'));
 
         switch ($this->action) {
             case 'receipts':

@@ -11,7 +11,7 @@
                 <li ><?php echo $this->Html->link(__('List Accounts'), array('action' => 'index','?'=>$this->request->query), array('class' => 'btn ')); ?> </li>
                 <?php
                 $movementsDisabled = '';
-                if (!$this->Session->check('Condo.FiscalYearID')) {
+                if (!$phkRequestData['fiscal_year_id']) {
                     $movementsDisabled = ' disabled';
                 }
                 ?>     
