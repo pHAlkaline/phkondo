@@ -64,7 +64,7 @@ class FractionEntitiesController extends AppController {
         }
         $options = array('conditions' => array('Entity.' . $this->Entity->primaryKey => $id));
         $this->set('entity', $this->Entity->find('first', $options));
-        $this->set('fractionId', $this->Session->read('Condo.Fraction.ViewID'));
+        $this->set('fractionId', $this->getPhkRequestVar('fraction_id'));
     }
 
     /**
@@ -128,8 +128,8 @@ class FractionEntitiesController extends AppController {
         $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->Session->read('Condo.ViewID'))), 'text' => $this->Session->read('Condo.ViewName'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'fractions', 'action' => 'view', $this->Session->read('Condo.Fraction.ViewID'))), 'text' => $this->Session->read('Condo.Fraction.ViewName'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'fractions', 'action' => 'view', $this->getPhkRequestVar('fraction_id'))), 'text' => $this->getPhkRequestVar('fraction_text'), 'active' => ''),
             array('link' => '', 'text' => ___n('Manager','Managers',2), 'active' => 'active')
         );
         $this->set(compact('breadcrumbs'));

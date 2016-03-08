@@ -89,7 +89,7 @@ class AttachmentsController extends AppController {
     }
 
     public function beforeRender() {
-        
+        parent::beforeRender();
     }
 
 }

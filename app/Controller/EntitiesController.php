@@ -89,8 +89,8 @@ class EntitiesController extends AppController {
         $options = array('conditions' => array('Entity.' . $this->Entity->primaryKey => $id));
         $entity=$this->Entity->find('first', $options);
         $this->set('entity',$entity );
-        $this->Session->write('Entity.ViewID', $id);
-        $this->Session->write('Entity.ViewName', $entity['Entity']['name']);
+        $this->setPhkRequestVar('entity_id', $id);
+        $this->setPhkRequestVar('entity_text', $entity['Entity']['name']);
         
     }
 
@@ -185,8 +185,9 @@ class EntitiesController extends AppController {
         }
         $entityTypes = $this->Entity->EntityType->find('list');
         $this->set(compact('entityTypes'));
-        $this->Session->write('Entity.ViewID', $id);
-        $this->Session->write('Entity.ViewName', $this->request->data['Entity']['name']);
+        $this->setPhkRequestVar('entity_id', $id);
+        $this->setPhkRequestVar('entity_text', $this->request->data['Entity']['name']);
+        
     }
 
     /**
@@ -225,11 +226,11 @@ class EntitiesController extends AppController {
         switch ($this->action) {
             case 'view':
                 $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'entities', 'action' => 'index')), 'text' => __n('Entity','Entities',2), 'active' => '');
-                $breadcrumbs[2] = array('link' => '', 'text' => $this->Session->read('Entity.ViewName'), 'active' => 'active');
+                $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('entity_text'), 'active' => 'active');
                 break;
             case 'edit':
                 $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'entities', 'action' => 'index')), 'text' => __n('Entity','Entities',2), 'active' => '');
-                $breadcrumbs[2] = array('link' => '', 'text' => $this->Session->read('Entity.ViewName'), 'active' => 'active');
+                $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('entity_text'), 'active' => 'active');
                 
                 break;
         }
