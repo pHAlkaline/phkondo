@@ -19,7 +19,8 @@
     },
     "extra": {
         "installer-paths": {
-            "app/Plugin/DebugKit": ["cakephp/debug_kit"]
+            "app/Plugin/DebugKit": ["cakephp/debug_kit"],
+            "app/Plugin/ClearCache": ["ceeram/clear_cache"]
         }
 
     },
@@ -32,7 +33,8 @@
         "php": ">=5.3",
         "ext-mcrypt": "*",
         "cakephp/cakephp": "2.8.1",
-        "cakephp/debug_kit": "2.2.*"
+        "cakephp/debug_kit": "2.2.*",
+        "ceeram/clear_cache": "1.1.*"
     }
 
 }

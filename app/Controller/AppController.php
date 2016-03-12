@@ -32,7 +32,7 @@ class AppController extends Controller {
 
     public $theme = null;
     public $components = array(
-        'DebugKit.Toolbar',
+        //'DebugKit.Toolbar' => array('panels' => array('ClearCache.ClearCache')),
         'Paginator',
         'Session',
         'Flash',
