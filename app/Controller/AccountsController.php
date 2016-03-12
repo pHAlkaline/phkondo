@@ -53,20 +53,15 @@ class AccountsController extends AppController {
         //$options['order'] = null;
         
         
-        if (isset($this->paginate['conditions'])) {
-            $options['conditions'] = array_merge($this->paginate['conditions'], $options['conditions']);
+        if (isset($this->Paginator->settings['conditions'])) {
+            $options['conditions'] = array_merge($this->Paginator->settings['conditions'], $options['conditions']);
         }
         
-        /*if (isset($this->paginate['order'])) {
-            $options['order'] = array_merge($this->paginate['order'], $options['order']);
-        }*/
-        
-        $this->Paginator->settings = array(
-            'Account' => array(
-                'conditions' => $options['conditions'],
-                //'requiresAcessLevel' => true,
-                //'contain' => null
-                ));
+       
+        $this->Paginator->settings = $this->Paginator->settings +  array(
+            'conditions' => $options['conditions'],
+                
+                );
         $this->setFilter(array('Account.title', 'Account.bank', 'Account.balcony'));
         $this->set('accounts', $this->paginate('Account'));
         

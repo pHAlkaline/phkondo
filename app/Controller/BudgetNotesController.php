@@ -26,7 +26,6 @@
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
-
 App::uses('AppController', 'Controller');
 
 /**
@@ -52,7 +51,7 @@ class BudgetNotesController extends AppController {
     public function index() {
         $options['conditions'] = array('Note.budget_id' => $this->phkRequestData['budget_id']);
         $options['order'] = array('Note.id' => 'asc', 'Note.document_date' => 'asc', 'Note.document' => 'asc');
-        
+
         if (isset($this->Paginator->paginate['conditions'])) {
             $options['conditions'] = array_merge($this->Paginator->paginate['conditions'], $options['conditions']);
         }
@@ -60,16 +59,14 @@ class BudgetNotesController extends AppController {
             $options['order'] = array_merge($this->Paginator->paginate['order'], $options['order']);
         }
         $this->Paginator->settings = array(
-            'Note' => array(
-                'conditions' => $options['conditions'],
-                'order' => $options['order'],
-                //'requiresAcessLevel' => true,
-                'contain' => array('NoteType', 'Entity', 'NoteStatus', 'Fraction')));
-        
-        
+            'conditions' => $options['conditions'],
+            'order' => $options['order'],
+            //'requiresAcessLevel' => true,
+            'contain' => array('NoteType', 'Entity', 'NoteStatus', 'Fraction'));
+
+
         $this->setFilter(array('Note.document', 'Note.title', 'NoteType.name', 'Entity.name', 'Note.amount', 'NoteStatus.name'));
         $this->set('notes', $this->Paginator->paginate('Note'));
-        
     }
 
     /**
@@ -82,7 +79,7 @@ class BudgetNotesController extends AppController {
     public function view($id = null) {
         if (!$this->Note->exists($id)) {
             $this->Flash->error(__('Invalid note'));
-            $this->redirect(array('action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
         $this->Note->contain(array('NoteType', 'Fraction', 'Entity', 'Budget', 'FiscalYear', 'NoteStatus', 'Receipt'));
         $options = array('conditions' => array(
@@ -92,7 +89,6 @@ class BudgetNotesController extends AppController {
         $this->set(compact('note'));
         $this->setPhkRequestVar('note_id', $id);
         $this->setPhkRequestVar('note_title', $note['Note']['title']);
-       
     }
 
     /**
@@ -108,7 +104,7 @@ class BudgetNotesController extends AppController {
             if ($this->Note->save($this->request->data)) {
                 $this->_setDocument();
                 $this->Flash->success(__('The note has been saved'));
-                $this->redirect(array('action' => 'view', $this->Note->id,'?'=>$this->request->query));
+                $this->redirect(array('action' => 'view', $this->Note->id, '?' => $this->request->query));
             } else {
                 $this->Flash->error(__('The note could not be saved. Please, try again.'));
             }
@@ -135,14 +131,14 @@ class BudgetNotesController extends AppController {
 
         if (!$this->Note->exists($id)) {
             $this->Flash->error(__('Invalid note'));
-            $this->redirect(array('action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             $this->request->data['Note']['fiscal_year_id'] = $this->_getFiscalYear();
             if ($this->Note->save($this->request->data)) {
                 $this->_setDocument();
                 $this->Flash->success(__('The note has been saved'));
-                $this->redirect(array('action' => 'view', $this->Note->id,'?'=>$this->request->query));
+                $this->redirect(array('action' => 'view', $this->Note->id, '?' => $this->request->query));
             } else {
                 $this->Flash->error(__('The note could not be saved. Please, try again.'));
             }
@@ -154,7 +150,7 @@ class BudgetNotesController extends AppController {
             $this->request->data = $this->Note->find('first', $options);
             if (!$this->Note->editable($this->request->data['Note'])) {
                 $this->Flash->error(__('Invalid Note'));
-                $this->redirect(array('action' => 'view', $this->Note->id,'?'=>$this->request->query));
+                $this->redirect(array('action' => 'view', $this->Note->id, '?' => $this->request->query));
             }
         }
         $noteTypes = $this->Note->NoteType->find('list');
@@ -187,14 +183,14 @@ class BudgetNotesController extends AppController {
         $this->Note->id = $id;
         if (!$this->Note->exists()) {
             $this->Flash->error(__('Invalid note'));
-            $this->redirect(array('action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
         if ($this->Note->delete()) {
             $this->Flash->success(__('Note deleted'));
-            $this->redirect(array('action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
         $this->Flash->error(__('Note can not be deleted'));
-        $this->redirect(array('action' => 'view', $id,'?'=>$this->request->query));
+        $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
     }
 
     /**
@@ -206,15 +202,15 @@ class BudgetNotesController extends AppController {
      * @return void
      */
     public function create() {
-        $this->Note->Budget->contain(array('Note','BudgetStatus','FiscalYear','BudgetType','SharePeriodicity','ShareDistribution'));
+        $this->Note->Budget->contain(array('Note', 'BudgetStatus', 'FiscalYear', 'BudgetType', 'SharePeriodicity', 'ShareDistribution'));
         $budget = $this->Note->Budget->find('first', array('conditions' => array('Budget.id' => $this->getPhkRequestVar('budget_id'), 'Budget.budget_status_id' => '2')));
         if (empty($budget)) {
             $this->Flash->error(__('Invalid Budget'));
-            $this->redirect(array('controller' => 'budgets', 'action' => 'index','?'=>array('condo_id'=>$this->phkRequestData['condo_id'])));
+            $this->redirect(array('controller' => 'budgets', 'action' => 'index', '?' => array('condo_id' => $this->phkRequestData['condo_id'])));
         }
         if (isset($budget['Note']) && count($budget['Note']) > 0) {
             $this->Flash->error(__('Invalid Budget'));
-            $this->redirect(array('controller' => 'budgets', 'action' => 'index','?'=>array('condo_id'=>$this->phkRequestData['condo_id'])));
+            $this->redirect(array('controller' => 'budgets', 'action' => 'index', '?' => array('condo_id' => $this->phkRequestData['condo_id'])));
         }
 
         if ($this->request->is('post')) {
@@ -273,7 +269,7 @@ class BudgetNotesController extends AppController {
                 endwhile;
             }
             $this->Flash->success(__('The notes has been created'));
-            $this->redirect(array('controller' => 'budgets', 'action' => 'view', $this->getPhkRequestVar('budget_id'),'?'=>array('condo_id'=>$this->getPhkRequestVar('condo_id'))));
+            $this->redirect(array('controller' => 'budgets', 'action' => 'view', $this->getPhkRequestVar('budget_id'), '?' => array('condo_id' => $this->getPhkRequestVar('condo_id'))));
         }
 
         $this->Note->Fraction->contain(array('Entity'));
@@ -289,7 +285,7 @@ class BudgetNotesController extends AppController {
         } else {
             $this->Note->deleteAll(array('Note.budget_id' => $budget['Budget']['id']), false);
             $this->Flash->error(__('The notes could not be created. Please, try again.'));
-            $this->redirect(array('action' => 'create','?'=>$this->request->query));
+            $this->redirect(array('action' => 'create', '?' => $this->request->query));
         }
     }
 
@@ -316,7 +312,7 @@ class BudgetNotesController extends AppController {
         parent::beforeFilter();
         if (!$this->getPhkRequestVar('condo_id') || !$this->getPhkRequestVar('fiscal_year_id')) {
             $this->Flash->error(__('Invalid condo or fiscal year'));
-            $this->redirect(array('controller'=>'condos','action' => 'index'));
+            $this->redirect(array('controller' => 'condos', 'action' => 'index'));
         }
     }
 
@@ -326,17 +322,17 @@ class BudgetNotesController extends AppController {
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'budgets', 'action' => 'index','?'=>array('condo_id'=>$this->getPhkRequestVar('condo_id')))), 'text' => __n('Budget', 'Budgets', 2), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'budgets', 'action' => 'view', $this->getPhkRequestVar('budget_id'),'?'=>array('condo_id'=>$this->getPhkRequestVar('condo_id')))), 'text' => $this->getPhkRequestVar('budget_text'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'budgets', 'action' => 'index', '?' => array('condo_id' => $this->getPhkRequestVar('condo_id')))), 'text' => __n('Budget', 'Budgets', 2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'budgets', 'action' => 'view', $this->getPhkRequestVar('budget_id'), '?' => array('condo_id' => $this->getPhkRequestVar('condo_id')))), 'text' => $this->getPhkRequestVar('budget_text'), 'active' => ''),
             array('link' => '', 'text' => __n('Note', 'Notes', 2), 'active' => 'active')
         );
         switch ($this->action) {
             case 'view':
-                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'budget_notes', 'action' => 'index','?'=>$this->request->query)), 'text' => __n('Note', 'Notes', 2), 'active' => '');
+                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'budget_notes', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Note', 'Notes', 2), 'active' => '');
                 $breadcrumbs[6] = array('link' => '', 'text' => $this->getPhkRequestVar('note_text'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'budget_notes', 'action' => 'index','?'=>$this->request->query)), 'text' => __n('Note', 'Notes', 2), 'active' => '');
+                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'budget_notes', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Note', 'Notes', 2), 'active' => '');
                 $breadcrumbs[6] = array('link' => '', 'text' => $this->getPhkRequestVar('note_text'), 'active' => 'active');
                 break;
         }

@@ -56,7 +56,7 @@ class AdministratorsController extends AppController {
                 'Administrator.condo_id' => $this->getPhkRequestVar('condo_id'),
                 'Administrator.fiscal_year_id' => $this->getPhkRequestVar('fiscal_year_id'))
         );
-        $this->setFilter(array('Administrator.title','Entity.name','Entity.email','Entity.representative'));
+        $this->setFilter(array('Administrator.title','Entity.name','Entity.email','Entity.representative','FiscalYear.title'));
         $this->set('administrators', $this->Paginator->paginate('Administrator'));
         
     }
