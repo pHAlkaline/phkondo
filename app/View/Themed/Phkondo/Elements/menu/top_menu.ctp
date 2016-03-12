@@ -53,8 +53,10 @@
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-home"></span> ' . __('Fraction Types'), array('plugin' => '', 'controller' => 'fraction_types', 'action' => 'index'), array('escape' => false)); ?>
                                 </li>
                                 <li >
-
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-asterisk"></span> ' . __('Insurance Types'), array('plugin' => '', 'controller' => 'insurance_types', 'action' => 'index'), array('escape' => false)); ?>
+                                </li>
+                                <li >
+                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-warning-sign"></span> ' . __('Support Categories'), array('plugin' => '', 'controller' => 'support_categories', 'action' => 'index'), array('escape' => false)); ?>
                                 </li>
                                 <?php
                                 $event = new CakeEvent('Phkondo.Draft.hasCondoDraft');

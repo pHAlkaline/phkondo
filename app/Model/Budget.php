@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * pHKondo : pHKondo software for condominium property managers (http://phalkaline.eu)
@@ -25,7 +26,6 @@
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
-
 App::uses('AppModel', 'Model');
 
 /**
@@ -41,7 +41,6 @@ App::uses('AppModel', 'Model');
 class Budget extends AppModel {
 
     private $noAfterFind = false;
-    
 
     /**
      * Display field
@@ -303,10 +302,10 @@ class Budget extends AppModel {
 
         if ($this->hasPaidNotes($this->id))
             $result = false;
-        
+
         return $result;
     }
-    
+
     function editable($id = null) {
         $this->noAfterFind = true;
 
@@ -319,7 +318,9 @@ class Budget extends AppModel {
             return false;
         }
 
-        return ($this->field('fiscal_year_id')==CakeSession::read('Condo.FiscalYearID'));
+        $fiscalYear = $this->Condo->FiscalYear->find("first", array('conditions' => array('FiscalYear.active' => 1, 'FiscalYear.condo_id' => $this->field('condo_id'))));
+
+        return ($this->field('fiscal_year_id') == $fiscalYear['FiscalYear']['id']);
     }
 
     function deletable($id = null) {
