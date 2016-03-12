@@ -74,6 +74,7 @@ class CondosController extends AppController {
      * @return void
      */
     public function view($id = null) {
+        $this->setPhkRequestVar('condo_id',$id);
         $this->Condo->contain(array(
                 'Comment',
                 'FiscalYear', 
@@ -204,7 +205,7 @@ class CondosController extends AppController {
 
     public function beforeRender() {
         parent::beforeRender();
-        if (!$this->getPhkRequestVar('condo_id')) {
+        if (!isset($this->phkRequestData['condo_id'])) {
             $breadcrumbs = array(
                 array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
                 array('link' => '', 'text' => __n('Condo','Condos',2), 'active' => 'active')
