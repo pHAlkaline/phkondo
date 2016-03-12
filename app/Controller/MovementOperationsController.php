@@ -189,6 +189,7 @@ class MovementOperationsController extends AppController {
     }
 
     public function beforeRender() {
+        parent::beforeRender();
         if (isset($this->viewVars['breadcrumbs'])) {
             return;
         }
