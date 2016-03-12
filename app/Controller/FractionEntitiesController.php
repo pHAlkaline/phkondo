@@ -124,7 +124,7 @@ class FractionEntitiesController extends AppController {
     }
 
     public function beforeRender() {
-
+        parent::beforeRender();
         $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
