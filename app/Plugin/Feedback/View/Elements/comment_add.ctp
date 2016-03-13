@@ -50,7 +50,7 @@
         echo $this->Form->input('Comment.foreign_model', array('type' => 'hidden', 'value' => $foreign_model));
         echo $this->Form->input('Comment.foreign_id', array('type' => 'hidden', 'value' => $foreign_id));
         ?>
-        <h2><?php echo __('Add Comment'); ?></h2>
+        <legend><?php echo __('Add Comment'); ?></legend>
         <div class="form-group">
             <?php echo $this->Form->input('Comment.content', array('class' => 'form-control')); ?>
         </div><!-- .form-group -->
