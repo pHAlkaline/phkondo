@@ -17,7 +17,7 @@
                     <span class="text-muted pull-right">
                         <?php echo $timestamp; ?>
                         <?php if ($comment['user_id'] == AuthComponent::user('id') || AuthComponent::user('role') == 'admin'): ?>
-                            <?php echo $this->Form->postlink('<button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-remove"></span></button> ', array('plugin' => 'feedback', 'controller' => 'comments', 'action' => 'delete', $comment['id']), array('title' => __('Delete'), 'escape' => false, 'confirm' => __('Are you sure you want to delete # %s?', substr($comment['content'], 0, 20) . '...'))); ?>
+                            <?php echo $this->Form->postlink('<button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-remove"></span></button> ', array('plugin' => 'feedback', 'controller' => 'comments', 'action' => 'delete', $comment['id']), array('title' => __('Delete'), 'escape' => false, 'confirm' => __('Are you sure you want to delete # %s?', nl2br(Sanitize::html(substr($comment['content'], 0, 20) . '...'))))); ?>
                         <?php endif; ?>
                     </span>
 
