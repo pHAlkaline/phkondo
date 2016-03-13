@@ -55,17 +55,17 @@ UNLOCK tables;
 --
 LOCK tables `fraction_types` WRITE;
 /*!40000 ALTER TABLE `fraction_types` DISABLE KEYS */;
-INSERT INTO `fraction_types` (`id`, `name`, `active`, `modified`, `created`) VALUES (1, 'Apartamento', 1, NOW(), NOW());
-INSERT INTO `fraction_types` (`id`, `name`, `active`, `modified`, `created`) VALUES (2, 'Moradia', 1, NOW(), NOW());
-INSERT INTO `fraction_types` (`id`, `name`, `active`, `modified`, `created`) VALUES (3, 'Garagem', 1, NOW(), NOW());
-INSERT INTO `fraction_types` (`id`, `name`, `active`, `modified`, `created`) VALUES (4, 'Parqueamento', 1, NOW(), NOW());
-INSERT INTO `fraction_types` (`id`, `name`, `active`, `modified`, `created`) VALUES (5, 'Arrecadação', 1, NOW(), NOW());
-INSERT INTO `fraction_types` (`id`, `name`, `active`, `modified`, `created`) VALUES (6, 'Sótao', 1, NOW(), NOW());
-INSERT INTO `fraction_types` (`id`, `name`, `active`, `modified`, `created`) VALUES (7, 'Sobreloja', 1, NOW(), NOW());
+INSERT INTO `fraction_types` (`id`, `name`, `active`, `modified`, `created`) VALUES (1, 'Apartment', 1, NOW(), NOW());
+INSERT INTO `fraction_types` (`id`, `name`, `active`, `modified`, `created`) VALUES (2, 'Home', 1, NOW(), NOW());
+INSERT INTO `fraction_types` (`id`, `name`, `active`, `modified`, `created`) VALUES (3, 'Garage', 1, NOW(), NOW());
+INSERT INTO `fraction_types` (`id`, `name`, `active`, `modified`, `created`) VALUES (4, 'Parking', 1, NOW(), NOW());
+INSERT INTO `fraction_types` (`id`, `name`, `active`, `modified`, `created`) VALUES (5, 'Collection', 1, NOW(), NOW());
+INSERT INTO `fraction_types` (`id`, `name`, `active`, `modified`, `created`) VALUES (6, 'Attic', 1, NOW(), NOW());
+INSERT INTO `fraction_types` (`id`, `name`, `active`, `modified`, `created`) VALUES (7, 'Store', 1, NOW(), NOW());
 INSERT INTO `fraction_types` (`id`, `name`, `active`, `modified`, `created`) VALUES (8, 'Cave', 1, NOW(), NOW());
 INSERT INTO `fraction_types` (`id`, `name`, `active`, `modified`, `created`) VALUES (9, 'Sub-Cave', 1, NOW(), NOW());
-INSERT INTO `fraction_types` (`id`, `name`, `active`, `modified`, `created`) VALUES (10, 'Escritório', 1, NOW(), NOW());
-INSERT INTO `fraction_types` (`id`, `name`, `active`, `modified`, `created`) VALUES (11, 'Condomínio', 1, NOW(), NOW());
+INSERT INTO `fraction_types` (`id`, `name`, `active`, `modified`, `created`) VALUES (10, 'Office', 1, NOW(), NOW());
+INSERT INTO `fraction_types` (`id`, `name`, `active`, `modified`, `created`) VALUES (11, 'Condominium', 1, NOW(), NOW());
 /*!40000 ALTER TABLE `fraction_types` ENABLE KEYS */;
 UNLOCK tables;
 
