@@ -9,34 +9,32 @@
                 <table class="table table-hover table-condensed">
                     <thead>
                         <tr>
-                            <th><?php echo $this->Paginator->sort('fraction_id'); ?></th>
-                            <th><?php echo $this->Paginator->sort('title'); ?></th>
-                            <th><?php echo $this->Paginator->sort('support_category_id'); ?></th>
-                            <th><?php echo $this->Paginator->sort('support_priority_id'); ?></th>
-                            <th><?php echo $this->Paginator->sort('support_status_id'); ?></th>
-                            <th><?php echo $this->Paginator->sort('request_entity_id'); ?></th>
-                            <th><?php echo $this->Paginator->sort('assigned_user_id'); ?></th>
+                            <th><?php echo $this->Paginator->sort('Fraction,title',__('Fraction')); ?></th>
+                            <th><?php echo $this->Paginator->sort('subject'); ?></th>
+                            <th><?php echo $this->Paginator->sort('SupportCategory.name',__('Category')); ?></th>
+                            <th><?php echo $this->Paginator->sort('SupportStatus.name',__('Status')); ?></th>
+                            <th><?php echo $this->Paginator->sort('SupportPriority.name',__('Priority')); ?></th>
+                            <th><?php echo $this->Paginator->sort('AssignedUser.name',__('Assigned To')); ?></th>
                             <th><?php echo $this->Paginator->sort('created'); ?></th>
                             <th><?php echo $this->Paginator->sort('modified'); ?></th>
-                            <th class="actions"><?php echo __('Actions'); ?></th>
+                            <th class="actions hidden-print"><?php //echo __('Actions'); ?></th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($supports as $support): ?>
-                            <tr>
+                         <tr>
                                 <td><?php echo h($support['Fraction']['description']); ?></td>
-                                <td><?php echo h($support['Support']['title']); ?>&nbsp;</td>
+                                <td><?php echo h($support['Support']['subject']); ?>&nbsp;</td>
                                 <td><?php echo h($support['SupportCategory']['name']); ?></td>
-                                <td><?php echo h($support['SupportPriority']['name']); ?></td>
                                 <td><?php echo h($support['SupportStatus']['name']); ?></td>
-                                <td><?php echo h($support['RequestEntity']['name']); ?></td>
+                                <td><?php echo h($support['SupportPriority']['name']); ?></td>
                                 <td><?php echo h($support['AssignedUser']['name']); ?></td>
                                 <td><?php echo h($support['Support']['created']); ?>&nbsp;</td>
                                 <td><?php echo h($support['Support']['modified']); ?>&nbsp;</td>
                                 <td class="actions hidden-print">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $support['Support']['id'], '?' => $this->request->query), array('title' => __('Details'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $support['Support']['id'], '?' => $this->request->query), array('title' => __('Edit'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
-                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'delete', $support['Support']['id'], '?' => $this->request->query), array('title' => __('Remove'), 'class' => 'btn btn-default btn-xs', 'escape' => false, 'confirm' => __('Are you sure you want to delete # %s?', $support['Support']['title']))); ?>
+                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'delete', $support['Support']['id'], '?' => $this->request->query), array('title' => __('Remove'), 'class' => 'btn btn-default btn-xs', 'escape' => false, 'confirm' => __('Are you sure you want to delete # %s?', $support['Support']['subject']))); ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

@@ -29,7 +29,7 @@
                 'novalidate' => true));
             ?>
             <fieldset>
-                <h2><?php echo __n('Receipt','Receipts',2); ?></h2>
+                <legend><?php echo __n('Receipt','Receipts',2); ?></legend>
                 <div class="form-group">
                     <?php echo $this->Form->input('condo_id', array('empty' => __('All'), 'class' => 'form-control')); ?>
                 </div><!-- .form-group -->
@@ -55,7 +55,7 @@
         <?php if (isset($receipts) && count($receipts)){ ?>
             <div class="index">
 
-                <h2 class="col-sm-9"><?php echo __n('Receipt','Receipts',2); ?></h2>
+                <legend class="col-sm-9"><?php echo __n('Receipt','Receipts',2); ?></legend>
 
                 <div class="clearfix"></div>
                 <div class="table-responsive">

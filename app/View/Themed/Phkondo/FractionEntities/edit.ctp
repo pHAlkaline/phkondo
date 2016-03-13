@@ -19,7 +19,7 @@
 
             <?php echo $this->Form->create('Entity', array('class' => 'form-horizontal',                 'role' => 'form',                 'inputDefaults' => array(                     'class' => 'form-control',                     'label' => array('class' => 'col-sm-2 control-label'),                     'between' => '<div class="col-sm-6">',                     'after' => '</div>',                     ))); ?>
             <fieldset>
-                <h2><?php echo __('Edit Manager'); ?></h2>
+                <legend><?php echo __('Edit Manager'); ?></legend>
                 <?php echo $this->Form->input('id'); ?>
                 <div class="form-group">
                     <?php echo $this->Form->input('name', array('class' => 'form-control')); ?>

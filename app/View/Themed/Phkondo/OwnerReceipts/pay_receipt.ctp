@@ -29,7 +29,7 @@
                     'after' => '</div>')));
             ?>
             <fieldset>
-                <h2><?php echo __('Pay Receipt'); ?></h2>
+                <legend><?php echo __('Pay Receipt'); ?></legend>
                     <?php echo $this->Form->input('id'); ?>
                 <div class="form-group">
                     <?php echo $this->Form->input('document', array('class' => 'form-control', 'readonly' => 'readonly')); ?>

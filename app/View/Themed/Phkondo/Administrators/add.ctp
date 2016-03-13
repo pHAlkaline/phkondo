@@ -25,7 +25,7 @@
                 array('class' => 'form-control', 'label' => array('class' => 'col-sm-2 control-label'), 'between' => '<div class="col-sm-6">', 'after' => '</div>')));
             ?>
             <fieldset>
-                <h2><?php echo __('New Administrator'); ?></h2>
+                <legend><?php echo __('New Administrator'); ?></legend>
                 <div class="form-group">
                     <?php echo $this->Form->input('condo_id', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->

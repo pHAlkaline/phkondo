@@ -27,7 +27,7 @@ if (!$insuranceType['InsuranceType']['deletable']) {
 
         <div class="entities view">
 
-            <h2><?php echo __n('Insurance Type', 'Insurance Types', 1); ?></h2>
+            <legend><?php echo __n('Insurance Type', 'Insurance Types', 1); ?></legend>
 
 
             <table class="table table-hover table-condensed">

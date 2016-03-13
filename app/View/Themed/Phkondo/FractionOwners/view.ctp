@@ -23,7 +23,7 @@
 
         <div class="entities view">
 
-            <h2><?php echo __n('Owner', 'Owners', 1); ?></h2>
+            <legend><?php echo __n('Owner', 'Owners', 1); ?></legend>
 
 
             <table class="table table-hover table-condensed">

@@ -28,7 +28,7 @@
                     'after' => '</div>',
             ))); ?>
             <fieldset>
-                <h2><?php echo __('New Account'); ?></h2>
+                <legend><?php echo __('New Account'); ?></legend>
                 <div class="form-group">
                     <?php echo $this->Form->input('condo_id', array('class' => 'form-control')); ?>
                 </div><!-- .form-grouwp -->

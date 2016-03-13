@@ -33,7 +33,7 @@
             )));
             ?>
             <fieldset>
-                <h2><?php echo __('New Manager'); ?></h2>
+                <legend><?php echo __('New Manager'); ?></legend>
                 <div class="form-group">
                     <?php echo $this->Form->input('name', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->

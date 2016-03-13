@@ -22,7 +22,7 @@
 
         <div class="insurances view">
 
-            <h2><?php echo __n('Insurance','Insurances',1); ?></h2>
+            <legend><?php echo __n('Insurance','Insurances',1); ?></legend>
 
             
                 <table class="table table-hover table-condensed">
