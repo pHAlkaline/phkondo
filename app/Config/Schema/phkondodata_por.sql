@@ -271,9 +271,9 @@ UNLOCK TABLES;
 
 LOCK TABLES `support_priorities` WRITE;
 /*!40000 ALTER TABLE `support_priorities` DISABLE KEYS */;
-INSERT INTO `support_categories` ( `id`, `name`, `order`, `active`, `modified`, `created`) VALUES (1,'Alta',1,1,'2016-03-12 00:00:00','2016-03-12 00:00:00');
-INSERT INTO `support_categories` ( `id`, `name`, `order`, `active`, `modified`, `created`) VALUES (2,'Normal',2,1,'2016-03-12 00:00:00','2016-03-12 00:00:00');
-INSERT INTO `support_categories` ( `id`, `name`, `order`, `active`, `modified`, `created`) VALUES (3,'Baixa',3,1,'2016-03-12 00:00:00','2016-03-12 00:00:00');
+INSERT INTO `support_priorities` ( `id`, `name`, `order`, `active`, `modified`, `created`) VALUES (1,'Alta',1,1,'2016-03-12 00:00:00','2016-03-12 00:00:00');
+INSERT INTO `support_priorities` ( `id`, `name`, `order`, `active`, `modified`, `created`) VALUES (2,'Normal',2,1,'2016-03-12 00:00:00','2016-03-12 00:00:00');
+INSERT INTO `support_priorities` ( `id`, `name`, `order`, `active`, `modified`, `created`) VALUES (3,'Baixa',3,1,'2016-03-12 00:00:00','2016-03-12 00:00:00');
 /*!40000 ALTER TABLE `support_priorities` ENABLE KEYS */;
 UNLOCK TABLES;
 
