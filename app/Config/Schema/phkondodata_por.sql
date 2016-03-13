@@ -242,6 +242,42 @@ INSERT INTO `share_periodicities` (`id`, `name`, `active`, `modified`, `created`
 UNLOCK TABLES;
 
 --
+-- Dumping data for table `support_statuses`
+--
+
+LOCK TABLES `support_statuses` WRITE;
+/*!40000 ALTER TABLE `support_statuses` DISABLE KEYS */;
+INSERT INTO `support_statuses` ( `id`, `name`, `active`, `modified`, `created`) VALUES (1,'Pendente',1,'2014-02-27 16:17:09','2014-02-27 16:17:09');
+INSERT INTO `support_statuses` ( `id`, `name`, `active`, `modified`, `created`) VALUES (2,'Aberto',1,'2014-02-27 16:17:09','2014-02-27 16:17:09');
+INSERT INTO `support_statuses` ( `id`, `name`, `active`, `modified`, `created`) VALUES (3,'Fechado',1,'2014-02-27 16:17:09','2014-02-27 16:17:09');
+/*!40000 ALTER TABLE `support_statuses` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `support_categories`
+--
+
+LOCK TABLES `support_categories` WRITE;
+/*!40000 ALTER TABLE `support_categories` DISABLE KEYS */;
+INSERT INTO `support_categories` ( `id`, `name`, `active`, `modified`, `created`) VALUES (1,'Incidencia',1,'2016-03-12 00:00:00','2016-03-12 00:00:00');
+INSERT INTO `support_categories` ( `id`, `name`, `active`, `modified`, `created`) VALUES (2,'Pedido de Informação',1,'2016-03-12 22:27:32','2016-03-12 00:00:00');
+INSERT INTO `support_categories` ( `id`, `name`, `active`, `modified`, `created`) VALUES (3,'Reclamação',1,'2016-03-12 00:00:00','2016-03-12 00:00:00');
+/*!40000 ALTER TABLE `support_categories` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `support_priorities`
+--
+
+LOCK TABLES `support_priorities` WRITE;
+/*!40000 ALTER TABLE `support_priorities` DISABLE KEYS */;
+INSERT INTO `support_categories` ( `id`, `name`, `order`, `active`, `modified`, `created`) VALUES (1,'Alta',1,1,'2016-03-12 00:00:00','2016-03-12 00:00:00');
+INSERT INTO `support_categories` ( `id`, `name`, `order`, `active`, `modified`, `created`) VALUES (2,'Normal',2,1,'2016-03-12 00:00:00','2016-03-12 00:00:00');
+INSERT INTO `support_categories` ( `id`, `name`, `order`, `active`, `modified`, `created`) VALUES (3,'Baixa',3,1,'2016-03-12 00:00:00','2016-03-12 00:00:00');
+/*!40000 ALTER TABLE `support_priorities` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Dumping data for table `users`
 --
 
