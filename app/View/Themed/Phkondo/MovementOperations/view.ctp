@@ -30,7 +30,7 @@
 
         <div class="movementOperations view">
 
-            <h2><?php echo __('Movement Operation'); ?></h2>
+            <legend><?php echo __('Movement Operation'); ?></legend>
 
             
                 <table class="table table-hover table-condensed">

@@ -29,7 +29,7 @@
 
         <div class="entities view">
 
-            <h2><?php echo __n('Entity', 'Entities', 1); ?></h2>
+            <legend><?php echo __n('Entity', 'Entities', 1); ?></legend>
 
 
             <table class="table table-hover table-condensed">
@@ -106,7 +106,7 @@
         <?php if (count($entity['Fraction'])): ?>
             <div class="index">
 
-                <h2 class="col-sm-9"><?php echo __n('Fraction', 'Fractions', 2); ?></h2>
+                <legend class="col-sm-9"><?php echo __n('Fraction', 'Fractions', 2); ?></legend>
 
                 <div class="clearfix"></div>
                 <div class="table-responsive">

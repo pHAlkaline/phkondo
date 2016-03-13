@@ -22,7 +22,7 @@
 
         <div class="invoice_conference view">
 
-            <h2><?php echo __n('Invoice','Invoices',1); ?></h2>
+            <legend><?php echo __n('Invoice','Invoices',1); ?></legend>
 
             
                 <table class="table table-hover table-condensed">

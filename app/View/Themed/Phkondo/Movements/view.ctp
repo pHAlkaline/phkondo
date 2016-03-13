@@ -22,7 +22,7 @@
 
         <div class="movements view">
 
-            <h2><?php echo __n('Movement', 'Movements', 1); ?></h2>
+            <legend><?php echo __n('Movement', 'Movements', 1); ?></legend>
 
 
             <table class="table table-hover table-condensed">

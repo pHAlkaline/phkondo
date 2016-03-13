@@ -50,9 +50,11 @@ class SupportsController extends AppController {
      */
     public function index() {
         $this->Paginator->settings = $this->Paginator->settings + array(
+            'contain'=>array('SupportCategory','SupportPriority','SupportStatus','AssignedUser','Client','Fraction'),
+            'order'=>array('SupportPriority.order','Support.created DESC'),
             'conditions' => array('Support.condo_id' => $this->getPhkRequestVar('condo_id'))
         );
-        $this->setFilter(array('Support.title'));
+        $this->setFilter(array('Support.subject','SupportCategory.name','SupportPriority.name','SupportStatus.name','AssignedUser.name','Client.name','Fraction.description'));
         $this->set('supports', $this->Paginator->paginate('Support'));
     }
 
@@ -69,10 +71,11 @@ class SupportsController extends AppController {
             $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
         $options = array('conditions' => array('Support.' . $this->Support->primaryKey => $id));
+        $this->Support->contain(array('SupportCategory','SupportPriority','SupportStatus','AssignedUser','Client','Fraction'));
         $support = $this->Support->find('first', $options);
         $this->set(compact('support'));
         $this->setPhkRequestVar('support_id',$id);
-        $this->setPhkRequestVar('support_text',$support['Support']['title']);
+        $this->setPhkRequestVar('support_text',$support['Support']['subject']);
     }
 
     /**
@@ -81,23 +84,36 @@ class SupportsController extends AppController {
      * @return void
      */
     public function add() {
-        if ($this->request->is('post')) {
+        if ($this->request->is('post') && isset($this->request->data['Support']['change_filter']) && $this->request->data['Support']['change_filter'] != '1') {
             $this->Support->create();
             if ($this->Support->save($this->request->data)) {
                 $this->Flash->success(__('The support has been saved.'));
-                return $this->redirect(array('action' => 'index', '?' => $this->request->query));
+                $this->redirect(array('action' => 'index', '?' => $this->request->query));
             } else {
                 $this->Flash->error(__('The support could not be saved. Please, try again.'));
             }
         }
-        $condos = $this->Support->Condo->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('condo_id'))));
-        $fractions = $this->Support->Fraction->find('list', array('conditions' => array('condo_id' => $this->getPhkRequestVar('condo_id'))));
+        $condos = $this->Support->Condo->find('list', array('conditions' => array('Condo.id' => $this->getPhkRequestVar('condo_id'))));
+        $fractions = $this->Support->Fraction->find('list', array('conditions' => array('Fraction.condo_id' => $this->getPhkRequestVar('condo_id'))));
+
+        
+        If (!isset($this->request->data['Support']['fraction_id'])) {
+            $fractionsForClients = $fractions;
+            reset($fractionsForClients);
+            $firstFraction = key($fractionsForClients);
+        } else {
+            $firstFraction = $this->request->data['Support']['fraction_id'];
+        }
+        $this->Support->Fraction->contain(array('Entity'));
+        $fractionsForClients = $this->Support->Fraction->find('all', array('conditions' => array('Fraction.id' => $firstFraction)));
+        
+        $clients = $this->Support->Client->find('list', array('order' => 'Client.name', 'conditions' => array('Client.id' => Set::extract('/Entity/id', $fractionsForClients))));
         $supportCategories = $this->Support->SupportCategory->find('list', array('conditions' => array('active' => 1)));
         $supportPriorities = $this->Support->SupportPriority->find('list', array('order' => array('order'), 'conditions' => array('active' => 1)));
         $supportStatuses = $this->Support->SupportStatus->find('list', array('conditions' => array('active' => 1)));
-        $entities = $this->Support->Entity->find('list');
-        $users = $this->Support->User->find('list', array('conditions' => array('active' => 1)));
-        $this->set(compact('condos', 'fractions', 'supportCategories', 'supportPriorities', 'supportStatuses', 'entities', 'users'));
+        $assignedUsers = $this->Support->AssignedUser->find('list', array('order'=>array('AssignedUser.name'),'conditions' => array('active' => 1)));
+        $this->request->data['Support']['change_filter']=0;
+        $this->set(compact('condos', 'fractions', 'supportCategories', 'supportPriorities', 'supportStatuses', 'clients', 'assignedUsers'));
     }
 
     /**
@@ -122,16 +138,16 @@ class SupportsController extends AppController {
             $options = array('conditions' => array('Support.' . $this->Support->primaryKey => $id));
             $this->request->data = $this->Support->find('first', $options);
         }
-        $condos = $this->Support->Condo->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('condo_id'))));
-        $fractions = $this->Support->Fraction->find('list', array('conditions' => array('condo_id' => $this->getPhkRequestVar('condo_id'))));
-        $supportCategories = $this->Support->SupportCategory->find('list', array('conditions' => array('active' => 1)));
-        $supportPriorities = $this->Support->SupportPriority->find('list', array('order' => array('order'), 'conditions' => array('active' => 1)));
-        $supportStatuses = $this->Support->SupportStatus->find('list', array('conditions' => array('active' => 1)));
-        $entities = $this->Support->Entity->find('list');
-        $users = $this->Support->User->find('list', array('conditions' => array('active' => 1)));
-        $this->set(compact('condos', 'fractions', 'supportCategories', 'supportPriorities', 'supportStatuses', 'entities', 'users'));
+        $condos = $this->Support->Condo->find('list', array('conditions' => array('id' => $this->request->data['Support']['condo_id'])));
+        $fractions = $this->Support->Fraction->find('list', array('conditions' => array('Fraction.id'=>$this->request->data['Support']['client_id'])));
+        $supportCategories = $this->Support->SupportCategory->find('list', array('conditions' => array('OR'=>array('active'=>1, 'SupportCategory.id'=>$this->request->data['Support']['support_category_id']))));
+        $supportPriorities = $this->Support->SupportPriority->find('list', array('conditions' => array('OR'=>array('active'=>1, 'SupportPriority.id'=>$this->request->data['Support']['support_priority_id']))));
+        $supportStatuses = $this->Support->SupportStatus->find('list', array('conditions' => array('OR'=>array('active'=>1, 'SupportStatus.id'=>$this->request->data['Support']['support_status_id']))));
+        $clients = $this->Support->Client->find('list', array('order'=>array('Client.name'),'conditions' => array('Client.id'=>$this->request->data['Support']['client_id'])));
+        $assignedUsers = $this->Support->AssignedUser->find('list', array('order'=>array('AssignedUser.name'),'conditions' => array('active' => 1)));
+        $this->set(compact('condos', 'fractions', 'supportCategories', 'supportPriorities', 'supportStatuses', 'clients', 'assignedUsers'));
         $this->setPhkRequestVar('support_id',$id);
-        $this->setPhkRequestVar('support_text',$this->request->data['Support']['title']);
+        $this->setPhkRequestVar('support_text',$this->request->data['Support']['subject']);
         
     }
 

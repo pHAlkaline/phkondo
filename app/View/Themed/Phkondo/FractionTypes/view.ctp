@@ -27,7 +27,7 @@ if (!$fractionType['FractionType']['deletable']) {
 
         <div class="entities view">
 
-            <h2><?php echo __n('Fraction Type', 'Fraction Types', 1); ?></h2>
+            <legend><?php echo __n('Fraction Type', 'Fraction Types', 1); ?></legend>
 
 
             <table class="table table-hover table-condensed">

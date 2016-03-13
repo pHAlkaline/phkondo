@@ -28,7 +28,7 @@
 
         <div class="movementCategories view">
 
-            <h2><?php echo __('Movement Category'); ?></h2>
+            <legend><?php echo __('Movement Category'); ?></legend>
 
             
                 <table class="table table-hover table-condensed">

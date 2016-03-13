@@ -31,7 +31,7 @@
             )));
             ?>
             <fieldset>
-                <h2><?php echo __('Edit Account'); ?></h2>
+                <legend><?php echo __('Edit Account'); ?></legend>
                 <?php echo $this->Form->input('id'); ?>
                 <div class="form-group">
                     <?php echo $this->Form->input('condo_id', array('class' => 'form-control')); ?>

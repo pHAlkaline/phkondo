@@ -21,7 +21,7 @@
 
             <?php echo $this->Form->create('Receipt', array('class' => 'form-horizontal', 'role' => 'form', 'inputDefaults' => array(                     'class' => 'form-control',                     'label' => array('class' => 'col-sm-2 control-label'),                     'between' => '<div class="col-sm-6">',                     'after' => '</div>',                     ))); ?>
             <fieldset>
-                <h2><?php echo __('Cancel Receipt'); ?></h2>
+                <legend><?php echo __('Cancel Receipt'); ?></legend>
                 <?php echo $this->Form->input('id'); ?>
                 <div class="form-group">
                     <?php echo $this->Form->input('condo_id', array('class' => 'form-control')); ?>

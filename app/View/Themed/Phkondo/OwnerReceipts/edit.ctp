@@ -38,7 +38,7 @@
                     'after' => '</div>',)));
             ?>
             <fieldset>
-                <h2><?php echo __('Edit Receipt'); ?></h2>
+                <legend><?php echo __('Edit Receipt'); ?></legend>
                 <?php echo $this->Form->input('id'); ?>
                 <div class="form-group">
                     <?php echo $this->Form->input('condo_id', array('class' => 'form-control')); ?>
@@ -91,13 +91,13 @@
                             ?>
 
                             <?php echo $this->Form->hidden('Receipt.amount', array('value' => $receiptAmount)); ?>
-                            <h2 class="col-sm-9"><?php echo __n('Receipt', 'Receipts', 1) . ' ' . $receiptId; ?></h2>
+                            <legend class="col-sm-9"><?php echo __n('Receipt', 'Receipts', 1) . ' ' . $receiptId; ?></legend>
                             <div class="actions col-sm-3">
                                 <h3 style="float:right;"><?php echo __('Total amount'); ?><span id="addNotesTotalAmount"></span></h3>
 
 
                             </div><!-- /.actions -->
-                            <h2 class="col-sm-9"><?php echo __('Pick Notes'); ?></h2>
+                            <legend class="col-sm-9"><?php echo __('Pick Notes'); ?></legend>
                             <div class="actions col-sm-3">
                                 <?php if (count($notes)): ?>
                                     <?php

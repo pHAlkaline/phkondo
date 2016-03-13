@@ -38,7 +38,7 @@ if (!$this->Form->value('FractionType.deletable')) {
                     'after' => '</div>')));
             ?>
             <fieldset>
-                <h2><?php echo __('Edit Fraction Type'); ?></h2>
+                <legend><?php echo __('Edit Fraction Type'); ?></legend>
                 <?php echo $this->Form->input('id'); ?>
                 <div class="form-group">
                     <?php echo $this->Form->input('name', array('class' => 'form-control')); ?>

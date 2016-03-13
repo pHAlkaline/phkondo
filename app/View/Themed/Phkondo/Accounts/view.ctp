@@ -27,7 +27,7 @@
 
         <div class="accounts view">
 
-            <h2><?php echo __n('Account', 'Accounts', 1); ?></h2>
+            <legend><?php echo __n('Account', 'Accounts', 1); ?></legend>
 
             <div class="table-responsive">
                 <table class="table table-hover table-condensed">

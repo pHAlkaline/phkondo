@@ -24,7 +24,7 @@ foreach ($fractions as $fraction) {
 
         <div class="index">
 
-            <h2 ><?php echo __('Create Notes'); ?></h2>
+            <legend><?php echo __('Create Notes'); ?></legend>
 
 
             <?php echo $this->Form->create('Note'); ?>

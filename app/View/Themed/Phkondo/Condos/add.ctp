@@ -31,7 +31,7 @@
             );
             ?>
             <fieldset>
-                <h2><?php echo __('New Condo'); ?></h2>
+                <legend><?php echo __('New Condo'); ?></legend>
                 <div class="form-group">
                     <?php echo $this->Form->input('title', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->

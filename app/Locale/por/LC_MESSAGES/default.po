@@ -1781,7 +1781,93 @@ msgid "New Insurance Type"
 msgstr "Criar Tipo de Seguro"
 
 msgid "The insurance type could not be saved. Please, try again."
-msgstr "O tipo de fração não foi registado. Por favor, tente outra vez."
+msgstr "O tipo de seguro não foi registado. Por favor, tente outra vez."
 
 msgid "The insurance type has been saved"
-msgstr "O tipo de fração foi registado"
+msgstr "O tipo de seguro foi registado"
+
+msgid "Insurance type can not be deleted"
+msgstr "Não foi possivel apagar tipo de seguro"
+
+msgid "List Support Categories"
+msgstr "Listar Categorias de Suporte"
+
+msgid "Add Support Category"
+msgstr "Criar Categoria de Suporte"
+
+msgid "Delete Support Category"
+msgstr "Apagar Categoria de Suporte"
+
+msgid "Edit Support Category"
+msgstr "Editar Categoria de Suporte"
+
+msgid "Invalid Support Category"
+msgstr "Categoria de Suporte inválido"
+
+msgid "Support Category"
+msgstr "Categoria de Suporte"
+
+msgid "Support Categories"
+msgstr "Categorias de Suporte"
+
+msgid "Support Category deleted"
+msgstr "Categoria de Suporte apagado"
+
+msgid "New Support Category"
+msgstr "Criar Categoria de Suporte"
+
+msgid "The support category could not be saved. Please, try again."
+msgstr "O tipo de suporte não foi registado. Por favor, tente outra vez."
+
+msgid "The support category has been saved"
+msgstr "O tipo de suporte foi registado"
+
+msgid "Support category can not be deleted"
+msgstr "Não foi possivel apagar categoria de suporte"
+
+msgid "Subject"
+msgstr "Assunto"
+
+msgid "Priority"
+msgstr "Prioridade"
+
+msgid "Assigned To"
+msgstr "Atribuido"
+
+msgid "Notes"
+msgstr "Notas"
+
+msgid "Support"
+msgid_plural "Supports"
+msgstr[0] "Suporte ao Cliente"
+msgstr[1] "Pedidos de Suporte"
+
+msgid "List Supports"
+msgstr "Listar Pedidos"
+
+msgid "Add Support"
+msgstr "Criar Pedido"
+
+msgid "Delete Support"
+msgstr "Apagar Pedido"
+
+msgid "Edit Support"
+msgstr "Editar Pedido"
+
+msgid "Invalid Support"
+msgstr "Pedido inválido"
+
+msgid "Support deleted"
+msgstr "Suporte apagado"
+
+msgid "New Support"
+msgstr "Registar Pedido de Suporte"
+
+msgid "The support could not be saved. Please, try again."
+msgstr "O pedido de suporte não foi registado. Por favor, tente outra vez."
+
+msgid "The support has been saved"
+msgstr "O pedido de suporte foi registado"
+
+msgid "Support can not be deleted"
+msgstr "Não foi possivel apagar pedido de suporte"
