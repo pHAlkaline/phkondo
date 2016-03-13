@@ -140,14 +140,14 @@ class Support extends AppModel {
             'fields' => '',
             'order' => ''
         ),
-        'Entity' => array(
+        'Client' => array(
             'className' => 'Entity',
-            'foreignKey' => 'request_entity_id',
+            'foreignKey' => 'client_id',
             'conditions' => array('entity_type_id' => '1'),
             'fields' => array('id', 'name'),
-            'order' => ''
+            'order' => array('Client.name ASC')
         ),
-        'User' => array(
+        'AssignedUser' => array(
             'className' => 'User',
             'foreignKey' => 'assigned_user_id',
             'conditions' => '',

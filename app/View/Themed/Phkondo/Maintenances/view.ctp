@@ -22,7 +22,7 @@
 
         <div class="maintenances view">
 
-            <h2><?php echo __n('Maintenance', 'Maintenances', 1); ?></h2>
+            <legend><?php echo __n('Maintenance', 'Maintenances', 1); ?></legend>
 
 
             <table class="table table-hover table-condensed">

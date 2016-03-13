@@ -29,7 +29,7 @@
 
             <?php echo $this->Form->create('Receipt', array('class' => 'form-horizontal', 'role' => 'form', 'inputDefaults' => array('class' => 'form-control', 'label' => array('class' => 'col-sm-2 control-label'), 'between' => '<div class="col-sm-6">', 'after' => '</div>',))); ?>
             <fieldset>
-                <h2><?php echo __('Edit Receipt'); ?></h2>
+                <legend><?php echo __('Edit Receipt'); ?></legend>
                 <?php echo $this->Form->input('id'); ?>
                 <div class="form-group">
                     <?php echo $this->Form->input('condo_id', array('class' => 'form-control')); ?>
@@ -78,13 +78,13 @@
                         <?php echo $this->Form->create('Note', array('url' => array('controller' => 'receipts', 'action' => 'add_notes', $this->Form->value('Receipt.id'),'?'=>$this->request->query))); ?>
                         <?php echo $this->Form->hidden('Receipt.amount', array('value' => $receiptAmount)); ?>
                         <?php echo $this->Form->hidden('Fraction.id', array('value' => $this->Form->value('Receipt.fraction_id'))); ?>
-                        <h2 class="col-sm-9"><?php echo __n('Receipt', 'Receipts', 1) . ' ' . $receiptId; ?></h2>
+                        <legend class="col-sm-9"><?php echo __n('Receipt', 'Receipts', 1) . ' ' . $receiptId; ?></legend>
                         <div class="actions col-sm-3">
                             <h3 style="float:right;"><?php echo __('Total amount'); ?><span id="addNotesTotalAmount"></span></h3>
 
 
                         </div><!-- /.actions -->
-                        <h2 class="col-sm-9"><?php echo __('Pick Notes'); ?></h2>
+                        <legend class="col-sm-9"><?php echo __('Pick Notes'); ?></legend>
                         <div class="actions col-sm-3">
                             <?php if (count($notes)): ?>
                                 <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 0; float: right;')); ?>            

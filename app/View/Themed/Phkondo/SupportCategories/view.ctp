@@ -17,7 +17,7 @@
                 <li ><?php echo $this->Form->postLink(__('Delete Support Category'), array('action' => 'delete', $supportCategory['SupportCategory']['id']), array('class' => 'btn '.$deleteDisabled,'confirm'=> __('Are you sure you want to delete # %s?' , $supportCategory['SupportCategory']['name'] ))); ?> </li>
                 
                 <li ><?php echo $this->Html->link(__('New Support Category'), array('action' => 'add'), array('class' => 'btn ')); ?> </li>
-                <li ><?php echo $this->Html->link(__('List Support Categorys'), array('action' => 'index'), array('class' => 'btn ')); ?> </li>
+                <li ><?php echo $this->Html->link(__('List Support Categories'), array('action' => 'index'), array('class' => 'btn ')); ?> </li>
                 
 
             </ul><!-- /.list-group -->
@@ -30,7 +30,7 @@
 
         <div class="supportCategorys view">
 
-            <h2><?php echo __('Support Category'); ?></h2>
+            <legend><?php echo __('Support Category'); ?></legend>
 
             
                 <table class="table table-hover table-condensed">

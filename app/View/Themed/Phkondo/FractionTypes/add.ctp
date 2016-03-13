@@ -30,7 +30,7 @@
                     'after' => '</div>')));
             ?>
             <fieldset>
-                <h2><?php echo __('New Fraction Type'); ?></h2>
+                <legend><?php echo __('New Fraction Type'); ?></legend>
 
                 <div class="form-group">
                     <?php echo $this->Form->input('name', array('class' => 'form-control')); ?>

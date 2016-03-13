@@ -1725,3 +1725,131 @@ msgstr ""
 
 msgid "The owner has been saved but could not be related. Please, try again."
 msgstr ""
+
+msgid "List Insurance Types"
+msgstr ""
+
+msgid "Add Insurance Type"
+msgstr ""
+
+msgid "Delete Insurance Type"
+msgstr ""
+
+msgid "Edit Insurance Type"
+msgstr ""
+
+msgid "Invalid Insurance Type"
+msgstr ""
+
+msgid "Insurance Type"
+msgstr ""
+
+msgid "Insurance Types"
+msgstr ""
+
+msgid "Insurance Type deleted"
+msgstr ""
+
+msgid "New Insurance Type"
+msgstr ""
+
+msgid "The insurance type could not be saved. Please, try again."
+msgstr ""
+
+msgid "The insurance type has been saved"
+msgstr ""
+
+msgid "Insurance type can not be deleted"
+msgstr ""
+
+msgid "Insurance type deleted"
+msgstr ""
+
+msgid "List Support Categories"
+msgstr ""
+
+msgid "Add Support Category"
+msgstr ""
+
+msgid "Delete Support Category"
+msgstr ""
+
+msgid "Edit Support Category"
+msgstr ""
+
+msgid "Invalid Support Category"
+msgstr ""
+
+msgid "Support Category"
+msgstr ""
+
+msgid "Support Categories"
+msgstr ""
+
+msgid "Support Category deleted"
+msgstr ""
+
+msgid "New Support Category"
+msgstr ""
+
+msgid "The support category could not be saved. Please, try again."
+msgstr ""
+
+msgid "The support category has been saved"
+msgstr ""
+
+msgid "Support category can not be deleted"
+msgstr ""
+
+msgid "Support category deleted"
+msgstr ""
+
+msgid "Subject"
+msgstr ""
+
+msgid "Priority"
+msgstr ""
+
+msgid "Assigned To"
+msgstr ""
+
+msgid "Notes"
+msgstr ""
+
+msgid "Support"
+msgid_plural "Supports"
+msgstr[0] "Support Request"
+msgstr[1] "Support Requests"
+
+msgid "List Supports"
+msgstr ""
+
+msgid "Add Support"
+msgstr ""
+
+msgid "Delete Support"
+msgstr ""
+
+msgid "Edit Support"
+msgstr ""
+
+msgid "Invalid Support"
+msgstr ""
+
+msgid "Support deleted"
+msgstr ""
+
+msgid "New Support"
+msgstr ""
+
+msgid "The support could not be saved. Please, try again."
+msgstr ""
+
+msgid "The support has been saved"
+msgstr ""
+
+msgid "Support can not be deleted"
+msgstr ""
+
+msgid "Support deleted"
+msgstr ""

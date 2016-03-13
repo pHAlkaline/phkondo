@@ -52,7 +52,7 @@
                 echo $this->Form->hidden('fraction_id', array('class' => 'form-control','value'=>$phkRequestData['fraction_id'])); 
                 ?>
                 <fieldset>
-                    <h2><?php echo __('New Owner'); ?></h2>
+                    <legend><?php echo __('New Owner'); ?></h2>
 
                     <div class="form-group">
                         <?php echo $this->Form->input('client', array('class' => 'form-control')); ?>

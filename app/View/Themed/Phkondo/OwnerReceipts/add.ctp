@@ -27,7 +27,7 @@
                     'between' => '<div class="col-sm-6">',
                     'after' => '</div>'))); ?>
             <fieldset>
-                <h2><?php echo __('New Receipt'); ?></h2>
+                <legend><?php echo __('New Receipt'); ?></legend>
                 <div class="form-group">
                     <?php echo $this->Form->input('condo_id', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->

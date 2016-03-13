@@ -20,7 +20,7 @@
 
         <div class="users view">
 
-            <h2><?php echo __('User'); ?></h2>
+            <legend><?php echo __('User'); ?></legend>
 
             
                 <table class="table table-hover table-condensed">
