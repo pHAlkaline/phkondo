@@ -29,10 +29,10 @@
 //CakePlugin::load('DebugKit');
 //CakePlugin::load('ClearCache');
 //CakePlugin::load('Migrations');
-CakePlugin::load('PrintReceipt',array('bootstrap'=>true));
-CakePlugin::load('Reports',array('bootstrap'=>true));
-CakePlugin::load('Drafts',array('bootstrap'=>true));
-CakePlugin::load('Attachments',array('bootstrap'=>true));
+//CakePlugin::load('PrintReceipt',array('bootstrap'=>true));
+//CakePlugin::load('Reports',array('bootstrap'=>true));
+//CakePlugin::load('Drafts',array('bootstrap'=>true));
+//CakePlugin::load('Attachments',array('bootstrap'=>true));
 
 
 /** Theme Settings
@@ -41,8 +41,8 @@ CakePlugin::load('Attachments',array('bootstrap'=>true));
 Configure::write('Theme.name', 'phkondo');
 Configure::write('Theme.list',array(
     'Phkondo'=>'pHKondo',
-    'GreenAdm'=>'GreenAdm',
-    'SBAdmin'=>'SBAdmin',
+  //  'GreenAdm'=>'GreenAdm',
+  //  'SBAdmin'=>'SBAdmin',
    
     ));
 Configure::write('Theme.owner_name', 'pHKondo');
