@@ -34,14 +34,14 @@
         </div><!-- .form-group -->
        
         <div class="row">
-            <div class="col-xs-6">
+            <div class="col-md-6">
                 <div class="checkbox icheck">
                     <label>
                         <input type="checkbox" name="data[User][rememberMe]" id="UserRememberMe"><?php echo ' '.__('Remember Me'); ?>
                     </label>
                 </div>
             </div><!-- /.col -->
-            <div class="col-xs-6">
+            <div class="col-md-6">
                 <?php echo $this->Form->button(__('Sign In'), array('type' => 'submit', 'class' => 'btn btn-primary pull-right')); ?>
 
             </div><!-- /.col -->

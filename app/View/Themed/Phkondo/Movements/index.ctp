@@ -14,6 +14,7 @@ if (isset($movements[0]['Account']['balance'])){
                 <?php echo $this->Html->link( '<span class="glyphicon glyphicon-plus-sign"></span> '.__('New Movement'), array('action' => 'add','?'=>$this->request->query), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 0; float: right;', 'escape' => false)); ?>
             </div><!-- /.actions -->
                 <div class="clearfix"></div>
+                <div class="table-responsive">
                 <table class="table table-hover table-condensed">
                     <thead>
                         <tr>
@@ -49,7 +50,7 @@ if (isset($movements[0]['Account']['balance'])){
                     </tbody>
                 </table>
            
-
+                </div>
              <p class='pull-right'><small>
                     <?php
                     echo $this->Paginator->counter(array(
