@@ -1,4 +1,6 @@
-<?php $this->Html->script('fraction_owner_index', false); ?>
+<?php
+
+$this->Html->script('fraction_owner_index', false); ?>
 <div id="page-container" class="row">
 
     <div id="page-content" class="col-sm-12">
@@ -23,22 +25,26 @@
                     </thead>
                     <tbody>
                         <?php foreach ($fraction['Entity'] as $entity): ?>
-                            <tr>
-                                <td><?php echo h($entity['name']); ?>&nbsp;</td>
-                                <td><?php echo nl2br(h($entity['address'])); ?>&nbsp;</td>
-                                <td><?php echo h($entity['contacts']); ?>&nbsp;</td>
-                                <td style="text-align:right;"><?php echo h($entity['EntitiesFraction']['owner_percentage']); ?>&nbsp;&percnt;</td>
-                                <td class="actions hidden-print">
+                        <tr>
+                            <td><?php echo h($entity['name']); ?>&nbsp;</td>
+                            <td><?php echo nl2br(h($entity['address'])); ?>&nbsp;</td>
+                            <td><?php echo h($entity['contacts']); ?>&nbsp;</td>
+                            <td style="text-align:right;"><?php echo h($entity['EntitiesFraction']['owner_percentage']); ?>&nbsp;&percnt;</td>
+                            <td class="actions hidden-print">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $entity['id'],'?'=>$this->request->query), array('title' => __('Details'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $entity['id'],'?'=>$this->request->query), array('title' => __('Edit'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
                                     <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'remove', $entity['id'],'?'=>$this->request->query), array('title' => __('Remove'), 'title' => __('Remove'), 'class' => 'btn btn-default btn-xs', 'escape' => false), __('Are you sure you want to remove # %s?', $entity['name'])); ?>
-                                </td>
-                            </tr>
+                            </td>
+                        </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
-            <div class="entities form hidden-print">
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading"><strong><?php echo __('Add Owner'); ?></strong></div>
+                <div class="panel-body">
+                    <div class="entities form hidden-print">
 
                 <?php
                 echo $this->Form->create('EntitiesFraction', array('url' => array('controller' => 'fraction_owners', 'action' => 'insert','?'=>$this->request->query), 'class' => 'form-horizontal',
@@ -49,27 +55,27 @@
                         'between' => '<div class="col-sm-6">',
                         'after' => '</div>',
                 )));
-                echo $this->Form->hidden('fraction_id', array('class' => 'form-control','value'=>$phkRequestData['fraction_id'])); 
+                echo $this->Form->hidden('fraction_id', array('class' => 'form-control','value'=>$phkRequestData['fraction_id']));
                 ?>
-                <fieldset>
-                    <legend><?php echo __('New Owner'); ?></h2>
+                        <fieldset>
 
-                    <div class="form-group">
-                        <?php echo $this->Form->input('client', array('class' => 'form-control')); ?>
-                    </div><!-- .form-group -->
-                    <div class="form-group">
+                            <div class="form-group">
+                        <?php echo $this->Form->input('client', array('label' => array('text'=>__('Owner'),'class' => 'col-sm-2 control-label'),'class' => 'form-control')); ?>
+                            </div><!-- .form-group -->
+                            <div class="form-group">
                         <?php echo $this->Form->input('owner_percentage', array('min' => '0.00', 'max' => '100.00')); ?>
-                    </div><!-- .form-group -->
+                            </div><!-- .form-group -->
 
 
-                </fieldset>
-                <div class="form-group col-sm-12">
+                        </fieldset>
+                        <div class="form-group col-sm-8">
                         <?php echo $this->Form->submit(__('Submit'), array('escape' => false, 'class' => 'btn btn-large btn-primary pull-right')); ?>
-                    </div>
+                        </div>
                 <?php echo $this->Form->end(); ?>
 
-            </div><!-- /.form -->
-
+                    </div><!-- /.form -->
+                </div>
+            </div>
         </div><!-- /#page-content .col-sm-9 -->
 
     </div><!-- /#page-container .row-fluid -->
