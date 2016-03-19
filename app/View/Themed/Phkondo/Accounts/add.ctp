@@ -7,7 +7,7 @@
 
             <ul class="nav nav-pills nav-stacked">
                 <li ><?php echo $this->Html->link(__('List Accounts'), array('action' => 'index','?'=>$this->request->query),array('class'=>'btn')); ?></li>
-                
+
             </ul><!-- /.list-group -->
 
         </div><!-- /.actions -->
@@ -44,7 +44,7 @@
                 <div class="form-group">
                     <?php echo $this->Form->input('balcony', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
-                
+
                 <div class="form-group">
                     <?php echo $this->Form->input('contacts', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->

@@ -5,7 +5,7 @@ $has_fiscal_year = (isset($condo['FiscalYear'][0]['title'])) ? true : false;
 $administrators = Set::extract('/Administrator/Entity/name', $condo);
 $administrators = implode(", ", $administrators);
 ?>
-<div id="page-container" class="row">
+<div id="page-container" >
 
     <div id="sidebar" class="col-sm-3 hidden-print collapse navbar-collapse phkondo-navbar collapse navbar-collapse phkondo-navbar">
 
