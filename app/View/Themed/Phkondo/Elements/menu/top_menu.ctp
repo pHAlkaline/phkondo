@@ -2,12 +2,16 @@
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".phkondo-navbar">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".phkondo-navbar">
                 <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
+                <span class="glyphicon glyphicon-th" ></span>
+                
             </button>
+<button type="button" class="navbar-toggle collapsed" data-toggle="offcanvas">
+            <span class="sr-only">Toggle options</span>
+             <span class="glyphicon glyphicon-menu-hamburger" ></span>
+        </button>
+        
             <a class="navbar-brand" href="<?php echo Router::url('/', true); ?>"><?php echo Configure::read('Theme.owner_name'); ?></a>
         </div>
 

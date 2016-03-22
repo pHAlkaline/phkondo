@@ -1,10 +1,10 @@
 <?php
 
 $this->Html->script('fraction_view', false); ?>
-<div id="page-container" class="row">
+<div id="page-container" class="row row-offcanvas row-offcanvas-left ">
 
     <div class="col-sm-3">
-        <div id="sidebar" class="hidden-print collapse navbar-collapse phkondo-navbar actions">
+        <div id="sidebar" class="hidden-print actions sidebar-offcanvas">
 
             <ul class="nav nav-pills nav-stacked">
                 <li ><?php echo $this->Html->link(__('Edit Fraction'), array('action' => 'edit', $fraction['Fraction']['id'],'?'=>$this->request->query), array('class' => 'btn ')); ?> </li>
@@ -17,9 +17,9 @@ $this->Html->script('fraction_view', false); ?>
                 <li ><?php echo $this->Form->postLink(__('Delete Fraction'), array('action' => 'delete', $fraction['Fraction']['id'],'?'=>$this->request->query), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $fraction['Fraction']['description']))); ?> </li>
                 <li ><?php echo $this->Html->link(__('New Fraction'), array('action' => 'add','?'=>$this->request->query), array('class' => 'btn ')); ?> </li>
                 <li ><?php echo $this->Html->link(__('List Fractions'), array('action' => 'index','?'=>$this->request->query), array('class' => 'btn ')); ?> </li>
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Owner', 'Owners', 2), array('controller' => 'fraction_owners', 'action' => 'index','?'=>array_merge(array('fraction_id'=>$fraction['Fraction']['id']))), array('class' => 'btn ', 'escape' => false)); ?> </li>
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Note', 'Notes', 2), array('controller' => 'fraction_notes', 'action' => 'index','?'=>array_merge(array('fraction_id'=>$fraction['Fraction']['id']))), array('class' => 'btn ', 'escape' => false)); ?> </li>
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Insurance', 'Insurances', 2), array('controller' => 'fraction_insurances', 'action' => 'index','?'=>array_merge(array('fraction_id'=>$fraction['Fraction']['id']))), array('class' => 'btn ', 'escape' => false)); ?> </li>
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Owner', 'Owners', 2), array('controller' => 'fraction_owners', 'action' => 'index','?'=>array_merge(array('fraction_id'=>$fraction['Fraction']['id']))), array('class' => 'btn ', 'escape' => false)); ?></li>
+                <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Note', 'Notes', 2), array('controller' => 'fraction_notes', 'action' => 'index','?'=>array_merge(array('fraction_id'=>$fraction['Fraction']['id']))), array('class' => 'btn ', 'escape' => false)); ?></li>
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Insurance', 'Insurances', 2), array('controller' => 'fraction_insurances', 'action' => 'index','?'=>array_merge(array('fraction_id'=>$fraction['Fraction']['id']))), array('class' => 'btn ', 'escape' => false)); ?></li>
                 <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Attachment', 'Attachments', 2), array('plugin' => 'attachments', 'controller' => 'fraction_attachments', 'action' => 'index','?'=>array_merge(array('fraction_id'=>$fraction['Fraction']['id']))), array('class' => 'btn ', 'escape' => false)); ?> </li>
 
             </ul><!-- /.list-group -->
@@ -29,9 +29,11 @@ $this->Html->script('fraction_view', false); ?>
     </div><!-- /#sidebar .span3 -->
 
     <div id="page-content" class="col-sm-9">
+        
         <div class="panel panel-default">
             <!-- Default panel contents -->
-            <div class="panel-heading"><strong><?php echo __n('Fraction', 'Fractions', 1); ?></strong></div>
+            <div class="panel-heading">
+                   <strong><?php echo __n('Fraction', 'Fractions', 1); ?></strong></div>
             <div class="panel-body">
                 <div class="fractions view">
 
