@@ -1,9 +1,8 @@
 
 <div id="page-container" class="row">
 
-    <div id="sidebar" class="col-sm-3 hidden-print collapse navbar-collapse phkondo-navbar">
-
-        <div class="actions">
+    <div class="col-sm-3">
+        <div id="sidebar" class="hidden-print collapse navbar-collapse phkondo-navbar actions">
 
             <ul class="nav nav-pills nav-stacked">			
                 <li ><?php echo $this->Html->link(__('Edit Insurance'), array('action' => 'edit', $insurance['Insurance']['id'],'?'=>$this->request->query), array('class' => 'btn ')); ?> </li>

@@ -1,9 +1,9 @@
 <?php $this->Html->script('note_edit', false); ?>
 <div id="page-container" class="row">
 
-    <div id="sidebar" class="col-sm-3 hidden-print collapse navbar-collapse phkondo-navbar">
+    <div class="col-sm-3">
 
-       <div class="actions">
+       <div id="sidebar" class="collapse navbar-collapse phkondo-navbar actions">
 
             <ul class="nav nav-pills nav-stacked">
                 <li ><?php echo $this->Html->link(__('View %s',__n('Note','Notes',1)), array('action' => 'view', $this->Form->value('Note.id'),'?'=>$this->request->query),array('class'=>'btn')); ?></li>

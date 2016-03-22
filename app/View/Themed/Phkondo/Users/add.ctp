@@ -6,9 +6,9 @@ foreach ($role_options as $key => $value) {
 ?>
 <div id="page-container" class="row">
 
-    <div id="sidebar" class="col-sm-3 hidden-print collapse navbar-collapse phkondo-navbar">
+    <div class="col-sm-3">
 
-        <div class="actions">
+        <div id="sidebar" class="collapse navbar-collapse phkondo-navbar actions">
 
             <ul class="nav nav-pills nav-stacked">
                 <li ><?php echo $this->Html->link(__('List Users'), array('action' => 'index'), array('class' => 'btn')); ?></li>
