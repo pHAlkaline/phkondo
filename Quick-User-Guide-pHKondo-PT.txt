@@ -1,4 +1,4 @@
-pHKondo fluxo de trabalho
+pHKondo Guia Rápido
 
 Adicionar condomínio (s) -> Criar Condomínio
 Ver detalhes do condomínio
@@ -47,7 +47,7 @@ Regresse aos detalhes do condomínio
 Entrar nos Orçamentos
 Adicionar orçamentos -> Criar Orçamento
 Defina os seus orçamentos.
-Defina bem os campos da Valor, Fundo Comum de Reserva (%), Data de Início, Quotas, Periodicidade, Distribuição, Prazo de pagamento. Vai possibilitar criar notas de débito de forma automática.
+Defina bem os campos de Valor, Fundo de Reserva (%), Data de Início, Quotas, Periodicidade, Distribuição, Prazo de pagamento. Vai possibilitar criar notas de débito de forma automática.
 Para notas de débito automático entre em Criar Notas, atenção que o orçamento deve estar no estado ativo.
 
 
@@ -60,3 +60,7 @@ Entrar em Anexos para gerir os documentos anexados.
 Entrar em os relatórios para Balancete, Receitas, Despesas, Conta Corrente, Mapas.
 Entrar em Minutas para imprimir alguns documentos usados na gestão do condomínio.
 ... 
+e outras funcionalidades que o pHKondo possa disponibilizar
+
+NOTA FINAL :
+Se você estiver interesado para outras funções que o pHKondo possa não ter disponível, mas quer adquirir , não hesite ->  contact@phalkaline.eu
