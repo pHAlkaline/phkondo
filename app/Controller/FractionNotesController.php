@@ -57,10 +57,9 @@ class FractionNotesController extends AppController {
      */
     public function index() {
         $this->Paginator->settings = $this->Paginator->settings + array(
-            'Note' => array(
-                'conditions' => array('Note.fraction_id' => $this->getPhkRequestVar('fraction_id')),
+            'conditions' => array('Note.fraction_id' => $this->getPhkRequestVar('fraction_id')),
                 //'requiresAcessLevel' => true,
-                'contain' => array('NoteType', 'Entity', 'NoteStatus')));
+                'contain' => array('NoteType', 'Entity', 'NoteStatus'));
 
         $this->setFilter(array('Note.document', 'Note.title', 'NoteType.name', 'Entity.name', 'Note.amount', 'NoteStatus.name'));
         $this->set('notes', $this->Paginator->paginate('Note'));

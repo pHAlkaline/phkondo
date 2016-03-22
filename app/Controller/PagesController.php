@@ -70,9 +70,9 @@ class PagesController extends AppController {
             $subpage = $path[1];
         }
         if (!empty($path[$count - 1])) {
-            $title_for_layout = __(Inflector::humanize($path[$count - 1]));
+            $title_for_layout = $headerTitle = __(Inflector::humanize($path[$count - 1]));
         }
-        $this->set(compact('page', 'subpage', 'title_for_layout'));
+        $this->set(compact('page', 'subpage', 'title_for_layout', 'headerTitle'));
         $this->render(implode('/', $path));
     }
     
@@ -87,7 +87,8 @@ class PagesController extends AppController {
         $breadcrumbs[1]=array('link'=>'','text'=>__('Start Session'),'active'=>'active');
             
         }
-        $this->set(compact('breadcrumbs'));
+        $headerTitle=__('Start Session');
+        $this->set(compact('breadcrumbs','headerTitle'));
     }
     
     
