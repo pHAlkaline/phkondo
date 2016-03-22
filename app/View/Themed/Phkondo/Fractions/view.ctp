@@ -1,10 +1,12 @@
-<?php $this->Html->script('fraction_view', false); ?>
+<?php
+
+$this->Html->script('fraction_view', false); ?>
 <div id="page-container" class="row">
 
     <div class="col-sm-3">
         <div id="sidebar" class="hidden-print collapse navbar-collapse phkondo-navbar actions">
 
-            <ul class="nav nav-pills nav-stacked">			
+            <ul class="nav nav-pills nav-stacked">
                 <li ><?php echo $this->Html->link(__('Edit Fraction'), array('action' => 'edit', $fraction['Fraction']['id'],'?'=>$this->request->query), array('class' => 'btn ')); ?> </li>
                 <?php
                 $deleteDisabled = '';
@@ -27,16 +29,17 @@
     </div><!-- /#sidebar .span3 -->
 
     <div id="page-content" class="col-sm-9">
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading"><strong><?php echo __n('Fraction', 'Fractions', 1); ?></strong></div>
+            <div class="panel-body">
+                <div class="fractions view">
 
-        <div class="fractions view">
 
-            <legend><?php echo __n('Fraction', 'Fractions', 1); ?></legend>
-
-
-            <table class="table table-hover table-condensed">
-                <tbody>
-                    <tr>		<td class='col-sm-2'><strong><?php echo __n('Manager', 'Managers', 1); ?></strong></td>
-                        <td>
+                    <table class="table table-hover table-condensed">
+                        <tbody>
+                            <tr>		<td class='col-sm-2'><strong><?php echo __n('Manager', 'Managers', 1); ?></strong></td>
+                                <td>
                             <?php
                             if ($fraction['Fraction']['manager_id'] == 0) {
                                 echo __('All owners');
@@ -44,62 +47,70 @@
                                 echo h($fraction['Manager']['name']);
                             }
                             ?>
-                            &nbsp;
-                        </td>
-                    </tr>
-                    <tr>		<td><strong><?php echo __n('Fraction', 'Fractions', 1); ?></strong></td>
-                        <td>
+                                    &nbsp;
+                                </td>
+                            </tr>
+                            <tr>		<td><strong><?php echo __n('Fraction', 'Fractions', 1); ?></strong></td>
+                                <td>
                             <?php echo h($fraction['Fraction']['fraction']); ?>
-                            &nbsp;
-                        </td>
-                    </tr>
-                    <tr>		<td><strong><?php echo __n('Fraction Type', 'Fraction Types', 1); ?></strong></td>
-                        <td>
+                                    &nbsp;
+                                </td>
+                            </tr>
+                            <tr>		<td><strong><?php echo __n('Fraction Type', 'Fraction Types', 1); ?></strong></td>
+                                <td>
                             <?php echo h($fraction['FractionType']['name']); ?>
-                            &nbsp;
-                        </td>
-                    </tr>
-                    <tr><td><strong><?php echo __('Floor Location'); ?></strong></td>
-                        <td>
+                                    &nbsp;
+                                </td>
+                            </tr>
+                            <tr><td><strong><?php echo __('Floor Location'); ?></strong></td>
+                                <td>
                             <?php echo h($fraction['Fraction']['floor_location']); ?>
-                            &nbsp;
-                        </td>
-                    </tr><tr>		<td><strong><?php echo __('Description'); ?></strong></td>
-                        <td>
+                                    &nbsp;
+                                </td>
+                            </tr><tr>		<td><strong><?php echo __('Description'); ?></strong></td>
+                                <td>
                             <?php echo h($fraction['Fraction']['description']); ?>
-                            &nbsp;
-                        </td>
-                    </tr><tr>		<td><strong><?php echo __('Mil rate'); ?></strong></td>
-                        <td>
+                                    &nbsp;
+                                </td>
+                            </tr><tr>		<td><strong><?php echo __('Mil rate'); ?></strong></td>
+                                <td>
                             <?php echo h($fraction['Fraction']['mil_rate']); ?>
-                            &nbsp;
-                        </td>
+                                    &nbsp;
+                                </td>
 
-                    <tr>		<td><strong><?php echo __('Modified'); ?></strong></td>
-                        <td>
+                            <tr>		<td><strong><?php echo __('Modified'); ?></strong></td>
+                                <td>
                             <?php echo h($fraction['Fraction']['modified']); ?>
-                            &nbsp;
-                        </td>
-                    </tr><tr>		<td><strong><?php echo __('Created'); ?></strong></td>
-                        <td>
+                                    &nbsp;
+                                </td>
+                            </tr><tr>		<td><strong><?php echo __('Created'); ?></strong></td>
+                                <td>
                             <?php echo h($fraction['Fraction']['created']); ?>
-                            &nbsp;
-                        </td>
-                    </tr>
+                                    &nbsp;
+                                </td>
+                            </tr>
 
-                </tbody>
-            </table><!-- /.table table-hover table-condensed -->
+                        </tbody>
+                    </table><!-- /.table table-hover table-condensed -->
 
-
+                </div>
+            </div>
         </div><!-- /.view -->
-        <div class="clearfix content-action-menu pull-right">
-            <?php echo $this->Html->link('<span class="glyphicon glyphicon-comment"></span> ', '#', array('title' => __('View %s', __('Comments')), 'id' => 'viewCommentsBtn', 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading"  data-toggle="collapse" data-target="#CommentsIndex"><strong><?php echo __('Comments'); ?></strong>
+                <div class="clearfix content-action-menu pull-right">
+                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-down"></span> ', '#CommentsIndex', array('title' => __('View %s', __('Comments')), 'id' => 'viewCommentsBtn', 'class' => ' ', 'escape' => false)); ?>
+                </div>
+            </div>
+            <div class="panel-body collapse" id="CommentsIndex">
+
+                <?php echo $this->Comments->display_for($fraction); ?>
+
+            </div>
+
         </div>
-        <div class="clearfix" style="padding: 10px;">&nbsp;</div>
-        <div class="clearfix comments hide">
-            <?php echo $this->Comments->display_for($fraction); ?>
-        </div>
-        <div class="clearfix" style="padding: 30px;">&nbsp;</div>
+
     </div><!-- /#page-content .span9 -->
 
 </div><!-- /#page-container .row-fluid -->
