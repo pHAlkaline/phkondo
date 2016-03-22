@@ -55,7 +55,7 @@ class MovementCategoriesController extends AppController {
                 ));
         $this->setFilter(array('MovementCategory.name'));
 
-        $this->set('movementCategories', $this->paginate());
+         $this->set('movementCategories', $this->Paginator->paginate('MovementCategory'));
     }
 
     /**
