@@ -16,13 +16,6 @@ App::uses('AppModel', 'Model');
 class Support extends AppModel {
 
     /**
-     * Use table
-     *
-     * @var mixed False or table name
-     */
-    public $useTable = 'support';
-
-    /**
      * Display field
      *
      * @var string

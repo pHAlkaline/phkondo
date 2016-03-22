@@ -20,9 +20,10 @@ $administrators = implode(", ", $administrators);
                 <li class="divider">&nbsp;</li>
                 <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Fraction', 'Fractions', 2), array('controller' => 'fractions', 'action' => 'index','?'=>array('condo_id'=>$condo['Condo']['id'])), array('class' => 'btn ', 'escape' => false)); ?> </li>
                 <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Administrator', 'Administrators', 2), array('controller' => 'administrators', 'action' => 'index','?'=>array('condo_id'=>$condo['Condo']['id'])), array('class' => 'btn ', 'escape' => false)); ?> </li>
+                
+                <li class="divider">&nbsp;</li>
                 <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Fiscal Year', 'Fiscal Years', 2), array('controller' => 'fiscal_years', 'action' => 'index','?'=>array('condo_id'=>$condo['Condo']['id'])), array('class' => 'btn ', 'escape' => false)); ?> </li>
                 <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Receipt', 'Receipts', 2), array('controller' => 'receipts', 'action' => 'index','?'=>array('condo_id'=>$condo['Condo']['id'])), array('class' => 'btn ', 'escape' => false)); ?> </li>
-                <li class="divider">&nbsp;</li>
                 <?php if ($has_fiscal_year): ?>
                     <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Account', 'Accounts', 2), array('controller' => 'accounts', 'action' => 'index','?'=>array('condo_id'=>$condo['Condo']['id'])), array('class' => 'btn ', 'escape' => false)); ?> </li>
                     <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('Invoice Conference'), array('controller' => 'invoice_conference', 'action' => 'index','?'=>array('condo_id'=>$condo['Condo']['id'])), array('class' => 'btn ', 'escape' => false)); ?> </li>
@@ -159,15 +160,15 @@ $administrators = implode(", ", $administrators);
                 ?>
                 <?php if (in_array('danger', $viewGlyphiconState)) : ?>
                     <div class="alert alert-danger">
-                        <?php echo $this->Html->link(__('Expired insurance'), array('controller' => 'insurances', 'action' => 'index','?'=>$this->request->query), array('title' => __('Expired insurance'), 'class' => '', 'style' => 'color:inherit;', 'escape' => false)); ?>
+                        <?php echo $this->Html->link(__('Expired insurance'), array('controller' => 'insurances', 'action' => 'index','?'=>array('condo_id'=>$condo['Condo']['id'])), array('title' => __('Expired insurance'), 'class' => '', 'style' => 'color:inherit;', 'escape' => false)); ?>
                     </div>
                 <?php elseif (in_array('warning', $viewGlyphiconState)) : ?>
                     <div class="alert alert-warning">
-                        <?php echo $this->Html->link(__('Insurance to expire soon'), array('controller' => 'insurances', 'action' => 'index','?'=>$this->request->query), array('title' => __('Insurance to expire soon'), 'class' => '', 'style' => 'color:inherit;', 'escape' => false)); ?>
+                        <?php echo $this->Html->link(__('Insurance to expire soon'), array('controller' => 'insurances', 'action' => 'index','?'=>array('condo_id'=>$condo['Condo']['id'])), array('title' => __('Insurance to expire soon'), 'class' => '', 'style' => 'color:inherit;', 'escape' => false)); ?>
                     </div>
                 <?php elseif (in_array('info', $viewGlyphiconState)) : ?>
                     <div class="alert alert-info">
-                        <?php echo $this->Html->link(__('Insurance to expire soon'), array('controller' => 'insurances', 'action' => 'index','?'=>$this->request->query), array('title' => __('Insurance to expire soon'), 'class' => '', 'style' => 'color:inherit;', 'escape' => false)); ?>
+                        <?php echo $this->Html->link(__('Insurance to expire soon'), array('controller' => 'insurances', 'action' => 'index','?'=>array('condo_id'=>$condo['Condo']['id'])), array('title' => __('Insurance to expire soon'), 'class' => '', 'style' => 'color:inherit;', 'escape' => false)); ?>
                     </div>
                 <?php endif; ?>
 
@@ -196,21 +197,21 @@ $administrators = implode(", ", $administrators);
                 ?>
                 <?php if (in_array('danger', $viewGlyphiconState)) : ?>
                     <div class="alert alert-danger">
-                        <?php echo $this->Html->link(__('Expired maintenance'), array('controller' => 'maintenances', 'action' => 'index','?'=>$this->request->query), array('title' => __('Expired maintenance'), 'class' => '', 'style' => 'color:inherit;', 'escape' => false)); ?>
+                        <?php echo $this->Html->link(__('Expired maintenance'), array('controller' => 'maintenances', 'action' => 'index','?'=>array('condo_id'=>$condo['Condo']['id'])), array('title' => __('Expired maintenance'), 'class' => '', 'style' => 'color:inherit;', 'escape' => false)); ?>
                     </div>
                 <?php elseif (in_array('warning', $viewGlyphiconState)) : ?>
                     <div class="alert alert-warning">
-                        <?php echo $this->Html->link(__('Maintenance to expire soon'), array('controller' => 'maintenances', 'action' => 'index','?'=>$this->request->query), array('title' => __('Maintenance to expire soon'), 'class' => '', 'style' => 'color:inherit;', 'escape' => false)); ?>
+                        <?php echo $this->Html->link(__('Maintenance to expire soon'), array('controller' => 'maintenances', 'action' => 'index','?'=>array('condo_id'=>$condo['Condo']['id'])), array('title' => __('Maintenance to expire soon'), 'class' => '', 'style' => 'color:inherit;', 'escape' => false)); ?>
                     </div>
                 <?php elseif (in_array('info', $viewGlyphiconState)) : ?>
                     <div class="alert alert-info">
-                        <?php echo $this->Html->link(__('Maintenance to expire soon'), array('controller' => 'maintenances', 'action' => 'index','?'=>$this->request->query), array('title' => __('Maintenance to expire soon'), 'class' => '', 'style' => 'color:inherit;', 'escape' => false)); ?>
+                        <?php echo $this->Html->link(__('Maintenance to expire soon'), array('controller' => 'maintenances', 'action' => 'index','?'=>array('condo_id'=>$condo['Condo']['id'])), array('title' => __('Maintenance to expire soon'), 'class' => '', 'style' => 'color:inherit;', 'escape' => false)); ?>
                     </div>
                 <?php endif; ?>
 
                 <?php if ($hasSharesDebt) : ?>
                     <div class="alert alert-danger">
-                        <?php echo $this->Html->link(__('Fractions with late payment'), array('controller' => 'fractions', 'action' => 'index','?'=>$this->request->query), array('title' => __('Fractions with late payment'), 'class' => '', 'style' => 'color:inherit;', 'escape' => false)); ?>
+                        <?php echo $this->Html->link(__('Fractions with late payment'), array('controller' => 'fractions', 'action' => 'index','?'=>array('condo_id'=>$condo['Condo']['id'])), array('title' => __('Fractions with late payment'), 'class' => '', 'style' => 'color:inherit;', 'escape' => false)); ?>
                     </div>
                 <?php endif; ?>
 
@@ -224,14 +225,14 @@ $administrators = implode(", ", $administrators);
                 ?>
                 <?php if (in_array('danger', $viewGlyphiconState)) : ?>
                     <div class="alert alert-danger">
-                        <?php echo $this->Html->link(__('Accounts with negative balance'), array('controller' => 'accounts', 'action' => 'index','?'=>$this->request->query), array('title' => __('Accounts with negative balance'), 'class' => '', 'style' => 'color:inherit;', 'escape' => false)); ?>
+                        <?php echo $this->Html->link(__('Accounts with negative balance'), array('controller' => 'accounts', 'action' => 'index','?'=>array('condo_id'=>$condo['Condo']['id'])), array('title' => __('Accounts with negative balance'), 'class' => '', 'style' => 'color:inherit;', 'escape' => false)); ?>
 
 
                     </div>
                 <?php endif; ?>
                 <?php if ($hasDebt) : ?>
                     <div class="alert alert-danger">
-                        <?php echo $this->Html->link(__('Suppliers with arrears'), array('controller' => 'invoice_conference', 'action' => 'index','?'=>$this->request->query), array('title' => __('Suppliers with arrears'), 'class' => '', 'style' => 'color:inherit;', 'escape' => false)); ?>
+                        <?php echo $this->Html->link(__('Suppliers with arrears'), array('controller' => 'invoice_conference', 'action' => 'index','?'=>array('condo_id'=>$condo['Condo']['id'])), array('title' => __('Suppliers with arrears'), 'class' => '', 'style' => 'color:inherit;', 'escape' => false)); ?>
 
                     </div>
                 <?php endif; ?>

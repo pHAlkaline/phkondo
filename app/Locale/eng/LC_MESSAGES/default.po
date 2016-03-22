@@ -1,4 +1,4 @@
-# LANGUAGE translation of pHkondo Application
+f# LANGUAGE translation of pHkondo Application
 # Copyright pHAlkaline <contact@phalkaline.eu>
 #
 #, fuzzy
@@ -77,8 +77,8 @@ msgstr ""
 
 msgid "Account"
 msgid_plural "Accounts"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Bank Account"
+msgstr[1] "Bank Accounts"
 
 msgid "Account Number"
 msgstr ""
@@ -156,10 +156,10 @@ msgid "Add Movement Operation"
 msgstr ""
 
 msgid "Add Note"
-msgstr ""
+msgstr "Add Fee"
 
 msgid "Add Notes"
-msgstr ""
+msgstr "Add Fees"
 
 msgid "Add Receipt"
 msgstr ""
@@ -225,8 +225,8 @@ msgstr ""
 
 msgid "Attachment"
 msgid_plural "Attachments"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Document"
+msgstr[1] "Documents"
 
 msgid "August"
 msgstr ""
@@ -306,10 +306,10 @@ msgid "Comments"
 msgstr ""
 
 msgid "Common Reserve Fund"
-msgstr ""
+msgstr "Reserve Fund"
 
 msgid "Common Reserve Fund (%)"
-msgstr ""
+msgstr "Reserve Fund (%)"
 
 msgid "Condo"
 msgid_plural "Condos"
@@ -340,7 +340,7 @@ msgid "Contract Number"
 msgstr ""
 
 msgid "Create Notes"
-msgstr ""
+msgstr "Create Fees"
 
 msgid "Created"
 msgstr ""
@@ -400,7 +400,7 @@ msgid "Delete Movement Operation"
 msgstr ""
 
 msgid "Delete Note"
-msgstr ""
+msgstr "Delete Fee"
 
 msgid "Delete Receipt"
 msgstr ""
@@ -489,7 +489,7 @@ msgid "Edit Movement Operation"
 msgstr ""
 
 msgid "Edit Note"
-msgstr ""
+msgstr "Edit Fee"
 
 msgid "Edit Owner"
 msgstr ""
@@ -719,7 +719,7 @@ msgid "Invalid movement operation"
 msgstr ""
 
 msgid "Invalid note"
-msgstr ""
+msgstr "Invalid fee"
 
 msgid "Invalid owner"
 msgstr ""
@@ -811,7 +811,7 @@ msgid "List Movements"
 msgstr ""
 
 msgid "List Notes"
-msgstr ""
+msgstr "List Fees"
 
 msgid "List Owners"
 msgstr ""
@@ -982,7 +982,7 @@ msgid "New Movement Operation"
 msgstr ""
 
 msgid "New Note"
-msgstr ""
+msgstr "New Fee"
 
 msgid "New Owner"
 msgstr ""
@@ -1021,24 +1021,24 @@ msgid "Not Found"
 msgstr ""
 
 msgid "Note"
-msgstr ""
+msgstr "Fee"
 
 msgid "Note Status"
-msgstr ""
+msgstr "Fees status"
 
 msgid "Note Type"
-msgstr ""
+msgstr "Fee type"
 
 msgid "Note can not be deleted"
-msgstr ""
+msgstr "Fee can not be deleted"
 
 msgid "Note deleted"
-msgstr ""
+msgstr "Fee deleted"
 
 msgid "Note"
 msgid_plural "Notes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Fee"
+msgstr[1] "Fees"
 
 msgid "November"
 msgstr ""
@@ -1106,7 +1106,7 @@ msgid "Paid To"
 msgstr ""
 
 msgid "Settled Shares Map"
-msgstr ""
+msgstr "Settled Fees Map"
 
 msgid "Password"
 msgstr ""
@@ -1142,7 +1142,7 @@ msgid "Pick"
 msgstr ""
 
 msgid "Pick Notes"
-msgstr ""
+msgstr "Pick Fees"
 
 msgid "Please activate one fiscal year."
 msgstr ""
@@ -1195,7 +1195,7 @@ msgid "Related %s"
 msgstr ""
 
 msgid "Related Notes"
-msgstr ""
+msgstr "Related Fees"
 
 msgid "Remove"
 msgstr ""
@@ -1244,23 +1244,23 @@ msgstr ""
 
 msgid "Share"
 msgid_plural "Shares"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Fee"
+msgstr[1] "Fees"
 
 msgid "Share Distribution"
-msgstr ""
+msgstr "Fee Distribution"
 
 msgid "Share Periodicity"
-msgstr ""
+msgstr "Fee Peiodicity"
 
 msgid "Shares"
-msgstr ""
+msgstr "Fees"
 
 msgid "Shares Map"
-msgstr ""
+msgstr "Fees Map"
 
 msgid "SharesDebt"
-msgstr ""
+msgstr "FeesDebt"
 
 msgid "Sign In"
 msgstr ""
@@ -1382,19 +1382,19 @@ msgid "The movement operation has been saved"
 msgstr ""
 
 msgid "The note could not be saved. Please, try again."
-msgstr ""
+msgstr "The fee could not be saved. Please, try again."
 
 msgid "The note has been saved"
-msgstr ""
+msgstr "The fee has been saved"
 
 msgid "The notes could not be created. Please, try again."
-msgstr ""
+msgstr "The fees could not be created. Please, try again."
 
 msgid "The notes could not be saved. Please, try again."
-msgstr ""
+msgstr "The feed could not be saved. Please, try again."
 
 msgid "The notes has been created"
-msgstr ""
+msgstr "All fees has been created"
 
 msgid "The owner could not be found at this fraction. Please, try again."
 msgstr "The owner could not be found at this property. Please, try again."
@@ -1442,13 +1442,13 @@ msgid "There was an error deleting the %1$s with id: %2$s"
 msgstr ""
 
 msgid "This Budget can not be deleted, check budget status or existing notes already paid."
-msgstr ""
+msgstr "This Budget can not be deleted, check budget status or existing fees already paid."
 
 msgid "This Fiscal Year can not be deleted, check existing notes already paid."
-msgstr ""
+msgstr "This Fiscal Year can not be deleted, check existing feed already paid."
 
 msgid "This Fraction can not be deleted, check existing notes already paid."
-msgstr "This Property can not be deleted, check existing notes already paid."
+msgstr "This Property can not be deleted, check existing fees already paid."
 
 msgid "This application is now on maintenance mode, back soon as possible!"
 msgstr ""
@@ -1484,7 +1484,7 @@ msgid "Total amount"
 msgstr ""
 
 msgid "Total notes"
-msgstr ""
+msgstr "Total fees"
 
 msgid "Trial balance"
 msgstr ""
@@ -1811,9 +1811,6 @@ msgid "Priority"
 msgstr ""
 
 msgid "Assigned To"
-msgstr ""
-
-msgid "Notes"
 msgstr ""
 
 msgid "Support"
