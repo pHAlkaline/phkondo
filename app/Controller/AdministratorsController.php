@@ -212,7 +212,8 @@ class AdministratorsController extends AppController {
                 $breadcrumbs[4] = array('link' => '', 'text' => $this->getPhkRequestVar('administrator_text'), 'active' => 'active');
                 break;
         }
-        $this->set(compact('breadcrumbs'));
+        $headerTitle=__n('Administrator','Administrators',2);
+        $this->set(compact('breadcrumbs','headerTitle'));
     }
 
 

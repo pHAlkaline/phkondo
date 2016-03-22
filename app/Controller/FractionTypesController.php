@@ -167,7 +167,8 @@ class FractionTypesController extends AppController {
 
                 break;
         }
-        $this->set(compact('breadcrumbs'));
+        $headerTitle=__('Fraction Types');
+        $this->set(compact('breadcrumbs','headerTitle'));
     }
 
 }

@@ -217,7 +217,7 @@ class CondosController extends AppController {
                 array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
                 array('link' => '', 'text' => $this->getPhkRequestVar('condo_text'), 'active' => 'active')
             );
-            $headerTitle=$this->getPhkRequestVar('condo_text');
+            $headerTitle=__('Condos');
         }
 
         $this->set(compact('breadcrumbs','headerTitle'));

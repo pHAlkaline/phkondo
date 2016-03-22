@@ -336,7 +336,8 @@ class BudgetNotesController extends AppController {
                 $breadcrumbs[6] = array('link' => '', 'text' => $this->getPhkRequestVar('note_text'), 'active' => 'active');
                 break;
         }
-        $this->set(compact('breadcrumbs'));
+        $headerTitle= __n('Note', 'Notes', 2);
+        $this->set(compact('breadcrumbs','headerTitle'));
     }
 
 }

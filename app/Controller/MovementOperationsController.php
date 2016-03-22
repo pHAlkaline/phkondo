@@ -212,8 +212,8 @@ class MovementOperationsController extends AppController {
 
                 break;
         }
-        $this->set(compact('breadcrumbs'));
-//$this->Auth->allow('add'); // Letting users register themselves
+        $headerTitle=__('Movement Operations');
+        $this->set(compact('breadcrumbs','headerTitle'));
     }
 
 }

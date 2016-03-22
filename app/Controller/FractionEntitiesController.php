@@ -132,7 +132,8 @@ class FractionEntitiesController extends AppController {
             array('link' => Router::url(array('controller' => 'fractions', 'action' => 'view', $this->getPhkRequestVar('fraction_id'))), 'text' => $this->getPhkRequestVar('fraction_text'), 'active' => ''),
             array('link' => '', 'text' => ___n('Manager','Managers',2), 'active' => 'active')
         );
-        $this->set(compact('breadcrumbs'));
+        $headerTitle=___n('Manager','Managers',2);
+        $this->set(compact('breadcrumbs','headerTitle'));
     }
 
 }

@@ -33,8 +33,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <?php echo $this->Html->charset(); ?>
         <title>
-            <?php echo Configure::read('Theme.owner_name'); ?>:
-            <?php echo $title_for_layout; ?>
+            <?php echo $headerTitle; ?>-
+            <?php echo Configure::read('Theme.owner_name'); ?>
+            
         </title>
 
         <?php

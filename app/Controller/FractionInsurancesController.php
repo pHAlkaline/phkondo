@@ -196,7 +196,8 @@ class FractionInsurancesController extends AppController {
                 $breadcrumbs[6] = array('link' => '', 'text' => $this->getPhkRequestVar('insurance_text'), 'active' => 'active');
                 break;
         }
-        $this->set(compact('breadcrumbs'));
+        $headerTitle=__n('Insurance','Insurances',2);
+        $this->set(compact('breadcrumbs','headerTitle'));
     }
 
 }

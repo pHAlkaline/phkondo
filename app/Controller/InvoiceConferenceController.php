@@ -271,7 +271,8 @@ class InvoiceConferenceController extends AppController {
                 $breadcrumbs[5] = array('link' => '', 'text' => $this->getPhkRequestVar('invoice_text'), 'active' => 'active');
                 break;
         }
-        $this->set(compact('breadcrumbs'));
+        $headerTitle=__('Invoice Conference');
+        $this->set(compact('breadcrumbs','headerTitle'));
     }
 
 }

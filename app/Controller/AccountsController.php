@@ -185,7 +185,8 @@ class AccountsController extends AppController {
                 $breadcrumbs[4] = array('link' => '', 'text' => $this->getPhkRequestVar('account_text'), 'active' => 'active');
                 break;
         }
-        $this->set(compact('breadcrumbs'));
+        $headerTitle=__n('Account','Accounts',2);
+        $this->set(compact('breadcrumbs','headerTitle'));
     }
 
 }

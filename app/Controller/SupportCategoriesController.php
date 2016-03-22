@@ -142,7 +142,8 @@ class SupportCategoriesController extends AppController {
 
                 break;
         }
-        $this->set(compact('breadcrumbs'));
+        $headerTitle=__('Support Categories');
+        $this->set(compact('breadcrumbs','headerTitle'));
     }
 
 }
