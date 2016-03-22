@@ -231,7 +231,8 @@ class FiscalYearsController extends AppController {
                 $breadcrumbs[4] = array('link' => '', 'text' => $this->getPhkRequestVar('fiscal_year_text'), 'active' => 'active');
                 break;
         }
-        $this->set(compact('breadcrumbs'));
+        $headerTitle=__n('Fiscal Year', 'Fiscal Years', 2);
+        $this->set(compact('breadcrumbs','headerTitle'));
     }
 
 }

@@ -185,7 +185,8 @@ class MaintenancesController extends AppController {
                
                 break;
         }
-        $this->set(compact('breadcrumbs'));
+        $headerTitle=__n('Maintenance','Maintenances',2);
+        $this->set(compact('breadcrumbs','headerTitle'));
     }
 
 }

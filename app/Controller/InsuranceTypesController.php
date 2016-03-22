@@ -167,7 +167,8 @@ class InsuranceTypesController extends AppController {
 
                 break;
         }
-        $this->set(compact('breadcrumbs'));
+        $headerTitle=__('Insurance Types');
+        $this->set(compact('breadcrumbs','headerTitle'));
     }
 
 }

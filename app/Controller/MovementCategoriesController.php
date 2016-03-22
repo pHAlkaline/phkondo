@@ -211,7 +211,8 @@ class MovementCategoriesController extends AppController {
 
                 break;
         }
-        $this->set(compact('breadcrumbs'));
+        $headerTitle=__('Movement Categories');
+        $this->set(compact('breadcrumbs','headerTitle'));
     }
 
 }

@@ -95,7 +95,8 @@ class IncomeController extends AppController {
                 $breadcrumbs[2] = array('link' => '', 'text' => __n('Receipt', 'Receipts', 2), 'active' => 'active');
                 break;
         }
-        $this->set(compact('breadcrumbs'));
+        $headerTitle=__('Income Control');
+        $this->set(compact('breadcrumbs','headerTitle'));
     }
 
     public function isAuthorized($user) {

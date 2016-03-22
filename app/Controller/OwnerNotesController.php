@@ -245,7 +245,8 @@ class OwnerNotesController extends AppController {
                 $breadcrumbs[8] = array('link' => '', 'text' => $this->getPhkRequestVar('note_text'), 'active' => 'active');
                 break;
         }
-        $this->set(compact('breadcrumbs'));
+        $headerTitle=__n('Note','Notes',2);
+        $this->set(compact('breadcrumbs','headerTitle'));
     }
 
 }

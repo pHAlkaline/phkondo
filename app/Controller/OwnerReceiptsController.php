@@ -585,7 +585,8 @@ class OwnerReceiptsController extends AppController {
                 $breadcrumbs[8] = array('link' => '', 'text' => $this->getPhkRequestVar('receipt_text'), 'active' => 'active');
                 break;
         }
-        $this->set(compact('breadcrumbs'));
+        $headerTitle=__n('Receipt', 'Receipts', 2);
+        $this->set(compact('breadcrumbs','headerTitle'));
     }
 
 }

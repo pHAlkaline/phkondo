@@ -235,8 +235,8 @@ class EntitiesController extends AppController {
                 
                 break;
         }
-        $this->set(compact('breadcrumbs'));
-//$this->Auth->allow('add'); // Letting users register themselves
+        $headerTitle=__n('Entity','Entities',2);
+        $this->set(compact('breadcrumbs','headerTitle'));
     }
 
 }

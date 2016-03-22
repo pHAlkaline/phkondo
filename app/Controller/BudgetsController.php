@@ -234,7 +234,8 @@ class BudgetsController extends AppController {
                 $breadcrumbs[4] = array('link' => '', 'text' => $this->getPhkRequestVar('budget_text'), 'active' => 'active');
                 break;
         }
-        $this->set(compact('breadcrumbs'));
+        $headerTitle=__n('Budget', 'Budgets', 2);
+        $this->set(compact('breadcrumbs','headerTitle'));
     }
 
     private function _setNotesStatus() {

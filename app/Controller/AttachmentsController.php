@@ -90,6 +90,8 @@ class AttachmentsController extends AppController {
 
     public function beforeRender() {
         parent::beforeRender();
+        $headerTitle=__n('Attachment', 'Attachments', 2);
+        $this->set(compact('breadcrumbs','headerTitle'));
     }
 
 }
