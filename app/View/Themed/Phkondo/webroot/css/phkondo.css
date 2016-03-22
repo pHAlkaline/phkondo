@@ -35,6 +35,10 @@ html, body {
   background: #f9f9f9;
 }
 
+#page-content {
+    min-height: 970px;
+}
+
 input[type="checkbox"] {
     width: 15px;
     height: 15px;
@@ -71,7 +75,7 @@ border-top: none;
 }
 
 .btn-default {
-    padding: 5px;
+    /*padding: 5px;*/
 
 }
 

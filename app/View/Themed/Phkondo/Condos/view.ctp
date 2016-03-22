@@ -7,9 +7,10 @@ $has_fiscal_year = (isset($condo['FiscalYear'][0]['title'])) ? true : false;
 $administrators = Set::extract('/Administrator/Entity/name', $condo);
 $administrators = implode(", ", $administrators);
 ?>
-<div id="page-container" class="row">
+<div id="page-container" class="row row-offcanvas row-offcanvas-left">
+
     <div class="col-sm-3">
-        <div id="sidebar" class="hidden-print collapse navbar-collapse phkondo-navbar actions">
+        <div id="sidebar" class="hidden-print actions sidebar-offcanvas">
             <ul class="nav nav-pills nav-stacked nav-stacked">			
                     <li ><?php echo $this->Html->link(__('Edit Condo'), array('action' => 'edit', $condo['Condo']['id']), array('class' => 'btn ', 'escape' => false)); ?></li>
                 <?php if (in_array(AuthComponent::user('role'), array('admin', 'store_admin'))): ?>

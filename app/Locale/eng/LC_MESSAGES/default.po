@@ -1021,7 +1021,9 @@ msgid "Not Found"
 msgstr ""
 
 msgid "Note"
-msgstr "Fee"
+msgid_plural "Notes"
+msgstr[0] "Fee"
+msgstr[1] "Fees"
 
 msgid "Note Status"
 msgstr "Fees status"
@@ -1034,11 +1036,6 @@ msgstr "Fee can not be deleted"
 
 msgid "Note deleted"
 msgstr "Fee deleted"
-
-msgid "Note"
-msgid_plural "Notes"
-msgstr[0] "Fee"
-msgstr[1] "Fees"
 
 msgid "November"
 msgstr ""

@@ -7,22 +7,23 @@
             <h2 class="col-sm-9"><?php echo __('Fraction Types'); ?></h2>
             <div class="actions hidden-print col-sm-3">
                 <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Fraction Type'), array('action' => 'add'), array('class' => 'btn btn-primary', 'style' => 'margin: 8px 0; float: right;', 'escape' => false));
-                echo $this->element('search_tool');?>
+                ?>
             </div><!-- /.actions -->
-        </div><!-- /.actions -->
-        <div class="clearfix"></div>
-        <div class="table-responsive">
-            <table class="table table-hover table-condensed">
-                <thead>
-                    <tr>
-                        <th><?php echo $this->Paginator->sort('name'); ?></th>
-                        <th><?php echo $this->Paginator->sort('active'); ?></th>
-                        <th><?php echo $this->Paginator->sort('modified'); ?></th>
-                        <th><?php echo $this->Paginator->sort('created'); ?></th>
-                        <th class="actions hidden-print"><?php //echo __('Actions');     ?></th>
-                    </tr>
-                </thead>
-                <tbody>
+
+        <?php echo $this->element('search_tool'); ?>
+            <div class="clearfix"></div>
+            <div class="table-responsive">
+                <table class="table table-hover table-condensed">
+                    <thead>
+                        <tr>
+                            <th><?php echo $this->Paginator->sort('name'); ?></th>
+                            <th><?php echo $this->Paginator->sort('active'); ?></th>
+                            <th><?php echo $this->Paginator->sort('modified'); ?></th>
+                            <th><?php echo $this->Paginator->sort('created'); ?></th>
+                            <th class="actions hidden-print"><?php //echo __('Actions');     ?></th>
+                        </tr>
+                    </thead>
+                    <tbody>
                     <?php foreach ($fractionTypes as $fractionType): ?>
                         <tr>
                             <td><?php echo h($fractionType['FractionType']['name']); ?>&nbsp;</td>
@@ -42,24 +43,26 @@
                             </td>
                         </tr>
                     <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div><!-- /.table-responsive -->
-    </div><!-- /.box-body -->
+                    </tbody>
+                </table>
+            </div><!-- /.table-responsive -->
 
-</div>
 
-<p class='pull-right'><small>
+            <p class='pull-right'><small>
         <?php
         echo $this->Paginator->counter(array(
             'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
         ));
         ?>                </small></p>
-<div class="clearfix"></div>
-<ul class="hidden-print pagination pull-right">
+            <div class="clearfix"></div>
+            <ul class="hidden-print pagination pull-right">
     <?php
     echo $this->Paginator->prev('< ' . __('Previous'), array('tag' => 'li'), null, array('class' => 'disabled', 'tag' => 'li', 'disabledTag' => 'a'));
     echo $this->Paginator->numbers(array('separator' => '', 'currentTag' => 'a', 'tag' => 'li', 'currentClass' => 'disabled'));
     echo $this->Paginator->next(__('Next') . ' >', array('tag' => 'li'), null, array('class' => 'disabled', 'tag' => 'li', 'disabledTag' => 'a'));
     ?>
-</ul><!-- /.pagination -->
+            </ul><!-- /.pagination -->
+        </div><!-- /.box-body -->
+
+    </div>
+</div>
