@@ -276,7 +276,7 @@ class FractionOwnersController extends AppController {
                 $breadcrumbs[6] = array('link' => '', 'text' => $this->getPhkRequestVar('owner_text'), 'active' => 'active');
                 break;
         }
-        $headerTitle = $this->getPhkRequestVar('owner_text');
+        $headerTitle = __n('Owner', 'Owners', 2);
         $this->set(compact('breadcrumbs', 'headerTitle'));
     }
 

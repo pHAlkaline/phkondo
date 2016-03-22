@@ -12,12 +12,13 @@ if ($phkRequestData['budget_status'] == 1) {
         <div class="index">
 
             <h2 class="col-sm-9"><?php echo __n('Note','Notes',2); ?></h2>
-            <?php if ($showActions) : ?>
-                <div class="actions hidden-print col-sm-3">
-                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Note'), array('action' => 'add','?'=>$this->request->query), array('class' => 'btn btn-primary', 'style' => 'margin: 8px 0; float: right;', 'escape' => false));
+              <div class="actions hidden-print col-sm-3">
+                  <?php if ($showActions) : 
+              echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Note'), array('action' => 'add','?'=>$this->request->query), array('class' => 'btn btn-primary', 'style' => 'margin: 8px 0; float: right;', 'escape' => false));
+                    endif;
                 echo $this->element('search_tool');?>
             </div><!-- /.actions -->
-            <?php endif; ?>
+           
             <div class="clearfix"></div>
             <div class="table-responsive">
                 <table class="table table-hover table-condensed">
