@@ -1,30 +1,14 @@
+ 
+        <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Condo'), array('action' => 'add'), array('class' => 'btn btn-primary hidden-print', 'style' => 'margin: 8px 0; float:right;', 'escape' => false)); 
+       ?> <div class="clearfix"></div>
 <div class="panel panel-default">
     <!-- Default panel contents -->
+    
     <div class="panel-heading"><strong><?php echo __n('Condo', 'Condos', 2); ?></strong></div>
     <div class="panel-body">
-        
-        <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Condo'), array('action' => 'add'), array('class' => 'btn btn-primary hidden-print', 'style' => 'margin: 8px 0;', 'escape' => false)); ?>
-        
-        <?php if (isset($keyword)) : ?>
-                <?php echo $this->Form->create(null, array('class' => 'navbar-form navbar-right', 'role' => 'search', 'type' => 'get', 'url' => $this->request->here)); ?>
-                        <!--form method="post" class="navbar-form navbar-right" role="search" action="<?php //echo $this->request->here();   ?>"-->
-                <div class="form-group">
-                    <?php
-                    foreach ($this->request->query as $key => $value):
-                        if ($key != 'keyword' && $key != 'page'):
-                            echo $this->Form->hidden($key, array('value' => $value));
-                        endif;
-                    endforeach;
-                    ?>
-                    <input type="text" 
-                           class="form-control"  
-                           name="keyword" 
-                           onblur="if (this.value == '') this.value = '<?php echo __('Search'); ?>';" 
-                           onfocus="if (this.value == '<?php echo __('Search'); ?>') this.value = '';" value="<?php echo $keyword ?>" >
-                </div>
-                <button type="submit" class="btn btn-default"><?php echo __('Search'); ?></button>
-                </form>
-            <?php endif; ?>
+       
+       <?php  
+       echo $this->element('search_tool');?>
 <div class="clearfix"></div>
         <div class="table-responsive"> 
             <table class="table table-hover table-condensed">
