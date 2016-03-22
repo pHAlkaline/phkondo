@@ -77,8 +77,8 @@ msgstr "%s após"
 
 msgid "Account"
 msgid_plural "Accounts"
-msgstr[0] "Conta"
-msgstr[1] "Contas"
+msgstr[0] "Conta Bancária"
+msgstr[1] "Contas Bancárias"
 
 msgid "Account Number"
 msgstr "Número de Conta"
@@ -162,10 +162,10 @@ msgid "Add Movement Operation"
 msgstr "Criar Operação"
 
 msgid "Add Note"
-msgstr "Criar Nota"
+msgstr "Criar Quota"
 
 msgid "Add Notes"
-msgstr "Adicionar Notas"
+msgstr "Adicionar Quotas"
 
 msgid "Add Receipt"
 msgstr "Criar Recibo"
@@ -234,8 +234,8 @@ msgstr "Tem a certeza que quer colocar o recibo # %s como pago? - Forma de Pagam
 
 msgid "Attachment"
 msgid_plural "Attachments"
-msgstr[0] "Anexo"
-msgstr[1] "Anexos"
+msgstr[0] "Documento"
+msgstr[1] "Documentos"
 
 msgid "August"
 msgstr "Agosto"
@@ -315,10 +315,10 @@ msgid "Comments"
 msgstr "Comentários"
 
 msgid "Common Reserve Fund"
-msgstr "Fundo Comum de Reserva"
+msgstr "Fundo de Reserva"
 
 msgid "Common Reserve Fund (%)"
-msgstr "Fundo Comum de Reserva (%)"
+msgstr "Fundo de Reserva (%)"
 
 msgid "Condo"
 msgid_plural "Condos"
@@ -349,7 +349,7 @@ msgid "Contract Number"
 msgstr "Número de Contrato"
 
 msgid "Create Notes"
-msgstr "Criar Notas"
+msgstr "Criar Quotas"
 
 msgid "Created"
 msgstr "Data de Criação"
@@ -412,7 +412,7 @@ msgid "Delete Movement Operation"
 msgstr "Apagar Operação"
 
 msgid "Delete Note"
-msgstr "Apagar Nota"
+msgstr "Apagar Quota"
 
 msgid "Delete Receipt"
 msgstr "Apagar Recibo"
@@ -501,7 +501,7 @@ msgid "Edit Movement Operation"
 msgstr "Editar Operação"
 
 msgid "Edit Note"
-msgstr "Editar Nota"
+msgstr "Editar Quota"
 
 msgid "Edit Owner"
 msgstr "Editar Proprietário"
@@ -737,7 +737,7 @@ msgid "Invalid movement operation"
 msgstr "Operação inválida"
 
 msgid "Invalid note"
-msgstr "Nota inválida"
+msgstr "Quota inválida"
 
 msgid "Invalid owner"
 msgstr "Proprietário inválido"
@@ -829,7 +829,7 @@ msgid "List Movements"
 msgstr "Listar Movimentos"
 
 msgid "List Notes"
-msgstr "Listar Notas"
+msgstr "Listar Quotas"
 
 msgid "List Owners"
 msgstr "Listar Proprietários"
@@ -988,7 +988,7 @@ msgid "New Movement Operation"
 msgstr "Criar Operação"
 
 msgid "New Note"
-msgstr "Criar Nota"
+msgstr "Criar Quota"
 
 msgid "New Owner"
 msgstr "Criar Proprietário"
@@ -1033,15 +1033,15 @@ msgid "Note Type"
 msgstr "Tipo"
 
 msgid "Note can not be deleted"
-msgstr "Não foi possível apagar Nota"
+msgstr "Não foi possível apagar Quota"
 
 msgid "Note deleted"
-msgstr "Nota apagada"
+msgstr "Quota apagada"
 
 msgid "Note"
 msgid_plural "Notes"
-msgstr[0] "Nota"
-msgstr[1] "Notas"
+msgstr[0] "Quota"
+msgstr[1] "Quotas"
 
 msgid "November"
 msgstr "Novembro"
@@ -1145,7 +1145,7 @@ msgid "Pick"
 msgstr "Escolha.."
 
 msgid "Pick Notes"
-msgstr "Escolha Notas"
+msgstr "Escolha Quotas"
 
 msgid "Please activate one fiscal year."
 msgstr "Deve activar um exercício"
@@ -1198,7 +1198,7 @@ msgid "Related %s"
 msgstr "%s Relacionados"
 
 msgid "Related Notes"
-msgstr "Notas Relacionadas"
+msgstr "Quotas Relacionadas"
 
 msgid "Remember Me"
 msgstr "Reconhecer-me"
@@ -1391,19 +1391,19 @@ msgid "The movement operation has been saved"
 msgstr "A operação foi registada"
 
 msgid "The note could not be saved. Please, try again."
-msgstr "A nota não foi registada. Por favor, tente outra vez."
+msgstr "A quota não foi registada. Por favor, tente outra vez."
 
 msgid "The note has been saved"
-msgstr "A nota foi registada"
+msgstr "A quota foi registada"
 
 msgid "The notes could not be created. Please, try again."
-msgstr "Não foi possivel registar a nota. Por favor, tente outra vez."
+msgstr "Não foi possivel registar a quota. Por favor, tente outra vez."
 
 msgid "The notes could not be saved. Please, try again."
-msgstr "Não foi possivel registar as notas. Por favor, tente outra vez."
+msgstr "Não foi possivel registar as quotas. Por favor, tente outra vez."
 
 msgid "The notes has been created"
-msgstr "As notas foram criadas"
+msgstr "As quotas foram criadas"
 
 msgid "The owner could not be found at this fraction. Please, try again."
 msgstr "O proprietário não pertence á fracção."
@@ -1451,13 +1451,13 @@ msgid "There was an error deleting the %1$s with id: %2$s"
 msgstr "Houve um erro ao remover o %1$s com o id: %2$s"
 
 msgid "This Budget can not be deleted, check budget status or existing notes already paid."
-msgstr "Este orçamento não pode ser removido, verifique o estado do orçamento ou a existencia de notas em estado de pago."
+msgstr "Este orçamento não pode ser removido, verifique o estado do orçamento ou a existencia de quotas em estado de pago."
 
 msgid "This Fiscal Year can not be deleted, check existing notes already paid."
-msgstr "Esta Exercício não pode ser removido, verifique a existencia de notas em estado pago."
+msgstr "Esta Exercício não pode ser removido, verifique a existencia de quotas em estado pago."
 
 msgid "This Fraction can not be deleted, check existing notes already paid."
-msgstr "Esta Fração não pode ser removida, verifique a existencia de notas em estado pago."
+msgstr "Esta Fração não pode ser removida, verifique a existencia de quotas em estado pago."
 
 msgid "This application is now on maintenance mode, back soon as possible!"
 msgstr "A aplicação está em modo de manutenção, volta o mais rápido possível!"
@@ -1493,7 +1493,7 @@ msgid "Total amount"
 msgstr "Valor total"
 
 msgid "Total notes"
-msgstr "Total notas"
+msgstr "Total quotas"
 
 msgid "Trial balance"
 msgstr "Balancete"
@@ -1544,10 +1544,10 @@ msgid "Warning: Mil rate sum should be 1000"
 msgstr "Aviso: A soma da permilagem deve ser 1000"
 
 msgid "Warning: when you cancel a budget, ALL DEBIT NOTES created by this budget will be set as CANCELED, EXCEPT the ones already paid."
-msgstr "Aviso: quando se cancela um orçamento, TODAS AS NOTAS DE DEBITO criadas por esse orçamento serão alteradas para o estado de CANCELADO, EXCEPTO as notas que já foram pagas."
+msgstr "Aviso: quando se cancela um orçamento, TODAS AS NOTAS DE DEBITO criadas por esse orçamento serão alteradas para o estado de CANCELADO, EXCEPTO as quotas que já foram pagas."
 
 msgid "Warning: when you set a budget as pending, ALL DEBIT NOTES created by this budget will be set as WAITS PAYMENT, EXCEPT the ones already paid."
-msgstr "Aviso: quando se coloca o orçamento como inativo, TODAS AS NOTAS DE DEBITO criadas por esse orçamento serão alteradas para o estado de AGUARDA PAGAMENTO, EXCEPTO as notas que já foram pagas."
+msgstr "Aviso: quando se coloca o orçamento como inativo, TODAS AS NOTAS DE DEBITO criadas por esse orçamento serão alteradas para o estado de AGUARDA PAGAMENTO, EXCEPTO as quotas que já foram pagas."
 
 msgid "pHAlkaline provides services in customization & new features."
 msgstr "pHAlkaline disponibiliza serviços de desenvolvimento à medida das suas necessidades para o pHKondo."
@@ -1833,9 +1833,6 @@ msgstr "Prioridade"
 
 msgid "Assigned To"
 msgstr "Atribuido"
-
-msgid "Notes"
-msgstr "Notas"
 
 msgid "Support"
 msgid_plural "Supports"
