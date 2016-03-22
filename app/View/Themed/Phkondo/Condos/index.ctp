@@ -2,10 +2,30 @@
     <!-- Default panel contents -->
     <div class="panel-heading"><strong><?php echo __n('Condo', 'Condos', 2); ?></strong></div>
     <div class="panel-body">
-
-
-        <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Condo'), array('action' => 'add'), array('class' => 'btn btn-primary hidden-print', 'style' => 'margin: 14px 0; float: right;', 'escape' => false)); ?>
-        <div class="clearfix"></div>
+        
+        <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Condo'), array('action' => 'add'), array('class' => 'btn btn-primary hidden-print', 'style' => 'margin: 8px 0;', 'escape' => false)); ?>
+        
+        <?php if (isset($keyword)) : ?>
+                <?php echo $this->Form->create(null, array('class' => 'navbar-form navbar-right', 'role' => 'search', 'type' => 'get', 'url' => $this->request->here)); ?>
+                        <!--form method="post" class="navbar-form navbar-right" role="search" action="<?php //echo $this->request->here();   ?>"-->
+                <div class="form-group">
+                    <?php
+                    foreach ($this->request->query as $key => $value):
+                        if ($key != 'keyword' && $key != 'page'):
+                            echo $this->Form->hidden($key, array('value' => $value));
+                        endif;
+                    endforeach;
+                    ?>
+                    <input type="text" 
+                           class="form-control"  
+                           name="keyword" 
+                           onblur="if (this.value == '') this.value = '<?php echo __('Search'); ?>';" 
+                           onfocus="if (this.value == '<?php echo __('Search'); ?>') this.value = '';" value="<?php echo $keyword ?>" >
+                </div>
+                <button type="submit" class="btn btn-default"><?php echo __('Search'); ?></button>
+                </form>
+            <?php endif; ?>
+<div class="clearfix"></div>
         <div class="table-responsive"> 
             <table class="table table-hover table-condensed">
                 <thead>
@@ -13,8 +33,8 @@
                         <th>&nbsp;</th>
                         <th><?php echo $this->Paginator->sort('title', __('Condo')); ?></th>
                         <th class="hidden-xs"><?php echo $this->Paginator->sort('address'); ?></th>
-                        <th class="hidden-xs"><?php echo __n('Fiscal Year', 'Fiscal Years', 1); //$this->Paginator->sort('FiscalYear.title', __n('Fiscal Year','Fiscal Years',1));        ?></th>
-                        <th class="actions hidden-print hidden-print"><?php //echo __('Actions');       ?></th>
+                        <th class="hidden-xs"><?php echo __n('Fiscal Year', 'Fiscal Years', 1); ?></th>
+                        <th class="actions hidden-print hidden-print"><?php echo ' '; ?></th>
                     </tr>
                 </thead>
                 <tbody>
