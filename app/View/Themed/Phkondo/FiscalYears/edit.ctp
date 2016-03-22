@@ -1,9 +1,9 @@
 
 <div id="page-container" class="row">
 
-    <div id="sidebar" class="col-sm-3 hidden-print collapse navbar-collapse phkondo-navbar">
+    <div class="col-sm-3">
 
-        <div class="actions">
+        <div id="sidebar" class="collapse navbar-collapse phkondo-navbar actions">
 
             <ul class="nav nav-pills nav-stacked">
                 <li ><?php echo $this->Html->link(__('View %s',__n('Fiscal Year','Fiscal Years',1)), array('action' => 'view', $this->Form->value('FiscalYear.id'),'?'=>$this->request->query), array('class' => 'btn ')); ?> </li>

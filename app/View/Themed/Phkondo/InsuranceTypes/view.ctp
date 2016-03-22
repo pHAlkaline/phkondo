@@ -6,9 +6,8 @@ if (!$insuranceType['InsuranceType']['deletable']) {
 ?>
 <div id="page-container" class="row">
 
-    <div id="sidebar" class="col-sm-3 hidden-print collapse navbar-collapse phkondo-navbar">
-
-        <div class="actions">
+    <div class="col-sm-3">
+        <div id="sidebar" class="hidden-print collapse navbar-collapse phkondo-navbar actions">
 
             <ul class="nav nav-pills nav-stacked">
                 <li ><?php echo $this->Html->link(__('Edit Insurance Type'), array('action' => 'edit', $insuranceType['InsuranceType']['id']), array('class' => 'btn ')); ?> </li>
