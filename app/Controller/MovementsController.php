@@ -232,7 +232,8 @@ parent::beforeRender();
                 $breadcrumbs[6] = array('link' => '', 'text' => $this->getPhkRequestVar('movement_text'), 'active' => 'active');
                 break;
         }
-        $this->set(compact('breadcrumbs'));
+        $headerTitle=$__n('Movement','Movements',2);
+        $this->set(compact('breadcrumbs','headerTitle'));
     }
 
 }

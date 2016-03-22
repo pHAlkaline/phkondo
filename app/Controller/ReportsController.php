@@ -70,9 +70,8 @@ class ReportsController extends AppController {
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
             array('link' => '', 'text' => __('Reports'), 'active' => 'active')
         );
-      
-
-        $this->set(compact('breadcrumbs'));
+      $headerTitle=__('Reports');
+        $this->set(compact('breadcrumbs','headerTitle'));
     }
 
 }

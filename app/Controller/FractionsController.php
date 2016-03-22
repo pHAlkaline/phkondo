@@ -211,7 +211,7 @@ class FractionsController extends AppController {
                 $breadcrumbs[4] = array('link' => '', 'text' => $this->getPhkRequestVar('fraction_text'), 'active' => 'active');
                 break;
         }
-        $headerTitle=$this->getPhkRequestVar('condo_text');
+        $headerTitle=__n('Fraction', 'Fractions', 2);
         $this->set(compact('breadcrumbs','headerTitle'));
     }
 

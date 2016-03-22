@@ -233,7 +233,8 @@ class UsersController extends AppController {
                 $breadcrumbs[1] = array('link' => '', 'text' => __('Start Session'), 'active' => 'active');
                 break;
         }
-        $this->set(compact('breadcrumbs'));
+        $headerTitle=__('Users');
+        $this->set(compact('breadcrumbs','headerTitle'));
     }
 
     private function setTheme() {
