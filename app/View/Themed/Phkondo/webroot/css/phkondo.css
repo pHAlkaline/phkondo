@@ -66,6 +66,10 @@ border-top: none;
     text-align: left;
 }
 
+.nav > li > .btn {
+    white-space: normal;
+}
+
 .btn-default {
     padding: 5px;
 

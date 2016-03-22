@@ -1,10 +1,8 @@
 
 <div id="page-container" class="row">
 
-    <div id="sidebar" class="col-sm-3 hidden-print collapse navbar-collapse phkondo-navbar">
-
-        <div class="actions">
-
+    <div class="col-sm-3">
+        <div id="sidebar" class="hidden-print collapse navbar-collapse phkondo-navbar actions">
             <ul class="nav nav-pills nav-stacked">			
                 <li ><?php echo $this->Html->link(__('Edit Administrator'), array('action' => 'edit', $administrator['Administrator']['id'],'?'=>$this->request->query), array('class' => 'btn ')); ?> </li>
                 <li ><?php echo $this->Form->postLink(__('Delete Administrator'), array('action' => 'delete', $administrator['Administrator']['id'],'?'=>$this->request->query), array('class' => 'btn ','confirm'=> __('Are you sure you want to delete # %s?' , $administrator['Administrator']['title'] ))); ?> </li>
