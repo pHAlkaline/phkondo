@@ -7,12 +7,11 @@
             <h2 class="col-sm-9"><?php echo __n('Fraction', 'Fractions', 2); ?></h2>
 
             <div class="actions hidden-print col-sm-3">
-                <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Fraction'), array('action' => 'add','?'=>$this->request->query), array('class' => 'btn btn-primary', 'style' => 'margin: 8px 0; float:right', 'escape' => false));  
-                echo $this->element('search_tool');
+                <?php 
+                echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Fraction'), array('action' => 'add','?'=>$this->request->query), array('class' => 'btn btn-primary', 'style' => 'margin: 8px 0; float:right', 'escape' => false));  
                 ?> 
             </div><!-- /.actions -->
-
-
+            <?php echo $this->element('search_tool'); ?>
             <div class="clearfix"></div>
             <?php
             if ($milRateWarning):

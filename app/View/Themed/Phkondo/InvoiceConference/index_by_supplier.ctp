@@ -7,9 +7,9 @@
            
             <div class="actions hidden-print col-sm-3">
                 <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Invoice'), array('action' => 'add',$supplier_id,'?'=>$this->request->query), array('class' => 'btn btn-primary', 'style' => 'margin: 8px 0; float: right;', 'escape' => false));
-                echo $this->element('search_tool');?>
+                ?>
             </div><!-- /.actions -->
-            
+             <?php echo $this->element('search_tool'); ?>
             <div class="clearfix"></div>
             <div class="table-responsive">
                 <table class="table table-hover table-condensed">

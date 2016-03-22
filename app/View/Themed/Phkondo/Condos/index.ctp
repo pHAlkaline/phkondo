@@ -9,7 +9,7 @@
        
        <?php  
        echo $this->element('search_tool');?>
-<div class="clearfix"></div>
+        <div class="clearfix"></div>
         <div class="table-responsive"> 
             <table class="table table-hover table-condensed">
                 <thead>

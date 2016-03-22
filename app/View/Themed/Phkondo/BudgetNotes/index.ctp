@@ -16,9 +16,9 @@ if ($phkRequestData['budget_status'] == 1) {
                   <?php if ($showActions) : 
               echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Note'), array('action' => 'add','?'=>$this->request->query), array('class' => 'btn btn-primary', 'style' => 'margin: 8px 0; float: right;', 'escape' => false));
                     endif;
-                echo $this->element('search_tool');?>
+                ?>
             </div><!-- /.actions -->
-           
+           <?php echo $this->element('search_tool'); ?>
             <div class="clearfix"></div>
             <div class="table-responsive">
                 <table class="table table-hover table-condensed">
