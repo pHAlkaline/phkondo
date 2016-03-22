@@ -6,7 +6,8 @@
 
             <h2 class="col-sm-9"><?php echo __('Insurance Types'); ?></h2>
             <div class="actions hidden-print col-sm-3">
-                <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Insurance Type'), array('action' => 'add'), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 1px; float: right;', 'escape' => false)); ?>
+                <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Insurance Type'), array('action' => 'add'), array('class' => 'btn btn-primary', 'style' => 'margin: 8px 0; float: right;', 'escape' => false));
+                echo $this->element('search_tool');?>
             </div><!-- /.actions -->
         </div><!-- /.actions -->
         <div class="clearfix"></div>

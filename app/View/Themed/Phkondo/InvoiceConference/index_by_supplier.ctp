@@ -6,7 +6,8 @@
             <h2 class="col-sm-9"><?php echo $phkRequestData['supplier_text']; ?></h2>
            
             <div class="actions hidden-print col-sm-3">
-                <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Invoice'), array('action' => 'add',$supplier_id,'?'=>$this->request->query), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 0; float: right;', 'escape' => false)); ?>            
+                <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Invoice'), array('action' => 'add',$supplier_id,'?'=>$this->request->query), array('class' => 'btn btn-primary', 'style' => 'margin: 8px 0; float: right;', 'escape' => false));
+                echo $this->element('search_tool');?>
             </div><!-- /.actions -->
             
             <div class="clearfix"></div>

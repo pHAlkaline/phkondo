@@ -7,7 +7,9 @@
 
             <h2 class="col-sm-9"><?php echo __n('Fiscal Year','Fiscal Years',2); ?></h2>
             <div class="actions hidden-print col-sm-3">
-                <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Fiscal Year'), array('action' => 'add','?'=>$this->request->query), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 0; float: right;', 'escape' => false)); ?>            </div><!-- /.actions -->
+                <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Fiscal Year'), array('action' => 'add','?'=>$this->request->query), array('class' => 'btn btn-primary', 'style' => 'margin: 8px 0; float: right;', 'escape' => false));
+                echo $this->element('search_tool');?>
+            </div><!-- /.actions -->
             <div class="clearfix"></div>
             <div class="table-responsive">
                 <table class="table table-hover table-condensed">
