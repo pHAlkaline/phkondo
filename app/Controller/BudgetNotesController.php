@@ -58,14 +58,13 @@ class BudgetNotesController extends AppController {
         if (isset($this->Paginator->paginate['order'])) {
             $options['order'] = array_merge($this->Paginator->paginate['order'], $options['order']);
         }
-        $this->Paginator->settings = array(
+        $this->Paginator->settings = $this->Paginator->settings+array(
             'conditions' => $options['conditions'],
             'order' => $options['order'],
             //'requiresAcessLevel' => true,
-            'contain' => array('NoteType', 'Entity', 'NoteStatus', 'Fraction'));
+            'contain' => array('NoteType', 'Entity', 'NoteStatus','Fraction'));
 
-
-        $this->setFilter(array('Note.document', 'Note.title', 'NoteType.name', 'Entity.name', 'Note.amount', 'NoteStatus.name'));
+        $this->setFilter(array('Note.document', 'Note.title', 'NoteType.name', 'Entity.name', 'Note.amount', 'NoteStatus.name', 'Fraction.description'));
         $this->set('notes', $this->Paginator->paginate('Note'));
     }
 
