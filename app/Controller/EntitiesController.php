@@ -51,11 +51,10 @@ class EntitiesController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Paginator->settings = $this->Paginator->settings + array(
-            'contain' => array('EntityType')
-        );
+        $this->Paginator->settings = $this->Paginator->settings +
+                array('conditions' => array());
         
-        $this->setFilter(array('Entity.name','EntityType.name','Entity.address','Entity.email','Entity.contacts','Entity.vat_number'));
+        $this->setFilter(array('Entity.name','Entity.address','Entity.email','Entity.contacts','Entity.vat_number'));
         $this->set('entities', $this->Paginator->paginate('Entity'));
     }
 
@@ -71,7 +70,7 @@ class EntitiesController extends AppController {
             $this->Flash->error(__('Invalid entity'));
             $this->redirect(array('action' => 'index'));
         }
-        $this->Entity->contain(array('Comment','EntityType','Fraction'=>array('Condo','Manager')));
+        $this->Entity->contain(array('Comment','Fraction'=>array('Condo','Manager')));
         $this->Entity->bindModel(
         array(
             'hasAndBelongsToMany' => array(
@@ -109,55 +108,7 @@ class EntitiesController extends AppController {
                 $this->Flash->error(__('The entity could not be saved. Please, try again.'));
             }
         }
-        $entityTypes = $this->Entity->EntityType->find('list');
-        $this->set(compact('entityTypes'));
-    }
-
-    
-
-    /**
-     * addFromMaintenance method
-     *
-     * @return void
-     */
-    public function addFromMaintenance($maintenanceId = null) {
         
-        $maintenance = $this->Maintenance;
-        if ($maintenanceId != null && !$maintenance->exists($maintenanceId)) {
-            $this->Flash->error(__('Invalid entity'));
-            $this->redirect(array('controller'=>'maintenance','action' => 'index','?'=>$this->request->query));
-        }
-        if ($this->request->is('post')) {
-            $this->Entity->create();
-            $this->request->data['Entity']['entity_type_id'] = 2; // Client Type
-            if ($this->Entity->save($this->request->data)) {
-                $this->Flash->success(__('The entity has been saved'));
-                if ($maintenanceId != null) {
-                    $this->redirect(array('controller' => 'maintenances', 'action' => 'edit', $maintenanceId,'?'=>$this->request->query));
-                } else {
-                    $this->redirect(array('controller' => 'maintenances', 'action' => 'add','?'=>$this->request->query));
-                }
-            } else {
-                $this->Flash->error(__('The entity could not be saved. Please, try again.'));
-            }
-        }
-        $entityTypes = $this->Entity->EntityType->find('list', array('conditions' => array('id' => '2')));
-
-        $this->set(compact('entityTypes', 'maintenanceId'));
-
-        if (!$this->getPhkRequestVar('condo_id')) {
-            $this->Flash->error(__('Invalid condo'));
-           $this->redirect(array('controller'=>'condos','action' => 'index'));
-        }
-
-        $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'maintenances', 'action' => 'index','?'=>$this->request->query)), 'text' => __n('Maintenance','Maintenances',2), 'active' => ''),
-            array('link' => '', 'text' => __n('Supplier','Suppliers',2), 'active' => 'active')
-        );
-        $this->set(compact('breadcrumbs'));
     }
 
     /**
@@ -183,8 +134,6 @@ class EntitiesController extends AppController {
             $options = array('conditions' => array('Entity.' . $this->Entity->primaryKey => $id));
             $this->request->data = $this->Entity->find('first', $options);
         }
-        $entityTypes = $this->Entity->EntityType->find('list');
-        $this->set(compact('entityTypes'));
         $this->setPhkRequestVar('entity_id', $id);
         $this->setPhkRequestVar('entity_text', $this->request->data['Entity']['name']);
         

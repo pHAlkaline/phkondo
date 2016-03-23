@@ -121,7 +121,7 @@ class InvoiceConference extends AppModel {
             ),
             'validInterval' => array(
                 'rule' => array('validInterval'),
-                'message' => 'invalid date',
+                'message' => 'invalid date, do not match active fiscal year dates',
             //'allowEmpty' => false,
             //'required' => false,
             //'last' => false, // Stop validation after this rule
@@ -221,7 +221,7 @@ class InvoiceConference extends AppModel {
             'order' => ''
         ),
         'Supplier' => array(
-            'className' => 'Entity',
+            'className' => 'Supplier',
             'foreignKey' => 'supplier_id',
             'conditions' => '',
             'fields' => '',

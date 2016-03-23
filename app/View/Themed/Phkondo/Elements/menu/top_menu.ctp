@@ -39,8 +39,13 @@
                                 <li role="presentation" class="divider"></li>
                                 <li >
 
-                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-briefcase"></span> ' . __n('Entity', 'Entities', 2), array('plugin' => '', 'controller' => 'entities', 'action' => 'index'), array('escape' => false)); ?>
+                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-user"></span> ' . __n('Entity', 'Entities', 2), array('plugin' => '', 'controller' => 'entities', 'action' => 'index'), array('escape' => false)); ?>
                                 </li>
+                                <li >
+
+                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-oil"></span> ' . __n('Supplier', 'Suppliers', 2), array('plugin' => '', 'controller' => 'suppliers', 'action' => 'index'), array('escape' => false)); ?>
+                                </li>
+
 
 
                                 <li >
@@ -73,7 +78,7 @@
 
                                 <?php } ?>
                                 <li >
-                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-user"></span> ' . __('Users'), array('plugin' => '', 'controller' => 'users', 'action' => 'index'), array('escape' => false)); ?>
+                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-cog"></span> ' . __('Users'), array('plugin' => '', 'controller' => 'users', 'action' => 'index'), array('escape' => false)); ?>
                                 </li>
 
                             <?php } ?>
