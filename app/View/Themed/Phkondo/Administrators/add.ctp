@@ -1,9 +1,9 @@
 
-<div id="page-container" class="row">
+<div id="page-container" class="row row-offcanvas row-offcanvas-left">
 
     <div class="col-sm-3">
 
-        <div id="sidebar" class="hidden-print collapse navbar-collapse phkondo-navbar actions">
+        <div id="sidebar" class="hidden-print actions sidebar-offcanvas">
 
             <ul class="nav nav-pills nav-stacked">
                 <li ><?php echo $this->Html->link(__('List Administrators'), array('action' => 'index','?'=>$this->request->query),array('class'=>'btn')); ?></li>

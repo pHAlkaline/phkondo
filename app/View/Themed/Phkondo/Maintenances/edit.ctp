@@ -1,9 +1,9 @@
 
-<div id="page-container" class="row">
+<div id="page-container" class="row row-offcanvas row-offcanvas-left">
 
     <div class="col-sm-3">
 
-        <div id="sidebar" class="collapse navbar-collapse phkondo-navbar actions">
+        <div id="sidebar" class="hidden-print actions sidebar-offcanvas">
 
             <ul class="nav nav-pills nav-stacked">
                 <li ><?php echo $this->Form->postLink(__('Delete Maintenance'), array('action' => 'delete', $this->Form->value('Maintenance.id'),'?'=>$this->request->query),array('class'=>'btn', 'confirm'=>__('Are you sure you want to delete # %s?', $this->Form->value('Maintenance.title')))); ?></li>

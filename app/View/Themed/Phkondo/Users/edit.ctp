@@ -6,7 +6,7 @@ foreach ($role_options as $key => $value){
 }
 
 ?>
-<div id="page-container" class="row">
+<div id="page-container" class="row row-offcanvas row-offcanvas-left">
 
     <div class="col-sm-3">
 
