@@ -101,7 +101,7 @@ class FractionOwnersController extends AppController {
      */
     public function add() {
         if ($this->request->is('post') || $this->request->is('put')) {
-            $this->request->data['Entity']['entity_type_id'] = '1';
+            //$this->request->data['Entity']['entity_type_id'] = '1';
             $this->Fraction->Entity->create();
             if ($this->Fraction->Entity->save($this->request->data)) {
 
@@ -298,7 +298,6 @@ class FractionOwnersController extends AppController {
             'fields' => array('Entity.id', 'Entity.name', 'Entity.address'),
             'conditions' => array(
                 'Entity.name LIKE' => $term . '%',
-                'Entity.entity_type_id' => '1',
                 array('NOT' => array('Entity.id' => $entitiesInFraction))
             ),
             'limit' => 100,

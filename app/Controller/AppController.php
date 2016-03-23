@@ -239,12 +239,12 @@ class AppController extends Controller {
 
     private function setSupplierData() {
         if (isset($this->phkRequestData['supplier_id']) && !isset($this->phkRequestData['supplier_text'])) {
-            App::import("Model", "Entity");
-            $entity = new Entity();
-            $result = $entity->find("first", array('conditions' => array('Entity.id' => $this->phkRequestData['supplier_id'])));
+            App::import("Model", "Supplier");
+            $supplier = new Supplier();
+            $result = $supplier->find("first", array('conditions' => array('Supplier.id' => $this->phkRequestData['supplier_id'])));
             if (count($result)) {
-                $this->phkRequestData['supplier_id'] = $result['Entity']['id'];
-                $this->phkRequestData['supplier_text'] = $result['Entity']['name'];
+                $this->phkRequestData['supplier_id'] = $result['Supplier']['id'];
+                $this->phkRequestData['supplier_text'] = $result['Supplier']['name'];
             }
         }
     }

@@ -162,9 +162,10 @@ class InvoiceConferenceController extends AppController {
         $fiscalYears = $this->InvoiceConference->FiscalYear->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('fiscal_year_id'))));
 
         $invoiceConferenceStatuses = $this->InvoiceConference->InvoiceConferenceStatus->find('list', array('conditions' => array('active' => '1')));
-        $supplier_conditions = array('entity_type_id' => '2');
+        
+        $supplier_conditions=array();
         if ($supplier_id != null) {
-            $supplier_conditions = array('entity_type_id' => '2', 'id' => $supplier_id);
+            $supplier_conditions = array('id' => $supplier_id);
         }
 
         $suppliers = $this->InvoiceConference->Supplier->find('list', array('order' => 'Supplier.name', 'conditions' => $supplier_conditions));
@@ -205,7 +206,7 @@ class InvoiceConferenceController extends AppController {
 
         $invoiceConferenceStatuses = $this->InvoiceConference->InvoiceConferenceStatus->find('list', array('conditions' => array('active' => '1')));
 
-        $suppliers = $this->InvoiceConference->Supplier->find('list', array('order' => 'name', 'conditions' => array('entity_type_id' => '2')));
+        $suppliers = $this->InvoiceConference->Supplier->find('list', array('order' => 'name'));
         $this->set(compact('condos', 'invoiceConferenceStatuses', 'fiscalYears', 'suppliers'));
         $this->setPhkRequestVar('invoice_id',$id);
         

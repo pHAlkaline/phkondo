@@ -144,7 +144,7 @@ class FractionsController extends AppController {
         $fraction = $this->Fraction->find('first', array('conditions' => array('Fraction.id'=>$id)));
         $entitiesInFraction = Set::extract('/Entity/id', $fraction);
 
-        $managers = $this->Fraction->Manager->find('list', array('order' => 'Manager.name', 'conditions' => array('Manager.entity_type_id' => '1', 'Manager.id' => $entitiesInFraction)));
+        $managers = $this->Fraction->Manager->find('list', array('order' => 'Manager.name', 'conditions' => array('Manager.id' => $entitiesInFraction)));
         $fractionTypes = $this->Fraction->FractionType->find('list', array('conditions' => array('active' =>'1')));
         
         $this->set(compact('condos', 'managers', 'fractionTypes'));

@@ -38,11 +38,6 @@
                             <?php echo h($entity['Entity']['name']); ?>
                             &nbsp;
                         </td>
-                    </tr><tr>		<td><strong><?php echo __('Entity Type'); ?></strong></td>
-                        <td>
-                            <?php echo $entity['EntityType']['name'] ?>
-                            &nbsp;
-                        </td>
                     </tr><tr>		<td><strong><?php echo __('Vat Number'); ?></strong></td>
                         <td>
                             <?php echo h($entity['Entity']['vat_number']); ?>

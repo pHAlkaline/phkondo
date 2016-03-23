@@ -140,7 +140,6 @@ class Fraction extends AppModel {
         'Manager' => array(
             'className' => 'Entity',
             'foreignKey' => 'manager_id',
-            'conditions' => array('entity_type_id' => '1'),
             'fields' => array('id', 'name'),
             'order' => ''
         ),
@@ -197,7 +196,6 @@ class Fraction extends AppModel {
             'foreignKey' => 'fraction_id',
             'associationForeignKey' => 'entity_id',
             'unique' => 'keepExisting',
-            'conditions' => array('Entity.entity_type_id' => '1'),
             'fields' => '',
             'order' => array('Entity.name'),
             'limit' => '',

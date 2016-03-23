@@ -154,9 +154,8 @@ class Maintenance extends AppModel {
             'order' => ''
         ),
         'Supplier' => array(
-            'className' => 'Entity',
+            'className' => 'Supplier',
             'foreignKey' => 'supplier_id',
-            'conditions' => array('entity_type_id' => '2'),
             'fields' => array('id', 'name'),
             'order' => ''
         ),

@@ -11,6 +11,7 @@
                 <?php } else { ?>
                     <li><?php echo $this->Html->link(__('List Invoices'), array('action' => 'index_by_supplier', key($suppliers),'?'=>$this->request->query), array('class' => 'btn')); ?></li>
                 <?php } ?>
+                    <li ><?php echo $this->Html->link(__('New Supplier'), array('controller' => 'suppliers', 'action' => 'addFromInvoice', $this->Form->value('InvoiceConference.id'),'?'=>$this->request->query), array('class' => 'btn')); ?> </li>
             </ul><!-- /.list-group -->
 
         </div><!-- /.actions -->

@@ -24,12 +24,7 @@
                 <div class="form-group">
                     <?php echo $this->Form->input('name', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
-
-                <div class="form-group">
-                    <?php echo $this->Form->input('entity_type_id', array('class' => 'form-control')); ?>
-                </div><!-- .form-group -->
-
-                <div class="form-group">
+                 <div class="form-group">
                     <?php echo $this->Form->input('vat_number', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
