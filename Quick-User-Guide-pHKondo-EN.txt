@@ -1,4 +1,4 @@
-vpHKondo workflow
+pHKondo quick guide
 
 Add condo(s) -> New condo 
 Enter condo details
