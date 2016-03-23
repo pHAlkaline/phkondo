@@ -4,10 +4,10 @@ if (!$fractionType['FractionType']['deletable']) {
     $deleteDisabled = ' disabled';
 }
 ?>
-<div id="page-container" class="row">
+<div id="page-container" class="row row-offcanvas row-offcanvas-left">
 
     <div class="col-sm-3">
-        <div id="sidebar" class="hidden-print collapse navbar-collapse phkondo-navbar actions">
+        <div id="sidebar" class="hidden-print actions sidebar-offcanvas">
 
             <ul class="nav nav-pills nav-stacked">
                 <li ><?php echo $this->Html->link(__('Edit Fraction Type'), array('action' => 'edit', $fractionType['FractionType']['id']), array('class' => 'btn ')); ?> </li>
