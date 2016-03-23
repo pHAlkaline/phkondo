@@ -65,8 +65,8 @@ msgstr "Valor inválido."
 msgid "invalid begin date"
 msgstr "Data de início inválida."
 
-msgid "invalid budget date, do not match fiscal year dates"
-msgstr "Data inválida, não coincide com data do exercicio."
+msgid "invalid date, do not match active fiscal year dates"
+msgstr "Data inválida, não coincide com datas do exercicio ativo."
 
 msgid "invalid close date"
 msgstr "Data de fecho inválida."

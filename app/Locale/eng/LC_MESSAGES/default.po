@@ -128,6 +128,9 @@ msgstr ""
 msgid "Add Entity"
 msgstr ""
 
+msgid "Add Supplier"
+msgstr ""
+
 msgid "Add Fiscal Year"
 msgstr ""
 
@@ -375,6 +378,9 @@ msgstr ""
 msgid "Delete Entity"
 msgstr ""
 
+msgid "Delete Supplier"
+msgstr ""
+
 msgid "Delete Fiscal Year"
 msgstr ""
 
@@ -461,6 +467,9 @@ msgstr ""
 msgid "Edit Entity"
 msgstr ""
 
+msgid "Edit Supplier"
+msgstr ""
+
 msgid "Edit Fiscal Year"
 msgstr ""
 
@@ -520,13 +529,24 @@ msgid_plural "Entities"
 msgstr[0] ""
 msgstr[1] ""
 
+msgid "Supplier"
+msgid_plural "Suppliers"
+msgstr[0] ""
+msgstr[1] ""
+
 msgid "Entity Type"
 msgstr ""
 
 msgid "Entity can not be deleted"
 msgstr ""
 
+msgid "Supplier can not be deleted"
+msgstr ""
+
 msgid "Entity deleted"
+msgstr ""
+
+msgid "Supplier deleted"
 msgstr ""
 
 msgid "Error"
@@ -692,6 +712,9 @@ msgid "Invalid condo or fiscal year"
 msgstr ""
 
 msgid "Invalid entity"
+msgstr ""
+
+msgid "Invalid supplier"
 msgstr ""
 
 msgid "Invalid fiscal year"
@@ -952,6 +975,9 @@ msgid "New Condo"
 msgstr ""
 
 msgid "New Entity"
+msgstr ""
+
+msgid "New Supplier"
 msgstr ""
 
 msgid "New Fiscal Year"
@@ -1327,7 +1353,13 @@ msgstr ""
 msgid "The entity could not be saved. Please, try again."
 msgstr ""
 
+msgid "The supplier could not be saved. Please, try again."
+msgstr ""
+
 msgid "The entity has been saved"
+msgstr ""
+
+msgid "The supplier has been saved"
 msgstr ""
 
 msgid "The fiscal year could not be saved. Please, try again."

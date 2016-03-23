@@ -50,9 +50,7 @@ class MovementOperationsController extends AppController {
      */
     public function index() {
          $this->Paginator->settings = $this->Paginator->settings +
-                array('conditions' => array
-                        ("AND" => array("MovementOperation.active" => "1")
-                ));
+                array('conditions' => array());
         $this->setFilter(array('MovementOperation.name'));
         $this->set('movementOperations', $this->Paginator->paginate('MovementOperation'));
     }

@@ -7,7 +7,7 @@
 
             <ul class="nav nav-pills nav-stacked">
                 <li ><?php echo $this->Html->link(__('List Maintenances'), array('action' => 'index','?'=>$this->request->query), array('class' => 'btn')); ?></li>
-                <li ><?php echo $this->Html->link(__('New Supplier'), array('controller' => 'entities', 'action' => 'addFromMaintenance', $this->Form->value('Maintenance.id'),'?'=>$this->request->query), array('class' => 'btn')); ?> </li>
+                <li ><?php echo $this->Html->link(__('New Supplier'), array('controller' => 'suppliers', 'action' => 'addFromMaintenance', $this->Form->value('Maintenance.id'),'?'=>$this->request->query), array('class' => 'btn')); ?> </li>
             </ul><!-- /.list-group -->
 
         </div><!-- /.actions -->

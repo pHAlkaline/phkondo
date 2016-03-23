@@ -21,7 +21,7 @@
  * @copyright     Copyright (c) pHAlkaline . (http://phalkaline.eu)
  * @link          http://phkondo.net pHKondo Project
  * @package       app.Model
- * @since         pHKondo v 0.0.1
+ * @since         pHKondo v 1.4
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
@@ -30,10 +30,11 @@ App::uses('AppModel', 'Model');
 
 /**
  * Entity Model
+ *
  */
-class Entity extends AppModel {
+class Supplier extends AppModel {
     
-     public $actsAs = array('Feedback.Commentable');
+    public $actsAs = array('Feedback.Commentable');
 
     /**
      * Display field
@@ -47,7 +48,7 @@ class Entity extends AppModel {
      *
      * @var string
      */
-    public $order = 'Entity.name';
+    public $order = 'Supplier.name';
 
     /**
      * Validation rules
@@ -121,26 +122,18 @@ class Entity extends AppModel {
     }
 
     function beforeDelete($cascade = true) {
-        if ($this->hasNotes($this->id)) {
+        if ($this->hasInvoiceConference($this->id)) {
             return false;
         }
-        if ($this->hasReceipts($this->id)) {
+        if ($this->hasMaintenance($this->id)) {
             return false;
         }
-        if ($this->hasFractions($this->id)) {
-            return false;
-        }
-        if ($this->hasFractionManager($this->id)) {
-            return false;
-        }
-        if ($this->hasAdministrators($this->id)) {
-            return false;
-        }
-        
+
         return true;
     }
 
-    public function hasNotes($id = null) {
+  
+    public function hasInvoiceConference($id = null) {
         $this->noAfterFind = true;
         if (!empty($id)) {
             $this->id = $id;
@@ -151,71 +144,13 @@ class Entity extends AppModel {
             return false;
         }
 
-        $result = ClassRegistry::init('Note')->find('count', array('conditions' => array('Note.entity_id' => $id)));
+        $result = ClassRegistry::init('InvoiceConference')->find('count', array('conditions' => array('InvoiceConference.supplier_id' => $id)));
         return ($result > 0) ? true : false;
     }
 
-    public function hasReceipts($id = null) {
-        $this->noAfterFind = true;
-        if (!empty($id)) {
-            $this->id = $id;
-        }
+  
 
-        $id = $this->id;
-        if (!$this->exists()) {
-            return false;
-        }
-        $this->alias = 'Entity';
-        $result = ClassRegistry::init('Receipt')->find('count', array('conditions' => array('Receipt.client_id' => $id)));
-        return ($result > 0) ? true : false;
-    }
-
-    public function hasFractions($id = null) {
-
-
-        $this->noAfterFind = true;
-        if (!empty($id)) {
-            $this->id = $id;
-        }
-
-        $id = $this->id;
-        if (!$this->exists()) {
-            return false;
-        }
-        $this->alias = 'Entity';
-
-        $options['joins'] = array(
-            array('table' => 'entities_fractions',
-                'alias' => 'EntityFraction',
-                'type' => 'INNER',
-                'conditions' => array(
-                    'Entity.id = EntityFraction.entity_id',
-                )
-        ));
-
-        $options['conditions'] = array(
-            'EntityFraction.entity_id' => $id);
-
-        $result = $this->find('count', $options);
-        return ($result > 0) ? true : false;
-    }
-
-    public function hasFractionManager($id = null) {
-        $this->noAfterFind = true;
-        if (!empty($id)) {
-            $this->id = $id;
-        }
-
-        $id = $this->id;
-        if (!$this->exists()) {
-            return false;
-        }
-        $this->Fraction = ClassRegistry::init('Fraction');
-        $result = $this->Fraction->find('count', array('conditions' => array('Fraction.manager_id' => $id)));
-        return ($result > 0) ? true : false;
-    }
-    
-    public function hasAdministrators($id = null) {
+    public function hasMaintenance($id = null) {
         $this->noAfterFind = true;
         if (!empty($id)) {
             $this->id = $id;
@@ -226,7 +161,7 @@ class Entity extends AppModel {
             return false;
         }
 
-        $result = ClassRegistry::init('Administrator')->find('count', array('conditions' => array('Administrator.entity_id' => $id)));
+        $result = ClassRegistry::init('Maintenance')->find('count', array('conditions' => array('Maintenance.supplier_id' => $id)));
         return ($result > 0) ? true : false;
     }
 

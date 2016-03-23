@@ -99,7 +99,7 @@ class MaintenancesController extends AppController {
             }
         }
         $condos = $this->Maintenance->Condo->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('condo_id'))));
-        $suppliers = $this->Maintenance->Supplier->find('list', array('order'=>'Supplier.name','conditions' => array('entity_type_id' => '2')));
+        $suppliers = $this->Maintenance->Supplier->find('list', array('order'=>'Supplier.name'));
         $this->set(compact('condos', 'suppliers'));
     }
 
@@ -127,7 +127,7 @@ class MaintenancesController extends AppController {
             $this->request->data = $this->Maintenance->find('first', $options);
         }
         $condos = $this->Maintenance->Condo->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('condo_id'))));
-        $suppliers = $this->Maintenance->Supplier->find('list', array('order'=>'name','conditions' => array('entity_type_id' => '2')));
+        $suppliers = $this->Maintenance->Supplier->find('list', array('order'=>'name'));
         $this->set(compact('condos', 'suppliers'));
         $this->setPhkRequestVar('maintenance_id',$id);
     }

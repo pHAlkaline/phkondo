@@ -134,6 +134,9 @@ msgstr "Criar Condomínio"
 msgid "Add Entity"
 msgstr "Criar Entidade"
 
+msgid "Add Supplier"
+msgstr "Criar Fornecedor"
+
 msgid "Add Fiscal Year"
 msgstr "Criar Exercício"
 
@@ -387,6 +390,9 @@ msgstr "Apagar Condomínio"
 msgid "Delete Entity"
 msgstr "Apagar Entidade"
 
+msgid "Delete Supplier"
+msgstr "Apagar Fornecedor"
+
 msgid "Delete Fiscal Year"
 msgstr "Apagar Exercício"
 
@@ -473,6 +479,9 @@ msgstr "Editar Condomínio"
 msgid "Edit Entity"
 msgstr "Editar Entidade"
 
+msgid "Edit Supplier"
+msgstr "Editar Fornecedor"
+
 msgid "Edit Fiscal Year"
 msgstr "Editar Exercício"
 
@@ -532,14 +541,25 @@ msgid_plural "Entities"
 msgstr[0] "Entidade"
 msgstr[1] "Entidades"
 
+msgid "Supplier"
+msgid_plural "Suppliers"
+msgstr[0] "Fornecedor"
+msgstr[1] "Fornecedores"
+
 msgid "Entity Type"
 msgstr "Tipo"
 
 msgid "Entity can not be deleted"
 msgstr "Não foi possível apagar Entidade"
 
+msgid "Supplier can not be deleted"
+msgstr "Não foi possível apagar Fornecedor"
+
 msgid "Entity deleted"
 msgstr "Entidade apagada"
+
+msgid "Supplier deleted"
+msgstr "Fornecedor apagado"
 
 msgid "Error"
 msgstr "Erro"
@@ -711,6 +731,9 @@ msgstr "Condomínio ou exercício inválido"
 
 msgid "Invalid entity"
 msgstr "Entidade inválida"
+
+msgid "Invalid supplier"
+msgstr "Fornecedor inválido"
 
 msgid "Invalid fiscal year"
 msgstr "Exercício inválido"
@@ -959,6 +982,9 @@ msgstr "Criar Condomínio"
 
 msgid "New Entity"
 msgstr "Criar Entidade"
+
+msgid "New Supplier"
+msgstr "Criar Fornecedor"
 
 msgid "New Fiscal Year"
 msgstr "Criar Exercício"
@@ -1341,6 +1367,12 @@ msgstr "Não foi possivel registar entidade. Por favor, tente outra vez."
 
 msgid "The entity has been saved"
 msgstr "A entidade foi registada"
+
+msgid "The supplier could not be saved. Please, try again."
+msgstr "Não foi possivel registar fornecedor. Por favor, tente outra vez."
+
+msgid "The supplier has been saved"
+msgstr "O fornecedor foi registado"
 
 msgid "The fiscal year could not be saved. Please, try again."
 msgstr "Não foi possivel registar exercício. Por favor, tente outra vez."

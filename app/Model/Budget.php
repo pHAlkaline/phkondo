@@ -123,7 +123,7 @@ class Budget extends AppModel {
             ),
             'validInterval' => array(
                 'rule' => array('validInterval'),
-                'message' => 'invalid budget date, do not match fiscal year dates',
+                'message' => 'invalid date, do not match active fiscal year dates',
             //'allowEmpty' => false,
             //'required' => false,
             //'last' => false, // Stop validation after this rule
@@ -158,7 +158,7 @@ class Budget extends AppModel {
             ),
             'validInterval' => array(
                 'rule' => array('validInterval'),
-                'message' => 'invalid budget date, do not match fiscal year dates',
+                'message' => 'invalid date, do not match active fiscal year dates',
             //'allowEmpty' => false,
             //'required' => false,
             //'last' => false, // Stop validation after this rule
