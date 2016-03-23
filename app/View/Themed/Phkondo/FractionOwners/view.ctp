@@ -1,7 +1,9 @@
-<div id="page-container" class="row">
+<?php
+?>
+<div id="page-container" class="row row-offcanvas row-offcanvas-left ">
 
     <div class="col-sm-3">
-        <div id="sidebar" class="hidden-print collapse navbar-collapse phkondo-navbar actions">
+        <div id="sidebar" class="hidden-print actions sidebar-offcanvas">
             <ul class="nav nav-pills nav-stacked">			
                 <li ><?php echo $this->Html->link(__('Edit Owner'), array('action' => 'edit', $entity['Entity']['id'],'?'=>$this->request->query), array('class' => 'btn ')); ?> </li>
                 <li ><?php echo $this->Form->postLink(__('Remove %s', __n('Owner', 'Owners', 1)), array('action' => 'remove', $entity['Entity']['id'],'?'=>$this->request->query), array('class' => 'btn ', 'confirm' => __('Are you sure you want to remove # %s?', $entity['Entity']['name']))); ?> </li>

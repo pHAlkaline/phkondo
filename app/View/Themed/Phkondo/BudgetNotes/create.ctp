@@ -9,10 +9,10 @@ foreach ($fractions as $fraction) {
     $totalMilRate += $fraction['Fraction']['mil_rate'];
 }
 ?>
-<div id="page-container" class="row">
+<div id="page-container" class="row row-offcanvas row-offcanvas-left">
     <div class="col-sm-3">
 
-        <div id="sidebar" class="collapse navbar-collapse phkondo-navbar actions">
+        <div id="sidebar" class="hidden-print actions sidebar-offcanvas">
             <ul class="nav nav-pills nav-stacked">
                 <li ><?php echo $this->Html->link(__('View %s', __n('Budget','Budgets',1)), array('controller' => 'budgets', 'action' => 'view', $budget['Budget']['id'],'?'=>$this->request->query), array('class' => 'btn')); ?></li>
                 <li ><?php echo $this->Html->link(__('List Budgets'), array('controller' => 'budgets', 'action' => 'index','?'=>$this->request->query), array('class' => 'btn')); ?></li>
