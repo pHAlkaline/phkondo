@@ -21,6 +21,7 @@ $this->Html->script('fraction_view', false); ?>
                 <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Note', 'Notes', 2), array('controller' => 'fraction_notes', 'action' => 'index','?'=>array_merge(array('fraction_id'=>$fraction['Fraction']['id']))), array('class' => 'btn ', 'escape' => false)); ?></li>
                 <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Insurance', 'Insurances', 2), array('controller' => 'fraction_insurances', 'action' => 'index','?'=>array_merge(array('fraction_id'=>$fraction['Fraction']['id']))), array('class' => 'btn ', 'escape' => false)); ?></li>
                 <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Attachment', 'Attachments', 2), array('plugin' => 'attachments', 'controller' => 'fraction_attachments', 'action' => 'index','?'=>array_merge(array('fraction_id'=>$fraction['Fraction']['id']))), array('class' => 'btn ', 'escape' => false)); ?> </li>
+                 <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('Current Account'), array('action' => 'current_account','?'=>array_merge(array('fraction_id'=>$fraction['Fraction']['id']),$this->request->query)), array('target' => '_blank', 'class' => '', 'escape' => false)); ?> </li>
 
             </ul><!-- /.list-group -->
 
