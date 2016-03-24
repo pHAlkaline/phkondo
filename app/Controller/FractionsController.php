@@ -184,6 +184,25 @@ class FractionsController extends AppController {
         $this->Flash->error(__('Fraction can not be deleted'));
         $this->redirect(array('action' => 'view', $id,'?'=>$this->request->query));
     }
+    
+    /**
+     * current_account method
+     *
+     * @throws NotFoundException
+     * @throws MethodNotAllowedException
+     * @return void
+     */
+    public function current_account() {
+        $id = $this->getPhkRequestVar('fraction_id');
+        if (!$this->Fraction->exists($id)) {
+            $this->Flash->error(__('Invalid fraction'));
+            $this->redirect(array('action' => 'index', '?'=>$this->request->query));
+        }
+        $event = new CakeEvent('Phkondo.Fraction.currentAccount', $this, array(
+            'id' => $id,
+        ));
+        $this->getEventManager()->dispatch($event);
+    }
 
     public function beforeFilter() {
         parent::beforeFilter();

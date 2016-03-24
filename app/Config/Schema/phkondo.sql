@@ -332,7 +332,7 @@ CREATE TABLE IF NOT EXISTS `fractions` (
   `manager_id` int(11) DEFAULT NULL,
   `fraction` varchar(10) NOT NULL,
   `fraction_type_id` int(11) NOT NULL DEFAULT '1',
-  `floor_location` varchar(20) NOT NULL,
+  `floor_location` varchar(100) NOT NULL,
   `description` varchar(50) DEFAULT NULL,
   `mil_rate` decimal(6,2) DEFAULT NULL,
   `comments` text,
