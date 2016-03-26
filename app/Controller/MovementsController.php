@@ -50,13 +50,13 @@ class MovementsController extends AppController {
      */
     public function index() {
         
-        $this->Paginator->settings = $this->Paginator->settings + array(
+        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings , array(
             'contain'=>array('MovementCategory','MovementOperation','MovementType','Account'=>array('fields'=>array('title','balance'))),
             'limit' => 100,
             'conditions' => array(
                 'Movement.account_id' => $this->getPhkRequestVar('account_id'),
                 'Movement.fiscal_year_id' => $this->getPhkRequestVar('fiscal_year_id'))
-        );
+        ));
         $this->setFilter(array('Movement.description', 'Movement.amount', 'Movement.document', 'Movement.document', 'MovementCategory.name', 'MovementType.name', 'MovementOperation.name'));
         $this->set('movements', $this->Paginator->paginate('Movement'));
         

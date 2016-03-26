@@ -50,9 +50,9 @@ class FiscalYearsController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Paginator->settings = $this->Paginator->settings + array(
+        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings , array(
             'conditions' => array('FiscalYear.condo_id' => $this->getPhkRequestVar('condo_id'))
-        );
+        ));
         $this->setFilter(array('FiscalYear.title'));
         $this->set('fiscalYears', $this->Paginator->paginate('FiscalYear'));
         

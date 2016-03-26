@@ -51,11 +51,11 @@ class BudgetsController extends AppController {
      */
     public function index() {
         
-        $this->Paginator->settings = $this->Paginator->settings + array(
+        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings , array(
             'contain' => array('BudgetType', 'BudgetStatus'),
             'conditions' => array(
                 'Budget.condo_id' => $this->getPhkRequestVar('condo_id'))
-        );
+        ));
         $this->setFilter(array('Budget.title', 'BudgetType.name'));
         $this->set('budgets', $this->Paginator->paginate('Budget'));
         

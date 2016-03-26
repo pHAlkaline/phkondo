@@ -52,16 +52,14 @@ class CondosController extends AppController {
      */
     public function index() {
         
-        
-        $this->Paginator->settings = $this->Paginator->settings + array(
+       
+        $this->Paginator->settings = array_merge($this->Paginator->settings , array(
             'contain' => array('FiscalYear', 'Insurance', 'Maintenance'),
             'limit'=>50,
             'conditions' => array(
                 "AND" => array("Condo.active" => "1"))
-        );
-        
+        ));
         $this->setFilter(array('Condo.title', 'Condo.address'));
-
         $this->set('condos', $this->Paginator->paginate('Condo'));
         
     }

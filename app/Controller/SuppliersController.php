@@ -51,8 +51,8 @@ class SuppliersController extends AppController {
      * @return void
      */
     public function index() {
-       $this->Paginator->settings = $this->Paginator->settings +
-                array('conditions' => array());
+       $this->Paginator->settings = array_replace_recursive($this->Paginator->settings ,
+                array('conditions' => array()));
         $this->setFilter(array('Supplier.name','Supplier.address','Supplier.email','Supplier.contacts','Supplier.vat_number'));
         $this->set('suppliers', $this->Paginator->paginate('Supplier'));
     }
