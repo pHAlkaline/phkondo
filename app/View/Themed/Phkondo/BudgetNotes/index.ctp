@@ -18,7 +18,7 @@ if ($phkRequestData['budget_status'] == 1) {
                     endif;
                 ?>
             </div><!-- /.actions -->
-           <?php echo $this->element('search_tool'); ?>
+           <?php echo $this->element('search_tool_notes'); ?>
             <div class="clearfix"></div>
             <div class="table-responsive">
                 <table class="table table-hover table-condensed">

@@ -9,7 +9,7 @@
                 <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Note'), array('action' => 'add','?'=>$this->request->query), array('class' => 'btn btn-primary', 'style' => 'margin: 8px 0; float: right;', 'escape' => false));
                ?>
             </div><!-- /.actions -->
- <?php echo $this->element('search_tool'); ?>
+ <?php echo $this->element('search_tool_notes_owner'); ?>
             <div class="clearfix"></div>
             <div class="table-responsive">
                 <table class="table table-hover table-condensed">

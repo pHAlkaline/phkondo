@@ -49,7 +49,7 @@ class InvoiceConferenceController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Paginator->settings = $this->Paginator->settings + array(
+        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings , array(
             'contain'=>array('Supplier'),
             'conditions' => array(
                 'InvoiceConference.condo_id' => $this->getPhkRequestVar('condo_id'),
@@ -57,7 +57,7 @@ class InvoiceConferenceController extends AppController {
             'group' => array('supplier_id'),
             'order' => array('Supplier.name' => 'asc'),
             'fields' => array('Supplier.name', 'InvoiceConference.supplier_id')
-        );
+        ));
         $this->setFilter(array('Supplier.name', 'Supplier.email', 'Supplier.vat_number'));
 
 
@@ -92,14 +92,14 @@ class InvoiceConferenceController extends AppController {
             $this->redirect(array('action' => 'index','?'=>$this->request->query));
         }
         $this->Paginator->settings = $this->paginate;
-        $this->Paginator->settings = $this->Paginator->settings + array(
+        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings , array(
             'order' => array('InvoiceConference.document_date' => 'desc'),
             'conditions' => array(
                 'InvoiceConference.supplier_id' => $supplier_id,
                 'InvoiceConference.condo_id' => $this->getPhkRequestVar('condo_id'),
            
             )
-        );
+        ));
         $this->setFilter(array('InvoiceConference.document_date', 'InvoiceConference.payment_due_date', 'InvoiceConference.document', 'InvoiceConference.description', 'InvoiceConferenceStatus.name'));
 
 

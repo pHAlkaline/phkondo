@@ -57,12 +57,12 @@ class ReceiptsController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Paginator->settings = $this->Paginator->settings + array(
+        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings , array(
             'contain' => array('Fraction', 'Client', 'ReceiptStatus', 'ReceiptPaymentType'),
             'conditions' => array(
                 'Receipt.condo_id' => $this->getPhkRequestVar('condo_id'),
             ),
-        );
+        ));
         $this->setFilter(array('Receipt.document', 'Client.name', 'ReceiptStatus.name', 'ReceiptPaymentType.name', 'Receipt.total_amount'));
         $this->set('receipts', $this->Paginator->paginate('Receipt'));
     }

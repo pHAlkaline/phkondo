@@ -56,10 +56,10 @@ class FractionInsurancesController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Paginator->settings = $this->Paginator->settings + array(
+        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings , array(
             'contain' => array('InsuranceType','Fraction'),
             'conditions' => array('Insurance.fraction_id' =>  $this->getPhkRequestVar('fraction_id'))
-        );
+        ));
         
         $this->setFilter(array('Insurance.title', 'Insurance.insurance_company', 'Insurance.policy', 'InsuranceType.name'));
 

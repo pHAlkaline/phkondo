@@ -23,10 +23,10 @@ class SupportCategoriesController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Paginator->settings = $this->Paginator->settings +
+        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings ,
                 array('conditions' => array
                         ("AND" => array("SupportCategory.active" => "1")
-        ));
+        )));
         $this->setFilter(array('SupportCategory.name'));
 
         $this->set('supportCategories', $this->paginate());
