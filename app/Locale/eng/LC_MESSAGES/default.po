@@ -269,6 +269,9 @@ msgstr ""
 msgid "Budget deleted"
 msgstr ""
 
+msgid "Buy plugins"
+msgstr ""
+
 msgid "CakePHP: the rapid development php framework"
 msgstr ""
 
