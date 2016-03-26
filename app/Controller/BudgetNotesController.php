@@ -53,11 +53,11 @@ class BudgetNotesController extends AppController {
         $options['conditions'] = array('Note.budget_id' => $this->phkRequestData['budget_id']);
         $options['order'] = array('Note.id' => 'asc', 'Note.document_date' => 'asc', 'Note.document' => 'asc');
 
-        if (isset($this->Paginator->paginate['conditions'])) {
-            $options['conditions'] = array_replace_recursive($this->Paginator->paginate['conditions'], $options['conditions']);
+        if (isset($this->Paginator->settings['conditions'])) {
+            $options['conditions'] = array_replace_recursive($this->Paginator->settings['conditions'], $options['conditions']);
         }
-        if (isset($this->Paginator->paginate['order'])) {
-            $options['order'] = array_replace_recursive($this->Paginator->paginate['order'], $options['order']);
+        if (isset($this->Paginator->settings['order'])) {
+            $options['order'] = array_replace_recursive($this->Paginator->settings['order'], $options['order']);
         }
         $this->Paginator->settings = array_replace_recursive($this->Paginator->settings,array(
             'conditions' => $options['conditions'],

@@ -284,7 +284,7 @@ msgstr ""
 msgid "Cancel Receipt"
 msgstr ""
 
-msgid "Case you wish to have access to this plugin contact pHAlkaline."
+msgid "Case you wish to have a free access to this plugin contact pHAlkaline."
 msgstr ""
 
 msgid "Category"

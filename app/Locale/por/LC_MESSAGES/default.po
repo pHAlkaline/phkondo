@@ -293,7 +293,7 @@ msgstr "Motivo"
 msgid "Cancel Receipt"
 msgstr "Anular Recibo"
 
-msgid "Case you wish to have access to this plugin contact pHAlkaline."
+msgid "Case you wish to have a free access to this plugin contact pHAlkaline."
 msgstr "Caso queria ter acesso ao código deste plugin contacte a pHAlkaline."
 
 msgid "Category"
@@ -450,7 +450,7 @@ msgstr[0] "Minuta"
 msgstr[1] "Minutas"
 
 msgid "Drafts Plugin NotFound"
-msgstr "Extenção minutas não foi encontrada."
+msgstr "Plugin minutas não foi encontrada."
 
 msgid "Due Date"
 msgstr "Prazo"
@@ -1218,7 +1218,7 @@ msgid "Receipt deleted"
 msgstr "Recibo apagado"
 
 msgid "Receipts Plugin NotFound"
-msgstr "Extenção recibos não foi encontrada."
+msgstr "Plugin recibos não foi encontrada."
 
 msgid "Related %s"
 msgstr "%s Relacionados"
@@ -1242,7 +1242,7 @@ msgid "Reports"
 msgstr "Relatórios"
 
 msgid "Reports Plugin NotFound"
-msgstr "A Extenção de relatórios não está instalada."
+msgstr "Plugin de relatórios não está instalada."
 
 msgid "Representative"
 msgstr "Representante"
