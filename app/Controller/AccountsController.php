@@ -54,16 +54,14 @@ class AccountsController extends AppController {
         
         
         if (isset($this->Paginator->settings['conditions'])) {
-            $options['conditions'] = array_merge($this->Paginator->settings['conditions'], $options['conditions']);
+            $options['conditions'] = array_replace_recursive($this->Paginator->settings['conditions'], $options['conditions']);
         }
         
        
-        $this->Paginator->settings = $this->Paginator->settings +  array(
-            'conditions' => $options['conditions'],
-                
-                );
+        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings ,  array(
+            'conditions' => $options['conditions']));
         $this->setFilter(array('Account.title', 'Account.bank', 'Account.balcony'));
-        $this->set('accounts', $this->paginate('Account'));
+        $this->set('accounts', $this->Paginator->paginate('Account'));
         
     }
 

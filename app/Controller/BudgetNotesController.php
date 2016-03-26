@@ -49,24 +49,69 @@ class BudgetNotesController extends AppController {
      * @return void
      */
     public function index() {
+        $this->setConditions();
         $options['conditions'] = array('Note.budget_id' => $this->phkRequestData['budget_id']);
         $options['order'] = array('Note.id' => 'asc', 'Note.document_date' => 'asc', 'Note.document' => 'asc');
 
         if (isset($this->Paginator->paginate['conditions'])) {
-            $options['conditions'] = array_merge($this->Paginator->paginate['conditions'], $options['conditions']);
+            $options['conditions'] = array_replace_recursive($this->Paginator->paginate['conditions'], $options['conditions']);
         }
         if (isset($this->Paginator->paginate['order'])) {
-            $options['order'] = array_merge($this->Paginator->paginate['order'], $options['order']);
+            $options['order'] = array_replace_recursive($this->Paginator->paginate['order'], $options['order']);
         }
-        $this->Paginator->settings = $this->Paginator->settings+array(
+        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings,array(
             'conditions' => $options['conditions'],
             'order' => $options['order'],
             //'requiresAcessLevel' => true,
-            'contain' => array('NoteType', 'Entity', 'NoteStatus','Fraction'));
-
+            'contain' => array('NoteType', 'Entity', 'NoteStatus','Fraction')));
+        
         $this->setFilter(array('Note.document', 'Note.title', 'NoteType.name', 'Entity.name', 'Note.amount', 'NoteStatus.name', 'Fraction.description'));
         $this->set('notes', $this->Paginator->paginate('Note'));
     }
+    
+      
+    private function setConditions(){
+        $filterOptions['conditions'] = array();
+        $queryData = array();
+        if (isset($this->request->query)) {
+            $queryData = $this->request->query;
+        }
+
+        $note_status_id = $entity_id = $hasAdvSearch = false;
+        if (isset($queryData['note_status_id']) && $queryData['note_status_id'] != null) {
+            $note_status_id = $queryData['note_status_id'];
+            $filterOptions['conditions'] = array_merge($filterOptions['conditions'], array('Note.note_status_id' => $note_status_id));
+            $this->request->data['Note']['note_status_id'] = $queryData['note_status_id'];
+            $hasAdvSearch = true;
+        }
+        $noteStatuses = $this->Note->NoteStatus->find('list', array( 'order' => 'name', 'conditions' => array('active' => 1)));
+        
+        if (isset($queryData['entity_id']) && $queryData['entity_id'] != null) {
+            $entity_id = $queryData['entity_id'];
+            $filterOptions['conditions'] = array_merge($filterOptions['conditions'], array('Note.entity_id' => $entity_id));
+            $this->request->data['Note']['entity_id'] = $queryData['entity_id'];
+            $hasAdvSearch = true;
+        }
+        
+        $this->Note->contain(array('Entity'=>array('fields'=>array('Entity.id'))));
+        $entitiesFilter = $this->Note->find('all', array('fields' => array('Note.id'), 'conditions' => array( 'budget_id' => $this->getPhkRequestVar('budget_id'))));
+        $entities = $this->Note->Entity->find('list', array('conditions' => array('id' => Set::extract('/Entity/id', $entitiesFilter))));
+        $this->set(compact('noteStatuses', 'entities', 'hasAdvSearch'));
+
+
+        $paginateConditions = array();
+        if (isset($this->Paginator->settings['conditions'])) {
+            $paginateConditions = $this->Paginator->settings['conditions'];
+            $this->Paginator->settings['conditions'] = array_replace_recursive($this->Paginator->settings['conditions'] , $filterOptions['conditions']);
+        } else {
+            $this->Paginator->settings['conditions'] = $filterOptions['conditions'];
+        }
+  
+
+
+    }
+
+   
 
     /**
      * view method

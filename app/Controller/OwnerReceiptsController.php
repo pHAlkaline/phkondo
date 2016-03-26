@@ -58,12 +58,12 @@ class OwnerReceiptsController extends AppController {
      */
     public function index() {
         $this->Receipt->contain('Client', 'ReceiptStatus', 'ReceiptPaymentType');
-        $this->Paginator->settings = $this->Paginator->settings + array(
+        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings , array(
             'contain' => array('Client', 'ReceiptStatus', 'ReceiptPaymentType'),
             'conditions' => array(
                 'Receipt.client_id' => $this->getPhkRequestVar('owner_id'),
                 'Receipt.fraction_id' => $this->getPhkRequestVar('fraction_id'))
-        );
+        ));
         $this->setFilter(array('Receipt.document', 'Client.name', 'ReceiptStatus.name', 'ReceiptPaymentType.name', 'Receipt.total_amount'));
 
 

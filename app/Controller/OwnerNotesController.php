@@ -56,16 +56,58 @@ class OwnerNotesController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Paginator->settings = $this->Paginator->settings  + array(
+        $this->setConditions();
+        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings  , array(
             'contain'=>array('NoteType','NoteStatus','Fraction','Entity'),
             'conditions' => array(
                 'Note.entity_id' => $this->getPhkRequestVar('owner_id'),
-                'Note.fraction_id' => $this->getPhkRequestVar('fraction_id')));
+                'Note.fraction_id' => $this->getPhkRequestVar('fraction_id'))));
         $this->setFilter(array('Note.document','Note.title','NoteType.name','Entity.name','Note.amount', 'NoteStatus.name'));
         
         $this->set('notes', $this->Paginator->paginate('Note'));
        
     }
+    
+    
+     private function setConditions(){
+        $filterOptions['conditions'] = array();
+        $queryData = array();
+        if (isset($this->request->query)) {
+            $queryData = $this->request->query;
+        }
+
+        $note_status_id = $note_type_id = $hasAdvSearch = false;
+        if (isset($queryData['note_status_id']) && $queryData['note_status_id'] != null) {
+            $note_status_id = $queryData['note_status_id'];
+            $filterOptions['conditions'] = array_merge($filterOptions['conditions'], array('Note.note_status_id' => $note_status_id));
+            $this->request->data['Note']['note_status_id'] = $queryData['note_status_id'];
+            $hasAdvSearch = true;
+        }
+        $noteStatuses = $this->Note->NoteStatus->find('list', array( 'order' => 'name', 'conditions' => array('active' => 1)));
+        
+        if (isset($queryData['note_type_id']) && $queryData['note_type_id'] != null) {
+            $note_status_id = $queryData['note_type_id'];
+            $filterOptions['conditions'] = array_merge($filterOptions['conditions'], array('Note.note_type_id' => $note_status_id));
+            $this->request->data['Note']['note_type_id'] = $queryData['note_type_id'];
+            $hasAdvSearch = true;
+        }
+        $noteTypes = $this->Note->NoteType->find('list', array( 'order' => 'name', 'conditions' => array('active' => 1)));
+        
+        $this->set(compact('noteStatuses', 'noteTypes', 'hasAdvSearch'));
+
+
+        $paginateConditions = array();
+        if (isset($this->Paginator->settings['conditions'])) {
+            $paginateConditions = $this->Paginator->settings['conditions'];
+            $this->Paginator->settings['conditions'] = array_replace_recursive($this->Paginator->settings['conditions'] , $filterOptions['conditions']);
+        } else {
+            $this->Paginator->settings['conditions'] = $filterOptions['conditions'];
+        }
+  
+
+
+    }
+
 
     /**
      * view method

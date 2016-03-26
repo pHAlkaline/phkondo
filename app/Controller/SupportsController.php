@@ -49,11 +49,11 @@ class SupportsController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Paginator->settings = $this->Paginator->settings + array(
+        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings , array(
             'contain'=>array('SupportCategory','SupportPriority','SupportStatus','AssignedUser','Client','Fraction'),
             'order'=>array('SupportPriority.order','Support.created DESC'),
             'conditions' => array('Support.condo_id' => $this->getPhkRequestVar('condo_id'))
-        );
+        ));
         $this->setFilter(array('Support.subject','SupportCategory.name','SupportPriority.name','SupportStatus.name','AssignedUser.name','Client.name','Fraction.description'));
         $this->set('supports', $this->Paginator->paginate('Support'));
     }

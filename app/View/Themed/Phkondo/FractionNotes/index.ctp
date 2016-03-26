@@ -1,5 +1,5 @@
 <div id="page-container" class="row">
-   
+
     <div id="page-content" class="col-sm-12">
 
         <div class="index">
@@ -14,7 +14,7 @@
                 <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> '.__('New Note'), array('action' => 'add','?'=>$this->request->query), array('class' => 'btn btn-primary', 'style' => 'margin: 8px 0; float: right;', 'escape' => false));
                 ?>
             </div><!-- /.actions -->
-<?php echo $this->element('search_tool'); ?>
+            <?php echo $this->element('search_tool_notes'); ?>
             <div class="clearfix"></div>
             <div class="table-responsive">
                 <table class="table table-hover table-condensed">
@@ -35,18 +35,18 @@
                     </thead>
                     <tbody>
                         <?php foreach ($notes as $note): ?>
-                            <tr>
-                                <td><?php echo h($note['Note']['document']); ?>&nbsp;</td>
-                                <td><?php echo h($note['Note']['document_date']); ?>&nbsp;</td>
-                                <td><?php echo h($note['Note']['title']); ?>&nbsp;</td>
-                                <td><?php echo h($note['Entity']['name']); ?></td>
-                                <td><?php echo h($note['NoteType']['name']); ?></td>
-                                <td><?php echo h( $note['Note']['due_date']); ?>&nbsp;</td>
-                                <td><?php if ($note['Note']['payment_date']) echo h( $note['Note']['payment_date']); ?>&nbsp;</td>
-                                <td><?php echo h($note['NoteStatus']['name']); ?>    </td>
-                                <td class="amount"><?php echo h($note['Note']['amount']); ?>&nbsp;<?php echo  Configure::read('currencySign'); ?></td>
-                                
-                                <td class="actions hidden-print">
+                        <tr>
+                            <td><?php echo h($note['Note']['document']); ?>&nbsp;</td>
+                            <td><?php echo h($note['Note']['document_date']); ?>&nbsp;</td>
+                            <td><?php echo h($note['Note']['title']); ?>&nbsp;</td>
+                            <td><?php echo h($note['Entity']['name']); ?></td>
+                            <td><?php echo h($note['NoteType']['name']); ?></td>
+                            <td><?php echo h( $note['Note']['due_date']); ?>&nbsp;</td>
+                            <td><?php if ($note['Note']['payment_date']) echo h( $note['Note']['payment_date']); ?>&nbsp;</td>
+                            <td><?php echo h($note['NoteStatus']['name']); ?>    </td>
+                            <td class="amount"><?php echo h($note['Note']['amount']); ?>&nbsp;<?php echo  Configure::read('currencySign'); ?></td>
+
+                            <td class="actions hidden-print">
                                    <?php
                                     $deleteDisabled = null;
                                     $editDisabled = null;
@@ -61,13 +61,13 @@
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $note['Note']['id'],'?'=>$this->request->query), array('title' => __('Edit'), 'class' => 'btn btn-default btn-xs '.$editDisabled, 'escape' => false)); ?>
                                     <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'delete', $note['Note']['id'],'?'=>$this->request->query), array('title' => __('Remove'), 'class' => 'btn btn-default btn-xs '.$deleteDisabled, 'escape' => false, 'confirm' => __('Are you sure you want to delete # %s?', $note['Note']['title']))); ?>
 
-                                </td>
-                            </tr>
+                            </td>
+                        </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
-                 <p class='pull-right'><small>
+            <p class='pull-right'><small>
                     <?php
                     echo $this->Paginator->counter(array(
                         'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
