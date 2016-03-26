@@ -86,7 +86,7 @@ Configure::write('MaintenanceMode.site_offline_url', '/pages/offline');
  * - set to true / false
  * - true will open pHKondo to all access. 
  */
-Configure::write('Access.open', false); // For SECURITY keep this FALSE , use only on emergency.
+Configure::write('Access.open', true); // For SECURITY keep this FALSE , use only on emergency.
 
 /**
  * User role settings , do not change unless you know what you are doing 
