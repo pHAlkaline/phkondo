@@ -10,7 +10,7 @@ if ($hasAdvSearch) {
 <?php if (isset($keyword)) : ?>
 <div class="clearfix"></div>
 <?php
-echo $this->Form->create(null, array('novalidate' => true, 'style="padding:10px 0 10px 0;','class' => 'col-sm-12', 'role' => 'search', 'type' => 'get', 'url' => $this->request->here));
+echo $this->Form->create(null, array('novalidate' => true, 'style="padding:10px 0 10px 0;','class' => 'col-sm-12', 'role' => 'search', 'type' => 'get', $this->request->here));
 ?>
 <div class="input-group col-md-4 col-sm-6 col-xs-12 pull-right">
  <?php 
