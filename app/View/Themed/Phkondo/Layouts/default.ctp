@@ -93,7 +93,7 @@
                 </div>
         </div><!-- .container -->
  <?php
-        echo $this->Html->script(array('libs/jquery-2.1.3.min', 'libs/bootstrap.min'));
+        echo $this->Html->script(array('libs/jquery-2.2.2.min', 'libs/bootstrap.min'));
         echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.min'));
         echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.pt.min'));
         echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.en-GB.min'));
