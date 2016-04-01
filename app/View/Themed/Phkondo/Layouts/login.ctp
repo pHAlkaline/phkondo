@@ -49,7 +49,7 @@
         echo $this->fetch('css');
         ?>
         <?php
-        echo $this->Html->script(array('libs/jquery-2.1.3.min', 'libs/bootstrap.min'));
+        echo $this->Html->script(array('libs/jquery-2.2.2.min', 'libs/bootstrap.min'));
         ?>
 
         <script type="text/javascript">
