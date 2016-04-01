@@ -4,7 +4,7 @@ $this->Html->script('search', false); ?>
 <div class="clearfix"></div>
 <?php
 if (isset($keyword)) :
-    echo $this->Form->create(null, array('class' => 'navbar-form navbar-right', 'role' => 'search', 'type' => 'get', 'url' => $this->request->here));
+    echo $this->Form->create(null, array('class' => 'navbar-form navbar-right', 'role' => 'search', 'type' => 'get', $this->request->base));
 ?>
 <div class="input-group">
  <?php 
