@@ -54,7 +54,7 @@
                         </li>
                         <li >
 
-                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-oil"></span> ' . __n('Supplier', 'Suppliers', 2), array('plugin' => '', 'controller' => 'suppliers', 'action' => 'index'), array('escape' => false)); ?>
+                                    <?php echo $this->Html->link('<span class="fa fa-truck"></span> ' . __n('Supplier', 'Suppliers', 2), array('plugin' => '', 'controller' => 'suppliers', 'action' => 'index'), array('escape' => false)); ?>
                         </li>
 
 
@@ -83,18 +83,24 @@
                                 $this->getEventManager()->dispatch($event);
                                 if ($event->result['hasCondoDraft'] === true) {
                                     ?>
-                        <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-file"></span> ' . __n('Draft', 'Drafts', 2), array('plugin' => '', 'controller' => 'drafts', 'action' => 'index'), array('escape' => false)); ?></li>
+                        <li ><?php echo $this->Html->link('<span class="fa fa-file-text"></span> ' . __n('Draft', 'Drafts', 2), array('plugin' => '', 'controller' => 'drafts', 'action' => 'index'), array('escape' => false)); ?></li>
                                 <?php } else { ?>
-                        <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-file"></span> ' . __n('Draft', 'Drafts', 2), array('plugin' => '', 'controller' => 'pages', 'action' => 'drafts'), array('class' => 'btn ', 'escape' => false)); ?> </li>
+                        <li ><?php echo $this->Html->link('<span class="fa fa-file-text"></span> ' . __n('Draft', 'Drafts', 2), array('plugin' => '', 'controller' => 'pages', 'action' => 'drafts'), array('class' => 'btn ', 'escape' => false)); ?> </li>
 
                                 <?php } ?>
+                          <?php if (AuthComponent::user('role') == 'admin') { ?>
 
+                        <li role="presentation" class="divider"></li>
+                        <li >
+                        <?php echo $this->Html->link('<span class="glyphicon glyphicon-user"></span> ' . __('Users'), array('plugin' => '', 'controller' => 'users', 'action' => 'index'), array('escape' => false)); ?>
+                        </li>
+                        <?php } ?>
                     </ul>
 
                 </li>
             </ul>
  <?php } ?>
-         <ul class="nav navbar-nav" style="padding: 0 10px 0 5px;">
+            <ul class="nav navbar-nav" style="padding: 0 10px 0 5px;">
                 <!--li><a href="#">Link</a></li-->
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo __('User'); ?><b class="caret"></b></a>
