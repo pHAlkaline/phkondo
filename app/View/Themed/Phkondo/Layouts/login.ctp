@@ -26,6 +26,11 @@
  * 
  */
 ?>
+<?php
+if (!isset($headerTitle)){
+    $headeTitle='';
+}
+?>
 <!DOCTYPE html>
 <html >
 
