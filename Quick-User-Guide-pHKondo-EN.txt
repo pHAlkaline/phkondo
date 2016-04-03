@@ -23,7 +23,7 @@ Add fiscal year -> New Fiscal Year
 Fiscal Year time interval ( start date , end date ) it's used to control some features:
 - Account Balance by fiscal year, Budgets ...
 - Reports for Balance , Income , Expenses, In Debt, Fees Maps
-* IMPORTANT: Some data are presented and gruped by the active fiscal year, to see data from other fiscal year you must activate it first.
+* IMPORTANT: Some data are presented and grouped by active fiscal year, to see data from other fiscal year you must activate it first.
 
 Go back to condo details
 Go to Bank Accounts
