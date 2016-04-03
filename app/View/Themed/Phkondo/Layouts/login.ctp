@@ -28,7 +28,7 @@
 ?>
 <?php
 if (!isset($headerTitle)){
-    $headeTitle='';
+    $headerTitle='';
 }
 ?>
 <!DOCTYPE html>
