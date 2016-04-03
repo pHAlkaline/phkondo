@@ -23,6 +23,7 @@ Adicionar exercício -> Criar exercício
 É usado para controlar e agrupar dados em:
 - Saldos de contas bancárias, Orçamentos...
 - Relatórios para Balancete, receitas, despesas, em dívida, mapa de quotas
+* IMPORTANTE: Atenção, os dados apresentados são agrupados conforme o exercício ativo, para ver dados de outro execicio este deve ser ativado posteriormente.
 
 Regresse aos detalhes do condomínio
 Entrar nas contas
