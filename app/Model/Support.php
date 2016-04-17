@@ -144,7 +144,7 @@ class Support extends AppModel {
             'order' => ''
         ),
         'Client' => array(
-            'className' => 'Supplier',
+            'className' => 'Entity',
             'foreignKey' => 'client_id',
             'fields' => array('id', 'name'),
             'order' => array('Client.name ASC')
