@@ -948,7 +948,7 @@ ALTER TABLE `budgets`
 -- Limitadores para a tabela `entities_fractions`
 --
 ALTER TABLE `entities_fractions`
-  ADD CONSTRAINT `entities_fractions_ibfk_1` FOREIGN KEY (`entity_id`) REFERENCES `entities` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `entities_fractions_ibfk_1` FOREIGN KEY (`entity_id`) REFERENCES `entities` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `entities_fractions_ibfk_2` FOREIGN KEY (`fraction_id`) REFERENCES `fractions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
