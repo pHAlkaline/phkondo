@@ -103,7 +103,7 @@ class InvoiceConferenceController extends AppController {
         $this->setFilter(array('InvoiceConference.document_date', 'InvoiceConference.payment_due_date', 'InvoiceConference.document', 'InvoiceConference.description', 'InvoiceConferenceStatus.name'));
 
 
-        $invoices = $this->paginate();
+        $invoices = $this->Paginator->paginate('InvoiceConference');
         $this->set('invoices', $invoices);
         $this->set('supplier_id', $supplier_id);
         $this->setPhkRequestVar('supplier_id',$supplier_id);

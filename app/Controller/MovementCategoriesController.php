@@ -49,11 +49,8 @@ class MovementCategoriesController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings ,
-                array('conditions' => array()));
         $this->setFilter(array('MovementCategory.name'));
-
-         $this->set('movementCategories', $this->Paginator->paginate('MovementCategory'));
+        $this->set('movementCategories', $this->Paginator->paginate('MovementCategory'));
     }
 
     /**

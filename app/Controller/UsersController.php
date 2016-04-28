@@ -49,8 +49,8 @@ class UsersController extends AppController {
      * @return void
      */
     public function index() {
-        $this->setFilter(array('User.name'));
-        $this->set('users', $this->paginate());
+        $this->setFilter(array('User.name','User.username'));
+        $this->set('users', $this->Paginator->paginate('User'));
     }
 
     /**
