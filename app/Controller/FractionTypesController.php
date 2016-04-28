@@ -49,13 +49,8 @@ class FractionTypesController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings ,
-                array('conditions' => array
-                        ("AND" => array("FractionType.active" => "1")
-                )));
         $this->setFilter(array('FractionType.name'));
-
-        $this->set('fractionTypes', $this->paginate());
+        $this->set('fractionTypes', $this->Paginator->paginate('FractionType'));
     }
 
     /**
