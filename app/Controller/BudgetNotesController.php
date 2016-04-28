@@ -143,7 +143,7 @@ class BudgetNotesController extends AppController {
     public function add() {
         if ($this->request->is('post')) {
             $this->Note->create();
-            $this->request->data['Note']['fiscal_year_id'] = $this->_getFiscalYear();
+            $this->request->data['Note']['fiscal_year_id'] = $this->getPhkRequestVar('fiscal_year_id');
             $this->request->data['Note']['pending_amount'] = $this->request->data['Note']['amount'];
             if ($this->Note->save($this->request->data)) {
                 $this->_setDocument();
@@ -178,7 +178,7 @@ class BudgetNotesController extends AppController {
             $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
-            $this->request->data['Note']['fiscal_year_id'] = $this->_getFiscalYear();
+            $this->request->data['Note']['fiscal_year_id'] = $this->getPhkRequestVar('fiscal_year_id');
             if ($this->Note->save($this->request->data)) {
                 $this->_setDocument();
                 $this->Flash->success(__('The note has been saved'));
@@ -323,7 +323,7 @@ class BudgetNotesController extends AppController {
 
     private function _addNote() {
         $this->Note->create();
-        $this->request->data['Note']['fiscal_year_id'] = $this->_getFiscalYear();
+        $this->request->data['Note']['fiscal_year_id'] = $this->getPhkRequestVar('fiscal_year_id');
         if ($this->Note->save($this->request->data)) {
             $this->_setDocument();
         } else {
@@ -333,11 +333,11 @@ class BudgetNotesController extends AppController {
         }
     }
 
-    private function _getFiscalYear() {
+    /*private function _getFiscalYear() {
         $this->Note->Budget->id = $this->request->data['Note']['budget_id'];
         $fiscalYear = $this->Note->Budget->field('fiscal_year_id');
         return $fiscalYear;
-    }
+    }*/
 
     private function _setDocument() {
         if (is_array($this->request->data['Note']['document_date'])) {
