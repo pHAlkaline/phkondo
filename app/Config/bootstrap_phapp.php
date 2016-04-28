@@ -39,12 +39,11 @@
  * 
  */
 Configure::write('Theme.name', 'phkondo');
-Configure::write('Theme.list',array(
-    'Phkondo'=>'pHKondo',
-  //  'GreenAdm'=>'GreenAdm',
-  //  'SBAdmin'=>'SBAdmin',
-   
-    ));
+Configure::write('Theme.list', array(
+    'Phkondo' => 'pHKondo',
+        //'GreenAdm'=>'GreenAdm',
+        //'SBAdmin'=>'SBAdmin',
+));
 Configure::write('Theme.owner_name', 'pHKondo');
 Configure::write('Theme.owner_name_abbrv', 'PHK');
 Configure::write('Theme.owner_description', 'Condominium Management');
@@ -55,17 +54,15 @@ Configure::write('Theme.base_color', '#428bca');
 /**
  * Default app settings
  */
-
 /**
  * Languages available
  */
-Configure::write('Config.language', 'eng'); 
-Configure::write('Language.list',array(
-    'eng'=>'English',
-    'por'=>'Português',
-   
-    )); 
- 
+Configure::write('Config.language', 'eng');
+Configure::write('Language.list', array(
+    'eng' => 'English',
+    'por' => 'Português',
+));
+
 Configure::write('Config.timezone', 'Europe/London'); // Europe/Lisbon
 Configure::write('databaseDateFormat', 'Y-m-d'); // database dateformat
 Configure::write('dateFormat', 'd-m-Y H:i:s'); // phkondo dateformat with time
@@ -77,7 +74,7 @@ Configure::write('Application.mode', 'app'); // app, demo -> use demo for demo m
 /**
  * The settings for maintenance component 
  */
-Configure::write('MaintenanceMode.start', '01-01-2000 00:00:00'); 
+Configure::write('MaintenanceMode.start', '01-01-2000 00:00:00');
 Configure::write('MaintenanceMode.duration', '48'); // Duration in hours
 Configure::write('MaintenanceMode.site_offline_url', '/pages/offline');
 
@@ -86,10 +83,15 @@ Configure::write('MaintenanceMode.site_offline_url', '/pages/offline');
  * - set to true / false
  * - true will open pHKondo to all access. 
  */
-Configure::write('Access.open', true); // For SECURITY keep this FALSE , use only on emergency.
+Configure::write('Access.open', false); // For SECURITY keep this FALSE , use only on emergency.
 
 /**
  * User role settings , do not change unless you know what you are doing 
  */
-Configure::write('User.role',array('admin' => __('App Administrator'),'store_admin' => __n('Manager','Managers',1),'colaborator' => __('Employee')));
+Configure::write('User.role', array(
+    'admin' => __('App Administrator'),
+    'store_admin' => __n('Manager', 'Managers', 1),
+    'colaborator' => __('Employee')
+        )
+);
 
