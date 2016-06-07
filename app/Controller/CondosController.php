@@ -73,6 +73,10 @@ class CondosController extends AppController {
      */
     public function view($id = null) {
         $this->setPhkRequestVar('condo_id',$id);
+        if (!$this->Condo->exists($id)) {
+            $this->Flash->error(__('Invalid condo'));
+            $this->redirect(array('action' => 'index'));
+        }
         $this->Condo->contain(array(
                 'Comment',
                 'FiscalYear', 
@@ -83,10 +87,6 @@ class CondosController extends AppController {
                     'conditions'=>array('Administrator.fiscal_year_id' => $this->getPhkRequestVar('fiscal_year_id')),
                     'Entity'=>array(
                         'fields'=>array('Entity.name')))));
-        if (!$this->Condo->exists($id)) {
-            $this->Flash->error(__('Invalid condo'));
-            $this->redirect(array('action' => 'index'));
-        }
         $options = array('conditions' => array('Condo.' . $this->Condo->primaryKey => $id));
         $condo = $this->Condo->find('first', $options);
         $hasSharesDebt = $this->Condo->hasSharesDebt($id);
