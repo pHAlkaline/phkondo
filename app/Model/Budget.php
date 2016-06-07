@@ -198,7 +198,7 @@ class Budget extends AppModel {
         ),
         'due_days' => array(
             'numeric' => array(
-                'rule' => array('numeric'),
+                'rule' => 'naturalNumber',
             //'message' => 'Your custom message here',
             //'allowEmpty' => false,
             //'required' => false,
