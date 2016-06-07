@@ -26,7 +26,7 @@
  * 
  */
 
-//CakePlugin::load('DebugKit');
+CakePlugin::load('DebugKit');
 //CakePlugin::load('ClearCache');
 //CakePlugin::load('Migrations');
 //CakePlugin::load('PrintReceipt',array('bootstrap'=>true));
