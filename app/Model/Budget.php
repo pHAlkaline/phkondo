@@ -167,7 +167,8 @@ class Budget extends AppModel {
         ),
         'shares' => array(
             'numeric' => array(
-                'rule' => array('numeric'),
+                'rule' => 'naturalNumber',
+                
             //'message' => 'Your custom message here',
             //'allowEmpty' => false,
             //'required' => false,
