@@ -67,7 +67,7 @@
                     <?php echo __('Warning: when you cancel a budget, ALL DEBIT NOTES created by this budget will be set as CANCELED, EXCEPT the ones already paid.'); ?></div>
                 <div id="pendingWarning" class="alert alert-warning hide">
                     <button type="button" class="close" data-dismiss="alert">×</button>
-                    <?php echo __('Warning: when you set a budget as pending, ALL DEBIT NOTES created by this budget will be set as WAITS PAYMENT, EXCEPT the ones already paid.'); ?></div>
+                    <?php echo __('Warning: when you set a budget as pending, ALL DEBIT NOTES created by this budget will be set as WAITING PAYMENT, EXCEPT the ones already paid.'); ?></div>
                 <div class="form-group">
                     <?php echo $this->Form->input('title', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
