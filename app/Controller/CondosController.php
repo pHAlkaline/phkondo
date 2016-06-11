@@ -72,11 +72,11 @@ class CondosController extends AppController {
      * @return void
      */
     public function view($id = null) {
-        $this->setPhkRequestVar('condo_id',$id);
         if (!$this->Condo->exists($id)) {
             $this->Flash->error(__('Invalid condo'));
             $this->redirect(array('action' => 'index'));
         }
+        $this->setPhkRequestVar('condo_id',$id);
         $this->Condo->contain(array(
                 'Comment',
                 'FiscalYear', 
