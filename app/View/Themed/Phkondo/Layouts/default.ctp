@@ -46,7 +46,7 @@ if (!isset($headerTitle)){
         echo $this->Html->meta('icon');
         echo $this->fetch('meta');
         echo $this->Html->css(array(
-            'bootstrap/bootstrap-glyphicons',
+            //'bootstrap/bootstrap-glyphicons',
             'bootstrap/font-awesome.min',
             'bootstrap/bootstrap',
             'bootstrap/bootstrap-theme',
