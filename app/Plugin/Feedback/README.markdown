@@ -59,7 +59,7 @@ This will create `ratings` and `comments` tables in your database. No other chan
 ## Usage ##
 
 Obviously, you can use both comments and ratings or just one of them, so the instructions are separated
-(althought they are pretty much the same).
+(although they are pretty much the same).
 
 ### Comments ###
 
