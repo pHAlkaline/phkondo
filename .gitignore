@@ -64,7 +64,7 @@ Access.log
 .buildpath
 
 # composer vendor 
-/vendor/*
+#/vendor/*
 !/vendor/empty
 
 # root files 
