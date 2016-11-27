@@ -70,6 +70,16 @@ class Entity extends AppModel {
 
     //The Associations below have been created with all possible keys, those that are not needed can be removed
 
+    /**
+     * haOne associations
+     *
+     * @var array
+     */
+    public $hasOne = array('User'=>[
+            'foreignKey' => 'foreign_key',
+            'conditions' => ['Users.model' => 'Entity'],
+            'dependent' => true,
+        ]);
     
     /**
      * afterFind callback
