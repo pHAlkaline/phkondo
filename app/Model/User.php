@@ -26,7 +26,6 @@
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
-
 App::uses('AuthComponent', 'Controller/Component');
 App::uses('AppModel', 'Model');
 App::uses('Security', 'Utility');
@@ -43,7 +42,7 @@ class User extends AppModel {
      * @var string
      */
     public $displayField = 'name';
-    
+
     /**
      * Order
      *
@@ -120,18 +119,15 @@ class User extends AppModel {
                 'rule' => array('matchPasswords'),
                 'message' => 'Passwords dont match',
                 'required' => false),
-              
         ),
-        
         'role' => array(
             'valid' => array(
-                'rule' => array('inList', array('admin' ,'store_admin' ,'colaborator')),
+                'rule' => array('inList', array('admin', 'store_admin', 'colaborator')),
                 'message' => 'Please enter a valid role',
                 'allowEmpty' => false
             )
         )
     );
-    
     public $hasMany = array(
         'PaidRecipt' => array(
             'className' => 'Receipt',
@@ -142,29 +138,35 @@ class User extends AppModel {
             'foreignKey' => 'cancel_user_id',
         )
     );
+    public $belongsTo = array
+        ('Entity'=> [
+            'foreignKey' => 'foreign_key',
+            'conditions' => ['User.model' => 'Entity']
+        //'joinType' => 'LEFT'
+    ]);
 
     public function beforeSave($options = array()) {
-        
+
         // crypt and truncate password
         if (isset($this->data[$this->alias]['password'])) {
-            $password=Security::hash(substr($this->data[$this->alias]['password'],0,32), null, true);
+            $password = Security::hash(substr($this->data[$this->alias]['password'], 0, 32), null, true);
             $this->data[$this->alias]['password'] = $password;
         }
         // truncate username
         if (isset($this->data[$this->alias]['username'])) {
-            $this->data[$this->alias]['username'] = substr($this->data[$this->alias]['username'],0,32);
+            $this->data[$this->alias]['username'] = substr($this->data[$this->alias]['username'], 0, 32);
         }
         return true;
     }
-    
+
     function matchPasswords($data) {
-        
+
         if ($data['verify_password'] == $this->data[$this->alias]['password']) {
             return true;
         }
         return false;
     }
-    
+
     /**
      * afterFind callback
      * 
