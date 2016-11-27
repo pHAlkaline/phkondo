@@ -53,6 +53,9 @@ Access.log
 !app/webroot/css/packed/.htaccess
 /app/webroot/js/packed/*
 !app/webroot/js/packed/.htaccess
+
+#Ignore bower componentes
+/app/webroot/bower_components
  
 # Netbeans project files
 /nbproject
