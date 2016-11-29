@@ -7,7 +7,7 @@ Go to Properties
 Add properties -> New Property
 Enter Property Details
 
-Go to Owners
+Inside Property Go to Owners
 Add owners -> New Owner
 Or use Insert Owner to search for owners already on your database
 
@@ -30,7 +30,7 @@ Go to Bank Accounts
 Add bank accounts -> New Account
 Enter Account Details
 
-Go to Movements
+Inside Account Go to Movements
 Add account movements -> New Movement
 * Every movement must belong to the active fiscal year interval
 * For every fiscal year you must create the first and last movement described below, this will allow pHKondo to make account reports based on fiscal year.
