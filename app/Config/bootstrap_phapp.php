@@ -57,13 +57,14 @@ Configure::write('Theme.base_color', '#428bca');
 /**
  * Languages available
  */
-Configure::write('Config.language', 'eng');
+Configure::write('Config.language', 'ita');
 Configure::write('Language.list', array(
     'eng' => 'English',
     'por' => 'Português',
+		'ita' => 'Italiano',
 ));
 
-Configure::write('Config.timezone', 'Europe/London'); // Europe/Lisbon
+Configure::write('Config.timezone', 'Europe/Rome'); // Europe/Lisbon
 Configure::write('databaseDateFormat', 'Y-m-d'); // database dateformat
 Configure::write('dateFormat', 'd-m-Y H:i:s'); // phkondo dateformat with time
 Configure::write('dateFormatSimple', 'd-m-Y'); // phkondo dateformat
