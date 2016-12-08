@@ -60,6 +60,7 @@ Configure::write('Theme.base_color', '#428bca');
 Configure::write('Config.language', 'eng');
 Configure::write('Language.list', array(
     'eng' => 'English',
+    'ita' => 'Italiano',
     'por' => 'Português',
 ));
 
