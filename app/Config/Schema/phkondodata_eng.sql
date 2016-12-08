@@ -233,7 +233,7 @@ UNLOCK tables;
 LOCK tables `share_periodicities` WRITE;
 /*!40000 ALTER TABLE `share_periodicities` DISABLE KEYS */;
 INSERT INTO `share_periodicities` ( `id`, `name`, `active`, `modified`, `created`) VALUES (1, 'Unique',1,NOW() ,NOW());
-INSERT INTO `share_periodicities` ( `id`, `name`, `active`, `modified`, `created`) VALUES ( 2, 'Annual',1,NOW() ,NOW());
+INSERT INTO `share_periodicities` ( `id`, `name`, `active`, `modified`, `created`) VALUES (2, 'Annual',1,NOW() ,NOW());
 INSERT INTO `share_periodicities` ( `id`, `name`, `active`, `modified`, `created`) VALUES (3, 'Biannual',1,NOW() ,NOW());
 INSERT INTO `share_periodicities` ( `id`, `name`, `active`, `modified`, `created`) VALUES (4, 'Quarterly',1,NOW() ,NOW());
 INSERT INTO `share_periodicities` ( `id`, `name`, `active`, `modified`, `created`) VALUES (5, 'Monthly',1,NOW() ,NOW());
