@@ -94,4 +94,3 @@ Configure::write('User.role', array(
     'colaborator' => __('Employee')
         )
 );
-
