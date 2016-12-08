@@ -77,7 +77,7 @@ class Entity extends AppModel {
      */
     public $hasOne = array('User'=>[
             'foreignKey' => 'foreign_key',
-            'conditions' => ['Users.model' => 'Entity'],
+            'conditions' => ['User.model' => 'Entity'],
             'dependent' => true,
         ]);
     
