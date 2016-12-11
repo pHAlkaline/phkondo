@@ -110,8 +110,12 @@
                         <li role="presentation" class="divider"></li>
 <?php if (Configure::read('Config.language')=='por'){ ?>
                         <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-info-sign"></span> ' . __('Quick Guide'), 'https://raw.githubusercontent.com/pHAlkaline/phkondo/master/Quick-User-Guide-pHKondo-por.txt', array('target'=>'_blank','escape' => false)); ?></li>
-<?php } else { ?>
+                        <?php } ?>
+<?php if (Configure::read('Config.language')=='eng'){ ?>
                         <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-info-sign"></span> ' . __('Quick Guide'), 'https://raw.githubusercontent.com/pHAlkaline/phkondo/master/Quick-User-Guide-pHKondo-eng.txt', array('target'=>'_blank','escape' => false)); ?></li>
+<?php } ?>
+<?php if (Configure::read('Config.language')=='ita'){ ?>
+                        <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-info-sign"></span> ' . __('Quick Guide'), 'https://raw.githubusercontent.com/pHAlkaline/phkondo/master/Quick-User-Guide-pHKondo-ita.txt', array('target'=>'_blank','escape' => false)); ?></li>
 <?php } ?>
 
 
