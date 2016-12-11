@@ -108,17 +108,9 @@
 
                         <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-log-out"></span> ' . __('End Session'), array('plugin' => '', 'controller' => 'users', 'action' => 'logout'), array('escape' => false)); ?>
                         <li role="presentation" class="divider"></li>
-<?php if (Configure::read('Config.language')=='por'){ ?>
-                        <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-info-sign"></span> ' . __('Quick Guide'), 'https://raw.githubusercontent.com/pHAlkaline/phkondo/master/Quick-User-Guide-pHKondo-por.txt', array('target'=>'_blank','escape' => false)); ?></li>
-                        <?php } ?>
-<?php if (Configure::read('Config.language')=='eng'){ ?>
-                        <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-info-sign"></span> ' . __('Quick Guide'), 'https://raw.githubusercontent.com/pHAlkaline/phkondo/master/Quick-User-Guide-pHKondo-eng.txt', array('target'=>'_blank','escape' => false)); ?></li>
-<?php } ?>
-<?php if (Configure::read('Config.language')=='ita'){ ?>
-                        <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-info-sign"></span> ' . __('Quick Guide'), 'https://raw.githubusercontent.com/pHAlkaline/phkondo/master/Quick-User-Guide-pHKondo-ita.txt', array('target'=>'_blank','escape' => false)); ?></li>
-<?php } ?>
 
-
+                        <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-info-sign"></span> ' . __('Quick Guide'), 'https://github.com/pHAlkaline/phkondo/blob/master/QuickUserGuide/Quick-User-Guide-pHKondo-'.Configure::read('Config.language').'.txt', array('target'=>'_blank','escape' => false)); ?></li>
+                       
 
                     </ul>
 
