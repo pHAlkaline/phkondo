@@ -27,14 +27,14 @@
     "require": {
         "php": ">=5.3",
         "ext-mcrypt": "*",
-        "cakephp/cakephp": "2.9.2",
+        "cakephp/cakephp": "2.9.3",
         "cakephp/debug_kit": "2.2.*",
         "ceeram/clear_cache": "1.1.*"
     },
     "require-dev": {
         "php": ">=5.3",
         "ext-mcrypt": "*",
-        "cakephp/cakephp": "2.9.2",
+        "cakephp/cakephp": "2.9.3",
         "cakephp/debug_kit": "2.2.*",
         "ceeram/clear_cache": "1.1.*"
     }
