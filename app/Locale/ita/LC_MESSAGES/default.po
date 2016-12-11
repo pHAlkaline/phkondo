@@ -1159,7 +1159,7 @@ msgid "Payment Due Date"
 msgstr "Data Scadenza Pagamenti"
 
 msgid "Payment Methods"
-msgstr ""
+msgstr "Metodi di Pagamento"
 
 msgid "Pending Amount"
 msgstr "Importo in sospeso"
@@ -1171,13 +1171,13 @@ msgid "Pick Notes"
 msgstr "Seleziona Quote"
 
 msgid "Please activate one fiscal year."
-msgstr ""
+msgstr "Attiva un anno fiscale"
 
 msgid "Please correct errors below."
-msgstr ""
+msgstr "Correggi gli errori riportati in calce."
 
 msgid "Please enter a valid role"
-msgstr ""
+msgstr "Inserisci un ruolo valido"
 
 msgid "Please enter an valid percentage."
 msgstr ""
@@ -1384,25 +1384,25 @@ msgid "The insurance has been saved"
 msgstr "L'assicurazione e' stata salvata"
 
 msgid "The invoice could not be saved. Please, try again."
-msgstr ""
+msgstr "La fattura non e' stata salvata. Riprova"
 
 msgid "The invoice has been saved"
-msgstr ""
+msgstr "La fattura e' stata salvata"
 
 msgid "The maintenance could not be saved. Please, try again."
-msgstr ""
+msgstr "La manutenzione non e' stata salvata. Riprova"
 
 msgid "The maintenance has been saved"
-msgstr ""
+msgstr "La manutenzione e' stata salvata"
 
 msgid "The movement category could not be saved. Please, try again."
 msgstr ""
 
 msgid "The movement category has been saved"
-msgstr ""
+msgstr "La categoria movimento e' stata salvata"
 
 msgid "The movement could not be saved. Please, try again."
-msgstr ""
+msgstr "Il movimento non e' stato salvato. Riprova"
 
 msgid "The movement has been saved"
 msgstr "Il movimento e' stato salvato"
@@ -1411,7 +1411,7 @@ msgid "The movement operation could not be saved. Please, try again."
 msgstr ""
 
 msgid "The movement operation has been saved"
-msgstr ""
+msgstr "L'operazione movimento e' stata salvata"
 
 msgid "The note could not be saved. Please, try again."
 msgstr "The fee could not be saved. Please, try again."
@@ -1432,22 +1432,22 @@ msgid "The owner could not be found at this fraction. Please, try again."
 msgstr "Il proprietario non puo' essere trovato in questa unita' immobiliare. Riprova."
 
 msgid "The owner could not be related. Please, try again."
-msgstr ""
+msgstr "Il proprietario non puo' essere collegato. Riprova"
 
 msgid "The owner could not be saved. Please, try again."
 msgstr "Il proprietario non puo' essere salvato. Riprova."
 
 msgid "The owner has been related"
-msgstr ""
+msgstr "Il proprietario e' stato collegato"
 
 msgid "The owner has been saved"
-msgstr ""
+msgstr "Il proprietario e' stato salvato"
 
 msgid "The plugin that allows you to print and create document drafts is not available."
 msgstr ""
 
 msgid "The plugin that allows you to print and create receipts is not available."
-msgstr ""
+msgstr "Il plugin che permette di stampare e creare ricevute non e' disponibile"
 
 msgid "The plugin that allows you to print and create reports is not available."
 msgstr ""
@@ -1492,7 +1492,7 @@ msgid "This field cannot be left blank"
 msgstr "Questo campo non può essere vuoto"
 
 msgid "This status requires payment date"
-msgstr ""
+msgstr "Questo stato richiede una data pagamento"
 
 msgid "Thursday"
 msgstr "Gioved&igrave;"
@@ -1576,94 +1576,94 @@ msgid "pHAlkaline provides services in customization & new features."
 msgstr ""
 
 msgid "Wednesday"
-msgstr ""
+msgstr "Mercoledi'"
 
 msgid "Welcome"
-msgstr ""
+msgstr "Benvenuto"
 
 msgid "Welcome to pHKondo."
-msgstr ""
+msgstr "Benvenuto in pHKondo"
 
 msgid "Yes"
-msgstr ""
+msgstr "Si"
 
 msgid "Yesterday, %s"
-msgstr ""
+msgstr "Ieri, %s"
 
 msgid "You are not authorized to access that location."
-msgstr ""
+msgstr "Non sei autorizzato ad accedere a questa pagina."
 
 msgid "about a day ago"
-msgstr ""
+msgstr "circa un giorno fa"
 
 msgid "about a minute ago"
-msgstr ""
+msgstr "circa un minuto fa"
 
 msgid "about a second ago"
-msgstr ""
+msgstr "circa un secondo fa"
 
 msgid "about a week ago"
-msgstr ""
+msgstr "circa una settimana fa"
 
 msgid "about a year ago"
-msgstr ""
+msgstr "circa un anno fa"
 
 msgid "about an hour ago"
-msgstr ""
+msgstr "circa un'ora fa"
 
 msgid "boolean"
-msgstr ""
+msgstr "Si/No"
 
 msgid "close date must be after open date"
-msgstr ""
+msgstr "la data di chiusura deve essere successiva alla data di apertura"
 
 msgid "date"
-msgstr ""
+msgstr "data"
 
 msgid "days"
-msgstr ""
+msgstr "giorni"
 
 msgid "empty"
-msgstr ""
+msgstr "vuoto"
 
 msgid "in about a day"
-msgstr ""
+msgstr "in circa un giorno"
 
 msgid "in about a minute"
-msgstr ""
+msgstr "in circa un minuto"
 
 msgid "in about a second"
-msgstr ""
+msgstr "in circa un secondo"
 
 msgid "in about a week"
-msgstr ""
+msgstr "in circa una settimana"
 
 msgid "in about a year"
-msgstr ""
+msgstr "in circa un anno"
 
 msgid "in about an hour"
-msgstr ""
+msgstr "in circa un'ora"
 
 msgid "insurances"
-msgstr ""
+msgstr "assicurazioni"
 
 msgid "invalid active"
-msgstr ""
+msgstr "attivo non valido"
 
 msgid "invalid close date"
-msgstr ""
+msgstr "data chiusura non valida"
 
 msgid "invalid date"
-msgstr ""
+msgstr "data non valida"
 
 msgid "invalid open date"
-msgstr ""
+msgstr "data apertura non valida"
 
 msgid "invalid origin date"
-msgstr ""
+msgstr "data origine non valida"
 
 msgid "is being used in related record"
-msgstr ""
+msgstr "è stato usato in un record correlato"
 
 msgid "just now"
 msgstr "adesso"
@@ -1693,7 +1693,7 @@ msgid "pHKondo Reports"
 msgstr "Report pHKondo"
 
 msgid "pHkondo Condominium Management"
-msgstr ""
+msgstr "pHKondo Gestione Condominio"
 
 msgid "previous"
 msgstr "precedente"
@@ -1711,7 +1711,7 @@ msgid "This plugin is not included on this release."
 msgstr ""
 
 msgid "Matrix Registration"
-msgstr ""
+msgstr "Matricola"
 
 msgid "Land Registry"
 msgstr "Catasto"
@@ -1741,22 +1741,22 @@ msgid "Fraction Types"
 msgstr "Tipologie Unita' Immobiliari"
 
 msgid "Fraction Type deleted"
-msgstr ""
+msgstr "Tipologia Unita' Immobiliare cancellata"
 
 msgid "New Fraction Type"
 msgstr "Inserisci Tipologia Unita' Immobiliare"
 
 msgid "The fraction type could not be saved. Please, try again."
-msgstr ""
+msgstr "La tipologia di unita' immobiliare non puo' essere salvata. Riprova"
 
 msgid "The fraction type has been saved"
-msgstr ""
+msgstr "La tipologia di unita' immobiliare e' stata salvata"
 
 msgid "The owner has been saved and related"
-msgstr ""
+msgstr "Il proprietario e' stato salvato e correlato"
 
 msgid "The owner has been saved but could not be related. Please, try again."
-msgstr ""
+msgstr "Il proprietario e' stato salvato ma non puo' essere correlato. Riprova."
 
 msgid "List Insurance Types"
 msgstr "Lista Tipolgie Assicurazioni"
@@ -1786,19 +1786,19 @@ msgid "New Insurance Type"
 msgstr "Inserisci Tipologia Assicurazione"
 
 msgid "The insurance type could not be saved. Please, try again."
-msgstr ""
+msgstr "La tipologia di assicurazione non puo' essere salvata. Riprova"
 
 msgid "The insurance type has been saved"
-msgstr ""
+msgstr "Tipologia assicurazione salvata"
 
 msgid "Insurance type can not be deleted"
-msgstr ""
+msgstr "Tipologia di assicurazione non puo' essere cancellata"
 
 msgid "Insurance type deleted"
 msgstr "Tipologia assicurazione cancellata"
 
 msgid "List Support Categories"
-msgstr ""
+msgstr "Lista Categorie Supporto"
 
 msgid "Add Support Category"
 msgstr "Inserisci Categoria Supporto"
@@ -1807,7 +1807,7 @@ msgid "Delete Support Category"
 msgstr "Cancella Categoria Supporto"
 
 msgid "Edit Support Category"
-msgstr ""
+msgstr "Modifica Categoria Supporto"
 
 msgid "Invalid Support Category"
 msgstr "Categoria Supporto Non Valida"
@@ -1819,7 +1819,7 @@ msgid "Support Categories"
 msgstr "Categorie Supporto"
 
 msgid "Support Category deleted"
-msgstr ""
+msgstr "Categoria Supporto Cancellata"
 
 msgid "New Support Category"
 msgstr "Nuova Categoria Supporto"
@@ -1831,19 +1831,19 @@ msgid "The support category has been saved"
 msgstr ""
 
 msgid "Support category can not be deleted"
-msgstr ""
+msgstr "Categoria supporto non puo' essere cancellata"
 
 msgid "Support category deleted"
 msgstr ""
 
 msgid "Subject"
-msgstr ""
+msgstr "Oggetto"
 
 msgid "Priority"
-msgstr ""
+msgstr "Priorita'"
 
 msgid "Assigned To"
-msgstr ""
+msgstr "Assegnata A"
 
 msgid "Support"
 msgid_plural "Supports"
@@ -1851,25 +1851,25 @@ msgstr[0] "Support Request"
 msgstr[1] "Support Requests"
 
 msgid "List Supports"
-msgstr ""
+msgstr "Lista Supporti"
 
 msgid "Add Support"
-msgstr ""
+msgstr "Inserisci Supporto"
 
 msgid "Delete Support"
-msgstr ""
+msgstr "Cancella Supporto"
 
 msgid "Edit Support"
-msgstr ""
+msgstr "Modifica Supporto"
 
 msgid "Invalid Support"
-msgstr ""
+msgstr "Supporto non valido"
 
 msgid "Support deleted"
-msgstr ""
+msgstr "Supporto cancellato"
 
 msgid "New Support"
-msgstr ""
+msgstr "Nuovo Supporto"
 
 msgid "The support could not be saved. Please, try again."
 msgstr ""
@@ -1881,4 +1881,4 @@ msgid "Support can not be deleted"
 msgstr ""
 
 msgid "Support deleted"
-msgstr ""
+msgstr "Supporto cancellato"
