@@ -11,7 +11,7 @@
             'role' => 'form',
         ));
         ?>
-        <?php if (Configure::write('Application.mode') == 'demo') { ?>
+        <?php if (Configure::read('Application.mode') == 'demo') { ?>
         <p>Username: demo , Password: demo1234</p>
         <?php } ?>
         <div class="form-group has-feedback">
