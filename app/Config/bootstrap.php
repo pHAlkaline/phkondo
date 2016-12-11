@@ -109,7 +109,8 @@ CakeLog::config('error', array(
 	'file' => 'error',
 ));
 
-
+CakePlugin::load('DebugKit');
+CakePlugin::load('ClearCache');
 CakePlugin::load('Feedback');
 
 require 'bootstrap_phapp.php';
