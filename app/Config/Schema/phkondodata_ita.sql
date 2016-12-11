@@ -101,7 +101,7 @@ UNLOCK tables;
 
 LOCK tables `movement_categories` WRITE;
 /*!40000 ALTER TABLE `movement_categories` DISABLE KEYS */;
-INSERT INTO `movement_categories` ( `id`, `name`, `active`, `modified`, `created`) VALUES (1, 'Apertura / Chisurua',1,NOW() ,NOW());
+INSERT INTO `movement_categories` ( `id`, `name`, `active`, `modified`, `created`) VALUES (1, 'Apertura / Chiusura',1,NOW() ,NOW());
 INSERT INTO `movement_categories` ( `id`, `name`, `active`, `modified`, `created`) VALUES (2, 'Pulizia',1,NOW() ,NOW());
 INSERT INTO `movement_categories` ( `id`, `name`, `active`, `modified`, `created`) VALUES (3, 'Assicurazione', 1,NOW() ,NOW());
 INSERT INTO `movement_categories` ( `id`, `name`, `active`, `modified`, `created`) VALUES (4, 'Manutenzione',1,NOW() ,NOW());
