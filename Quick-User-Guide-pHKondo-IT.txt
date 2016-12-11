@@ -1,0 +1,67 @@
+pHKondo Guida Rapida
+
+Inserisci condominio -> Nuovo Condominio 
+Inserisci i dettagli del condominio
+
+Vai a Unita' Immobiliari
+Inserisci Unita' Immobiliare -> Nuova Unita' Immobiliare
+Inserisci i dettagli dell'Unita' Immobiliare
+
+Vai a Proprietari
+Inserisci Proprietari -> Nuovi Proprietari
+Oppure usa Inserisci Proprietario per cercare i proprietari già presenti nel tuo database
+
+Torna a Dettagli Condominio
+Vai alla sezione Amministratori
+Inserisci Amministratori -> Inserisci Amministratore
+L'Amministratore è il proprietario selezionato come riferimento (Rappresentante) tra la compagnia che gestisce il condomionio e tutti i proprietari in tutte le questioni che riguardano il condominio. 
+
+Torna a Dettagli Condominio
+Vai alla sezione Inserisci Anni Fiscali
+Inserisci un anno fiscale -> Nuovo Anno fiscale
+* L'anno fiscale è utilizzato per impostare il tuo periodo di gestione, può essere un periodo di durata arbitraria e non necessariamente coincidere con l'anno fiscale
+Intervallo Anno Fiscale (data inizio, data fine ) è utilizzato per controllare alcune caratteristiche: 
+- Bilancio per Anno Fiscale, Budget ...
+- Report per il Bilancio, Incassi, Spese, Mappa dei Costi, pendenze
+* IMPORTANTE: Alcune informazioni sono presentate e raggruppate per anno fiscale attivo, per vedere le informazioni di altri ani fiscali, devi prima attivarli.
+
+Torna a Dettagli Condominio
+Vai alla sezione Conti Corrente
+Inserisci Conto Corrente -> Nuovo Conto
+Inserisci i dettagli del conto
+
+Vai alla sezione Movimenti Conto
+Inserisci un Movimento Conto -> Nuovo Movimento
+* Ogni movimento deve far riferimento all'intervallo date dell'anno fiscale attivo
+* Per ciascun anno fiscale devi creare il primo e l'ultimo movimento così come descritto di seguito. Questo permetterà a pHKondo di realizzare report per il conto che si basano sull'anno fiscale.
+* Il primo movimento deve essere: 
+Importo iniziale per apertura bilancio su anno fiscale attivo
+Categoria: Apertura / Chiusura  
+Operazione Movumento: Saldo Apertura 
+Tipo Movimento: Dare se il Saldo Apertura è 0 o superiore, Avere se il saldo è < 0 
+* L'ultimo movimento deve essere 
+Categoria: Apertura / Chiusura
+Operazione Movimento: Saldo Chiusura
+
+
+Torna a Dettagli Condominio
+Vai alla sezione Budget
+Inserisci Budget -> Nuovo Budget
+Imposta il tuo Budget, Imposta l'importo, Fondo Cassa (%), Data Inizio, Spese, Periodicità Quote, Distribuzione Quote e Scadenze. Questi campi saranno la base per la creazione automatica delle quote.
+
+Imposta lo stato del tuo budge su "attivo"
+Vai alla sezione "Crea Quote" per la creazione automatica delle quote condominiali
+
+
+.. Dopo di questo puoi esplorare ...
+Vai alla sezione Ricevute per creare i documenti per le ricevute di pagamento
+Vai alla sezione "Invoice Conference" per gestire i debiti del condominio/pagamenti fornitori
+Vai alla sezione "Manutenzioni" per gestire le manutenzioni programmate
+Vai alla sezione "Assicurazioni" per gestire le assicurazioni del condominio e delle unita' immobiliari
+Vai alla sezione "Documenti" per gestire i documenti
+Vai alla sezione "Report per Bilancio, Incassi, Spese, ..."
+Vai alla sezione "Bozze" per creare qualche bozza documento che potrebbe servirti
+E altre caratteristiche che pHKondo può avere.
+
+NOTA FINALE:
+Se stai cercando altre caratteristiche che pHKondo non ha ma che vorresti acquistare, contattaci all'indirizzo mail contact@phalkaline.eu
