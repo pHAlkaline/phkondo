@@ -25,7 +25,6 @@
 
 # Plugins
 /app/Plugin/*
-!/app/Plugin/Feedback
 !/app/Plugin/empty
 
 
