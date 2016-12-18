@@ -20,25 +20,23 @@
     "extra": {
         "installer-paths": {
             "app/Plugin/DebugKit": ["cakephp/debug_kit"],
-            "app/Plugin/ClearCache": ["ceeram/clear_cache"]
-        }
+            "app/Plugin/ClearCache": ["ceeram/clear_cache"],
+	    "app/Plugin/Cacher": ["jeremyharris/cacher"],
+            "app/Plugin/Migrations": ["cakedc/migrations"],
+            "app/Plugin/Feedback": ["phalkaline/cakephp-feedback-plugin"]
+            
+	}
 
     },
+   
     "require": {
         "php": ">=5.3",
         "ext-mcrypt": "*",
-        "cakephp/cakephp": "2.9.3",
+        "cakephp/cakephp": "2.9.2",
         "cakephp/debug_kit": "2.2.*",
-        "ceeram/clear_cache": "1.1.*"
-    },
-    "require-dev": {
-        "php": ">=5.3",
-        "ext-mcrypt": "*",
-        "cakephp/cakephp": "2.9.3",
-        "cakephp/debug_kit": "2.2.*",
-        "ceeram/clear_cache": "1.1.*"
+        "ceeram/clear_cache": "1.1.*",
+        "jeremyharris/cacher": "dev-master",
+        "cakedc/migrations": "^2.5",
+        "phalkaline/cakephp-feedback-plugin": "dev-master"
     }
-
-
 }
-
