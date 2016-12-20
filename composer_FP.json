@@ -59,8 +59,11 @@
         "ceeram/clear_cache": "1.1.*",
         "jeremyharris/cacher": "dev-master",
         "cakedc/migrations": "^2.5",
-        "phalkaline/cakephp-feedback-plugin": "dev-master"
-        
+        "phalkaline/cakephp-feedback-plugin": "dev-master",
+        "phalkaline/phkondo-attachments": "1.4.*",
+        "phalkaline/phkondo-drafts" : "1.4.*",
+        "phalkaline/phkondo-print-receipt" : "1.4.*",
+        "phalkaline/phkondo-reports" : "1.4.*"
         
     },
     "minimum-stability" : "dev",
