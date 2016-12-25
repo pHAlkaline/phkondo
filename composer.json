@@ -18,35 +18,13 @@
         "source": "https://github.com/pHAlkaline/phkondo.git"
     },
     
-    "repositories": [
-        {
-            "type": "vcs",
-            "url":  "https://gitlab.com/phkondo-private-plugins/attachments.git"
-        },
-        {
-            "type": "vcs",
-            "url":  "https://gitlab.com/phkondo-private-plugins/drafts.git"
-        },
-        {
-            "type": "vcs",
-            "url":  "https://gitlab.com/phkondo-private-plugins/print-receipt.git"
-        },
-        {
-            "type": "vcs",
-            "url":  "https://gitlab.com/phkondo-private-plugins/reports.git"
-        }
-    ],
     "extra": {
         "installer-paths": {
             "app/Plugin/DebugKit": ["cakephp/debug_kit"],
             "app/Plugin/ClearCache": ["ceeram/clear_cache"],
 	    "app/Plugin/Cacher": ["jeremyharris/cacher"],
             "app/Plugin/Migrations": ["cakedc/migrations"],
-            "app/Plugin/Feedback": ["phalkaline/cakephp-feedback-plugin"],
-            "app/Plugin/Attachments": ["phalkaline/phkondo-attachments"],
-            "app/Plugin/Drafts": ["phalkaline/phkondo-drafts"],
-            "app/Plugin/PrintReceipt": ["phalkaline/phkondo-print-receipt"],
-            "app/Plugin/Reports": ["phalkaline/phkondo-reports"]
+            "app/Plugin/Feedback": ["phalkaline/cakephp-feedback-plugin"]
         }
 
     },
@@ -60,8 +38,6 @@
         "jeremyharris/cacher": "dev-master",
         "cakedc/migrations": "^2.5",
         "phalkaline/cakephp-feedback-plugin": "dev-master"
-        
-        
     },
     "minimum-stability" : "dev",
     "prefer-stable": true
