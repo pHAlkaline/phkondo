@@ -14,15 +14,14 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 ?>
-<h2><?php //echo $message; ?></h2>
+<h2><?php echo $message; ?></h2>
 <p class="error">
-	<strong><?php echo __d('error_page', 'Sorry'); ?>: </strong>
+	<strong><?php echo __d('cake', 'Error'); ?>: </strong>
 	<?php printf(
-		__d('error_page', 'The page, %s you are looking for does not exist.'),
+		__d('cake', 'The requested address %s was not found on this server.'),
 		"<strong>'{$url}'</strong>"
 	); ?>
 </p>
-<?php echo $this->Html->link('Back to pHKondo',array('plugin'=>null,'controller'=>'pages','action'=>'home')); ?>
 <?php
 if (Configure::read('debug') > 0):
 	echo $this->element('exception_stack_trace');

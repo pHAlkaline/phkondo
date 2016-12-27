@@ -15,11 +15,10 @@
  */
 ?>
 <h2><?php echo $message; ?></h2>
-<p class="warning">
-	<strong><?php echo __d('error_page', 'You have experienced a technical error, We apologize.'); ?></strong><br/>
-	<?php echo __d('error_page', 'Our Support Team has been notified and is working to correct this issue.'); ?>
+<p class="error">
+	<strong><?php echo __d('cake', 'Error'); ?>: </strong>
+	<?php echo __d('cake', 'An Internal Error Has Occurred.'); ?>
 </p>
-<?php echo $this->Html->link('Back to pHKondo',array('plugin'=>null,'controller'=>'pages','action'=>'home')); ?>
 <?php
 if (Configure::read('debug') > 0):
 	echo $this->element('exception_stack_trace');
