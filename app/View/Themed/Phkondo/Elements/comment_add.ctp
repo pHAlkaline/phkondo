@@ -13,7 +13,6 @@
         ),
         'url' => array
             (
-            'plugin' => 'feedback',
             'controller' => 'comments',
             'action' => 'add',
             $foreign_model,
