@@ -1,0 +1,8 @@
+WARNING: 
+Always make a backup.
+Be very careful when updating app/Config directory files.
+Take very special attention to core.php , do not update salt and cipherSeed.
+Take very special attention to bootstrap_phapp.php , it has your setting.
+Take very special attention to database schema, also look at app/Config/Schema for schema updates.
+pHAlkaline strongly suggest the use of a diff software, like winmerge , melddiff or similar to see code and db schema changes.
+Clear cache , delete all files at app/tmp/cache subdirectories except empty

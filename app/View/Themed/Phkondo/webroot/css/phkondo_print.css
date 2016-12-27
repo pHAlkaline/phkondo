@@ -1,0 +1,106 @@
+/**
+ *
+ * pHKondo : pHKondo software for condominium property managers (http://phalkaline.eu)
+ * Copyright (c) pHAlkaline . (http://phalkaline.eu)
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ *
+ * @copyright     Copyright (c) pHAlkaline . (http://phalkaline.eu)
+ * @link          http://phkondo.net pHKondo Project
+ * @package       app.Model
+ * @since         pHKondo v 0.0.1
+ * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
+ * 
+ */
+
+body { 
+        background: white; 
+        font-size: 8pt; 
+    }
+
+    a[href]:after {
+        content: none !important;
+    }
+
+    .view tr td:first-child{
+        text-align: right;
+        width: 16%;
+
+    }
+
+    .view tr td:first-child:after{
+        content:":";
+    }
+
+    /*tr.page-break-after {
+        page-break-after: always;
+    }*/
+
+    /* Default left, right, top, bottom margin is 2cm */
+    /*@page { 
+        margin: 2cm;
+        
+    } /
+
+    /* First page, 10 cm margin on top */
+    /*@page :first {
+        margin-top: 5cm;
+    }
+
+    /* Left pages, a wider margin on the left */
+    /*@page :left {
+        margin-left: 2cm;
+        margin-right: 2cm;
+    }
+
+    @page :right {
+        margin-left: 2cm;
+        margin-right: 2cm;
+    }*/
+    
+    /* Enhancement for printing */
+
+  .invoice {
+    width: 100%;
+    border: 0;
+    margin: 0;
+    padding: 0;
+  }
+  .invoice-col {
+    float: left;
+    width: 33.3333333%;
+  }
+  .table-responsive {
+    overflow: auto;
+  }
+  .table-responsive > .table tr th,
+  .table-responsive > .table tr td {
+    white-space: normal!important;
+  }
+  
+  .pagebreakDraft {
+    page-break-after: always; 
+    width:100%;
+    height: 0px;
+    border: none;
+}
+  
+  #debug-kit-toolbar {
+      display: none;
+  }
+  
+  
+
+

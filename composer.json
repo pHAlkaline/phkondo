@@ -1,0 +1,44 @@
+{
+    "name": "phalkaline/phkondo",
+    "description": "Condominium Management Software",
+    "type": "project",
+    "keywords": ["application", "php", "condominium", "condominium", "management"],
+    "homepage": "http://phkondo.net",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "pHAlkaline",
+            "homepage": "http://phalkaline.eu"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/pHAlkaline/phkondo/issues",
+        "forum": "http://groups.google.com/group/phkondo",
+        "wiki": "https://github.com/pHAlkaline/phkondo/wiki",
+        "source": "https://github.com/pHAlkaline/phkondo.git"
+    },
+    
+    "extra": {
+        "installer-paths": {
+            "app/Plugin/DebugKit": ["cakephp/debug_kit"],
+            "app/Plugin/ClearCache": ["ceeram/clear_cache"],
+	    "app/Plugin/Cacher": ["jeremyharris/cacher"],
+            "app/Plugin/Migrations": ["cakedc/migrations"],
+            "app/Plugin/Feedback": ["phalkaline/cakephp-feedback-plugin"]
+        }
+
+    },
+   
+    "require": {
+        "php": ">=5.3",
+        "ext-mcrypt": "*",
+        "cakephp/cakephp": "2.9.4",
+        "cakephp/debug_kit": "2.2.*",
+        "ceeram/clear_cache": "1.1.*",
+        "jeremyharris/cacher": "dev-master",
+        "cakedc/migrations": "^2.5",
+        "phalkaline/cakephp-feedback-plugin": "dev-master"
+    },
+    "minimum-stability" : "dev",
+    "prefer-stable": true
+}
