@@ -1,0 +1,292 @@
+# LANGUAGE translation of pHkondo Application
+# Copyright pHAlkaline <contact@phalkaline.eu>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pHKondo V0.1\n"
+"POT-Creation-Date: 2015-03-01 22:26+0000\n"
+"PO-Revision-Date: 2015-03-01 22:26+0000\n"
+"Last-Translator: pHAlkaline <contact@phalkaline.eu>\n"
+"Language-Team: Portuguesa <contact@phalkaline.eu>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.4\n"
+"Language: pt\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+msgid " of "
+msgstr " de "
+
+msgid "%d Byte"
+msgid_plural "%d Bytes"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d dia"
+msgstr[1] "%d dias "
+
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d hora"
+msgstr[1] "%d horas"
+
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d minuto"
+msgstr[1] "%d minutos"
+
+msgid "%d month"
+msgid_plural "%d months"
+msgstr[0] "%d mês"
+msgstr[1] "%d meses"
+
+msgid "%d second"
+msgid_plural "%d seconds"
+msgstr[0] "%d segundo"
+msgstr[1] "%s segundos"
+
+msgid "%d week"
+msgid_plural "%d weeks"
+msgstr[0] "%d semana"
+msgstr[1] "%d semanas"
+
+msgid "%d year"
+msgid_plural "%d years"
+msgstr[0] "%d ano"
+msgstr[1] "% anos"
+
+msgid "%s GB"
+msgstr ""
+
+msgid "%s KB"
+msgstr "%s KB"
+
+msgid "%s MB"
+msgstr ""
+
+msgid "%s TB"
+msgstr ""
+
+msgid "%s ago"
+msgstr "%s após"
+
+msgid "Actions"
+msgstr "Acções"
+
+msgid "An Internal Error Has Occurred."
+msgstr "Houve um erro interno."
+
+msgid "April"
+msgstr "Abril"
+
+msgid "Are you sure you want to delete # %s?"
+msgstr "Tem a certeza que quer apagar # %s?"
+
+msgid "August"
+msgstr "Agosto"
+
+msgid "December"
+msgstr "Dezembro"
+
+msgid "Delete"
+msgstr "Apagar"
+
+msgid "Delete %s"
+msgstr "Apagar %s"
+
+msgid "Edit"
+msgstr "Editar"
+
+msgid "Edit %s"
+msgstr "Editar %s"
+
+msgid "Error"
+msgstr "Erro"
+
+msgid "Error in field %s"
+msgstr "Erro no campo %s"
+
+msgid "February"
+msgstr "Fevereiro"
+
+msgid "Friday"
+msgstr "Sexta-Feira"
+
+msgid "Home"
+msgstr ""
+
+msgid "Invalid %s"
+msgstr "%s Inválido"
+
+msgid "January"
+msgstr "Janeiro"
+
+msgid "July"
+msgstr "Julho"
+
+msgid "June"
+msgstr "Junho"
+
+msgid "List"
+msgstr "Listar"
+
+msgid "List %s"
+msgstr "Listar %s"
+
+msgid "March"
+msgstr "Março"
+
+msgid "May"
+msgstr "Maio"
+
+msgid "Monday"
+msgstr "Segunda-Feira"
+
+msgid "New %s"
+msgstr "Criar %s"
+
+msgid "Not Found"
+msgstr "Não encontrado"
+
+msgid "November"
+msgstr "Novembro"
+
+msgid "October"
+msgstr "Outubro"
+
+msgid "On %s %s"
+msgstr "Em %s %s"
+
+msgid "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
+msgstr "Página {:page} de {:pages}, a mostar {:current} registos de {:count} no total, inicia no registo {:start}, termina no registo {:end}"
+
+msgid "Please correct errors below."
+msgstr "Por favor corrija os erros em baixo."
+
+msgid "Related %s"
+msgstr "%s Relacionados"
+
+msgid "Saturday"
+msgstr "Sábado"
+
+msgid "Scaffold :: "
+msgstr ""
+
+msgid "September"
+msgstr "Setembro"
+
+msgid "Submit"
+msgstr "Registar"
+
+msgid "Sunday"
+msgstr "Domingo"
+
+msgid "The %1$s has been %2$s"
+msgstr "O %1$s foi %2$s"
+
+msgid "The %1$s with id: %2$s has been deleted."
+msgstr "O %1$s com o id: %2$s foi removido."
+
+msgid "The requested address %s was not found on this server."
+msgstr "O pedido %s não foi encontrado neste servidor."
+
+msgid "The requested file was not found"
+msgstr "O ficheiro pedido não foi encontrado"
+
+msgid "There was an error deleting the %1$s with id: %2$s"
+msgstr "Houve um erro ao apagar o %1$s com o id: %2$s"
+
+msgid "This field cannot be left blank"
+msgstr "Este campo não pode ser vazio"
+
+msgid "Thursday"
+msgstr "Quinta-Feira"
+
+msgid "Today, %s"
+msgstr "Hoje, %s"
+
+msgid "Tomorrow, %s"
+msgstr "Amanhã, %s"
+
+msgid "Tuesday"
+msgstr "Terça-Feira"
+
+msgid "View"
+msgstr "Ver"
+
+msgid "View %s"
+msgstr "Ver %s"
+
+msgid "Wednesday"
+msgstr "Quarta-Feira"
+
+msgid "Yesterday, %s"
+msgstr "Ontem, %s"
+
+msgid "You are not authorized to access that location."
+msgstr "Não está autorizado a aceder a este local."
+
+msgid "about a day ago"
+msgstr "passou um dia"
+
+msgid "about a minute ago"
+msgstr "passou um minuto"
+
+msgid "about a second ago"
+msgstr "passou um segundo"
+
+msgid "about a week ago"
+msgstr "passou uma semana"
+
+msgid "about a year ago"
+msgstr "passou um ano"
+
+msgid "about an hour ago"
+msgstr "passou uma hora"
+
+msgid "days"
+msgstr "dias"
+
+msgid "empty"
+msgstr "vazio"
+
+msgid "in about a day"
+msgstr "falta um dia"
+
+msgid "in about a minute"
+msgstr "falta um minuto"
+
+msgid "in about a second"
+msgstr "falta um segundo"
+
+msgid "in about a week"
+msgstr "falta uma semana"
+
+msgid "in about a year"
+msgstr "falta um ano"
+
+msgid "in about an hour"
+msgstr "falta uma hora"
+
+msgid "just now"
+msgstr "agora"
+
+msgid "next"
+msgstr "proximo"
+
+msgid "on %s"
+msgstr "em %s"
+
+msgid "previous"
+msgstr "anterior"
+
+msgid "saved"
+msgstr "registado"
+
+msgid "updated"
+msgstr "actualizado"

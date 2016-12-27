@@ -1,0 +1,71 @@
+{
+    "name": "phalkaline/phkondo",
+    "description": "Condominium Management Software",
+    "type": "project",
+    "keywords": ["application", "php", "condominium", "condominium", "management"],
+    "homepage": "http://phkondo.net",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "pHAlkaline",
+            "homepage": "http://phalkaline.eu"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/pHAlkaline/phkondo/issues",
+        "forum": "http://groups.google.com/group/phkondo",
+        "wiki": "https://github.com/pHAlkaline/phkondo/wiki",
+        "source": "https://github.com/pHAlkaline/phkondo.git"
+    },
+    
+    "repositories": [
+        {
+            "type": "vcs",
+            "url":  "https://gitlab.com/phkondo-private-plugins/attachments.git"
+        },
+        {
+            "type": "vcs",
+            "url":  "https://gitlab.com/phkondo-private-plugins/drafts.git"
+        },
+        {
+            "type": "vcs",
+            "url":  "https://gitlab.com/phkondo-private-plugins/print-receipt.git"
+        },
+        {
+            "type": "vcs",
+            "url":  "https://gitlab.com/phkondo-private-plugins/reports.git"
+        }
+    ],
+    "extra": {
+        "installer-paths": {
+            "app/Plugin/DebugKit": ["cakephp/debug_kit"],
+            "app/Plugin/ClearCache": ["ceeram/clear_cache"],
+	    "app/Plugin/Cacher": ["jeremyharris/cacher"],
+            "app/Plugin/Migrations": ["cakedc/migrations"],
+            "app/Plugin/Feedback": ["phalkaline/cakephp-feedback-plugin"],
+            "app/Plugin/Attachments": ["phalkaline/phkondo-attachments"],
+            "app/Plugin/Drafts": ["phalkaline/phkondo-drafts"],
+            "app/Plugin/PrintReceipt": ["phalkaline/phkondo-print-receipt"],
+            "app/Plugin/Reports": ["phalkaline/phkondo-reports"]
+        }
+
+    },
+   
+    "require": {
+        "php": ">=5.3",
+        "ext-mcrypt": "*",
+        "cakephp/cakephp": "2.9.2",
+        "cakephp/debug_kit": "2.2.*",
+        "ceeram/clear_cache": "1.1.*",
+        "jeremyharris/cacher": "dev-master",
+        "cakedc/migrations": "^2.5",
+        "phalkaline/cakephp-feedback-plugin": "dev-master",
+        "phalkaline/phkondo-attachments": "1.4.*",
+        "phalkaline/phkondo-drafts" : "1.4.*",
+        "phalkaline/phkondo-print-receipt" : "1.4.*",
+        "phalkaline/phkondo-reports" : "1.4.*"
+        
+    },
+    "minimum-stability" : "dev",
+    "prefer-stable": true
+}

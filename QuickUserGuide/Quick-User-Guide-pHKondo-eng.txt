@@ -1,0 +1,65 @@
+pHKondo quick guide
+
+Add condo(s) -> New condo 
+Enter condo details
+
+Go to Properties 
+Add properties -> New Property
+Enter Property Details
+
+Inside Property Go to Owners
+Add owners -> New Owner
+Or use Insert Owner to search for owners already on your database
+
+Go back to condo details
+Go to Administrators
+Add administrators -> Add Administrator
+* Administrator is the owner(s) selected to be a direct link ( Representative ) between the Condo management company/service and all the owners in condo matters.
+
+Go back to condo details
+Go to Fiscal Years
+Add fiscal year -> New Fiscal Year
+* Fiscal Year is used to setup your management period, it can be whatever period you want not necessary a year.
+Fiscal Year time interval ( start date , end date ) it's used to control some features:
+- Account Balance by fiscal year, Budgets ...
+- Reports for Balance , Income , Expenses, In Debt, Fees Maps
+* IMPORTANT: Some data are presented and grouped by active fiscal year, to see data from other fiscal year you must activate it first.
+
+Go back to condo details
+Go to Bank Accounts
+Add bank accounts -> New Account
+Enter Account Details
+
+Inside Account Go to Movements
+Add account movements -> New Movement
+* Every movement must belong to the active fiscal year interval
+* For every fiscal year you must create the first and last movement described below, this will allow pHKondo to make account reports based on fiscal year.
+* The first movement should be:
+Initial amount for opening balance on active fiscal year
+Opening / Closing on Category
+Opening Balance on Movement Operation
+Movement type: Credit if open balance is 0 or superior, Debit if open balance is < 0 
+* The last movement should be:
+Opening / Closing on Category
+Closing Balance on Movement Operation
+
+Go back to condo details
+Go to Budgets
+Add budgets -> New Budget
+Set your budgets, setup Amount, Reserve Fund (%), Begin Date, Fees, Fee Periodicity, Fee Distribution and Due Days. This fields will be the base for automatic fee creation.
+Put your budget on active status.
+Go to Create Fees for automatic debit feed 
+
+
+.. After this you can explore ...
+Go to Receipts to create documents for condo income payments with receipts
+Go to Invoice Conference to manage condo debts/suppliers payments
+Go to Maintenances to manage condo maintenance schedules
+Go to Insurances to manage condo and property insurances
+Go to Documents to manage documents
+Go to Reports for Balance , Income , Expenses, In Debt, Fees Maps, Contact Lists ...
+Go to Drafts to make some document drafts you may require...
+And other features pHKondo may have.
+
+FINAL NOTE:
+If you are looking to other features pHKondo may not have available and you wish to acquire, feel free to contact us at contact@phalkaline.eu

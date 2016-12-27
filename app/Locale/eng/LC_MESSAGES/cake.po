@@ -1,0 +1,293 @@
+# LANGUAGE translation of pHkondo Application
+# Copyright pHAlkaline <contact@phalkaline.eu>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: pHKondo V0.1\n"
+"POT-Creation-Date: 2015-03-01 22:26+0000\n"
+"PO-Revision-Date: 2015-04-08 18:04+0100\n"
+"Last-Translator: pHAlkaline <contact@phalkaline.eu>\n"
+"Language-Team: Portuguesa <contact@phalkaline.eu>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.4\n"
+"Language: pt\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+msgid " of "
+msgstr ""
+
+msgid "%d Byte"
+msgid_plural "%d Bytes"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "%d month"
+msgid_plural "%d months"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "%d second"
+msgid_plural "%d seconds"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "%d week"
+msgid_plural "%d weeks"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "%d year"
+msgid_plural "%d years"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "%s GB"
+msgstr ""
+
+msgid "%s KB"
+msgstr ""
+
+msgid "%s MB"
+msgstr ""
+
+msgid "%s TB"
+msgstr ""
+
+msgid "%s ago"
+msgstr ""
+
+msgid "Actions"
+msgstr ""
+
+msgid "An Internal Error Has Occurred."
+msgstr ""
+
+msgid "April"
+msgstr ""
+
+msgid "Are you sure you want to delete # %s?"
+msgstr ""
+
+msgid "August"
+msgstr ""
+
+msgid "December"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Delete %s"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Edit %s"
+msgstr ""
+
+msgid "Error"
+msgstr ""
+
+msgid "Error in field %s"
+msgstr ""
+
+msgid "February"
+msgstr ""
+
+msgid "Friday"
+msgstr ""
+
+msgid "Home"
+msgstr ""
+
+msgid "Invalid %s"
+msgstr ""
+
+msgid "January"
+msgstr ""
+
+msgid "July"
+msgstr ""
+
+msgid "June"
+msgstr ""
+
+msgid "List"
+msgstr ""
+
+msgid "List %s"
+msgstr ""
+
+msgid "March"
+msgstr ""
+
+msgid "May"
+msgstr ""
+
+msgid "Monday"
+msgstr ""
+
+msgid "New %s"
+msgstr ""
+
+msgid "Not Found"
+msgstr ""
+
+msgid "November"
+msgstr ""
+
+msgid "October"
+msgstr ""
+
+msgid "On %s %s"
+msgstr ""
+
+msgid ""
+"Page {:page} of {:pages}, showing {:current} records out of {:count} total, "
+"starting on record {:start}, ending on {:end}"
+msgstr ""
+
+msgid "Please correct errors below."
+msgstr ""
+
+msgid "Related %s"
+msgstr ""
+
+msgid "Saturday"
+msgstr ""
+
+msgid "Scaffold :: "
+msgstr ""
+
+msgid "September"
+msgstr ""
+
+msgid "Submit"
+msgstr ""
+
+msgid "Sunday"
+msgstr ""
+
+msgid "The %1$s has been %2$s"
+msgstr ""
+
+msgid "The %1$s with id: %2$s has been deleted."
+msgstr ""
+
+msgid "The requested address %s was not found on this server."
+msgstr ""
+
+msgid "The requested file was not found"
+msgstr ""
+
+msgid "There was an error deleting the %1$s with id: %2$s"
+msgstr ""
+
+msgid "This field cannot be left blank"
+msgstr ""
+
+msgid "Thursday"
+msgstr ""
+
+msgid "Today, %s"
+msgstr ""
+
+msgid "Tomorrow, %s"
+msgstr ""
+
+msgid "Tuesday"
+msgstr ""
+
+msgid "View"
+msgstr ""
+
+msgid "View %s"
+msgstr ""
+
+msgid "Wednesday"
+msgstr ""
+
+msgid "Yesterday, %s"
+msgstr ""
+
+msgid "You are not authorized to access that location."
+msgstr ""
+
+msgid "about a day ago"
+msgstr ""
+
+msgid "about a minute ago"
+msgstr ""
+
+msgid "about a second ago"
+msgstr ""
+
+msgid "about a week ago"
+msgstr ""
+
+msgid "about a year ago"
+msgstr ""
+
+msgid "about an hour ago"
+msgstr ""
+
+msgid "days"
+msgstr ""
+
+msgid "empty"
+msgstr ""
+
+msgid "in about a day"
+msgstr ""
+
+msgid "in about a minute"
+msgstr ""
+
+msgid "in about a second"
+msgstr ""
+
+msgid "in about a week"
+msgstr ""
+
+msgid "in about a year"
+msgstr ""
+
+msgid "in about an hour"
+msgstr ""
+
+msgid "just now"
+msgstr ""
+
+msgid "next"
+msgstr ""
+
+msgid "on %s"
+msgstr ""
+
+msgid "previous"
+msgstr ""
+
+msgid "saved"
+msgstr ""
+
+msgid "updated"
+msgstr ""
