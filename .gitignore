@@ -4,6 +4,7 @@
 /app/webroot/index.php
 /app/webroot/files
 /app/Config/database.php
+/app/Config/core.php
 /app/Config/email.php
 /app/Config/core_phapp.php
 /app/Config/bootstrap_phapp.php
