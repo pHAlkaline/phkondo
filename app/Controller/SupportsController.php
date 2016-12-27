@@ -43,6 +43,10 @@ class SupportsController extends AppController {
      */
     public $components = array('Paginator', 'Feedback.Comments' => array('on' => array('view')));
 
+     public $helpers = array(
+        'Feedback.Comments' => array('elementIndex'=> 'comment_index','elementForm'=> 'comment_add')
+        );
+        
     /**
      * index method
      *
