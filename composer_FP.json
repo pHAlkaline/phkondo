@@ -44,6 +44,7 @@
             "app/Plugin/Migrations": ["cakedc/migrations"],
             "app/Plugin/Feedback": ["phalkaline/cakephp-feedback-plugin"],
             "app/Plugin/Attachments": ["phalkaline/phkondo-attachments"],
+            "app/Plugin/upload": ["josegonzalez/cakephp-upload"],
             "app/Plugin/Drafts": ["phalkaline/phkondo-drafts"],
             "app/Plugin/PrintReceipt": ["phalkaline/phkondo-print-receipt"],
             "app/Plugin/Reports": ["phalkaline/phkondo-reports"]
@@ -61,6 +62,7 @@
         "cakedc/migrations": "^2.5",
         "phalkaline/cakephp-feedback-plugin": "dev-master",
         "phalkaline/phkondo-attachments": "1.4.*",
+        "josegonzalez/cakephp-upload": "2.x-dev",
         "phalkaline/phkondo-drafts" : "1.4.*",
         "phalkaline/phkondo-print-receipt" : "1.4.*",
         "phalkaline/phkondo-reports" : "1.4.*"
