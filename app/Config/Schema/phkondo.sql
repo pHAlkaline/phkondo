@@ -859,8 +859,6 @@ CREATE TABLE IF NOT EXISTS `support_statuses` (
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `model` varchar(45) DEFAULT NULL,
-  `foreign_key` int DEFAULT NULL,
   `name` varchar(40) NOT NULL,
   `username` varchar(40) DEFAULT NULL,
   `password` varchar(50) DEFAULT NULL,
