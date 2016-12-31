@@ -161,7 +161,7 @@ class Fraction extends AppModel {
         'Insurance' => array(
             'className' => 'Insurance',
             'foreignKey' => 'fraction_id',
-            'dependent' => false,
+            'dependent' => true,
             'conditions' => '',
             'fields' => '',
             'order' => '',
@@ -173,7 +173,7 @@ class Fraction extends AppModel {
         'Note' => array(
             'className' => 'Note',
             'foreignKey' => 'fraction_id',
-            'dependent' => false,
+            'dependent' => true,
             'conditions' => '',
             'fields' => '',
             'order' => '',
@@ -201,6 +201,7 @@ class Fraction extends AppModel {
             'limit' => '',
             'offset' => '',
             'finderQuery' => '',
+            'dependent' => true
         )
     );
 

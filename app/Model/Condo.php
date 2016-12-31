@@ -121,7 +121,7 @@ class Condo extends AppModel {
         'Account' => array(
             'className' => 'Account',
             'foreignKey' => 'condo_id',
-            'dependent' => false,
+            'dependent' => true,
             'conditions' => '',
             'fields' => '',
             'order' => '',
@@ -134,7 +134,7 @@ class Condo extends AppModel {
         'Fraction' => array(
             'className' => 'Fraction',
             'foreignKey' => 'condo_id',
-            'dependent' => false,
+            'dependent' => true,
             'conditions' => '',
             'fields' => '',
             'order' => array('Fraction.length' => 'ASC', 'Fraction.fraction' => 'ASC'),
@@ -147,7 +147,7 @@ class Condo extends AppModel {
         'Maintenance' => array(
             'className' => 'Maintenance',
             'foreignKey' => 'condo_id',
-            'dependent' => false,
+            'dependent' => true,
             'conditions' => '',
             'fields' => '',
             'order' => '',
@@ -160,7 +160,7 @@ class Condo extends AppModel {
         'Insurance' => array(
             'className' => 'Insurance',
             'foreignKey' => 'condo_id',
-            'dependent' => false,
+            'dependent' => true,
             'conditions' => '',
             'fields' => '',
             'order' => '',
@@ -173,7 +173,7 @@ class Condo extends AppModel {
         'FiscalYear' => array(
             'className' => 'FiscalYear',
             'foreignKey' => 'condo_id',
-            'dependent' => false,
+            'dependent' => true,
             'conditions' => array('FiscalYear.active' => '1'),
             'fields' => '',
             'order' => '',
@@ -186,7 +186,7 @@ class Condo extends AppModel {
         'Administrator' => array(
             'className' => 'Administrator',
             'foreignKey' => 'condo_id',
-            'dependent' => false,
+            'dependent' => true,
         ),
        
     );
