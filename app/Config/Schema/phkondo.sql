@@ -92,28 +92,6 @@ CREATE TABLE IF NOT EXISTS `administrators` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `attachments`
---
-
-DROP TABLE IF EXISTS `attachments`;
-CREATE TABLE IF NOT EXISTS `attachments` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `model` varchar(20) NOT NULL,
-  `foreign_key` int(11) NOT NULL,
-  `name` varchar(32) NOT NULL,
-  `attachment` varchar(255) NOT NULL,
-  `dir` varchar(255) DEFAULT NULL,
-  `type` varchar(255) DEFAULT NULL,
-  `size` int(11) DEFAULT '0',
-  `active` tinyint(1) DEFAULT '1',
-  `modified` datetime DEFAULT NULL,
-  `created` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `budgets`
 --
 
@@ -221,23 +199,6 @@ CREATE TABLE IF NOT EXISTS `condos` (
   `created` datetime DEFAULT NULL,
   `matrix_registration` varchar(45) DEFAULT NULL,
   `land_registry` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `drafts`
---
-
-DROP TABLE IF EXISTS `drafts`;
-CREATE TABLE IF NOT EXISTS `drafts` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(100) NOT NULL,
-  `content` text NOT NULL,
-  `content_model` text,
-  `modified` datetime DEFAULT NULL,
-  `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
