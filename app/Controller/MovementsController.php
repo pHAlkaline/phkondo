@@ -81,6 +81,8 @@ class MovementsController extends AppController {
                 'Movement.fiscal_year_id' => $this->getPhkRequestVar('fiscal_year_id')));
         $movement = $this->Movement->find('first', $options);
         $this->set('movement', $movement);
+        $this->Movement->id=$id;
+        $this->set('deletable',$this->Movement->Deletable());
         $this->setPhkRequestVar('movement_id',$id);
         $this->setPhkRequestVar('movement_text',$movement['Movement']['description']);
         
@@ -119,17 +121,19 @@ class MovementsController extends AppController {
 
         $accounts = $this->Movement->Account->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('account_id'))));
         $fiscalYears = $this->Movement->FiscalYear->find('list', array('conditions' => array('active'=>'1','condo_id'=>$this->getPhkRequestVar('condo_id'),'id' => $this->getPhkRequestVar('fiscal_year_id'))));
-        
+        $fiscalYearData= $this->Movement->FiscalYear->find('first', array('fields'=>array('open_date','close_date'),'conditions' => array('active'=>'1','condo_id'=>$this->getPhkRequestVar('condo_id'),'id' => $this->getPhkRequestVar('fiscal_year_id'))));
+       
         $movementTypes = $this->Movement->MovementType->find('list', array('conditions' => array('active' => '1')));
 
         $movementCategories = $this->Movement->MovementCategory->find('list', array('conditions' => array('active' => '1')));
-
+        $openMovement = ( $openMovement==0 ? true : false );
         if ($openMovement) {
-            $movementOperations = $this->Movement->MovementOperation->find('list', array('conditions' => array('MovementOperation.id <>' => '1', 'active' => '1')));
-        } else {
             $movementOperations = $this->Movement->MovementOperation->find('list', array('conditions' => array('MovementOperation.id' => '1', 'active' => '1')));
+        } else {
+            $movementOperations = $this->Movement->MovementOperation->find('list', array('conditions' => array('MovementOperation.id <>' => '1', 'active' => '1')));            
+
         }
-        $this->set(compact('accounts', 'movementCategories', 'movementOperations', 'movementTypes', 'fiscalYears'));
+        $this->set(compact('accounts', 'movementCategories', 'movementOperations', 'movementTypes', 'fiscalYears','openMovement','fiscalYearData'));
     }
 
     /**
@@ -161,17 +165,20 @@ class MovementsController extends AppController {
         }
         $accounts = $this->Movement->Account->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('account_id'))));
         $fiscalYears = $this->Movement->FiscalYear->find('list', array('conditions' => array('condo_id'=>$this->getPhkRequestVar('condo_id'),'id' => $this->getPhkRequestVar('fiscal_year_id'))));
+         $fiscalYearData= $this->Movement->FiscalYear->find('first', array('fields'=>array('open_date','close_date'),'conditions' => array('active'=>'1','condo_id'=>$this->getPhkRequestVar('condo_id'),'id' => $this->getPhkRequestVar('fiscal_year_id'))));
         $movementTypes = $this->Movement->MovementType->find('list', array('conditions' => array('active' => '1')));
         $movementCategories = $this->Movement->MovementCategory->find('list', array('conditions' => array('active' => '1')));
 
-        $openMovement = $this->request->data['Movement']['movement_operation_id'];
-        if ($openMovement != 1) {
-            $movementOperations = $this->Movement->MovementOperation->find('list', array('conditions' => array('MovementOperation.id <>' => '1', 'active' => '1')));
+        $openMovement = ( $this->request->data['Movement']['movement_operation_id']==1 ? true : false );
+        if ($openMovement) {
+             $movementOperations = $this->Movement->MovementOperation->find('list', array('conditions' => array('MovementOperation.id' => '1', 'active' => '1')));
+            
         } else {
-            $movementOperations = $this->Movement->MovementOperation->find('list', array('conditions' => array('MovementOperation.id' => '1', 'active' => '1')));
+             $movementOperations = $this->Movement->MovementOperation->find('list', array('conditions' => array('MovementOperation.id <>' => '1', 'active' => '1')));
         }
-
-        $this->set(compact('accounts', 'movementCategories', 'movementOperations', 'movementTypes', 'fiscalYears'));
+        $this->Movement->id=$id;
+        $deletable=$this->Movement->deletable();
+        $this->set(compact('accounts', 'movementCategories', 'movementOperations', 'movementTypes', 'fiscalYears','deletable','fiscalYearData','openMovement'));
         $this->setPhkRequestVar('movement_id',$id);
         $this->setPhkRequestVar('movement_text',$this->request->data['Movement']['description']);
     }
@@ -195,7 +202,7 @@ class MovementsController extends AppController {
         }
 
         $this->Movement->read();
-        if ($this->Movement->data['Movement']['movement_operation_id'] != 1 && $this->Movement->delete()) {
+        if ($this->Movement->deletable() && $this->Movement->delete()) {
             $this->Flash->success(__('Movement deleted'));
             $this->redirect(array('action' => 'index','?'=>$this->request->query));
         }

@@ -244,10 +244,29 @@ class Movement extends AppModel {
     }
     
     public function afterDelete(){
+        if (!isset($this->data['Movement'])){ return; }
         $account_id = $this->data['Movement']['account_id'];
         $fiscal_year_id = $this->data['Movement']['fiscal_year_id'];
         $this->Account->setAccountBalanceByFiscalYear($account_id,$fiscal_year_id);
         
+    }
+    
+    
+    
+    public function deletable(){
+        if ($this->id==null){ return false; }
+        if (!isset($this->data['Movement']['id'])){
+            $this->read();
+        }
+        
+        $conditions = array(
+            'fiscal_year_id' => $this->data['Movement']['fiscal_year_id'],
+            'account_id' => $this->data['Movement']['account_id']
+                );
+        $totalMovements = $this->find('count', array('conditions' => $conditions));
+        if ($totalMovements==1){ return true; }
+        
+        return $this->data['Movement']['movement_operation_id'] != 1;
     }
     
     
