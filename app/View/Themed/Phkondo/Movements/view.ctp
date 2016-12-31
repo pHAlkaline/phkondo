@@ -6,7 +6,9 @@
 
             <ul class="nav nav-pills nav-stacked">			
                 <li ><?php echo $this->Html->link(__('Edit Movement'), array('action' => 'edit', $movement['Movement']['id'],'?'=>$this->request->query), array('class' => 'btn ')); ?> </li>
+                 <?php if ($deletable) { ?>
                 <li ><?php echo $this->Form->postLink(__('Delete Movement'), array('action' => 'delete', $movement['Movement']['id'],'?'=>$this->request->query), array('class' => 'btn ', 'confirm' => __('Are you sure you want to delete # %s?', $movement['Movement']['description']))); ?> </li>
+                 <?php } ?>
                 <li ><?php echo $this->Html->link(__('New Movement'), array('action' => 'add','?'=>$this->request->query), array('class' => 'btn ')); ?> </li>
                 <li ><?php echo $this->Html->link(__('List Movements'), array('action' => 'index','?'=>$this->request->query), array('class' => 'btn ')); ?> </li>
 

@@ -164,7 +164,7 @@ class Account extends AppModel {
         'Movement' => array(
             'className' => 'Movement',
             'foreignKey' => 'account_id',
-            'dependent' => false,
+            'dependent' => true,
             'conditions' => '',
             'fields' => '',
             'order' => '',
