@@ -43,7 +43,7 @@ if (isset($movements[0]['Account']['balance'])){
                                 <td class="actions hidden-print">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $movement['Movement']['id'],'?'=>$this->request->query), array('title'=>__('Details'),'class' => 'btn btn-default btn-xs','escape'=>false)); ?>
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $movement['Movement']['id'],'?'=>$this->request->query), array('title'=>__('Edit'),'class' => 'btn btn-default btn-xs','escape'=>false)); ?>
-                                    <?php if ($movement['MovementOperation']['id']!='1') { ?>
+                                    <?php if ($movement['MovementOperation']['id']!='1' || ($movement['MovementOperation']['id']=='1' && count($movements)==1)) { ?>
                                     <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'delete', $movement['Movement']['id'],'?'=>$this->request->query), array('title'=>__('Remove'),'class' => 'btn btn-default btn-xs','escape'=>false,'confirm'=> __('Are you sure you want to delete # %s?' , $movement['Movement']['description'] ))); ?>
                                     <?php } ?>
                                 </td>

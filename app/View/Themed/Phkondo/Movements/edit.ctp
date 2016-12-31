@@ -7,7 +7,9 @@
 
             <ul class="nav nav-pills nav-stacked">
                 <li ><?php echo $this->Html->link(__('View %s', __n('Movement', 'Movements', 1)), array('action' => 'view', $this->Form->value('Movement.id'),'?'=>$this->request->query), array('class' => 'btn')); ?></li>
+                 <?php if ($deletable) { ?>
                 <li ><?php echo $this->Form->postLink(__('Delete Movement'), array('action' => 'delete', $this->Form->value('Movement.id'),'?'=>$this->request->query), array('class' => 'btn', 'confirm' => __('Are you sure you want to delete # %s?', $this->Form->value('Movement.description')))); ?></li>
+                 <?php } ?>
                 <li ><?php echo $this->Html->link(__('List Movements'), array('action' => 'index','?'=>$this->request->query), array('class' => 'btn')); ?></li>
                 <li ><?php echo $this->Html->link(__('New Movement Category'), array('controller' => 'movement_categories', 'action' => 'addFromMovement', $this->Form->value('Movement.id'),'?'=>$this->request->query), array('class' => 'btn')); ?> </li>
                 <li ><?php echo $this->Html->link(__('New Movement Operation'), array('controller' => 'movement_operations', 'action' => 'addFromMovement', $this->Form->value('Movement.id'),'?'=>$this->request->query), array('class' => 'btn')); ?> </li>
@@ -32,9 +34,25 @@
                     <?php echo $this->Form->input('fiscal_year_id', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
 
-                <div class="form-group">
-                    <?php echo $this->Form->input('movement_date', array('type' => 'text', 'class' => 'form-control datefield')); ?>
+                <?php if ($openMovement){ ?>
+                 <div class="form-group">
+                    <?php echo $this->Form->input('movement_date', array(
+                        'type' => 'text',
+                        'value'=>$fiscalYearData['FiscalYear']['open_date'],
+                        'class' => 'form-control',
+                        'readonly')); ?>
                 </div><!-- .form-group -->
+                <?php } else { ?>
+                <div class="form-group">
+                    <?php echo $this->Form->input('movement_date', array(
+                        'type' => 'text', 
+                        'class' => 'form-control datefield',
+                        'data-date-start-date'=>$fiscalYearData['FiscalYear']['open_date'],
+                        'data-date-end-date'=>$fiscalYearData['FiscalYear']['close_date'],
+                        )); ?>
+                </div><!-- .form-group -->
+                <?php } ?>
+                
 
                 <div class="form-group">
                     <?php echo $this->Form->input('description', array('class' => 'form-control')); ?>

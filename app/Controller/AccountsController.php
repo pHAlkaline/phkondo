@@ -149,10 +149,12 @@ class AccountsController extends AppController {
             $this->Flash->error(__('Invalid account'));
             $this->redirect(array('action' => 'index','?'=>$this->request->query));
         }
+        
         if ($this->Account->delete()) {
             $this->Flash->success(__('Account deleted'));
             $this->redirect(array('action' => 'index','?'=>$this->request->query));
         }
+        
         $this->Flash->error(__('Account can not be deleted'));
         $this->redirect(array('action' => 'view', $id,'?'=>$this->request->query));
     }

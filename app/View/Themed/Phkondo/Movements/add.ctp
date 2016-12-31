@@ -28,11 +28,24 @@
                 <div class="form-group">
                     <?php echo $this->Form->input('fiscal_year_id', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
-
-                <div class="form-group">
-                    <?php echo $this->Form->input('movement_date', array('type' => 'text', 'class' => 'form-control datefield')); ?>
+                <?php if ($openMovement){ ?>
+                 <div class="form-group">
+                    <?php echo $this->Form->input('movement_date', array(
+                        'type' => 'text',
+                        'value'=>$fiscalYearData['FiscalYear']['open_date'],
+                        'class' => 'form-control',
+                        'readonly')); ?>
                 </div><!-- .form-group -->
-
+                <?php } else { ?>
+                <div class="form-group">
+                    <?php echo $this->Form->input('movement_date', array(
+                        'type' => 'text', 
+                        'class' => 'form-control datefield',
+                        'data-date-start-date'=>$fiscalYearData['FiscalYear']['open_date'],
+                        'data-date-end-date'=>$fiscalYearData['FiscalYear']['close_date'],
+                        )); ?>
+                </div><!-- .form-group -->
+                <?php } ?>
                 <div class="form-group">
                     <?php echo $this->Form->input('description', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
