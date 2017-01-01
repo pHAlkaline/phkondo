@@ -6,9 +6,9 @@
         <div id="sidebar" class="hidden-print actions sidebar-offcanvas">
 
             <ul class="nav nav-pills nav-stacked">
-                <li ><?php echo $this->Form->postLink(__('Delete Invoice'), array('action' => 'delete', $this->Form->value('InvoiceConference.id'),'?'=>$this->request->query), array('class'=>'btn','confirm'=> __('Are you sure you want to delete # %s?', $this->Form->value('InvoiceConference.description')))); ?></li>
-                <li ><?php echo $this->Html->link(__('List Invoices'), array('action' => 'index_by_supplier', $this->Form->value('InvoiceConference.supplier_id'),'?'=>$this->request->query),array('class'=>'btn')); ?></li>
-                 <li ><?php echo $this->Html->link(__('New Supplier'), array('controller' => 'suppliers', 'action' => 'addFromInvoice', $this->Form->value('InvoiceConference.id'),'?'=>$this->request->query), array('class' => 'btn')); ?> </li>
+                <li ><?php echo $this->Form->postLink(__('Delete Invoice'), array('action' => 'delete', $this->Form->value('InvoiceConference.id'), '?' => $this->request->query), array('class' => 'btn', 'confirm' => __('Are you sure you want to delete # %s?', $this->Form->value('InvoiceConference.description')))); ?></li>
+                <li ><?php echo $this->Html->link(__('List Invoices'), array('action' => 'index_by_supplier', $this->Form->value('InvoiceConference.supplier_id'), '?' => $this->request->query), array('class' => 'btn')); ?></li>
+                <li ><?php echo $this->Html->link(__('New Supplier'), array('controller' => 'suppliers', 'action' => 'addFromInvoice', $this->Form->value('InvoiceConference.id'), '?' => $this->request->query), array('class' => 'btn')); ?> </li>
 
             </ul><!-- /.list-group -->
 
@@ -44,36 +44,49 @@
                 </div><!-- .form-group -->
                 <div class="form-group">
                     <?php
-                    echo $this->Form->input('document_date', array('type' => 'text', 'class' => 'form-control datefield')); ?>
+                    echo $this->Form->input('document_date', array(
+                        'type' => 'text',
+                        'class' => 'form-control datefield',
+                        'data-date-start-date' => $fiscalYearData['FiscalYear']['open_date'],
+                        'data-date-end-date' => $fiscalYearData['FiscalYear']['close_date']));
+                    ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
                     <?php
-                    echo $this->Form->input('payment_due_date', array('type' => 'text', 'class' => 'form-control datefield')); ?>
+                    echo $this->Form->input('payment_due_date', array(
+                        'type' => 'text',
+                        'class' => 'form-control datefield',
+                        'data-date-start-date' => $fiscalYearData['FiscalYear']['open_date']));
+                    ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
                     <?php echo $this->Form->input('comments', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
-                    <?php echo $this->Form->input('invoice_conference_status_id', array('class' => 'form-control')); ?>
+                <?php echo $this->Form->input('invoice_conference_status_id', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
-                <?php 
-                $hidden="hidden";
-                $disabled="disabled";
-                
-                if ($this->Form->value('invoice_conference_status_id')=='5') {
-                    $hidden=null;
-                    $disabled=null;
+                <?php
+                $hidden = "hidden";
+                $disabled = "disabled";
+
+                if ($this->Form->value('invoice_conference_status_id') == '5') {
+                    $hidden = null;
+                    $disabled = null;
                 }
                 ?>
                 <div class="form-group <?php echo $hidden; ?>" id="elem_payment_date">
                     <?php
-                    echo $this->Form->input('payment_date', array('type' => 'text', 'class' => 'form-control datefield','disabled'=>$disabled));
+                    echo $this->Form->input('payment_date', array(
+                        'type' => 'text', 'class' => 
+                        'form-control datefield', 
+                        'disabled' => $disabled,
+                        'data-date-start-date' => $fiscalYearData['FiscalYear']['open_date']));
                     ?>
                 </div><!-- .form-group -->
 
             </fieldset>
             <div class="form-group">                 <div class="col-sm-offset-2 col-sm-6">                     <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-large btn-primary pull-right')); ?>                 </div>             </div>
-            <?php echo $this->Form->end(); ?>
+<?php echo $this->Form->end(); ?>
 
         </div><!-- /.form -->
 

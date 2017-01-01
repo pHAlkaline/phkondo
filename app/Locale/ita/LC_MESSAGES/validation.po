@@ -53,6 +53,9 @@ msgstr "Si/No"
 msgid "close date must be after open date"
 msgstr "la data chiusura deve essere successiva alla data apertura"
 
+msgid "close date must be after open date, or passed 30 days interval"
+msgstr "la data chiusura deve essere successiva alla data apertura, o superato intervallo di 30 giorni."
+
 msgid "date"
 msgstr "data"
 

@@ -50,10 +50,17 @@
                     <?php echo $this->Form->input('amount', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
-                    <?php echo $this->Form->input('document_date', array('type' => 'text', 'class' => 'form-control datefield')); ?>
+                    <?php echo $this->Form->input('document_date', array(
+                        'type' => 'text', 
+                        'class' => 'form-control datefield',
+                        'data-date-start-date' => $fiscalYearData['FiscalYear']['open_date'],
+                        'data-date-end-date' => $fiscalYearData['FiscalYear']['close_date'])); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
-                    <?php echo $this->Form->input('payment_due_date', array('type' => 'text', 'class' => 'form-control datefield')); ?>
+                    <?php echo $this->Form->input('payment_due_date', array(
+                        'type' => 'text', 
+                        'class' => 'form-control datefield',
+                        'data-date-start-date' => $fiscalYearData['FiscalYear']['open_date'])); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
                     <?php echo $this->Form->input('comments', array('class' => 'form-control')); ?>
@@ -72,7 +79,11 @@
                 ?>
                 <div class="form-group <?php echo $hidden; ?>" id="elem_payment_date">
                     <?php
-                    echo $this->Form->input('payment_date', array('type' => 'text',  'class' => 'form-control datefield', 'disabled' => $disabled));
+                    echo $this->Form->input('payment_date', array(
+                        'type' => 'text',  
+                        'class' => 'form-control datefield', 
+                        'disabled' => $disabled,
+                        'data-date-start-date' => $fiscalYearData['FiscalYear']['open_date']));
                     ?>
                 </div><!-- .form-group -->
 
