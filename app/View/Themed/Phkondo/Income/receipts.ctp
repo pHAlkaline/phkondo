@@ -18,7 +18,7 @@
         <div class="receipts form">
 
             <?php
-            echo $this->Form->create('Receipt', array('class' => 'form-horizontal',
+            echo $this->Form->create('IncomeReceipt', array('class' => 'form-horizontal',
                 'role' => 'form',
                 'inputDefaults' => array(
                     'class' => 'form-control',
@@ -34,10 +34,13 @@
                     <?php echo $this->Form->input('condo_id', array('empty' => __('All'), 'class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
-                    <?php echo $this->Form->input('receipt_status_id', array('empty' => __('All'), 'class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('status_id', array('empty' => __('All'), 'class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
-                    <?php echo $this->Form->input('payment_date', array('type' => 'text', 'class' => 'form-control datefield')); ?>
+                    <?php echo $this->Form->input('open_date', array('type' => 'text', 'class' => 'form-control datefield')); ?>
+                </div><!-- .form-group -->
+                 <div class="form-group">
+                    <?php echo $this->Form->input('close_date', array('type' => 'text', 'class' => 'form-control datefield')); ?>
                 </div><!-- .form-group -->
 
 

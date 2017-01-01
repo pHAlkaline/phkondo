@@ -103,11 +103,12 @@ class BudgetsController extends AppController {
         }
         $condos = $this->Budget->Condo->find('list', array('conditions' => array('id' => $this->phkRequestData['condo_id'])));
         $fiscalYears = $this->Budget->FiscalYear->find('list', array('conditions' => array('id' => $this->phkRequestData['fiscal_year_id'])));
+        $fiscalYearData= $this->Budget->FiscalYear->find('first', array('fields'=>array('open_date','close_date'),'conditions' => array('id' => $this->getPhkRequestVar('fiscal_year_id'))));
         $budgetTypes = $this->Budget->BudgetType->find('list');
         $budgetStatuses = $this->Budget->BudgetStatus->find('list', array('conditions' => array('id' => array('1', '2'))));
         $sharePeriodicities = $this->Budget->SharePeriodicity->find('list');
         $shareDistributions = $this->Budget->ShareDistribution->find('list');
-        $this->set(compact('condos', 'fiscalYears', 'budgetTypes', 'budgetStatuses', 'sharePeriodicities', 'shareDistributions'));
+        $this->set(compact('condos', 'fiscalYears', 'budgetTypes', 'budgetStatuses', 'sharePeriodicities', 'shareDistributions','fiscalYearData'));
     }
 
     /**
@@ -149,11 +150,12 @@ class BudgetsController extends AppController {
         }
         $condos = $this->Budget->Condo->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('condo_id'))));
         $fiscalYears = $this->Budget->FiscalYear->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('fiscal_year_id'))));
+         $fiscalYearData= $this->Budget->FiscalYear->find('first', array('fields'=>array('open_date','close_date'),'conditions' => array('id' => $this->getPhkRequestVar('fiscal_year_id'))));
         $budgetTypes = $this->Budget->BudgetType->find('list');
         $budgetStatuses = $this->Budget->BudgetStatus->find('list');
         $sharePeriodicities = $this->Budget->SharePeriodicity->find('list');
         $shareDistributions = $this->Budget->ShareDistribution->find('list');
-        $this->set(compact('condos', 'fiscalYears', 'budgetTypes', 'budgetStatuses', 'sharePeriodicities', 'shareDistributions'));
+        $this->set(compact('condos', 'fiscalYears', 'budgetTypes', 'budgetStatuses', 'sharePeriodicities', 'shareDistributions','fiscalYearData'));
         $this->setPhkRequestVar('budget_id',$id);
         $this->setPhkRequestVar('budget_text',$this->request->data['Budget']['title']);
         $this->setPhkRequestVar('budget_status',$this->request->data['Budget']['budget_status_id']);

@@ -53,6 +53,9 @@ msgstr "Campo do tipo booleano."
 msgid "close date must be after open date"
 msgstr "Data de fecho deve ser superior a data de abertura."
 
+msgid "close date must be after open date, or passed 30 days interval"
+msgstr "Data de fecho deve ser superior a data de abertura, ou passou intervalo de 30 dias."
+
 msgid "date"
 msgstr "Campo do tipo data."
 

@@ -5,7 +5,7 @@
 
         <div id="sidebar" class="hidden-print actions sidebar-offcanvas">
 
-             <ul class="nav nav-pills nav-stacked">
+            <ul class="nav nav-pills nav-stacked">
                 <?php
                 $editDisabled = '';
                 $deleteDisabled = '';
@@ -26,13 +26,13 @@
                     $hasNotesDisabled = '';
                 }
                 ?>
-                <li ><?php echo $this->Html->link(__('Edit Budget'), array('action' => 'edit', $budget['Budget']['id'],'?'=>$this->request->query), array('class' => 'btn ' . $editDisabled)); ?> </li>
-                <li ><?php echo $this->Form->postLink(__('Delete Budget'), array('action' => 'delete', $budget['Budget']['id'],'?'=>$this->request->query), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $budget['Budget']['title']))); ?> </li>
-                <li ><?php echo $this->Html->link(__('New Budget'), array('action' => 'add','?'=>$this->request->query), array('class' => 'btn ')); ?> </li>
-                <li ><?php echo $this->Html->link(__('List Budgets'), array('action' => 'index','?'=>$this->request->query), array('class' => 'btn ')); ?> </li>
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('Create Notes'), array('controller' => 'budget_notes', 'action' => 'create','?'=>array('budget_id'=>$budget['Budget']['id'])), array('class' => 'btn ' . $createNotesDisabled, 'escape' => false)); ?> </li>
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Note','Notes',2), array('controller' => 'budget_notes', 'action' => 'index','?'=>array('budget_id'=>$budget['Budget']['id'])), array('class' => 'btn ' . $hasNotesDisabled, 'escape' => false)); ?> </li>
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('Settled Shares Map'), array('action' => 'shares_map', $budget['Budget']['id'],'?'=>array('budget_id'=>$budget['Budget']['id'])), array('class' => 'btn ', 'target' => '_blank', 'escape' => false)); ?> </li>
+                <li ><?php echo $this->Html->link(__('Edit Budget'), array('action' => 'edit', $budget['Budget']['id'], '?' => $this->request->query), array('class' => 'btn ' . $editDisabled)); ?> </li>
+                <li ><?php echo $this->Form->postLink(__('Delete Budget'), array('action' => 'delete', $budget['Budget']['id'], '?' => $this->request->query), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $budget['Budget']['title']))); ?> </li>
+                <li ><?php echo $this->Html->link(__('New Budget'), array('action' => 'add', '?' => $this->request->query), array('class' => 'btn ')); ?> </li>
+                <li ><?php echo $this->Html->link(__('List Budgets'), array('action' => 'index', '?' => $this->request->query), array('class' => 'btn ')); ?> </li>
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('Create Notes'), array('controller' => 'budget_notes', 'action' => 'create', '?' => array('budget_id' => $budget['Budget']['id'])), array('class' => 'btn ' . $createNotesDisabled, 'escape' => false)); ?> </li>
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Note', 'Notes', 2), array('controller' => 'budget_notes', 'action' => 'index', '?' => array('budget_id' => $budget['Budget']['id'])), array('class' => 'btn ' . $hasNotesDisabled, 'escape' => false)); ?> </li>
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('Settled Shares Map'), array('action' => 'shares_map', $budget['Budget']['id'], '?' => array('budget_id' => $budget['Budget']['id'])), array('class' => 'btn ', 'target' => '_blank', 'escape' => false)); ?> </li>
             </ul><!-- /.list-group -->
 
         </div><!-- /.actions -->
@@ -73,42 +73,55 @@
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-                    <?php echo $this->Form->input('budget_date', array('type' => 'text', 'class' => 'form-control datefield')); ?>
+                    <?php
+                    echo $this->Form->input('budget_date', array(
+                        'type' => 'text',
+                        'class' => 'form-control datefield',
+                        'data-date-start-date' => $fiscalYearData['FiscalYear']['open_date'],
+                        'data-date-end-date' => $fiscalYearData['FiscalYear']['close_date']));
+                    ?>
                 </div><!-- .form-group -->
                     <?php if ($this->data['Budget']['budget_status_id'] < 3) { ?> 
                     <div class="form-group">
-    <?php echo $this->Form->input('amount', array('class' => 'form-control')); ?>
+                        <?php echo $this->Form->input('amount', array('class' => 'form-control')); ?>
                     </div><!-- .form-group -->
                     <div class="form-group">
     <?php echo $this->Form->input('common_reserve_fund', array('class' => 'form-control')); ?>
                     </div><!-- .form-group -->
 
                     <div class="form-group">
-                        <?php echo $this->Form->input('begin_date', array('type' => 'text', 'class' => 'form-control datefield')); ?>
+                        <?php
+                        echo $this->Form->input('begin_date', array(
+                            'type' => 'text',
+                            'class' => 'form-control datefield',
+                            'class' => 'form-control datefield',
+                            'data-date-start-date' => $fiscalYearData['FiscalYear']['open_date'],
+                            'data-date-end-date' => $fiscalYearData['FiscalYear']['close_date']));
+                        ?>
                     </div><!-- .form-group -->
 
                     <div class="form-group">
-    <?php echo $this->Form->input('shares', array('class' => 'form-control')); ?>
+                        <?php echo $this->Form->input('shares', array('class' => 'form-control')); ?>
                     </div><!-- .form-group -->
 
                     <div class="form-group">
-    <?php echo $this->Form->input('share_periodicity_id', array('class' => 'form-control')); ?>
+                        <?php echo $this->Form->input('share_periodicity_id', array('class' => 'form-control')); ?>
                     </div><!-- .form-group -->
 
                     <div class="form-group">
-    <?php echo $this->Form->input('share_distribution_id', array('class' => 'form-control')); ?>
+                        <?php echo $this->Form->input('share_distribution_id', array('class' => 'form-control')); ?>
                     </div><!-- .form-group -->
 
                     <div class="form-group">
-                    <?php echo $this->Form->input('due_days', array('class' => 'form-control')); ?>
+                        <?php echo $this->Form->input('due_days', array('class' => 'form-control')); ?>
                     </div><!-- .form-group -->
-                    <?php } ?>
+<?php } ?>
                 <div class="form-group">
-<?php echo $this->Form->input('meeting_draft', array('class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('meeting_draft', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-<?php echo $this->Form->input('comments', array('class' => 'form-control')); ?>
+            <?php echo $this->Form->input('comments', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
 
             </fieldset>
