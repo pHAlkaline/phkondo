@@ -99,6 +99,21 @@ textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
     outline: 0 none;
 }*/
 
+/* order icons */
+th > a:after {
+    content: " \f0dc";
+    font-family: FontAwesome;
+}
+th > a.asc:after {
+    content: " \f0dd";
+    font-family: FontAwesome;
+}
+th > a.desc:after {
+    content: " \f0de";
+    font-family: FontAwesome;
+}
+
+
 .pagination {
     margin:0px;
 }
