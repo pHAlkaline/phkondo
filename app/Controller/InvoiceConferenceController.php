@@ -160,7 +160,7 @@ class InvoiceConferenceController extends AppController {
 
         $condos = $this->InvoiceConference->Condo->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('condo_id'))));
         $fiscalYears = $this->InvoiceConference->FiscalYear->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('fiscal_year_id'))));
-
+        $fiscalYearData= $this->InvoiceConference->FiscalYear->find('first', array('fields'=>array('open_date','close_date'),'conditions' => array('id' => $this->getPhkRequestVar('fiscal_year_id'))));
         $invoiceConferenceStatuses = $this->InvoiceConference->InvoiceConferenceStatus->find('list', array('conditions' => array('active' => '1')));
         
         $supplier_conditions=array();
@@ -169,7 +169,7 @@ class InvoiceConferenceController extends AppController {
         }
 
         $suppliers = $this->InvoiceConference->Supplier->find('list', array('order' => 'Supplier.name', 'conditions' => $supplier_conditions));
-        $this->set(compact('condos', 'invoiceConferenceStatuses', 'fiscalYears', 'suppliers'));
+        $this->set(compact('condos', 'invoiceConferenceStatuses', 'fiscalYears', 'suppliers','fiscalYearData'));
     }
 
     /**
@@ -203,11 +203,11 @@ class InvoiceConferenceController extends AppController {
         }
         $condos = $this->InvoiceConference->Condo->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('condo_id'))));
         $fiscalYears = $this->InvoiceConference->FiscalYear->find('list', array('conditions' => array('condo_id' => $this->request->data['InvoiceConference']['condo_id'])));
-
+        $fiscalYearData= $this->InvoiceConference->FiscalYear->find('first', array('fields'=>array('open_date','close_date'),'conditions' => array('id' => $this->getPhkRequestVar('fiscal_year_id'))));
         $invoiceConferenceStatuses = $this->InvoiceConference->InvoiceConferenceStatus->find('list', array('conditions' => array('active' => '1')));
 
         $suppliers = $this->InvoiceConference->Supplier->find('list', array('order' => 'name'));
-        $this->set(compact('condos', 'invoiceConferenceStatuses', 'fiscalYears', 'suppliers'));
+        $this->set(compact('condos', 'invoiceConferenceStatuses', 'fiscalYears', 'suppliers','fiscalYearData'));
         $this->setPhkRequestVar('invoice_id',$id);
         
     }

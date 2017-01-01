@@ -89,7 +89,7 @@ class Movement extends AppModel {
             ),
             'validInterval' => array(
                 'rule' => array('validInterval'),
-                'message' => 'invalid movement date',
+                'message' => 'invalid date, do not match active fiscal year dates',
             //'allowEmpty' => false,
             //'required' => false,
             //'last' => false, // Stop validation after this rule

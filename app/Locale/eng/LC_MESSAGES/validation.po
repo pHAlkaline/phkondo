@@ -53,6 +53,9 @@ msgstr ""
 msgid "close date must be after open date"
 msgstr ""
 
+msgid "close date must be after open date, or passed 30 days interval"
+msgstr ""
+
 msgid "date"
 msgstr ""
 
