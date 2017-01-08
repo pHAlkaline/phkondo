@@ -27,22 +27,22 @@ Adicionar exercício -> Criar exercício
 
 Regresse ao detalhes do condomínio
 Entrar nas contas
-Adicionar contas bancárias -> Nova Conta
+Adicionar conta -> Nova Conta
 Ver detalhes da conta
 
 Dentro da Conta Entrar nos Movimentos
 Adicionar movimentos de conta -> Criar Movimento
 * Cada movimento tem de pertencer ao exercício ativo
-* Para cada exercício é necessário criar o primeiro movimento ( no inicio do ano fiscal ) e o último movimento ( no final do ano fiscal ) , isso permitirá que o pHKondo possa realizar os relatórios baseados nos intervalos ( inicio / fim ) do exercício.
+* Para cada exercício é necessário criar o primeiro movimento ( no inicio do ano fiscal - abertura ) e o último movimento ( no final do ano fiscal - fecho ) , isso permitirá que o pHKondo possa realizar os relatórios baseados nos intervalos ( inicio / fim ) do exercício.
 * O primeiro movimento deve ser:
 O montante inicial no balanço de abertura no ano fiscal
-Abertura / Fecho no campo Categoria
-Abertura Balancete no campo Operação Movimento
+Escolha Abertura / Fecho no campo Categoria
+Escolha Abertura Balancete no campo Operação Movimento
 Tipo de movimento: Crédito se saldo de conta no inicio do exercicio é 0 ou superior, Débito se saldo de conta no inicio do exercicio é < 0
 
-* O último movimento deve ser:
-Abertura / Encerramento no campo Categoria
-Fecho Balancete no campo Operação Movimento
+* O último movimento:
+Escolha Abertura / Encerramento no campo Categoria
+Escolha Fecho Balancete no campo Operação Movimento
 
 Regresse ao detalhes do condomínio
 Entrar nos Orçamentos
@@ -64,4 +64,4 @@ Entrar em Minutas para imprimir alguns documentos usados na gestão do condomín
 e outras funcionalidades que o pHKondo possa disponibilizar
 
 NOTA FINAL :
-Se você estiver interesado para outras funções que o pHKondo possa não ter disponível, mas quer adquirir , não hesite ->  contact@phalkaline.eu
+Se você estiver interese em outras funções que o pHKondo possa não ter disponível, mas quer adquirir , não hesite ->  contact@phalkaline.eu
