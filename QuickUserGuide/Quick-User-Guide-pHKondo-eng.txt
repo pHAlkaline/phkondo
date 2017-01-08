@@ -26,8 +26,8 @@ Fiscal Year time interval ( start date , end date ) it's used to control some fe
 * IMPORTANT: Some data are presented and grouped by active fiscal year, to see data from other fiscal year you must activate it first.
 
 Go back to condo details
-Go to Bank Accounts
-Add bank accounts -> New Account
+Go to Accounts
+Add account -> New Account
 Enter Account Details
 
 Inside Account Go to Movements
@@ -36,12 +36,13 @@ Add account movements -> New Movement
 * For every fiscal year you must create the first and last movement described below, this will allow pHKondo to make account reports based on fiscal year.
 * The first movement should be:
 Initial amount for opening balance on active fiscal year
-Opening / Closing on Category
-Opening Balance on Movement Operation
+Choose Opening / Closing on Category
+Choose Opening Balance on Movement Operation
 Movement type: Credit if open balance is 0 or superior, Debit if open balance is < 0 
-* The last movement should be:
-Opening / Closing on Category
-Closing Balance on Movement Operation
+* At the end of Fiscal Year when closing account movements, a last movement is required:
+For this last movement:
+Choose Opening / Closing on Category
+Chosse Closing Balance on Movement Operation
 
 Go back to condo details
 Go to Budgets
