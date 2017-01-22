@@ -77,8 +77,8 @@ msgstr "%s após"
 
 msgid "Account"
 msgid_plural "Accounts"
-msgstr[0] "Conta Bancária"
-msgstr[1] "Contas Bancárias"
+msgstr[0] "Conta"
+msgstr[1] "Contas"
 
 msgid "Account Number"
 msgstr "Número de Conta"
@@ -1102,7 +1102,7 @@ msgstr "Data de Origem"
 msgid "Others"
 msgstr "Outros"
 
-msgid "Other Income From Bank Accounts"
+msgid "Other Income From Accounts"
 msgstr "Outras Receitas ( Contas )"
 
 msgid "Other or quotes without reference"
