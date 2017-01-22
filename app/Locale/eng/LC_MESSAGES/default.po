@@ -77,8 +77,8 @@ msgstr ""
 
 msgid "Account"
 msgid_plural "Accounts"
-msgstr[0] "Bank Account"
-msgstr[1] "Bank Accounts"
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "Account Number"
 msgstr ""
@@ -1096,7 +1096,7 @@ msgstr ""
 msgid "Others"
 msgstr ""
 
-msgid "Other Income From Bank Accounts"
+msgid "Other Income From Accounts"
 msgstr ""
 
 msgid "Other or quotes without reference"
