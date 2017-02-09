@@ -867,8 +867,9 @@ CREATE TABLE `users` (
   `modified` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `model` varchar(45) DEFAULT NULL,
-  `foreign_key` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `foreign_key` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 --
 -- Constraints for dumped tables
