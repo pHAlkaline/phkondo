@@ -30,7 +30,7 @@
     },
    
     "require": {
-        "php": ">=5.3",
+        "php": ">=5.4",
         "ext-mcrypt": "*",
         "cakephp/cakephp": "2.9.4",
         "cakephp/debug_kit": "2.2.*",
