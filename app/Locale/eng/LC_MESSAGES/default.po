@@ -1277,7 +1277,7 @@ msgid "Share Distribution"
 msgstr "Fee Distribution"
 
 msgid "Share Periodicity"
-msgstr "Fee Peiodicity"
+msgstr "Fee Periodicity"
 
 msgid "Shares"
 msgstr "Fees"
