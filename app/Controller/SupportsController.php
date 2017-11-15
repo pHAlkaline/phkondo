@@ -143,7 +143,7 @@ class SupportsController extends AppController {
             $this->request->data = $this->Support->find('first', $options);
         }
         $condos = $this->Support->Condo->find('list', array('conditions' => array('id' => $this->request->data['Support']['condo_id'])));
-        $fractions = $this->Support->Fraction->find('list', array('conditions' => array('Fraction.id'=>$this->request->data['Support']['client_id'])));
+        $fractions = $this->Support->Fraction->find('list', array('conditions' => array('Fraction.id'=>$this->request->data['Support']['fraction_id'])));
         $supportCategories = $this->Support->SupportCategory->find('list', array('conditions' => array('OR'=>array('active'=>1, 'SupportCategory.id'=>$this->request->data['Support']['support_category_id']))));
         $supportPriorities = $this->Support->SupportPriority->find('list', array('conditions' => array('OR'=>array('active'=>1, 'SupportPriority.id'=>$this->request->data['Support']['support_priority_id']))));
         $supportStatuses = $this->Support->SupportStatus->find('list', array('conditions' => array('OR'=>array('active'=>1, 'SupportStatus.id'=>$this->request->data['Support']['support_status_id']))));
