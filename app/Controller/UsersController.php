@@ -173,6 +173,38 @@ class UsersController extends AppController {
         return $this->redirect($this->Auth->logout());
     }
 
+    /**
+     * profile method
+     *
+     * @throws NotFoundException
+     * @param string $id
+     * @return void
+     */
+    public function profile() {
+        if (!$this->User->exists($this->Auth->user('id'))) {
+            $this->Flash->error(__('Invalid user'));
+            $this->redirect(array('controller'=>'pages','action' => 'home'));
+        }
+        if ($this->request->is('post') || $this->request->is('put')) {
+            $this->request->data['User']['id']=$this->Auth->user('id');
+            if ($this->User->save($this->request->data)) {
+                $this->Flash->success(__('The user has been saved'));
+                $this->redirect(array('action' => 'profile'));
+            } else {
+                $this->Flash->error(__('The user could not be saved. Please, try again.'));
+            }
+        } else {
+            $options = array('conditions' => array('User.' . $this->User->primaryKey => $this->Auth->user('id')));
+            $this->request->data = $this->User->find('first', $options);
+        }
+        unset($this->request->data['User']['edpassword']);
+        unset($this->request->data['User']['password']);
+        unset($this->request->data['User']['verify_password']);
+        $this->setPhkRequestVar('user_id', $this->Auth->user('id'));
+        $this->setPhkRequestVar('user_text',  $this->request->data['User']['name']);
+        
+    }
+    
     public function rememberMe() {
         if (isset($this->request->data['User']['rememberMe']) && $this->request->data['User']['rememberMe']) {
             // After what time frame should the cookie expire
@@ -190,7 +222,6 @@ class UsersController extends AppController {
 
     public function isAuthorized($user) {
 
-        //debug($this->request->controller);
         if (isset($user['role'])) {
 
             switch ($user['role']) {
@@ -198,6 +229,9 @@ class UsersController extends AppController {
                     return true;
                     break;
                 case 'store_admin':
+                    return true;
+                    break;
+                case ($this->request->action=='profile'):
                     return true;
                     break;
                 default:
