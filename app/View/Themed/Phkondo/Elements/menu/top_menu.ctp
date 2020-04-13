@@ -105,7 +105,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo __('User'); ?><b class="caret"></b></a>
                     <ul class="dropdown-menu">
-
+                        <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-user"></span> ' . __('Profile'), array('plugin' => '', 'controller' => 'users', 'action' => 'profile'), array('escape' => false)); ?>
                         <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-log-out"></span> ' . __('End Session'), array('plugin' => '', 'controller' => 'users', 'action' => 'logout'), array('escape' => false)); ?>
                         <li role="presentation" class="divider"></li>
 
