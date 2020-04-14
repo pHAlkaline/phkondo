@@ -320,6 +320,7 @@ class AppController extends Controller {
             if (count($result)) {
                 $this->phkRequestData['insurance_id'] = $result['Insurance']['id'];
                 $this->phkRequestData['insurance_text'] = $result['Insurance']['title'];
+                $this->phkRequestData['condo_id'] = $result['Insurance']['condo_id'];
             }
         }
     }

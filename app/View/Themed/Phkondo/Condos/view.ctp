@@ -42,7 +42,7 @@ $administrators = implode(", ", $administrators);
                 <?php
                 $event = new CakeEvent('Phkondo.Draft.hasCondoDraft');
                 $this->getEventManager()->dispatch($event);
-                if ($event->result['hasCondoDraft'] === true) {
+                if (!is_null($event->result) && $event->result['hasCondoDraft'] === true) {
                     ?>
                     <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Draft', 'Drafts', 2), array('plugin' => 'drafts', 'controller' => 'condo_drafts', 'action' => 'index','?'=>array('condo_id'=>$condo['Condo']['id'])), array('class' => 'btn ', 'escape' => false)); ?> </li>
                 <?php } else { ?>
