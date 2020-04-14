@@ -79,6 +79,26 @@ class AttachmentsController extends AppController {
         $this->set(compact('breadcrumbs'));
         $this->render('notfound');
     }
+    
+    /**
+     * ensurance_attachments method
+     *
+     * @return void
+     */
+    public function insurance_attachments() {
+        $breadcrumbs = array(
+            array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'insurances', 'action' => 'index','?'=>$this->request->query)), 'text' => __n('Insurance', 'Insurances', 2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'insurances', 'action' => 'view', $this->getPhkRequestVar('insurance_id'))), 'text' => $this->getPhkRequestVar('insurance_text'), 'active' => ''),
+            array('link' => '', 'text' => __n('Attachment', 'Attachments', 2), 'active' => 'active')
+        );
+
+
+        $this->set(compact('breadcrumbs'));
+        $this->render('notfound');
+    }
 
     public function beforeFilter() {
         parent::beforeFilter();
@@ -91,7 +111,7 @@ class AttachmentsController extends AppController {
     public function beforeRender() {
         parent::beforeRender();
         $headerTitle=__n('Attachment', 'Attachments', 2);
-        $this->set(compact('breadcrumbs','headerTitle'));
+        $this->set(compact('headerTitle'));
     }
 
 }
