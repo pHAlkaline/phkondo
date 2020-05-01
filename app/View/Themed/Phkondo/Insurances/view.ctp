@@ -9,7 +9,7 @@
                 <li ><?php echo $this->Form->postLink(__('Delete Insurance'), array('action' => 'delete', $insurance['Insurance']['id'],'?'=>$this->request->query), array('class' => 'btn ','confirm'=> __('Are you sure you want to delete # %s?' , $insurance['Insurance']['title']))); ?> </li>
                 <li ><?php echo $this->Html->link(__('New Insurance'), array('action' => 'add','?'=>$this->request->query), array('class' => 'btn ')); ?> </li>
                 <li ><?php echo $this->Html->link(__('List Insurances'), array('action' => 'index','?'=>$this->request->query), array('class' => 'btn ')); ?> </li>
-                 <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Attachment', 'Attachments', 2), array('plugin' => 'attachments', 'controller' => 'insurance_attachments', 'action' => 'index','?'=>array_merge(array('insurance_id'=>$insurance['Insurance']['id']))), array('class' => 'btn ', 'escape' => false)); ?> </li>
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Attachment', 'Attachments', 2), array('plugin' => 'attachments', 'controller' => 'insurance_attachments', 'action' => 'index','?'=>array_merge(array('insurance_id'=>$insurance['Insurance']['id']))), array('class' => 'btn ', 'escape' => false)); ?> </li>
                
 
             </ul><!-- /.list-group -->

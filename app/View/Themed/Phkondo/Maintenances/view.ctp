@@ -9,7 +9,8 @@
                 <li ><?php echo $this->Form->postLink(__('Delete Maintenance'), array('action' => 'delete', $maintenance['Maintenance']['id'], '?' => $this->request->query), array('class' => 'btn ', 'confirm' => __('Are you sure you want to delete # %s?', $maintenance['Maintenance']['title']))); ?> </li>
                 <li ><?php echo $this->Html->link(__('New Maintenance'), array('action' => 'add', '?' => $this->request->query), array('class' => 'btn ')); ?> </li>
                 <li ><?php echo $this->Html->link(__('List Maintenances'), array('action' => 'index', '?' => $this->request->query), array('class' => 'btn ')); ?> </li>
-
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Attachment', 'Attachments', 2), array('plugin' => 'attachments', 'controller' => 'maintenance_attachments', 'action' => 'index','?'=>array_merge(array('maintenance_id'=>$maintenance['Maintenance']['id']))), array('class' => 'btn ', 'escape' => false)); ?> </li>
+               
 
             </ul><!-- /.list-group -->
 
