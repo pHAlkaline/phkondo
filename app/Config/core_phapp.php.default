@@ -46,7 +46,7 @@ Configure::write('Security.salt', 'hfQBlzhLcsz2Tf5JMGKg4ntAMRe8UdZbGCeG7BbQtEzED
  * A random numeric string (digits only) used to encrypt/decrypt strings.
  */
 Configure::write('Security.cipherSeed', '808658064474370879757404085663');
-
+Configure::write('Security.useOpenSsl', true);
 /**
  * Uncomment this line and correct your server timezone to fix
  * any date & time related errors.
