@@ -239,7 +239,7 @@
  * A random numeric string (digits only) used to encrypt/decrypt strings.
  */
 	Configure::write('Security.cipherSeed', '76859309657453542496749683645');
-        Configure::write('Security.useOpenSsl', true);
+        //Configure::write('Security.useOpenSsl', true);
 /**
  * Apply timestamps with the last modified time to static assets (js, css, images).
  * Will append a query string parameter containing the time the file was modified. This is
