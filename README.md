@@ -1,9 +1,15 @@
+<p align="center">
+  <a href="https://phkondo.net/" target="_blank" >
+    <img alt="pHKondo" src="https://raw.githubusercontent.com/pHAlkaline/phkondo/master/app/View/Themed/Phkondo/webroot/img/logo_phkondo_flat.svg" width="400" />
+  </a>
+</p>
+
+
+
 **pHKondo** , Condominium management software. 
 It provides effective mechanism to condominium management, released under [GNU GLP V2]
 
 Official website**: [http://phkondo.net](http://phkondo.net)
-
-It is powered by [CakePHP](http://cakephp.org) MVC framework.
 
 
 ## Requirements
@@ -17,3 +23,7 @@ https://github.com/pHAlkaline/phkondo/wiki/Install
 
 ## WIKI Tutorials
 https://github.com/pHAlkaline/phkondo/wiki
+
+
+It is powered by [CakePHP](http://cakephp.org) MVC framework.
+
