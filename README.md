@@ -1,4 +1,4 @@
-https://raw.githubusercontent.com/pHAlkaline/phkondo/master/app/View/Themed/Phkondo/webroot/img/logo_phkondo_flat.svg
+(https://raw.githubusercontent.com/pHAlkaline/phkondo/master/app/View/Themed/Phkondo/webroot/img/logo_phkondo_flat.svg)
 
 **pHKondo** , Condominium management software. 
 It provides effective mechanism to condominium management, released under [GNU GLP V2]
