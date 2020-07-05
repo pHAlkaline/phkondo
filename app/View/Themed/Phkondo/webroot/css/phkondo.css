@@ -25,11 +25,11 @@
  * 
  */
 
-@import url('http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,531;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,531;1,600;1,700;1,800;1,900&display=swap');
 
 html, body {
   overflow-x: hidden!important;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Exo 2', sans-serif;
   -webkit-font-smoothing: antialiased;
   min-height: 100%;
   background: #f9f9f9;
@@ -85,7 +85,7 @@ border-top: none;
 
 /*CLIENT THEME */
 .navbar-default .navbar-brand , .navbar-inverse .navbar-brand{
-    color: #428bca;
+    /*color: #428bca;*/
 }
 
 

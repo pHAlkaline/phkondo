@@ -231,7 +231,7 @@ class UsersController extends AppController {
                 case 'store_admin':
                     return true;
                     break;
-                case ($this->request->action=='profile'):
+                case ($this->request->action=='profile' && Configure::read('Application.mode') != 'demo'):
                     return true;
                     break;
                 default:
