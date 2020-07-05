@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://phkondo.net/" target="_blank" >
-    <img alt="CakePHP" src="“https://raw.githubusercontent.com/pHAlkaline/phkondo/master/app/View/Themed/Phkondo/webroot/img/logo_phkondo_flat.svg”" width="400" />
+    <img alt="pHKondo" src="https://raw.githubusercontent.com/pHAlkaline/phkondo/master/app/View/Themed/Phkondo/webroot/img/logo_phkondo_flat.svg" width="400" />
   </a>
 </p>
 
