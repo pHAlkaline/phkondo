@@ -1,9 +1,9 @@
-<img
-src=“https://raw.githubusercontent.com/pHAlkaline/phkondo/master/app/View/Themed/Phkondo/webroot/img/logo_phkondo_flat.svg”
-raw=true
-alt=“pHKondo”
-style=“margin-right: 10px;”
-/>
+<p align="center">
+  <a href="https://phkondo.net/" target="_blank" >
+    <img alt="CakePHP" src="“https://raw.githubusercontent.com/pHAlkaline/phkondo/master/app/View/Themed/Phkondo/webroot/img/logo_phkondo_flat.svg”" width="400" />
+  </a>
+</p>
+
 
 **pHKondo** , Condominium management software. 
 It provides effective mechanism to condominium management, released under [GNU GLP V2]
