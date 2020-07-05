@@ -10,8 +10,6 @@ It provides effective mechanism to condominium management, released under [GNU G
 
 Official website**: [http://phkondo.net](http://phkondo.net)
 
-It is powered by [CakePHP](http://cakephp.org) MVC framework.
-
 
 ## Requirements
   * HTTP Server. For example: Apache. mod_rewrite is preferred, but by no means required
@@ -24,3 +22,7 @@ https://github.com/pHAlkaline/phkondo/wiki/Install
 
 ## WIKI Tutorials
 https://github.com/pHAlkaline/phkondo/wiki
+
+
+It is powered by [CakePHP](http://cakephp.org) MVC framework.
+
