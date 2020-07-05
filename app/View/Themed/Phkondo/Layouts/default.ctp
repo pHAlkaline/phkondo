@@ -57,10 +57,13 @@ if (!isset($headerTitle)) {
         <title>
             <?php echo $headerTitle; ?>&nbsp;<?php echo Configure::read('Theme.owner_name'); ?>
         </title>
-
+        
         <?php
         echo $this->Html->meta('icon');
         echo $this->fetch('meta');
+        ?>
+        <link href="https://fonts.googleapis.com/css2?family=Martel+Sans:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet">
+        <?php 
         echo $this->Html->css(array(
             //'bootstrap/bootstrap-glyphicons',
             'bootstrap/font-awesome.min',
