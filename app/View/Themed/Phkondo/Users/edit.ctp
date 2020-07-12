@@ -46,8 +46,8 @@ foreach ($role_options as $key => $value){
                     <?php echo $this->Form->input('username', array('class' => 'form-control','maxLength' => '40')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <?php echo $this->Form->input('edpassword', array('class' => '', 'label' => __('Enable password change'), 'div' => array('class' => 'checkbox'), 'between' => '', 'after' => '', 'type' => 'checkbox')); ?>
+                    <div class="col-sm-offset-2 col-sm-10 checkbox checkbox-success">
+                        <?php echo $this->Form->input('edpassword', array('class' => 'checkbox styled', 'label' => __('Enable password change'), 'div' => array('class' => ''), 'between' => '', 'after' => '', 'type' => 'checkbox')); ?>
                     </div>
 
                 </div><!-- .form-group -->
@@ -60,8 +60,8 @@ foreach ($role_options as $key => $value){
                 <div class="form-group">
                     <?php echo $this->Form->input('role', array('options' => $role_options, 'class' => 'form-control')); ?>
                 </div><!-- .form-group -->
-                <div class="col-sm-offset-2 col-sm-10">
-                    <?php echo $this->Form->input('active', array('class' => '', 'label' => __('Active'), 'div' => array('class' => 'checkbox'), 'between' => '', 'after' => '')); ?>
+                <div class="col-sm-offset-2 col-sm-10 ">
+                    <?php echo $this->Form->input('active', array('class' => 'checkbox styled', 'label' => __('Active'), 'div' => array('class' => 'checkbox checkbox-success'), 'between' => '', 'after' => '')); ?>
                 </div>
 
             </fieldset>

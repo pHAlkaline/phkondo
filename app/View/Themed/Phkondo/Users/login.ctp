@@ -36,8 +36,8 @@
         </div><!-- .form-group -->
         
         <div class="form-group">
-            <div class="col-md-6 checkbox required">
-                <input type="checkbox" name="data[User][rememberMe]" id="UserRememberMe">
+            <div class="col-md-6 checkbox checkbox-success required">
+                <input type="checkbox" name="data[User][rememberMe]" id="UserRememberMe" class="styled">
                 <label for="rememberme"><?php echo ' '.__('Remember Me'); ?></label>
             </div>
             <div class="col-md-6">

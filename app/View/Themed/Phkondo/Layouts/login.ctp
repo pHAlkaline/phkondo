@@ -66,17 +66,22 @@ if (!isset($headerTitle)) {
             'bootstrap/font-awesome.min',
             'bootstrap/bootstrap',
             'bootstrap/bootstrap-theme',
+            'select2/select2',
+            'select2/select2.bootstrap',
+            'select2/select2.phkondo',
+            'offcanvas',
+            'checkbox-radio-styling/checkbox-radio',
             'phkondo'));
         echo $this->Html->css(array('phkondo_print'), null, array('media' => 'print'));
         echo $this->fetch('css');
         ?>
         <?php
-        echo $this->Html->script(array('libs/jquery-2.2.2.min', 'libs/bootstrap.min'));
+        echo $this->Html->script(array('libs/jquery-2.2.2.min', 'libs/bootstrap.min','libs/select2/select2'));
         ?>
 
         <script type="text/javascript">
             $(document).ready(function () {
-
+                $('select').select2();
 
             });
         </script>

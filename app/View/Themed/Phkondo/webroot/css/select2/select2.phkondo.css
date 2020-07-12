@@ -1,0 +1,32 @@
+
+/**
+ * Make Select2's active-styles - applied to .select2-container when the widget receives focus -
+ * fit Bootstrap 3's .form-element:focus appearance.
+ */
+.select2-container-active .select2-choice,
+.select2-container-multi.select2-container-active .select2-choices {
+  border-color: #8cae36;
+  outline: none;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+.select2-drop-active {
+  border-color: #8cae36;
+}
+
+.select2-drop-auto-width,
+.select2-drop.select2-drop-above.select2-drop-active {
+  border-top-color: #8cae36;
+}
+
+/**
+ * Adjust Select2's choices hover and selected styles to match Bootstrap 3's default dropdown styles.
+ */
+.select2-results .select2-highlighted {
+  color: white;
+  background-color: #94b739;
+}

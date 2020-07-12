@@ -72,7 +72,9 @@ if (!isset($headerTitle)) {
             'datepicker/bootstrap-datepicker3.min',
             'select2/select2',
             'select2/select2.bootstrap',
+            'select2/select2.phkondo',
             'offcanvas',
+            'checkbox-radio-styling/checkbox-radio',
             'phkondo'));
         echo $this->Html->css(array('phkondo_print'), null, array('media' => 'print'));
 
@@ -161,6 +163,7 @@ if (!isset($headerTitle)) {
                     language: phkondolang,
                     todayHighlight: true
                 });
+                $('.datefield').attr('autocomplete','off');
 
                 $('select').select2();
                 $("li.disabled").find('a').removeAttr("href");

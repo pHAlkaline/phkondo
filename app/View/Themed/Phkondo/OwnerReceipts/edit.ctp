@@ -91,23 +91,26 @@
                             ?>
 
                             <?php echo $this->Form->hidden('Receipt.amount', array('value' => $receiptAmount)); ?>
-                            <legend class="col-sm-9"><?php echo __n('Receipt', 'Receipts', 1) . ' ' . $receiptId; ?></legend>
-                            <div class="actions col-sm-3">
-                                <h3 style="float:right;"><?php echo __('Total amount'); ?><span id="addNotesTotalAmount"></span></h3>
-
-
-                            </div><!-- /.actions -->
-                            <legend class="col-sm-9"><?php echo __('Pick Notes'); ?></legend>
-                            <div class="actions col-sm-3">
-                                <?php if (count($notes)): ?>
-                                    <?php
-                                    echo $this->Form->submit(__('Submit'), array(
-                                        'class' => 'btn btn-primary', 'style' => 'margin: 14px 0; float: right;'));
-                                    ?>            
-                                <?php endif; ?>
+                            <div class="actions col-sm-12">
+                                <div class="float-right text-right">
+                                    <h4><?php echo __('Total amount'); ?><span id="addNotesTotalAmount"></span></h4>
+                                </div>
 
                             </div><!-- /.actions -->
 
+                            <div class="actions col-sm-12 float-right text-right">
+
+                                <div class="float-right text-right">
+                                    <?php if (count($notes)): ?>
+                                        <?php echo __('Pick Notes'); ?>
+                                        <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 0;')); ?>            
+                                    <?php endif; ?>
+
+                                </div>
+
+
+                            </div><!-- /.actions -->
+<div class="table-responsive">
                             <table class="table table-hover table-condensed">
                                 <thead>
                                     <tr>
@@ -143,14 +146,16 @@
                                                 ?>
                                                 <?php echo $this->Form->hidden('Note.' . $note['Note']['id'] . '.type', array('value' => $note['NoteType']['id'])); ?>
                                                 <?php echo $this->Form->hidden('Note.' . $note['Note']['id'] . '.amount', array('value' => $note['Note']['amount'])); ?>
-                                                <?php echo $this->Form->checkbox('Note.' . $note['Note']['id'] . '.check', array('hiddenField' => false, 'checked' => $checked)); ?>
+                                                <div class="checkbox checkbox-success">
+                                                <?php echo $this->Form->checkbox('Note.' . $note['Note']['id'] . '.check', array('class'=>'styled', 'hiddenField' => false, 'checked' => $checked)); ?>
+                                                    </div>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
 
-
+</div>
                             <?php echo $this->Form->end(); ?>
 
                         </div><!-- /.index -->

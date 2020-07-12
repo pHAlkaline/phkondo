@@ -4,4 +4,4 @@ It provides effective mechanism to condominium management, released under [GNU G
 
 Official website**: [http://phkondo.net](http://phkondo.net)
 
-https://github.com/pHAlkaline/phkondo/wiki
+https://github.com/pHAlkaline/phkondo/wiki/Install

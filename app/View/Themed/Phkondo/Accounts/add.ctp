@@ -5,7 +5,7 @@
         <div id="sidebar" class="hidden-print actions sidebar-offcanvas">
 
             <ul class="nav nav-pills nav-stacked">
-                <li ><?php echo $this->Html->link(__('List Accounts'), array('action' => 'index','?'=>$this->request->query),array('class'=>'btn')); ?></li>
+                <li ><?php echo $this->Html->link(__('List Accounts'), array('action' => 'index', '?' => $this->request->query), array('class' => 'btn')); ?></li>
 
             </ul><!-- /.list-group -->
 
@@ -17,7 +17,8 @@
 
         <div class="accounts form">
 
-            <?php echo $this->Form->create('Account', array(
+            <?php
+            echo $this->Form->create('Account', array(
                 'class' => 'form-horizontal',
                 'role' => 'form',
                 'inputDefaults' => array(
@@ -25,7 +26,8 @@
                     'label' => array('class' => 'col-sm-2 control-label'),
                     'between' => '<div class="col-sm-6">',
                     'after' => '</div>',
-            ))); ?>
+            )));
+            ?>
             <fieldset>
                 <legend><?php echo __('New Account'); ?></legend>
                 <div class="form-group">
@@ -65,8 +67,8 @@
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-<?php echo $this->Form->input('main_account', array('class' => '', 'label' => __('Main Account'), 'div' => array('class' => 'checkbox'), 'between' => '', 'after' => '')); ?>
+                    <div class="col-sm-offset-2 col-sm-10 checkbox checkbox-success">
+                        <?php echo $this->Form->input('main_account', array('class' => 'checkbox styled', 'label' => __('Main Account'), 'div' => array('class' => ''), 'between' => '', 'after' => '')); ?>
                     </div>
                 </div><!-- .form-group -->
 

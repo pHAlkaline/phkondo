@@ -73,7 +73,7 @@
                             <td class="hidden-xs"><?php echo nl2br(h($condo['Condo']['address'])); ?>&nbsp;</td>
                             <td class="hidden-xs"><?php if (isset($condo['FiscalYear'][0]['title'])) echo h($condo['FiscalYear'][0]['title'] . ' ( ' . h($condo['FiscalYear'][0]['open_date']) . ' a ' . h($condo['FiscalYear'][0]['close_date']) . ' ) '); ?>&nbsp;</td>
                             <td class="actions hidden-print hidden-print">
-                                <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $condo['Condo']['id']), array('title' => __('Details'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
+                                <?php echo $this->Html->link('<span class="glyphicon glyphicon-equalizer"></span> ', array('action' => 'view', $condo['Condo']['id']), array('title' => __('Select'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
                                 <?php if (Configure::read('Application.mode') != 'demo'): ?>
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $condo['Condo']['id']), array('title' => __('Edit'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
                                     <?php if (in_array(AuthComponent::user('role'), array('admin', 'store_admin'))): ?>
