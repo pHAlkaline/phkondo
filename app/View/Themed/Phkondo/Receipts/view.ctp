@@ -171,7 +171,7 @@
                                 <td></td>
                                 <td></td>
                                 <td class="text-right"><?php echo __('Total amount'); ?>&nbsp;:&nbsp;</td>
-                                <td class="amount"><?php echo $receipt['Receipt']['total_amount']; ?>&nbsp;<?php echo Configure::read('currencySign'); ?></td>
+                                <td class="amount"><?php echo number_format($receipt['Receipt']['total_amount'],2); ?>&nbsp;<?php echo Configure::read('currencySign'); ?></td>
 
 
                             </tr>

@@ -100,7 +100,7 @@
         <?php if (count($entity['Fraction'])): ?>
             <div class="index">
 
-                <legend class="col-sm-9"><?php echo __n('Fraction', 'Fractions', 2); ?></legend>
+                <legend class="col-sm-12"><?php echo __n('Fraction', 'Fractions', 2); ?></legend>
 
                 <div class="clearfix"></div>
                 <div class="table-responsive">
@@ -119,9 +119,10 @@
                         </thead>
                         <tbody>
                             <?php foreach ($entity['Fraction'] as $fraction): ?>
+                            
                                 <tr>
-                                    <td><?php echo $this->Html->link(h($fraction['Condo']['title']), array('controller' => 'condos', 'action' => 'view', $fraction['Condo']['id'],'?'=>array('condo_id'=>$fraction['Condo']['id'])), array('title' => __('Details'), 'class' => '', 'escape' => false)); ?></td>
-                                    <td><?php echo h($fraction['fraction']); ?>&nbsp;</td>
+                                    <td><?php echo $this->Html->link(h($fraction['Condo']['title']), array('controller' => 'condos', 'action' => 'view', $fraction['Condo']['id'], '?' => array('condo_id' => $fraction['Condo']['id'])), array('title' => __('Details'), 'class' => '', 'escape' => false)); ?></td>
+                                    <td><?php echo $this->Html->link(h($fraction['fraction']), array('controller' => 'fractions', 'action' => 'view', $fraction['id'], '?' => array('condo_id' => $fraction['Condo']['id'])), array('title' => __('Details'), 'class' => '', 'escape' => false)); ?></td>
                                     <td><?php echo h($fraction['floor_location']); ?>&nbsp;</td>
                                     <td><?php echo h($fraction['description']); ?>&nbsp;</td>
                                     <td><?php echo h($fraction['mil_rate']); ?>&nbsp;</td>
@@ -137,12 +138,12 @@
 
 
                                 </tr>
-    <?php endforeach; ?>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
             </div><!-- /.index -->
-<?php endif; ?>
+        <?php endif; ?>
     </div><!-- /#page-content .span9 -->
 
 </div><!-- /#page-container .row-fluid -->

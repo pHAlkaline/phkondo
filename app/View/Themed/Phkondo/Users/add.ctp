@@ -26,27 +26,28 @@ foreach ($role_options as $key => $value) {
             <fieldset>
                 <legend><?php echo __('New User'); ?></legend>
                 <div class="form-group">
-                    <?php echo $this->Form->input('name', array('class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('name', array('class' => 'form-control','autocomplete'=>'off')); ?>
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-                    <?php echo $this->Form->input('username', array('class' => 'form-control', 'maxLength' => '40')); ?>
+                    <?php echo $this->Form->input('username', array('autocomplete'=>'off','class' => 'form-control', 'maxLength' => '40')); ?>
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-                    <?php echo $this->Form->input('password', array('class' => 'form-control', 'maxLength' => '40', 'type' => 'password')); ?>
+                    <?php echo $this->Form->input('password', array('autocomplete'=>'new-password','class' => 'form-control', 'maxLength' => '40', 'type' => 'password')); ?>
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-                    <?php echo $this->Form->input('verify_password', array('class' => 'form-control', 'maxLength' => '40', 'type' => 'password')); ?>
+                    <?php echo $this->Form->input('verify_password', array('autocomplete'=>'new-password','class' => 'form-control', 'maxLength' => '40', 'type' => 'password')); ?>
                 </div>
                 <div class="form-group">
-                    <?php echo $this->Form->input('role', array('options' => $role_options, 'class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('role', array('autocomplete'=>'off','options' => $role_options, 'class' => 'form-control')); ?>
                 </div><!-- .form-group -->
-                <div class="col-sm-offset-2 col-sm-10 ">
-                    <?php echo $this->Form->input('active', array('class' => 'checkbox styled', 'label' => __('Active'), 'div' => array('class' => 'checkbox checkbox-success'),  'between' => '', 'after' => '')); ?>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10 ">
+                        <?php echo $this->Form->input('active', array('autocomplete'=>'off','class' => 'checkbox styled', 'label' => __('Active'), 'div' => array('class' => 'checkbox checkbox-success'), 'between' => '', 'after' => '')); ?>
+                    </div>
                 </div>
-
             </fieldset>
             <div class="form-group"> 
                 <div class="col-sm-offset-2 col-sm-6">

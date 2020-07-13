@@ -16,8 +16,6 @@
                         <tr>
                             <th><?php echo $this->Paginator->sort('name'); ?></th>
                             <th><?php echo $this->Paginator->sort('active'); ?></th>
-                            <th><?php echo $this->Paginator->sort('modified'); ?></th>
-                            <th><?php echo $this->Paginator->sort('created'); ?></th>
                             <th class="actions hidden-print"><?php //echo __('Actions');  ?></th>
                         </tr>
                     </thead>
@@ -25,9 +23,7 @@
                         <?php foreach ($supportCategories as $supportCategory): ?>
                             <tr>
                                 <td><?php echo h($supportCategory['SupportCategory']['name']); ?>&nbsp;</td>
-                                <td><?php echo h($supportCategory['SupportCategory']['active']); ?>&nbsp;</td>
-                                <td><?php echo h($supportCategory['SupportCategory']['modified']); ?>&nbsp;</td>
-                                <td><?php echo h($supportCategory['SupportCategory']['created']); ?>&nbsp;</td>
+                                <td><?php echo h($supportCategory['SupportCategory']['active_string']); ?>&nbsp;</td>
                                 <td class="actions hidden-print">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $supportCategory['SupportCategory']['id'], '?' => $this->request->query), array('title' => __('Details'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $supportCategory['SupportCategory']['id'], '?' => $this->request->query), array('title' => __('Edit'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>

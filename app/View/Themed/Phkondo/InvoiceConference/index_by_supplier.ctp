@@ -34,7 +34,7 @@
                                 <td><?php echo h( $invoice_conference['InvoiceConference']['document_date']); ?>&nbsp;</td>
                                 <td><?php echo h( $invoice_conference['InvoiceConference']['payment_due_date']); ?>&nbsp;</td>
                                 <td><?php echo h($invoice_conference['InvoiceConferenceStatus']['name']); ?></td>
-                                <td class="amount"><?php echo h($invoice_conference['InvoiceConference']['amount']); ?>&nbsp;<?php echo  Configure::read('currencySign'); ?></td>
+                                <td class="amount"><?php echo number_format($invoice_conference['InvoiceConference']['amount'],2); ?>&nbsp;<?php echo  Configure::read('currencySign'); ?></td>
                                 <td class="actions hidden-print">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $invoice_conference['InvoiceConference']['id'],'?'=>$this->request->query), array('title' => __('Details'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $invoice_conference['InvoiceConference']['id'],'?'=>$this->request->query), array('title' => __('Edit'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>

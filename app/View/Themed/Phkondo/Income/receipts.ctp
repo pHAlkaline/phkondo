@@ -58,7 +58,7 @@
         <?php if (isset($receipts) && count($receipts)){ ?>
             <div class="index">
 
-                <legend class="col-sm-9"><?php echo __n('Receipt','Receipts',2); ?></legend>
+                <legend class="col-sm-12"><?php echo __n('Receipt','Receipts',2); ?></legend>
 
                 <div class="clearfix"></div>
                 <div class="table-responsive">
@@ -122,7 +122,7 @@
                                         <?php echo h($receipt['Condo']['title']); ?>
                                     </td>
                                     
-                                    <td class="amount"><?php echo h($total_amount); ?>&nbsp;<?php echo  Configure::read('currencySign'); ?></td>
+                                    <td class="amount"><?php echo number_format($total_amount,2); ?>&nbsp;<?php echo  Configure::read('currencySign'); ?></td>
 
                                 </tr>
                             <?php endforeach; ?>
@@ -135,7 +135,7 @@
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
                                 <td><strong><?php echo __('Total Amount'); ?></strong></td>
-                                <td class="amount"><strong><?php echo h($amount_sum); ?>&nbsp;<?php echo  Configure::read('currencySign'); ?></strong></td>
+                                <td class="amount"><strong><?php echo number_format($amount_sum,2); ?>&nbsp;<?php echo  Configure::read('currencySign'); ?></strong></td>
 
                             </tr>
                         </tbody>

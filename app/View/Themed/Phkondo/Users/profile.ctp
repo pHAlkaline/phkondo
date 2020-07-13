@@ -41,8 +41,8 @@ foreach ($role_options as $key => $value){
                     <?php echo $this->Form->input('username', array('class' => 'form-control','maxLength' => '40')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10 checkbox checkbox-success">
-                        <?php echo $this->Form->input('edpassword', array('class' => 'checkbox styled', 'label' => __('Enable password change'), 'div' => array('class' => ''), 'between' => '', 'after' => '', 'type' => 'checkbox')); ?>
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <?php echo $this->Form->input('edpassword', array('class' => 'checkbox styled', 'label' => __('Enable password change'), 'div' => array('class' => 'checkbox checkbox-success'), 'between' => '', 'after' => '', 'type' => 'checkbox')); ?>
                     </div>
                 </div><!-- .form-group -->
                 <div class="form-group">

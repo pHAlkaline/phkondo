@@ -28,7 +28,7 @@
                                 <td><?php echo h($account['Account']['title']); ?>&nbsp;</td>
                                 <td><?php echo h($account['Account']['bank']); ?>&nbsp;</td>
                                 <td><?php echo h($account['Account']['balcony']); ?>&nbsp;</td>
-                                <td class="amount"><?php echo h($account['Account']['balance']); ?>&nbsp;<?php echo  Configure::read('currencySign'); ?></td>
+                                <td class="amount"><?php echo number_format($account['Account']['balance'],2); ?>&nbsp;<?php echo  Configure::read('currencySign'); ?></td>
                                 <td class="actions hidden-print">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $account['Account']['id'],'?'=>$this->request->query), array('title'=>__('Details'),'class' => 'btn btn-default btn-xs','escape'=>false)); ?>
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $account['Account']['id'],'?'=>$this->request->query), array('title'=>__('Edit'),'class' => 'btn btn-default btn-xs','escape'=>false)); ?>

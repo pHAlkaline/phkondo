@@ -49,7 +49,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo __('Config'); ?><b class="caret"></b></a>
                             <ul class="dropdown-menu">
-
+                                 <h6 class="dropdown-header"><?php echo __('General'); ?></h6>
                                 <li >
 
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-user"></span> ' . __n('Entity', 'Entities', 2), array('plugin' => '', 'controller' => 'entities', 'action' => 'index'), array('escape' => false)); ?>
@@ -57,18 +57,6 @@
                                 <li >
 
                                     <?php echo $this->Html->link('<span class="fa fa-truck"></span> ' . __n('Supplier', 'Suppliers', 2), array('plugin' => '', 'controller' => 'suppliers', 'action' => 'index'), array('escape' => false)); ?>
-                                </li>
-
-
-
-                                <li >
-
-                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-book"></span> ' . __('Movement Categories'), array('plugin' => '', 'controller' => 'movement_categories', 'action' => 'index'), array('escape' => false)); ?>
-                                </li>
-
-                                <li >
-
-                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-cog"></span> ' . __('Movement Operations'), array('plugin' => '', 'controller' => 'movement_operations', 'action' => 'index'), array('escape' => false)); ?>
                                 </li>
                                 <li >
 
@@ -80,19 +68,31 @@
                                 <li >
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-warning-sign"></span> ' . __('Support Categories'), array('plugin' => '', 'controller' => 'support_categories', 'action' => 'index'), array('escape' => false)); ?>
                                 </li>
+
+                                <h6 class="dropdown-header"><?php echo __('Accounting'); ?></h6>
+
+                                <li >
+
+                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-book"></span> ' . __('Movement Categories'), array('plugin' => '', 'controller' => 'movement_categories', 'action' => 'index'), array('escape' => false)); ?>
+                                </li>
+
+                                <li >
+
+                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-cog"></span> ' . __('Movement Operations'), array('plugin' => '', 'controller' => 'movement_operations', 'action' => 'index'), array('escape' => false)); ?>
+                                </li>
                                 <?php
                                 $event = new CakeEvent('Phkondo.Draft.hasCondoDraft');
                                 $this->getEventManager()->dispatch($event);
                                 if ($event->result['hasCondoDraft'] === true) {
                                     ?>
+                                <h6 class="dropdown-header"><?php echo __('Drafts'); ?></h6>
                                     <li ><?php echo $this->Html->link('<span class="fa fa-file-text"></span> ' . __n('Draft', 'Drafts', 2), array('plugin' => '', 'controller' => 'drafts', 'action' => 'index'), array('escape' => false)); ?></li>
                                 <?php } else { ?>
                                     <li ><?php echo $this->Html->link('<span class="fa fa-file-text"></span> ' . __n('Draft', 'Drafts', 2), array('plugin' => '', 'controller' => 'pages', 'action' => 'drafts'), array('class' => 'btn ', 'escape' => false)); ?> </li>
 
                                 <?php } ?>
                                 <?php if (AuthComponent::user('role') == 'admin') { ?>
-
-                                    <li role="presentation" class="divider"></li>
+                                    <h6 class="dropdown-header"><?php echo __('Users'); ?></h6>
                                     <li >
                                         <?php echo $this->Html->link('<span class="glyphicon glyphicon-user"></span> ' . __('Users'), array('plugin' => '', 'controller' => 'users', 'action' => 'index'), array('escape' => false)); ?>
                                     </li>

@@ -89,6 +89,9 @@ msgstr "Il conto non può essere cancellato"
 msgid "Account deleted"
 msgstr "Conto cancellato"
 
+msgid "Accounting"
+msgstr ""
+
 msgid "Accounts Final Values"
 msgstr ""
 
@@ -624,6 +627,9 @@ msgstr "Venerdi'"
 
 msgid "Functions"
 msgstr "Funzioni"
+
+msgid "General"
+msgstr ""
 
 msgid "Guest"
 msgstr "Ospite"

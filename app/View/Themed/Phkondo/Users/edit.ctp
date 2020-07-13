@@ -39,23 +39,23 @@ foreach ($role_options as $key => $value){
                 <legend><?php echo __('Edit User'); ?></legend>
                 <?php echo $this->Form->input('id'); ?>
                 <div class="form-group">
-                    <?php echo $this->Form->input('name', array('class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('name', array('autocomplete'=>'off','class' => 'form-control')); ?>
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-                    <?php echo $this->Form->input('username', array('class' => 'form-control','maxLength' => '40')); ?>
+                    <?php echo $this->Form->input('username', array('autocomplete'=>'off','class' => 'form-control','maxLength' => '40')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10 checkbox checkbox-success">
-                        <?php echo $this->Form->input('edpassword', array('class' => 'checkbox styled', 'label' => __('Enable password change'), 'div' => array('class' => ''), 'between' => '', 'after' => '', 'type' => 'checkbox')); ?>
+                    <div class="col-sm-offset-2 col-sm-10 ">
+                        <?php echo $this->Form->input('edpassword', array('class' => 'checkbox styled', 'label' => __('Enable password change'), 'div' => array('class' => 'checkbox checkbox-success'), 'between' => '', 'after' => '', 'type' => 'checkbox')); ?>
                     </div>
 
                 </div><!-- .form-group -->
                 <div class="form-group">
-                    <?php echo $this->Form->input('password', array('disabled' => 'disabled', 'class' => 'form-control', 'maxLength' => '40', 'type' => 'password')); ?>
+                    <?php echo $this->Form->input('password', array('autocomplete'=>'new-password','disabled' => 'disabled', 'class' => 'form-control', 'maxLength' => '40', 'type' => 'password')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
-                    <?php echo $this->Form->input('verify_password', array('disabled' => 'disabled', 'class' => 'form-control', 'maxLength' => '40', 'type' => 'password')); ?>
+                    <?php echo $this->Form->input('verify_password', array('autocomplete'=>'new-password','disabled' => 'disabled', 'class' => 'form-control', 'maxLength' => '40', 'type' => 'password')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
                     <?php echo $this->Form->input('role', array('options' => $role_options, 'class' => 'form-control')); ?>

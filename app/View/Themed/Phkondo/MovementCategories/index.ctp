@@ -18,8 +18,6 @@
                         <tr>
                             <th><?php echo $this->Paginator->sort('name'); ?></th>
                             <th><?php echo $this->Paginator->sort('active'); ?></th>
-                            <th><?php echo $this->Paginator->sort('modified'); ?></th>
-                            <th><?php echo $this->Paginator->sort('created'); ?></th>
                             <th class="actions hidden-print"><?php //echo __('Actions');  ?></th>
                         </tr>
                     </thead>
@@ -28,8 +26,6 @@
                             <tr>
                                 <td><?php echo h($movementCategory['MovementCategory']['name']); ?>&nbsp;</td>
                                 <td><?php echo h($movementCategory['MovementCategory']['active_string']); ?>&nbsp;</td>
-                                <td><?php echo h( $movementCategory['MovementCategory']['modified']); ?>&nbsp;</td>
-                                <td><?php echo h( $movementCategory['MovementCategory']['created']); ?>&nbsp;</td>
                                 <td class="actions hidden-print">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $movementCategory['MovementCategory']['id']), array('title' => __('Details'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $movementCategory['MovementCategory']['id']), array('title' => __('Edit'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>

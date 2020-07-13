@@ -89,6 +89,9 @@ msgstr ""
 msgid "Account deleted"
 msgstr ""
 
+msgid "Accounting"
+msgstr ""
+
 msgid "Accounts Final Values"
 msgstr ""
 
@@ -623,6 +626,9 @@ msgid "Friday"
 msgstr ""
 
 msgid "Functions"
+msgstr ""
+
+msgid "General"
 msgstr ""
 
 msgid "Guest"
@@ -1720,37 +1726,37 @@ msgid "Land Registry Year"
 msgstr ""
 
 msgid "List Fraction Types"
-msgstr ""
+msgstr "Property Parts"
 
 msgid "Add Fraction Type"
-msgstr ""
+msgstr "Add Property Part"
 
 msgid "Delete Fraction Type"
-msgstr ""
+msgstr "Delete Property Part"
 
 msgid "Edit Fraction Type"
-msgstr ""
+msgstr "Edit Property Part"
 
 msgid "Invalid movement category"
 msgstr ""
 
 msgid "Fraction Type"
-msgstr ""
+msgstr "Property Part"
 
 msgid "Fraction Types"
-msgstr ""
+msgstr "Property Parts"
 
 msgid "Fraction Type deleted"
-msgstr ""
+msgstr "Property Part deleted"
 
 msgid "New Fraction Type"
-msgstr ""
+msgstr "New Property Part"
 
 msgid "The fraction type could not be saved. Please, try again."
-msgstr ""
+msgstr "The property part could not be saved. Please, try again."
 
 msgid "The fraction type has been saved"
-msgstr ""
+msgstr "The property part has been saved."
 
 msgid "The owner has been saved and related"
 msgstr ""
