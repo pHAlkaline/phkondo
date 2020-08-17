@@ -65,7 +65,7 @@
                     <tr>
                         <td><strong><?php echo __n('Fraction', 'Fractions', 1); ?></strong></td>
                         <td>
-                            <?php echo h($note['Fraction']['fraction']); ?>
+                            <?php echo h($note['Fraction']['floor_location']); ?>
                             &nbsp;
                         </td>
                     </tr>

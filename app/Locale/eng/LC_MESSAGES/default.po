@@ -1061,7 +1061,7 @@ msgstr[0] "Fee"
 msgstr[1] "Fees"
 
 msgid "Note Status"
-msgstr "Fees status"
+msgstr "Fee status"
 
 msgid "Note Type"
 msgstr "Fee type"
@@ -1726,7 +1726,7 @@ msgid "Land Registry Year"
 msgstr ""
 
 msgid "List Fraction Types"
-msgstr "Property Parts"
+msgstr "List Property Parts"
 
 msgid "Add Fraction Type"
 msgstr "Add Property Part"
@@ -1887,4 +1887,7 @@ msgid "Support can not be deleted"
 msgstr ""
 
 msgid "Support deleted"
+msgstr ""
+
+msgid "Requires a valid condo and active fiscal year."
 msgstr ""

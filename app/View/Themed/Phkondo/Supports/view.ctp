@@ -29,7 +29,7 @@
                     <tr>
                         <td class='col-sm-2'><strong><?php echo __n('Fraction', 'Fractions', 1); ?></strong></td>
                         <td>
-                            <?php echo h($support['Fraction']['description']); ?>
+                            <?php echo h($support['Fraction']['floor_location']); ?>
                             &nbsp;
                         </td>
                     </tr>

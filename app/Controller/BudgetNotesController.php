@@ -199,9 +199,9 @@ class BudgetNotesController extends AppController {
         }
         $noteTypes = $this->Note->NoteType->find('list');
         $fractions = $this->Note->Fraction->find('list', array('order' => array('Fraction.length' => 'asc', 'Fraction.fraction' => 'asc'), 'conditions' => array('condo_id' => $this->getPhkRequestVar('condo_id'))));
-        $budgets = $this->Note->Budget->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('budget_id'))));
+        $budgets = $this->Note->Budget->find('list', array('conditions' => array('id' => $this->request->data['Note']['budget_id'])));
         $fiscalYears = $this->Note->FiscalYear->find('list', array('conditions' => array('id' => Set::extract('/Budget/id', $budgets))));
-        $entitiesFilter = $this->Note->Fraction->find('all', array('fields' => array('Fraction.id'), 'conditions' => array('condo_id' => $this->getPhkRequestVar('condo_id')))); //'Fraction.id' => $this->request->data['Note']['fraction_id']
+        $entitiesFilter = $this->Note->Fraction->find('all', array('fields' => array('Fraction.id'), 'conditions' => array('condo_id' => $this->getPhkRequestVar('condo_id')))); 
         $entities = $this->Note->Entity->find('list', array('conditions' => array('id' => Set::extract('/Entity/id', $entitiesFilter))));
 
         if ($this->request->data['Note']['receipt_id'] != null) {
@@ -363,7 +363,7 @@ class BudgetNotesController extends AppController {
     public function beforeRender() {
         parent::beforeRender();
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'budgets', 'action' => 'index', '?' => array('condo_id' => $this->getPhkRequestVar('condo_id')))), 'text' => __n('Budget', 'Budgets', 2), 'active' => ''),

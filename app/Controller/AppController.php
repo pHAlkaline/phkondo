@@ -219,7 +219,7 @@ class AppController extends Controller {
             $result = $fraction->find("first", array('conditions' => array('Fraction.id' => $this->phkRequestData['fraction_id'])));
             if (count($result)) {
                 $this->phkRequestData['fraction_id'] = $result['Fraction']['id'];
-                $this->phkRequestData['fraction_text'] = $result['Fraction']['description'];
+                $this->phkRequestData['fraction_text'] = $result['Fraction']['floor_location'] ? $result['Fraction']['floor_location'] : $result['Fraction']['fraction'];
                 $this->phkRequestData['condo_id'] = $result['Fraction']['condo_id'];
             }
         }

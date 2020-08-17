@@ -210,13 +210,13 @@ class CondosController extends AppController {
         parent::beforeRender();
         if (!isset($this->phkRequestData['condo_id'])) {
             $breadcrumbs = array(
-                array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
+                array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
                 array('link' => '', 'text' => __n('Condo','Condos',2), 'active' => 'active')
             );
             $headerTitle=__('Condos');
         } else {
             $breadcrumbs = array(
-                array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
+                array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
                 array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
                 array('link' => '', 'text' => $this->getPhkRequestVar('condo_text'), 'active' => 'active')
             );

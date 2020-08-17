@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * pHKondo : pHKondo software for condominium property managers (http://phalkaline.eu)
@@ -25,7 +26,6 @@
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
-
 App::uses('AppController', 'Controller');
 
 class PagesController extends AppController {
@@ -53,7 +53,7 @@ class PagesController extends AppController {
     public function display() {
         $path = func_get_args();
 
-        if (!empty($path[0]) && $path[0] == 'home' && !(bool)  AuthComponent::user()) {
+        if (!empty($path[0]) && $path[0] == 'home' && !(bool) AuthComponent::user()) {
             $path[0] = 'login';
             $this->layout = "login";
         }
@@ -75,23 +75,21 @@ class PagesController extends AppController {
         $this->set(compact('page', 'subpage', 'title_for_layout', 'headerTitle'));
         $this->render(implode('/', $path));
     }
-    
+
     public function beforeRender() {
         parent::beforeRender();
+        $headerTitle = __('pHKondo');
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
-                
+            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => '')
         );
-       
-        if ($this->viewVars['page']=='login'){
-        $breadcrumbs[1]=array('link'=>'','text'=>__('Start Session'),'active'=>'active');
-            
+
+        if ($this->viewVars['page'] == 'login') {
+            $breadcrumbs[1] = array('link' => '', 'text' => __('Start Session'), 'active' => 'active');
+            $headerTitle = __('Start Session');
         }
-        $headerTitle=__('Start Session');
-        $this->set(compact('breadcrumbs','headerTitle'));
+
+        
+        $this->set(compact('breadcrumbs', 'headerTitle'));
     }
-    
-    
-   
 
 }

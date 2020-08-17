@@ -126,7 +126,7 @@ class AccountsController extends AppController {
             $options = array('conditions' => array('Account.id' => $id));
             $this->request->data = $this->Account->find('first', $options);
         }
-        $condos = $this->Account->Condo->find('list');
+        $condos = $this->Account->Condo->find('list', array('conditions' => array('id' => $this->request->data['Account']['condo_id'])));
         $this->set(compact('condos'));
         $this->setPhkRequestVar('account_id', $id);
         $this->setPhkRequestVar('account_text', $this->request->data['Account']['title']);
@@ -170,7 +170,7 @@ class AccountsController extends AppController {
     public function beforeRender() {
         parent::beforeRender();
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'index'),true), 'text' => __('Home'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home'),true), 'text' => __('Home'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'index'),true), 'text' => __n('Condo','Condos',2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id')),true), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
             array('link' => '', 'text' => __n('Account','Accounts',2), 'active' => 'active')

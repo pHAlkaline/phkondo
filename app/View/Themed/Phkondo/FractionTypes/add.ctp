@@ -36,9 +36,9 @@
                     <?php echo $this->Form->input('name', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
 
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10 checkbox checkbox-success">
-                        <?php echo $this->Form->input('active', array('class' => 'checkbox styled', 'label' => __('Active'), 'div' => array('class' => ''), 'between' => '', 'after' => '')); ?>
+               <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <?php echo $this->Form->input('active', array('class' => 'checkbox styled', 'label' => __('Active'), 'div' => array('class' => 'checkbox checkbox-success'), 'between' => '', 'after' => '')); ?>
                     </div>
                 </div><!-- .form-group -->
 

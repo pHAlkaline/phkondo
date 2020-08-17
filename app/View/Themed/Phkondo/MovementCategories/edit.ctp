@@ -32,12 +32,11 @@
                 <div class="form-group">
                     <?php echo $this->Form->input('name', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
-                <div class="form-group">
-
-                    <div class="col-sm-offset-2 col-sm-10 ">
+               <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
                         <?php echo $this->Form->input('active', array('class' => 'checkbox styled', 'label' => __('Active'), 'div' => array('class' => 'checkbox checkbox-success'), 'between' => '', 'after' => '')); ?>
-                    </div>  
-                </div>
+                    </div>
+                </div><!-- .form-group -->
 
                 <?php //debug($this->Form->value('active')); ?>
             </fieldset>

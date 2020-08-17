@@ -124,7 +124,7 @@ class MovementOperationsController extends AppController {
         }
 
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'accounts', 'action' => 'index','?'=>array('condo_id'=>$this->getPhkRequestVar('condo_id')))), 'text' => __n('Account', 'Accounts', 2), 'active' => ''),
@@ -196,7 +196,7 @@ class MovementOperationsController extends AppController {
             return;
         }
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
             array('link' => '', 'text' => __('Movement Operations'), 'active' => 'active')
         );
         switch ($this->action) {

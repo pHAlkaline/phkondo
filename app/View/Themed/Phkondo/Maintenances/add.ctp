@@ -56,12 +56,14 @@
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-                    <?php echo $this->Form->input('comments', array('class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('comments', ['label'=>['text'=>__('Observations'),'class'=>'col-sm-2 control-label'],'class' => 'form-control']); ?>
                 </div><!-- .form-group -->
 
-                <div class="col-sm-offset-2 col-sm-10 ">
-                    <?php echo $this->Form->input('active', array('class' => 'checkbox styled', 'label' => __('Active'), 'div' => array('class' => 'checkbox checkbox-success'),  'between' => '', 'after' => '')); ?>
-                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <?php echo $this->Form->input('active', array('class' => 'checkbox styled', 'label' => __('Active'), 'div' => array('class' => 'checkbox checkbox-success'), 'between' => '', 'after' => '')); ?>
+                    </div>
+                </div><!-- .form-group -->
             </fieldset>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-6">

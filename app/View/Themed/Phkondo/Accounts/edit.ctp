@@ -70,13 +70,13 @@
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10 checkbox checkbox-success">
-                        <?php echo $this->Form->input('main_account', array('class' => 'checkbox styled', 'label' => __('Main Account'), 'div' => array('class' => ''), 'between' => '', 'after' => '')); ?>
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <?php echo $this->Form->input('main_account', array('class' => 'checkbox styled', 'label' => __('Active'), 'div' => array('class' => 'checkbox checkbox-success'), 'between' => '', 'after' => '')); ?>
                     </div>
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-                    <?php echo $this->Form->input('comments', array('class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('comments', ['label'=>['text'=>__('Observations'),'class'=>'col-sm-2 control-label'],'class' => 'form-control']); ?>
                 </div><!-- .form-group -->
 
             </fieldset>

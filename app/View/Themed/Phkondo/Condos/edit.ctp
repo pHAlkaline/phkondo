@@ -48,7 +48,7 @@
                     <?php echo $this->Form->input('land_registry_year', array('class' => 'form-control')); ?>
                 </div>
                 <div class="form-group ">
-                    <?php echo $this->Form->input('comments', array('class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('comments', ['label'=>['text'=>__('Observations'),'class'=>'col-sm-2 control-label'],'class' => 'form-control']); ?>
                 </div>
 
               

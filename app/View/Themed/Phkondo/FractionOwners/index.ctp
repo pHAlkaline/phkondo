@@ -44,7 +44,7 @@ $this->Html->script('fraction_owner_index', false); ?>
             </div>
             <div class="panel panel-default">
                 <!-- Default panel contents -->
-                <div class="panel-heading"><strong><?php echo __('Add Owner'); ?></strong></div>
+                <div class="panel-heading"><strong>&nbsp;<strong><?php echo __('Add Owner'); ?>&nbsp;</strong></div>
                 <div class="panel-body">
                     <div class="entities form hidden-print">
 
@@ -62,7 +62,7 @@ $this->Html->script('fraction_owner_index', false); ?>
                         <fieldset>
 
                             <div class="form-group">
-                        <?php echo $this->Form->input('client', array('label' => array('text'=>__('Owner'),'class' => 'col-sm-2 control-label'),'class' => 'form-control')); ?>
+                        <?php echo $this->Form->input('client', array('type'=>'select','label' => array('text'=>__('Entity'),'class' => 'col-sm-2 control-label'),'class' => 'form-control select2-phkondo')); ?>
                             </div><!-- .form-group -->
                             <div class="form-group">
                         <?php echo $this->Form->input('owner_percentage', array('min' => '0.00', 'max' => '100.00')); ?>

@@ -93,7 +93,7 @@ class InsurancesController extends AppController {
             $this->Insurance->create();
             if ($this->Insurance->save($this->request->data)) {
                 $this->Flash->success(__('The insurance has been saved'));
-                $this->redirect(array('action' => 'index','?'=>$this->request->query));
+                $this->redirect(array('action' => 'view', $this->Insurance->id, '?' => $this->request->query));
             } else {
                 $this->Flash->error(__('The insurance could not be saved. Please, try again.'));
             }
@@ -119,7 +119,7 @@ class InsurancesController extends AppController {
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Insurance->save($this->request->data)) {
                 $this->Flash->success(__('The insurance has been saved'));
-                $this->redirect(array('action' => 'index','?'=>$this->request->query));
+                $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
             } else {
                 $this->Flash->error(__('The insurance could not be saved. Please, try again.'));
             }
@@ -127,8 +127,8 @@ class InsurancesController extends AppController {
             $options = array('conditions' => array('Insurance.' . $this->Insurance->primaryKey => $id));
             $this->request->data = $this->Insurance->find('first', $options);
         }
-        $condos = $this->Insurance->Condo->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('condo_id'))));
-        $fractions = $this->Insurance->Fraction->find('list', array('conditions' => array('condo_id' => $this->getPhkRequestVar('condo_id'))));
+        $condos = $this->Insurance->Condo->find('list', array('conditions' => array('id' => $this->request->data['Insurance']['condo_id'])));
+        $fractions = $this->Insurance->Fraction->find('list', array('conditions' => array('condo_id' => $this->request->data['Insurance']['condo_id'])));
         $insuranceTypes = $this->Insurance->InsuranceType->find('list', array('conditions' => array('active' => '1')));
         $this->set(compact('condos', 'fractions', 'insuranceTypes'));
         $this->setPhkRequestVar('insurance_id',$id);
@@ -171,7 +171,7 @@ class InsurancesController extends AppController {
     public function beforeRender() {
         parent::beforeRender();
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
             array('link' => '', 'text' => __n('Insurance','Insurances',2), 'active' => 'active')

@@ -171,13 +171,18 @@ class OwnerNotesController extends AppController {
             $this->redirect(array('action' => 'index'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
+            $options = array('conditions' => array(
+                    'Note.id' => $id,
+                    'Note.entity_id' => $this->getPhkRequestVar('owner_id')));
+
+            $this->request->data = array_merge($this->request->data,$this->Note->find('first', $options));
             $this->request->data['Note']['fiscal_year_id'] = $this->getPhkRequestVar('fiscal_year_id');
             $this->request->data['Note']['entity_id'] = $this->getPhkRequestVar('owner_id');
             $this->request->data['Note']['fraction_id'] = $this->getPhkRequestVar('fraction_id');
             if ($this->Note->save($this->request->data)) {
                 $this->_setDocument();
                 $this->Flash->success(__('The note has been saved'));
-                $this->redirect(array('action' => 'view', $this->Note->id,'?'=>$this->request->query));
+                $this->redirect(array('action' => 'view', $id,'?'=>$this->request->query));
             } else {
                 $this->Flash->error(__('The note could not be saved. Please, try again.'));
             }
@@ -194,7 +199,7 @@ class OwnerNotesController extends AppController {
         }
 
         $noteTypes = $this->Note->NoteType->find('list');
-        $fractions = $this->Note->Fraction->find('list', array('conditions' => array('Fraction.id' => $this->getPhkRequestVar('fraction_id'))));
+        $fractions = $this->Note->Fraction->find('list', array('conditions' => array('Fraction.id' => $this->request->data['Note']['fraction_id'])));
         if (isset($this->request->data['Note']['receipt_id']) && $this->request->data['Note']['receipt_id']!=null){
             $noteStatuses = $this->Note->NoteStatus->find('list', array('conditions' => array('id' => $this->request->data['Note']['note_status_id'])));
         } else {
@@ -223,7 +228,7 @@ class OwnerNotesController extends AppController {
             $this->redirect(array('action' => 'index','?'=>$this->request->query));
         }
         
-        if ($this->Note->delete()) {
+        if ($this->Note->delete($id)) {
             $this->Flash->success(__('Note deleted'));
             $this->redirect(array('action' => 'index','?'=>$this->request->query));
         }
@@ -267,7 +272,7 @@ class OwnerNotesController extends AppController {
     public function beforeRender() {
         parent::beforeRender();
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'fractions', 'action' => 'index','?'=>array('condo_id'=>$this->getPhkRequestVar('condo_id')))), 'text' => __n('Fraction','Fractions',2), 'active' => ''),

@@ -141,7 +141,7 @@ class AdministratorsController extends AppController {
             $options = array('conditions' => array('Administrator.' . $this->Administrator->primaryKey => $id));
             $this->request->data = $this->Administrator->find('first', $options);
         }
-        $condos = $this->Administrator->Condo->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('condo_id'))));
+        $condos = $this->Account->Condo->find('list', array('conditions' => array('id' => $this->request->data['Account']['condo_id'])));
         $options = array('conditions' => array(
                 'Administrator.id <>' => $id,
                 'Administrator.condo_id' => $this->getPhkRequestVar('condo_id'),
@@ -189,15 +189,15 @@ class AdministratorsController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         if (!$this->getPhkRequestVar('condo_id') || !$this->getPhkRequestVar('fiscal_year_id')) {
-            $this->Flash->error(__('Invalid condo or fiscal year'));
-            $this->redirect(array('controller'=>'condos','action' => 'index'));
+            $this->Flash->error(__('Requires a valid condo and active fiscal year.'));
+            $this->redirect( Router::url( $this->referer(), true ) );
         }
     }
 
     public function beforeRender() {
         parent::beforeRender();
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view',$this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
             array('link' => '', 'text' => __n('Administrator','Administrators',2), 'active' => 'active')

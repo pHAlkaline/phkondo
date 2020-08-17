@@ -17,15 +17,13 @@
                         <tr>
                             <th><?php echo $this->Paginator->sort('document'); ?></th>
                             <th><?php echo $this->Paginator->sort('document_date'); ?></th>
-
                             <th><?php echo $this->Paginator->sort('title'); ?></th>
+                            <th><?php echo $this->Paginator->sort('Fraction.floor_location', __n('Fraction','Fractions',1)); ?></th>
+                            <th class="amount"><?php echo $this->Paginator->sort('amount'); ?></th>
                             <th><?php echo $this->Paginator->sort('NoteType.name', __('Note Type')); ?></th>
-                            <th><?php echo $this->Paginator->sort('Fraction.description', __n('Fraction','Fractions',1)); ?></th>
+                            <th><?php echo $this->Paginator->sort('NoteStatus.name', __('Note Status')); ?></th>
                             <th><?php echo $this->Paginator->sort('due_date'); ?></th>
                             <th><?php echo $this->Paginator->sort('payment_date'); ?></th>
-                            <th><?php echo $this->Paginator->sort('NoteStatus.name', __('Note Status')); ?></th>
-                            <th class="amount"><?php echo $this->Paginator->sort('amount'); ?></th>
-                            <!--th><?php //echo $this->Paginator->sort('pending_amount');  ?></th-->
                             <th class="actions hidden-print"><?php //echo __('Actions');  ?></th>
                         </tr>
                     </thead>
@@ -35,12 +33,12 @@
                                 <td><?php echo h($note['Note']['document']); ?>&nbsp;</td>
                                 <td><?php echo h( $note['Note']['document_date']); ?>&nbsp;</td>
                                 <td><?php echo h($note['Note']['title']); ?>&nbsp;</td>
+                                <td><?php echo h($note['Fraction']['floor_location']); ?></td>
+                                <td class="amount"><?php echo number_format($note['Note']['amount'],2); ?>&nbsp;<?php echo  Configure::read('currencySign'); ?></td>
                                 <td><?php echo h($note['NoteType']['name']); ?></td>
-                                <td><?php echo h($note['Fraction']['description']); ?></td>
+                                <td><?php echo h($note['NoteStatus']['name']); ?>    </td>
                                 <td><?php echo h( $note['Note']['due_date']); ?>&nbsp;</td>
                                 <td><?php if ($note['Note']['payment_date']) echo h( $note['Note']['payment_date']); ?>&nbsp;</td>
-                                <td><?php echo h($note['NoteStatus']['name']); ?>    </td>
-                                <td class="amount"><?php echo number_format($note['Note']['amount'],2); ?>&nbsp;<?php echo  Configure::read('currencySign'); ?></td>
                                 <td class="actions hidden-print">
                                     <?php
                                     $deleteDisabled = null;

@@ -115,7 +115,7 @@ class Note extends AppModel {
                 'rule' => array('numeric'),
                 //'message' => 'Your custom message here',
                 'allowEmpty' => true,
-            //'required' => false,
+                'required' => false,
             //'last' => false, // Stop validation after this rule
             //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
@@ -174,11 +174,13 @@ class Note extends AppModel {
                 'message' => 'due date must be after document date'),
         ),
         'payment_date' => array(
+            'empty' => array(
+                'allowEmpty' => true
+            ),
             'date' => array(
                 'rule' => array('date'),
                 //'message' => 'Your custom message here',
-                'allowEmpty' => false,
-                'required' => false,
+                
             //'last' => false, // Stop validation after this rule
             //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
@@ -200,13 +202,11 @@ class Note extends AppModel {
             ),
         ),
         'receipt_id' => array(
+            'empty' => array(
+                'allowEmpty' => true
+            ),
             'numeric' => array(
                 'rule' => array('numeric'),
-                //'message' => 'Your custom message here',
-                'allowEmpty' => true,
-                'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
     );
@@ -314,7 +314,7 @@ class Note extends AppModel {
     }
 
     function editable($record = null) {
-        if (isset($record['note_status_id']) && in_array($record['note_status_id'], array(2, 3)) && $record['receipt_id'] != '') {
+        if (isset($record['note_status_id']) && in_array($record['note_status_id'], array(2, 3)) || $record['receipt_id'] != '') {
             return false;
         }
         return true;

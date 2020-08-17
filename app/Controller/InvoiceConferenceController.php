@@ -189,7 +189,8 @@ class InvoiceConferenceController extends AppController {
 
             if ($this->InvoiceConference->save($this->request->data)) {
                 $this->Flash->success(__('The invoice has been saved'));
-                $this->redirect(array('action' => 'index_by_supplier', $this->request->data['InvoiceConference']['supplier_id'],'?'=>$this->request->query));
+                $this->redirect(array('action' => 'view', $id,'?'=>$this->request->query));
+                //$this->redirect(array('action' => 'index_by_supplier', $this->request->data['InvoiceConference']['supplier_id'],'?'=>$this->request->query));
             } else {
                 $this->Flash->error(__('The invoice could not be saved. Please, try again.'));
             }
@@ -201,9 +202,9 @@ class InvoiceConferenceController extends AppController {
             ));
             $this->request->data = $this->InvoiceConference->find('first', $options);
         }
-        $condos = $this->InvoiceConference->Condo->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('condo_id'))));
+        $condos = $this->InvoiceConference->Condo->find('list', array('conditions' => array('id' => $this->request->data['InvoiceConference']['condo_id'])));
         $fiscalYears = $this->InvoiceConference->FiscalYear->find('list', array('conditions' => array('condo_id' => $this->request->data['InvoiceConference']['condo_id'])));
-        $fiscalYearData= $this->InvoiceConference->FiscalYear->find('first', array('fields'=>array('open_date','close_date'),'conditions' => array('id' => $this->getPhkRequestVar('fiscal_year_id'))));
+        $fiscalYearData= $this->InvoiceConference->FiscalYear->find('first', array('fields'=>array('open_date','close_date'),'conditions' => array('id' => $this->request->data['InvoiceConference']['fiscal_year_id'])));
         $invoiceConferenceStatuses = $this->InvoiceConference->InvoiceConferenceStatus->find('list', array('conditions' => array('active' => '1')));
 
         $suppliers = $this->InvoiceConference->Supplier->find('list', array('order' => 'name'));
@@ -250,7 +251,7 @@ class InvoiceConferenceController extends AppController {
     public function beforeRender() {
         parent::beforeRender();
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
             array('link' => '', 'text' => __('Invoice Conference'), 'active' => 'active')

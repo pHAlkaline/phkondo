@@ -126,7 +126,7 @@ class FiscalYearsController extends AppController {
             $options = array('conditions' => array('FiscalYear.' . $this->FiscalYear->primaryKey => $id));
             $this->request->data = $this->FiscalYear->find('first', $options);
         }
-        $condos = $this->FiscalYear->Condo->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('condo_id'))));
+        $condos = $this->FiscalYear->Condo->find('list', array('conditions' => array('id' => $this->request->data['Condo']['condo_id'])));
         $this->set(compact('condos'));
         $this->setPhkRequestVar('fiscal_year_id',$id);
        
@@ -215,7 +215,7 @@ class FiscalYearsController extends AppController {
     public function beforeRender() {
         parent::beforeRender();
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view',$this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
             array('link' => '', 'text' => __n('Fiscal Year', 'Fiscal Years', 2), 'active' => 'active')

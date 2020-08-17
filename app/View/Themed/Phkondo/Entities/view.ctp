@@ -86,7 +86,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><strong><?php echo __('Comments'); ?></strong></td>
+                        <td><strong><?php echo __('Observations'); ?></strong></td>
                         <td>
                             <?php echo nl2br(h($entity['Entity']['comments'])); ?>
                             &nbsp;
@@ -122,7 +122,7 @@
                             
                                 <tr>
                                     <td><?php echo $this->Html->link(h($fraction['Condo']['title']), array('controller' => 'condos', 'action' => 'view', $fraction['Condo']['id'], '?' => array('condo_id' => $fraction['Condo']['id'])), array('title' => __('Details'), 'class' => '', 'escape' => false)); ?></td>
-                                    <td><?php echo $this->Html->link(h($fraction['fraction']), array('controller' => 'fractions', 'action' => 'view', $fraction['id'], '?' => array('condo_id' => $fraction['Condo']['id'])), array('title' => __('Details'), 'class' => '', 'escape' => false)); ?></td>
+                                    <td><?php echo $this->Html->link(h($fraction['floor_location']), array('controller' => 'fractions', 'action' => 'view', $fraction['id'], '?' => array('condo_id' => $fraction['Condo']['id'])), array('title' => __('Details'), 'class' => '', 'escape' => false)); ?></td>
                                     <td><?php echo h($fraction['floor_location']); ?>&nbsp;</td>
                                     <td><?php echo h($fraction['description']); ?>&nbsp;</td>
                                     <td><?php echo h($fraction['mil_rate']); ?>&nbsp;</td>

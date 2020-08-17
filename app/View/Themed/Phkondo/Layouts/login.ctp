@@ -62,6 +62,7 @@ if (!isset($headerTitle)) {
         echo $this->Html->meta('icon');
         echo $this->fetch('meta');
         echo $this->Html->css(array(
+            'animate/animate.min',
             //'bootstrap/bootstrap-glyphicons',
             'bootstrap/font-awesome.min',
             'bootstrap/bootstrap',
@@ -75,16 +76,7 @@ if (!isset($headerTitle)) {
         echo $this->Html->css(array('phkondo_print'), null, array('media' => 'print'));
         echo $this->fetch('css');
         ?>
-        <?php
-        echo $this->Html->script(array('libs/jquery-2.2.2.min', 'libs/bootstrap.min','libs/select2/select2'));
-        ?>
-
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $('select').select2();
-
-            });
-        </script>
+        
     </head>
 
     <body class="hold-transition login-page">
@@ -92,5 +84,40 @@ if (!isset($headerTitle)) {
 
 
     </body>
+ <?php
+        echo $this->Html->script(array('libs/jquery-3.5.1', 'libs/bootstrap.min'));
+        echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.min'));
+        echo $this->Html->script(array('libs/select2/select2.full'));
+        echo $this->Html->script(array('libs/offcanvas'));
 
+
+        switch (Configure::read('Config.language')) {
+            case 'por':
+                echo $this->Html->script(array('libs/select2/i18n/pt'));
+                echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.pt.min'));
+                break;
+            case 'eng':
+                echo $this->Html->script(array('libs/select2/i18n/en'));
+                echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.en-GB.min'));
+                break;
+            case 'ita':
+                echo $this->Html->script(array('libs/select2/i18n/it'));
+                echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.it.min'));
+                break;
+        }
+        $phkondo = array(
+            'APP_PATH' => Router::url('/', true),
+            'APP_LANG' => Configure::read('Config.language'),
+            'START_DATE' => date('d-m-Y', strtotime("-1 year", time())),
+            'END_DATE' => date('d-m-Y', strtotime("+1 year", time())),
+            'SEARCH_HERE_FOR_A_CLIENT' => __('Search')
+        );
+        echo $this->Html->scriptBlock('var phkondo = ' . $this->Js->object($phkondo) . ';');
+        
+        ?>
+
+      
+        <?php
+        echo $this->fetch('script');
+        ?>
 </html>

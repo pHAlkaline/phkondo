@@ -89,7 +89,7 @@ foreach ($fractions as $fraction) {
                                 ?>
                                 <tr>
                                     <td><?php echo h($entity['name']); ?>&nbsp;</td>
-                                    <td><?php echo h($fraction['Fraction']['fraction']); ?>&nbsp;</td>
+                                    <td><?php echo h($fraction['Fraction']['floor_location']); ?>&nbsp;</td>
                                     <td><?php echo h($fraction['Fraction']['description']); ?>&nbsp;</td>
                                     <td><?php echo h($fraction['Fraction']['mil_rate']); ?>&nbsp;</td>
                                     <td><?php echo $this->Form->input('Note.' . $row . '.amount', array('class' => 'form-control', 'value' => $amountByShare, 'type' => 'text', 'data-type' => 'note', 'label' => false)); ?>&nbsp;</td>

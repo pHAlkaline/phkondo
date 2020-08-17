@@ -13,8 +13,8 @@
                 <span class="glyphicon glyphicon-menu-hamburger" ></span>
             </button>
 
-            <a class="navbar-brand" href="<?php echo Router::url('/', true); ?>">
-                <?php echo $this->Html->image('logo_phkondo_flat.svg', array('alt' => 'pHKondo', 'style' => 'height:100%')); ?>
+            <a class="navbar-brand" href="<?php echo Router::url(array('controller' => 'pages', 'action' => 'home'), true); ?>">
+                <?php echo $this->Html->image('logo_phkondo_flat.svg', array('alt' => 'pHKondo', 'style' => 'height:100%', 'class' => 'animate__animated animate__fadeIn')); ?>
             </a>
         </div>
 
@@ -37,6 +37,10 @@
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-th"></span> ' . __('Income Control'), array('plugin' => '', 'controller' => 'income', 'action' => 'index'), array('escape' => false)); ?>
                                 </li>
                             <?php } ?>
+                            <li role="presentation" class="divider"></li>
+
+                            <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-info-sign"></span> ' . __('Quick Guide'), 'https://github.com/pHAlkaline/phkondo/wiki/Quick-Tutorial', array('target' => '_blank', 'escape' => false)); ?></li>
+
                         </ul>
 
                     </li>
@@ -49,7 +53,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo __('Config'); ?><b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                 <h6 class="dropdown-header"><?php echo __('General'); ?></h6>
+                                <h6 class="dropdown-header"><?php echo __('General'); ?></h6>
                                 <li >
 
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-user"></span> ' . __n('Entity', 'Entities', 2), array('plugin' => '', 'controller' => 'entities', 'action' => 'index'), array('escape' => false)); ?>
@@ -85,7 +89,7 @@
                                 $this->getEventManager()->dispatch($event);
                                 if ($event->result['hasCondoDraft'] === true) {
                                     ?>
-                                <h6 class="dropdown-header"><?php echo __('Drafts'); ?></h6>
+                                    <h6 class="dropdown-header"><?php echo __('Drafts'); ?></h6>
                                     <li ><?php echo $this->Html->link('<span class="fa fa-file-text"></span> ' . __n('Draft', 'Drafts', 2), array('plugin' => '', 'controller' => 'drafts', 'action' => 'index'), array('escape' => false)); ?></li>
                                 <?php } else { ?>
                                     <li ><?php echo $this->Html->link('<span class="fa fa-file-text"></span> ' . __n('Draft', 'Drafts', 2), array('plugin' => '', 'controller' => 'pages', 'action' => 'drafts'), array('class' => 'btn ', 'escape' => false)); ?> </li>
@@ -108,12 +112,9 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo __('User'); ?><b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <?php if (Configure::read('Application.mode') != 'demo'): ?>
-                            <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-user"></span> ' . __('Profile'), array('plugin' => '', 'controller' => 'users', 'action' => 'profile'), array('escape' => false)); ?>
-                            <?php endif; ?>
+                                <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-user"></span> ' . __('Profile'), array('plugin' => '', 'controller' => 'users', 'action' => 'profile'), array('escape' => false)); ?>
+                                <?php endif; ?>
                             <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-log-out"></span> ' . __('End Session'), array('plugin' => '', 'controller' => 'users', 'action' => 'logout'), array('escape' => false)); ?>
-                            <li role="presentation" class="divider"></li>
-
-                            <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-info-sign"></span> ' . __('Quick Guide'), 'https://github.com/pHAlkaline/phkondo/blob/master/QuickUserGuide/Quick-User-Guide-pHKondo-' . Configure::read('Config.language') . '.txt', array('target' => '_blank', 'escape' => false)); ?></li>
 
 
                         </ul>

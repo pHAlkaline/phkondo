@@ -26,7 +26,6 @@
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
-
 App::uses('AppModel', 'Model');
 
 /**
@@ -35,14 +34,14 @@ App::uses('AppModel', 'Model');
  * @property Condo $Condo
  */
 class Account extends AppModel {
-    
- /**
+
+    /**
      * Display field
      *
      * @var string
      */
     public $displayField = 'title';
-    
+
     /**
      * Order
      *
@@ -81,7 +80,7 @@ class Account extends AppModel {
                 'rule' => array('notBlank'),
                 //'message' => 'Your custom message here',
                 'allowEmpty' => true,
-                //'required' => false,
+            //'required' => false,
             //'last' => false, // Stop validation after this rule
             //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
@@ -91,7 +90,7 @@ class Account extends AppModel {
                 'rule' => array('notBlank'),
                 //'message' => 'Your custom message here',
                 'allowEmpty' => true,
-                //'required' => false,
+            //'required' => false,
             //'last' => false, // Stop validation after this rule
             //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
@@ -101,7 +100,7 @@ class Account extends AppModel {
                 'rule' => array('notBlank'),
                 //'message' => 'Your custom message here',
                 'allowEmpty' => true,
-                //'required' => false,
+            //'required' => false,
             //'last' => false, // Stop validation after this rule
             //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
@@ -111,7 +110,7 @@ class Account extends AppModel {
                 'rule' => array('isUnique'),
                 //'message' => 'Your custom message here',
                 'allowEmpty' => true,
-                //'required' => false,
+            //'required' => false,
             //'last' => false, // Stop validation after this rule
             //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
@@ -121,7 +120,7 @@ class Account extends AppModel {
                 'rule' => array('isUnique'),
                 //'message' => 'Your custom message here',
                 'allowEmpty' => true,
-                //'required' => false,
+            //'required' => false,
             //'last' => false, // Stop validation after this rule
             //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
@@ -225,5 +224,28 @@ class Account extends AppModel {
         }
     }
 
+    /**
+     * afterFind callback
+     * 
+     * @param array $results
+     * @param boolean $primary
+     * @access public
+     * @return array
+     */
+    public function afterFind($results, $primary = false) {
+        if (isset($results[0][$this->alias])) {
+            foreach ($results as $key => $val) {
+                if (isset($results[$key][$this->alias]['main_account'])) {
+                    $results[$key][$this->alias]['main_account_string'] = ($results[$key][$this->alias]['main_account']) ? __('Active') : null;
+                }
+            }
+        }
+        if (isset($results['active'])) {
+            $results['active_string'] = ($results['active']) ? __('Active') : null;
+        }
+
+
+        return $results;
+    }
 
 }

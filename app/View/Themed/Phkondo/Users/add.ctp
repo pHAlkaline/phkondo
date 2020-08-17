@@ -44,10 +44,10 @@ foreach ($role_options as $key => $value) {
                     <?php echo $this->Form->input('role', array('autocomplete'=>'off','options' => $role_options, 'class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10 ">
-                        <?php echo $this->Form->input('active', array('autocomplete'=>'off','class' => 'checkbox styled', 'label' => __('Active'), 'div' => array('class' => 'checkbox checkbox-success'), 'between' => '', 'after' => '')); ?>
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <?php echo $this->Form->input('active', array('class' => 'checkbox styled', 'label' => __('Active'), 'div' => array('class' => 'checkbox checkbox-success'), 'between' => '', 'after' => '')); ?>
                     </div>
-                </div>
+                </div><!-- .form-group -->
             </fieldset>
             <div class="form-group"> 
                 <div class="col-sm-offset-2 col-sm-6">

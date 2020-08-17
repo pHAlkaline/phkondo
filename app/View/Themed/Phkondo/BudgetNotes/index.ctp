@@ -27,7 +27,7 @@ if ($phkRequestData['budget_status'] == 1) {
                             <th><?php echo $this->Paginator->sort('document_date'); ?></th>
                             <th><?php echo $this->Paginator->sort('title'); ?></th>
                             <th><?php echo $this->Paginator->sort('NoteType.name', __('Note Type')); ?></th>
-                            <th><?php echo $this->Paginator->sort('Fraction.description', __('Fraction','Fractions',1)); ?></th>
+                            <th><?php echo $this->Paginator->sort('Fraction.floor_location', __('Fraction','Fractions',1)); ?></th>
                             <th><?php echo $this->Paginator->sort('Entity.name', __n('Entity','Entities',1)); ?></th>
                             <th><?php echo $this->Paginator->sort('due_date'); ?></th>
                             <th><?php echo $this->Paginator->sort('payment_date'); ?></th>
@@ -42,7 +42,7 @@ if ($phkRequestData['budget_status'] == 1) {
                                 <td><?php echo h( $note['Note']['document_date']); ?>&nbsp;</td>
                                 <td><?php echo h($note['Note']['title']); ?>&nbsp;</td>
                                 <td><?php echo h($note['NoteType']['name']); ?></td>
-                                <td><?php echo h($note['Fraction']['description']); ?></td>
+                                <td><?php echo h($note['Fraction']['floor_location']); ?></td>
                                 <td><?php echo h($note['Entity']['name']); ?></td>
                                 <td><?php echo h( $note['Note']['due_date']); ?>&nbsp;</td>
                                 <td><?php if ($note['Note']['payment_date']) echo h( $note['Note']['payment_date']); ?>&nbsp;</td>

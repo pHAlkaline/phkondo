@@ -112,3 +112,6 @@ msgstr "Minimo de 8 caracteres."
 
 msgid "Must contain one upper, one lower, 1 digit or special character"
 msgstr "Deve conter pelo menos uma maiuscula , uma minuscula, um digito ou caracter especial."
+
+msgid "Requires a valid condo and active fiscal year."
+msgstr "Requer un condominio valido e un anno fiscale attivo."

@@ -35,10 +35,10 @@
                     </div><!-- .form-group -->
                     <?php if ($this->Form->value('MovementOperation.id') > 2) { ?> 
                         <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10 ">
-                                <?php echo $this->Form->input('active', array('class' => 'checkbox styled', 'label' => __('Active'), 'div' => array('class' => 'checkbox checkbox-success'), 'between' => '', 'after' => '')); ?>
-                            </div>
-                        </div><!-- .form-group -->
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <?php echo $this->Form->input('active', array('class' => 'checkbox styled', 'label' => __('Active'), 'div' => array('class' => 'checkbox checkbox-success'), 'between' => '', 'after' => '')); ?>
+                    </div>
+                </div><!-- .form-group -->
                     <?php } ?>
             </fieldset>
             <div class="form-group">                 <div class="col-sm-offset-2 col-sm-6">                     <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-large btn-primary pull-right')); ?>                 </div>             </div>

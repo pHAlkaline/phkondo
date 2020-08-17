@@ -6,6 +6,8 @@
         <div id="sidebar" class="hidden-print actions sidebar-offcanvas">
 
             <ul class="nav nav-pills nav-stacked">
+                <li ><?php echo $this->Html->link(__('View %s', __n('Receipt', 'Receipts', 1)), array('action' => 'view',$this->Form->value('Receipt.id'), '?' => $this->request->query), array('class' => 'btn')); ?></li>
+
                 <?php
                 $deleteDisabled = '';
                 if (!$this->Form->value('Receipt.deletable')) {
@@ -15,7 +17,7 @@
                 <li ><?php echo $this->Html->link(__('New Receipt'), array('action' => 'add', '?' => $this->request->query), array('class' => 'btn')); ?></li>
                 <li ><?php echo $this->Form->postLink(__('Delete Receipt'), array('action' => 'delete', $this->Form->value('Receipt.id'), '?' => $this->request->query), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $this->Form->value('Receipt.id')))); ?></li>
                 <li ><?php echo $this->Html->link(__('List Receipts'), array('action' => 'index', '?' => $this->request->query), array('class' => 'btn')); ?></li>
-                <!--li ><?php //echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('New Notes'), array('action' => 'add_notes', $this->Form->value('Receipt.id')), array('class' => 'btn ', 'escape' => false));     ?> </li-->
+                <!--li ><?php //echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('New Notes'), array('action' => 'add_notes', $this->Form->value('Receipt.id')), array('class' => 'btn ', 'escape' => false));       ?> </li-->
 
             </ul><!-- /.list-group -->
 
@@ -87,7 +89,7 @@
                         <div class="index">
                             <?php
                             echo $this->Form->create('Note', array(
-                                'url' => array('controller' => 'owner_receipts', 'action' => 'add_notes', $this->Form->value('Receipt.id'),'?' => $this->request->query)));
+                                'url' => array('controller' => 'owner_receipts', 'action' => 'add_notes', $this->Form->value('Receipt.id'), '?' => $this->request->query)));
                             ?>
 
                             <?php echo $this->Form->hidden('Receipt.amount', array('value' => $receiptAmount)); ?>
@@ -110,52 +112,53 @@
 
 
                             </div><!-- /.actions -->
-<div class="table-responsive">
-                            <table class="table table-hover table-condensed">
-                                <thead>
-                                    <tr>
-                                        <th><?php echo __('Document'); ?></th>
-                                        <th><?php echo __('Document date'); ?></th>
-                                        <th><?php echo __('Title'); ?></th>
-                                        <th><?php echo __('Note Type'); ?></th>
-                                        <th><?php echo __n('Fraction', 'Fractions', 1); ?></th>
-                                        <th><?php echo __('Client'); ?></th>
-                                        <th><?php echo __('Amount'); ?></th>
-                                        <th><?php echo __('Due Date'); ?></th>
-                                        <th class="actions"><?php echo __('Pick'); ?></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach ($notes as $key => $note): ?>
+                            <hr/>
+                            <div class="clearfix"></div>
+                            <div class="table-responsive">
+                                <table class="table table-hover table-condensed">
+                                    <thead>
                                         <tr>
-                                            <td><?php echo h($note['Note']['document']); ?>&nbsp;</td>
-                                            <td><?php echo h($note['Note']['document_date']); ?>&nbsp;</td>
-                                            <td><?php echo h($note['Note']['title']); ?>&nbsp;</td>
-                                            <td><?php echo h($note['NoteType']['name']); ?></td>
-                                            <td><?php echo h($note['Fraction']['fraction']); ?></td>
-                                            <td><?php echo h($note['Entity']['name']); ?></td>
-                                            <td><?php echo h($note['Note']['amount']); ?>&nbsp;<?php echo Configure::read('currencySign'); ?></td>
-                                            <!--td><?php //echo h($note['Note']['pending_amount']);      ?>&nbsp;</td-->
-                                            <td><?php echo h($note['Note']['due_date']); ?>&nbsp;</td>
-                                            <td class="actions">
-                                                <?php
-                                                $checked = '';
-                                                if ($note['Note']['receipt_id'] != '') {
-                                                    $checked = 'checked';
-                                                }
-                                                ?>
-                                                <?php echo $this->Form->hidden('Note.' . $note['Note']['id'] . '.type', array('value' => $note['NoteType']['id'])); ?>
-                                                <?php echo $this->Form->hidden('Note.' . $note['Note']['id'] . '.amount', array('value' => $note['Note']['amount'])); ?>
-                                                <div class="checkbox checkbox-success">
-                                                <?php echo $this->Form->checkbox('Note.' . $note['Note']['id'] . '.check', array('class'=>'styled', 'hiddenField' => false, 'checked' => $checked)); ?>
-                                                    </div>
-                                            </td>
+                                            <th><?php echo __('Document'); ?></th>
+                                            <th><?php echo __('Document date'); ?></th>
+                                            <th><?php echo __('Title'); ?></th>
+                                            <th><?php echo __('Note Type'); ?></th>
+                                            <th><?php echo __n('Fraction', 'Fractions', 1); ?></th>
+                                            <th><?php echo __('Client'); ?></th>
+                                            <th><?php echo __('Amount'); ?></th>
+                                            <th><?php echo __('Due Date'); ?></th>
+                                            <th class="actions"><?php echo __('Pick'); ?></th>
                                         </tr>
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($notes as $key => $note): ?>
+                                            <tr>
+                                                <td><?php echo h($note['Note']['document']); ?>&nbsp;</td>
+                                                <td><?php echo h($note['Note']['document_date']); ?>&nbsp;</td>
+                                                <td><?php echo h($note['Note']['title']); ?>&nbsp;</td>
+                                                <td><?php echo h($note['NoteType']['name']); ?></td>
+                                                <td><?php echo h($note['Fraction']['floor_location']); ?></td>
+                                                <td><?php echo h($note['Entity']['name']); ?></td>
+                                                <td><?php echo h($note['Note']['amount']); ?>&nbsp;<?php echo Configure::read('currencySign'); ?></td>
+                                                <!--td><?php //echo h($note['Note']['pending_amount']);        ?>&nbsp;</td-->
+                                                <td><?php echo h($note['Note']['due_date']); ?>&nbsp;</td>
+                                                <td class="actions">
+                                                    <?php
+                                                    $checked = '';
+                                                    if ($note['Note']['receipt_id'] != '') {
+                                                        $checked = 'checked';
+                                                    }
+                                                    ?>
+                                                    <?php echo $this->Form->hidden('Note.' . $note['Note']['id'] . '.type', array('value' => $note['NoteType']['id'])); ?>
+                                                    <?php echo $this->Form->hidden('Note.' . $note['Note']['id'] . '.amount', array('value' => $note['Note']['amount'])); ?>
+                                                    <?php echo $this->Form->checkbox('Note.' . $note['Note']['id'] . '.check', array('class' => '', 'hiddenField' => false, 'checked' => $checked)); ?>
 
-</div>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+
+                            </div>
                             <?php echo $this->Form->end(); ?>
 
                         </div><!-- /.index -->

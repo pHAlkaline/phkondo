@@ -49,7 +49,7 @@ class Fraction extends AppModel {
      *
      * @var string
      */
-    public $displayField = 'description';
+    public $displayField = 'floor_location';
 
     /**
      * Order
@@ -105,20 +105,17 @@ class Fraction extends AppModel {
             ),
         ),
         'floor_location' => array(
-            'notBlank' => array(
-                'rule' => array('notBlank'),
-            //'message' => 'Your custom message here',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
-            ),
+           'notBlank' => array(
+                'rule' => array('notBlank')),
         ),
         'mil_rate' => array(
+            
             'maxvalue' => array(
                 'rule' => array('range', -0.01, 1000.01),
-                'message' => 'Please enter an valid rate.'
-            )
+                'message' => 'Please enter an valid rate.',
+                'allowEmpty' => true,
+            ),
+            
         )
     );
 

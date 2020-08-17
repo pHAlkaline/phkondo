@@ -1,10 +1,10 @@
-<div class="login-box">
+<div class="login-box ">
     <div class="login-box-body">
-        <?php echo $this->Html->image('logo_phkondo_flat.svg', array('alt' => 'pHKondo', 'style' => 'width:100%;height:100%')); ?>
-        <p class="login-box-msg">&nbsp;</p>
-       
-        <p class="login-box-msg"><?php echo __('Start Session'); ?></p>
-        <?php echo $this->Flash->render(); ?>
+        <div class="animate__animated animate__fadeIn">
+        <?php echo $this->Html->image('logo_phkondo_flat.svg', array('alt' => 'pHKondo', 'style' => 'width:100%;height:100%', 'class' => '')); ?>
+        </div>
+        <p class="login-box-msg"></p>
+       <?php echo $this->Flash->render(); ?>
        
         <?php
         echo $this->Form->create('User', array(
@@ -25,7 +25,6 @@
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-
             <?php echo $this->Form->input('language', array('div' => null, 'class' => 'form-control', 'placeholder' => 'language', 'options' => Configure::read('Language.list'))); ?>
             <span class="glyphicon glyphicon-flag form-control-feedback"></span>
         </div><!-- .form-group -->
@@ -41,7 +40,7 @@
                 <label for="rememberme"><?php echo ' '.__('Remember Me'); ?></label>
             </div>
             <div class="col-md-6">
-                <?php echo $this->Form->button(__('Sign In'), array('type' => 'submit', 'class' => 'btn btn-primary pull-right')); ?>
+                <?php echo $this->Form->button(__('Start Session'), array('type' => 'submit', 'class' => 'btn btn-primary pull-right')); ?>
 
             </div><!-- /.col -->
         </div>

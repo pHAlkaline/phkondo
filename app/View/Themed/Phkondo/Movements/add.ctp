@@ -33,8 +33,8 @@
                     <?php echo $this->Form->input('movement_date', array(
                         'type' => 'text',
                         'value'=>$fiscalYearData['FiscalYear']['open_date'],
-                        'class' => 'form-control',
-                        'readonly')); ?>
+                        'class' => 'form-control read-only',
+                        'readonly'=>'readonly')); ?>
                 </div><!-- .form-group -->
                 <?php } else { ?>
                 <div class="form-group">

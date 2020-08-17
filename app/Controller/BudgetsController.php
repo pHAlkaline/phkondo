@@ -148,9 +148,9 @@ class BudgetsController extends AppController {
             $this->Flash->error(__('Invalid budget'));
             $this->redirect(array('action' => 'index','?'=>$this->request->query));
         }
-        $condos = $this->Budget->Condo->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('condo_id'))));
-        $fiscalYears = $this->Budget->FiscalYear->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('fiscal_year_id'))));
-         $fiscalYearData= $this->Budget->FiscalYear->find('first', array('fields'=>array('open_date','close_date'),'conditions' => array('id' => $this->getPhkRequestVar('fiscal_year_id'))));
+        $condos = $this->Budget->Condo->find('list', array('conditions' => array('id' => $this->request->data['Budget']['condo_id'])));
+        $fiscalYears = $this->Budget->FiscalYear->find('list', array('conditions' => array('id' => $this->request->data['Budget']['fiscal_year_id'])));
+        $fiscalYearData= $this->Budget->FiscalYear->find('first', array('fields'=>array('open_date','close_date'),'conditions' => array('id' => $this->getPhkRequestVar('fiscal_year_id'))));
         $budgetTypes = $this->Budget->BudgetType->find('list');
         $budgetStatuses = $this->Budget->BudgetStatus->find('list');
         $sharePeriodicities = $this->Budget->SharePeriodicity->find('list');
@@ -221,7 +221,7 @@ class BudgetsController extends AppController {
     public function beforeRender() {
         parent::beforeRender();
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
             array('link' => '', 'text' => __n('Budget', 'Budgets', 2), 'active' => 'active')

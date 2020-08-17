@@ -60,7 +60,7 @@
                     ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
-                    <?php echo $this->Form->input('comments', array('class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('comments', ['label'=>['text'=>__('Observations'),'class'=>'col-sm-2 control-label'],'class' => 'form-control']); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
                 <?php echo $this->Form->input('invoice_conference_status_id', array('class' => 'form-control')); ?>

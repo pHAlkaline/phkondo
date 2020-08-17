@@ -14,13 +14,13 @@ $this->Html->script('fraction_view', false); ?>
                     $deleteDisabled = ' disabled';
                 }
                 ?>
-                <li ><?php echo $this->Form->postLink(__('Delete Fraction'), array('action' => 'delete', $fraction['Fraction']['id'],'?'=>$this->request->query), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $fraction['Fraction']['description']))); ?> </li>
+                <li ><?php echo $this->Form->postLink(__('Delete Fraction'), array('action' => 'delete', $fraction['Fraction']['id'],'?'=>$this->request->query), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $fraction['Fraction']['floor_location']))); ?> </li>
                 <li ><?php echo $this->Html->link(__('New Fraction'), array('action' => 'add','?'=>$this->request->query), array('class' => 'btn ')); ?> </li>
                 <li ><?php echo $this->Html->link(__('List Fractions'), array('action' => 'index','?'=>$this->request->query), array('class' => 'btn ')); ?> </li>
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Owner', 'Owners', 2), array('controller' => 'fraction_owners', 'action' => 'index','?'=>array_merge(array('fraction_id'=>$fraction['Fraction']['id']))), array('class' => 'btn ', 'escape' => false)); ?></li>
-                <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Note', 'Notes', 2), array('controller' => 'fraction_notes', 'action' => 'index','?'=>array_merge(array('fraction_id'=>$fraction['Fraction']['id']))), array('class' => 'btn ', 'escape' => false)); ?></li>
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Insurance', 'Insurances', 2), array('controller' => 'fraction_insurances', 'action' => 'index','?'=>array_merge(array('fraction_id'=>$fraction['Fraction']['id']))), array('class' => 'btn ', 'escape' => false)); ?></li>
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Attachment', 'Attachments', 2), array('plugin' => 'attachments', 'controller' => 'fraction_attachments', 'action' => 'index','?'=>array_merge(array('fraction_id'=>$fraction['Fraction']['id']))), array('class' => 'btn ', 'escape' => false)); ?> </li>
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Owner', 'Owners', 2), array('controller' => 'fraction_owners', 'action' => 'index','?'=>array_merge(array('fraction_id'=>$fraction['Fraction']['id']),$this->request->query)), array('class' => 'btn ', 'escape' => false)); ?></li>
+                <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Note', 'Notes', 2), array('controller' => 'fraction_notes', 'action' => 'index','?'=>array_merge(array('fraction_id'=>$fraction['Fraction']['id']),$this->request->query)), array('class' => 'btn ', 'escape' => false)); ?></li>
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Insurance', 'Insurances', 2), array('controller' => 'fraction_insurances', 'action' => 'index','?'=>array_merge(array('fraction_id'=>$fraction['Fraction']['id']),$this->request->query)), array('class' => 'btn ', 'escape' => false)); ?></li>
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Attachment', 'Attachments', 2), array('plugin' => 'attachments', 'controller' => 'fraction_attachments', 'action' => 'index','?'=>array_merge(array('fraction_id'=>$fraction['Fraction']['id']),$this->request->query)), array('class' => 'btn ', 'escape' => false)); ?> </li>
                  <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('Current Account'), array('action' => 'current_account','?'=>array_merge(array('fraction_id'=>$fraction['Fraction']['id']),$this->request->query)), array('target' => '_blank', 'class' => '', 'escape' => false)); ?> </li>
 
             </ul><!-- /.list-group -->
@@ -55,7 +55,7 @@ $this->Html->script('fraction_view', false); ?>
                             </tr>
                             <tr>		<td><strong><?php echo __n('Fraction', 'Fractions', 1); ?></strong></td>
                                 <td>
-                            <?php echo h($fraction['Fraction']['fraction']); ?>
+                            <?php echo h($fraction['Fraction']['floor_location']); ?>
                                     &nbsp;
                                 </td>
                             </tr>
@@ -106,7 +106,7 @@ $this->Html->script('fraction_view', false); ?>
                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-down"></span> ', '#CommentsPanel', array('title' => __('View %s', __('Comments')), 'id' => 'viewCommentsBtn', 'class' => ' ', 'escape' => false)); ?>
                 </div>
             </div>
-            <div class="panel-body collapse" id="CommentsIndex">
+            <div class="panel-body collapse collapse in" id="CommentsIndex">
 
                 <?php echo $this->Comments->display_for($fraction); ?>
 

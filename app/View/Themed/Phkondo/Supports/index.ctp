@@ -26,7 +26,7 @@
                     <tbody>
                         <?php foreach ($supports as $support): ?>
                          <tr>
-                                <td><?php echo h($support['Fraction']['description']); ?></td>
+                                <td><?php echo h($support['Fraction']['floor_location']); ?></td>
                                 <td><?php echo h($support['Support']['subject']); ?>&nbsp;</td>
                                 <td><?php echo h($support['SupportCategory']['name']); ?></td>
                                 <td><?php echo h($support['SupportStatus']['name']); ?></td>

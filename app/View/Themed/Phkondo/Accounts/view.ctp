@@ -78,7 +78,7 @@
                             </td>
                         </tr><tr>		<td><strong><?php echo __('Main Account'); ?></strong></td>
                             <td>
-                                <?php echo h($account['Account']['main_account']); ?>
+                                <?php echo h($account['Account']['main_account_string']); ?>
                                 &nbsp;
                             </td>
                         </tr>
@@ -95,7 +95,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><strong><?php echo __('Comments'); ?></strong></td>
+                            <td><strong><?php echo __('Observations'); ?></strong></td>
                             <td>
                                 <?php echo nl2br(h($account['Account']['comments'])); ?>
                                 &nbsp;

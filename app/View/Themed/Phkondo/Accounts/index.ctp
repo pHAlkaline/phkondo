@@ -18,6 +18,7 @@
                             <th><?php echo $this->Paginator->sort('title'); ?></th>
                             <th><?php echo $this->Paginator->sort('bank'); ?></th>
                             <th><?php echo $this->Paginator->sort('balcony'); ?></th>
+                            <th><?php echo $this->Paginator->sort('main_account'); ?></th>
                             <th class="amount"><?php echo $this->Paginator->sort('balance'); ?></th>
                             <th class="actions hidden-print"><?php //echo __('Actions'); ?></th>
                         </tr>
@@ -28,6 +29,7 @@
                                 <td><?php echo h($account['Account']['title']); ?>&nbsp;</td>
                                 <td><?php echo h($account['Account']['bank']); ?>&nbsp;</td>
                                 <td><?php echo h($account['Account']['balcony']); ?>&nbsp;</td>
+                                <td><?php echo h($account['Account']['main_account_string']); ?>&nbsp;</td>
                                 <td class="amount"><?php echo number_format($account['Account']['balance'],2); ?>&nbsp;<?php echo  Configure::read('currencySign'); ?></td>
                                 <td class="actions hidden-print">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $account['Account']['id'],'?'=>$this->request->query), array('title'=>__('Details'),'class' => 'btn btn-default btn-xs','escape'=>false)); ?>

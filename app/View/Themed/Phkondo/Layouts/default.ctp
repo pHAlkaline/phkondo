@@ -57,25 +57,29 @@ if (!isset($headerTitle)) {
         <title>
             <?php echo $headerTitle; ?>&nbsp;<?php echo Configure::read('Theme.owner_name'); ?>
         </title>
-        
+
         <?php
         echo $this->Html->meta('icon');
         echo $this->fetch('meta');
         ?>
-        <link href="https://fonts.googleapis.com/css2?family=Martel+Sans:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet">
-        <?php 
+        <!--link href="https://fonts.googleapis.com/css2?family=Martel+Sans:wght@200;300;400;600;700;800;900&family=Martel:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet"-->
+        <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,531;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,531;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <?php
         echo $this->Html->css(array(
+            'animate/animate.min',
             //'bootstrap/bootstrap-glyphicons',
             'bootstrap/font-awesome.min',
             'bootstrap/bootstrap',
             'bootstrap/bootstrap-theme',
-            'datepicker/bootstrap-datepicker3.min',
+            'datepicker/datepicker-bootstrap-theme',
+            //'datepicker/bootstrap-datepicker3.min',
             'select2/select2',
-            'select2/select2.bootstrap',
-            'select2/select2.phkondo',
+            'select2/select2-bootstrap',
+            //'select2/select2.phkondo',
             'offcanvas',
             'checkbox-radio-styling/checkbox-radio',
-            'phkondo'));
+            'phkondo',
+        ));
         echo $this->Html->css(array('phkondo_print'), null, array('media' => 'print'));
 
         echo $this->fetch('css');
@@ -114,23 +118,23 @@ if (!isset($headerTitle)) {
                 </div>
         </div><!-- .container -->
         <?php
-        echo $this->Html->script(array('libs/jquery-2.2.2.min', 'libs/bootstrap.min'));
+        echo $this->Html->script(array('libs/jquery-3.5.1', 'libs/bootstrap.min'));
         echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.min'));
-        echo $this->Html->script(array('libs/select2/select2'));
+        echo $this->Html->script(array('libs/select2/select2.full'));
         echo $this->Html->script(array('libs/offcanvas'));
 
 
         switch (Configure::read('Config.language')) {
             case 'por':
-                echo $this->Html->script(array('libs/select2/select2_locale_pt-PT'));
+                echo $this->Html->script(array('libs/select2/i18n/pt'));
                 echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.pt.min'));
                 break;
             case 'eng':
-                echo $this->Html->script(array('libs/select2/select2_locale_en'));
+                echo $this->Html->script(array('libs/select2/i18n/en'));
                 echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.en-GB.min'));
                 break;
             case 'ita':
-                echo $this->Html->script(array('libs/select2/select2_locale_it'));
+                echo $this->Html->script(array('libs/select2/i18n/it'));
                 echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.it.min'));
                 break;
         }
@@ -142,7 +146,7 @@ if (!isset($headerTitle)) {
             'SEARCH_HERE_FOR_A_CLIENT' => __('Search')
         );
         echo $this->Html->scriptBlock('var phkondo = ' . $this->Js->object($phkondo) . ';');
-        echo $this->fetch('script');
+        
         ?>
 
         <script type="text/javascript">
@@ -163,13 +167,18 @@ if (!isset($headerTitle)) {
                     language: phkondolang,
                     todayHighlight: true
                 });
-                $('.datefield').attr('autocomplete','off');
+                $('.datefield').attr('autocomplete', 'off');
 
-                $('select').select2();
+                $('select').select2({
+                    theme: "bootstrap"}
+                );
                 $("li.disabled").find('a').removeAttr("href");
                 $("li.disabled").find('a').removeAttr("onclick");
             });
         </script>
+        <?php
+        echo $this->fetch('script');
+        ?>
     </body>
 
 </html>

@@ -126,7 +126,7 @@ class MaintenancesController extends AppController {
             $options = array('conditions' => array('Maintenance.' . $this->Maintenance->primaryKey => $id));
             $this->request->data = $this->Maintenance->find('first', $options);
         }
-        $condos = $this->Maintenance->Condo->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('condo_id'))));
+        $condos = $this->Maintenance->Condo->find('list', array('conditions' => array('id' => $this->request->data['Maintenance']['condo_id'])));
         $suppliers = $this->Maintenance->Supplier->find('list', array('order'=>'name'));
         $this->set(compact('condos', 'suppliers'));
         $this->setPhkRequestVar('maintenance_id',$id);
@@ -169,7 +169,7 @@ class MaintenancesController extends AppController {
     public function beforeRender() {
         parent::beforeRender();
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view',$this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
             array('link' => '', 'text' => __n('Maintenance','Maintenances',2), 'active' => 'active')

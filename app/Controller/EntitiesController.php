@@ -174,7 +174,7 @@ class EntitiesController extends AppController {
             return;
         }
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
             array('link' => '', 'text' => __n('Entity','Entities',2), 'active' => 'active')
         );
         switch ($this->action) {

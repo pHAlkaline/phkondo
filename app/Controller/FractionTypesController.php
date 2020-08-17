@@ -148,7 +148,7 @@ class FractionTypesController extends AppController {
             return;
         }
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
             array('link' => '', 'text' => __('Fraction Types'), 'active' => 'active')
         );
         switch ($this->action) {

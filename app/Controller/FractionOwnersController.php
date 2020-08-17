@@ -43,11 +43,10 @@ class FractionOwnersController extends AppController {
      * @var array
      */
     public $components = array('Paginator', 'RequestHandler', 'Feedback.Comments' => array('on' => array('view')));
+    public $helpers = array(
+        'Feedback.Comments' => array('elementIndex' => 'comment_index', 'elementForm' => 'comment_add')
+    );
 
-     public $helpers = array(
-        'Feedback.Comments' => array('elementIndex'=> 'comment_index','elementForm'=> 'comment_add')
-        );
-        
     /**
      * Uses
      *
@@ -177,6 +176,8 @@ class FractionOwnersController extends AppController {
             )));
             if ($this->Fraction->EntitiesFraction->save($this->request->data) && $this->Fraction->Entity->save($this->request->data)) {
                 $this->Flash->success(__('The owner has been saved'));
+                $this->redirect(array('action' => 'view', $this->Fraction->Entity->id, '?' => $this->request->query));
+      
             } else {
                 $this->Flash->error(__('The owner could not be saved. Please, try again.'));
             }
@@ -261,7 +262,7 @@ class FractionOwnersController extends AppController {
     public function beforeRender() {
         parent::beforeRender();
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'fractions', 'action' => 'index', '?' => array('condo_id' => $this->getPhkRequestVar('condo_id')))), 'text' => __n('Fraction', 'Fractions', 2), 'active' => ''),
@@ -287,13 +288,17 @@ class FractionOwnersController extends AppController {
         $this->autoRender = false;
         //$this->RequestHandler->respondAs('json');
         // get the search term from URL
-        $term = $this->request->query['q'];
+        $term = $this->request->query['q']['term'];
         $page = 1;
         //if (isset($this->request->query['page'])){
         //    $page=$this->request->query['page'];
         //}
 
-        $fraction = $this->Fraction->find('first', array('conditions' => array('Fraction.id' => $this->getPhkRequestVar('fraction_id'))));
+        $fraction = $this->Fraction->find('first', array(
+            'conditions' => array('Fraction.id' => $this->getPhkRequestVar('fraction_id')),
+            'contain' => array('Entity')
+                )
+        );
         $entitiesInFraction = Set::extract('/Entity/id', $fraction);
 
         $clients = $this->Fraction->Entity->find('all', array(

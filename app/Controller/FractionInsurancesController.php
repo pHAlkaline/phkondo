@@ -135,8 +135,8 @@ class FractionInsurancesController extends AppController {
             $options = array('conditions' => array('Insurance.' . $this->Insurance->primaryKey => $id));
             $this->request->data = $this->Insurance->find('first', $options);
         }
-        $condos = $this->Insurance->Condo->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('condo_id'))));
-        $fractions = $this->Insurance->Fraction->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('fraction_id'))));
+        $condos = $this->Insurance->Condo->find('list', array('conditions' => array('id' => $this->request->data['Insurance']['condo_id'])));
+        $fractions = $this->Insurance->Fraction->find('list', array('conditions' => array('id' => $this->request->data['Insurance']['fraction_id'])));
         $insuranceTypes = $this->Insurance->InsuranceType->find('list', array('conditions' => array('active' => '1')));
         $this->set(compact('condos', 'fractions', 'insuranceTypes'));
         $this->setPhkRequestVar('insurance_id', $id);
@@ -178,7 +178,7 @@ class FractionInsurancesController extends AppController {
     public function beforeRender() {
         parent::beforeRender();
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'fractions', 'action' => 'index','?'=>array('condo_id'=>$this->getPhkRequestVar('condo_id')))), 'text' => __n('Fraction','Fractions',2), 'active' => ''),

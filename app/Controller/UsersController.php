@@ -246,8 +246,9 @@ class UsersController extends AppController {
 
     public function beforeRender() {
         parent::beforeRender();
+        $headerTitle=__('Users');
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'users', 'action' => 'index')), 'text' => __('Users'), 'active' => 'active'),
         );
         switch ($this->action) {
@@ -265,9 +266,10 @@ class UsersController extends AppController {
                 break;
             case 'login':
                 $breadcrumbs[1] = array('link' => '', 'text' => __('Start Session'), 'active' => 'active');
+                $headerTitle=__('Start Session');
                 break;
         }
-        $headerTitle=__('Users');
+        
         $this->set(compact('breadcrumbs','headerTitle'));
     }
 

@@ -5,8 +5,8 @@
         <div class="index">
             <?php
             $fractionDescription = '';
-            if (isset($notes[0]['Fraction']['description'])) {
-                $fractionDescription = $notes[0]['Fraction']['description'];
+            if (isset($notes[0]['Fraction']['floor_location'])) {
+                $fractionDescription = $notes[0]['Fraction']['floor_location'];
             };
             ?>
             <h2 class="col-sm-9"><?php echo __n('Note','Notes',2) . ' ' . $fractionDescription; ?></h2>

@@ -113,7 +113,7 @@
                             </td>
                         </tr>
                         <tr>		
-                            <td><strong><?php echo __('Comments'); ?></strong></td>
+                            <td><strong><?php echo __('Observations'); ?></strong></td>
                             <td>
                                 <?php echo nl2br(h($invoice_conference['InvoiceConference']['comments'])); ?>
                                 &nbsp;

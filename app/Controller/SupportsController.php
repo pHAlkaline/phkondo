@@ -92,7 +92,7 @@ class SupportsController extends AppController {
             $this->Support->create();
             if ($this->Support->save($this->request->data)) {
                 $this->Flash->success(__('The support has been saved.'));
-                $this->redirect(array('action' => 'index', '?' => $this->request->query));
+                $this->redirect(array('action' => 'view',$this->Support->id,'?'=>$this->request->query));
             } else {
                 $this->Flash->error(__('The support could not be saved. Please, try again.'));
             }
@@ -134,7 +134,7 @@ class SupportsController extends AppController {
         if ($this->request->is(array('post', 'put'))) {
             if ($this->Support->save($this->request->data)) {
                 $this->Flash->success(__('The support has been saved.'));
-                return $this->redirect(array('action' => 'index', '?' => $this->request->query));
+                $this->redirect(array('action' => 'view',$id,'?'=>$this->request->query));
             } else {
                 $this->Flash->error(__('The support could not be saved. Please, try again.'));
             }
@@ -193,7 +193,7 @@ class SupportsController extends AppController {
     public function beforeRender() {
         parent::beforeRender();
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'index')), 'text' => __('Home'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
             array('link' => '', 'text' => __n('Support', 'Supports', 2), 'active' => 'active')
