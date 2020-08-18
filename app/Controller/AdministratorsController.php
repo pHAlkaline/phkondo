@@ -141,7 +141,7 @@ class AdministratorsController extends AppController {
             $options = array('conditions' => array('Administrator.' . $this->Administrator->primaryKey => $id));
             $this->request->data = $this->Administrator->find('first', $options);
         }
-        $condos = $this->Account->Condo->find('list', array('conditions' => array('id' => $this->request->data['Account']['condo_id'])));
+        $condos = $this->Administrator->Condo->find('list', array('conditions' => array('id' => $this->request->data['Administrator']['condo_id'])));
         $options = array('conditions' => array(
                 'Administrator.id <>' => $id,
                 'Administrator.condo_id' => $this->getPhkRequestVar('condo_id'),

@@ -314,7 +314,10 @@ class Note extends AppModel {
     }
 
     function editable($record = null) {
-        if (isset($record['note_status_id']) && in_array($record['note_status_id'], array(2, 3)) || $record['receipt_id'] != '') {
+        if (isset($record['note_status_id']) && in_array($record['note_status_id'], array(2, 3))) {
+            return false;
+        }
+        if (isset($record['receipt_id']) && $record['receipt_id'] == '') {
             return false;
         }
         return true;

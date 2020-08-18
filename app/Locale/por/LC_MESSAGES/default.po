@@ -673,7 +673,7 @@ msgstr "Informação"
 msgid "Income report detailed"
 msgstr "Relatório de receitas detalhado"
 
-msgid "Initial balance"
+msgid "Initial Balance"
 msgstr "Saldo inicial"
 
 msgid "Insert Administrator"

@@ -661,7 +661,7 @@ msgstr "Report incassi"
 msgid "Income report detailed"
 msgstr ""
 
-msgid "Initial balance"
+msgid "Initial Balance"
 msgstr "Saldo iniziale"
 
 msgid "Insert Administrator"
