@@ -6,6 +6,7 @@ Ver detalhes do condomínio
 Entrar nas Frações
 Adicionar propriedades -> Criar Fração
 Ver detalhes da fração
+O campo de localização é um campo importante, usado para identificar propriedades dentro de condomínios, dando a cada fracção de condomínio um valor no campo de localização diferente
 
 Dentro da Fracção Entrar nos Proprietários
 Adicionar proprietários -> Criar Proprietário

@@ -14,14 +14,21 @@ foreach ($fractions as $fraction) {
 
         <div id="sidebar" class="hidden-print actions sidebar-offcanvas">
             <ul class="nav nav-pills nav-stacked">
-                <li ><?php echo $this->Html->link(__('View %s', __n('Budget','Budgets',1)), array('controller' => 'budgets', 'action' => 'view', $budget['Budget']['id'],'?'=>$this->request->query), array('class' => 'btn')); ?></li>
-                <li ><?php echo $this->Html->link(__('List Budgets'), array('controller' => 'budgets', 'action' => 'index','?'=>$this->request->query), array('class' => 'btn')); ?></li>
+                <li ><?php echo $this->Html->link(__('View %s', __n('Budget', 'Budgets', 1)), array('controller' => 'budgets', 'action' => 'view', $budget['Budget']['id'], '?' => $this->request->query), array('class' => 'btn')); ?></li>
+                <li ><?php echo $this->Html->link(__('List Budgets'), array('controller' => 'budgets', 'action' => 'index', '?' => $this->request->query), array('class' => 'btn')); ?></li>
             </ul><!-- /.list-group -->
         </div><!-- /.actions -->
 
     </div><!-- /#sidebar .col-sm-3 -->
     <div id="page-content" class="col-sm-9">
+        <?php
+        if ($budget['Budget']['share_distribution_id'] == 2 && $totalMilRate <> 1000):
+            ?>
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <?php echo __('Warning: Mil rate sum should be 1000'); ?></div>
 
+        <?php endif; ?>
         <div class="index">
 
             <legend><?php echo __('Create Notes'); ?></legend>
@@ -36,13 +43,13 @@ foreach ($fractions as $fraction) {
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th><?php echo __n('Owner','Owners',1); ?></th>
-                            <th><?php echo __n('Fraction','Fractions',1); ?></th>
+                            <th><?php echo __n('Owner', 'Owners', 1); ?></th>
+                            <th><?php echo __n('Fraction', 'Fractions', 1); ?></th>
                             <th><?php echo __('Description'); ?></th>
                             <th><?php echo __('Mil rate'); ?></th>
                             <th><?php echo __('Amount'); ?></th>
                             <th><?php echo __('Common Reserve Fund'); ?></th>
-                            <th><?php echo __n('Share','Shares',2); ?></th>
+                            <th><?php echo __n('Share', 'Shares', 2); ?></th>
                             <th><?php echo __('Total'); ?></th>
 
                         </tr>
@@ -70,7 +77,11 @@ foreach ($fractions as $fraction) {
                                 $amountByShare = 0;
                                 switch ($budget['Budget']['share_distribution_id']) {
                                     case 2:
-                                        $amountByShare = $budgetAmount * ($fraction['Fraction']['mil_rate'] / $totalMilRate) / $numOfShares;
+                                        if($totalMilRate==0 || $numOfShares == 0) {
+                                            $amountByShare = 0;
+                                        } else {
+                                            $amountByShare = $budgetAmount * ($fraction['Fraction']['mil_rate'] / $totalMilRate) / $numOfShares;
+                                        }
                                         break;
 
                                     default:

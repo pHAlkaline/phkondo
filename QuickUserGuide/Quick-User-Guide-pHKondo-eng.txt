@@ -6,6 +6,7 @@ Enter condo details
 Go to Properties 
 Add properties -> New Property
 Enter Property Details
+The location field is an important field, used to identify properties within condominiums, giving each fraction of the condominium a value in the different location field
 
 Inside Property Go to Owners
 Add owners -> New Owner
@@ -53,9 +54,9 @@ Go to Create Fees for automatic debit feed
 
 
 .. After this you can explore ...
-Go to Receipts to create documents for condo income payments with receipts
-Go to Invoice Conference to manage condo debts/suppliers payments
-Go to Maintenances to manage condo maintenance schedules
+Go to Receipts to create documents for income payments with receipts
+Go to Invoice Conference to manage debts/suppliers payments
+Go to Maintenances to manage maintenance schedules
 Go to Insurances to manage condo and property insurances
 Go to Documents to manage documents
 Go to Reports for Balance , Income , Expenses, In Debt, Fees Maps, Contact Lists ...

@@ -59,18 +59,17 @@ class BudgetNotesController extends AppController {
         if (isset($this->Paginator->settings['order'])) {
             $options['order'] = array_replace_recursive($this->Paginator->settings['order'], $options['order']);
         }
-        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings,array(
+        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings, array(
             'conditions' => $options['conditions'],
             'order' => $options['order'],
             //'requiresAcessLevel' => true,
-            'contain' => array('NoteType', 'Entity', 'NoteStatus','Fraction')));
-        
+            'contain' => array('NoteType', 'Entity', 'NoteStatus', 'Fraction')));
+
         $this->setFilter(array('Note.document', 'Note.title', 'NoteType.name', 'Entity.name', 'Note.amount', 'NoteStatus.name', 'Fraction.description'));
         $this->set('notes', $this->Paginator->paginate('Note'));
     }
-    
-      
-    private function setConditions(){
+
+    private function setConditions() {
         $filterOptions['conditions'] = array();
         $queryData = array();
         if (isset($this->request->query)) {
@@ -84,17 +83,17 @@ class BudgetNotesController extends AppController {
             $this->request->data['Note']['note_status_id'] = $queryData['note_status_id'];
             $hasAdvSearch = true;
         }
-        $noteStatuses = $this->Note->NoteStatus->find('list', array( 'order' => 'name', 'conditions' => array('active' => 1)));
-        
+        $noteStatuses = $this->Note->NoteStatus->find('list', array('order' => 'name', 'conditions' => array('active' => 1)));
+
         if (isset($queryData['entity_id']) && $queryData['entity_id'] != null) {
             $entity_id = $queryData['entity_id'];
             $filterOptions['conditions'] = array_merge($filterOptions['conditions'], array('Note.entity_id' => $entity_id));
             $this->request->data['Note']['entity_id'] = $queryData['entity_id'];
             $hasAdvSearch = true;
         }
-        
-        $this->Note->contain(array('Entity'=>array('fields'=>array('Entity.id'))));
-        $entitiesFilter = $this->Note->find('all', array('fields' => array('Note.id'), 'conditions' => array( 'budget_id' => $this->getPhkRequestVar('budget_id'))));
+
+        $this->Note->contain(array('Entity' => array('fields' => array('Entity.id'))));
+        $entitiesFilter = $this->Note->find('all', array('fields' => array('Note.id'), 'conditions' => array('budget_id' => $this->getPhkRequestVar('budget_id'))));
         $entities = $this->Note->Entity->find('list', array('conditions' => array('id' => Set::extract('/Entity/id', $entitiesFilter))));
         $this->set(compact('noteStatuses', 'entities', 'hasAdvSearch'));
 
@@ -102,16 +101,11 @@ class BudgetNotesController extends AppController {
         $paginateConditions = array();
         if (isset($this->Paginator->settings['conditions'])) {
             $paginateConditions = $this->Paginator->settings['conditions'];
-            $this->Paginator->settings['conditions'] = array_replace_recursive($this->Paginator->settings['conditions'] , $filterOptions['conditions']);
+            $this->Paginator->settings['conditions'] = array_replace_recursive($this->Paginator->settings['conditions'], $filterOptions['conditions']);
         } else {
             $this->Paginator->settings['conditions'] = $filterOptions['conditions'];
         }
-  
-
-
     }
-
-   
 
     /**
      * view method
@@ -201,7 +195,7 @@ class BudgetNotesController extends AppController {
         $fractions = $this->Note->Fraction->find('list', array('order' => array('Fraction.length' => 'asc', 'Fraction.fraction' => 'asc'), 'conditions' => array('condo_id' => $this->getPhkRequestVar('condo_id'))));
         $budgets = $this->Note->Budget->find('list', array('conditions' => array('id' => $this->request->data['Note']['budget_id'])));
         $fiscalYears = $this->Note->FiscalYear->find('list', array('conditions' => array('id' => Set::extract('/Budget/id', $budgets))));
-        $entitiesFilter = $this->Note->Fraction->find('all', array('fields' => array('Fraction.id'), 'conditions' => array('condo_id' => $this->getPhkRequestVar('condo_id')))); 
+        $entitiesFilter = $this->Note->Fraction->find('all', array('fields' => array('Fraction.id'), 'conditions' => array('condo_id' => $this->getPhkRequestVar('condo_id'))));
         $entities = $this->Note->Entity->find('list', array('conditions' => array('id' => Set::extract('/Entity/id', $entitiesFilter))));
 
         if ($this->request->data['Note']['receipt_id'] != null) {
@@ -318,6 +312,21 @@ class BudgetNotesController extends AppController {
 
         $this->Note->Fraction->contain(array('Entity'));
         $fractions = $this->Note->Fraction->find('all', array('order' => array('Fraction.length' => 'asc', 'Fraction.fraction' => 'asc'), 'conditions' => array('condo_id' => $this->getPhkRequestVar('condo_id'))));
+        
+        $totalMilRate=0;
+        $budgetAmount = $budget['Budget']['amount']?$budget['Budget']['amount']:0;
+        $numOfShares = $budget ['Budget']['shares']?$budget ['Budget']['shares']:0;
+        $numOfFractions = count($fractions);
+        foreach ($fractions as $fraction) {
+            $totalMilRate += $fraction['Fraction']['mil_rate'];
+        }
+        
+        if ($budget['Budget']['amount'] == 0 || $numOfShares == 0) {
+            $this->Flash->error(__('Invalid Budget values, check amount, total sum of properties milrate and number of shares'));
+            $this->redirect(array('controller' => 'budgets', 'action' => 'view', $this->getPhkRequestVar('budget_id'), '?' => array('condo_id' => $this->getPhkRequestVar('condo_id'))));
+        }
+
+        
         $this->set(compact('fractions', 'budget'));
     }
 
@@ -333,11 +342,11 @@ class BudgetNotesController extends AppController {
         }
     }
 
-    /*private function _getFiscalYear() {
-        $this->Note->Budget->id = $this->request->data['Note']['budget_id'];
-        $fiscalYear = $this->Note->Budget->field('fiscal_year_id');
-        return $fiscalYear;
-    }*/
+    /* private function _getFiscalYear() {
+      $this->Note->Budget->id = $this->request->data['Note']['budget_id'];
+      $fiscalYear = $this->Note->Budget->field('fiscal_year_id');
+      return $fiscalYear;
+      } */
 
     private function _setDocument() {
         if (is_array($this->request->data['Note']['document_date'])) {
@@ -380,8 +389,8 @@ class BudgetNotesController extends AppController {
                 $breadcrumbs[6] = array('link' => '', 'text' => $this->getPhkRequestVar('note_text'), 'active' => 'active');
                 break;
         }
-        $headerTitle= __n('Note', 'Notes', 2);
-        $this->set(compact('breadcrumbs','headerTitle'));
+        $headerTitle = __n('Note', 'Notes', 2);
+        $this->set(compact('breadcrumbs', 'headerTitle'));
     }
 
 }

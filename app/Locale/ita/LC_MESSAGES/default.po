@@ -1070,7 +1070,7 @@ msgid "Note can not be deleted"
 msgstr "La quota non puo' essere cancellata"
 
 msgid "Note deleted"
-msgstr "Fee deleted"
+msgstr "Quota cancellato"
 
 msgid "November"
 msgstr "Novembre"
@@ -1125,7 +1125,7 @@ msgstr "Il proprietario non è stato rimosso"
 msgid "PDF"
 msgstr ""
 
-msgid "PHKONO - AdministraÃ§Ã£o de CondomÃ­nios"
+msgid "PHKONO - Administração de Condomínios"
 msgstr "PHKONDO - Amministrazione di Condomini"
 
 msgid "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"

@@ -126,7 +126,7 @@ class FiscalYearsController extends AppController {
             $options = array('conditions' => array('FiscalYear.' . $this->FiscalYear->primaryKey => $id));
             $this->request->data = $this->FiscalYear->find('first', $options);
         }
-        $condos = $this->FiscalYear->Condo->find('list', array('conditions' => array('id' => $this->request->data['Condo']['condo_id'])));
+        $condos = $this->FiscalYear->Condo->find('list', array('conditions' => array('id' => $this->request->data['FiscalYear']['condo_id'])));
         $this->set(compact('condos'));
         $this->setPhkRequestVar('fiscal_year_id',$id);
        

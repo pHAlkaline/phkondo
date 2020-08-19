@@ -6,6 +6,7 @@ Inserisci i dettagli del condominio
 Vai a Unita' Immobiliari
 Inserisci Unita' Immobiliare -> Nuova Unita' Immobiliare
 Inserisci i dettagli dell'Unita' Immobiliare
+Il campo della posizione è un campo importante, utilizzato per identificare le proprietà all'interno dei condomini, assegnando a ciascuna Immobiliare del condominio un valore nel campo della diversa posizione
 
 Vai a Proprietari
 Inserisci Proprietari -> Nuovi Proprietari
