@@ -61,6 +61,9 @@ if (!isset($headerTitle)) {
         <?php
         echo $this->Html->meta('icon');
         echo $this->fetch('meta');
+        ?>
+        <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,531;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,531;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <?php
         echo $this->Html->css(array(
             'animate/animate.min',
             //'bootstrap/bootstrap-glyphicons',
@@ -68,15 +71,14 @@ if (!isset($headerTitle)) {
             'bootstrap/bootstrap',
             'bootstrap/bootstrap-theme',
             'select2/select2',
-            'select2/select2.bootstrap',
-            'select2/select2.phkondo',
-            'offcanvas',
+            'select2/select2-bootstrap',
+            //'select2/select2.phkondo',
             'checkbox-radio-styling/checkbox-radio',
             'phkondo'));
         echo $this->Html->css(array('phkondo_print'), null, array('media' => 'print'));
         echo $this->fetch('css');
         ?>
-        
+
     </head>
 
     <body class="hold-transition login-page">
@@ -84,40 +86,56 @@ if (!isset($headerTitle)) {
 
 
     </body>
- <?php
-        echo $this->Html->script(array('libs/jquery-3.5.1', 'libs/bootstrap.min'));
-        echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.min'));
-        echo $this->Html->script(array('libs/select2/select2.full'));
-        echo $this->Html->script(array('libs/offcanvas'));
+    <?php
+    echo $this->Html->script(array('libs/jquery-3.5.1', 'libs/bootstrap.min'));
+    echo $this->Html->script(array('libs/select2/select2.full.min'));
+    echo $this->Html->script(array('libs/offcanvas'));
 
 
-        switch (Configure::read('Config.language')) {
-            case 'por':
-                echo $this->Html->script(array('libs/select2/i18n/pt'));
-                echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.pt.min'));
-                break;
-            case 'eng':
-                echo $this->Html->script(array('libs/select2/i18n/en'));
-                echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.en-GB.min'));
-                break;
-            case 'ita':
-                echo $this->Html->script(array('libs/select2/i18n/it'));
-                echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.it.min'));
-                break;
-        }
-        $phkondo = array(
-            'APP_PATH' => Router::url('/', true),
-            'APP_LANG' => Configure::read('Config.language'),
-            'START_DATE' => date('d-m-Y', strtotime("-1 year", time())),
-            'END_DATE' => date('d-m-Y', strtotime("+1 year", time())),
-            'SEARCH_HERE_FOR_A_CLIENT' => __('Search')
-        );
-        echo $this->Html->scriptBlock('var phkondo = ' . $this->Js->object($phkondo) . ';');
-        
-        ?>
+    switch (Configure::read('Config.language')) {
+        case 'por':
+            echo $this->Html->script(array('libs/select2/i18n/pt'));
+            break;
+        case 'eng':
+            echo $this->Html->script(array('libs/select2/i18n/en'));
+            break;
+        case 'ita':
+            echo $this->Html->script(array('libs/select2/i18n/it'));
+            break;
+    }
+    $phkondo = array(
+        'APP_PATH' => Router::url('/', true),
+        'APP_LANG' => Configure::read('Config.language'),
+        'START_DATE' => date('d-m-Y', strtotime("-1 year", time())),
+        'END_DATE' => date('d-m-Y', strtotime("+1 year", time())),
+        'SEARCH_HERE_FOR_A_CLIENT' => __('Search')
+    );
+    echo $this->Html->scriptBlock('var phkondo = ' . $this->Js->object($phkondo) . ';');
+    ?>
+    <script type="text/javascript">
+        $(document).ready(function () {
 
-      
-        <?php
-        echo $this->fetch('script');
-        ?>
+            var phkondolang = 'en-GB';
+            switch (phkondo.APP_LANG) {
+                case 'por':
+                    phkondolang = 'pt';
+                    break;
+                case 'ita':
+                    phkondolang = 'it';
+                    break;
+            }
+            
+            $('.datefield').attr('autocomplete', 'off');
+
+            $('select').select2({
+                theme: "bootstrap"}
+            );
+            $("li.disabled").find('a').removeAttr("href");
+            $("li.disabled").find('a').removeAttr("onclick");
+        });
+    </script>
+
+    <?php
+    echo $this->fetch('script');
+    ?>
 </html>

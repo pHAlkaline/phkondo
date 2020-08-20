@@ -912,7 +912,7 @@ msgstr "Documento de Reunião"
 msgid "Mil Rate"
 msgstr "Permilagem"
 
-msgid "Mil rate"
+msgid "permillage"
 msgstr "Permilagem"
 
 msgid "Modified"
@@ -1575,7 +1575,7 @@ msgstr "Ver %s"
 msgid "View Condo"
 msgstr "Ver Condomínio"
 
-msgid "Warning: Mil rate sum should be 1000"
+msgid "Warning: permillage sum should be 1000"
 msgstr "Aviso: A soma da permilagem deve ser 1000"
 
 msgid "Warning: when you cancel a budget, ALL DEBIT NOTES created by this budget will be set as CANCELED, EXCEPT the ones already paid."

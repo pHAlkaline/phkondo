@@ -187,8 +187,8 @@ class BudgetNotesController extends AppController {
 
             $this->request->data = $this->Note->find('first', $options);
             if (!$this->Note->editable($this->request->data['Note'])) {
-                $this->Flash->error(__('Invalid Note'));
-                $this->redirect(array('action' => 'view', $this->Note->id, '?' => $this->request->query));
+                $this->Flash->error(__('Invalid Request'));
+                $this->redirect(array('action' => 'index', '?' => $this->request->query));
             }
         }
         $noteTypes = $this->Note->NoteType->find('list');
@@ -318,7 +318,7 @@ class BudgetNotesController extends AppController {
         $numOfShares = $budget ['Budget']['shares']?$budget ['Budget']['shares']:0;
         $numOfFractions = count($fractions);
         foreach ($fractions as $fraction) {
-            $totalMilRate += $fraction['Fraction']['mil_rate'];
+            $totalMilRate += $fraction['Fraction']['permillage'];
         }
         
         if ($budget['Budget']['amount'] == 0 || $numOfShares == 0) {

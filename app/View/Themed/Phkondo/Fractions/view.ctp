@@ -14,7 +14,7 @@ $this->Html->script('fraction_view', false); ?>
                     $deleteDisabled = ' disabled';
                 }
                 ?>
-                <li ><?php echo $this->Form->postLink(__('Delete Fraction'), array('action' => 'delete', $fraction['Fraction']['id'],'?'=>$this->request->query), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $fraction['Fraction']['floor_location']))); ?> </li>
+                <li ><?php echo $this->Form->postLink(__('Delete Fraction'), array('action' => 'delete', $fraction['Fraction']['id'],'?'=>$this->request->query), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $fraction['Fraction']['fraction']))); ?> </li>
                 <li ><?php echo $this->Html->link(__('New Fraction'), array('action' => 'add','?'=>$this->request->query), array('class' => 'btn ')); ?> </li>
                 <li ><?php echo $this->Html->link(__('List Fractions'), array('action' => 'index','?'=>$this->request->query), array('class' => 'btn ')); ?> </li>
                 <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Owner', 'Owners', 2), array('controller' => 'fraction_owners', 'action' => 'index','?'=>array_merge(array('fraction_id'=>$fraction['Fraction']['id']),$this->request->query)), array('class' => 'btn ', 'escape' => false)); ?></li>
@@ -55,7 +55,7 @@ $this->Html->script('fraction_view', false); ?>
                             </tr>
                             <tr>		<td><strong><?php echo __n('Fraction', 'Fractions', 1); ?></strong></td>
                                 <td>
-                            <?php echo h($fraction['Fraction']['floor_location']); ?>
+                            <?php echo h($fraction['Fraction']['fraction']); ?>
                                     &nbsp;
                                 </td>
                             </tr>
@@ -65,9 +65,9 @@ $this->Html->script('fraction_view', false); ?>
                                     &nbsp;
                                 </td>
                             </tr>
-                            <tr><td><strong><?php echo __('Floor Location'); ?></strong></td>
+                            <tr><td><strong><?php echo __('Location'); ?></strong></td>
                                 <td>
-                            <?php echo h($fraction['Fraction']['floor_location']); ?>
+                            <?php echo h($fraction['Fraction']['location']); ?>
                                     &nbsp;
                                 </td>
                             </tr><tr>		<td><strong><?php echo __('Description'); ?></strong></td>
@@ -75,9 +75,9 @@ $this->Html->script('fraction_view', false); ?>
                             <?php echo h($fraction['Fraction']['description']); ?>
                                     &nbsp;
                                 </td>
-                            </tr><tr>		<td><strong><?php echo __('Mil rate'); ?></strong></td>
+                            </tr><tr>		<td><strong><?php echo __('permillage'); ?></strong></td>
                                 <td>
-                            <?php echo h($fraction['Fraction']['mil_rate']); ?>
+                            <?php echo h($fraction['Fraction']['permillage']); ?>
                                     &nbsp;
                                 </td>
 

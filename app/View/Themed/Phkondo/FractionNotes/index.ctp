@@ -4,10 +4,8 @@
 
         <div class="index">
             <?php
-            $fractionDescription = '';
-            if (isset($notes[0]['Fraction']['floor_location'])) {
-                $fractionDescription = $notes[0]['Fraction']['floor_location'];
-            };
+             $fractionDescription = isset($notes[0]['Fraction']['fraction']) ? $notes[0]['Fraction']['fraction'] : '';
+            
             ?>
             <h2 class="col-sm-9"><?php echo __n('Note','Notes',2) . ' ' . $fractionDescription; ?></h2>
             <div class="actions hidden-print col-sm-3">

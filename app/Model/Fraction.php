@@ -49,7 +49,7 @@ class Fraction extends AppModel {
      *
      * @var string
      */
-    public $displayField = 'floor_location';
+    public $displayField = 'fraction';
 
     /**
      * Order
@@ -104,11 +104,11 @@ class Fraction extends AppModel {
             //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
-        'floor_location' => array(
+        'location' => array(
            'notBlank' => array(
                 'rule' => array('notBlank')),
         ),
-        'mil_rate' => array(
+        'permillage' => array(
             
             'maxvalue' => array(
                 'rule' => array('range', -0.01, 1000.01),

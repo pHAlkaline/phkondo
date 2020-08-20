@@ -56,7 +56,7 @@
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-                    <?php echo $this->Form->input('floor_location', array('class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('location', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
 
                 <div class="form-group">
@@ -64,7 +64,7 @@
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-                    <?php echo $this->Form->input('mil_rate', array('class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('permillage', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
 
             </fieldset>

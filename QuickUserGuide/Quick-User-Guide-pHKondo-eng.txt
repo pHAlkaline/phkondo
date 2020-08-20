@@ -6,7 +6,6 @@ Enter condo details
 Go to Properties 
 Add properties -> New Property
 Enter Property Details
-The location field is an important field, used to identify properties within condominiums, giving each fraction of the condominium a value in the different location field
 
 Inside Property Go to Owners
 Add owners -> New Owner

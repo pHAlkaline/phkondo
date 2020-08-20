@@ -18,17 +18,17 @@
                 ?>
             <div class="alert alert-warning alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    <?php echo __('Warning: Mil rate sum should be 1000'); ?></div>
+                    <?php echo __('Warning: permillage sum should be 1000'); ?></div>
 
             <?php endif; ?>
             <div class="table-responsive">
                 <table class="table table-hover table-condensed">
                     <thead>
                         <tr>
-                            <th><?php echo $this->Paginator->sort('Fraction.length', __n('Fraction', 'Fractions', 1)); ?></th>
-                            <th><?php echo $this->Paginator->sort('floor_location'); ?></th>
+                            <th><?php echo $this->Paginator->sort('fraction'); ?></th>
+                            <th><?php echo $this->Paginator->sort('location'); ?></th>
                             <th><?php echo $this->Paginator->sort('description'); ?></th>
-                            <th><?php echo $this->Paginator->sort('mil_rate'); ?></th>
+                            <th><?php echo $this->Paginator->sort('permillage'); ?></th>
                             <th><?php echo $this->Paginator->sort('Manager.name', __n('Manager', 'Managers', 1)); ?></th>
                             <th><?php echo $this->Paginator->sort('FractionType.name', __('Fraction Type')); ?></th>
 
@@ -39,9 +39,9 @@
                         <?php foreach ($fractions as $fraction): ?>
                         <tr>
                             <td><?php echo h($fraction['Fraction']['fraction']); ?>&nbsp;</td>
-                            <td><?php echo h($fraction['Fraction']['floor_location']); ?>&nbsp;</td>
+                            <td><?php echo h($fraction['Fraction']['location']); ?>&nbsp;</td>
                             <td><?php echo h($fraction['Fraction']['description']); ?>&nbsp;</td>
-                            <td><?php echo h($fraction['Fraction']['mil_rate']); ?>&nbsp;</td>
+                            <td><?php echo h($fraction['Fraction']['permillage']); ?>&nbsp;</td>
                             <td><?php
                                     if ($fraction['Fraction']['manager_id'] == 0) {
                                         foreach ($fraction['Entity'] as $manager) {
@@ -61,7 +61,7 @@
                             <td class="actions hidden-print">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $fraction['Fraction']['id'],'?'=>$this->request->query), array('title' => __('Details'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $fraction['Fraction']['id'],'?'=>$this->request->query), array('title' => __('Edit'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
-                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'delete', $fraction['Fraction']['id'],'?'=>$this->request->query), array('title' => __('Remove'), 'class' => 'btn btn-default btn-xs' . $deleteDisabled, 'escape' => false, 'confirm' => __('Are you sure you want to delete # %s?', $fraction['Fraction']['floor_location']))); ?>
+                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'delete', $fraction['Fraction']['id'],'?'=>$this->request->query), array('title' => __('Remove'), 'class' => 'btn btn-default btn-xs' . $deleteDisabled, 'escape' => false, 'confirm' => __('Are you sure you want to delete # %s?', $fraction['Fraction']['fraction']))); ?>
                             </td>
                         </tr>
                         <?php endforeach; ?>

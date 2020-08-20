@@ -34,7 +34,7 @@
                             </td>
                         </tr><tr>		<td><strong><?php echo __n('Fraction','Fractions',1); ?></strong></td>
                             <td>
-                                <?php echo h($insurance['Fraction']['floor_location']); ?>
+                                <?php echo h($insurance['Fraction']['fraction']); ?>
                                 &nbsp;
                             </td>
                         </tr><tr>		<td><strong><?php echo __('Title'); ?></strong></td>

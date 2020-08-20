@@ -900,7 +900,7 @@ msgstr "Bozza Incontro"
 msgid "Mil Rate"
 msgstr "Millesimi (percentuale)"
 
-msgid "Mil rate"
+msgid "permillage"
 msgstr "Millesimi (percentuale)"
 
 msgid "Modified"
@@ -1569,7 +1569,7 @@ msgstr "Visualizza %s"
 msgid "View Condo"
 msgstr "Visualizza Condominio"
 
-msgid "Warning: Mil rate sum should be 1000"
+msgid "Warning: permillage sum should be 1000"
 msgstr "Attenzione: La somma dei millesimi deve essere 1000"
 
 msgid "Warning: when you cancel a budget, ALL DEBIT NOTES created by this budget will be set as CANCELED, EXCEPT the ones already paid."

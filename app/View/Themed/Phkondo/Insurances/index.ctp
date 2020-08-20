@@ -19,7 +19,7 @@
                            
                             <th><?php echo $this->Paginator->sort('expiration_date'); ?></th>
                             <th><?php echo $this->Paginator->sort('title'); ?></th>
-                            <th><?php echo $this->Paginator->sort('Fraction.floor_location',__n('Fraction','Fractions',1)); ?></th>
+                            <th><?php echo $this->Paginator->sort('Fraction.fraction',__n('Fraction','Fractions',1)); ?></th>
                             <th><?php echo $this->Paginator->sort('insurance_company'); ?></th>
                             <th><?php echo $this->Paginator->sort('policy'); ?></th>
                             <th><?php echo $this->Paginator->sort('InsuranceType.name',__('Insurance Type')); ?></th>
@@ -31,7 +31,7 @@
                             <tr>
                                 <td><?php echo h($insurance['Insurance']['expiration_date']); ?>&nbsp;</td>
                                 <td><?php echo h($insurance['Insurance']['title']); ?>&nbsp;</td>
-                                <td><?php echo h($insurance['Fraction']['floor_location']); ?>&nbsp;</td>
+                                <td><?php echo h($insurance['Fraction']['fraction']); ?>&nbsp;</td>
                                 <td><?php echo h($insurance['Insurance']['insurance_company']); ?>&nbsp;</td>
                                 <td><?php echo h($insurance['Insurance']['policy']); ?>&nbsp;</td>
                                 <td><?php echo h($insurance['InsuranceType']['name']); ?></td>

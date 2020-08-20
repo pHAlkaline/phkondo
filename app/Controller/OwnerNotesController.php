@@ -193,8 +193,8 @@ class OwnerNotesController extends AppController {
 
             $this->request->data = $this->Note->find('first', $options);
             if (!$this->Note->editable($this->request->data['Note'])) {
-                $this->Flash->success(__('Invalid Note'));
-                $this->redirect(array('action' => 'view', $this->Note->id, '?'=>$this->request->query));
+                $this->Flash->error(__('Invalid Request'));
+                $this->redirect(array('action' => 'index', '?' => $this->request->query));
             }
         }
 

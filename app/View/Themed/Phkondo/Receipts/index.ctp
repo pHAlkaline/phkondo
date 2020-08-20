@@ -18,7 +18,7 @@
                         <tr>
                             <th><?php echo $this->Paginator->sort('document'); ?></th>
                             <th><?php echo $this->Paginator->sort('document_date'); ?></th>
-                            <th><?php echo $this->Paginator->sort('Fraction.floor_location',__n('Fraction','Fractions',1)); ?></th>
+                            <th><?php echo $this->Paginator->sort('Fraction.fraction',__n('Fraction','Fractions',1)); ?></th>
                             <th><?php echo $this->Paginator->sort('Client.name',__('Client')); ?></th>
                             <th><?php echo $this->Paginator->sort('ReceiptStatus.name',__('Receipt Status')); ?></th>
                             <th><?php echo $this->Paginator->sort('ReceiptPaymentType.name',__('Receipt Payment Type')); ?></th>
@@ -34,7 +34,7 @@
                                 
                                 <td><?php echo h($receipt['Receipt']['document_date']); ?>&nbsp;</td>
                                 <td>
-                                    <?php echo h($receipt['Fraction']['floor_location']);?>
+                                    <?php echo h($receipt['Fraction']['fraction']);?>
                                 </td>
                                 <td>
                                     <?php echo h($receipt['Client']['name']);?>

@@ -6,7 +6,7 @@ $budgetAmount = $budget['Budget']['amount'];
 $numOfShares = $budget ['Budget']['shares'];
 $numOfFractions = count($fractions);
 foreach ($fractions as $fraction) {
-    $totalMilRate += $fraction['Fraction']['mil_rate'];
+    $totalMilRate += $fraction['Fraction']['permillage'];
 }
 ?>
 <div id="page-container" class="row row-offcanvas row-offcanvas-left">
@@ -26,7 +26,7 @@ foreach ($fractions as $fraction) {
             ?>
             <div class="alert alert-warning alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <?php echo __('Warning: Mil rate sum should be 1000'); ?></div>
+                <?php echo __('Warning: permillage sum should be 1000'); ?></div>
 
         <?php endif; ?>
         <div class="index">
@@ -46,7 +46,7 @@ foreach ($fractions as $fraction) {
                             <th><?php echo __n('Owner', 'Owners', 1); ?></th>
                             <th><?php echo __n('Fraction', 'Fractions', 1); ?></th>
                             <th><?php echo __('Description'); ?></th>
-                            <th><?php echo __('Mil rate'); ?></th>
+                            <th><?php echo __('permillage'); ?></th>
                             <th><?php echo __('Amount'); ?></th>
                             <th><?php echo __('Common Reserve Fund'); ?></th>
                             <th><?php echo __n('Share', 'Shares', 2); ?></th>
@@ -80,7 +80,7 @@ foreach ($fractions as $fraction) {
                                         if($totalMilRate==0 || $numOfShares == 0) {
                                             $amountByShare = 0;
                                         } else {
-                                            $amountByShare = $budgetAmount * ($fraction['Fraction']['mil_rate'] / $totalMilRate) / $numOfShares;
+                                            $amountByShare = $budgetAmount * ($fraction['Fraction']['permillage'] / $totalMilRate) / $numOfShares;
                                         }
                                         break;
 
@@ -100,9 +100,9 @@ foreach ($fractions as $fraction) {
                                 ?>
                                 <tr>
                                     <td><?php echo h($entity['name']); ?>&nbsp;</td>
-                                    <td><?php echo h($fraction['Fraction']['floor_location']); ?>&nbsp;</td>
+                                    <td><?php echo h($fraction['Fraction']['fraction']); ?>&nbsp;</td>
                                     <td><?php echo h($fraction['Fraction']['description']); ?>&nbsp;</td>
-                                    <td><?php echo h($fraction['Fraction']['mil_rate']); ?>&nbsp;</td>
+                                    <td><?php echo h($fraction['Fraction']['permillage']); ?>&nbsp;</td>
                                     <td><?php echo $this->Form->input('Note.' . $row . '.amount', array('class' => 'form-control', 'value' => $amountByShare, 'type' => 'text', 'data-type' => 'note', 'label' => false)); ?>&nbsp;</td>
                                     <td><?php echo $this->Form->input('Note.' . $row . '.common_reserve_fund', array('class' => 'form-control', 'value' => $commonReserveFundByShare, 'type' => 'text', 'data-type' => 'note', 'label' => false)); ?>&nbsp;</td>
                                     <td><?php echo $this->Form->input('Note.' . $row . '.shares', array('class' => 'form-control', 'value' => $numOfShares, 'type' => 'text', 'data-type' => 'note', 'label' => false)); ?>&nbsp;</td>

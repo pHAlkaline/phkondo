@@ -63,10 +63,10 @@ class FractionsController extends AppController {
             'maxLimit'=>100000
         ));
         
-        $this->setFilter(array('Fraction.fraction', 'Fraction.floor_location', 'Fraction.description', 'Fraction.mil_rate', 'Manager.name', 'FractionType.name'));
+        $this->setFilter(array('Fraction.fraction', 'Fraction.location', 'Fraction.description', 'Fraction.permillage', 'Manager.name', 'FractionType.name'));
         $fractions = $this->Paginator->paginate('Fraction');
         $milRateWarning=false;
-        $milRate = Set::extract('/Fraction/mil_rate', $fractions);
+        $milRate = Set::extract('/Fraction/permillage', $fractions);
         if ($this->Session->read('Condo.'.$this->getPhkRequestVar('condo_id').'.Fraction.milrate')!='show' && array_sum($milRate) != 1000 && array_sum($milRate) != 0){
             $this->Session->write('Condo.'.$this->getPhkRequestVar('condo_id').'.Fraction.milrate','show');
             $milRateWarning=true;

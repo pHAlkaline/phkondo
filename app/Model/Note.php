@@ -317,7 +317,7 @@ class Note extends AppModel {
         if (isset($record['note_status_id']) && in_array($record['note_status_id'], array(2, 3))) {
             return false;
         }
-        if (isset($record['receipt_id']) && $record['receipt_id'] == '') {
+        if (isset($record['receipt_id']) && $record['receipt_id'] != '') {
             return false;
         }
         return true;

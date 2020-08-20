@@ -314,7 +314,6 @@ class Budget extends AppModel {
             $this->id = $id;
         }
 
-        $id = $this->id;
         if (!$this->exists()) {
             return false;
         }
@@ -331,7 +330,6 @@ class Budget extends AppModel {
             $this->id = $id;
         }
 
-        $id = $this->id;
         if (!$this->exists()) {
             return false;
         }
@@ -345,7 +343,6 @@ class Budget extends AppModel {
             $this->id = $id;
         }
 
-        $id = $this->id;
         if (!$this->exists()) {
             return false;
         }

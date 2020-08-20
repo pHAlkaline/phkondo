@@ -12,7 +12,7 @@
                 <table class="table table-hover table-condensed">
                     <thead>
                         <tr>
-                            <th><?php echo $this->Paginator->sort('Fraction,title',__('Fraction')); ?></th>
+                            <th><?php echo $this->Paginator->sort('Fraction.fraction',__('Fraction')); ?></th>
                             <th><?php echo $this->Paginator->sort('subject'); ?></th>
                             <th><?php echo $this->Paginator->sort('SupportCategory.name',__('Category')); ?></th>
                             <th><?php echo $this->Paginator->sort('SupportStatus.name',__('Status')); ?></th>
@@ -26,7 +26,7 @@
                     <tbody>
                         <?php foreach ($supports as $support): ?>
                          <tr>
-                                <td><?php echo h($support['Fraction']['floor_location']); ?></td>
+                                <td><?php echo h($support['Fraction']['fraction']); ?></td>
                                 <td><?php echo h($support['Support']['subject']); ?>&nbsp;</td>
                                 <td><?php echo h($support['SupportCategory']['name']); ?></td>
                                 <td><?php echo h($support['SupportStatus']['name']); ?></td>
