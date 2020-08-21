@@ -25,12 +25,12 @@
  * 
  */
 
-$(function(){
-    $("#BudgetBudgetStatusId").change(function(){
+$(function () {
+    $("#BudgetBudgetStatusId").change(function () {
         $("#cancelWarning").addClass('hide');
         $("#pendingWarning").addClass('hide');
         switch ($(this).val()) {
-        
+
             case '1':
                 $("#pendingWarning").removeClass('hide');
                 $("#cancelWarning").addClass('hide');
@@ -43,12 +43,24 @@ $(function(){
                 $("#pendingWarning").addClass('hide');
                 $("#cancelWarning").addClass('hide');
                 break;
-        
-        } 
-        
-       
+
+        }
+        scrollToAnchor('warningzone');
     });
-    
+
+    $("input[readonly]").click(function () {
+        $("#disabledWarning").removeClass('hide');
+        scrollToAnchor('warningzone');
+    });
+
+    function scrollToAnchor(aid) {
+        var aTag = $("a[name='" + aid + "']");
+        aTag.removeClass('hide');
+        $('html,body').animate({scrollTop: aTag.offset().top}, 'slow');
+    }
+
+   
+
 
 });
 

@@ -334,6 +334,9 @@ msgstr "Condominio cancellato"
 msgid "Condominium"
 msgstr "Condominio"
 
+msgid "Condominium / HOA Management"
+msgstr "Gestione Condominio"
+
 msgid "Contact"
 msgid_plural "Contacts"
 msgstr[0] "Contatto"
@@ -1573,10 +1576,13 @@ msgid "Warning: permillage sum should be 1000"
 msgstr "Attenzione: La somma dei millesimi deve essere 1000"
 
 msgid "Warning: when you cancel a budget, ALL DEBIT NOTES created by this budget will be set as CANCELED, EXCEPT the ones already paid."
-msgstr ""
+msgstr "Attenzione: quando annulli un budget, TUTTE LE NOTE DI DEBITO create da questo budget verranno impostate come ANNULLATE, TRANNE quelle già pagate."
 
 msgid "Warning: when you set a budget as pending, ALL DEBIT NOTES created by this budget will be set as WAITING PAYMENT, EXCEPT the ones already paid."
-msgstr ""
+msgstr "Attenzione: quando imposti un budget come in sospeso, TUTTE LE NOTE DI DEBITO create da questo budget verranno impostate come IN ATTESA DI PAGAMENTO, TRANNE quelle già pagate."
+
+msgid "Warning: field set read only by budget status, you must change budget to pending to allow change."
+msgstr "Attenzione: campo impostato in sola lettura dallo stato del budget, è necessario modificare il budget in in sospeso per consentire la modifica"
 
 msgid "pHAlkaline provides services in customization & new features."
 msgstr ""

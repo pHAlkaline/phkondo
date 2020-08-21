@@ -334,6 +334,9 @@ msgstr ""
 msgid "Condominium"
 msgstr ""
 
+msgid "Condominium / HOA Management"
+msgstr ""
+
 msgid "Contact"
 msgid_plural "Contacts"
 msgstr[0] ""
@@ -1576,6 +1579,9 @@ msgid "Warning: when you cancel a budget, ALL DEBIT NOTES created by this budget
 msgstr ""
 
 msgid "Warning: when you set a budget as pending, ALL DEBIT NOTES created by this budget will be set as WAITING PAYMENT, EXCEPT the ones already paid."
+msgstr ""
+
+msgid "Warning: field set read only by budget status, you must change budget to pending to allow change."
 msgstr ""
 
 msgid "pHAlkaline provides services in customization & new features."

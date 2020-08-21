@@ -13,7 +13,7 @@
                 <span class="glyphicon glyphicon-menu-hamburger" ></span>
             </button>
 
-            <a class="navbar-brand" href="<?php echo Router::url(array('controller' => 'pages', 'action' => 'home'), true); ?>">
+            <a class="navbar-brand" href="<?php echo Router::url(array('plugin'=>null,'controller' => 'pages', 'action' => 'home'), true); ?>">
                 <?php echo $this->Html->image('logo_phkondo_flat.svg', array('alt' => 'pHKondo', 'style' => 'height:100%', 'class' => 'animate__animated animate__fadeIn')); ?>
             </a>
         </div>

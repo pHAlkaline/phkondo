@@ -145,12 +145,14 @@ if (!isset($headerTitle)) {
             'SEARCH_HERE_FOR_A_CLIENT' => __('Search')
         );
         echo $this->Html->scriptBlock('var phkondo = ' . $this->Js->object($phkondo) . ';');
-        
         ?>
 
         <script type="text/javascript">
             $(document).ready(function () {
-
+                $("form").submit(function () {
+                    // prevent duplicate form submissions
+                    $(this).find(":submit").attr('disabled', 'disabled');
+                });
                 var phkondolang = 'en-GB';
                 switch (phkondo.APP_LANG) {
                     case 'por':

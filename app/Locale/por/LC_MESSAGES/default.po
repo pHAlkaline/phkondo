@@ -340,6 +340,9 @@ msgstr "Condomínio apagado"
 msgid "Condominium"
 msgstr "Condomínio"
 
+msgid "Condominium / HOA Management"
+msgstr "Administração de Condomínios"
+
 msgid "Contact"
 msgid_plural "Contacts"
 msgstr[0] "Contacto"
@@ -1584,6 +1587,9 @@ msgstr "Aviso: quando se cancela um orçamento, TODAS AS NOTAS DE DEBITO criadas
 msgid "Warning: when you set a budget as pending, ALL DEBIT NOTES created by this budget will be set as WAITING PAYMENT, EXCEPT the ones already paid."
 msgstr "Aviso: quando se coloca o orçamento como inativo, TODAS AS NOTAS DE DEBITO criadas por esse orçamento serão alteradas para o estado de AGUARDA PAGAMENTO, EXCEPTO as quotas que já foram pagas."
 
+msgid "Warning: field set read only by budget status, you must change budget to pending to allow change."
+msgstr "Aviso: não pode alterar este campo, altere o estado do orçamento para pendente."
+
 msgid "pHAlkaline provides services in customization & new features."
 msgstr "pHAlkaline disponibiliza serviços de desenvolvimento à medida das suas necessidades para o pHKondo."
 
@@ -1591,7 +1597,7 @@ msgid "Wednesday"
 msgstr "Quarta-Feira"
 
 msgid "Welcome"
-msgstr ""
+msgstr "Bem Vindo"
 
 msgid "Welcome to pHKondo."
 msgstr "Bem Vindo ao pHKondo"
@@ -1714,7 +1720,7 @@ msgid "pHKondo Reports"
 msgstr "Relatórios pHKondo"
 
 msgid "pHkondo Condominium Management"
-msgstr "pHKondo Gestão e Administração de Condomínios"
+msgstr "pHKondo Administração de Condomínios"
 
 msgid "previous"
 msgstr "anterior"

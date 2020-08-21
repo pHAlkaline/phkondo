@@ -6,7 +6,7 @@
 
             <ul class="nav nav-pills nav-stacked">
                 <?php
-                 $editDisabled = ' disabled';
+                $editDisabled = ' disabled';
                 $deleteDisabled = ' disabled';
                 $createNotesDisabled = 'disabled';
                 $hasNotesDisabled = 'disabled';
@@ -21,13 +21,13 @@
                     $createNotesDisabled = '';
                 }
                 ?>
-                <li ><?php echo $this->Html->link(__('Edit Budget'), array('action' => 'edit', $budget['Budget']['id'],'?'=>$this->request->query), array('class' => 'btn ' . $editDisabled)); ?> </li>
-                <li ><?php echo $this->Form->postLink(__('Delete Budget'), array('action' => 'delete', $budget['Budget']['id'],'?'=>$this->request->query), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $budget['Budget']['title']))); ?> </li>
-                <li ><?php echo $this->Html->link(__('New Budget'), array('action' => 'add','?'=>$this->request->query), array('class' => 'btn ')); ?> </li>
-                <li ><?php echo $this->Html->link(__('List Budgets'), array('action' => 'index','?'=>$this->request->query), array('class' => 'btn ')); ?> </li>
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('Create Notes'), array('controller' => 'budget_notes', 'action' => 'create','?'=>array('budget_id'=>$budget['Budget']['id'])), array('class' => 'btn ' . $createNotesDisabled, 'escape' => false)); ?> </li>
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Note','Notes',2), array('controller' => 'budget_notes', 'action' => 'index','?'=>array('budget_id'=>$budget['Budget']['id'])), array('class' => 'btn ' . $hasNotesDisabled, 'escape' => false)); ?> </li>
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('Settled Shares Map'), array('action' => 'shares_map', $budget['Budget']['id'],'?'=>array('budget_id'=>$budget['Budget']['id'])), array('class' => 'btn ', 'target' => '_blank', 'escape' => false)); ?> </li>
+                <li ><?php echo $this->Html->link(__('Edit Budget'), array('action' => 'edit', $budget['Budget']['id'], '?' => $this->request->query), array('class' => 'btn ' . $editDisabled)); ?> </li>
+                <li ><?php echo $this->Form->postLink(__('Delete Budget'), array('action' => 'delete', $budget['Budget']['id'], '?' => $this->request->query), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $budget['Budget']['title']))); ?> </li>
+                <li ><?php echo $this->Html->link(__('New Budget'), array('action' => 'add', '?' => $this->request->query), array('class' => 'btn ')); ?> </li>
+                <li ><?php echo $this->Html->link(__('List Budgets'), array('action' => 'index', '?' => $this->request->query), array('class' => 'btn ')); ?> </li>
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('Create Notes'), array('controller' => 'budget_notes', 'action' => 'create', '?' => array('budget_id' => $budget['Budget']['id'])), array('class' => 'btn ' . $createNotesDisabled, 'escape' => false)); ?> </li>
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Note', 'Notes', 2), array('controller' => 'budget_notes', 'action' => 'index', '?' => array('budget_id' => $budget['Budget']['id'])), array('class' => 'btn ' . $hasNotesDisabled, 'escape' => false)); ?> </li>
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('Settled Shares Map'), array('action' => 'shares_map', $budget['Budget']['id'], '?' => array('budget_id' => $budget['Budget']['id'])), array('class' => 'btn ', 'target' => '_blank', 'escape' => false)); ?> </li>
             </ul><!-- /.list-group -->
 
         </div><!-- /.actions -->
@@ -68,18 +68,18 @@
                         </td>
                     </tr><tr>		<td><strong><?php echo __('Budget Date'); ?></strong></td>
                         <td>
-                            <?php echo h( $budget['Budget']['budget_date']); ?>
+                            <?php echo h($budget['Budget']['budget_date']); ?>
                             &nbsp;
                         </td>
                     </tr><tr>		<td><strong><?php echo __('Requested Amount'); ?></strong></td>
                         <td>
                             <?php echo h($budget['Budget']['requested_amount']); ?>
-                            &nbsp;<?php echo  Configure::read('currencySign'); ?>
+                            &nbsp;<?php echo Configure::read('currencySign'); ?>
                         </td>
                     </tr><tr>		<td><strong><?php echo __('Amount'); ?></strong></td>
                         <td>
                             <?php echo h($budget['Budget']['amount']); ?>
-                            &nbsp;<?php echo  Configure::read('currencySign'); ?>
+                            &nbsp;<?php echo Configure::read('currencySign'); ?>
                         </td>
                     </tr>
                     <tr>		<td><strong><?php echo __('Common Reserve Fund (%)'); ?></strong></td>
@@ -90,7 +90,7 @@
                     </tr>
                     <tr>		<td><strong><?php echo __('Begin Date'); ?></strong></td>
                         <td>
-                            <?php echo h( $budget['Budget']['begin_date']); ?>
+                            <?php echo h($budget['Budget']['begin_date']); ?>
                             &nbsp;
                         </td>
                     </tr><tr>		<td><strong><?php echo __n('Share', 'Shares', 2); ?></strong></td>
@@ -121,12 +121,12 @@
                     </tr>
                     <tr>		<td><strong><?php echo __('Modified'); ?></strong></td>
                         <td>
-                            <?php echo h( $budget['Budget']['modified']); ?>
+                            <?php echo h($budget['Budget']['modified']); ?>
                             &nbsp;
                         </td>
                     </tr><tr>		<td><strong><?php echo __('Created'); ?></strong></td>
                         <td>
-                            <?php echo h( $budget['Budget']['created']); ?>
+                            <?php echo h($budget['Budget']['created']); ?>
                             &nbsp;
                         </td>
                     </tr>
