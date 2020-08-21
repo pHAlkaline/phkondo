@@ -247,9 +247,9 @@ UNLOCK tables;
 
 LOCK TABLES `support_statuses` WRITE;
 /*!40000 ALTER TABLE `support_statuses` DISABLE KEYS */;
-INSERT INTO `support_statuses` ( `id`, `name`, `active`, `modified`, `created`) VALUES (1,'Pendente',1,'2014-02-27 16:17:09','2014-02-27 16:17:09');
-INSERT INTO `support_statuses` ( `id`, `name`, `active`, `modified`, `created`) VALUES (2,'Aperto',1,'2014-02-27 16:17:09','2014-02-27 16:17:09');
-INSERT INTO `support_statuses` ( `id`, `name`, `active`, `modified`, `created`) VALUES (3,'Chiuso',1,'2014-02-27 16:17:09','2014-02-27 16:17:09');
+INSERT INTO `support_statuses` ( `id`, `name`, `active`, `modified`, `created`) VALUES (1,'Pendente',1,NOW(),NOW());
+INSERT INTO `support_statuses` ( `id`, `name`, `active`, `modified`, `created`) VALUES (2,'Aperto',1,NOW(),NOW());
+INSERT INTO `support_statuses` ( `id`, `name`, `active`, `modified`, `created`) VALUES (3,'Chiuso',1,NOW(),NOW());
 /*!40000 ALTER TABLE `support_statuses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -259,9 +259,9 @@ UNLOCK TABLES;
 
 LOCK TABLES `support_categories` WRITE;
 /*!40000 ALTER TABLE `support_categories` DISABLE KEYS */;
-INSERT INTO `support_categories` ( `id`, `name`, `active`, `modified`, `created`) VALUES (1,'Avvenimento',1,'2016-03-12 00:00:00','2016-03-12 00:00:00');
-INSERT INTO `support_categories` ( `id`, `name`, `active`, `modified`, `created`) VALUES (2,'Richiesta di informazioni',1,'2016-03-12 22:27:32','2016-03-12 00:00:00');
-INSERT INTO `support_categories` ( `id`, `name`, `active`, `modified`, `created`) VALUES (3,'Reclamo',1,'2016-03-12 00:00:00','2016-03-12 00:00:00');
+INSERT INTO `support_categories` ( `id`, `name`, `active`, `modified`, `created`) VALUES (1,'Avvenimento',1,NOW(),NOW());
+INSERT INTO `support_categories` ( `id`, `name`, `active`, `modified`, `created`) VALUES (2,'Richiesta di informazioni',1,NOW(),NOW());
+INSERT INTO `support_categories` ( `id`, `name`, `active`, `modified`, `created`) VALUES (3,'Reclamo',1,NOW(),NOW());
 /*!40000 ALTER TABLE `support_categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -271,9 +271,9 @@ UNLOCK TABLES;
 
 LOCK TABLES `support_priorities` WRITE;
 /*!40000 ALTER TABLE `support_priorities` DISABLE KEYS */;
-INSERT INTO `support_priorities` ( `id`, `name`, `order`, `active`, `modified`, `created`) VALUES (1,'Alta',1,1,'2016-03-12 00:00:00','2016-03-12 00:00:00');
-INSERT INTO `support_priorities` ( `id`, `name`, `order`, `active`, `modified`, `created`) VALUES (2,'Normale',2,1,'2016-03-12 00:00:00','2016-03-12 00:00:00');
-INSERT INTO `support_priorities` ( `id`, `name`, `order`, `active`, `modified`, `created`) VALUES (3,'Bassa',3,1,'2016-03-12 00:00:00','2016-03-12 00:00:00');
+INSERT INTO `support_priorities` ( `id`, `name`, `order`, `active`, `modified`, `created`) VALUES (1,'Alta',1,1,NOW(),NOW());
+INSERT INTO `support_priorities` ( `id`, `name`, `order`, `active`, `modified`, `created`) VALUES (2,'Normale',2,1,NOW(),NOW());
+INSERT INTO `support_priorities` ( `id`, `name`, `order`, `active`, `modified`, `created`) VALUES (3,'Bassa',3,1,NOW(),NOW());
 /*!40000 ALTER TABLE `support_priorities` ENABLE KEYS */;
 UNLOCK TABLES;
 
