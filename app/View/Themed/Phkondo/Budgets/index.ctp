@@ -38,13 +38,13 @@
                                 <td class="amount"><?php echo number_format($budget['Budget']['amount'],2); ?>&nbsp;<?php echo  Configure::read('currencySign'); ?></td>
                                 <td class="actions hidden-print">
                                     <?php 
-                                    $editDisabled='';
-                                    $deleteDisabled='';
-                                    if (!$budget['Budget']['editable']){
-                                        $editDisabled=' disabled';
+                                    $editDisabled=' disabled';
+                                    $deleteDisabled=' disabled';
+                                    if ($budget['Budget']['editable']){
+                                        $editDisabled='';
                                     }
-                                    if (!$budget['Budget']['deletable']){
-                                        $deleteDisabled=' disabled';
+                                    if ($budget['Budget']['deletable']){
+                                        $deleteDisabled='';
                                     }
                                    ?>
                                     

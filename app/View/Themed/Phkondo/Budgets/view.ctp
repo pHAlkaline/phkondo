@@ -6,23 +6,19 @@
 
             <ul class="nav nav-pills nav-stacked">
                 <?php
-                $editDisabled = '';
-                $deleteDisabled = '';
+                 $editDisabled = ' disabled';
+                $deleteDisabled = ' disabled';
                 $createNotesDisabled = 'disabled';
                 $hasNotesDisabled = 'disabled';
-                if (!$budget['Budget']['editable']) {
-                    $editDisabled = ' disabled';
+                if ($budget['Budget']['editable']) {
+                    $editDisabled = '';
                 }
-                if (!$budget['Budget']['deletable']) {
-                    $deleteDisabled = ' disabled';
+                if ($budget['Budget']['deletable']) {
+                    $deleteDisabled = '';
                 }
 
-                if (count($budget['Note']) == 0 && $budget['Budget']['budget_status_id'] == 2) {
+                if (count($budget['Note']) == 0 && $budget['Budget']['budget_status_id'] == 1) {
                     $createNotesDisabled = '';
-                }
-
-                if (count($budget['Note']) > 0) {
-                    $hasNotesDisabled = '';
                 }
                 ?>
                 <li ><?php echo $this->Html->link(__('Edit Budget'), array('action' => 'edit', $budget['Budget']['id'],'?'=>$this->request->query), array('class' => 'btn ' . $editDisabled)); ?> </li>

@@ -34,9 +34,9 @@
         "ext-openssl": "*",
         "cakephp/cakephp": "2.10.*",
         "cakephp/debug_kit": "2.2.*",
-        "ceeram/clear_cache": "1.1.*",
+        "ceeram/clear_cache": "1.*",
         "jeremyharris/cacher": "dev-master",
-        "cakedc/migrations": "^2.5",
+        "cakedc/migrations": "^2.6",
         "phalkaline/cakephp-feedback-plugin": "dev-master"
     },
     "minimum-stability" : "dev",

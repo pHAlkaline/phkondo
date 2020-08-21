@@ -21,7 +21,7 @@
 
 LOCK tables `budget_statuses` WRITE;
 /*!40000 ALTER TABLE `budget_statuses` DISABLE KEYS */;
-INSERT INTO `budget_statuses` ( `id`, `name`, `active`, `modified`, `created`) VALUES (1, 'Inactive',1,NOW() ,NOW());
+INSERT INTO `budget_statuses` ( `id`, `name`, `active`, `modified`, `created`) VALUES (1, 'Pending',1,NOW() ,NOW());
 INSERT INTO `budget_statuses` ( `id`, `name`, `active`, `modified`, `created`) VALUES (2, 'Active',1,NOW() ,NOW());
 INSERT INTO `budget_statuses` ( `id`, `name`, `active`, `modified`, `created`) VALUES (3, 'Closed',1,NOW() ,NOW());
 INSERT INTO `budget_statuses` ( `id`, `name`, `active`, `modified`, `created`) VALUES (4, 'Canceled',1,NOW() ,NOW()); 
