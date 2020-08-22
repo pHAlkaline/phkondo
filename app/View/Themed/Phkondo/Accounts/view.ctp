@@ -28,7 +28,7 @@
 
             <legend><?php echo __n('Account', 'Accounts', 1); ?></legend>
 
-            <div class="table-responsive">
+            <div class="table-responsive col-sm-12">
                 <table class="table table-hover table-condensed">
                     <tbody>
                         <tr>		<td class='col-sm-2'><strong><?php echo __('Title'); ?></strong></td>

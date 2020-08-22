@@ -22,6 +22,13 @@ class Support extends AppModel {
      */
     public $displayField = 'title';
 
+     /**
+     * order field
+     *
+     * @var string
+     */
+    public $order = array("Support.support_status_id" => "ASC","Support.support_priority_id" => "ASC");
+    
     /**
      * Validation rules
      *

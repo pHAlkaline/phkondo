@@ -12,6 +12,13 @@ class SupportCategory extends AppModel {
  * @var string
  */
 	public $displayField = 'name';
+        
+        /**
+     * Order
+     *
+     * @var string
+     */
+    public $order = 'SupportCategory.name';
 
 /**
  * Validation rules

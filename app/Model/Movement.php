@@ -50,7 +50,7 @@ class Movement extends AppModel {
      *
      * @var string
      */
-    public $order = array('Movement.movement_date'=>'DESC','Movement.id'=>'DESC');
+    public $order = array('Movement.movement_date'=>'DESC','Movement.id'=>'DESC','Movement.description'=>'ASC');
 
     /**
      * Validation rules

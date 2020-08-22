@@ -48,6 +48,13 @@ class Insurance extends AppModel {
      * @var string
      */
     public $displayField = 'title';
+    
+    /**
+     * Order
+     *
+     * @var string
+     */
+    public $order = 'Insurance.title';
 
     /**
      * Validation rules

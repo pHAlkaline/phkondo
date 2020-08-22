@@ -51,7 +51,7 @@ class Receipt extends AppModel {
      *
      * @var string
      */
-    public $order = array('Receipt.document_date' => 'DESC', 'Receipt.document' => 'DESC');
+    public $order = array('Receipt.document_date' => 'DESC', 'Receipt.document' => 'ASC', 'Receipt.title' => 'ASC');
 
     /**
      * Validation rules

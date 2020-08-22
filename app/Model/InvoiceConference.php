@@ -51,7 +51,7 @@ class InvoiceConference extends AppModel {
      *
      * @var string
      */
-    public $order = array('InvoiceConference.payment_due_date'=>'ASC', 'InvoiceConference.document_date'=>'ASC',);
+    public $order = array('InvoiceConference.payment_due_date'=>'ASC', 'InvoiceConference.document_date'=>'ASC');
 
     /**
      * Validation rules

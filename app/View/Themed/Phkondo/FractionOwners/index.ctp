@@ -14,7 +14,7 @@ $this->Html->script('fraction_owner_index', false); ?>
             </div><!-- /.actions -->
             <?php echo $this->element('search_tool'); ?>
             <div class="clearfix"></div>
-            <div class="table-responsive">
+            <div class="table-responsive col-sm-12">
                 <table class="table table-hover table-condensed">
                     <thead>
                         <tr>

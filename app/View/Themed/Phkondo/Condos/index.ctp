@@ -1,16 +1,17 @@
- 
-        <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Condo'), array('action' => 'add'), array('class' => 'btn btn-primary hidden-print', 'style' => 'margin: 8px 0; float:right;', 'escape' => false)); 
-       ?> <div class="clearfix"></div>
-<div class="panel panel-default">
-    <!-- Default panel contents -->
-    
-    <div class="panel-heading"><strong><?php echo __n('Condo', 'Condos', 2); ?></strong></div>
-    <div class="panel-body">
-       
-       <?php  
-       echo $this->element('search_tool');?>
-        <div class="clearfix"></div>
-        <div class="table-responsive"> 
+
+    <div id="page-container" class="row">
+
+    <div id="page-content" class="col-sm-12">
+
+        <div class="index">
+             <h2 class="col-sm-9"><?php echo __n('Condo', 'Condos', 2); ?></h2>
+    <div class="actions hidden-print col-sm-3">
+                <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Condo'), array('action' => 'add'), array('class' => 'btn btn-primary', 'style' => 'margin: 8px 0; float: right;', 'escape' => false));
+                ?>
+            </div><!-- /.actions -->
+            <?php echo $this->element('search_tool'); ?>
+            <div class="clearfix"></div>
+            <div class="table-responsive col-sm-12 col-sm-12"> 
             <table class="table table-hover table-condensed">
                 <thead>
                     <tr>
@@ -102,6 +103,9 @@
             ?>
         </ul><!-- /.pagination -->
 
-    </div><!-- /.index -->
+        </div><!-- /.index -->
 
-</div>
+    </div><!-- /#page-content .col-sm-9 -->
+
+</div><!-- /#page-container .row-fluid -->
+

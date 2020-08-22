@@ -39,7 +39,7 @@ foreach ($fractions as $fraction) {
             <?php echo $this->Form->hidden('Note.Budget.notes.amount', array('value' => $budgetAmount)); ?>
             <?php echo $this->Form->hidden('Note.Budget.periodicity', array('value' => $budget['Budget']['share_periodicity_id'])); ?>
             <dvi class='clearfix'></dvi>
-            <div class="table-responsive">
+            <div class="table-responsive col-sm-12">
                 <table class="table table-striped">
                     <thead>
                         <tr>

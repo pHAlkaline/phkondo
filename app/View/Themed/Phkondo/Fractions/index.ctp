@@ -21,7 +21,7 @@
                     <?php echo __('Warning: permillage sum should be 1000'); ?></div>
 
             <?php endif; ?>
-            <div class="table-responsive">
+            <div class="table-responsive col-sm-12">
                 <table class="table table-hover table-condensed">
                     <thead>
                         <tr>

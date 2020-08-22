@@ -24,7 +24,7 @@ if ($phkRequestData['budget_status'] == 1) {
             </div><!-- /.actions -->
             <?php echo $this->element('search_tool_notes'); ?>
             <div class="clearfix"></div>
-            <div class="table-responsive">
+            <div class="table-responsive col-sm-12">
                 <table class="table table-hover table-condensed">
                     <thead>
                         <tr>

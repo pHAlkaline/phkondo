@@ -51,7 +51,7 @@ class ReceiptNote extends AppModel {
      *
      * @var string
      */
-    public $order = array("ReceiptNote.document_date" => "asc", "ReceiptNote.document" => "asc");
+    public $order = array("ReceiptNote.document_date" => "DESC", "ReceiptNote.document" => "ASC", "ReceiptNote.title" => "ASC"  );
 
    
 

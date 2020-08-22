@@ -42,6 +42,13 @@ class Administrator extends AppModel {
  * @var string
  */
 	public $displayField = 'title';
+        
+        /**
+     * Order
+     *
+     * @var string
+     */
+    public $order = 'Administrator.title';
 
 /**
  * Validation rules

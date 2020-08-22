@@ -52,7 +52,7 @@ class Note extends AppModel {
      *
      * @var string
      */
-    public $order = array("Note.document_date" => "asc", "Note.document" => "asc");
+    public $order = array("Note.document_date" => "DESC", "Note.document" => "ASC", "Note.title" => "ASC");
 
     /**
      * Validation rules

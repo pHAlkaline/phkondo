@@ -56,7 +56,7 @@ class Fraction extends AppModel {
      *
      * @var string
      */
-    public $order = array('Fraction.length' => 'ASC', 'Fraction.fraction' => 'ASC');
+    public $order = 'Fraction.fraction';
 
     /**
      * Validation rules

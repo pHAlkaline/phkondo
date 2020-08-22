@@ -103,7 +103,7 @@
                 <legend class="col-sm-12"><?php echo __n('Fraction', 'Fractions', 2); ?></legend>
 
                 <div class="clearfix"></div>
-                <div class="table-responsive">
+                <div class="table-responsive col-sm-12">
                     <table class="table table-hover table-condensed">
                         <thead>
                             <tr>
