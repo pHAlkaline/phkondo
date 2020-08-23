@@ -135,7 +135,7 @@ class BudgetNotesController extends AppController {
      * @return void
      */
     public function add() {
-        if ($this->request->is('post')) {
+        if ($this->request->is('post') && isset($this->request->data['Note']['change_filter']) && $this->request->data['Note']['change_filter'] != '1') {
             $this->Note->create();
             $this->request->data['Note']['fiscal_year_id'] = $this->getPhkRequestVar('fiscal_year_id');
             $this->request->data['Note']['pending_amount'] = $this->request->data['Note']['amount'];
@@ -148,14 +148,23 @@ class BudgetNotesController extends AppController {
             }
         }
         $noteTypes = $this->Note->NoteType->find('list', array('conditions' => array('NoteType.id' => '2')));
-        $fractions = $this->Note->Fraction->find('list', array('order' => array('Fraction.length' => 'asc', 'Fraction.fraction' => 'asc'), 'conditions' => array('condo_id' => $this->getPhkRequestVar('condo_id'))));
+        $fractions = $this->Note->Fraction->find('list', array('order' => array('Fraction.fraction' => 'asc'), 'conditions' => array('condo_id' => $this->getPhkRequestVar('condo_id'))));
+        if (!isset($this->request->data['Note']['fraction_id'])) {
+            $fractionsForClients = $fractions;
+            reset($fractionsForClients);
+            $firstFraction = key($fractionsForClients);
+        } else {
+            $firstFraction = $this->request->data['Note']['fraction_id'];
+        }
+        $this->Note->Fraction->contain('Entity');
         $budgets = $this->Note->Budget->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('budget_id'))));
         //$fiscalYears = $this->Note->FiscalYear->find('list', array('conditions' => array('id' => Set::extract('/Budget/id', $budgets))));
-        $entitiesFilter = $this->Note->Fraction->find('all', array('fields' => array('Fraction.id'), 'conditions' => array('condo_id' => $this->getPhkRequestVar('condo_id'), 'Fraction.id' => array_keys($fractions))));
-        $entities = $this->Note->Entity->find('list', array('conditions' => array('id' => Set::extract('/Entity/id', $entitiesFilter))));
+        $fractionsForClients = $this->Note->Fraction->find('all', array('conditions' => array('Fraction.id' => $firstFraction)));
+        $entities = $this->Note->Entity->find('list', array('order' => 'Entity.name', 'conditions' => array('Entity.id' => Set::extract('/Entity/id', $fractionsForClients))));
 
         $noteStatuses = $this->Note->NoteStatus->find('list', array('conditions' => array('active' => '1')));
-        $this->set(compact('noteTypes', 'fractions', 'fiscalYears', 'entities', 'budgets', 'noteStatuses'));
+        unset($this->request->data['Note']['change_filter']);
+        $this->set(compact('noteTypes', 'fractions', 'entities', 'budgets', 'noteStatuses'));
     }
 
     /**
@@ -192,18 +201,17 @@ class BudgetNotesController extends AppController {
             }
         }
         $noteTypes = $this->Note->NoteType->find('list');
-        $fractions = $this->Note->Fraction->find('list', array('order' => array('Fraction.length' => 'asc', 'Fraction.fraction' => 'asc'), 'conditions' => array('condo_id' => $this->getPhkRequestVar('condo_id'))));
+        $fractions = $this->Note->Fraction->find('list', array('order' => array('Fraction.fraction' => 'asc'), 'conditions' => array('condo_id' => $this->getPhkRequestVar('condo_id'))));
         $budgets = $this->Note->Budget->find('list', array('conditions' => array('id' => $this->request->data['Note']['budget_id'])));
-        $fiscalYears = $this->Note->FiscalYear->find('list', array('conditions' => array('id' => Set::extract('/Budget/id', $budgets))));
-        $entitiesFilter = $this->Note->Fraction->find('all', array('fields' => array('Fraction.id'), 'conditions' => array('condo_id' => $this->getPhkRequestVar('condo_id'))));
-        $entities = $this->Note->Entity->find('list', array('conditions' => array('id' => Set::extract('/Entity/id', $entitiesFilter))));
+        $entities = $this->Note->Entity->find('list', array('conditions' => array('id' => $this->request->data['Note']['entity_id'])));
 
         if ($this->request->data['Note']['receipt_id'] != null) {
             $noteStatuses = $this->Note->NoteStatus->find('list', array('conditions' => array('id' => $this->request->data['Note']['note_status_id'])));
         } else {
             $noteStatuses = $this->Note->NoteStatus->find('list', array('conditions' => array('active' => '1')));
         }
-        $this->set(compact('noteTypes', 'fractions', 'fiscalYears', 'entities', 'budgets', 'noteStatuses'));
+        $this->set(compact('noteTypes', 'fractions', 'entities', 'budgets', 'noteStatuses'));
+        $this->setPhkRequestVar('note_id', $id);
     }
 
     /**
@@ -228,6 +236,23 @@ class BudgetNotesController extends AppController {
             $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
         $this->Flash->error(__('Note can not be deleted'));
+        $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
+    }
+
+    public function delete_all($id = null) {
+        if (!$this->request->is('post')) {
+            throw new MethodNotAllowedException();
+        }
+        $this->Note->Budget->id = $id;
+        if (!$this->Note->Budget->exists()) {
+            $this->Flash->error(__('Invalid budget'));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
+        }
+        if ($this->Note->deleteAll(array('Note.budget_id' => $id,'Note.note_status_id IN'=>[1,4]), false)) {
+           $this->Flash->success(__('Notes deleted'));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
+        }
+        $this->Flash->error(__('Notes can not be deleted'));
         $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
     }
 
@@ -311,22 +336,22 @@ class BudgetNotesController extends AppController {
         }
 
         $this->Note->Fraction->contain(array('Entity'));
-        $fractions = $this->Note->Fraction->find('all', array('order' => array('Fraction.length' => 'asc', 'Fraction.fraction' => 'asc'), 'conditions' => array('condo_id' => $this->getPhkRequestVar('condo_id'))));
-        
-        $totalMilRate=0;
-        $budgetAmount = $budget['Budget']['amount']?$budget['Budget']['amount']:0;
-        $numOfShares = $budget ['Budget']['shares']?$budget ['Budget']['shares']:0;
+        $fractions = $this->Note->Fraction->find('all', array('order' => array('Fraction.fraction' => 'asc'), 'conditions' => array('condo_id' => $this->getPhkRequestVar('condo_id'))));
+
+        $totalMilRate = 0;
+        $budgetAmount = $budget['Budget']['amount'] ? $budget['Budget']['amount'] : 0;
+        $numOfShares = $budget ['Budget']['shares'] ? $budget ['Budget']['shares'] : 0;
         $numOfFractions = count($fractions);
         foreach ($fractions as $fraction) {
             $totalMilRate += $fraction['Fraction']['permillage'];
         }
-        
+
         if ($budget['Budget']['amount'] == 0 || $numOfShares == 0) {
             $this->Flash->error(__('Invalid Budget values, check amount, total sum of properties milrate and number of shares'));
             $this->redirect(array('controller' => 'budgets', 'action' => 'view', $this->getPhkRequestVar('budget_id'), '?' => array('condo_id' => $this->getPhkRequestVar('condo_id'))));
         }
 
-        
+
         $this->set(compact('fractions', 'budget'));
     }
 

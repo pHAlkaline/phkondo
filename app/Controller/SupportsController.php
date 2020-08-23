@@ -113,7 +113,7 @@ class SupportsController extends AppController {
         
         $clients = $this->Support->Client->find('list', array('order' => 'Client.name', 'conditions' => array('Client.id' => Set::extract('/Entity/id', $fractionsForClients))));
         $supportCategories = $this->Support->SupportCategory->find('list', array('conditions' => array('active' => 1)));
-        $supportPriorities = $this->Support->SupportPriority->find('list', array('order' => array('order'), 'conditions' => array('active' => 1)));
+        $supportPriorities = $this->Support->SupportPriority->find('list', array('conditions' => array('active' => 1)));
         $supportStatuses = $this->Support->SupportStatus->find('list', array('conditions' => array('active' => 1)));
         $assignedUsers = $this->Support->AssignedUser->find('list', array('order'=>array('AssignedUser.name'),'conditions' => array('active' => 1)));
         $this->request->data['Support']['change_filter']=0;

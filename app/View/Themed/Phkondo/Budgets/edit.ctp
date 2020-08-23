@@ -12,7 +12,7 @@
                 $datefield = '';
                 $deleteDisabled = ' disabled';
                 $createNotesDisabled = 'disabled';
-                $hasNotesDisabled = 'disabled';
+                $hasNotesDisabled = '';
                 if ($budget['Budget']['editable']) {
                     $editDisabled = '';
                 }
@@ -22,6 +22,7 @@
 
                 if (count($budget['Note']) == 0 && $budget['Budget']['budget_status_id'] == 1) {
                     $createNotesDisabled = '';
+                    $hasNotesDisabled=' disabled';
                 }
 
                 if ($budget['Budget']['budget_status_id'] == 1) {

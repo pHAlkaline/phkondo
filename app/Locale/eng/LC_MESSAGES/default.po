@@ -378,6 +378,9 @@ msgstr ""
 msgid "Delete Administrator"
 msgstr ""
 
+msgid "Delete All"
+msgstr ""
+
 msgid "Delete Budget"
 msgstr ""
 
@@ -1074,6 +1077,9 @@ msgstr "Fee can not be deleted"
 
 msgid "Note deleted"
 msgstr "Fee deleted"
+
+msgid "Notes deleted"
+msgstr "Fees deleted"
 
 msgid "November"
 msgstr ""

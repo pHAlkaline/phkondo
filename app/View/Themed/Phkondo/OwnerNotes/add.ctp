@@ -23,10 +23,11 @@
             <fieldset>
                 <legend><?php echo __('New Note'); ?></legend>
                 <div class="form-group">
-                    <?php echo $this->Form->input('note_type_id', array('class' => 'form-control')); ?>
-                </div><!-- .form-group -->
-                <div class="form-group">
                     <?php echo $this->Form->input('fraction_id', array('class' => 'form-control')); ?>
+                </div><!-- .form-group -->
+                
+                <div class="form-group">
+                    <?php echo $this->Form->input('note_type_id', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
                     <?php echo $this->Form->input('amount', array('class' => 'form-control')); ?>

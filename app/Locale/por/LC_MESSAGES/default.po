@@ -387,6 +387,9 @@ msgstr "Apagar Conta"
 msgid "Delete Administrator"
 msgstr "Remover Administrador"
 
+msgid "Delete All"
+msgstr "Remover todos"
+
 msgid "Delete Budget"
 msgstr "Apagar Orçamento"
 
@@ -1069,6 +1072,9 @@ msgstr "Não foi possível apagar Quota"
 
 msgid "Note deleted"
 msgstr "Quota apagada"
+
+msgid "Note deleted"
+msgstr "Quotas apagadas"
 
 msgid "Note"
 msgid_plural "Notes"

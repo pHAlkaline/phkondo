@@ -47,7 +47,7 @@ class FiscalYear extends AppModel {
      *
      * @var string
      */
-    public $order = 'FiscalYear.title';
+    public $order =array("FiscalYear.open_date" => "DESC");
 
     /**
      * Validation rules

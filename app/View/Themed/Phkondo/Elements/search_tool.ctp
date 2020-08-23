@@ -31,7 +31,7 @@ if (isset($keyword)) :
             </div>
         </div>
 
-    </form>
+     <?php echo $this->Form->end(); ?>
     </div>
 <?php endif; ?>
 <div class="clearfix"></div>

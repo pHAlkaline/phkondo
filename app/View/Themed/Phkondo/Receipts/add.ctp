@@ -20,7 +20,7 @@
 
             <?php echo $this->Form->create('Receipt', array('class' => 'form-horizontal',                 'role' => 'form',                 'inputDefaults' => array(                     'class' => 'form-control',                     'label' => array('class' => 'col-sm-2 control-label'),                     'between' => '<div class="col-sm-6">',                     'after' => '</div>',                     ))); ?>
             
-            <?php  echo $this->Form->hidden('change_filter');; ?>
+            <?php  echo $this->Form->hidden('change_filter'); ?>
             <fieldset>
                 <legend><?php echo __('New Receipt'); ?></legend>
                 <div class="form-group">

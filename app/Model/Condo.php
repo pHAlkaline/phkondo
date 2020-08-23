@@ -137,7 +137,7 @@ class Condo extends AppModel {
             'dependent' => true,
             'conditions' => '',
             'fields' => '',
-            'order' => array('Fraction.length' => 'ASC', 'Fraction.fraction' => 'ASC'),
+            'order' => array('Fraction.fraction' => 'ASC'),
             'limit' => '',
             'offset' => '',
             'exclusive' => '',

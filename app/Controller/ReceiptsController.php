@@ -138,7 +138,7 @@ class ReceiptsController extends AppController {
         $condos = $this->Receipt->Condo->find('list', array('conditions' => array('Condo.id' => $this->getPhkRequestVar('condo_id'))));
         $fractions = $this->Receipt->Condo->Fraction->find('list', array('conditions' => array('Fraction.condo_id' => $this->getPhkRequestVar('condo_id'))));
 
-        If (!isset($this->request->data['Receipt']['fraction_id'])) {
+        if (!isset($this->request->data['Receipt']['fraction_id'])) {
             $fractionsForClients = $fractions;
             reset($fractionsForClients);
             $firstFraction = key($fractionsForClients);

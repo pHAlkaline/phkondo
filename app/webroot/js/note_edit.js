@@ -26,7 +26,11 @@
  */
 
 $(function () {
-
+    $("#NoteFractionId").on("change", function (event) {
+        $("#NoteChangeFilter").val('1');
+        $(this).closest("form").submit();
+        return false;
+    });
     $("#NoteNoteStatusId").change(function () {
         $("#elem_payment_date").removeClass("hidden");
         switch ($(this).val()) {

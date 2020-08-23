@@ -43,10 +43,11 @@
                 <legend><?php echo __('Edit Note'); ?></legend>
                 <?php echo $this->Form->input('id'); ?>
                 <div class="form-group">
-                    <?php echo $this->Form->input('note_type_id', array('class' => 'form-control')); ?>
-                </div><!-- .form-group -->
-                <div class="form-group">
                     <?php echo $this->Form->input('fraction_id', array('class' => 'form-control')); ?>
+                </div><!-- .form-group -->
+                
+                <div class="form-group">
+                    <?php echo $this->Form->input('note_type_id', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
                     <?php echo $this->Form->input('amount', array('class' => 'form-control')); ?>

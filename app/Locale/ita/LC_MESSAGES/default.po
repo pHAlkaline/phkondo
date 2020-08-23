@@ -378,6 +378,9 @@ msgstr "Cancella Account"
 msgid "Delete Administrator"
 msgstr "Cancella Amministratore"
 
+msgid "Delete All"
+msgstr "Cancella tutto"
+
 msgid "Delete Budget"
 msgstr "Cancella Budget"
 
@@ -1074,6 +1077,9 @@ msgstr "La quota non puo' essere cancellata"
 
 msgid "Note deleted"
 msgstr "Quota cancellato"
+
+msgid "Notes deleted"
+msgstr "Quotas cancellato"
 
 msgid "November"
 msgstr "Novembre"

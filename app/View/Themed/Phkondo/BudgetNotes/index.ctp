@@ -10,15 +10,16 @@ if ($phkRequestData['budget_status'] == 1) {
 
         <div class="index">
 
-            <h2 class="col-sm-9"><?php echo __n('Note', 'Notes', 2); ?></h2>
-            <div class="actions hidden-print col-sm-3">
+            <h2 class="col-xs-12 col-md-8"><?php echo __n('Note', 'Notes', 2); ?></h2>
+            <div class="actions hidden-print col-xs-12 col-md-4 pull-right text-right">
                 <?php
-                if ($showActions) :
-                          
-                    echo $this->Html->link('<span class="glyphicon glyphicon-remove"></span> ' . __('Delete All'), array('action' => 'delete_all', '?' => $this->request->query), array('class' => 'btn btn-danger', 'style' => 'margin: 8px 0; float: right;', 'escape' => false));
-                    echo "&nbsp;";
-                    echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Note'), array('action' => 'add', '?' => $this->request->query), array('class' => 'btn btn-primary', 'style' => 'margin: 8px 0; float: right;', 'escape' => false));
                 
+                if ($showActions) :
+                    echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Note'), array('action' => 'add', '?' => $this->request->query), array('class' => 'btn btn-primary', 'style' => 'margin: 8px 2px;', 'escape' => false));
+                    //if (in_array(AuthComponent::user('role'), array('admin', 'store_admin'))):
+                        echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span>' . __('Delete All'), array('action' => 'delete_all', $this->request->query['budget_id'], '?' => $this->request->query), array('title' => __('Delete'),'class' => 'btn btn-danger', 'style' => 'margin: 8px 2px; ', 'escape' => false, 'confirm' => __('Are you sure you want to delete all # %s?', __n('Note', 'Notes', 2))));
+                    //endif;
+                    //echo $this->Html->link('<span class="glyphicon glyphicon-remove"></span> ' . __('Delete All'), array('action' => 'delete_all', '?' => $this->request->query), array('class' => 'btn btn-danger', 'style' => 'margin: 8px 2px; ', 'escape' => false));
                 endif;
                 ?>
             </div><!-- /.actions -->
@@ -37,7 +38,7 @@ if ($phkRequestData['budget_status'] == 1) {
                             <th><?php echo $this->Paginator->sort('payment_date'); ?></th>
                             <th><?php echo $this->Paginator->sort('NoteStatus.name', __('Note Status')); ?></th>
                             <th class="amount"><?php echo $this->Paginator->sort('amount'); ?></th>
-                            <th class="actions hidden-print"><?php //echo __('Actions');    ?></th>
+                            <th class="actions hidden-print"><?php //echo __('Actions');     ?></th>
                         </tr>
                     </thead>
                     <tbody>

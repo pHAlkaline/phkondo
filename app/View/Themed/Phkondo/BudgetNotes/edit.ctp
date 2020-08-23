@@ -33,7 +33,7 @@
                 <div class="form-group">
                     
                 <div class="form-group">
-                    <?php echo $this->Form->input('note_type_id', array('class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('budget_id', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
                     <?php echo $this->Form->input('fraction_id', array('class' => 'form-control')); ?>
@@ -42,7 +42,7 @@
                     <?php echo $this->Form->input('entity_id', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
-                    <?php echo $this->Form->input('budget_id', array('class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('note_type_id', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
 
                 <div class="form-group">
