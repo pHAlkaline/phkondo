@@ -5,7 +5,15 @@
         <div id="sidebar" class="hidden-print actions sidebar-offcanvas">
 
             <ul class="nav nav-pills nav-stacked">
-                <li ><?php echo $this->Html->link(__('List Support Categories'), array('action' => 'index'), array('class' => 'btn')); ?></li>
+                <li ><?php echo $this->Html->link(__('View Support Category'), array('action' => 'view', $this->Form->value('id')), array('class' => 'btn ')); ?> </li>
+                <?php
+                $deleteDisabled = '';
+                if (!$this->Form->value('SupportCategory.deletable')) {
+                    $deleteDisabled = ' disabled';
+                }
+                ?>
+                <li ><?php echo $this->Form->postLink(__('Delete Support Category'), array('action' => 'delete', $this->Form->value('id')), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $this->Form->value('name')))); ?> </li>
+                <li ><?php echo $this->Html->link(__('List Support Categories'), array('action' => 'index'), array('class' => 'btn ')); ?> </li>
             </ul><!-- /.list-group -->
 
         </div><!-- /.actions -->
@@ -27,10 +35,10 @@
                     )
             );
             ?>
-            
+
             <fieldset>
                 <legend><?php echo __('Edit Support Category'); ?></legend>
-                 <?php echo $this->Form->input('id'); ?>
+                <?php echo $this->Form->input('id'); ?>
                 <div class="form-group">
                     <?php echo $this->Form->input('name', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->

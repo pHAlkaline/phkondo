@@ -6,9 +6,10 @@
         <div id="sidebar" class="hidden-print actions sidebar-offcanvas">
 
             <ul class="nav nav-pills nav-stacked">
+                 <li ><?php echo $this->Html->link(__('View Maintenance'), array('action' => 'edit',$this->Form->value('Maintenance.id'),'?'=>$this->request->query),array('class'=>'btn')); ?> </li>
+              
                 <li ><?php echo $this->Form->postLink(__('Delete Maintenance'), array('action' => 'delete', $this->Form->value('Maintenance.id'),'?'=>$this->request->query),array('class'=>'btn', 'confirm'=>__('Are you sure you want to delete # %s?', $this->Form->value('Maintenance.title')))); ?></li>
                 <li ><?php echo $this->Html->link(__('List Maintenances'), array('action' => 'index','?'=>$this->request->query),array('class'=>'btn')); ?></li>
-                <li ><?php echo $this->Html->link(__('New Maintenance'), array('action' => 'add','?'=>$this->request->query),array('class'=>'btn')); ?> </li>
                 <li ><?php echo $this->Html->link(__('New Supplier'), array('controller' => 'suppliers', 'action' => 'addFromMaintenance', $this->Form->value('Maintenance.id'),'?'=>$this->request->query),array('class'=>'btn')); ?> </li>
             </ul><!-- /.list-group -->
 

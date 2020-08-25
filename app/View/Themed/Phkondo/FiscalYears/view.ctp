@@ -18,6 +18,7 @@
                 <?php echo $this->Form->postLink(__('Set as Active'), array('action' => 'active', $fiscalYear['FiscalYear']['id'], '?' => $this->request->query), array('class' => 'btn ' . $activeDisabled)); ?>
                 <li ><?php echo $this->Html->link(__('Edit Fiscal Year'), array('action' => 'edit', $fiscalYear['FiscalYear']['id'], '?' => $this->request->query), array('class' => 'btn ')); ?> </li>
                 <li ><?php echo $this->Form->postLink(__('Delete Fiscal Year'), array('action' => 'delete', $fiscalYear['FiscalYear']['id'], '?' => $this->request->query), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $fiscalYear['FiscalYear']['title']))); ?> </li>
+                <li ><?php echo $this->Html->link(__('New Fiscal Year'), array('action' => 'add', '?' => $this->request->query), array('class' => 'btn ')); ?> </li>
                 <li ><?php echo $this->Html->link(__('List Fiscal Years'), array('action' => 'index', '?' => $this->request->query), array('class' => 'btn ')); ?> </li>
 
             </ul><!-- /.list-group -->

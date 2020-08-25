@@ -6,10 +6,11 @@
         <div id="sidebar" class="hidden-print actions sidebar-offcanvas">
 
             <ul class="nav nav-pills nav-stacked">
+                <li ><?php echo $this->Html->link(__('View Invoice'), array('action' => 'view', $this->Form->value('InvoiceConference.id'), '?' => $this->request->query), array('class' => 'btn ')); ?> </li>
+                
                 <li ><?php echo $this->Form->postLink(__('Delete Invoice'), array('action' => 'delete', $this->Form->value('InvoiceConference.id'), '?' => $this->request->query), array('class' => 'btn', 'confirm' => __('Are you sure you want to delete # %s?', $this->Form->value('InvoiceConference.description')))); ?></li>
                 <li ><?php echo $this->Html->link(__('List Invoices'), array('action' => 'index_by_supplier', $this->Form->value('InvoiceConference.supplier_id'), '?' => $this->request->query), array('class' => 'btn')); ?></li>
-                <li ><?php echo $this->Html->link(__('New Supplier'), array('controller' => 'suppliers', 'action' => 'addFromInvoice', $this->Form->value('InvoiceConference.id'), '?' => $this->request->query), array('class' => 'btn')); ?> </li>
-
+               
             </ul><!-- /.list-group -->
 
         </div><!-- /.actions -->

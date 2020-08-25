@@ -261,8 +261,8 @@ class UsersController extends AppController {
                 $breadcrumbs[1] = array('link' => '', 'text' => $this->getPhkRequestVar('user_text'), 'active' => 'active');
                 break;
             case 'add':
-                $breadcrumbs[0]['active'] = '';
-                $breadcrumbs[1] = array('link' => '', 'text' => __('Add User'), 'active' => 'active');
+                //$breadcrumbs[0]['active'] = '';
+                //$breadcrumbs[1] = array('link' => '', 'text' => __('Add User'), 'active' => 'active');
                 break;
             case 'login':
                 $breadcrumbs[0] = array('link' => '', 'text' => __('Start Session'), 'active' => 'active');
