@@ -52,16 +52,71 @@ Imposta il tuo Budget, Imposta l'importo, Fondo Cassa (%), Data Inizio, Spese, P
 Imposta lo stato del tuo budge su "attivo"
 Vai alla sezione "Crea Quote" per la creazione automatica delle quote condominiali
 
+uida rapida di pHKondo
 
-.. Dopo di questo puoi esplorare ...
-Vai alla sezione Ricevute per creare i documenti per le ricevute di pagamento
-Vai alla sezione "Invoice Conference" per gestire i debiti del condominio/pagamenti fornitori
-Vai alla sezione "Manutenzioni" per gestire le manutenzioni programmate
-Vai alla sezione "Assicurazioni" per gestire le assicurazioni del condominio e delle unita' immobiliari
-Vai alla sezione "Documenti" per gestire i documenti
-Vai alla sezione "Report per Bilancio, Incassi, Spese, ..."
-Vai alla sezione "Bozze" per creare qualche bozza documento che potrebbe servirti
-E altre caratteristiche che pHKondo può avere.
+Aggiungi condominio -> Nuovo condominio
+Inserisci i dettagli del condominio
+
+Vai a Anni fiscali
+Aggiungi anno fiscale -> Nuovo anno fiscale
+* L'anno fiscale viene utilizzato per impostare il periodo di gestione, può essere qualsiasi periodo non sia necessario un anno.
+L'intervallo di tempo dell'anno fiscale (data di inizio, data di fine) viene utilizzato per controllare alcune funzionalità:
+- Saldo del conto per anno fiscale, budget ...
+- Rapporti per saldo, entrate, spese, debiti, mappe delle commissioni
+* IMPORTANTE: alcuni dati sono presentati e raggruppati per anno fiscale attivo, per vedere i dati di un altro anno fiscale è necessario attivare.
+
+Torna ai dettagli del condominio
+Vai a Proprietà
+Aggiungi proprietà -> Nuova proprietà
+Immettere i dettagli della proprietà
+
+All'interno della proprietà vai ai proprietari
+Aggiungi proprietari -> Nuovo proprietario
+Oppure usa Inserisci proprietario per cercare proprietari già presenti nel tuo database
+
+Torna ai dettagli del condominio
+Vai ad Amministratori
+Aggiungi amministratori -> Aggiungi amministratore
+* L'amministratore è il proprietario selezionato per essere un collegamento diretto (rappresentante) tra la società / servizio di gestione di Condo e tutti i proprietari in materia di condominio.
+
+
+Torna ai dettagli del condominio e gestisci la contabilità bancaria o interna
+Vai ad Account
+Aggiungi account -> Nuovo account
+Immettere i dettagli dell'account
+
+Account interno Vai a Movimenti
+Aggiungi movimenti dell'account -> Nuovo movimento
+* Ogni movimento deve appartenere all'anno fiscale attivo
+* Per ogni anno fiscale è necessario creare il primo e l'ultimo movimento descritti di seguito, ciò consentirà a pHKondo di creare rapporti sul conto basati sull'anno fiscale.
+* Il primo movimento dovrebbe essere:
+Importo iniziale per saldo di apertura
+Scegli Apertura / Chiusura per categoria
+Scegliere il saldo di apertura durante l'operazione di movimento
+Tipo di movimento: Credito se il saldo aperto è 0 o superiore, Addebito se il saldo aperto è <0
+* Alla fine dell'anno fiscale deve chiudere i movimenti del conto, è richiesto un ultimo movimento:
+Per quest'ultimo movimento:
+Scegli Apertura / Chiusura per categoria
+Chosse Saldo di chiusura sull'operazione di movimento
+
+Torna ai dettagli del condominio
+Vai a Budget
+Aggiungi budget -> Nuovo budget
+Imposta i budget, imposta l'importo, il fondo di riserva (%), la data di inizio, le commissioni, la periodicità delle commissioni, la distribuzione delle commissioni e i giorni di scadenza.
+Questi campi verranno utilizzati per la creazione automatica della tariffa in base ai dettagli del budget
+Metti il ​​tuo budget sullo stato attivo.
+Vai a Crea commissioni per feed di addebito automatico
+
+
+.. Dopo questo puoi esplorare ...
+Vai a Ricevute per creare documenti per pagamenti di reddito con ricevute
+Vai a Invoice Conference per gestire debiti e pagamenti fornitori
+Vai a Manutenzioni per gestire i programmi di manutenzione
+Vai a Assicurazioni per gestire assicurazioni condominiali e proprietà
+Vai a Documenti per gestire i documenti
+Vai a Rapporti per saldo, entrate, spese, debiti, mappe commissioni, elenchi di contatti ...
+Vai a Bozze per creare alcune bozze di documenti che potresti richiedere ...
+E altre caratteristiche che pHKondo potrebbe avere.
 
 NOTA FINALE:
-Se stai cercando altre caratteristiche che pHKondo non ha ma che vorresti acquistare, contattaci all'indirizzo mail contact@phalkaline.eu
+Se stai cercando altre funzionalità che pHKondo potrebbe non avere a disposizione e desideri acquisire, non esitare a contattarci all'indirizzo contact@phalkaline.eu

@@ -3,6 +3,15 @@ pHKondo Guia Rápido
 Adicionar condomínio (s) -> Criar Condomínio
 Ver detalhes do condomínio
 
+Entrar nos Exercícios
+Adicionar exercício -> Criar exercício
+* Exercício/Ano Fiscal é usado para configurar períodos de gestão, pode o período que entender, não necessariamente um ano.
+É usado para controlar e agrupar dados em:
+- Saldos de contas, Orçamentos...
+- Relatórios para Balancete, receitas, despesas, em dívida, mapa de quotas
+* IMPORTANTE: Atenção, os dados apresentados são agrupados conforme o exercício ativo, para ver dados de outro execicio este deve ser ativado posteriormente.
+
+Regresse ao detalhes do condomínio
 Entrar nas Frações
 Adicionar propriedades -> Criar Fração
 Ver detalhes da fração
@@ -16,16 +25,9 @@ Entar nos Administradores
 Adicionar administradores -> Adicionar Administrador
 * Administrador é o proprietário(s) selecionado que serve de elo de ligação/representante entre a gestão do Condomínio/empresa/serviço e todos os proprietários.
 
-Regresse ao detalhes do condomínio
-Entrar nos Exercícios
-Adicionar exercício -> Criar exercício
-* Exercício/Ano Fiscal é usado para configurar períodos de gestão, pode o período que entender, não necessariamente um ano.
-É usado para controlar e agrupar dados em:
-- Saldos de contas, Orçamentos...
-- Relatórios para Balancete, receitas, despesas, em dívida, mapa de quotas
-* IMPORTANTE: Atenção, os dados apresentados são agrupados conforme o exercício ativo, para ver dados de outro execicio este deve ser ativado posteriormente.
 
 Regresse ao detalhes do condomínio
+Gestão de contas bancárias e/ou internas
 Entrar nas contas
 Adicionar conta -> Nova Conta
 Ver detalhes da conta
