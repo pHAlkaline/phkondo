@@ -129,7 +129,7 @@ class ReceiptsController extends AppController {
             if ($this->Receipt->save($this->request->data)) {
                 $this->_setReceiptIndex($this->getPhkRequestVar('condo_id'), $number);
                 $this->Flash->success(__('The receipt has been saved'));
-                $this->redirect(array('action' => 'edit', $this->Receipt->id, '?' => $this->request->query));
+                $this->redirect(array('action' => 'view', $this->Receipt->id, '?' => $this->request->query));
             } else {
                 //debug($this->Receipt->validationErrors);
                 $this->Flash->error(__('The receipt could not be saved. Please, try again.'));
