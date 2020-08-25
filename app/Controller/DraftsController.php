@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * pHKondo : pHKondo software for condominium property managers (http://phalkaline.eu)
@@ -25,9 +26,7 @@
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
-
 App::uses('AppController', 'Controller');
-
 
 /**
  * Reports Controller
@@ -49,29 +48,27 @@ class DraftsController extends AppController {
      * @return void
      */
     public function index() {
-       $this->render('notfound'); 
+        $this->render('notfound');
     }
-    
-   
 
     public function beforeFilter() {
         parent::beforeFilter();
         if (!$this->getPhkRequestVar('condo_id')) {
             $this->Flash->error(__('Invalid condo'));
-            $this->redirect(array('controller'=>'condos','action' => 'index'));
+            $this->redirect(array('controller' => 'condos', 'action' => 'index'));
         }
     }
 
     public function beforeRender() {
         parent::beforeRender();
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
-            array('link' => '', 'text' => __('Drafts'), 'active' => 'active')
+            //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
+            //array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text') . ' ( ' . $this->phkRequestData['fiscal_year_text'] . ' ) ', 'active' => ''),
+            array('link' => Router::url(array('controller' => 'drafts', 'action' => 'index', '?' => $this->request->query), true), 'text' => __('Drafts'), 'active' => 'active')
         );
-      $headerTitle=__('Drafts');
-        $this->set(compact('breadcrumbs','headerTitle'));
+        $headerTitle = __('Drafts');
+        $this->set(compact('breadcrumbs', 'headerTitle'));
     }
 
 }

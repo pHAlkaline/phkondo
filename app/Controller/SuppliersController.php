@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * pHKondo : pHKondo software for condominium property managers (http://phalkaline.eu)
@@ -25,7 +26,6 @@
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
-
 App::uses('AppController', 'Controller');
 
 /**
@@ -35,29 +35,28 @@ App::uses('AppController', 'Controller');
  * @property PaginatorComponent $Paginator
  */
 class SuppliersController extends AppController {
-    
-    public $uses = array ('Supplier','Maintenance','InvoiceConference');
 
-   /**
+    public $uses = array('Supplier', 'Maintenance', 'InvoiceConference');
+
+    /**
      * Components
      *
      * @var array
      */
-    public $components = array('Paginator','Feedback.Comments' => array('on' => array('view')));
+    public $components = array('Paginator', 'Feedback.Comments' => array('on' => array('view')));
+    public $helpers = array(
+        'Feedback.Comments' => array('elementIndex' => 'comment_index', 'elementForm' => 'comment_add')
+    );
 
-     public $helpers = array(
-        'Feedback.Comments' => array('elementIndex'=> 'comment_index','elementForm'=> 'comment_add')
-        );
-        
     /**
      * index method
      *
      * @return void
      */
     public function index() {
-       $this->Paginator->settings = array_replace_recursive($this->Paginator->settings ,
+        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings,
                 array('conditions' => array()));
-        $this->setFilter(array('Supplier.name','Supplier.address','Supplier.email','Supplier.contacts','Supplier.vat_number'));
+        $this->setFilter(array('Supplier.name', 'Supplier.address', 'Supplier.email', 'Supplier.contacts', 'Supplier.vat_number'));
         $this->set('suppliers', $this->Paginator->paginate('Supplier'));
     }
 
@@ -75,11 +74,10 @@ class SuppliersController extends AppController {
         }
         $this->Supplier->contain(array('Comment'));
         $options = array('conditions' => array('Supplier.' . $this->Supplier->primaryKey => $id));
-        $supplier=$this->Supplier->find('first', $options);
-        $this->set('supplier',$supplier );
+        $supplier = $this->Supplier->find('first', $options);
+        $this->set('supplier', $supplier);
         $this->setPhkRequestVar('supplier_id', $id);
         $this->setPhkRequestVar('supplier_text', $supplier['Supplier']['name']);
-        
     }
 
     /**
@@ -92,15 +90,12 @@ class SuppliersController extends AppController {
             $this->Supplier->create();
             if ($this->Supplier->save($this->request->data)) {
                 $this->Flash->success(__('The supplier has been saved'));
-                $this->redirect(array('action' => 'view',$this->Supplier->id));
+                $this->redirect(array('action' => 'view', $this->Supplier->id));
             } else {
                 $this->Flash->error(__('The supplier could not be saved. Please, try again.'));
             }
         }
-        
     }
-
-    
 
     /**
      * addFromMaintenance method
@@ -108,42 +103,42 @@ class SuppliersController extends AppController {
      * @return void
      */
     public function addFromMaintenance($maintenanceId = null) {
-        
+
         $maintenance = $this->Maintenance;
         if ($maintenanceId != null && !$maintenance->exists($maintenanceId)) {
             $this->Flash->error(__('Invalid supplier'));
-            $this->redirect(array('controller'=>'maintenance','action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('controller' => 'maintenance', 'action' => 'index', '?' => $this->request->query));
         }
         if ($this->request->is('post')) {
             $this->Supplier->create();
             if ($this->Supplier->save($this->request->data)) {
                 $this->Flash->success(__('The supplier has been saved'));
                 if ($maintenanceId != null) {
-                    $this->redirect(array('controller' => 'maintenances', 'action' => 'edit', $maintenanceId,'?'=>$this->request->query));
+                    $this->redirect(array('controller' => 'maintenances', 'action' => 'edit', $maintenanceId, '?' => $this->request->query));
                 } else {
-                    $this->redirect(array('controller' => 'maintenances', 'action' => 'add','?'=>$this->request->query));
+                    $this->redirect(array('controller' => 'maintenances', 'action' => 'add', '?' => $this->request->query));
                 }
             } else {
                 $this->Flash->error(__('The supplier could not be saved. Please, try again.'));
             }
         }
-        
+
         $this->set(compact('maintenanceId'));
 
         if (!$this->getPhkRequestVar('condo_id')) {
             $this->Flash->error(__('Invalid condo'));
-           $this->redirect(array('controller'=>'condos','action' => 'index'));
+            $this->redirect(array('controller' => 'condos', 'action' => 'index'));
         }
 
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'maintenances', 'action' => 'index','?'=>$this->request->query)), 'text' => __n('Maintenance','Maintenances',2), 'active' => ''),
-            array('link' => '', 'text' => __n('Supplier','Suppliers',2), 'active' => 'active')
+            //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
+            //array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text') . ' ( ' . $this->phkRequestData['fiscal_year_text'] . ' ) ', 'active' => ''),
+            array('link' => Router::url(array('controller' => 'maintenances', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Maintenance', 'Maintenances', 2), 'active' => ''),
+            array('link' => '', 'text' => __n('Supplier', 'Suppliers', 2), 'active' => 'active')
         );
-        $headerTitle=__n('Supplier','Suppliers',2);
-        $this->set(compact('breadcrumbs','headerTitle'));
+        $headerTitle = __n('Supplier', 'Suppliers', 2);
+        $this->set(compact('breadcrumbs', 'headerTitle'));
     }
 
     /**
@@ -152,45 +147,44 @@ class SuppliersController extends AppController {
      * @return void
      */
     public function addFromInvoice($invoiceId = null) {
-        
+
         $invoice = $this->InvoiceConference;
         if ($invoiceId != null && !$invoice->exists($invoiceId)) {
             $this->Flash->error(__('Invalid supplier'));
-            $this->redirect(array('controller'=>'invoice_conference','action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('controller' => 'invoice_conference', 'action' => 'index', '?' => $this->request->query));
         }
         if ($this->request->is('post')) {
             $this->Supplier->create();
             if ($this->Supplier->save($this->request->data)) {
                 $this->Flash->success(__('The supplier has been saved'));
                 if ($invoiceId != null) {
-                    $this->redirect(array('controller' => 'invoice_conference', 'action' => 'edit', $invoiceId,'?'=>$this->request->query));
+                    $this->redirect(array('controller' => 'invoice_conference', 'action' => 'edit', $invoiceId, '?' => $this->request->query));
                 } else {
-                    $this->redirect(array('controller' => 'invoice_conference', 'action' => 'add','?'=>$this->request->query));
+                    $this->redirect(array('controller' => 'invoice_conference', 'action' => 'add', '?' => $this->request->query));
                 }
             } else {
                 $this->Flash->error(__('The supplier could not be saved. Please, try again.'));
             }
         }
-        
+
         $this->set(compact('invoiceId'));
 
         if (!$this->getPhkRequestVar('condo_id')) {
             $this->Flash->error(__('Invalid condo'));
-           $this->redirect(array('controller'=>'condos','action' => 'index'));
+            $this->redirect(array('controller' => 'condos', 'action' => 'index'));
         }
 
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'invoice_conference', 'action' => 'index','?'=>$this->request->query)), 'text' => __n('Invoice Conference','Invoice Conferences',2), 'active' => ''),
-            array('link' => '', 'text' => __n('Supplier','Suppliers',2), 'active' => 'active')
+            //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
+            //array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text') . ' ( ' . $this->phkRequestData['fiscal_year_text'] . ' ) ', 'active' => ''),
+            array('link' => Router::url(array('controller' => 'invoice_conference', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Invoice Conference', 'Invoice Conferences', 2), 'active' => ''),
+            array('link' => '', 'text' => __n('Supplier', 'Suppliers', 2), 'active' => 'active')
         );
-        $headerTitle=__n('Supplier','Suppliers',2);
-        $this->set(compact('breadcrumbs','headerTitle'));
+        $headerTitle = __n('Supplier', 'Suppliers', 2);
+        $this->set(compact('breadcrumbs', 'headerTitle'));
     }
 
-    
     /**
      * edit method
      *
@@ -206,7 +200,7 @@ class SuppliersController extends AppController {
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Supplier->save($this->request->data)) {
                 $this->Flash->success(__('The supplier has been saved'));
-                $this->redirect(array('action' => 'view',$id));
+                $this->redirect(array('action' => 'view', $id));
             } else {
                 $this->Flash->error(__('The supplier could not be saved. Please, try again.'));
             }
@@ -216,7 +210,6 @@ class SuppliersController extends AppController {
         }
         $this->setPhkRequestVar('supplier_id', $id);
         $this->setPhkRequestVar('supplier_text', $this->request->data['Supplier']['name']);
-        
     }
 
     /**
@@ -241,7 +234,7 @@ class SuppliersController extends AppController {
             $this->redirect(array('action' => 'index'));
         }
         $this->Flash->error(__('Supplier can not be deleted'));
-        $this->redirect(array('action' => 'view',$id));
+        $this->redirect(array('action' => 'view', $id));
     }
 
     public function beforeRender() {
@@ -250,22 +243,22 @@ class SuppliersController extends AppController {
             return;
         }
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
-            array('link' => '', 'text' => __n('Supplier','Suppliers',2), 'active' => 'active')
+            //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'suppliers', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Supplier', 'Suppliers', 2), 'active' => 'active')
         );
         switch ($this->action) {
             case 'view':
-                $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'suppliers', 'action' => 'index')), 'text' => __n('Supplier','Suppliers',2), 'active' => '');
-                $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('supplier_text'), 'active' => 'active');
+                $breadcrumbs[0] = array('link' => Router::url(array('controller' => 'suppliers', 'action' => 'index')), 'text' => __n('Supplier', 'Suppliers', 2), 'active' => '');
+                $breadcrumbs[1] = array('link' => '', 'text' => $this->getPhkRequestVar('supplier_text'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'suppliers', 'action' => 'index')), 'text' => __n('Supplier','Suppliers',2), 'active' => '');
-                $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('supplier_text'), 'active' => 'active');
-                
+                $breadcrumbs[0] = array('link' => Router::url(array('controller' => 'suppliers', 'action' => 'index')), 'text' => __n('Supplier', 'Suppliers', 2), 'active' => '');
+                $breadcrumbs[1] = array('link' => '', 'text' => $this->getPhkRequestVar('supplier_text'), 'active' => 'active');
+
                 break;
         }
-        $headerTitle=__n('Supplier','Suppliers',2);
-        $this->set(compact('breadcrumbs','headerTitle'));
+        $headerTitle = __n('Supplier', 'Suppliers', 2);
+        $this->set(compact('breadcrumbs', 'headerTitle'));
     }
 
 }

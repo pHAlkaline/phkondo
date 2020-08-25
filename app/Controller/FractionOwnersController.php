@@ -177,7 +177,6 @@ class FractionOwnersController extends AppController {
             if ($this->Fraction->EntitiesFraction->save($this->request->data) && $this->Fraction->Entity->save($this->request->data)) {
                 $this->Flash->success(__('The owner has been saved'));
                 $this->redirect(array('action' => 'view', $this->Fraction->Entity->id, '?' => $this->request->query));
-      
             } else {
                 $this->Flash->error(__('The owner could not be saved. Please, try again.'));
             }
@@ -262,21 +261,21 @@ class FractionOwnersController extends AppController {
     public function beforeRender() {
         parent::beforeRender();
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
+            //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
+            //array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text') . ' ( ' . $this->phkRequestData['fiscal_year_text'] . ' ) ', 'active' => ''),
             array('link' => Router::url(array('controller' => 'fractions', 'action' => 'index', '?' => array('condo_id' => $this->getPhkRequestVar('condo_id')))), 'text' => __n('Fraction', 'Fractions', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'fractions', 'action' => 'view', $this->getPhkRequestVar('fraction_id'), '?' => array('condo_id' => $this->getPhkRequestVar('condo_id')))), 'text' => $this->getPhkRequestVar('fraction_text'), 'active' => ''),
-            array('link' => '', 'text' => __n('Owner', 'Owners', 2), 'active' => 'active')
+            array('link' => Router::url(array('controller' => 'fraction_owners', 'action' => 'index', '?' => $this->request->query), true), 'text' => __n('Owner', 'Owners', 2), 'active' => 'active')
         );
         switch ($this->action) {
             case 'view':
-                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'fraction_owners', 'action' => 'index', '?' => array('fraction_id' => $this->getPhkRequestVar('fraction_id')))), 'text' => __n('Owner', 'Owners', 2), 'active' => '');
-                $breadcrumbs[6] = array('link' => '', 'text' => $this->getPhkRequestVar('owner_text'), 'active' => 'active');
+                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'fraction_owners', 'action' => 'index', '?' => array('fraction_id' => $this->getPhkRequestVar('fraction_id')))), 'text' => __n('Owner', 'Owners', 2), 'active' => '');
+                $breadcrumbs[4] = array('link' => '', 'text' => $this->getPhkRequestVar('owner_text'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'fraction_owners', 'action' => 'index', '?' => array('fraction_id' => $this->getPhkRequestVar('fraction_id')))), 'text' => __n('Owner', 'Owners', 2), 'active' => '');
-                $breadcrumbs[6] = array('link' => '', 'text' => $this->getPhkRequestVar('owner_text'), 'active' => 'active');
+                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'fraction_owners', 'action' => 'index', '?' => array('fraction_id' => $this->getPhkRequestVar('fraction_id')))), 'text' => __n('Owner', 'Owners', 2), 'active' => '');
+                $breadcrumbs[4] = array('link' => '', 'text' => $this->getPhkRequestVar('owner_text'), 'active' => 'active');
                 break;
         }
         $headerTitle = __n('Owner', 'Owners', 2);

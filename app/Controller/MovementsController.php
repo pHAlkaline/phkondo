@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * pHKondo : pHKondo software for condominium property managers (http://phalkaline.eu)
@@ -25,7 +26,6 @@
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
-
 App::uses('AppController', 'Controller');
 
 /**
@@ -35,13 +35,11 @@ App::uses('AppController', 'Controller');
  * @property PaginatorComponent $Paginator
  */
 class MovementsController extends AppController {
-
     /**
      * Components
      *
      * @var array
      */
-    
 
     /**
      * index method
@@ -49,9 +47,9 @@ class MovementsController extends AppController {
      * @return void
      */
     public function index() {
-        
-        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings , array(
-            'contain'=>array('MovementCategory','MovementOperation','MovementType','Account'=>array('fields'=>array('title','balance'))),
+
+        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings, array(
+            'contain' => array('MovementCategory', 'MovementOperation', 'MovementType', 'Account' => array('fields' => array('title', 'balance'))),
             'limit' => 100,
             'conditions' => array(
                 'Movement.account_id' => $this->getPhkRequestVar('account_id'),
@@ -59,7 +57,6 @@ class MovementsController extends AppController {
         ));
         $this->setFilter(array('Movement.description', 'Movement.amount', 'Movement.document', 'Movement.document', 'MovementCategory.name', 'MovementType.name', 'MovementOperation.name'));
         $this->set('movements', $this->Paginator->paginate('Movement'));
-        
     }
 
     /**
@@ -72,20 +69,19 @@ class MovementsController extends AppController {
     public function view($id = null) {
         if (!$this->Movement->exists($id)) {
             $this->Flash->error(__('Invalid movement'));
-            $this->redirect(array('action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
-        $this->Movement->contain(array('MovementCategory','MovementOperation','MovementType','Account'=>array('fields'=>array('title')),'FiscalYear'=>array('fields'=>array('title'))));
+        $this->Movement->contain(array('MovementCategory', 'MovementOperation', 'MovementType', 'Account' => array('fields' => array('title')), 'FiscalYear' => array('fields' => array('title'))));
         $options = array('conditions' => array(
                 'Movement.' . $this->Movement->primaryKey => $id,
                 'Movement.account_id' => $this->getPhkRequestVar('account_id'),
                 'Movement.fiscal_year_id' => $this->getPhkRequestVar('fiscal_year_id')));
         $movement = $this->Movement->find('first', $options);
         $this->set('movement', $movement);
-        $this->Movement->id=$id;
-        $this->set('deletable',$this->Movement->Deletable());
-        $this->setPhkRequestVar('movement_id',$id);
-        $this->setPhkRequestVar('movement_text',$movement['Movement']['description']);
-        
+        $this->Movement->id = $id;
+        $this->set('deletable', $this->Movement->Deletable());
+        $this->setPhkRequestVar('movement_id', $id);
+        $this->setPhkRequestVar('movement_text', $movement['Movement']['description']);
     }
 
     /**
@@ -98,16 +94,16 @@ class MovementsController extends AppController {
             array('Movement.fiscal_year_id' => $this->getPhkRequestVar('fiscal_year_id'),
                 'Movement.account_id' => $this->getPhkRequestVar('account_id'),
                 'Movement.movement_operation_id' => '2'),
-                ));
+        ));
         if ($closeMovement) {
             $this->Flash->error(__('No movements allowed'));
-            $this->redirect(array('action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
         if ($this->request->is('post')) {
             $this->Movement->create();
             if ($this->Movement->save($this->request->data)) {
                 $this->Flash->success(__('The movement has been saved'));
-                $this->redirect(array('action' => 'view', $this->Movement->id,'?'=>$this->request->query));
+                $this->redirect(array('action' => 'view', $this->Movement->id, '?' => $this->request->query));
             } else {
                 $this->Flash->error(__('The movement could not be saved. Please, try again.'));
             }
@@ -117,23 +113,22 @@ class MovementsController extends AppController {
             array('Movement.fiscal_year_id' => $this->getPhkRequestVar('fiscal_year_id'),
                 'Movement.account_id' => $this->getPhkRequestVar('account_id'),
                 'Movement.movement_operation_id' => '1'),
-                ));
+        ));
 
         $accounts = $this->Movement->Account->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('account_id'))));
-        $fiscalYears = $this->Movement->FiscalYear->find('list', array('conditions' => array('active'=>'1','condo_id'=>$this->getPhkRequestVar('condo_id'),'id' => $this->getPhkRequestVar('fiscal_year_id'))));
-        $fiscalYearData= $this->Movement->FiscalYear->find('first', array('fields'=>array('open_date','close_date'),'conditions' => array('active'=>'1','condo_id'=>$this->getPhkRequestVar('condo_id'),'id' => $this->getPhkRequestVar('fiscal_year_id'))));
-       
+        $fiscalYears = $this->Movement->FiscalYear->find('list', array('conditions' => array('active' => '1', 'condo_id' => $this->getPhkRequestVar('condo_id'), 'id' => $this->getPhkRequestVar('fiscal_year_id'))));
+        $fiscalYearData = $this->Movement->FiscalYear->find('first', array('fields' => array('open_date', 'close_date'), 'conditions' => array('active' => '1', 'condo_id' => $this->getPhkRequestVar('condo_id'), 'id' => $this->getPhkRequestVar('fiscal_year_id'))));
+
         $movementTypes = $this->Movement->MovementType->find('list', array('conditions' => array('active' => '1')));
 
         $movementCategories = $this->Movement->MovementCategory->find('list', array('conditions' => array('active' => '1')));
-        $openMovement = ( $openMovement==0 ? true : false );
+        $openMovement = ( $openMovement == 0 ? true : false );
         if ($openMovement) {
             $movementOperations = $this->Movement->MovementOperation->find('list', array('conditions' => array('MovementOperation.id' => '1', 'active' => '1')));
         } else {
-            $movementOperations = $this->Movement->MovementOperation->find('list', array('conditions' => array('MovementOperation.id <>' => '1', 'active' => '1')));            
-
+            $movementOperations = $this->Movement->MovementOperation->find('list', array('conditions' => array('MovementOperation.id <>' => '1', 'active' => '1')));
         }
-        $this->set(compact('accounts', 'movementCategories', 'movementOperations', 'movementTypes', 'fiscalYears','openMovement','fiscalYearData'));
+        $this->set(compact('accounts', 'movementCategories', 'movementOperations', 'movementTypes', 'fiscalYears', 'openMovement', 'fiscalYearData'));
     }
 
     /**
@@ -152,7 +147,7 @@ class MovementsController extends AppController {
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Movement->save($this->request->data)) {
                 $this->Flash->success(__('The movement has been saved'));
-                $this->redirect(array('action' => 'view',$id,'?'=>$this->request->query));
+                $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
                 //$this->redirect(array('action' => 'view', $id));
             } else {
                 $this->Flash->error(__('The movement could not be saved. Please, try again.'));
@@ -165,23 +160,22 @@ class MovementsController extends AppController {
             $this->request->data = $this->Movement->find('first', $options);
         }
         $accounts = $this->Movement->Account->find('list', array('conditions' => array('id' => $this->request->data['Movement']['account_id'])));
-        $fiscalYears = $this->Movement->FiscalYear->find('list', array('conditions' => array('condo_id'=>$this->getPhkRequestVar('condo_id'),'id' => $this->getPhkRequestVar('condo_id'))));
-        $fiscalYearData= $this->Movement->FiscalYear->find('first', array('fields'=>array('open_date','close_date'),'conditions' => array('active'=>'1','condo_id'=>$this->getPhkRequestVar('condo_id'),'id' =>$this->request->data['Movement']['fiscal_year_id'])));
+        $fiscalYears = $this->Movement->FiscalYear->find('list', array('conditions' => array('condo_id' => $this->getPhkRequestVar('condo_id'), 'id' => $this->getPhkRequestVar('condo_id'))));
+        $fiscalYearData = $this->Movement->FiscalYear->find('first', array('fields' => array('open_date', 'close_date'), 'conditions' => array('active' => '1', 'condo_id' => $this->getPhkRequestVar('condo_id'), 'id' => $this->request->data['Movement']['fiscal_year_id'])));
         $movementTypes = $this->Movement->MovementType->find('list', array('conditions' => array('active' => '1')));
         $movementCategories = $this->Movement->MovementCategory->find('list', array('conditions' => array('active' => '1')));
 
-        $openMovement = ( $this->request->data['Movement']['movement_operation_id']==1 ? true : false );
+        $openMovement = ( $this->request->data['Movement']['movement_operation_id'] == 1 ? true : false );
         if ($openMovement) {
-             $movementOperations = $this->Movement->MovementOperation->find('list', array('conditions' => array('MovementOperation.id' => '1', 'active' => '1')));
-            
+            $movementOperations = $this->Movement->MovementOperation->find('list', array('conditions' => array('MovementOperation.id' => '1', 'active' => '1')));
         } else {
-             $movementOperations = $this->Movement->MovementOperation->find('list', array('conditions' => array('MovementOperation.id <>' => '1', 'active' => '1')));
+            $movementOperations = $this->Movement->MovementOperation->find('list', array('conditions' => array('MovementOperation.id <>' => '1', 'active' => '1')));
         }
-        $this->Movement->id=$id;
-        $deletable=$this->Movement->deletable();
-        $this->set(compact('accounts', 'movementCategories', 'movementOperations', 'movementTypes', 'fiscalYears','deletable','fiscalYearData','openMovement'));
-        $this->setPhkRequestVar('movement_id',$id);
-        $this->setPhkRequestVar('movement_text',$this->request->data['Movement']['description']);
+        $this->Movement->id = $id;
+        $deletable = $this->Movement->deletable();
+        $this->set(compact('accounts', 'movementCategories', 'movementOperations', 'movementTypes', 'fiscalYears', 'deletable', 'fiscalYearData', 'openMovement'));
+        $this->setPhkRequestVar('movement_id', $id);
+        $this->setPhkRequestVar('movement_text', $this->request->data['Movement']['description']);
     }
 
     /**
@@ -199,49 +193,49 @@ class MovementsController extends AppController {
         $this->Movement->id = $id;
         if (!$this->Movement->exists()) {
             $this->Flash->error(__('Invalid movement'));
-            $this->redirect(array('action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
 
         $this->Movement->read();
         if ($this->Movement->deletable() && $this->Movement->delete()) {
             $this->Flash->success(__('Movement deleted'));
-            $this->redirect(array('action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
         $this->Flash->error(__('Movement can not be deleted'));
-        $this->redirect(array('action' => 'index','?'=>$this->request->query));
+        $this->redirect(array('action' => 'index', '?' => $this->request->query));
     }
 
     public function beforeFilter() {
         parent::beforeFilter();
         if (!$this->getPhkRequestVar('account_id') || !$this->getPhkRequestVar('fiscal_year_id')) {
             $this->Flash->error(__('Invalid account or fiscal year'));
-            $this->redirect(array('controller'=>'accounts','action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('controller' => 'accounts', 'action' => 'index', '?' => $this->request->query));
         }
     }
 
     public function beforeRender() {
-parent::beforeRender();
-     $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'accounts', 'action' => 'index','?'=>array('condo_id'=>$this->getPhkRequestVar('condo_id')))), 'text' => __n('Account','Accounts',2), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'accounts', 'action' => 'view', $this->getPhkRequestVar('account_id'),'?'=>array('condo_id'=>$this->getPhkRequestVar('condo_id')))), 'text' => $this->getPhkRequestVar('account_text'), 'active' => ''),
-            array('link' => '', 'text' => __n('Movement','Movements',2), 'active' => 'active')
+        parent::beforeRender();
+        $breadcrumbs = array(
+            //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
+            //array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text') . ' ( ' . $this->phkRequestData['fiscal_year_text'] . ' ) ', 'active' => ''),
+            array('link' => Router::url(array('controller' => 'accounts', 'action' => 'index', '?' => array('condo_id' => $this->getPhkRequestVar('condo_id')))), 'text' => __n('Account', 'Accounts', 2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'accounts', 'action' => 'view', $this->getPhkRequestVar('account_id'), '?' => array('condo_id' => $this->getPhkRequestVar('condo_id')))), 'text' => $this->getPhkRequestVar('account_text'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'movements', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Movement', 'Movements', 2), 'active' => 'active')
         );
 
         switch ($this->action) {
             case 'view':
-                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'movements', 'action' => 'index','?'=>$this->request->query)), 'text' => __n('Movement','Movements',2), 'active' => '');
-                $breadcrumbs[6] = array('link' => '', 'text' => $this->getPhkRequestVar('movement_text'), 'active' => 'active');
+                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'movements', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Movement', 'Movements', 2), 'active' => '');
+                $breadcrumbs[4] = array('link' => '', 'text' => $this->getPhkRequestVar('movement_text'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'movements', 'action' => 'index','?'=>$this->request->query)), 'text' => __n('Movement','Movements',2), 'active' => '');
-                $breadcrumbs[6] = array('link' => '', 'text' => $this->getPhkRequestVar('movement_text'), 'active' => 'active');
+                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'movements', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Movement', 'Movements', 2), 'active' => '');
+                $breadcrumbs[4] = array('link' => '', 'text' => $this->getPhkRequestVar('movement_text'), 'active' => 'active');
                 break;
         }
-        $headerTitle=__n('Movement','Movements',2);
-        $this->set(compact('breadcrumbs','headerTitle'));
+        $headerTitle = __n('Movement', 'Movements', 2);
+        $this->set(compact('breadcrumbs', 'headerTitle'));
     }
 
 }

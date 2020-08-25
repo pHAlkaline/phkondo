@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * pHKondo : pHKondo software for condominium property managers (http://phalkaline.eu)
@@ -25,7 +26,6 @@
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
-
 App::uses('AppController', 'Controller');
 
 /**
@@ -49,8 +49,8 @@ class InvoiceConferenceController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings , array(
-            'contain'=>array('Supplier'),
+        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings, array(
+            'contain' => array('Supplier'),
             'conditions' => array(
                 'InvoiceConference.condo_id' => $this->getPhkRequestVar('condo_id'),
             ),
@@ -62,7 +62,7 @@ class InvoiceConferenceController extends AppController {
 
 
         $invoice = $this->Paginator->paginate('InvoiceConference');
-        
+
         $this->InvoiceConference->virtualFields = array('total_amount' => 'SUM(amount)');
         foreach ($invoice as $key => $supplier) {
 
@@ -77,7 +77,6 @@ class InvoiceConferenceController extends AppController {
         }
 
         $this->set('invoice', $invoice);
-        
     }
 
     /**
@@ -86,18 +85,17 @@ class InvoiceConferenceController extends AppController {
      * @return void
      */
     public function index_by_supplier($supplier_id = null) {
-        $this->InvoiceConference->contain(array('Supplier','InvoiceConferenceStatus'));
+        $this->InvoiceConference->contain(array('Supplier', 'InvoiceConferenceStatus'));
         if (!$this->InvoiceConference->Supplier->exists($supplier_id)) {
             $this->Flash->error(__('Invalid invoice'));
-            $this->redirect(array('action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
         $this->Paginator->settings = $this->paginate;
-        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings , array(
+        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings, array(
             'order' => array('InvoiceConference.document_date' => 'desc'),
             'conditions' => array(
                 'InvoiceConference.supplier_id' => $supplier_id,
                 'InvoiceConference.condo_id' => $this->getPhkRequestVar('condo_id'),
-           
             )
         ));
         $this->setFilter(array('InvoiceConference.document_date', 'InvoiceConference.payment_due_date', 'InvoiceConference.document', 'InvoiceConference.description', 'InvoiceConferenceStatus.name'));
@@ -106,9 +104,7 @@ class InvoiceConferenceController extends AppController {
         $invoices = $this->Paginator->paginate('InvoiceConference');
         $this->set('invoices', $invoices);
         $this->set('supplier_id', $supplier_id);
-        $this->setPhkRequestVar('supplier_id',$supplier_id);
-        
-        
+        $this->setPhkRequestVar('supplier_id', $supplier_id);
     }
 
     /**
@@ -119,22 +115,19 @@ class InvoiceConferenceController extends AppController {
      * @return void
      */
     public function view($id = null) {
-        $this->InvoiceConference->contain(array('Supplier','InvoiceConferenceStatus'));
+        $this->InvoiceConference->contain(array('Supplier', 'InvoiceConferenceStatus'));
         if (!$this->InvoiceConference->exists($id)) {
             $this->Flash->error(__('Invalid invoice'));
-            $this->redirect(array('action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
         $options = array('conditions' => array(
                 'InvoiceConference.' . $this->InvoiceConference->primaryKey => $id,
                 'InvoiceConference.condo_id' => $this->getPhkRequestVar('condo_id'),
-            
         ));
 
         $invoice_conference = $this->InvoiceConference->find('first', $options);
         $this->set('invoice_conference', $invoice_conference);
-        $this->setPhkRequestVar('invoice_id',$id);
-        
-       
+        $this->setPhkRequestVar('invoice_id', $id);
     }
 
     /**
@@ -145,14 +138,14 @@ class InvoiceConferenceController extends AppController {
     public function add($supplier_id = null) {
         if ($supplier_id != null && !$this->InvoiceConference->Supplier->exists($supplier_id)) {
             $this->Flash->error(__('Invalid invoice'));
-            $this->redirect(array('action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
         };
         if ($this->request->is('post')) {
 
             $this->InvoiceConference->create();
             if ($this->InvoiceConference->save($this->request->data)) {
                 $this->Flash->success(__('The invoice has been saved'));
-                $this->redirect(array('action' => 'view', $this->InvoiceConference->id,'?'=>$this->request->query));
+                $this->redirect(array('action' => 'view', $this->InvoiceConference->id, '?' => $this->request->query));
             } else {
                 $this->Flash->error(__('The invoice could not be saved. Please, try again.'));
             }
@@ -160,16 +153,16 @@ class InvoiceConferenceController extends AppController {
 
         $condos = $this->InvoiceConference->Condo->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('condo_id'))));
         $fiscalYears = $this->InvoiceConference->FiscalYear->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('fiscal_year_id'))));
-        $fiscalYearData= $this->InvoiceConference->FiscalYear->find('first', array('fields'=>array('open_date','close_date'),'conditions' => array('id' => $this->getPhkRequestVar('fiscal_year_id'))));
+        $fiscalYearData = $this->InvoiceConference->FiscalYear->find('first', array('fields' => array('open_date', 'close_date'), 'conditions' => array('id' => $this->getPhkRequestVar('fiscal_year_id'))));
         $invoiceConferenceStatuses = $this->InvoiceConference->InvoiceConferenceStatus->find('list', array('conditions' => array('active' => '1')));
-        
-        $supplier_conditions=array();
+
+        $supplier_conditions = array();
         if ($supplier_id != null) {
             $supplier_conditions = array('id' => $supplier_id);
         }
 
         $suppliers = $this->InvoiceConference->Supplier->find('list', array('order' => 'Supplier.name', 'conditions' => $supplier_conditions));
-        $this->set(compact('condos', 'invoiceConferenceStatuses', 'fiscalYears', 'suppliers','fiscalYearData'));
+        $this->set(compact('condos', 'invoiceConferenceStatuses', 'fiscalYears', 'suppliers', 'fiscalYearData'));
     }
 
     /**
@@ -183,13 +176,13 @@ class InvoiceConferenceController extends AppController {
 
         if (!$this->InvoiceConference->exists($id)) {
             $this->Flash->error(__('Invalid invoice'));
-            $this->redirect(array('action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
 
             if ($this->InvoiceConference->save($this->request->data)) {
                 $this->Flash->success(__('The invoice has been saved'));
-                $this->redirect(array('action' => 'view', $id,'?'=>$this->request->query));
+                $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
                 //$this->redirect(array('action' => 'index_by_supplier', $this->request->data['InvoiceConference']['supplier_id'],'?'=>$this->request->query));
             } else {
                 $this->Flash->error(__('The invoice could not be saved. Please, try again.'));
@@ -198,19 +191,17 @@ class InvoiceConferenceController extends AppController {
             $options = array('conditions' => array(
                     'InvoiceConference.' . $this->InvoiceConference->primaryKey => $id,
                     'InvoiceConference.condo_id' => $this->getPhkRequestVar('condo_id'),
-                
             ));
             $this->request->data = $this->InvoiceConference->find('first', $options);
         }
         $condos = $this->InvoiceConference->Condo->find('list', array('conditions' => array('id' => $this->request->data['InvoiceConference']['condo_id'])));
         $fiscalYears = $this->InvoiceConference->FiscalYear->find('list', array('conditions' => array('condo_id' => $this->request->data['InvoiceConference']['condo_id'])));
-        $fiscalYearData= $this->InvoiceConference->FiscalYear->find('first', array('fields'=>array('open_date','close_date'),'conditions' => array('id' => $this->request->data['InvoiceConference']['fiscal_year_id'])));
+        $fiscalYearData = $this->InvoiceConference->FiscalYear->find('first', array('fields' => array('open_date', 'close_date'), 'conditions' => array('id' => $this->request->data['InvoiceConference']['fiscal_year_id'])));
         $invoiceConferenceStatuses = $this->InvoiceConference->InvoiceConferenceStatus->find('list', array('conditions' => array('active' => '1')));
 
         $suppliers = $this->InvoiceConference->Supplier->find('list', array('order' => 'name'));
-        $this->set(compact('condos', 'invoiceConferenceStatuses', 'fiscalYears', 'suppliers','fiscalYearData'));
-        $this->setPhkRequestVar('invoice_id',$id);
-        
+        $this->set(compact('condos', 'invoiceConferenceStatuses', 'fiscalYears', 'suppliers', 'fiscalYearData'));
+        $this->setPhkRequestVar('invoice_id', $id);
     }
 
     /**
@@ -228,53 +219,53 @@ class InvoiceConferenceController extends AppController {
         $this->InvoiceConference->id = $id;
         if (!$this->InvoiceConference->exists()) {
             $this->Flash->error(__('Invalid invoice'));
-            $this->redirect(array('action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
 
         $this->InvoiceConference->read();
         if ($this->InvoiceConference->delete()) {
             $this->Flash->success(__('Invoice deleted'));
-            $this->redirect(array('action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
         $this->Flash->error(__('Invoice can not be deleted'));
-        $this->redirect(array('action' => 'view', $id,'?'=>$this->request->query));
+        $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
     }
 
     public function beforeFilter() {
         parent::beforeFilter();
         if (!$this->getPhkRequestVar('condo_id') || !$this->getPhkRequestVar('fiscal_year_id')) {
             $this->Flash->error(__('Invalid condo or fiscal year'));
-            $this->redirect(array('controller'=>'condos','action' => 'index'));
+            $this->redirect(array('controller' => 'condos', 'action' => 'index'));
         }
     }
 
     public function beforeRender() {
         parent::beforeRender();
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
-            array('link' => '', 'text' => __('Invoice Conference'), 'active' => 'active')
+            //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
+            //array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text') . ' ( ' . $this->phkRequestData['fiscal_year_text'] . ' ) ', 'active' => ''),
+            array('link' => Router::url(array('controller' => 'invoice_conference', 'action' => 'index', '?' => $this->request->query), true), 'text' => __('Invoice Conference'), 'active' => 'active')
         );
 
         switch ($this->action) {
             case 'index_by_supplier':
-                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'invoice_conference', 'action' => 'index','?'=>$this->request->query)), 'text' => __('Invoice Conference'), 'active' => '');
-                $breadcrumbs[4] = array('link' => '', 'text' => $this->getPhkRequestVar('supplier_text'), 'active' => 'active');
+                $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'invoice_conference', 'action' => 'index', '?' => $this->request->query)), 'text' => __('Invoice Conference'), 'active' => '');
+                $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('supplier_text'), 'active' => 'active');
                 break;
             case 'view':
-                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'invoice_conference', 'action' => 'index','?'=>$this->request->query)), 'text' => __('Invoice Conference'), 'active' => '');
-                $breadcrumbs[4] = array('link' => Router::url(array('controller' => 'invoice_conference', 'action' => 'index_by_supplier',$this->getPhkRequestVar('supplier_id'),'?'=>$this->request->query)), 'text' =>$this->getPhkRequestVar('supplier_text'), 'active' => '');
-                $breadcrumbs[5] = array('link' => '', 'text' => $this->getPhkRequestVar('invoice_text'), 'active' => 'active');
+                $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'invoice_conference', 'action' => 'index', '?' => $this->request->query)), 'text' => __('Invoice Conference'), 'active' => '');
+                $breadcrumbs[2] = array('link' => Router::url(array('controller' => 'invoice_conference', 'action' => 'index_by_supplier', $this->getPhkRequestVar('supplier_id'), '?' => $this->request->query)), 'text' => $this->getPhkRequestVar('supplier_text'), 'active' => '');
+                $breadcrumbs[3] = array('link' => '', 'text' => $this->getPhkRequestVar('invoice_text'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'invoice_conference', 'action' => 'index','?'=>$this->request->query)), 'text' => __('Invoice Conference'), 'active' => '');
-                $breadcrumbs[4] = array('link' => Router::url(array('controller' => 'invoice_conference', 'action' => 'index_by_supplier', $this->getPhkRequestVar('supplier_id'),'?'=>$this->request->query)), 'text' =>$this->getPhkRequestVar('supplier_text'), 'active' => '');
-                $breadcrumbs[5] = array('link' => '', 'text' => $this->getPhkRequestVar('invoice_text'), 'active' => 'active');
+                $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'invoice_conference', 'action' => 'index', '?' => $this->request->query)), 'text' => __('Invoice Conference'), 'active' => '');
+                $breadcrumbs[2] = array('link' => Router::url(array('controller' => 'invoice_conference', 'action' => 'index_by_supplier', $this->getPhkRequestVar('supplier_id'), '?' => $this->request->query)), 'text' => $this->getPhkRequestVar('supplier_text'), 'active' => '');
+                $breadcrumbs[3] = array('link' => '', 'text' => $this->getPhkRequestVar('invoice_text'), 'active' => 'active');
                 break;
         }
-        $headerTitle=__('Invoice Conference');
-        $this->set(compact('breadcrumbs','headerTitle'));
+        $headerTitle = __('Invoice Conference');
+        $this->set(compact('breadcrumbs', 'headerTitle'));
     }
 
 }

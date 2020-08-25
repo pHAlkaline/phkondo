@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * pHKondo : pHKondo software for condominium property managers (http://phalkaline.eu)
@@ -25,7 +26,6 @@
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
-
 App::uses('AppController', 'Controller');
 
 /**
@@ -49,7 +49,7 @@ class MovementOperationsController extends AppController {
      * @return void
      */
     public function index() {
-         $this->Paginator->settings = array_replace_recursive($this->Paginator->settings ,
+        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings,
                 array('conditions' => array()));
         $this->setFilter(array('MovementOperation.name'));
         $this->set('movementOperations', $this->Paginator->paginate('MovementOperation'));
@@ -70,10 +70,9 @@ class MovementOperationsController extends AppController {
         $options = array('conditions' => array('MovementOperation.' . $this->MovementOperation->primaryKey => $id));
         $movementOperation = $this->MovementOperation->find('first', $options);
         $this->set('movementOperation', $movementOperation);
-        
+
         $this->setPhkRequestVar('movement_operation_id', $id);
         $this->setPhkRequestVar('movement_operation_text', $movementOperation['MovementOperation']['name']);
-        
     }
 
     /**
@@ -99,19 +98,19 @@ class MovementOperationsController extends AppController {
      * @return void
      */
     public function addFromMovement($movementId = null) {
-        $this->Movement=  ClassRegistry::init('Movement');
+        $this->Movement = ClassRegistry::init('Movement');
         if ($movementId != null && !$this->Movement->exists($movementId)) {
             $this->Flash->error(__('Invalid movement operation'));
-             $this->redirect(array('controller' => 'movements', 'action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('controller' => 'movements', 'action' => 'index', '?' => $this->request->query));
         }
         if ($this->request->is('post')) {
             $this->MovementOperation->create();
             if ($this->MovementOperation->save($this->request->data)) {
                 $this->Flash->success(__('The movement operation has been saved'));
                 if ($movementId != null) {
-                    $this->redirect(array('controller' => 'movements', 'action' => 'edit', $movementId,'?'=>$this->request->query));
+                    $this->redirect(array('controller' => 'movements', 'action' => 'edit', $movementId, '?' => $this->request->query));
                 } else {
-                    $this->redirect(array('controller' => 'movements', 'action' => 'add','?'=>$this->request->query));
+                    $this->redirect(array('controller' => 'movements', 'action' => 'add', '?' => $this->request->query));
                 }
             } else {
                 $this->Flash->error(__('The movement operation could not be saved. Please, try again.'));
@@ -124,13 +123,13 @@ class MovementOperationsController extends AppController {
         }
 
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'accounts', 'action' => 'index','?'=>array('condo_id'=>$this->getPhkRequestVar('condo_id')))), 'text' => __n('Account', 'Accounts', 2), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'accounts', 'action' => 'view', $this->getPhkRequestVar('account_id'),'?'=>array('condo_id'=>$this->getPhkRequestVar('condo_id')))), 'text' => $this->getPhkRequestVar('account_text'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'movements', 'action' => 'index','?'=>$this->request->query)), 'text' => __n('Movement', 'Movements', 2), 'active' => ''),
-             array('link' => '', 'text' => __('Add Movement Operation'), 'active' => 'active')
+            //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
+            //array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text') . ' ( ' . $this->phkRequestData['fiscal_year_text'] . ' ) ', 'active' => ''),
+            array('link' => Router::url(array('controller' => 'accounts', 'action' => 'index', '?' => array('condo_id' => $this->getPhkRequestVar('condo_id')))), 'text' => __n('Account', 'Accounts', 2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'accounts', 'action' => 'view', $this->getPhkRequestVar('account_id'), '?' => array('condo_id' => $this->getPhkRequestVar('condo_id')))), 'text' => $this->getPhkRequestVar('account_text'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'movements', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Movement', 'Movements', 2), 'active' => ''),
+            array('link' => '', 'text' => __('Add Movement Operation'), 'active' => 'active')
         );
         $this->set(compact('breadcrumbs', 'movementId'));
     }
@@ -158,10 +157,9 @@ class MovementOperationsController extends AppController {
             $options = array('conditions' => array('MovementOperation.' . $this->MovementOperation->primaryKey => $id));
             $this->request->data = $this->MovementOperation->find('first', $options);
         }
-        
+
         $this->setPhkRequestVar('movement_operation_id', $id);
         $this->setPhkRequestVar('movement_operation_text', $this->request->data['MovementOperation']['name']);
-        
     }
 
     /**
@@ -186,8 +184,8 @@ class MovementOperationsController extends AppController {
             $this->redirect(array('action' => 'index'));
         }
 
-         $this->Flash->error(__('Movement operation can not be deleted'));
-        $this->redirect(array('action' => 'view',$id));
+        $this->Flash->error(__('Movement operation can not be deleted'));
+        $this->redirect(array('action' => 'view', $id));
     }
 
     public function beforeRender() {
@@ -196,22 +194,22 @@ class MovementOperationsController extends AppController {
             return;
         }
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
-            array('link' => '', 'text' => __('Movement Operations'), 'active' => 'active')
+            //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'movement_operations', 'action' => 'index', '?' => $this->request->query)), 'text' => __('Movement Operations'), 'active' => 'active')
         );
         switch ($this->action) {
             case 'view':
-                $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'movement_operations', 'action' => 'index')), 'text' => __('Movement Operations'), 'active' => '');
-                $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('movement_operation_text'), 'active' => 'active');
+                $breadcrumbs[0] = array('link' => Router::url(array('controller' => 'movement_operations', 'action' => 'index')), 'text' => __('Movement Operations'), 'active' => '');
+                $breadcrumbs[1] = array('link' => '', 'text' => $this->getPhkRequestVar('movement_operation_text'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'movement_operations', 'action' => 'index')), 'text' => __('Movement Operations'), 'active' => '');
-                $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('movement_operation_text'), 'active' => 'active');
+                $breadcrumbs[0] = array('link' => Router::url(array('controller' => 'movement_operations', 'action' => 'index')), 'text' => __('Movement Operations'), 'active' => '');
+                $breadcrumbs[1] = array('link' => '', 'text' => $this->getPhkRequestVar('movement_operation_text'), 'active' => 'active');
 
                 break;
         }
-        $headerTitle=__('Movement Operations');
-        $this->set(compact('breadcrumbs','headerTitle'));
+        $headerTitle = __('Movement Operations');
+        $this->set(compact('breadcrumbs', 'headerTitle'));
     }
 
 }

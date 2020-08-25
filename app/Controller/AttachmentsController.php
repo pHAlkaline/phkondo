@@ -49,10 +49,10 @@ class AttachmentsController extends AppController {
      */
     public function index() {
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
-            array('link' => '', 'text' => __n('Attachment', 'Attachments', 2), 'active' => 'active')
+            //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
+            //array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text') . ' ( ' . $this->phkRequestData['fiscal_year_text'] . ' ) ', 'active' => ''),
+            array('link' => Router::url(array('controller' => 'attachments', 'action' => 'index', '?' => $this->request->query), true), 'text' => __n('Attachment', 'Attachments', 2), 'active' => 'active')
         );
 
 
@@ -67,19 +67,19 @@ class AttachmentsController extends AppController {
      */
     public function fraction_attachments() {
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'fractions', 'action' => 'index','?'=>$this->request->query)), 'text' => __n('Fraction', 'Fractions', 2), 'active' => ''),
+            //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
+            //array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text') . ' ( ' . $this->phkRequestData['fiscal_year_text'] . ' ) ', 'active' => ''),
+            array('link' => Router::url(array('controller' => 'fractions', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Fraction', 'Fractions', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'fractions', 'action' => 'view', $this->getPhkRequestVar('fraction_id'))), 'text' => $this->getPhkRequestVar('fraction_text'), 'active' => ''),
-            array('link' => '', 'text' => __n('Attachment', 'Attachments', 2), 'active' => 'active')
+            array('link' => Router::url(array('controller' => 'attachments', 'action' => 'fraction_attachments', '?' => $this->request->query), true), 'text' => __n('Attachment', 'Attachments', 2), 'active' => 'active')
         );
 
 
         $this->set(compact('breadcrumbs'));
         $this->render('notfound');
     }
-    
+
     /**
      * ensurance_attachments method
      *
@@ -87,12 +87,12 @@ class AttachmentsController extends AppController {
      */
     public function insurance_attachments() {
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'insurances', 'action' => 'index','?'=>$this->request->query)), 'text' => __n('Insurance', 'Insurances', 2), 'active' => ''),
+            //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
+            //array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text') . ' ( ' . $this->phkRequestData['fiscal_year_text'] . ' ) ', 'active' => ''),
+            array('link' => Router::url(array('controller' => 'insurances', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Insurance', 'Insurances', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'insurances', 'action' => 'view', $this->getPhkRequestVar('insurance_id'))), 'text' => $this->getPhkRequestVar('insurance_text'), 'active' => ''),
-            array('link' => '', 'text' => __n('Attachment', 'Attachments', 2), 'active' => 'active')
+            array('link' => Router::url(array('controller' => 'attachments', 'action' => 'insurance_attachments', '?' => $this->request->query), true), 'text' => __n('Attachment', 'Attachments', 2), 'active' => 'active')
         );
 
 
@@ -104,13 +104,13 @@ class AttachmentsController extends AppController {
         parent::beforeFilter();
         if (!$this->getPhkRequestVar('condo_id')) {
             $this->Flash->error(__('Invalid condo'));
-            $this->redirect(array('controller'=>'condos','action' => 'index'));
+            $this->redirect(array('controller' => 'condos', 'action' => 'index'));
         }
     }
 
     public function beforeRender() {
         parent::beforeRender();
-        $headerTitle=__n('Attachment', 'Attachments', 2);
+        $headerTitle = __n('Attachment', 'Attachments', 2);
         $this->set(compact('headerTitle'));
     }
 

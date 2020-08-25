@@ -248,24 +248,24 @@ class UsersController extends AppController {
         parent::beforeRender();
         $headerTitle=__('Users');
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
+            //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'users', 'action' => 'index')), 'text' => __('Users'), 'active' => 'active'),
         );
         switch ($this->action) {
             case 'view':
-                $breadcrumbs[1]['active'] = '';
-                $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('user_text'), 'active' => 'active');
+                $breadcrumbs[0]['active'] = '';
+                $breadcrumbs[1] = array('link' => '', 'text' => $this->getPhkRequestVar('user_text'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[1]['active'] = '';
-                $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('user_text'), 'active' => 'active');
+                $breadcrumbs[0]['active'] = '';
+                $breadcrumbs[1] = array('link' => '', 'text' => $this->getPhkRequestVar('user_text'), 'active' => 'active');
                 break;
             case 'add':
-                $breadcrumbs[1]['active'] = '';
-                $breadcrumbs[2] = array('link' => '', 'text' => __('Add User'), 'active' => 'active');
+                $breadcrumbs[0]['active'] = '';
+                $breadcrumbs[1] = array('link' => '', 'text' => __('Add User'), 'active' => 'active');
                 break;
             case 'login':
-                $breadcrumbs[1] = array('link' => '', 'text' => __('Start Session'), 'active' => 'active');
+                $breadcrumbs[0] = array('link' => '', 'text' => __('Start Session'), 'active' => 'active');
                 $headerTitle=__('Start Session');
                 break;
         }

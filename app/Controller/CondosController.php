@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * pHKondo : pHKondo software for condominium property managers (http://phalkaline.eu)
@@ -25,7 +26,6 @@
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
-
 App::uses('AppController', 'Controller');
 App::uses('InvoiceConference', 'Model');
 
@@ -37,36 +37,34 @@ App::uses('InvoiceConference', 'Model');
  */
 class CondosController extends AppController {
 
-    public $uses = array('Condo','InvoiceConference');
+    public $uses = array('Condo', 'InvoiceConference');
+
     /**
      * Components
      *
      * @var array
      */
-    public $components = array('Paginator','Feedback.Comments' => array('on' => array('view')));
-    
+    public $components = array('Paginator', 'Feedback.Comments' => array('on' => array('view')));
     public $helpers = array(
-        'Feedback.Comments' => array('elementIndex'=> 'comment_index','elementForm'=> 'comment_add')
-        );
-        
-    
+        'Feedback.Comments' => array('elementIndex' => 'comment_index', 'elementForm' => 'comment_add')
+    );
+
     /**
      * index method
      *
      * @return void
      */
     public function index() {
-        
-       
-        $this->Paginator->settings = array_merge($this->Paginator->settings , array(
+
+
+        $this->Paginator->settings = array_merge($this->Paginator->settings, array(
             'contain' => array('FiscalYear', 'Insurance', 'Maintenance'),
-            'limit'=>50,
+            'limit' => 50,
             'conditions' => array(
                 "AND" => array("Condo.active" => "1"))
         ));
         $this->setFilter(array('Condo.title', 'Condo.address'));
         $this->set('condos', $this->Paginator->paginate('Condo'));
-        
     }
 
     /**
@@ -81,17 +79,17 @@ class CondosController extends AppController {
             $this->Flash->error(__('Invalid condo'));
             $this->redirect(array('action' => 'index'));
         }
-        $this->setPhkRequestVar('condo_id',$id);
+        $this->setPhkRequestVar('condo_id', $id);
         $this->Condo->contain(array(
-                'Comment',
-                'FiscalYear', 
-                'Insurance', 
-                'Maintenance', 
-                'Account', 
-                'Administrator' => array(
-                    'conditions'=>array('Administrator.fiscal_year_id' => $this->getPhkRequestVar('fiscal_year_id')),
-                    'Entity'=>array(
-                        'fields'=>array('Entity.name')))));
+            'Comment',
+            'FiscalYear',
+            'Insurance',
+            'Maintenance',
+            'Account',
+            'Administrator' => array(
+                'conditions' => array('Administrator.fiscal_year_id' => $this->getPhkRequestVar('fiscal_year_id')),
+                'Entity' => array(
+                    'fields' => array('Entity.name')))));
         $options = array('conditions' => array('Condo.' . $this->Condo->primaryKey => $id));
         $condo = $this->Condo->find('first', $options);
         $hasSharesDebt = $this->Condo->hasSharesDebt($id);
@@ -107,10 +105,8 @@ class CondosController extends AppController {
                 'InvoiceConference.payment_due_date <' => date(Configure::read('databaseDateFormat')),
                 'OR' => array('InvoiceConference.payment_date' => null, 'InvoiceConference.payment_date >' => $condo['FiscalYear'][0]['close_date']),
             ));
-            
         }
         $this->set(compact('condo', 'hasSharesDebt', 'hasDebt'));
-
     }
 
     /**
@@ -131,7 +127,6 @@ class CondosController extends AppController {
                 $this->Flash->error(__('The condo could not be saved. Please, try again.'));
             }
         }
-        
     }
 
     /**
@@ -157,7 +152,6 @@ class CondosController extends AppController {
             $options = array('conditions' => array('Condo.' . $this->Condo->primaryKey => $id));
             $this->request->data = $this->Condo->find('first', $options);
         }
-        
     }
 
     /**
@@ -172,10 +166,10 @@ class CondosController extends AppController {
         if (!$this->request->is('post')) {
             throw new MethodNotAllowedException();
         }
-        if (!in_array(AuthComponent::user('role'), array('admin','store_admin'))){
+        if (!in_array(AuthComponent::user('role'), array('admin', 'store_admin'))) {
             throw new MethodNotAllowedException();
         }
-                
+
         $this->Condo->id = $id;
         if (!$this->Condo->exists()) {
             $this->Flash->error(__('Invalid condo'));
@@ -188,15 +182,16 @@ class CondosController extends AppController {
         $this->Flash->error(__('Condo can not be deleted, please check the existence of already paid notes'));
         $this->redirect(array('action' => 'view', $id));
     }
-    
+
     /**
      * drafts method
      *
      * @return void
      */
     public function drafts() {
+        
     }
-    
+
     /**
      * attachments method
      *
@@ -211,19 +206,19 @@ class CondosController extends AppController {
         if (!isset($this->phkRequestData['condo_id'])) {
             $breadcrumbs = array(
                 array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
-                array('link' => '', 'text' => __n('Condo','Condos',2), 'active' => 'active')
+                array('link' => '', 'text' => __n('Condo', 'Condos', 2), 'active' => 'active')
             );
-            $headerTitle=__('Condos');
+            $headerTitle = __('Condos');
         } else {
             $breadcrumbs = array(
-                array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
-                array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
-                array('link' => '', 'text' => $this->getPhkRequestVar('condo_text'), 'active' => 'active')
+                //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
+                //array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
+                array('link' => '', 'text' => $this->getPhkRequestVar('condo_text') . ' ( ' . $this->phkRequestData['fiscal_year_text'] . ' ) ', 'active' => 'active'),
             );
-            $headerTitle=__('Condos');
+            $headerTitle = __('Condos');
         }
 
-        $this->set(compact('breadcrumbs','headerTitle'));
+        $this->set(compact('breadcrumbs', 'headerTitle'));
     }
 
 }

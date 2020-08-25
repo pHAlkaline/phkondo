@@ -174,17 +174,17 @@ class EntitiesController extends AppController {
             return;
         }
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
-            array('link' => '', 'text' => __n('Entity','Entities',2), 'active' => 'active')
+            //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'entities', 'action' => 'index', '?' => $this->request->query), true), 'text' => __n('Entity','Entities',2), 'active' => 'active')
         );
         switch ($this->action) {
             case 'view':
-                $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'entities', 'action' => 'index')), 'text' => __n('Entity','Entities',2), 'active' => '');
-                $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('entity_text'), 'active' => 'active');
+                $breadcrumbs[0] = array('link' => Router::url(array('controller' => 'entities', 'action' => 'index')), 'text' => __n('Entity','Entities',2), 'active' => '');
+                $breadcrumbs[1] = array('link' => '', 'text' => $this->getPhkRequestVar('entity_text'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'entities', 'action' => 'index')), 'text' => __n('Entity','Entities',2), 'active' => '');
-                $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('entity_text'), 'active' => 'active');
+                $breadcrumbs[0] = array('link' => Router::url(array('controller' => 'entities', 'action' => 'index')), 'text' => __n('Entity','Entities',2), 'active' => '');
+                $breadcrumbs[1] = array('link' => '', 'text' => $this->getPhkRequestVar('entity_text'), 'active' => 'active');
                 
                 break;
         }

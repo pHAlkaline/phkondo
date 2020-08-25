@@ -57,7 +57,7 @@ class ReceiptsController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings , array(
+        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings, array(
             'contain' => array('Fraction', 'Client', 'ReceiptStatus', 'ReceiptPaymentType'),
             'conditions' => array(
                 'Receipt.condo_id' => $this->getPhkRequestVar('condo_id'),
@@ -169,8 +169,8 @@ class ReceiptsController extends AppController {
         if ($this->request->is('post') && isset($this->request->data['Note'])) {
             $this->Receipt->Note->updateAll(
                     array(
-                'Note.receipt_id' => null,
-                'Note.pending_amount' => 0
+                        'Note.receipt_id' => null,
+                        'Note.pending_amount' => 0
                     ), array(
                 'Note.fraction_id' => $this->request->data['Fraction']['id'],
                 'Note.entity_id' => $this->Receipt->field('client_id'),
@@ -540,25 +540,25 @@ class ReceiptsController extends AppController {
     public function beforeRender() {
         parent::beforeRender();
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
-            array('link' => '', 'text' => __n('Receipt', 'Receipts', 2), 'active' => 'active')
+            //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
+            //array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text') . ' ( ' . $this->phkRequestData['fiscal_year_text'] . ' ) ', 'active' => ''),
+            array('link' => Router::url(array('controller' => 'receipts', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Receipt', 'Receipts', 2), 'active' => 'active')
         );
 
         switch ($this->action) {
             case 'add_notes':
-                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'receipts', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Receipt', 'Receipts', 2), 'active' => '');
-                $breadcrumbs[4] = array('link' => Router::url(array('controller' => 'receipts', 'action' => 'view', $this->getPhkRequestVar('receipt_id'))), 'text' => $this->getPhkRequestVar('receipt_text'), 'active' => '');
-                $breadcrumbs[5] = array('link' => '', 'text' => __('Pick   Notes'), 'active' => 'active');
+                $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'receipts', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Receipt', 'Receipts', 2), 'active' => '');
+                $breadcrumbs[2] = array('link' => Router::url(array('controller' => 'receipts', 'action' => 'view', $this->getPhkRequestVar('receipt_id'))), 'text' => $this->getPhkRequestVar('receipt_text'), 'active' => '');
+                $breadcrumbs[3] = array('link' => '', 'text' => __('Pick   Notes'), 'active' => 'active');
                 break;
             case 'view':
-                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'receipts', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Receipt', 'Receipts', 2), 'active' => '');
-                $breadcrumbs[4] = array('link' => '', 'text' => $this->getPhkRequestVar('receipt_text'), 'active' => 'active');
+                $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'receipts', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Receipt', 'Receipts', 2), 'active' => '');
+                $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('receipt_text'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'receipts', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Receipt', 'Receipts', 2), 'active' => '');
-                $breadcrumbs[4] = array('link' => '', 'text' => $this->getPhkRequestVar('receipt_text'), 'active' => 'active');
+                $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'receipts', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Receipt', 'Receipts', 2), 'active' => '');
+                $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('receipt_text'), 'active' => 'active');
                 break;
         }
 

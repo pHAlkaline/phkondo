@@ -148,17 +148,17 @@ class InsuranceTypesController extends AppController {
             return;
         }
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
-            array('link' => '', 'text' => __('Insurance Types'), 'active' => 'active')
+            //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'insurance_types', 'action' => 'index', '?' => $this->request->query), true), 'text' => __('Insurance Types'), 'active' => 'active')
         );
         switch ($this->action) {
             case 'view':
-                $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'insurance_types', 'action' => 'index')), 'text' => __('Insurance Types'), 'active' => '');
-                $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('insurance_type_text'), 'active' => 'active');
+                $breadcrumbs[0] = array('link' => Router::url(array('controller' => 'insurance_types', 'action' => 'index')), 'text' => __('Insurance Types'), 'active' => '');
+                $breadcrumbs[1] = array('link' => '', 'text' => $this->getPhkRequestVar('insurance_type_text'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'insurance_types', 'action' => 'index')), 'text' => __('Insurance Types'), 'active' => '');
-                $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('insurance_type_text'), 'active' => 'active');
+                $breadcrumbs[0] = array('link' => Router::url(array('controller' => 'insurance_types', 'action' => 'index')), 'text' => __('Insurance Types'), 'active' => '');
+                $breadcrumbs[1] = array('link' => '', 'text' => $this->getPhkRequestVar('insurance_type_text'), 'active' => 'active');
 
                 break;
         }

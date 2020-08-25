@@ -26,7 +26,6 @@
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
-
 App::uses('AppController', 'Controller');
 
 /**
@@ -50,15 +49,14 @@ class BudgetsController extends AppController {
      * @return void
      */
     public function index() {
-        
-        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings , array(
+
+        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings, array(
             'contain' => array('BudgetType', 'BudgetStatus'),
             'conditions' => array(
                 'Budget.condo_id' => $this->getPhkRequestVar('condo_id'))
         ));
         $this->setFilter(array('Budget.title', 'BudgetType.name'));
         $this->set('budgets', $this->Paginator->paginate('Budget'));
-        
     }
 
     /**
@@ -72,14 +70,14 @@ class BudgetsController extends AppController {
         $this->Budget->contain(array('Note', 'BudgetStatus', 'FiscalYear', 'BudgetType', 'SharePeriodicity', 'ShareDistribution'));
         if (!$this->Budget->exists($id)) {
             $this->Flash->error(__('Invalid budget'));
-            $this->redirect(array('action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
         $options = array('conditions' => array('Budget.' . $this->Budget->primaryKey => $id));
         $budget = $this->Budget->find('first', $options);
         $this->set(compact('budget'));
-        $this->setPhkRequestVar('budget_id',$id);
-        $this->setPhkRequestVar('budget_text',$budget['Budget']['title']);
-        $this->setPhkRequestVar('budget_status',$budget['Budget']['budget_status_id']);
+        $this->setPhkRequestVar('budget_id', $id);
+        $this->setPhkRequestVar('budget_text', $budget['Budget']['title']);
+        $this->setPhkRequestVar('budget_status', $budget['Budget']['budget_status_id']);
     }
 
     /**
@@ -96,19 +94,19 @@ class BudgetsController extends AppController {
             $this->request->data['Budget']['requested_amount'] = $this->request->data['Budget']['amount'];
             if ($this->Budget->save($this->request->data)) {
                 $this->Flash->success(__('The budget has been saved'));
-                $this->redirect(array('action' => 'view', $this->Budget->id,'?'=>$this->request->query));
+                $this->redirect(array('action' => 'view', $this->Budget->id, '?' => $this->request->query));
             } else {
                 $this->Flash->error(__('The budget could not be saved. Please, try again.'));
             }
         }
         $condos = $this->Budget->Condo->find('list', array('conditions' => array('id' => $this->phkRequestData['condo_id'])));
         $fiscalYears = $this->Budget->FiscalYear->find('list', array('conditions' => array('id' => $this->phkRequestData['fiscal_year_id'])));
-        $fiscalYearData= $this->Budget->FiscalYear->find('first', array('fields'=>array('open_date','close_date'),'conditions' => array('id' => $this->getPhkRequestVar('fiscal_year_id'))));
+        $fiscalYearData = $this->Budget->FiscalYear->find('first', array('fields' => array('open_date', 'close_date'), 'conditions' => array('id' => $this->getPhkRequestVar('fiscal_year_id'))));
         $budgetTypes = $this->Budget->BudgetType->find('list');
         $budgetStatuses = $this->Budget->BudgetStatus->find('list', array('conditions' => array('id' => array('1', '2'))));
         $sharePeriodicities = $this->Budget->SharePeriodicity->find('list');
         $shareDistributions = $this->Budget->ShareDistribution->find('list');
-        $this->set(compact('condos', 'fiscalYears', 'budgetTypes', 'budgetStatuses', 'sharePeriodicities', 'shareDistributions','fiscalYearData'));
+        $this->set(compact('condos', 'fiscalYears', 'budgetTypes', 'budgetStatuses', 'sharePeriodicities', 'shareDistributions', 'fiscalYearData'));
     }
 
     /**
@@ -121,7 +119,7 @@ class BudgetsController extends AppController {
     public function edit($id = null) {
         if (!$this->Budget->exists($id)) {
             $this->Flash->error(__('Invalid budget'));
-            $this->redirect(array('action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
         $this->Budget->contain(array('Note'));
         $options = array('conditions' => array('Budget.' . $this->Budget->primaryKey => $id));
@@ -136,7 +134,7 @@ class BudgetsController extends AppController {
             if ($this->Budget->save($this->request->data)) {
                 $this->_setNotesStatus();
                 $this->Flash->success(__('The budget has been saved'));
-                $this->redirect(array('action' => 'view', $this->Budget->id,'?'=>$this->request->query));
+                $this->redirect(array('action' => 'view', $this->Budget->id, '?' => $this->request->query));
             } else {
                 $this->Flash->error(__('The budget could not be saved. Please, try again.'));
             }
@@ -146,20 +144,19 @@ class BudgetsController extends AppController {
 
         if ($this->request->data['Budget']['fiscal_year_id'] != $this->getPhkRequestVar('fiscal_year_id')) {
             $this->Flash->error(__('Invalid budget'));
-            $this->redirect(array('action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
         $condos = $this->Budget->Condo->find('list', array('conditions' => array('id' => $this->request->data['Budget']['condo_id'])));
         $fiscalYears = $this->Budget->FiscalYear->find('list', array('conditions' => array('id' => $this->request->data['Budget']['fiscal_year_id'])));
-        $fiscalYearData= $this->Budget->FiscalYear->find('first', array('fields'=>array('open_date','close_date'),'conditions' => array('id' => $this->getPhkRequestVar('fiscal_year_id'))));
+        $fiscalYearData = $this->Budget->FiscalYear->find('first', array('fields' => array('open_date', 'close_date'), 'conditions' => array('id' => $this->getPhkRequestVar('fiscal_year_id'))));
         $budgetTypes = $this->Budget->BudgetType->find('list');
         $budgetStatuses = $this->Budget->BudgetStatus->find('list');
         $sharePeriodicities = $this->Budget->SharePeriodicity->find('list');
         $shareDistributions = $this->Budget->ShareDistribution->find('list');
-        $this->set(compact('condos', 'fiscalYears', 'budgetTypes', 'budgetStatuses', 'sharePeriodicities', 'shareDistributions','fiscalYearData'));
-        $this->setPhkRequestVar('budget_id',$id);
-        $this->setPhkRequestVar('budget_text',$this->request->data['Budget']['title']);
-        $this->setPhkRequestVar('budget_status',$this->request->data['Budget']['budget_status_id']);
-       
+        $this->set(compact('condos', 'fiscalYears', 'budgetTypes', 'budgetStatuses', 'sharePeriodicities', 'shareDistributions', 'fiscalYearData'));
+        $this->setPhkRequestVar('budget_id', $id);
+        $this->setPhkRequestVar('budget_text', $this->request->data['Budget']['title']);
+        $this->setPhkRequestVar('budget_status', $this->request->data['Budget']['budget_status_id']);
     }
 
     /**
@@ -177,20 +174,20 @@ class BudgetsController extends AppController {
         $this->Budget->id = $id;
         if (!$this->Budget->exists()) {
             $this->Flash->error(__('Invalid budget'));
-            $this->redirect(array('action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
 
         if (!$this->Budget->deletable()) {
             $this->Flash->error(__('This Budget can not be deleted, check budget status or existing notes already paid.'));
-            $this->redirect(array('action' => 'view', $id,'?'=>$this->request->query));
+            $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
         }
 
         if ($this->Budget->Note->DeleteAll(array('Note.budget_id' => $id), false) && $this->Budget->delete()) {
             $this->Flash->success(__('Budget deleted'));
-            $this->redirect(array('action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
         $this->Flash->error(__('Budget can not be deleted'));
-        $this->redirect(array('action' => 'view', $id,'?'=>$this->request->query));
+        $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
     }
 
     /**
@@ -201,7 +198,7 @@ class BudgetsController extends AppController {
     public function shares_map($id = null) {
         if (!$this->Budget->exists($id)) {
             $this->Flash->error(__('Invalid budget'));
-            $this->redirect(array('action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
 
         $event = new CakeEvent('Phkondo.Budget.sharesMap', $this, array(
@@ -214,30 +211,30 @@ class BudgetsController extends AppController {
         parent::beforeFilter();
         if (!$this->getPhkRequestVar('condo_id') || !$this->getPhkRequestVar('fiscal_year_id')) {
             $this->Flash->error(__('Invalid condo or fiscal year'));
-            $this->redirect(array('controller'=>'condos','action' => 'index'));
+            $this->redirect(array('controller' => 'condos', 'action' => 'index'));
         }
     }
 
     public function beforeRender() {
         parent::beforeRender();
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
-            array('link' => '', 'text' => __n('Budget', 'Budgets', 2), 'active' => 'active')
+            //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
+            //array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text') . ' ( ' . $this->phkRequestData['fiscal_year_text'] . ' ) ', 'active' => ''),
+            array('link' => Router::url(array('controller' => 'budgets', 'action' => 'index', '?' => $this->request->query), true), 'text' => __n('Budget', 'Budgets', 2), 'active' => 'active')
         );
         switch ($this->action) {
             case 'view':
-                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'budgets', 'action' => 'index','?'=>$this->request->query)), 'text' => __n('Budget', 'Budgets', 2), 'active' => '');
-                $breadcrumbs[4] = array('link' => '', 'text' => $this->getPhkRequestVar('budget_text'), 'active' => 'active');
+                $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'budgets', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Budget', 'Budgets', 2), 'active' => '');
+                $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('budget_text'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'budgets', 'action' => 'index','?'=>$this->request->query)), 'text' => __n('Budget', 'Budgets', 2), 'active' => '');
-                $breadcrumbs[4] = array('link' => '', 'text' => $this->getPhkRequestVar('budget_text'), 'active' => 'active');
+                $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'budgets', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Budget', 'Budgets', 2), 'active' => '');
+                $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('budget_text'), 'active' => 'active');
                 break;
         }
-        $headerTitle=__n('Budget', 'Budgets', 2);
-        $this->set(compact('breadcrumbs','headerTitle'));
+        $headerTitle = __n('Budget', 'Budgets', 2);
+        $this->set(compact('breadcrumbs', 'headerTitle'));
     }
 
     private function _setNotesStatus() {

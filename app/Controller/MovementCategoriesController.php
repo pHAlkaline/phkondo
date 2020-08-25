@@ -68,10 +68,9 @@ class MovementCategoriesController extends AppController {
         $options = array('conditions' => array('MovementCategory.' . $this->MovementCategory->primaryKey => $id));
         $movementCategory = $this->MovementCategory->find('first', $options);
         $this->set('movementCategory', $movementCategory);
-        
+
         $this->setPhkRequestVar('movement_category_id', $id);
         $this->setPhkRequestVar('movement_category_text', $movementCategory['MovementCategory']['name']);
-        
     }
 
     /**
@@ -100,16 +99,16 @@ class MovementCategoriesController extends AppController {
         $this->Movement = ClassRegistry::init('Movement');
         if ($movementId != null && !$this->Movement->exists($movementId)) {
             $this->Flash->error(__('Invalid movement category'));
-            $this->redirect(array('controller' => 'movements', 'action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('controller' => 'movements', 'action' => 'index', '?' => $this->request->query));
         }
         if ($this->request->is('post')) {
             $this->MovementCategory->create();
             if ($this->MovementCategory->save($this->request->data)) {
                 $this->Flash->success(__('The movement category has been saved'));
                 if ($movementId != null) {
-                    $this->redirect(array('controller' => 'movements', 'action' => 'edit', $movementId,'?'=>$this->request->query));
+                    $this->redirect(array('controller' => 'movements', 'action' => 'edit', $movementId, '?' => $this->request->query));
                 } else {
-                    $this->redirect(array('controller' => 'movements', 'action' => 'add','?'=>$this->request->query));
+                    $this->redirect(array('controller' => 'movements', 'action' => 'add', '?' => $this->request->query));
                 }
             } else {
                 $this->Flash->error(__('The movement category could not be saved. Please, try again.'));
@@ -122,12 +121,12 @@ class MovementCategoriesController extends AppController {
         }
 
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'accounts', 'action' => 'index','?'=>array('condo_id'=>$this->getPhkRequestVar('condo_id')))), 'text' => __n('Account', 'Accounts', 2), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'accounts', 'action' => 'view', $this->getPhkRequestVar('account_id'),'?'=>array('condo_id'=>$this->getPhkRequestVar('condo_id')))), 'text' => $this->getPhkRequestVar('account_text'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'movements', 'action' => 'index','?'=>$this->request->query)), 'text' => __n('Movement', 'Movements', 2), 'active' => ''),
+            //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
+            //array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text') . ' ( ' . $this->phkRequestData['fiscal_year_text'] . ' ) ', 'active' => ''),
+            array('link' => Router::url(array('controller' => 'accounts', 'action' => 'index', '?' => array('condo_id' => $this->getPhkRequestVar('condo_id')))), 'text' => __n('Account', 'Accounts', 2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'accounts', 'action' => 'view', $this->getPhkRequestVar('account_id'), '?' => array('condo_id' => $this->getPhkRequestVar('condo_id')))), 'text' => $this->getPhkRequestVar('account_text'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'movements', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Movement', 'Movements', 2), 'active' => ''),
             array('link' => '', 'text' => __('Add Movement Category'), 'active' => 'active')
         );
         $this->set(compact('breadcrumbs', 'movementId'));
@@ -157,8 +156,7 @@ class MovementCategoriesController extends AppController {
             $this->request->data = $this->MovementCategory->find('first', $options);
         }
         $this->setPhkRequestVar('movement_category_id', $id);
-        $this->setPhkRequestVar('movement_category_text',  $this->request->data['MovementCategory']['name']);
-        
+        $this->setPhkRequestVar('movement_category_text', $this->request->data['MovementCategory']['name']);
     }
 
     /**
@@ -192,22 +190,22 @@ class MovementCategoriesController extends AppController {
             return;
         }
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
-            array('link' => '', 'text' => __('Movement Categories'), 'active' => 'active')
+            //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'movement_categories', 'action' => 'index', '?' => $this->request->query)), 'text' => __('Movement Categories'), 'active' => 'active')
         );
         switch ($this->action) {
             case 'view':
-                $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'movement_categories', 'action' => 'index')), 'text' => __('Movement Categories'), 'active' => '');
-                $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('movement_category_text'), 'active' => 'active');
+                $breadcrumbs[0] = array('link' => Router::url(array('controller' => 'movement_categories', 'action' => 'index')), 'text' => __('Movement Categories'), 'active' => '');
+                $breadcrumbs[1] = array('link' => '', 'text' => $this->getPhkRequestVar('movement_category_text'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'movement_categories', 'action' => 'index')), 'text' => __('Movement Categories'), 'active' => '');
-                $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('movement_category_text'), 'active' => 'active');
+                $breadcrumbs[0] = array('link' => Router::url(array('controller' => 'movement_categories', 'action' => 'index')), 'text' => __('Movement Categories'), 'active' => '');
+                $breadcrumbs[1] = array('link' => '', 'text' => $this->getPhkRequestVar('movement_category_text'), 'active' => 'active');
 
                 break;
         }
-        $headerTitle=__('Movement Categories');
-        $this->set(compact('breadcrumbs','headerTitle'));
+        $headerTitle = __('Movement Categories');
+        $this->set(compact('breadcrumbs', 'headerTitle'));
     }
 
 }

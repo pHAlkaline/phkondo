@@ -93,13 +93,13 @@ class IncomeController extends AppController {
     public function beforeRender() {
         parent::beforeRender();
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
+            //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'income', 'action' => 'index')), 'text' => __('Income Control'), 'active' => 'active'));
 
         switch ($this->action) {
             case 'receipts':
-                $breadcrumbs[1]['active'] = '';
-                $breadcrumbs[2] = array('link' => '', 'text' => __n('Receipt', 'Receipts', 2), 'active' => 'active');
+                $breadcrumbs[0]['active'] = '';
+                $breadcrumbs[1] = array('link' => '', 'text' => __n('Receipt', 'Receipts', 2), 'active' => 'active');
                 break;
         }
         $headerTitle = __('Income Control');

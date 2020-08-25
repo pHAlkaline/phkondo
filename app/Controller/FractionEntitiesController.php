@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * pHKondo : pHKondo software for condominium property managers (http://phalkaline.eu)
@@ -25,7 +26,6 @@
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
-
 App::uses('AppController', 'Controller');
 
 /**
@@ -72,7 +72,7 @@ class FractionEntitiesController extends AppController {
      *
      * @return void
      */
-    public function add($fractionId=null) {
+    public function add($fractionId = null) {
         if ($fractionId != null && !$this->Fraction->exists($fractionId)) {
             $this->Flash->error(__('Invalid entity'));
             $this->redirect(array('action' => 'index'));
@@ -103,7 +103,7 @@ class FractionEntitiesController extends AppController {
      * @param string $id
      * @return void
      */
-    public function edit($fractionId=null) {
+    public function edit($fractionId = null) {
         if (!$this->Entity->exists($fractionId)) {
             $this->Flash->error(__('Invalid entity'));
             $this->redirect(array('action' => 'index'));
@@ -120,20 +120,20 @@ class FractionEntitiesController extends AppController {
             $this->request->data = $this->Entity->find('first', $options);
         }
         $entityTypes = $this->Entity->EntityType->find('list', array('conditions' => array('id' => '1')));
-        $this->set(compact('entityTypes','fractionId'));
+        $this->set(compact('entityTypes', 'fractionId'));
     }
 
     public function beforeRender() {
         parent::beforeRender();
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
+            //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
+            //array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text') . ' ( ' . $this->phkRequestData['fiscal_year_text'] . ' ) ', 'active' => ''),
             array('link' => Router::url(array('controller' => 'fractions', 'action' => 'view', $this->getPhkRequestVar('fraction_id'))), 'text' => $this->getPhkRequestVar('fraction_text'), 'active' => ''),
-            array('link' => '', 'text' => ___n('Manager','Managers',2), 'active' => 'active')
+            array('link' => '', 'text' => ___n('Manager', 'Managers', 2), 'active' => 'active')
         );
-        $headerTitle=___n('Manager','Managers',2);
-        $this->set(compact('breadcrumbs','headerTitle'));
+        $headerTitle = ___n('Manager', 'Managers', 2);
+        $this->set(compact('breadcrumbs', 'headerTitle'));
     }
 
 }

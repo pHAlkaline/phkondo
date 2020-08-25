@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * pHKondo : pHKondo software for condominium property managers (http://phalkaline.eu)
@@ -25,7 +26,6 @@
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
-
 App::uses('AppController', 'Controller');
 
 /**
@@ -56,15 +56,14 @@ class FractionInsurancesController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings , array(
-            'contain' => array('InsuranceType','Fraction'),
-            'conditions' => array('Insurance.fraction_id' =>  $this->getPhkRequestVar('fraction_id'))
+        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings, array(
+            'contain' => array('InsuranceType', 'Fraction'),
+            'conditions' => array('Insurance.fraction_id' => $this->getPhkRequestVar('fraction_id'))
         ));
-        
+
         $this->setFilter(array('Insurance.title', 'Insurance.insurance_company', 'Insurance.policy', 'InsuranceType.name'));
 
         $this->set('insurances', $this->Paginator->paginate('Insurance'));
-        
     }
 
     /**
@@ -77,17 +76,17 @@ class FractionInsurancesController extends AppController {
     public function view($id = null) {
         if (!$this->Insurance->exists($id)) {
             $this->Flash->error(__('Invalid insurance'));
-            $this->redirect(array('action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
-        $this->Insurance->contain(array('InsuranceType','Fraction'));
+        $this->Insurance->contain(array('InsuranceType', 'Fraction'));
         $options = array('conditions' => array('Insurance.' . $this->Insurance->primaryKey => $id, 'Insurance.fraction_id' => $this->getPhkRequestVar('fraction_id')));
         $insurance = $this->Insurance->find('first', $options);
         if (!count($insurance)) {
             $this->Flash->success(__('Invalid insurance'));
-            $this->redirect(array('action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
         $this->set('insurance', $insurance);
-        
+
         $this->setPhkRequestVar('insurance_id', $id);
     }
 
@@ -101,7 +100,7 @@ class FractionInsurancesController extends AppController {
             $this->Insurance->create();
             if ($this->Insurance->save($this->request->data)) {
                 $this->Flash->success(__('The insurance has been saved'));
-                $this->redirect(array('action' => 'view', $this->Insurance->id,'?'=>$this->request->query));
+                $this->redirect(array('action' => 'view', $this->Insurance->id, '?' => $this->request->query));
             } else {
                 $this->Flash->error(__('The insurance could not be saved. Please, try again.'));
             }
@@ -122,12 +121,12 @@ class FractionInsurancesController extends AppController {
     public function edit($id = null) {
         if (!$this->Insurance->exists($id)) {
             $this->Flash->error(__('Invalid insurance'));
-            $this->redirect(array('action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Insurance->save($this->request->data)) {
                 $this->Flash->success(__('The insurance has been saved'));
-                $this->redirect(array('action' => 'view', $id,'?'=>$this->request->query));
+                $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
             } else {
                 $this->Flash->error(__('The insurance could not be saved. Please, try again.'));
             }
@@ -156,48 +155,48 @@ class FractionInsurancesController extends AppController {
         }
         $this->Insurance->id = $id;
         if (!$this->Insurance->exists()) {
-           $this->Flash->error(__('Invalid insurance'));
-            $this->redirect(array('action' => 'index','?'=>$this->request->query));
+            $this->Flash->error(__('Invalid insurance'));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
         if ($this->Insurance->delete()) {
             $this->Flash->success(__('Insurance deleted'));
-            $this->redirect(array('action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
         $this->Flash->error(__('Insurance can not be deleted'));
-        $this->redirect(array('action' => 'view', $id,'?'=>$this->request->query));
+        $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
     }
 
     public function beforeFilter() {
         parent::beforeFilter();
         if (!$this->getPhkRequestVar('condo_id')) {
             $this->Flash->error(__('Invalid condo'));
-            $this->redirect(array('controller'=>'condos','action' => 'index'));
+            $this->redirect(array('controller' => 'condos', 'action' => 'index'));
         }
     }
 
     public function beforeRender() {
         parent::beforeRender();
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'fractions', 'action' => 'index','?'=>array('condo_id'=>$this->getPhkRequestVar('condo_id')))), 'text' => __n('Fraction','Fractions',2), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'fractions', 'action' => 'view', $this->getPhkRequestVar('fraction_id'),'?'=>array('condo_id'=>$this->getPhkRequestVar('condo_id')))), 'text' => $this->getPhkRequestVar('fraction_text'), 'active' => ''),
-            array('link' => '', 'text' => __n('Insurance','Insurances',2), 'active' => 'active'),
+            //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
+            //array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo','Condos',2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text') . ' ( ' . $this->phkRequestData['fiscal_year_text'] . ' ) ', 'active' => ''),
+            array('link' => Router::url(array('controller' => 'fractions', 'action' => 'index', '?' => array('condo_id' => $this->getPhkRequestVar('condo_id')))), 'text' => __n('Fraction', 'Fractions', 2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'fractions', 'action' => 'view', $this->getPhkRequestVar('fraction_id'), '?' => array('condo_id' => $this->getPhkRequestVar('condo_id')))), 'text' => $this->getPhkRequestVar('fraction_text'), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'fraction_insurances', 'action' => 'index', '?' => $this->request->query), true), 'text' => __n('Insurance', 'Insurances', 2), 'active' => 'active'),
         );
 
         switch ($this->action) {
             case 'view':
-                $breadcrumbs[5] = array('link' => Router::url(array('action' => 'index','?'=>$this->request->query)), 'text' => __n('Insurance','Insurances',2), 'active' => '');
-                $breadcrumbs[6] = array('link' => '', 'text' => $this->getPhkRequestVar('insurance_text'), 'active' => 'active');
+                $breadcrumbs[3] = array('link' => Router::url(array('action' => 'index', '?' => $this->request->query)), 'text' => __n('Insurance', 'Insurances', 2), 'active' => '');
+                $breadcrumbs[4] = array('link' => '', 'text' => $this->getPhkRequestVar('insurance_text'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[5] = array('link' => Router::url(array('action' => 'index','?'=>$this->request->query)), 'text' => __n('Insurance','Insurances',2), 'active' => '');
-                $breadcrumbs[6] = array('link' => '', 'text' => $this->getPhkRequestVar('insurance_text'), 'active' => 'active');
+                $breadcrumbs[3] = array('link' => Router::url(array('action' => 'index', '?' => $this->request->query)), 'text' => __n('Insurance', 'Insurances', 2), 'active' => '');
+                $breadcrumbs[4] = array('link' => '', 'text' => $this->getPhkRequestVar('insurance_text'), 'active' => 'active');
                 break;
         }
-        $headerTitle=__n('Insurance','Insurances',2);
-        $this->set(compact('breadcrumbs','headerTitle'));
+        $headerTitle = __n('Insurance', 'Insurances', 2);
+        $this->set(compact('breadcrumbs', 'headerTitle'));
     }
 
 }

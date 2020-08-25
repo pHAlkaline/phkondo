@@ -197,19 +197,19 @@ class AdministratorsController extends AppController {
     public function beforeRender() {
         parent::beforeRender();
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view',$this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
-            array('link' => '', 'text' => __n('Administrator','Administrators',2), 'active' => 'active')
+            //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
+            //array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view',$this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text').' ( '.$this->phkRequestData['fiscal_year_text'].' ) ', 'active' => ''),
+            array('link' => Router::url(array('controller' => 'administrators', 'action' => 'index', '?' => $this->request->query), true), 'text' => __n('Administrator','Administrators',2), 'active' => 'active')
         );
         switch ($this->action) {
             case 'view':
-                 $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'administrators', 'action' => 'index','?'=>$this->request->query)), 'text' => __n('Administrator','Administrators',2), 'active' => '');
-                $breadcrumbs[4] = array('link' => '', 'text' => $this->getPhkRequestVar('administrator_text'), 'active' => 'active');
+                $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'administrators', 'action' => 'index','?'=>$this->request->query)), 'text' => __n('Administrator','Administrators',2), 'active' => '');
+                $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('administrator_text'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'administrators', 'action' => 'index','?'=>$this->request->query)), 'text' => __n('Administrator','Administrators',2), 'active' => '');
-                $breadcrumbs[4] = array('link' => '', 'text' => $this->getPhkRequestVar('administrator_text'), 'active' => 'active');
+                $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'administrators', 'action' => 'index','?'=>$this->request->query)), 'text' => __n('Administrator','Administrators',2), 'active' => '');
+                $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('administrator_text'), 'active' => 'active');
                 break;
         }
         $headerTitle=__n('Administrator','Administrators',2);

@@ -58,7 +58,7 @@ class OwnerReceiptsController extends AppController {
      */
     public function index() {
         $this->Receipt->contain('Client', 'ReceiptStatus', 'ReceiptPaymentType');
-        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings , array(
+        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings, array(
             'contain' => array('Client', 'ReceiptStatus', 'ReceiptPaymentType'),
             'conditions' => array(
                 'Receipt.client_id' => $this->getPhkRequestVar('owner_id'),
@@ -164,8 +164,8 @@ class OwnerReceiptsController extends AppController {
 
             $this->Receipt->Note->updateAll(
                     array(
-                'Note.receipt_id' => null,
-                'Note.pending_amount' => 0
+                        'Note.receipt_id' => null,
+                        'Note.pending_amount' => 0
                     ), array(
                 'Note.fraction_id' => $this->getPhkRequestVar('fraction_id'),
                 'Note.entity_id' => $this->Receipt->field('client_id'),
@@ -195,7 +195,6 @@ class OwnerReceiptsController extends AppController {
         $this->redirect(array('action' => 'edit', $id, '?' => $this->request->query, '#' => 'AddNotes'));
         //$this->Receipt->Note->contain(array('NoteType', 'Entity', 'Fraction'));
         //$notes = $this->Receipt->Note->find('all', array('conditions' => array('Note.fraction_id' => $this->getPhkRequestVar('fraction_id'), 'Note.entity_id' => $this->Receipt->field('client_id'), 'Note.note_status_id' => array(1, 2), 'Note.receipt_id' => '')));
-
         //$receiptAmount = $this->Receipt->field('total_amount');
         //$receiptId = $this->Receipt->field('document');
         //$this->set(compact('notes', 'receiptAmount', 'receiptId', 'id'));
@@ -208,24 +207,24 @@ class OwnerReceiptsController extends AppController {
      * @param string $id
      * @return void
      */
-    /*public function remove_note($id = null) {
-        if (!$this->Receipt->Note->exists($id)) {
-            $this->Flash->error(__('Invalid note'));
-            $this->redirect(array('action' => 'index', '?' => $this->request->query));
-        }
-        $this->Receipt->Note->id = $id;
-        $receipt = $this->Receipt->Note->field('receipt_id');
-        if ($receipt != $this->getPhkRequestVar('receipt_id')) {
-            $this->Flash->error(__('Invalid note'));
-            $this->redirect(array('action' => 'edit', $receipt, '?' => $this->request->query));
-        }
-        $this->Receipt->Note->id = $id;
-        $this->Receipt->Note->saveField('receipt_id', null, array('callbacks' => false));
-        $restoreAmount = $this->Receipt->Note->field('amount');
-        $this->Receipt->Note->saveField('pending_amount', $restoreAmount, array('callbacks' => false));
-        $this->_setReceiptAmount($receipt);
-        $this->redirect(array('action' => 'edit', $receipt, '?' => $this->request->query));
-    }*/
+    /* public function remove_note($id = null) {
+      if (!$this->Receipt->Note->exists($id)) {
+      $this->Flash->error(__('Invalid note'));
+      $this->redirect(array('action' => 'index', '?' => $this->request->query));
+      }
+      $this->Receipt->Note->id = $id;
+      $receipt = $this->Receipt->Note->field('receipt_id');
+      if ($receipt != $this->getPhkRequestVar('receipt_id')) {
+      $this->Flash->error(__('Invalid note'));
+      $this->redirect(array('action' => 'edit', $receipt, '?' => $this->request->query));
+      }
+      $this->Receipt->Note->id = $id;
+      $this->Receipt->Note->saveField('receipt_id', null, array('callbacks' => false));
+      $restoreAmount = $this->Receipt->Note->field('amount');
+      $this->Receipt->Note->saveField('pending_amount', $restoreAmount, array('callbacks' => false));
+      $this->_setReceiptAmount($receipt);
+      $this->redirect(array('action' => 'edit', $receipt, '?' => $this->request->query));
+      } */
 
     /**
      * pay_receipt method
@@ -306,7 +305,7 @@ class OwnerReceiptsController extends AppController {
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Receipt->save($this->request->data)) {
                 $this->Flash->success(__('The receipt has been saved'));
-                $this->redirect(array('action' => 'view',$id,'?'=>$this->request->query));
+                $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
             } else {
                 $this->Flash->error(__('The receipt could not be saved. Please, try again.'));
             }
@@ -351,10 +350,9 @@ class OwnerReceiptsController extends AppController {
         $receiptId = $this->Receipt->field('document');
         $this->set(compact('notes', 'receiptAmount', 'receiptId', 'id'));
         $this->set(compact('condos', 'fractions', 'clients', 'receiptStatuses', 'receiptPaymentTypes'));
-        
+
         $this->setPhkRequestVar('receipt_id', $id);
         $this->setPhkRequestVar('receipt_text', $this->request->data['Receipt']['document']);
-        
     }
 
     /**
@@ -466,10 +464,9 @@ class OwnerReceiptsController extends AppController {
         );
 
         $this->set(compact('condos', 'fractions', 'clients', 'receiptStatuses', 'receiptPaymentTypes', 'notes'));
-        
+
         $this->setPhkRequestVar('receipt_id', $id);
         $this->setPhkRequestVar('receipt_text', $this->request->data['Receipt']['document']);
-        
     }
 
     private function _transferNotes($id) {
@@ -553,40 +550,40 @@ class OwnerReceiptsController extends AppController {
     public function beforeRender() {
         parent::beforeRender();
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
+            //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
+            //array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text') . ' ( ' . $this->phkRequestData['fiscal_year_text'] . ' ) ', 'active' => ''),
             array('link' => Router::url(array('controller' => 'fractions', 'action' => 'index', '?' => array('condo_id' => $this->getPhkRequestVar('condo_id')))), 'text' => __n('Fraction', 'Fractions', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'fractions', 'action' => 'view', $this->getPhkRequestVar('fraction_id'), '?' => array('condo_id' => $this->getPhkRequestVar('condo_id')))), 'text' => $this->getPhkRequestVar('fraction_text'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'fraction_owners', 'action' => 'index', '?' => array('fraction_id' => $this->getPhkRequestVar('fraction_id')))), 'text' => __n('Owner', 'Owners', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'fraction_owners', 'action' => 'view', $this->getPhkRequestVar('owner_id'), '?' => array('fraction_id' => $this->getPhkRequestVar('fraction_id')))), 'text' => $this->getPhkRequestVar('owner_text'), 'active' => ''),
-            array('link' => '', 'text' => __n('Receipt', 'Receipts', 2), 'active' => 'active')
+            array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Receipt', 'Receipts', 2), 'active' => 'active')
         );
         switch ($this->action) {
             case 'add_notes':
-                $breadcrumbs[7] = array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index', '?' => array('owner_id' => $this->getPhkRequestVar('owner_id'), 'fraction_id' => $this->getPhkRequestVar('fraction_id')))), 'text' => __n('Receipt', 'Receipts', 2), 'active' => '');
-                $breadcrumbs[8] = array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'view', $this->getPhkRequestVar('receipt_id'))), 'text' => $this->getPhkRequestVar('receipt_text'), 'active' => '');
-                $breadcrumbs[9] = array('link' => '', 'text' => __('Pick Notes'), 'active' => 'active');
+                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index', '?' => array('owner_id' => $this->getPhkRequestVar('owner_id'), 'fraction_id' => $this->getPhkRequestVar('fraction_id')))), 'text' => __n('Receipt', 'Receipts', 2), 'active' => '');
+                $breadcrumbs[6] = array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'view', $this->getPhkRequestVar('receipt_id'))), 'text' => $this->getPhkRequestVar('receipt_text'), 'active' => '');
+                $breadcrumbs[7] = array('link' => '', 'text' => __('Pick Notes'), 'active' => 'active');
                 break;
             case 'view':
-                $breadcrumbs[7] = array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index', '?' => array('owner_id' => $this->getPhkRequestVar('owner_id'), 'fraction_id' => $this->getPhkRequestVar('fraction_id')))), 'text' => __n('Receipt', 'Receipts', 2), 'active' => '');
-                $breadcrumbs[8] = array('link' => '', 'text' => $this->getPhkRequestVar('receipt_text'), 'active' => 'active');
+                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index', '?' => array('owner_id' => $this->getPhkRequestVar('owner_id'), 'fraction_id' => $this->getPhkRequestVar('fraction_id')))), 'text' => __n('Receipt', 'Receipts', 2), 'active' => '');
+                $breadcrumbs[6] = array('link' => '', 'text' => $this->getPhkRequestVar('receipt_text'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[7] = array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index', '?' => array('owner_id' => $this->getPhkRequestVar('owner_id'), 'fraction_id' => $this->getPhkRequestVar('fraction_id')))), 'text' => __n('Receipt', 'Receipts', 2), 'active' => '');
-                $breadcrumbs[8] = array('link' => '', 'text' => $this->getPhkRequestVar('receipt_text'), 'active' => 'active');
+                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index', '?' => array('owner_id' => $this->getPhkRequestVar('owner_id'), 'fraction_id' => $this->getPhkRequestVar('fraction_id')))), 'text' => __n('Receipt', 'Receipts', 2), 'active' => '');
+                $breadcrumbs[6] = array('link' => '', 'text' => $this->getPhkRequestVar('receipt_text'), 'active' => 'active');
                 break;
             case 'cancel':
-                $breadcrumbs[7] = array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index', '?' => array('owner_id' => $this->getPhkRequestVar('owner_id'), 'fraction_id' => $this->getPhkRequestVar('fraction_id')))), 'text' => __n('Receipt', 'Receipts', 2), 'active' => '');
-                $breadcrumbs[8] = array('link' => '', 'text' => $this->getPhkRequestVar('receipt_text'), 'active' => 'active');
+                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index', '?' => array('owner_id' => $this->getPhkRequestVar('owner_id'), 'fraction_id' => $this->getPhkRequestVar('fraction_id')))), 'text' => __n('Receipt', 'Receipts', 2), 'active' => '');
+                $breadcrumbs[6] = array('link' => '', 'text' => $this->getPhkRequestVar('receipt_text'), 'active' => 'active');
                 break;
             case 'pay_receipt':
-                $breadcrumbs[7] = array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index', '?' => array('owner_id' => $this->getPhkRequestVar('owner_id'), 'fraction_id' => $this->getPhkRequestVar('fraction_id')))), 'text' => __n('Receipt', 'Receipts', 2), 'active' => '');
-                $breadcrumbs[8] = array('link' => '', 'text' => $this->getPhkRequestVar('receipt_text'), 'active' => 'active');
+                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'owner_receipts', 'action' => 'index', '?' => array('owner_id' => $this->getPhkRequestVar('owner_id'), 'fraction_id' => $this->getPhkRequestVar('fraction_id')))), 'text' => __n('Receipt', 'Receipts', 2), 'active' => '');
+                $breadcrumbs[6] = array('link' => '', 'text' => $this->getPhkRequestVar('receipt_text'), 'active' => 'active');
                 break;
         }
-        $headerTitle=__n('Receipt', 'Receipts', 2);
-        $this->set(compact('breadcrumbs','headerTitle'));
+        $headerTitle = __n('Receipt', 'Receipts', 2);
+        $this->set(compact('breadcrumbs', 'headerTitle'));
     }
 
 }

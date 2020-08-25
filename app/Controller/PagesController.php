@@ -84,7 +84,7 @@ class PagesController extends AppController {
         );
 
         if ($this->viewVars['page'] == 'login') {
-            $breadcrumbs[1] = array('link' => '', 'text' => __('Start Session'), 'active' => 'active');
+            $breadcrumbs[0] = array('link' => '', 'text' => __('Start Session'), 'active' => 'active');
             $headerTitle = __('Start Session');
         }
 

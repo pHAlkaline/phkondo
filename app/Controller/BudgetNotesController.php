@@ -248,8 +248,8 @@ class BudgetNotesController extends AppController {
             $this->Flash->error(__('Invalid budget'));
             $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
-        if ($this->Note->deleteAll(array('Note.budget_id' => $id,'Note.note_status_id IN'=>[1,4]), false)) {
-           $this->Flash->success(__('Notes deleted'));
+        if ($this->Note->deleteAll(array('Note.budget_id' => $id, 'Note.note_status_id IN' => [1, 4]), false)) {
+            $this->Flash->success(__('Notes deleted'));
             $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
         $this->Flash->error(__('Notes can not be deleted'));
@@ -397,21 +397,21 @@ class BudgetNotesController extends AppController {
     public function beforeRender() {
         parent::beforeRender();
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
+            //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
+            //array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text') . ' ( ' . $this->phkRequestData['fiscal_year_text'] . ' ) ', 'active' => ''),
             array('link' => Router::url(array('controller' => 'budgets', 'action' => 'index', '?' => array('condo_id' => $this->getPhkRequestVar('condo_id')))), 'text' => __n('Budget', 'Budgets', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'budgets', 'action' => 'view', $this->getPhkRequestVar('budget_id'), '?' => array('condo_id' => $this->getPhkRequestVar('condo_id')))), 'text' => $this->getPhkRequestVar('budget_text'), 'active' => ''),
-            array('link' => '', 'text' => __n('Note', 'Notes', 2), 'active' => 'active')
+            array('link' => Router::url(array('controller' => 'budget_notes', 'action' => 'index', '?' => $this->request->query), true), 'text' => __n('Note', 'Notes', 2), 'active' => 'active')
         );
         switch ($this->action) {
             case 'view':
-                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'budget_notes', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Note', 'Notes', 2), 'active' => '');
-                $breadcrumbs[6] = array('link' => '', 'text' => $this->getPhkRequestVar('note_text'), 'active' => 'active');
+                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'budget_notes', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Note', 'Notes', 2), 'active' => '');
+                $breadcrumbs[4] = array('link' => '', 'text' => $this->getPhkRequestVar('note_text'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[5] = array('link' => Router::url(array('controller' => 'budget_notes', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Note', 'Notes', 2), 'active' => '');
-                $breadcrumbs[6] = array('link' => '', 'text' => $this->getPhkRequestVar('note_text'), 'active' => 'active');
+                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'budget_notes', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Note', 'Notes', 2), 'active' => '');
+                $breadcrumbs[4] = array('link' => '', 'text' => $this->getPhkRequestVar('note_text'), 'active' => 'active');
                 break;
         }
         $headerTitle = __n('Note', 'Notes', 2);

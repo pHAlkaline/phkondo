@@ -26,7 +26,6 @@
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
-
 App::uses('AppController', 'Controller');
 
 /**
@@ -50,12 +49,11 @@ class FiscalYearsController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings , array(
+        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings, array(
             'conditions' => array('FiscalYear.condo_id' => $this->getPhkRequestVar('condo_id'))
         ));
         $this->setFilter(array('FiscalYear.title'));
         $this->set('fiscalYears', $this->Paginator->paginate('FiscalYear'));
-        
     }
 
     /**
@@ -68,14 +66,12 @@ class FiscalYearsController extends AppController {
     public function view($id = null) {
         if (!$this->FiscalYear->exists($id)) {
             $this->Flash->error(__('Invalid fiscal year'));
-            $this->redirect(array('action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
         $options = array('conditions' => array('FiscalYear.' . $this->FiscalYear->primaryKey => $id));
         $fiscalYear = $this->FiscalYear->find('first', $options);
         $this->set('fiscalYear', $fiscalYear);
-        $this->setPhkRequestVar('fiscal_year_id',$id);
-       
-        
+        $this->setPhkRequestVar('fiscal_year_id', $id);
     }
 
     /**
@@ -91,7 +87,7 @@ class FiscalYearsController extends AppController {
                     $this->_setAccountBalanceByFiscalYear($this->FiscalYear->id);
                 }
                 $this->Flash->success(__('The fiscal year has been saved'));
-                $this->redirect(array('action' => 'view', $this->FiscalYear->id,'?'=>$this->request->query));
+                $this->redirect(array('action' => 'view', $this->FiscalYear->id, '?' => $this->request->query));
             } else {
                 $this->Flash->error(__('The fiscal year could not be saved. Please, try again.'));
             }
@@ -110,7 +106,7 @@ class FiscalYearsController extends AppController {
     public function edit($id = null) {
         if (!$this->FiscalYear->exists($id)) {
             $this->Flash->error(__('Invalid fiscal year'));
-            $this->redirect(array('action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->FiscalYear->save($this->request->data)) {
@@ -118,7 +114,7 @@ class FiscalYearsController extends AppController {
                     $this->_setAccountBalanceByFiscalYear($this->request->data['FiscalYear']['id']);
                 }
                 $this->Flash->success(__('The fiscal year has been saved'));
-                $this->redirect(array('action' => 'view', $this->FiscalYear->id,'?'=>$this->request->query));
+                $this->redirect(array('action' => 'view', $this->FiscalYear->id, '?' => $this->request->query));
             } else {
                 $this->Flash->error(__('The fiscal year could not be saved. Please, try again.'));
             }
@@ -128,8 +124,7 @@ class FiscalYearsController extends AppController {
         }
         $condos = $this->FiscalYear->Condo->find('list', array('conditions' => array('id' => $this->request->data['FiscalYear']['condo_id'])));
         $this->set(compact('condos'));
-        $this->setPhkRequestVar('fiscal_year_id',$id);
-       
+        $this->setPhkRequestVar('fiscal_year_id', $id);
     }
 
     /**
@@ -147,16 +142,16 @@ class FiscalYearsController extends AppController {
         $this->FiscalYear->id = $id;
         if (!$this->FiscalYear->exists()) {
             $this->Flash->error(__('Invalid fiscal year'));
-            $this->redirect(array('action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
         if ($this->FiscalYear->active()) {
             $this->_setAccountBalanceByFiscalYear($id);
-            $this->setPhkRequestVar('fiscal_year_id',$id);
+            $this->setPhkRequestVar('fiscal_year_id', $id);
             $this->Flash->success(__('Fiscal Year active'));
-            $this->redirect(array('action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
         $this->Flash->error(__('Fiscal Year is not active'));
-        $this->redirect(array('action' => 'index','?'=>$this->request->query));
+        $this->redirect(array('action' => 'index', '?' => $this->request->query));
     }
 
     /**
@@ -175,20 +170,20 @@ class FiscalYearsController extends AppController {
         $this->FiscalYear->id = $id;
         if (!$this->FiscalYear->exists()) {
             $this->Flash->error(__('Invalid fiscal year'));
-            $this->redirect(array('action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
 
         if (!$this->FiscalYear->deletable()) {
             $this->Flash->error(__('This Fiscal Year can not be deleted, check existing notes already paid.'));
-            $this->redirect(array('action' => 'view', $id,'?'=>$this->request->query));
+            $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
         }
 
         if ($this->FiscalYear->delete()) {
             $this->Flash->success(__('Fiscal Year deleted'));
-            $this->redirect(array('action' => 'index','?'=>$this->request->query));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
         $this->Flash->error(__('Fiscal Year can not be deleted'));
-        $this->redirect(array('action' => 'view', $id,'?'=>$this->request->query));
+        $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
     }
 
     private function _setAccountBalanceByFiscalYear($id = null) {
@@ -200,8 +195,6 @@ class FiscalYearsController extends AppController {
         foreach ($accounts['Account'] as $account) {
             $this->FiscalYear->Condo->Account->setAccountBalanceByFiscalYear($account['id'], $id);
         }
-        
-       
     }
 
     public function beforeFilter() {
@@ -215,24 +208,24 @@ class FiscalYearsController extends AppController {
     public function beforeRender() {
         parent::beforeRender();
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
-            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view',$this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text'), 'active' => ''),
-            array('link' => '', 'text' => __n('Fiscal Year', 'Fiscal Years', 2), 'active' => 'active')
+            //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
+            //array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text') . ' ( ' . $this->phkRequestData['fiscal_year_text'] . ' ) ', 'active' => ''),
+            array('link' => Router::url(array('controller' => 'fiscal_years', 'action' => 'index', '?' => $this->request->query), true), 'text' => __n('Fiscal Year', 'Fiscal Years', 2), 'active' => 'active')
         );
 
         switch ($this->action) {
             case 'view':
-                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'fiscal_years', 'action' => 'index','?'=>$this->request->query)), 'text' => __n('Fiscal Year', 'Fiscal Years', 2), 'active' => '');
-                $breadcrumbs[4] = array('link' => '', 'text' => $this->getPhkRequestVar('fiscal_year_text'), 'active' => 'active');
+                $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'fiscal_years', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Fiscal Year', 'Fiscal Years', 2), 'active' => '');
+                $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('fiscal_year_text'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[3] = array('link' => Router::url(array('controller' => 'fiscal_years', 'action' => 'index','?'=>$this->request->query)), 'text' => __n('Fiscal Year', 'Fiscal Years', 2), 'active' => '');
-                $breadcrumbs[4] = array('link' => '', 'text' => $this->getPhkRequestVar('fiscal_year_text'), 'active' => 'active');
+                $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'fiscal_years', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Fiscal Year', 'Fiscal Years', 2), 'active' => '');
+                $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('fiscal_year_text'), 'active' => 'active');
                 break;
         }
-        $headerTitle=__n('Fiscal Year', 'Fiscal Years', 2);
-        $this->set(compact('breadcrumbs','headerTitle'));
+        $headerTitle = __n('Fiscal Year', 'Fiscal Years', 2);
+        $this->set(compact('breadcrumbs', 'headerTitle'));
     }
 
 }
