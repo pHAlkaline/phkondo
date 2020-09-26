@@ -24,7 +24,7 @@
  * @package       app.Controller
  * @since         pHKondo v 0.0.1
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
- * 
+ *
  */
 App::uses('AppController', 'Controller');
 
@@ -49,6 +49,8 @@ class MovementCategoriesController extends AppController {
      * @return void
      */
     public function index() {
+        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings,
+                array('conditions' => array()));
         $this->setFilter(array('MovementCategory.name'));
         $this->set('movementCategories', $this->Paginator->paginate('MovementCategory'));
     }

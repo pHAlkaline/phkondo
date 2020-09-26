@@ -109,7 +109,7 @@
                             <tr>
                                 <th><?php echo __n('Condo', 'Condos', 1); ?></th>
                                 <th><?php echo __n('Fraction', 'Fractions', 1); ?></th>
-                                <th><?php echo __('Floor Location'); ?></th>
+                                <th><?php echo __('Location'); ?></th>
                                 <th><?php echo __('Description'); ?></th>
                                 <th><?php echo __('Mil Rate'); ?></th>
                                 <th><?php echo __n('Manager', 'Managers', 1); ?></th>

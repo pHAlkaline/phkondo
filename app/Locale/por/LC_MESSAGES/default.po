@@ -620,7 +620,7 @@ msgstr "Exercício apagado"
 msgid "Fiscal Year is not active"
 msgstr "O exercício não está activo"
 
-msgid "Floor Location"
+msgid "Location"
 msgstr "Localização"
 
 msgid "Fraction"
@@ -918,7 +918,7 @@ msgstr "Documento de Reunião"
 msgid "Mil Rate"
 msgstr "Permilagem"
 
-msgid "permillage"
+msgid "Permillage"
 msgstr "Permilagem"
 
 msgid "Modified"

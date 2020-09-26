@@ -49,6 +49,8 @@ class InsuranceTypesController extends AppController {
      * @return void
      */
     public function index() {
+        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings,
+                array('conditions' => array()));
         $this->setFilter(array('InsuranceType.name'));
         $this->set('insuranceTypes', $this->Paginator->paginate('InsuranceType'));
     }

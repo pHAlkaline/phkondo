@@ -69,7 +69,7 @@
                             <?php echo h($fraction['Fraction']['description']); ?>
                             &nbsp;
                         </td>
-                    </tr><tr>		<td><strong><?php echo __('permillage'); ?></strong></td>
+                    </tr><tr>		<td><strong><?php echo __('Permillage'); ?></strong></td>
                         <td>
                             <?php echo h($fraction['Fraction']['permillage']); ?>
                             &nbsp;

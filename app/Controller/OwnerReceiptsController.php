@@ -129,12 +129,14 @@ class OwnerReceiptsController extends AppController {
             $this->request->data['Receipt']['address'] = $this->Receipt->Client->field('address');
             $number = $this->_getNextReceiptIndex($this->getPhkRequestVar('condo_id'));
             $this->request->data['Receipt']['document'] = $this->getPhkRequestVar('condo_id') . Date('Y') . '-' . sprintf('%06d', $number);
-            $this->request->data['Receipt']['document_date'] = date(Configure::read('dateFormatSimple'));
+            if ($this->request->data['Receipt']['document_date'] == '') {
+                $this->request->data['Receipt']['document_date'] = date(Configure::read('dateFormatSimple'));
+            }
 
             if ($this->Receipt->save($this->request->data)) {
                 $this->_setReceiptIndex($this->getPhkRequestVar('condo_id'), $number);
                 $this->Flash->success(__('The receipt has been saved'));
-                $this->redirect(array('action' => 'view', $this->Receipt->id, '?' => $this->request->query));
+                $this->redirect(array('action' => 'edit', $this->Receipt->id, '?' => $this->request->query));
             } else {
                 //debug($this->Receipt->validationErrors);
                 //debug($this->request->data);

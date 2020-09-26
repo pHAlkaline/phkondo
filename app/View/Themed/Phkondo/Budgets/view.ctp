@@ -17,7 +17,7 @@
                     $deleteDisabled = '';
                 }
 
-                if (count($budget['Note']) == 0 && $budget['Budget']['budget_status_id'] == 1) {
+                if (count($budget['Note']) == 0 && $budget['Budget']['budget_status_id'] == 2) {
                     $createNotesDisabled = '';
                     //$hasNotesDisabled=' disabled';
                 }

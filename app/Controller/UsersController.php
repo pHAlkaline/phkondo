@@ -49,6 +49,8 @@ class UsersController extends AppController {
      * @return void
      */
     public function index() {
+        $this->Paginator->settings = array_replace_recursive($this->Paginator->settings,
+                array('conditions' => array()));
         $this->setFilter(array('User.name','User.username'));
         $this->set('users', $this->Paginator->paginate('User'));
     }

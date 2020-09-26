@@ -611,7 +611,7 @@ msgstr ""
 msgid "Fiscal Year is not active"
 msgstr ""
 
-msgid "Floor Location"
+msgid "Location"
 msgstr "Location"
 
 msgid "Fraction"
@@ -906,7 +906,7 @@ msgstr "Bozza Incontro"
 msgid "Mil Rate"
 msgstr "Millesimi (percentuale)"
 
-msgid "permillage"
+msgid "Permillage"
 msgstr "Millesimi (percentuale)"
 
 msgid "Modified"
