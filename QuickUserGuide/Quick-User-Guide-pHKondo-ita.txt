@@ -120,7 +120,7 @@ E altre caratteristiche che pHKondo potrebbe avere.
 
 Ricevuta regole speciali
 La ricevuta deve essere in attesa dello stato di pagamento per poterla impostare come pagata.
-La ricevuta deve essere in stato di attesa per poterla impostare come annullata
+La ricevuta deve essere in stato di attesa per poterla impostare come annullata.
 
 NOTA FINALE:
 Se stai cercando altre funzionalità che pHKondo potrebbe non avere a disposizione e desideri acquisire, non esitare a contattarci all'indirizzo contact@phalkaline.eu
