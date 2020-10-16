@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * pHKondo : pHKondo software for condominium property managers (http://phalkaline.eu)
@@ -25,7 +26,6 @@
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
-
 App::uses('AppModel', 'Model');
 App::uses('CakeTime', 'Utility');
 
@@ -109,7 +109,7 @@ class Receipt extends AppModel {
             //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
-       'document_date' => array(
+        'document_date' => array(
             'date' => array(
                 'rule' => array('date'),
                 //'message' => 'Your custom message here',
@@ -142,32 +142,34 @@ class Receipt extends AppModel {
         'payment_date' => array(
             'date' => array(
                 'rule' => array('date'),
-            //'message' => 'Your custom message here',
-            'allowEmpty' => true,
-            'required' => false,
+                //'message' => 'Your custom message here',
+                'allowEmpty' => true,
+                'required' => false,
             //'last' => false, // Stop validation after this rule
             //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
             'checkPastDate' => array(
                 'rule' => array('checkPastDate'),
                 'message' => 'invalid date',
-            //'allowEmpty' => false,
-            //'required' => false,
+                'allowEmpty' => true,
+                'required' => false,
             //'last' => false, // Stop validation after this rule
             //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
             'checkDocumentDate' => array(
                 'rule' => array('checkDocumentDate'),
                 'message' => 'payment date must be at or after document date',
-            //'allowEmpty' => false,
-            //'required' => false,
+                'allowEmpty' => true,
+                'required' => false,
             //'last' => false, // Stop validation after this rule
             //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
-            
-           
         ),
     );
+
+    function isNotPaid($data, $field) {
+        return $this->data[$this->name]['receipt_status_id'] != 3;
+    }
 
     //The Associations below have been created with all possible keys, those that are not needed can be removed
 
@@ -261,8 +263,8 @@ class Receipt extends AppModel {
             'counterQuery' => ''
         )
     );
-    
-     /**
+
+    /**
      * checkDocumentDate
      * Custom Validation Rule: Ensures a selected date is after Document Date
      * 
@@ -271,14 +273,14 @@ class Receipt extends AppModel {
      * @return bool True if in the past or today, False otherwise
      */
     public function checkDocumentDate($check) {
-        if (!isset($this->data[$this->alias]['document_date'])){
-            $this->data[$this->alias]['document_date']=$this->field('document_date');
+        if (!isset($this->data[$this->alias]['document_date'])) {
+            $this->data[$this->alias]['document_date'] = $this->field('document_date');
         }
         $value = array_values($check);
-        return (CakeTime::fromString($this->data[$this->alias]['document_date']) <= CakeTime::fromString($value[0])) ;
+        return (CakeTime::fromString($this->data[$this->alias]['document_date']) <= CakeTime::fromString($value[0]));
     }
-    
-     /**
+
+    /**
      * checkPastDate
      * Custom Validation Rule: Ensures a selected date is either the
      * present day or in the past.
@@ -301,25 +303,24 @@ class Receipt extends AppModel {
      */
     public function afterFind($results, $primary = false) {
         if ($this->noAfterFind) {
-            $this->noAfterFind=false;
+            $this->noAfterFind = false;
             return $results;
         }
-        
-        
+
+
         if (isset($results[0][$this->alias])) {
             foreach ($results as $key => $val) {
                 if (isset($results[$key][$this->alias]['id'])) {
-                    
+
                     $results[$key][$this->alias]['payable'] = $this->payable($results[$key][$this->alias]['id']);
                     $results[$key][$this->alias]['editable'] = $this->editable($results[$key][$this->alias]['id']);
                     $results[$key][$this->alias]['deletable'] = $this->deletable($results[$key][$this->alias]['id']);
                     $results[$key][$this->alias]['closeable'] = $this->closeable($results[$key][$this->alias]['id']);
                     $results[$key][$this->alias]['cancelable'] = $this->cancelable($results[$key][$this->alias]['id']);
-                    
                 }
             }
         }
-        
+
         if (isset($results['id'])) {
             $results['payable'] = $this->payable($results['id']);
             $results['editable'] = $this->editable($results['id']);
@@ -327,15 +328,15 @@ class Receipt extends AppModel {
             $results['closeable'] = $this->closeable($results['id']);
             $results['cancelable'] = $this->cancelable($results['id']);
         }
-        
+
         return $results;
     }
 
     function beforeDelete($cascade = true) {
-        
+
         if ($this->field('receipt_status_id') == '3')
             return false;
-            
+
         if ($this->hasPaidNotes($this->id))
             return false;
 
@@ -416,7 +417,7 @@ class Receipt extends AppModel {
         if ($this->field('receipt_status_id') != '3') {
             return false;
         }
-        
+
         $this->noAfterFind = true;
         if ($this->field('receipt_payment_type_id') == '') {
             return false;
@@ -435,7 +436,7 @@ class Receipt extends AppModel {
             return false;
         }
 
-        if (in_array($this->field('receipt_status_id'), array('1','2', '4'))) {
+        if (in_array($this->field('receipt_status_id'), array('1', '2', '4'))) {
             return false;
         }
         return true;

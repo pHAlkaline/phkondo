@@ -326,6 +326,9 @@ msgstr "Fundo de Reserva"
 msgid "Common Reserve Fund (%)"
 msgstr "Fundo de Reserva (%)"
 
+msgid "Reserved area"
+msgstr "Área reservada"
+
 msgid "Condo"
 msgid_plural "Condos"
 msgstr[0] "Condomínio"

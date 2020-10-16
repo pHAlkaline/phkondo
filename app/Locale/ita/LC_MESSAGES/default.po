@@ -320,6 +320,9 @@ msgstr "Fondo Cassa"
 msgid "Common Reserve Fund (%)"
 msgstr "Fondo Cassa (%)"
 
+msgid "Reserved area"
+msgstr "Área reservada"
+
 msgid "Condo"
 msgid_plural "Condos"
 msgstr[0] "Condominio"

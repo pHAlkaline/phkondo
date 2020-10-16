@@ -32,9 +32,6 @@
                     <?php echo $this->Form->input('fiscal_year_id', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
-                    <?php echo $this->Form->input('document', array('class' => 'form-control')); ?>
-                </div><!-- .form-group -->
-                <div class="form-group">
                     <?php
                     $emptyValue = false;
                     if (count($suppliers) > 1) {
@@ -42,6 +39,9 @@
                     }
                     echo $this->Form->input('supplier_id', array('empty' => $emptyValue, 'class' => 'form-control'));
                     ?>
+                </div><!-- .form-group -->
+                <div class="form-group">
+                    <?php echo $this->Form->input('document', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
                     <?php echo $this->Form->input('description', array('class' => 'form-control')); ?>

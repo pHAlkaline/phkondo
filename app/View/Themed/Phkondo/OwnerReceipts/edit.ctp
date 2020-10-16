@@ -19,15 +19,10 @@
                 <!--li ><?php //echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('New Notes'), array('action' => 'add_notes', $this->Form->value('Receipt.id')), array('class' => 'btn ', 'escape' => false));       ?> </li-->
 
             </ul><!-- /.list-group -->
-
         </div><!-- /.actions -->
-
     </div><!-- /#sidebar .col-sm-3 -->
-
     <div id="page-content" class="col-sm-9">
-
         <div class="receipts form">
-
             <?php
             echo $this->Form->create('Receipt', array(
                 'class' => 'form-horizontal',
@@ -66,8 +61,6 @@
                 <div class="form-group">
                     <?php echo $this->Form->input('observations', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
-
-
             </fieldset>
             <div class="form-group"> 
                 <div class="col-sm-offset-2 col-sm-6"> 
@@ -75,43 +68,32 @@
                 </div> 
             </div>
             <?php echo $this->Form->end(); ?>
-
         </div><!-- /.form -->
         <?php if (count($notes)): ?>
             <div class="related">
                 <a name="AddNotes"></a>
                 <?php $this->Html->script('receipt_add_notes', false); ?>
                 <div id="page-container" class="row row-offcanvas row-offcanvas-left">
-
                     <div id="page-content" class="col-sm-12">
-
                         <div class="index">
                             <?php
                             echo $this->Form->create('Note', array(
                                 'url' => array('controller' => 'owner_receipts', 'action' => 'add_notes', $this->Form->value('Receipt.id'), '?' => $this->request->query)));
                             ?>
-
                             <?php echo $this->Form->hidden('Receipt.amount', array('value' => $receiptAmount)); ?>
                             <div class="actions col-sm-12">
                                 <div class="float-right text-right">
-                                    <h4><?php echo __('Total amount'); ?><span id="addNotesTotalAmount"></span></h4>
+                                    <h4><?php echo __('Total amount'); ?>&nbsp;:&nbsp;<span id="addNotesTotalAmount"></span>&nbsp;<?php echo Configure::read('currencySign'); ?></h4>
                                 </div>
-
                             </div><!-- /.actions -->
-
                             <div class="actions col-sm-12 float-right text-right">
-
                                 <div class="float-right text-right">
                                     <?php if (count($notes)): ?>
                                         <?php echo __('Pick Notes'); ?>
                                         <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 0;')); ?>            
                                     <?php endif; ?>
-
                                 </div>
-
-
                             </div><!-- /.actions -->
-                            <hr/>
                             <div class="clearfix"></div>
                             <div class="table-responsive">
                                 <table class="table table-hover table-condensed">
@@ -150,27 +132,17 @@
                                                     <?php echo $this->Form->hidden('Note.' . $note['Note']['id'] . '.type', array('value' => $note['NoteType']['id'])); ?>
                                                     <?php echo $this->Form->hidden('Note.' . $note['Note']['id'] . '.amount', array('value' => $note['Note']['amount'])); ?>
                                                     <?php echo $this->Form->checkbox('Note.' . $note['Note']['id'] . '.check', array('class' => '', 'hiddenField' => false, 'checked' => $checked)); ?>
-
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
                                 </table>
-
                             </div>
                             <?php echo $this->Form->end(); ?>
-
                         </div><!-- /.index -->
-
                     </div><!-- /#page-content .col-sm-9 -->
-
                 </div><!-- /#page-container .row-fluid -->
-
-
-
             </div><!-- /.related -->
         <?php endif; ?>
     </div><!-- /#page-content .col-sm-9 -->
-
-
 </div><!-- /#page-container .row-fluid -->

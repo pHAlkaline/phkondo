@@ -32,10 +32,10 @@
                     <?php echo $this->Form->input('fiscal_year_id', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
-                    <?php echo $this->Form->input('document', array('class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('supplier_id', array('empty' => true, 'class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
-                    <?php echo $this->Form->input('supplier_id', array('empty' => true, 'class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('document', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
                     <?php echo $this->Form->input('description', array('class' => 'form-control')); ?>

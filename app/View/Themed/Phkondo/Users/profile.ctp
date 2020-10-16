@@ -33,7 +33,7 @@ foreach ($role_options as $key => $value){
                     )
                 )); ?>
             <fieldset>
-                <legend><?php echo __('Profile'); ?></legend>
+                <legend><?php echo __('Reserved area'); ?></legend>
                 <div class="form-group">
                     <?php echo $this->Form->input('name', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->

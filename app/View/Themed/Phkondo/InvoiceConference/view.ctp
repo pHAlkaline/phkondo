@@ -27,16 +27,16 @@
                 <table class="table table-hover table-condensed">
                     <tbody>
                         <tr>		
-                            <td class='col-sm-2'><strong><?php echo __('Document'); ?></strong></td>
+                            <td><strong><?php echo __n('Supplier','Suppliers',1); ?></strong></td>
                             <td>
-                                <?php echo $invoice_conference['InvoiceConference']['document']; ?>
+                                <?php echo $invoice_conference['Supplier']['name']; ?>
                                 &nbsp;
                             </td>
                         </tr>
                         <tr>		
-                            <td><strong><?php echo __n('Supplier','Suppliers',1); ?></strong></td>
+                            <td class='col-sm-2'><strong><?php echo __('Document'); ?></strong></td>
                             <td>
-                                <?php echo $invoice_conference['Supplier']['name']; ?>
+                                <?php echo $invoice_conference['InvoiceConference']['document']; ?>
                                 &nbsp;
                             </td>
                         </tr>
