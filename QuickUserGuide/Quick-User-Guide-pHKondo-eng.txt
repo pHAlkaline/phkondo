@@ -64,5 +64,9 @@ Go to Reports for Balance , Income , Expenses, In Debt, Fees Maps, Contact Lists
 Go to Drafts to make some document drafts you may require...
 And other features pHKondo may have.
 
+Receipts special rules
+Receipt must be in waiting payment status to be allowed to set it as paid.
+Receipt must be in pending status to be allowed to set it as canceled.
+
 FINAL NOTE:
 If you are looking to other features pHKondo may not have available and you wish to acquire, feel free to contact us at contact@phalkaline.eu
