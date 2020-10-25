@@ -20,6 +20,7 @@
 /dist
 /tags
 *.mo
+!empty
 
 /lib/Cake/Console/Templates/skel/tmp/
 
