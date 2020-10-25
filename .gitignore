@@ -8,6 +8,8 @@
 /app/Config/bootstrap_phapp.php
 /app/tmp/*
 !/app/tmp/empty
+!/app/tmp/cache/empty
+!/app/tmp/logs/empty
 /app/files/*
 !/app/files/empty
 /app/Test
