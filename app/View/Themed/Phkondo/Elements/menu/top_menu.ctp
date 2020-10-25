@@ -87,7 +87,7 @@
                                 <?php
                                 $event = new CakeEvent('Phkondo.Draft.hasCondoDraft');
                                 $this->getEventManager()->dispatch($event);
-                                if ($event->result['hasCondoDraft'] === true) {
+                                if (!is_null($event->result) && $event->result['hasCondoDraft'] === true) {
                                     ?>
                                     <h6 class="dropdown-header"><?php echo __('Drafts'); ?></h6>
                                     <li ><?php echo $this->Html->link('<span class="fa fa-file-text"></span> ' . __n('Draft', 'Drafts', 2), array('plugin' => '', 'controller' => 'drafts', 'action' => 'index'), array('escape' => false)); ?></li>
