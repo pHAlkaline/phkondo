@@ -136,7 +136,6 @@ class AppController extends Controller {
             $this->Paginator->settings['conditions'] = Set::merge($this->Paginator->settings['conditions'], array
                         ("OR" => $arrayConditions
             ));
-
             $this->set('keyword', $keyword);
         }
     }

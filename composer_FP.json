@@ -61,11 +61,11 @@
         "jeremyharris/cacher": "dev-master",
         "cakedc/migrations": "^2.5",
         "phalkaline/cakephp-feedback-plugin": "dev-master",
-        "phalkaline/phkondo-attachments": "1.5.*",
+        "phalkaline/phkondo-attachments": "1.6.*",
         "josegonzalez/cakephp-upload": "2.x-dev",
-        "phalkaline/phkondo-drafts" : "1.5.*",
-        "phalkaline/phkondo-print-receipt" : "1.5.*",
-        "phalkaline/phkondo-reports" : "1.5.*"
+        "phalkaline/phkondo-drafts" : "1.6.*",
+        "phalkaline/phkondo-print-receipt" : "1.6.*",
+        "phalkaline/phkondo-reports" : "1.6.*"
         
     },
     "minimum-stability" : "dev",

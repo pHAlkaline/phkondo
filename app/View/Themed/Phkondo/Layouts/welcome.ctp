@@ -69,12 +69,21 @@ if (!isset($headerTitle)) {
             'animate/animate.min',
             'phkondo'));
         ?>
-
+        <style>
+            .centered {
+                position: fixed;
+                top: 25%;
+                left: 50%;
+                /* bring your own prefixes */
+                transform: translate(-50%, -50%);
+            }
+        </style>
     </head>
 
     <body>
-         <?php echo $this->fetch('content'); ?>
-
+        <div class="container">
+            <?php echo $this->fetch('content'); ?>
+        </div>
     </body>
     <?php
     echo $this->Html->script(array('libs/jquery-2.2.2.min', 'libs/bootstrap.min'));
