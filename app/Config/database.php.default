@@ -56,14 +56,15 @@
 class DATABASE_CONFIG {
 
 	public $default = array(
-		'datasource' => 'Database/Mysql',
+		'datasource' => '{default_datasource}',
 		'persistent' => false,
-		'host' => 'localhost',
-		'login' => 'user',
-		'password' => 'password',
-		'database' => 'database_name',
-		'prefix' => '',
-		'encoding' => 'utf8',
+		'host' => '{default_host}',
+		'login' => '{default_login}',
+		'password' => '{default_password}',
+		'database' => '{default_database}',
+		'prefix' => '{default_prefix}',
+		'encoding' => '{default_encoding}',
+		'port' => '{default_port}',
 	);
 
 	public $test = array(
@@ -74,6 +75,6 @@ class DATABASE_CONFIG {
 		'password' => 'password',
 		'database' => 'test_database_name',
 		'prefix' => '',
-		//'encoding' => 'utf8',
+		'encoding' => 'utf8',
 	);
 }

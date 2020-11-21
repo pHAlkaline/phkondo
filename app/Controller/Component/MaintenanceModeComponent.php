@@ -20,25 +20,15 @@
  *
  * @copyright     Copyright (c) pHAlkaline . (http://phalkaline.eu)
  * @link          http://phkondo.net pHKondo Project
- * @package       app.Controller.Component
- * @since         pHKondo v 0.0.1
+ * @package       app.Controller
+ * @since         pHKondo v 1.6.3
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
+
 App::uses('Component', 'Controller');
 
-/**
- * pHAlkaline Component
- *
- * PHP version 5
- *
- * @category Component
- * @package  pHAlkaline
- * @version  V1.1
- * @author   Paulo Homem <contact@phalkaline.eu>
- * @license  http://opensource.org/licenses/GPL-2.0 The GNU GPL-2.0
- * @link     http://www.phalkaline.eu
- */
+
 class MaintenanceModeComponent extends Component {
 
     /**

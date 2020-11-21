@@ -46,10 +46,10 @@ foreach ($role_options as $key => $value){
                     </div>
                 </div><!-- .form-group -->
                 <div class="form-group">
-                    <?php echo $this->Form->input('password', array('disabled' => 'disabled', 'class' => 'form-control', 'maxLength' => '40', 'type' => 'password')); ?>
+                    <?php echo $this->Form->input('password', array('disabled' => 'disabled', 'class' => 'form-control', 'minlength'=>'8', 'maxLength' => '40', 'type' => 'password')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
-                    <?php echo $this->Form->input('verify_password', array('disabled' => 'disabled', 'class' => 'form-control', 'maxLength' => '40', 'type' => 'password')); ?>
+                    <?php echo $this->Form->input('verify_password', array('disabled' => 'disabled', 'class' => 'form-control', 'minlength'=>'8', 'maxLength' => '40', 'type' => 'password')); ?>
                 </div><!-- .form-group -->
                 
             </fieldset>

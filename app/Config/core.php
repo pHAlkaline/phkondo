@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This is core configuration file.
  *
@@ -17,7 +18,6 @@
  * @since         CakePHP(tm) v 0.2.9
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
-
 //setLocale(LC_ALL, 'deu');
 //Configure::write('Config.language', 'deu');
 
@@ -34,7 +34,7 @@
  * In production mode, flash messages redirect after a time interval.
  * In development mode, you need to click the flash message to continue.
  */
-	Configure::write('debug', 0);
+Configure::write('debug', 0);
 
 /**
  * Configure the Error handler used to handle errors for your application. By default
@@ -51,11 +51,11 @@
  *
  * @see ErrorHandler for more information on error handling and configuration.
  */
-	Configure::write('Error', array(
-		'handler' => 'ErrorHandler::handleError',
-		'level' => E_ALL & ~E_DEPRECATED,
-		'trace' => true
-	));
+Configure::write('Error', array(
+    'handler' => 'ErrorHandler::handleError',
+    'level' => E_ALL & ~E_DEPRECATED,
+    'trace' => true
+));
 
 /**
  * Configure the Exception handler used for uncaught exceptions. By default,
@@ -79,16 +79,16 @@
  *
  * @see ErrorHandler for more information on exception handling and configuration.
  */
-	Configure::write('Exception', array(
-		'handler' => 'ErrorHandler::handleException',
-		'renderer' => 'ExceptionRenderer',
-		'log' => true
-	));
+Configure::write('Exception', array(
+    'handler' => 'ErrorHandler::handleException',
+    'renderer' => 'ExceptionRenderer',
+    'log' => true
+));
 
 /**
  * Application wide charset encoding
  */
-	Configure::write('App.encoding', 'UTF-8');
+Configure::write('App.encoding', 'UTF-8');
 
 /**
  * To configure CakePHP *not* to use mod_rewrite and to
@@ -109,7 +109,7 @@
  * included primarily as a development convenience - and
  * thus not recommended for production applications.
  */
-	//Configure::write('App.baseUrl', env('SCRIPT_NAME'));
+//Configure::write('App.baseUrl', env('SCRIPT_NAME'));
 
 /**
  * To configure CakePHP to use a particular domain URL
@@ -119,31 +119,31 @@
  * useful when generating links from the CLI (e.g. sending emails).
  * If the application runs in a subfolder, you should also set App.base.
  */
-	//Configure::write('App.fullBaseUrl', 'http://example.com');
+//Configure::write('App.fullBaseUrl', 'http://example.com');
 
 /**
  * The base directory the app resides in. Should be used if the
  * application runs in a subfolder and App.fullBaseUrl is set.
  */
-	//Configure::write('App.base', '/my_app');
+//Configure::write('App.base', '/my_app');
 
 /**
  * Web path to the public images directory under webroot.
  * If not set defaults to 'img/'
  */
-	//Configure::write('App.imageBaseUrl', 'img/');
+//Configure::write('App.imageBaseUrl', 'img/');
 
 /**
  * Web path to the CSS files directory under webroot.
  * If not set defaults to 'css/'
  */
-	//Configure::write('App.cssBaseUrl', 'css/');
+//Configure::write('App.cssBaseUrl', 'css/');
 
 /**
  * Web path to the js files directory under webroot.
  * If not set defaults to 'js/'
  */
-	//Configure::write('App.jsBaseUrl', 'js/');
+//Configure::write('App.jsBaseUrl', 'js/');
 
 /**
  * Uncomment the define below to use CakePHP prefix routes.
@@ -157,15 +157,15 @@
  * 	Routing.prefixes = array('admin', 'manager');
  *
  * Enables:
- *	`admin_index()` and `/admin/controller/index`
- *	`manager_index()` and `/manager/controller/index`
+ * 	`admin_index()` and `/admin/controller/index`
+ * 	`manager_index()` and `/manager/controller/index`
  */
-	//Configure::write('Routing.prefixes', array('admin'));
+//Configure::write('Routing.prefixes', array('admin'));
 
 /**
  * Turn off all caching application-wide.
  */
-	//Configure::write('Cache.disable', true);
+//Configure::write('Cache.disable', true);
 
 /**
  * Enable cache checking.
@@ -175,7 +175,7 @@
  * You can either set it controller-wide by setting public $cacheAction = true,
  * or in each action using $this->cacheAction = true.
  */
-	//Configure::write('Cache.check', true);
+//Configure::write('Cache.check', true);
 
 /**
  * Enable cache view prefixes.
@@ -185,7 +185,7 @@
  * for instance. Each version can then have its own view cache namespace.
  * Note: The final cache file name will then be `prefix_cachefilename`.
  */
-	//Configure::write('Cache.viewPrefix', 'prefix');
+//Configure::write('Cache.viewPrefix', 'prefix');
 
 /**
  * Session configuration.
@@ -226,20 +226,21 @@
  * To use database sessions, run the app/Config/Schema/sessions.php schema using
  * the cake shell command: cake schema create Sessions
  */
-	Configure::write('Session', array(
-		'defaults' => 'php'
-	));
+Configure::write('Session', array(
+    'defaults' => 'php',
+    'cookie'=>'pHKondoSession'
+));
 
 /**
  * A random string used in security hashing methods.
  */
-	Configure::write('Security.salt', 'DYhG93b0qyJfIxfs2guVoUubWwvniR2G0FgaC9mi');
+Configure::write('Security.salt', 'DYhG93b0qyJfIxfs2guVoUubWwvniR2G0FgaC9mi');
 
 /**
  * A random numeric string (digits only) used to encrypt/decrypt strings.
  */
-	Configure::write('Security.cipherSeed', '76859309657453542496749683645');
-        //Configure::write('Security.useOpenSsl', true);
+Configure::write('Security.cipherSeed', '76859309657453542496749683645');
+//Configure::write('Security.useOpenSsl', true);
 /**
  * Apply timestamps with the last modified time to static assets (js, css, images).
  * Will append a query string parameter containing the time the file was modified. This is
@@ -248,7 +249,7 @@
  * Set to `true` to apply timestamps when debug > 0. Set to 'force' to always enable
  * timestamping regardless of debug value.
  */
-	//Configure::write('Asset.timestamp', true);
+//Configure::write('Asset.timestamp', true);
 
 /**
  * Compress CSS output by removing comments, whitespace, repeating tags, etc.
@@ -257,7 +258,7 @@
  *
  * To use, prefix the CSS link URL with '/ccss/' instead of '/css/' or use HtmlHelper::css().
  */
-	//Configure::write('Asset.filter.css', 'css.php');
+//Configure::write('Asset.filter.css', 'css.php');
 
 /**
  * Plug in your own custom JavaScript compressor by dropping a script in your webroot to handle the
@@ -265,20 +266,20 @@
  *
  * To use, prefix your JavaScript link URLs with '/cjs/' instead of '/js/' or use JsHelper::link().
  */
-	//Configure::write('Asset.filter.js', 'custom_javascript_output_filter.php');
+//Configure::write('Asset.filter.js', 'custom_javascript_output_filter.php');
 
 /**
  * The class name and database used in CakePHP's
  * access control lists.
  */
-	Configure::write('Acl.classname', 'DbAcl');
-	Configure::write('Acl.database', 'default');
+Configure::write('Acl.classname', 'DbAcl');
+Configure::write('Acl.database', 'default');
 
 /**
  * Uncomment this line and correct your server timezone to fix
  * any date & time related errors.
  */
-	//date_default_timezone_set('UTC');
+//date_default_timezone_set('UTC');
 
 /**
  * `Config.timezone` is available in which you can set users' timezone string.
@@ -286,7 +287,7 @@
  * then the value of `Config.timezone` will be used. This feature allows you to set users' timezone just
  * once instead of passing it each time in function calls.
  */
-	//Configure::write('Config.timezone', 'Europe/Paris');
+//Configure::write('Config.timezone', 'Europe/Paris');
 
 /**
  * Cache Engine Configuration
@@ -295,62 +296,61 @@
  * File storage engine.
  *
  * 	 Cache::config('default', array(
- *		'engine' => 'File', //[required]
- *		'duration' => 3600, //[optional]
- *		'probability' => 100, //[optional]
+ * 		'engine' => 'File', //[required]
+ * 		'duration' => 3600, //[optional]
+ * 		'probability' => 100, //[optional]
  * 		'path' => CACHE, //[optional] use system tmp directory - remember to use absolute path
  * 		'prefix' => 'cake_', //[optional]  prefix every cache file with this string
  * 		'lock' => false, //[optional]  use file locking
  * 		'serialize' => true, //[optional]
  * 		'mask' => 0664, //[optional]
- *	));
+ * 	));
  *
  * APC (http://pecl.php.net/package/APC)
  *
  * 	 Cache::config('default', array(
- *		'engine' => 'Apc', //[required]
- *		'duration' => 3600, //[optional]
- *		'probability' => 100, //[optional]
+ * 		'engine' => 'Apc', //[required]
+ * 		'duration' => 3600, //[optional]
+ * 		'probability' => 100, //[optional]
  * 		'prefix' => Inflector::slug(APP_DIR) . '_', //[optional]  prefix every cache file with this string
- *	));
+ * 	));
  *
  * Xcache (http://xcache.lighttpd.net/)
  *
  * 	 Cache::config('default', array(
- *		'engine' => 'Xcache', //[required]
- *		'duration' => 3600, //[optional]
- *		'probability' => 100, //[optional]
- *		'prefix' => Inflector::slug(APP_DIR) . '_', //[optional] prefix every cache file with this string
- *		'user' => 'user', //user from xcache.admin.user settings
- *		'password' => 'password', //plaintext password (xcache.admin.pass)
- *	));
+ * 		'engine' => 'Xcache', //[required]
+ * 		'duration' => 3600, //[optional]
+ * 		'probability' => 100, //[optional]
+ * 		'prefix' => Inflector::slug(APP_DIR) . '_', //[optional] prefix every cache file with this string
+ * 		'user' => 'user', //user from xcache.admin.user settings
+ * 		'password' => 'password', //plaintext password (xcache.admin.pass)
+ * 	));
  *
  * Memcached (http://www.danga.com/memcached/)
  *
  * Uses the memcached extension. See http://php.net/memcached
  *
  * 	 Cache::config('default', array(
- *		'engine' => 'Memcached', //[required]
- *		'duration' => 3600, //[optional]
- *		'probability' => 100, //[optional]
+ * 		'engine' => 'Memcached', //[required]
+ * 		'duration' => 3600, //[optional]
+ * 		'probability' => 100, //[optional]
  * 		'prefix' => Inflector::slug(APP_DIR) . '_', //[optional]  prefix every cache file with this string
  * 		'servers' => array(
  * 			'127.0.0.1:11211' // localhost, default port 11211
  * 		), //[optional]
  * 		'persistent' => 'my_connection', // [optional] The name of the persistent connection.
  * 		'compress' => false, // [optional] compress data in Memcached (slower, but uses less memory)
- *	));
+ * 	));
  *
  *  Wincache (http://php.net/wincache)
  *
  * 	 Cache::config('default', array(
- *		'engine' => 'Wincache', //[required]
- *		'duration' => 3600, //[optional]
- *		'probability' => 100, //[optional]
- *		'prefix' => Inflector::slug(APP_DIR) . '_', //[optional]  prefix every cache file with this string
- *	));
+ * 		'engine' => 'Wincache', //[required]
+ * 		'duration' => 3600, //[optional]
+ * 		'probability' => 100, //[optional]
+ * 		'prefix' => Inflector::slug(APP_DIR) . '_', //[optional]  prefix every cache file with this string
+ * 	));
  */
-
 /**
  * Configure the cache handlers that CakePHP will use for internal
  * metadata like class maps, and model schema.
@@ -366,7 +366,7 @@ $engine = 'File';
 // In development mode, caches should expire quickly.
 $duration = '+999 days';
 if (Configure::read('debug') > 0) {
-	$duration = '+10 seconds';
+    $duration = '+10 seconds';
 }
 
 // Prefix each application on the same server with a different string, to avoid Memcache and APC conflicts.
@@ -377,11 +377,11 @@ $prefix = 'myapp_';
  * object listings, and translation cache files are stored with this configuration.
  */
 Cache::config('_cake_core_', array(
-	'engine' => $engine,
-	'prefix' => $prefix . 'cake_core_',
-	'path' => CACHE . 'persistent' . DS,
-	'serialize' => ($engine === 'File'),
-	'duration' => $duration
+    'engine' => $engine,
+    'prefix' => $prefix . 'cake_core_',
+    'path' => CACHE . 'persistent' . DS,
+    'serialize' => ($engine === 'File'),
+    'duration' => $duration
 ));
 
 /**
@@ -389,12 +389,17 @@ Cache::config('_cake_core_', array(
  * is used to store schema descriptions, and table listings in connections.
  */
 Cache::config('_cake_model_', array(
-	'engine' => $engine,
-	'prefix' => $prefix . 'cake_model_',
-	'path' => CACHE . 'models' . DS,
-	'serialize' => ($engine === 'File'),
-	'duration' => $duration
+    'engine' => $engine,
+    'prefix' => $prefix . 'cake_model_',
+    'path' => CACHE . 'models' . DS,
+    'serialize' => ($engine === 'File'),
+    'duration' => $duration
 ));
 
-
+if (!file_exists(APP . 'Config' . DS . 'core_phapp.php')) {
+    copy(APP . 'Config' . DS . 'core_phapp.php.default', APP . 'Config' . DS . 'core_phapp.php');
+}
+if (!file_exists(APP . 'Config' . DS . 'bootstrap_phapp.php')) {
+    copy(APP . 'Config' . DS . 'bootstrap_phapp.php.default', APP . 'Config' . DS . 'bootstrap_phapp.php');
+}
 require 'core_phapp.php';

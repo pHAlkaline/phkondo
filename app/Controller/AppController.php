@@ -42,10 +42,11 @@ class AppController extends Controller {
     public $phkRequestData = array();
 
     public function beforeFilter() {
+        $this->Cookie->name = 'pHKondo';
 
         $this->Paginator->settings['paramType'] = 'querystring';
-        if ($this->Session->read('User.language')) {
-            Configure::write('Config.language', $this->Session->read('User.language'));
+        if ($this->Cookie->check('Config.language')) {
+            Configure::write('Config.language', $this->Cookie->read('Config.language'));
         }
 
         $this->theme = $this->getTheme();

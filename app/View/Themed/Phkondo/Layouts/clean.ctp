@@ -21,7 +21,7 @@
  * @copyright     Copyright (c) pHAlkaline . (http://phalkaline.eu)
  * @link          http://phkondo.net pHKondo Project
  * @@package      app.View.Themed.Layouts
- * @since         pHKondo v 0.0.1
+ * @since         pHKondo v 1.6.2
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  *
  */
@@ -89,15 +89,13 @@ if (!isset($headerTitle)) {
     <body>
 
         <div id="main-container">
-
-            <div id="header" class="container hidden-print">
-                <?php echo $this->element('menu/top_menu', array('headerDescription' => '')); ?>
-            </div><!-- #header .container -->
-
             <div id="content" class="container">
                 <div class="hidden-print">
                     <?php if (isset($breadcrumbs)) echo $this->element('breadcrumbs', array('breadcrumbs', $breadcrumbs)); ?>
-                    <?php echo $this->Flash->render(); ?>
+                    <div class="row">
+                        <p>&nbsp;</p>
+                        <?php echo $this->Flash->render(); ?>
+                    </div>
                 </div>
                 <?php echo $this->fetch('content'); ?>
             </div><!-- #header .container -->
@@ -152,6 +150,7 @@ if (!isset($headerTitle)) {
                 $("form").submit(function () {
                     // prevent duplicate form submissions
                     $(this).find(":submit").attr('disabled', 'disabled').prepend('<span class="glyphicon glyphicon-repeat fast-right-spinner"></span>');
+               ;
                 });
                 var phkondolang = 'en-GB';
                 switch (phkondo.APP_LANG) {

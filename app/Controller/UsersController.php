@@ -51,7 +51,7 @@ class UsersController extends AppController {
     public function index() {
         $this->Paginator->settings = array_replace_recursive($this->Paginator->settings,
                 array('conditions' => array()));
-        $this->setFilter(array('User.name','User.username'));
+        $this->setFilter(array('User.name', 'User.username'));
         $this->set('users', $this->Paginator->paginate('User'));
     }
 
@@ -72,7 +72,6 @@ class UsersController extends AppController {
         $this->set('user', $user);
         $this->setPhkRequestVar('user_id', $id);
         $this->setPhkRequestVar('user_text', $user['User']['name']);
-        
     }
 
     /**
@@ -119,8 +118,7 @@ class UsersController extends AppController {
         unset($this->request->data['User']['password']);
         unset($this->request->data['User']['verify_password']);
         $this->setPhkRequestVar('user_id', $id);
-        $this->setPhkRequestVar('user_text',  $this->request->data['User']['name']);
-        
+        $this->setPhkRequestVar('user_text', $this->request->data['User']['name']);
     }
 
     /**
@@ -149,24 +147,21 @@ class UsersController extends AppController {
     }
 
     public function login() {
+        $this->__checkSetup();
+        $this->__setSettings();
         $this->layout = "login";
-        if (isset($this->request->data['User']['language']) && $this->request->data['User']['language'] != '') {
-            $this->Session->write('User.language', $this->request->data['User']['language']);
-            Configure::write('Config.language', $this->Session->read('User.language'));
-        }
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
                 $this->rememberMe();
-                if (isset($this->request->data['User']['theme']) && $this->request->data['User']['theme'] != '') {
-                    $this->setTheme();
-                }
-
                 return $this->redirect($this->Auth->redirectUrl()); //$this->Auth->redirectUrl()
             }
             $this->Flash->error(__('Invalid username or password, try again'));
         }
         if (!isset($this->request->data['User']['language'])) {
-            $this->request->data['User']['language'] = Configure::read('Config.language');
+            $this->request->data['User']['language'] = $this->Cookie->check('Config.language') ? $this->Cookie->read('Config.language') : Configure::read('Config.language');
+        }
+        if (!isset($this->request->data['User']['theme'])) {
+            $this->request->data['User']['theme'] = $this->Cookie->check('User.theme') ? $this->Cookie->read('Config.theme') : Configure::read('Config.theme');
         }
     }
 
@@ -185,10 +180,10 @@ class UsersController extends AppController {
     public function profile() {
         if (!$this->User->exists($this->Auth->user('id'))) {
             $this->Flash->error(__('Invalid user'));
-            $this->redirect(array('controller'=>'pages','action' => 'home'));
+            $this->redirect(array('controller' => 'pages', 'action' => 'home'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
-            $this->request->data['User']['id']=$this->Auth->user('id');
+            $this->request->data['User']['id'] = $this->Auth->user('id');
             if ($this->User->save($this->request->data)) {
                 $this->Flash->success(__('The user has been saved'));
                 $this->redirect(array('action' => 'profile'));
@@ -203,10 +198,9 @@ class UsersController extends AppController {
         unset($this->request->data['User']['password']);
         unset($this->request->data['User']['verify_password']);
         $this->setPhkRequestVar('user_id', $this->Auth->user('id'));
-        $this->setPhkRequestVar('user_text',  $this->request->data['User']['name']);
-        
+        $this->setPhkRequestVar('user_text', $this->request->data['User']['name']);
     }
-    
+
     public function rememberMe() {
         if (isset($this->request->data['User']['rememberMe']) && $this->request->data['User']['rememberMe']) {
             // After what time frame should the cookie expire
@@ -233,7 +227,7 @@ class UsersController extends AppController {
                 case 'store_admin':
                     return true;
                     break;
-                case ($this->request->action=='profile' && Configure::read('Application.mode') != 'demo'):
+                case ($this->request->action == 'profile' && Configure::read('Application.mode') != 'demo'):
                     return true;
                     break;
                 default:
@@ -248,7 +242,7 @@ class UsersController extends AppController {
 
     public function beforeRender() {
         parent::beforeRender();
-        $headerTitle=__('Users');
+        $headerTitle = __('Users');
         $breadcrumbs = array(
             //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'users', 'action' => 'index')), 'text' => __('Users'), 'active' => 'active'),
@@ -268,28 +262,36 @@ class UsersController extends AppController {
                 break;
             case 'login':
                 $breadcrumbs[0] = array('link' => '', 'text' => __('Start Session'), 'active' => 'active');
-                $headerTitle=__('Start Session');
+                $headerTitle = __('Start Session');
                 break;
         }
-        
-        $this->set(compact('breadcrumbs','headerTitle'));
+
+        $this->set(compact('breadcrumbs', 'headerTitle'));
     }
 
-    private function setTheme() {
-
-
-        if ($this->request->data['User']['theme']) {
+    private function __setSettings() {
+        if (isset($this->request->data['User']['theme']) && $this->request->data['User']['theme']!='') {
             App::uses('Folder', 'Utility');
             $theme_path = APP . 'View' . DS . 'Themed' . DS . $this->request->data['User']['theme'];
             $folder = new Folder($theme_path);
             if (is_null($folder->path)) {
-                $this->Session->delete('User.theme');
+                $this->Cookie->delete('User.theme');
                 Configure::write('Theme.name', 'Phkondo');
                 $this->Flash->error(__('Selected Theme not found.'));
             }
-        } else {
-            $this->Session->write('User.theme', $this->request->data['User']['theme']);
-            Configure::write('Config.theme', $this->Session->read('User.theme'));
+            $this->Cookie->write('Config.theme', $this->request->data['User']['theme'], true, "12 months");
+            Configure::write('Config.theme', $this->request->data['User']['theme']);
+        } 
+        if (isset($this->request->data['User']['language']) && $this->request->data['User']['language'] != '') {
+            $this->Cookie->write('Config.language', $this->request->data['User']['language'], false, "12 months");
+            Configure::write('Config.language', $this->request->data['User']['language']);
+        }
+    }
+
+    private function __checkSetup() {
+        if (!file_exists(APP . 'Config' . DS . 'database.php')) {
+            $this->Flash->error(__d('install', 'Database connection missing'));
+            $this->redirect('/');
         }
     }
 

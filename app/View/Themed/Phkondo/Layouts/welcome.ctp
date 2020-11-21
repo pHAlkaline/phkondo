@@ -84,6 +84,9 @@ if (!isset($headerTitle)) {
         <div class="container">
             <?php echo $this->fetch('content'); ?>
         </div>
+        <div style="position:fixed;bottom:0;left:50%;transform: translate(-50%, -50%);">
+             <?php echo $this->Flash->render(); ?>
+        </div>
     </body>
     <?php
     echo $this->Html->script(array('libs/jquery-2.2.2.min', 'libs/bootstrap.min'));

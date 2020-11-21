@@ -67,7 +67,7 @@ $(function(){
         });
         $('#notesTotal').html(notesTotal);
         $('#notesTotal').removeClass('text-danger');
-        $('input[type="submit"]').prop('disabled', false);
+        $('input[type="submit"]').prop('disabled', false).find('.fa-spinner').first().remove();
         if (notesTotal!=$( "#NoteBudgetAmount" ).val()){
             $( "#NoteBudgetNotesAmount" ).val(notesTotal);
             //$('input[type="submit"]').prop('disabled', true);  

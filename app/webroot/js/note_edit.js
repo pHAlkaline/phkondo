@@ -38,7 +38,7 @@ $(function () {
 //                $("#NotePaymentDateDay").prop('disabled', true);
 //                $("#NotePaymentDateMonth").prop('disabled', true);
 //                $("#NotePaymentDateYear").prop('disabled', true);
-                $("#NotePaymentDate").prop('disabled', true);
+                $("#NotePaymentDate").prop('disabled', true).find('.fa-spinner').first().remove();
                 $("#elem_payment_date").hide('slow');
 
                 break;
@@ -46,14 +46,14 @@ $(function () {
 //               $("#NotePaymentDateDay").prop('disabled', false);
 //                $("#NotePaymentDateMonth").prop('disabled', false);
 //                $("#NotePaymentDateYear").prop('disabled', false);
-                $("#NotePaymentDate").prop('disabled', false);
+                $("#NotePaymentDate").prop('disabled', false).find('.fa-spinner').first().remove();
                 $("#elem_payment_date").show('slow');
                 break;
             default:
 //                $("#NotePaymentDateDay").prop('disabled', true);
 //                $("#NotePaymentDateDay").prop('disabled', true);
 //                $("#NotePaymentDateYear").prop('disabled', true);
-                $("#NotePaymentDate").prop('disabled', true);
+                $("#NotePaymentDate").prop('disabled', true).find('.fa-spinner').first().remove();
                 $("#elem_payment_date").hide('fast');
 
         }

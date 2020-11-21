@@ -254,9 +254,9 @@ UNLOCK TABLES;
 
 LOCK TABLES `support_categories` WRITE;
 /*!40000 ALTER TABLE `support_categories` DISABLE KEYS */;
-INSERT INTO `support_categories` ( `id`, `name`, `active`, `modified`, `created`) VALUES (1,'Incidence',1,NOW()NOW());
+INSERT INTO `support_categories` ( `id`, `name`, `active`, `modified`, `created`) VALUES (1,'Incidence',1,NOW(),NOW());
 INSERT INTO `support_categories` ( `id`, `name`, `active`, `modified`, `created`) VALUES (2,'Information Request',1,NOW(),NOW());
-INSERT INTO `support_categories` ( `id`, `name`, `active`, `modified`, `created`) VALUES (3,'Reclaim',1,NOW()NOW());
+INSERT INTO `support_categories` ( `id`, `name`, `active`, `modified`, `created`) VALUES (3,'Reclaim',1,NOW(),NOW());
 /*!40000 ALTER TABLE `support_categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -266,21 +266,11 @@ UNLOCK TABLES;
 
 LOCK TABLES `support_priorities` WRITE;
 /*!40000 ALTER TABLE `support_priorities` DISABLE KEYS */;
-INSERT INTO `support_priorities` ( `id`, `name`, `order`, `active`, `modified`, `created`) VALUES (1,'High',1,1,NOW()NOW());
-INSERT INTO `support_priorities` ( `id`, `name`, `order`, `active`, `modified`, `created`) VALUES (2,'Normal',2,1,NOW()NOW());
-INSERT INTO `support_priorities` ( `id`, `name`, `order`, `active`, `modified`, `created`) VALUES (3,'Low',3,1,NOW()NOW());
+INSERT INTO `support_priorities` ( `id`, `name`, `order`, `active`, `modified`, `created`) VALUES (1,'High',1,1,NOW(),NOW());
+INSERT INTO `support_priorities` ( `id`, `name`, `order`, `active`, `modified`, `created`) VALUES (2,'Normal',2,1,NOW(),NOW());
+INSERT INTO `support_priorities` ( `id`, `name`, `order`, `active`, `modified`, `created`) VALUES (3,'Low',3,1,NOW(),NOW());
 /*!40000 ALTER TABLE `support_priorities` ENABLE KEYS */;
 UNLOCK TABLES;
-
--- 
--- Dumping Date is table `users`
---
-
-LOCK tables `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` ( `name`, `username`, `password`, `role`, `active`, `modified`, `created`) VALUES ( 'Administrator' , 'admin' , 'b8sbs5d64db2e878e267d8b3d0ad4b0753ea9d38' , 'admin',1,NOW() ,NOW()); 
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK tables;
 
 -- 
 -- Dumping events is database `phkondo`

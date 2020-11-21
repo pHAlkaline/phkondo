@@ -273,17 +273,6 @@ INSERT INTO `support_priorities` ( `id`, `name`, `order`, `active`, `modified`, 
 UNLOCK TABLES;
 
 --
--- Dumping data for table `users`
---
-
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` ( `name`, `username`, `password`, `role`, `active`, `modified`, `created`) VALUES ('Administrador','admin','b8ebe5d64db2e878e267d8b3d0ad4b0753ea9d38','admin',1,NOW(),NOW());
-
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Dumping events for database 'phkondo'
 --
 

@@ -1011,6 +1011,17 @@ ALTER TABLE `supports`
   ADD CONSTRAINT `fk_support_7` FOREIGN KEY (`assigned_user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE;
 SET FOREIGN_KEY_CHECKS=1;
 
+
+-- 
+-- Dumping Date is table `users`
+--
+
+LOCK tables `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` ( `name`, `username`, `password`, `role`, `active`, `modified`, `created`) VALUES ( 'Administrator' , 'admin' , 'b8sbs5d64db2e878e267d8b3d0ad4b0753ea9d38' , 'admin',1,NOW() ,NOW()); 
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK tables;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -34,11 +34,11 @@ foreach ($role_options as $key => $value) {
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-                    <?php echo $this->Form->input('password', array('autocomplete'=>'new-password','class' => 'form-control', 'maxLength' => '40', 'type' => 'password')); ?>
+                    <?php echo $this->Form->input('password', array('autocomplete'=>'new-password','class' => 'form-control','minlength'=>'8', 'maxLength' => '40', 'type' => 'password')); ?>
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-                    <?php echo $this->Form->input('verify_password', array('autocomplete'=>'new-password','class' => 'form-control', 'maxLength' => '40', 'type' => 'password')); ?>
+                    <?php echo $this->Form->input('verify_password', array('autocomplete'=>'new-password','class' => 'form-control','minlength'=>'8', 'maxLength' => '40', 'type' => 'password')); ?>
                 </div>
                 <div class="form-group">
                     <?php echo $this->Form->input('role', array('autocomplete'=>'off','options' => $role_options, 'class' => 'form-control')); ?>
