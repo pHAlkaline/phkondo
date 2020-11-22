@@ -185,10 +185,6 @@ class InstallController extends AppController {
             return;
         }
 
-        if (!file_exists(APP . 'Config' . DS . 'database.php')) {
-            copy(APP . 'Config' . DS . 'database.php.default', APP . 'Config' . DS . 'database.php');
-        }
-
         App::uses('ConnectionManager', 'Model');
         $config = $this->defaultConfig;
         foreach ($this->request->data as $key => $value) {
@@ -208,6 +204,10 @@ class InstallController extends AppController {
             $this->Flash->error(__d('install', 'Could not connect to database.'));
             return;
         }
+          if (!file_exists(APP . 'Config' . DS . 'database.php')) {
+            copy(APP . 'Config' . DS . 'database.php.default', APP . 'Config' . DS . 'database.php');
+        }
+
 
         $file = new File(APP . 'Config' . DS . 'database.php', true);
         $content = $file->read();
@@ -215,7 +215,6 @@ class InstallController extends AppController {
         foreach ($config as $configKey => $configValue) {
             $content = str_replace('{default_' . $configKey . '}', $configValue, $content);
         }
-
         if (!$file->write($content)) {
             $this->Flash->error(__d('install', 'Could not write database.php file.'));
             return;
