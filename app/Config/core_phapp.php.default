@@ -38,6 +38,11 @@
 Configure::write('debug',0);
 
 /**
+ * 
+ */
+Configure::write('installed_key', 'xyz');
+
+/**
  * A random string used in security hashing methods.
  */
 Configure::write('Security.salt', 'hfQBlzhLcsz2Tf5JMGKg4ntAMRe8UdZbGCeG7BbQtEzEDSeN4OX3mp2zK9emIL');

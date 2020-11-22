@@ -1,0 +1,112 @@
+# LANGUAGE translation of pHkondo Application
+# Copyright pHAlkaline <contact@phalkaline.eu>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pHKondo V1.1\n"
+"POT-Creation-Date: 2015-03-01 22:26+0000\n"
+"PO-Revision-Date: 2015-03-01 22:26+0000\n"
+"Last-Translator: pHAlkaline <contact@phalkaline.eu>\n"
+"Language-Team: Portuguesa <contact@phalkaline.eu>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.4\n"
+"Language: pt\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+msgid "Empty"
+msgstr ""
+
+msgid "Must be unique"
+msgstr ""
+
+msgid "Next inspection date must be after last inspection date"
+msgstr ""
+
+msgid "Next inspection date must be after start date"
+msgstr ""
+
+msgid "Passwords dont match"
+msgstr ""
+
+msgid "Please enter a valid role"
+msgstr ""
+
+msgid "Please enter an valid percentage."
+msgstr ""
+
+msgid "Please enter an valid rate."
+msgstr ""
+
+msgid "Renewal date must be after start date"
+msgstr ""
+
+msgid "This status requires payment date"
+msgstr ""
+
+msgid "boolean"
+msgstr ""
+
+msgid "close date must be after open date"
+msgstr ""
+
+msgid "close date must be after open date, or passed 30 days interval"
+msgstr ""
+
+msgid "date"
+msgstr ""
+
+msgid "due date must be after document date"
+msgstr ""
+
+msgid "invalid active"
+msgstr ""
+
+msgid "invalid begin date"
+msgstr ""
+
+msgid "invalid date, do not match active fiscal year dates"
+msgstr ""
+
+msgid "invalid close date"
+msgstr ""
+
+msgid "invalid date"
+msgstr ""
+
+msgid "invalid movement date"
+msgstr ""
+
+msgid "invalid open date"
+msgstr ""
+
+msgid "invalid origin date"
+msgstr ""
+
+msgid "money"
+msgstr ""
+
+msgid "NotBlank"
+msgstr ""
+
+msgid "notBlank"
+msgstr ""
+
+msgid "numeric"
+msgstr ""
+
+msgid "payment date must be after document date"
+msgstr ""
+
+msgid "uuid"
+msgstr ""
+
+msgid "Minimum 8 characters long"
+msgstr ""
+
+msgid "Must contain one upper, one lower, 1 digit or special character"
+msgstr ""
+

@@ -291,6 +291,7 @@ class UsersController extends AppController {
     private function __checkSetup() {
         if (!file_exists(APP . 'Config' . DS . 'database.php')) {
             $this->Flash->error(__d('install', 'Database connection missing'));
+            $this->Flash->info(__d('install', 'Install or manually config pHKondo'));
             $this->redirect('/');
         }
     }

@@ -1,0 +1,171 @@
+# LANGUAGE translation of pHKapa Install Plugin
+# Copyright pHAlkaline <contact@phalkaline.eu>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: phkapa.net\n"
+"POT-Creation-Date: 2013-02-12 21:57+0000\n"
+"PO-Revision-Date: 2014-06-20 00:00-0000\n"
+"Last-Translator: Paulo <contact@phalkaline.eu>\n"
+"Language-Team: pHAlkaline <contact@phalkaline.eu>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.4\n"
+"Language: eng\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+msgid "Admin panel: %s"
+msgstr ""
+
+msgid "Admin user password"
+msgstr ""
+
+msgid "Already Installed"
+msgstr ""
+
+msgid "CakePHP version %s < %s"
+msgstr ""
+
+msgid "CakePhp version %s >= %s"
+msgstr ""
+
+msgid "Check load data option to insert dafault values to auxiliary tables."
+msgstr ""
+
+msgid "Click here to begin installation"
+msgstr ""
+
+msgid "Could not be saved. Please, try again."
+msgstr ""
+
+msgid "Could not connect to database."
+msgstr ""
+
+msgid "Could not connect to database: %s"
+msgstr ""
+
+msgid "Could not load database: %s"
+msgstr ""
+
+msgid "Could not write database.php file."
+msgstr ""
+
+msgid "Could not write email.php file."
+msgstr ""
+
+msgid "Database and data"
+msgstr ""
+
+msgid "Database connection file already exists"
+msgstr ""
+
+msgid "Dont forget to restore default access values to Config and tmp directory."
+msgstr ""
+
+msgid "Email settings file already exists"
+msgstr ""
+
+msgid "From Email"
+msgstr ""
+
+msgid "From Name"
+msgstr ""
+
+msgid "Installation cannot continue as minimum requirements are not found."
+msgstr ""
+
+msgid "Installation completed successfully"
+msgstr ""
+
+msgid "Installation not completed successfully"
+msgstr ""
+
+msgid "Installation: Welcome"
+msgstr ""
+
+msgid "Language"
+msgstr ""
+
+msgid "Load data"
+msgstr ""
+
+msgid "New Password"
+msgstr ""
+
+msgid "PHP version %s < 5.3"
+msgstr ""
+
+msgid "PHP version %s >= 5.3"
+msgstr ""
+
+msgid "Passwords secured and updated for all users"
+msgstr ""
+
+msgid "Resources"
+msgstr ""
+
+msgid "Saved with success."
+msgstr ""
+
+msgid "Setup database connection"
+msgstr ""
+
+msgid "Setup notification email"
+msgstr ""
+
+msgid "Something went wrong during installation. Please check your server logs."
+msgstr ""
+
+msgid "Step 1 : Database connection"
+msgstr ""
+
+msgid "Step 2 : Build database , load table values"
+msgstr ""
+
+msgid "Step 3 : Email notification"
+msgstr ""
+
+msgid "Step 4 : Secure app"
+msgstr ""
+
+msgid "Subject"
+msgstr ""
+
+msgid "Unable to create administrative user."
+msgstr ""
+
+msgid "Unable to generate users password."
+msgstr ""
+
+msgid "Unable to secure your application, your Config %s core.php file is not writable. Please check the permissions."
+msgstr ""
+
+msgid "Verify Password"
+msgstr ""
+
+msgid "Your Config directory is NOT writable."
+msgstr ""
+
+msgid "Your Config directory is writable."
+msgstr ""
+
+msgid "Your Config/core.php file is NOT writable."
+msgstr ""
+
+msgid "Your Config/core.php file is writable."
+msgstr ""
+
+msgid "Your tmp directory is NOT writable."
+msgstr ""
+
+msgid "install"
+msgstr ""
+
+msgid "pHKapa Admin panel: %s"
+msgstr ""
+
+msgid "pHKapa: %s"
+msgstr ""

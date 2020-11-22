@@ -49,8 +49,6 @@ class DateformatBehavior extends ModelBehavior {
             $this->databaseFormat = $config['databaseFormat'];
         }
         $this->model = $model;
-        debug($model);
-        exit();
         $model_list = App::objects('Model');
         foreach ($model_list as $model) {
             if (in_array($model,['AppModel'])){

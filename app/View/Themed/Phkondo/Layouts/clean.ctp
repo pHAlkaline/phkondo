@@ -149,7 +149,7 @@ if (!isset($headerTitle)) {
             $(document).ready(function () {
                 $("form").submit(function () {
                     // prevent duplicate form submissions
-                    $(this).find(":submit").attr('disabled', 'disabled').prepend('<span class="glyphicon glyphicon-repeat fast-right-spinner"></span>');
+                    $(this).find(":submit").attr('disabled', 'disabled').prepend(' <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> ');
                ;
                 });
                 var phkondolang = 'en-GB';
