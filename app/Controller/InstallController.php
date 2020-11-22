@@ -263,7 +263,7 @@ class InstallController extends AppController {
             }
 
             // attachement plugin
-            $attachment_file = APP . 'Plugin' . DS . 'Attachment' . DS . 'Config' . DS . 'Schema' . DS . 'attachment.sql';
+            $attachment_file = APP . 'Plugin' . DS . 'Attachments' . DS . 'Config' . DS . 'Schema' . DS . 'attachment.sql';
             if (file_exists($attachment_file)) {
                 try {
                     $this->__executeSQLScript($db, $attachment_file);
