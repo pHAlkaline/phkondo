@@ -41,7 +41,7 @@ Choose Opening / Closing on Category
 Choose Opening Balance on Movement Operation
 Movement type: Credit if open balance is 0 or superior, Debit if open balance is < 0 
 * At the end of Fiscal Year must close account movements, a last movement is required:
-For this last movement:
+For this last movement: ( Closing fiscal year )
 Choose Opening / Closing on Category
 Chosse Closing Balance on Movement Operation
 

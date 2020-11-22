@@ -42,8 +42,8 @@ Escolha Abertura / Fecho no campo Categoria
 Escolha Abertura Balancete no campo Operação Movimento
 Tipo de movimento: Crédito se saldo de conta no inicio do exercicio é 0 ou superior, Débito se saldo de conta no inicio do exercicio é < 0
 
-* O último movimento:
-Escolha Abertura / Encerramento no campo Categoria
+* O último movimento deve ser: ( ao fechar Exercício )
+Escolha Abertura / Fecho no campo Categoria
 Escolha Fecho Balancete no campo Operação Movimento
 
 Regresse ao detalhes do condomínio
