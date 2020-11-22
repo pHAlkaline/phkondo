@@ -30,6 +30,7 @@ CakePlugin::load('DebugKit');
 CakePlugin::load('ClearCache');
 CakePlugin::load('Feedback');
 CakePlugin::load('Migrations');
+
 /*
  * PrintReceipt Plugin
  */
