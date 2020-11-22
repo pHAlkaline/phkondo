@@ -465,10 +465,10 @@ msgid "Drafts Plugin NotFound"
 msgstr "Plugin minutas não foi encontrada."
 
 msgid "Due Date"
-msgstr "Prazo"
+msgstr "Vencimento"
 
 msgid "Due Days"
-msgstr "Prazo ( Dias )"
+msgstr "Vencimento ( Dias )"
 
 msgid "Edit"
 msgstr "Editar"
@@ -1171,10 +1171,10 @@ msgid "Payment Date"
 msgstr "Data de Pagamento"
 
 msgid "Payment Due"
-msgstr "Prazo"
+msgstr "Vencimento"
 
 msgid "Payment Due Date"
-msgstr "Prazo de Pagamento"
+msgstr "Data de Vencimento"
 
 msgid "Payment Methods"
 msgstr "Metodos de Pagamento"

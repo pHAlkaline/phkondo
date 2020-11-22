@@ -60,7 +60,7 @@ msgid "date"
 msgstr "Campo do tipo data."
 
 msgid "due date must be after document date"
-msgstr "Prazo de pagamento deve ser superior a data do documento"
+msgstr "Data de vencimento deve ser superior a data do documento"
 
 msgid "invalid active"
 msgstr "Valor inválido."
