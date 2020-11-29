@@ -5,7 +5,7 @@ Ver detalhes do condomínio
 
 Entrar nos Exercícios
 Adicionar exercício -> Criar exercício
-* Exercício/Ano Fiscal é usado para configurar períodos de gestão, pode o período que entender, não necessariamente um ano.
+* Exercício/Período Contabilístico é usado para configurar períodos de gestão, pode o período que entender, não necessariamente um ano.
 É usado para controlar e agrupar dados em:
 - Saldos de contas, Orçamentos...
 - Relatórios para Balancete, receitas, despesas, em dívida, mapa de quotas
@@ -35,12 +35,12 @@ Ver detalhes da conta
 Dentro da Conta Entrar nos Movimentos
 Adicionar movimentos de conta -> Criar Movimento
 * Cada movimento tem de pertencer ao exercício ativo
-* Para cada exercício é necessário criar o primeiro movimento ( no inicio do ano fiscal - abertura ) e o último movimento ( no final do ano fiscal - fecho ) , isso permitirá que o pHKondo possa realizar os relatórios baseados nos intervalos ( inicio / fim ) do exercício.
+* Para cada exercício é necessário criar o primeiro movimento ( no inicio do período contabilístico - abertura ) e o último movimento ( no final do período contabilístico - fecho ) , isso permitirá que o pHKondo possa realizar os relatórios baseados nos intervalos ( inicio / fim ) do exercício.
 * O primeiro movimento deve ser:
-O montante inicial no balanço de abertura no ano fiscal
+O montante inicial no balanço de abertura no período contabilístico
 Escolha Abertura / Fecho no campo Categoria
 Escolha Abertura Balancete no campo Operação Movimento
-Tipo de movimento: Crédito se saldo de conta no inicio do exercicio é 0 ou superior, Débito se saldo de conta no inicio do exercicio é < 0
+Tipo de movimento: Crédito se saldo de conta no inicio do período contabilístico é 0 ou superior, Débito se saldo de conta no inicio do período contabilístico é < 0
 
 * O último movimento deve ser: ( ao fechar Exercício )
 Escolha Abertura / Fecho no campo Categoria

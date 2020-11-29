@@ -3,13 +3,13 @@ pHKondo quick guide
 Add condo(s) -> New condo 
 Enter condo details
 
-Go to Fiscal Years
-Add fiscal year -> New Fiscal Year
-* Fiscal Year is used to setup your management period, it can be whatever period you want not necessary a year.
-Fiscal Year time interval ( start date , end date ) it's used to control some features:
-- Account Balance by fiscal year, Budgets ...
+Go to Accounting Periods
+Add accounting period -> New Accounting Period
+* Accounting Period is used to setup your management period, it can be whatever period you want not necessary a year.
+Accounting Period time interval ( start date , end date ) it's used to control some features:
+- Account Balance by accounting period, Budgets ...
 - Reports for Balance , Income , Expenses, In Debt, Fees Maps
-* IMPORTANT: Some data are presented and grouped by active fiscal year, to see data from other fiscal year you must activate.
+* IMPORTANT: Some data are presented and grouped by active accounting period, to see data from other accounting period you must activate.
 
 Go back to condo details
 Go to Properties 
@@ -33,15 +33,15 @@ Enter Account Details
 
 Inside Account Go to Movements
 Add account movements -> New Movement
-* Every movement must belong to the active fiscal year
-* For every fiscal year you must create the first and last movement described below, this will allow pHKondo to make account reports based on fiscal year.
+* Every movement must belong to the active accounting period
+* For every accounting period you must create the first and last movement described below, this will allow pHKondo to make account reports based on accounting period.
 * The first movement should be:
 Initial amount for opening balance
 Choose Opening / Closing on Category
 Choose Opening Balance on Movement Operation
 Movement type: Credit if open balance is 0 or superior, Debit if open balance is < 0 
-* At the end of Fiscal Year must close account movements, a last movement is required:
-For this last movement: ( Closing fiscal year )
+* At the end of Accounting Period must close account movements, a last movement is required:
+For this last movement: ( Closing accounting period )
 Choose Opening / Closing on Category
 Chosse Closing Balance on Movement Operation
 

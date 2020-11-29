@@ -69,7 +69,7 @@ msgid "invalid begin date"
 msgstr "Data de início inválida."
 
 msgid "invalid date, do not match active fiscal year dates"
-msgstr "Data inválida, não coincide com datas do exercicio ativo."
+msgstr "Data inválida, não coincide com datas do período contabilístico ativo."
 
 msgid "invalid close date"
 msgstr "Data de fecho inválida."
@@ -114,4 +114,4 @@ msgid "Must contain one upper, one lower, 1 digit or special character"
 msgstr "Deve conter pelo menos uma maiuscula , uma minuscula, um digito ou caracter especial."
 
 msgid "Requires a valid condo and active fiscal year."
-msgstr "Requer un condominio valido e un anno fiscale attivo."
+msgstr "Requer un condominio valido e período contabilístico ativo."

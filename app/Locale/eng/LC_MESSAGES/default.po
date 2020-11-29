@@ -135,7 +135,7 @@ msgid "Add Supplier"
 msgstr ""
 
 msgid "Add Fiscal Year"
-msgstr ""
+msgstr "Add Accounting Period"
 
 msgid "Add Fraction"
 msgstr "Add Property"
@@ -397,7 +397,7 @@ msgid "Delete Supplier"
 msgstr ""
 
 msgid "Delete Fiscal Year"
-msgstr ""
+msgstr "Delete Accounting Period"
 
 msgid "Delete Fraction"
 msgstr "Delete Property"
@@ -486,7 +486,7 @@ msgid "Edit Supplier"
 msgstr ""
 
 msgid "Edit Fiscal Year"
-msgstr ""
+msgstr "Edit Accounting Period"
 
 msgid "Edit Fraction"
 msgstr "Edit Property"
@@ -599,20 +599,20 @@ msgstr ""
 
 msgid "Fiscal Year"
 msgid_plural "Fiscal Years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Accounting Period"
+msgstr[1] "Accounting Periods"
 
 msgid "Fiscal Year active"
-msgstr ""
+msgstr "Accounting Period active"
 
 msgid "Fiscal Year can not be deleted"
-msgstr ""
+msgstr "Accounting Period can not be deleted"
 
 msgid "Fiscal Year deleted"
-msgstr ""
+msgstr "Accounting Period deleted"
 
 msgid "Fiscal Year is not active"
-msgstr ""
+msgstr "Accounting Period is not active"
 
 msgid "Location"
 msgstr ""
@@ -828,7 +828,7 @@ msgid "List Entities"
 msgstr ""
 
 msgid "List Fiscal Years"
-msgstr ""
+msgstr "List Accounting Periods"
 
 msgid "List Fractions"
 msgstr "List Properties"
@@ -999,7 +999,7 @@ msgid "New Supplier"
 msgstr ""
 
 msgid "New Fiscal Year"
-msgstr ""
+msgstr "New Accounting Period"
 
 msgid "New Fraction"
 msgstr "New Property"
@@ -1495,7 +1495,7 @@ msgid "This Budget can not be deleted, check budget status or existing notes alr
 msgstr "This Budget can not be deleted, check budget status or existing fees already paid."
 
 msgid "This Fiscal Year can not be deleted, check existing notes already paid."
-msgstr "This Fiscal Year can not be deleted, check existing feed already paid."
+msgstr "This Accounting Period can not be deleted, check existing feed already paid."
 
 msgid "This Fraction can not be deleted, check existing notes already paid."
 msgstr "This Property can not be deleted, check existing fees already paid."
