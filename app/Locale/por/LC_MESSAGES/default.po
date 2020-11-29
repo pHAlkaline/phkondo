@@ -138,7 +138,7 @@ msgid "Add Supplier"
 msgstr "Criar Fornecedor"
 
 msgid "Add Fiscal Year"
-msgstr "Criar Perdiodo Contabilístico"
+msgstr "Criar Período Contabilístico"
 
 msgid "Add Fraction"
 msgstr "Criar Fração"
@@ -406,7 +406,7 @@ msgid "Delete Supplier"
 msgstr "Apagar Fornecedor"
 
 msgid "Delete Fiscal Year"
-msgstr "Apagar Perdiodo Contabilístico"
+msgstr "Apagar Período Contabilístico"
 
 msgid "Delete Fraction"
 msgstr "Apagar Fração"
@@ -495,7 +495,7 @@ msgid "Edit Supplier"
 msgstr "Editar Fornecedor"
 
 msgid "Edit Fiscal Year"
-msgstr "Editar Perdiodo Contabilístico"
+msgstr "Editar Período Contabilístico"
 
 msgid "Edit Fraction"
 msgstr "Editar Fração"
@@ -608,17 +608,17 @@ msgstr "Fevereiro"
 
 msgid "Fiscal Year"
 msgid_plural "Fiscal Years"
-msgstr[0] "Perdiodo Contabilístico"
-msgstr[1] "Perdiodos Contabilísticos"
+msgstr[0] "Período Contabilístico"
+msgstr[1] "Períodos Contabilísticos"
 
 msgid "Fiscal Year active"
-msgstr "Perdiodo Contabilístico activo"
+msgstr "Período Contabilístico activo"
 
 msgid "Fiscal Year can not be deleted"
-msgstr "Não foi possivel apagar Perdiodo Contabilístico"
+msgstr "Não foi possivel apagar Período Contabilístico"
 
 msgid "Fiscal Year deleted"
-msgstr "Perdiodo Contabilístico apagado"
+msgstr "Período Contabilístico apagado"
 
 msgid "Fiscal Year is not active"
 msgstr "O exercício não está activo"
@@ -748,7 +748,7 @@ msgid "Invalid supplier"
 msgstr "Fornecedor inválido"
 
 msgid "Invalid fiscal year"
-msgstr "Perdiodo Contabilístico inválido"
+msgstr "Período Contabilístico inválido"
 
 msgid "Invalid fraction"
 msgstr "Fração inválida"
@@ -840,7 +840,7 @@ msgid "List Entities"
 msgstr "Listar Entidades"
 
 msgid "List Fiscal Years"
-msgstr "Listar Perdiodo Contabilísticos"
+msgstr "Listar Período Contabilísticos"
 
 msgid "List Fractions"
 msgstr "Listar Frações"
@@ -999,7 +999,7 @@ msgid "New Supplier"
 msgstr "Criar Fornecedor"
 
 msgid "New Fiscal Year"
-msgstr "Criar Perdiodo Contabilístico"
+msgstr "Criar Período Contabilístico"
 
 msgid "New Fraction"
 msgstr "Criar Fração"
@@ -1287,7 +1287,7 @@ msgid "September"
 msgstr "Setembro"
 
 msgid "Set as Active"
-msgstr "Activar Perdiodo Contabilístico"
+msgstr "Activar Período Contabilístico"
 
 msgid "Share"
 msgid_plural "Shares"
@@ -1501,7 +1501,7 @@ msgid "This Budget can not be deleted, check budget status or existing notes alr
 msgstr "Este orçamento não pode ser removido, verifique o estado do orçamento ou a existencia de quotas em estado de pago."
 
 msgid "This Fiscal Year can not be deleted, check existing notes already paid."
-msgstr "Esta Perdiodo Contabilístico não pode ser removido, verifique a existencia de quotas em estado pago."
+msgstr "Esta Período Contabilístico não pode ser removido, verifique a existencia de quotas em estado pago."
 
 msgid "This Fraction can not be deleted, check existing notes already paid."
 msgstr "Esta Fração não pode ser removida, verifique a existencia de quotas em estado pago."
