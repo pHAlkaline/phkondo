@@ -18,7 +18,6 @@
                             <th><?php echo $this->Paginator->sort('document'); ?></th>
                             <th><?php echo $this->Paginator->sort('document_date'); ?></th>
                             <th><?php echo $this->Paginator->sort('title'); ?></th>
-                            <th><?php echo $this->Paginator->sort('Fraction.fraction', __n('Fraction','Fractions',1)); ?></th>
                             <th class="amount"><?php echo $this->Paginator->sort('amount'); ?></th>
                             <th><?php echo $this->Paginator->sort('NoteType.name', __('Note Type')); ?></th>
                             <th><?php echo $this->Paginator->sort('NoteStatus.name', __('Note Status')); ?></th>
@@ -33,7 +32,6 @@
                                 <td><?php echo h($note['Note']['document']); ?>&nbsp;</td>
                                 <td><?php echo h( $note['Note']['document_date']); ?>&nbsp;</td>
                                 <td><?php echo h($note['Note']['title']); ?>&nbsp;</td>
-                                <td><?php echo h($note['Fraction']['fraction']); ?></td>
                                 <td class="amount"><?php echo number_format($note['Note']['amount'],2); ?>&nbsp;<?php echo  Configure::read('currencySign'); ?></td>
                                 <td><?php echo h($note['NoteType']['name']); ?></td>
                                 <td><?php echo h($note['NoteStatus']['name']); ?>    </td>

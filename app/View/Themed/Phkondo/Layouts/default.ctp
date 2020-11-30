@@ -175,6 +175,15 @@ if (!isset($headerTitle)) {
                 );
                 $("li.disabled").find('a').removeAttr("href");
                 $("li.disabled").find('a').removeAttr("onclick");
+
+                // tabs keep state
+                $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                    localStorage.setItem('activeTab', $(e.target).attr('href'));
+                });
+                var activeTab = localStorage.getItem('activeTab');
+                if (activeTab) {
+                    $('.nav-tabs a[href="' + activeTab + '"]').tab('show');
+                }
             });
         </script>
         <?php

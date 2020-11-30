@@ -30,9 +30,23 @@
     <div id="page-content" class="col-sm-9">
         <div class="fractions view">
 
-            <legend><?php echo __n('Fraction', 'Fractions', 1); ?></legend>
+            <legend><?php echo __n('Fraction', 'Fractions', 1); ?>&nbsp;<?php echo h($fraction['Fraction']['fraction']); ?></legend>
+             <section>
 
-            <table class="table table-hover table-condensed">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#details" aria-controls="details" role="tab" data-toggle="tab"><?= __('Details'); ?></a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#comments" aria-controls="comments" role="tab" data-toggle="tab"><?= __('Comments'); ?></a>
+                    </li>
+                 
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="details" aria-labelledby="details-tab">
+
+                        <br/>
+    <table class="table table-hover table-condensed">
                 <tbody>
                     <tr>		
                         <td class='col-sm-2'><strong><?php echo __n('Manager', 'Managers', 1); ?></strong></td>
@@ -91,21 +105,17 @@
             </table><!-- /.table table-hover table-condensed -->
 
 
-        </div>
 
-        <div class="panel panel-default" id="CommentsPanel">
-            <!-- Default panel contents -->
-            <div class="panel-heading"  data-toggle="collapse" data-target="#CommentsIndex"><strong><?php echo __('Comments'); ?></strong>
-                <div class="clearfix content-action-menu pull-right">
-                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-down"></span> ', '#CommentsPanel', array('title' => __('View %s', __('Comments')), 'id' => 'viewCommentsBtn', 'class' => ' ', 'escape' => false)); ?>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="comments" aria-labelledby="comments-tab">
+                        <br/>
+
+                        <?php echo $this->Comments->display_for($fraction); ?>
+                    </div>
+                
                 </div>
-            </div>
-            <div class="panel-body collapse collapse in" id="CommentsIndex">
-
-                <?php echo $this->Comments->display_for($fraction); ?>
-
-            </div>
-
+            </section>
+        
         </div>
-    </div><!-- /.view -->
+          </div><!-- /.view -->
 </div><!-- /#page-content .span9 -->

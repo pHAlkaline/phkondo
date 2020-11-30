@@ -35,6 +35,22 @@
             <table class="table table-hover table-condensed">
                 <tbody>
                     <tr>
+                        <td class='col-sm-2'><strong><?php echo __('Document'); ?></strong></td>
+                        <td>
+                            <?php echo h($note['Note']['document']); ?>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong><?php echo __('Document Date'); ?></strong></td>
+                        <td>
+                            <?php echo h($note['Note']['document_date']); ?>
+                            &nbsp;
+                        </td>
+                    </tr>
+                   
+                    <tr>
                         <td><strong><?php echo __n('Budget', 'Budgets', 1); ?></strong></td>
                         <td>
                             <?php echo h($note['Budget']['title']); ?>
@@ -77,22 +93,7 @@
                             &nbsp;
                         </td>
                     </tr>
-                    <tr>
-                        <td class='col-sm-2'><strong><?php echo __('Document'); ?></strong></td>
-                        <td>
-                            <?php echo h($note['Note']['document']); ?>
-                            &nbsp;
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td><strong><?php echo __('Document Date'); ?></strong></td>
-                        <td>
-                            <?php echo h($note['Note']['document_date']); ?>
-                            &nbsp;
-                        </td>
-                    </tr>
-                    <tr>
+                   <tr>
                         <td><strong><?php echo __('Amount'); ?></strong></td>
                         <td>
                             <?php echo h($note['Note']['amount']); ?>

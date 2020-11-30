@@ -57,7 +57,23 @@ $administrators = implode(", ", $administrators);
         <div class="condos view">
 
             <legend><?php echo h($condo['Condo']['title']); ?></legend>
+            <section>
 
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#details" aria-controls="details" role="tab" data-toggle="tab"><?= __('Details'); ?></a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#comments" aria-controls="comments" role="tab" data-toggle="tab"><?= __('Comments'); ?></a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#alerts" aria-controls="alerts" role="tab" data-toggle="tab"><?= __('Alerts'); ?></a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="details" aria-labelledby="details-tab">
+
+                        <br/>
 
             <table class="table table-hover table-condensed">
                 <tbody>
@@ -145,33 +161,16 @@ $administrators = implode(", ", $administrators);
             </table><!-- /.table table-hover table-condensed -->
 
 
-        </div><!-- /.view -->
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="comments" aria-labelledby="comments-tab">
+                        <br/>
 
-        <div class="panel panel-default" id="CommentsPanel">
-            <!-- Default panel contents -->
-            <div class="panel-heading"  data-toggle="collapse" data-target="#CommentsIndex">
-                <strong><?php echo __('Comments'); ?></strong> 
-                <div class="clearfix content-action-menu pull-right">
-                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-down"></span> ', '#CommentsPanel', array('title' => __('View %s', __('Comments')), 'id' => 'viewCommentsBtn', 'class' => ' ', 'escape' => false)); ?>
-                </div>
-            </div>
-            <div class="panel-body collapse" id="CommentsIndex">
+                        <?php echo $this->Comments->display_for($condo); ?>
+                    </div>
+                     <div role="tabpanel" class="tab-pane" id="alerts" aria-labelledby="alerts-tab">
+                        <br/>
 
-                <?php echo $this->Comments->display_for($condo); ?>
-            </div>
-
-        </div>
-        <div class="panel panel-default">
-            <!-- Default panel contents -->
-            <div class="panel-heading" data-toggle="collapse" data-target="#AlertsIndex">
-                <strong><?php echo __('Alerts'); ?></strong> 
-                <div class="clearfix content-action-menu pull-right">
-                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-down"></span> ', '#AlertsIndex', array('title' => __('View %s', __('Alerts')), 'id' => 'viewAlertsBtn', 'class' => ' ', 'escape' => false)); ?>
-                </div>
-            </div>
-            <div class="panel-body collapse" id="AlertsIndex">
-
-                <?php
+                         <?php
                 if (!$has_fiscal_year) {
                     echo '<div class="alert alert-warning">' . __('Please activate one fiscal year.') . '</div>';
                 }
@@ -270,7 +269,14 @@ $administrators = implode(", ", $administrators);
 
                     </div>
                 <?php endif; ?>
-            </div>
-        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+        </div><!-- /.view -->
+
     </div>
 </div><!-- /#page-content .span9 -->
