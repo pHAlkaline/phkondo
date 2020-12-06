@@ -271,12 +271,12 @@ class Note extends AppModel {
     );
 
     public function beforeDelete($cascade = true) {
-        if (in_array($this->field('note_status_id'), array(2, 3))) {
-            return false;
-        }
         if ($this->field('receipt_id') != null) {
             return false;
         }
+        /*if (in_array($this->field('note_status_id'), array(2, 3))) {
+            return false;
+        }*/
         $this->receipt_id = $this->field('note_status_id');
         $this->budget_id = $this->field('budget_id');
         return true;
@@ -291,53 +291,7 @@ class Note extends AppModel {
         return true;
     }
 
-    public function afterDelete() {
-        $this->_updateReceiptAmount($this->receipt_id);
-        $this->_updateBudgetAmount($this->budget_id);
-    }
-
-    function deletable($id = null) {
-        $this->noAfterFind = true;
-
-        if (!empty($id)) {
-            $this->id = $id;
-        }
-
-        $id = $this->id;
-        if (!$this->exists()) {
-            return false;
-        }
-
-        $result = true;
-
-        return $this->beforeDelete(false);
-    }
-
-    function editable($record = null) {
-        if (isset($record['note_status_id']) && in_array($record['note_status_id'], array(2, 3))) {
-            return false;
-        }
-        if (isset($record['receipt_id']) && $record['receipt_id'] != '') {
-            return false;
-        }
-        return true;
-    }
-
-    function compareDates($data, $key) {
-        return CakeTime::fromString($data[$key]) >= CakeTime::fromString($this->data[$this->alias]['document_date']);
-    }
     
-    /**
-     * checkPastDate
-     * Custom Validation Rule: Ensures a selected date is either the
-     * present day or in the past.
-     *
-     * @param array $check Contains the value passed from the view to be validated
-     * @return bool True if in the past or today, False otherwise
-     */
-    public function checkPastDate($data, $key) {
-        return CakeTime::fromString($data[$key]) <= CakeTime::fromString(date(Configure::read('databaseDateFormat')));
-    }
 
     /**
      * afterFind callback
@@ -386,6 +340,40 @@ class Note extends AppModel {
         $this->_updateBudgetAmount($this->field('budget_id'));
     }
 
+    public function afterDelete() {
+        $this->_updateReceiptAmount($this->receipt_id);
+        $this->_updateBudgetAmount($this->budget_id);
+    }
+
+    function deletable($id = null) {
+        $this->noAfterFind = true;
+
+        if (!empty($id)) {
+            $this->id = $id;
+        }
+
+        $id = $this->id;
+        if (!$this->exists()) {
+            return false;
+        }
+
+        $result = true;
+
+        return $this->beforeDelete(false);
+    }
+
+    function editable($record = null) {
+        if (isset($record['receipt_id']) && $record['receipt_id'] != '') {
+            return false;
+        }
+        /*if (isset($record['note_status_id']) && in_array($record['note_status_id'], array(2, 3))) {
+            return false;
+        }*/
+        
+        return true;
+    }
+
+   
     // Update Receipt Amount
     private function _updateReceiptAmount($id = null) {
 
@@ -422,6 +410,22 @@ class Note extends AppModel {
             $this->Budget->id = $id;
             $this->Budget->saveField('amount', $total);
         }
+    }
+    
+     function compareDates($data, $key) {
+        return CakeTime::fromString($data[$key]) >= CakeTime::fromString($this->data[$this->alias]['document_date']);
+    }
+    
+    /**
+     * checkPastDate
+     * Custom Validation Rule: Ensures a selected date is either the
+     * present day or in the past.
+     *
+     * @param array $check Contains the value passed from the view to be validated
+     * @return bool True if in the past or today, False otherwise
+     */
+    public function checkPastDate($data, $key) {
+        return CakeTime::fromString($data[$key]) <= CakeTime::fromString(date(Configure::read('databaseDateFormat')));
     }
 
 }

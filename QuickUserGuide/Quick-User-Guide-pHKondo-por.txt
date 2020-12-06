@@ -50,9 +50,19 @@ Regresse ao detalhes do condomínio
 Entrar nos Orçamentos
 Adicionar orçamentos -> Criar Orçamento
 Defina os seus orçamentos.
-Defina bem os campos de Valor, Fundo de Reserva (%), Data de Início, Quotas, Periodicidade, Distribuição, Prazo de pagamento. Vai possibilitar criar notas de débito de forma automática.
-Para notas de débito automático entre em Criar Notas, atenção que o orçamento deve estar no estado ativo.
+Defina bem os campos de Valor, Fundo de Reserva (%), Data de Início, Quotas, Periodicidade, Distribuição, Prazo de pagamento. 
+Estes campos vão possibilitar criar quotas de forma automática.
+Ir para criar quotas para criação automática de quotas relacionadas com o respectivo orçamento, atenção que o orçamento deve estar no estado ativo.
 
+
+... regras importantes a ter em conta
+O recibo deve estar no estado aguarda pagamento para poder defini-lo como pago.
+O recibo deve estar no estado pendente para poder defini-lo como cancelado.
+Quotas não podem ser alteradas ou eliminadas quando associadas a um recibo. ( retirar associação para poder editar )
+Orçamentos só podem ser eliminados no estado pendente.
+Orçamentos não podem ser eliminados quando tem associado quotas pagas.
+Fracção não podem ser eliminadas quando tem associado quotas pagas.
+Outras tabelas com registos associados não podem sem eliminados. 
 
 .. extras
 Entrar em Recibos para gerir Pagamentos/Recibos.
@@ -64,10 +74,6 @@ Entrar em os relatórios para Balancete, Receitas, Despesas, Conta Corrente, Map
 Entrar em Minutas para imprimir alguns documentos usados na gestão do condomínio.
 ... 
 e outras funcionalidades que o pHKondo possa disponibilizar
-
-Regras especiais de recibos
-O recibo deve estar no estado aguarda pagamento para poder defini-lo como pago.
-O recibo deve estar no estado pendente para poder defini-lo como cancelado.
 
 NOTA FINAL :
 Se você estiver interese em outras funções que o pHKondo possa não ter disponível, mas quer adquirir , não hesite ->  contact@phalkaline.eu

@@ -49,10 +49,19 @@ Go back to condo details
 Go to Budgets
 Add budgets -> New Budget
 Set your budgets, setup Amount, Reserve Fund (%), Begin Date, Fees, Fee Periodicity, Fee Distribution and Due Days.
-This fields will be the used for automatic fee creation based on budget details
+This fields will be the used for automatic fee creation based on budget details.
 Put your budget on active status.
-Go to Create Fees for automatic debit feed 
+Go to Create Fees for automatic feed 
 
+
+... Some important rules 
+Receipt must be in waiting payment status to be allowed to set it as paid.
+Receipt must be in pending status to be allowed to set it as canceled.
+Fees are not allowed to be edited ou deleted when associated with receipt. ( Remove association before edit )
+Budget must be in pending status to be allowed to be deleted.
+Budget can not be deleted with associated paid fees.
+Properties can not be deleted with associated fees.
+Other tables with associated records can not be deleted.
 
 .. After this you can explore ...
 Go to Receipts to create documents for income payments with receipts
@@ -63,10 +72,6 @@ Go to Documents to manage documents
 Go to Reports for Balance , Income , Expenses, In Debt, Fees Maps, Contact Lists ...
 Go to Drafts to make some document drafts you may require...
 And other features pHKondo may have.
-
-Receipts special rules
-Receipt must be in waiting payment status to be allowed to set it as paid.
-Receipt must be in pending status to be allowed to set it as canceled.
 
 FINAL NOTE:
 If you are looking to other features pHKondo may not have available and you wish to acquire, feel free to contact us at contact@phalkaline.eu
