@@ -85,7 +85,7 @@ class MovementCategoriesController extends AppController {
             $this->MovementCategory->create();
             if ($this->MovementCategory->save($this->request->data)) {
                 $this->Flash->success(__('The movement category has been saved'));
-                $this->redirect(array('action' => 'view', $this->Movement->id));
+                $this->redirect(array('action' => 'view', $this->MovementCategory->id));
             } else {
                 $this->Flash->error(__('The movement category could not be saved. Please, try again.'));
             }
