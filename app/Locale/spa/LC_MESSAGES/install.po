@@ -1,5 +1,5 @@
 # LANGUAGE translation of pHKapa Install Plugin
-# Copyright pHAlkaline <contact@phalkaline.eu>
+# Copyright pHAlkaline <contact@phalkaline.net>
 #
 msgid ""
 msgstr ""
@@ -54,6 +54,9 @@ msgstr "No se puede escribir el fichero database.php"
 
 msgid "Could not write email.php file."
 msgstr "No se puede escribir el fichero email.php"
+
+msgid "Database"
+msgstr ""
 
 msgid "Database and data"
 msgstr "Base de datos y datos"

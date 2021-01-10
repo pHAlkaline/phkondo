@@ -6,6 +6,6 @@
         <p class="text-info"><?php echo __('Case you wish to have a free access to this plugin contact pHAlkaline.'); ?></p>
         <p class="text-info"><?php echo __('pHAlkaline provides services in customization & new features.'); ?></p>
         <p><a class="btn btn-primary btn-lg  " href="http://phkondo.net/phkondo.html#demo" target="_blank" role="button"><?php echo __('Buy plugins'); ?></a></p>
-        <p><a class="btn  " href="http://phalkaline.eu" target="_blank" role="button"><?php echo __('http://phalkaline.eu'); ?></a></p>
+        <p><a class="btn  " href="http://phalkaline.net" target="_blank" role="button"><?php echo __('http://phalkaline.net'); ?></a></p>
     </div>
 </div>

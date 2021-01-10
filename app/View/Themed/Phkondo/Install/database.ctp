@@ -40,7 +40,7 @@
             </div>
             <div class="form-group">
                 <?php
-                echo $this->Form->input('database', array('class' => 'form-control', 'label' => __('Name'), 'default' => 'phkondo'));
+                echo $this->Form->input('database', array('class' => 'form-control', 'label' => __d('install','Database'), 'default' => 'phkondo'));
                 ?>
             </div>
             <div class="form-group">
