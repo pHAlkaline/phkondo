@@ -25,7 +25,6 @@
 
             <legend><?php echo __n('Owner', 'Owners', 1); ?></legend>
 
-
             <table class="table table-hover table-condensed">
                 <tbody>
                     <tr>		<td class='col-sm-2'><strong><?php echo __('Name'); ?></strong></td>

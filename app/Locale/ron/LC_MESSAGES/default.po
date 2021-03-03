@@ -1534,7 +1534,7 @@ msgid "Total amount"
 msgstr ""
 
 msgid "Total notes"
-msgstr "Total fees"
+msgstr "Total"
 
 msgid "Trial balance"
 msgstr ""

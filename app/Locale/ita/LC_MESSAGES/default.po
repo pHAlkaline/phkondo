@@ -1533,8 +1533,8 @@ msgstr "Incasso Totale"
 msgid "Total amount"
 msgstr "Importo Totale"
 
-msgid "Total notes"
-msgstr "Total fees"
+msgid "Fees total"
+msgstr "Total"
 
 msgid "Trial balance"
 msgstr ""

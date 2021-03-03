@@ -1,3 +1,7 @@
+<?php $this->Html->css('footable/footable.bootstrap.min', false); ?>
+<?php $this->Html->script('moment-with-locales', false); ?>
+<?php $this->Html->script('libs/footable/footable', false); ?>
+<?php $this->Html->script('footable', false); ?>
 <div id="page-container" class="row row-offcanvas row-offcanvas-left">
 
     <div class="col-sm-3">
@@ -33,7 +37,8 @@
 
             <table class="table table-hover table-condensed">
                 <tbody>
-                    <tr>		<td class='col-sm-2'><strong><?php echo __('Name'); ?></strong></td>
+                    <tr>		
+                        <td class='col-sm-2'><strong><?php echo __('Name'); ?></strong></td>
                         <td>
                             <?php echo h($entity['Entity']['name']); ?>
                             &nbsp;
@@ -102,24 +107,27 @@
 
                 <legend class="col-sm-12"><?php echo __n('Fraction', 'Fractions', 2); ?></legend>
 
-                <div class="clearfix"></div>
-                <div class="table-responsive col-sm-12">
-                    <table class="table table-hover table-condensed">
+                <div class="row text-center loading">
+                    <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate" style="font-size: 40px;"></span>
+                </div>
+                <div class="col-sm-12 hidden">
+
+                    <table data-empty="<?= __('Empty'); ?>"  class="footable table table-hover table-condensed">
                         <thead>
                             <tr>
                                 <th><?php echo __n('Condo', 'Condos', 1); ?></th>
                                 <th><?php echo __n('Fraction', 'Fractions', 1); ?></th>
-                                <th><?php echo __('Location'); ?></th>
-                                <th><?php echo __('Description'); ?></th>
-                                <th><?php echo __('Mil Rate'); ?></th>
-                                <th><?php echo __n('Manager', 'Managers', 1); ?></th>
+                                <th data-breakpoints="xs"><?php echo __('Location'); ?></th>
+                                <th data-breakpoints="xs"><?php echo __('Description'); ?></th>
+                                <th data-breakpoints="xs"><?php echo __('Mil Rate'); ?></th>
+                                <th data-breakpoints="xs"><?php echo __n('Manager', 'Managers', 1); ?></th>
 
 
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($entity['Fraction'] as $fraction): ?>
-                            
+
                                 <tr>
                                     <td><?php echo $this->Html->link(h($fraction['Condo']['title']), array('controller' => 'condos', 'action' => 'view', $fraction['Condo']['id'], '?' => array('condo_id' => $fraction['Condo']['id'])), array('title' => __('Details'), 'class' => '', 'escape' => false)); ?></td>
                                     <td><?php echo $this->Html->link(h($fraction['fraction']), array('controller' => 'fractions', 'action' => 'view', $fraction['id'], '?' => array('condo_id' => $fraction['Condo']['id'])), array('title' => __('Details'), 'class' => '', 'escape' => false)); ?></td>

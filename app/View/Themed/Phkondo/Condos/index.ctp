@@ -1,8 +1,17 @@
+<?php
 
+$this->Html->css('footable/footable.bootstrap.min', false); ?>
+<?php $this->Html->script('moment-with-locales', false); ?>
+<?php $this->Html->script('libs/footable/footable', false); ?>
+<?php $this->Html->script('footable', false); ?>
 <div id="page-container" class="row">
 
     <div id="page-content" class="col-sm-12">
-
+ <?php if (Configure::read('Application.mode') == 'demo'): ?>
+        <div class="alert alert-success" role="alert">
+            <?php echo '<span class="glyphicon glyphicon-info-sign"></span> ' .__(' Click Here').' '.$this->Html->link(__('Online Tutorial  ').' '.__('Quick Guide'), 'https://github.com/pHAlkaline/phkondo/wiki/Quick-Tutorial', array('target' => '_blank', 'escape' => false)); ?>
+        </div>
+                      <?php endif; ?>
         <div class="index">
             <h2 class="col-sm-9"><?php echo __n('Condo', 'Condos', 2); ?></h2>
             <div class="actions hidden-print col-sm-3">
@@ -10,16 +19,19 @@
                 ?>
             </div><!-- /.actions -->
             <?php echo $this->element('search_tool'); ?>
-            <div class="clearfix"></div>
-            <div class="table-responsive col-sm-12 col-sm-12"> 
-                <table class="table table-hover table-condensed">
+            <div class="row text-center loading">
+                <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate" style="font-size: 40px;"></span>
+            </div>
+            <div class="col-sm-12 hidden">
+
+                <table data-empty="<?= __('Empty'); ?>"  class="footable table table-hover table-condensed">
                     <thead>
                         <tr>
                             <th>&nbsp;</th>
                             <th><?php echo $this->Paginator->sort('title', __('Condo')); ?></th>
-                            <th class="hidden-xs"><?php echo $this->Paginator->sort('address'); ?></th>
-                            <th class="hidden-xs"><?php echo __n('Fiscal Year', 'Fiscal Years', 1); ?></th>
-                            <th class="actions hidden-print hidden-print"><?php echo ' '; ?></th>
+                            <th data-breakpoints="xs"><?php echo $this->Paginator->sort('address'); ?></th>
+                            <th data-breakpoints="xs"><?php echo __n('Fiscal Year', 'Fiscal Years', 1); ?></th>
+                            <th data-breakpoints="xs" class="actions hidden-print"><?php echo ' '; ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -68,12 +80,12 @@
                                 $viewGlyphicon = '<span class="label label-danger">' . __('Alert') . '</span> ';
                             }
                             ?>
-                            <tr>
-                                <td><?php echo $viewGlyphicon; ?>&nbsp;</td>
-                                <td><?php echo h($condo['Condo']['title']); ?>&nbsp;</td>
-                                <td class="hidden-xs"><?php echo nl2br(h($condo['Condo']['address'])); ?>&nbsp;</td>
-                                <td class="hidden-xs"><?php if (isset($condo['FiscalYear'][0]['title'])) echo h($condo['FiscalYear'][0]['title'] . ' ( ' . h($condo['FiscalYear'][0]['open_date']) . ' a ' . h($condo['FiscalYear'][0]['close_date']) . ' ) '); ?>&nbsp;</td>
-                                <td class="actions hidden-print hidden-print">
+                        <tr>
+                            <td><?php echo $viewGlyphicon; ?>&nbsp;</td>
+                            <td><?php echo h($condo['Condo']['title']); ?>&nbsp;</td>
+                            <td><?php echo nl2br(h($condo['Condo']['address'])); ?>&nbsp;</td>
+                            <td><?php if (isset($condo['FiscalYear'][0]['title'])) echo h($condo['FiscalYear'][0]['title'] . ' ( ' . h($condo['FiscalYear'][0]['open_date']) . ' a ' . h($condo['FiscalYear'][0]['close_date']) . ' ) '); ?>&nbsp;</td>
+                            <td class="actions hidden-print">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-equalizer"></span> ', array('action' => 'view', $condo['Condo']['id']), array('title' => __('Select'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
                                     <?php if (Configure::read('Application.mode') != 'demo'): ?>
                                         <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $condo['Condo']['id']), array('title' => __('Edit'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
@@ -81,8 +93,8 @@
                                             <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span>', array('action' => 'delete', $condo['Condo']['id']), array('title' => __('Delete'), 'class' => 'btn btn-default btn-xs', 'escape' => false, 'confirm' => __('Are you sure you want to delete # %s?', $condo['Condo']['title']))); ?>
                                         <?php endif; ?>
                                     <?php endif; ?>
-                                </td>
-                            </tr>
+                            </td>
+                        </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>

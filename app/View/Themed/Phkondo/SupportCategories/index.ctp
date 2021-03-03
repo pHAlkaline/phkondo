@@ -1,3 +1,7 @@
+<?php $this->Html->css('footable/footable.bootstrap.min', false); ?>
+<?php $this->Html->script('moment-with-locales', false); ?>
+<?php $this->Html->script('libs/footable/footable', false); ?>
+<?php $this->Html->script('footable', false); ?>
 <div id="page-container" class="row">
     <div id="page-content" class="col-sm-12">
 
@@ -9,14 +13,17 @@
                 ?>
             </div><!-- /.actions -->
              <?php echo $this->element('search_tool'); ?>
-            <div class="clearfix"></div>
-            <div class="table-responsive col-sm-12">
-                <table class="table table-hover table-condensed">
+            <div class="row text-center loading">
+                <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate" style="font-size: 40px;"></span>
+            </div>
+            <div class="col-sm-12 hidden">
+
+                <table data-empty="<?= __('Empty'); ?>"  class="footable table table-hover table-condensed">
                     <thead>
                         <tr>
                             <th><?php echo $this->Paginator->sort('name'); ?></th>
                             <th><?php echo $this->Paginator->sort('active'); ?></th>
-                            <th class="actions hidden-print"><?php //echo __('Actions');  ?></th>
+                            <th data-breakpoints="xs" class="actions hidden-print"><?php //echo __('Actions');  ?></th>
                         </tr>
                     </thead>
                     <tbody>

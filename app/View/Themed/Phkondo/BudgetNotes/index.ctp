@@ -1,3 +1,7 @@
+<?php $this->Html->css('footable/footable.bootstrap.min', false); ?>
+<?php $this->Html->script('moment-with-locales', false); ?>
+<?php $this->Html->script('libs/footable/footable', false); ?>
+<?php $this->Html->script('footable', false); ?>
 <?php
 $showActions = false;
 if ($phkRequestData['budget_status'] == 1) {
@@ -24,21 +28,24 @@ if ($phkRequestData['budget_status'] == 1) {
                 ?>
             </div><!-- /.actions -->
             <?php echo $this->element('search_tool_notes'); ?>
-            <div class="clearfix"></div>
-            <div class="table-responsive col-sm-12">
-                <table class="table table-hover table-condensed">
+            <div class="row text-center loading">
+                <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate" style="font-size: 40px;"></span>
+            </div>
+            <div class="col-sm-12 hidden">
+
+                <table data-empty="<?= __('Empty'); ?>"  class="footable table table-hover table-condensed">
                     <thead>
                         <tr>
                             <th><?php echo $this->Paginator->sort('document_date'); ?></th>
                             <th><?php echo $this->Paginator->sort('title'); ?></th>
-                            <th><?php echo $this->Paginator->sort('NoteType.name', __('Note Type')); ?></th>
-                            <th><?php echo $this->Paginator->sort('Fraction.fraction', __('Fraction', 'Fractions', 1)); ?></th>
-                            <th><?php echo $this->Paginator->sort('Entity.name', __n('Entity', 'Entities', 1)); ?></th>
-                            <th><?php echo $this->Paginator->sort('due_date'); ?></th>
-                            <th><?php echo $this->Paginator->sort('payment_date'); ?></th>
-                            <th><?php echo $this->Paginator->sort('NoteStatus.name', __('Note Status')); ?></th>
-                            <th class="amount"><?php echo $this->Paginator->sort('amount'); ?></th>
-                            <th class="actions hidden-print"><?php //echo __('Actions');     ?></th>
+                            <th data-breakpoints="xs"><?php echo $this->Paginator->sort('NoteType.name', __('Note Type')); ?></th>
+                            <th data-breakpoints="xs"><?php echo $this->Paginator->sort('Fraction.fraction', __('Fraction', 'Fractions', 1)); ?></th>
+                            <th data-breakpoints="xs"><?php echo $this->Paginator->sort('Entity.name', __n('Entity', 'Entities', 1)); ?></th>
+                            <th data-breakpoints="xs"><?php echo $this->Paginator->sort('due_date'); ?></th>
+                            <th data-breakpoints="xs"><?php echo $this->Paginator->sort('payment_date'); ?></th>
+                            <th data-breakpoints="xs"><?php echo $this->Paginator->sort('NoteStatus.name', __('Note Status')); ?></th>
+                            <th data-breakpoints="xs" class="amount"><?php echo $this->Paginator->sort('amount'); ?></th>
+                            <th data-breakpoints="xs" class="actions hidden-print"><?php //echo __('Actions');     ?></th>
                         </tr>
                     </thead>
                     <tbody>

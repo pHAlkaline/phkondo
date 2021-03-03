@@ -1540,7 +1540,7 @@ msgid "Total amount"
 msgstr "Valor total"
 
 msgid "Total notes"
-msgstr "Total quotas"
+msgstr "Total"
 
 msgid "Trial balance"
 msgstr "Balancete"

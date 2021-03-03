@@ -1,4 +1,7 @@
-
+<?php $this->Html->css('footable/footable.bootstrap.min', false); ?>
+<?php $this->Html->script('moment-with-locales', false); ?>
+<?php $this->Html->script('libs/footable/footable', false); ?>
+<?php $this->Html->script('footable', false); ?>
 <div id="page-container" class="row row-offcanvas row-offcanvas-left">
 
     <div class="col-sm-3">
@@ -16,7 +19,7 @@
                 ?>
                 <li ><?php echo $this->Form->postLink(__('Delete Receipt'), array('action' => 'delete', $this->Form->value('Receipt.id'), '?' => $this->request->query), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $this->Form->value('Receipt.id')))); ?></li>
                 <li ><?php echo $this->Html->link(__('List Receipts'), array('action' => 'index', '?' => $this->request->query), array('class' => 'btn')); ?></li>
-                <!--li ><?php //echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('New Notes'), array('action' => 'add_notes', $this->Form->value('Receipt.id')), array('class' => 'btn ', 'escape' => false));          ?> </li-->
+                <!--li ><?php //echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('New Notes'), array('action' => 'add_notes', $this->Form->value('Receipt.id')), array('class' => 'btn ', 'escape' => false));           ?> </li-->
 
             </ul><!-- /.list-group -->
         </div><!-- /.actions -->
@@ -113,19 +116,22 @@
                                                 <?php endif; ?>
                                             </div>
                                         </div><!-- /.actions -->
-                                        <div class="clearfix"></div>
-                                        <div class="table-responsive">
-                                            <table class="table table-hover table-condensed">
+                                        <div class="row text-center loading">
+                                            <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate" style="font-size: 40px;"></span>
+                                        </div>
+                                        <div class="col-sm-12 hidden">
+
+                                            <table data-empty="<?= __('Empty'); ?>"  class="footable table table-hover table-condensed">
                                                 <thead>
                                                     <tr>
-                                                        <th><?php echo __('Document'); ?></th>
+                                                        <th data-breakpoints="xs"><?php echo __('Document'); ?></th>
                                                         <th><?php echo __('Document Date'); ?></th>
                                                         <th><?php echo __('Title'); ?></th>
-                                                        <th><?php echo __('Note Type'); ?></th>
-                                                        <th><?php echo __n('Fraction', 'Fractions', 1); ?></th>
-                                                        <th><?php echo __('Client'); ?></th>
-                                                        <th><?php echo __('Amount'); ?></th>
-                                                        <th><?php echo __('Due Date'); ?></th>
+                                                        <th data-breakpoints="xs"><?php echo __('Note Type'); ?></th>
+                                                        <th data-breakpoints="xs"><?php echo __n('Fraction', 'Fractions', 1); ?></th>
+                                                        <th data-breakpoints="xs"><?php echo __('Client'); ?></th>
+                                                        <th data-breakpoints="xs"><?php echo __('Amount'); ?></th>
+                                                        <th data-breakpoints="xs"><?php echo __('Due Date'); ?></th>
                                                         <th class="actions"><?php echo __('Pick'); ?></th>
                                                     </tr>
                                                 </thead>
@@ -139,7 +145,7 @@
                                                             <td><?php echo h($note['Fraction']['fraction']); ?></td>
                                                             <td><?php echo h($note['Entity']['name']); ?></td>
                                                             <td><?php echo h($note['Note']['amount']); ?>&nbsp;<?php echo Configure::read('currencySign'); ?></td>
-                                                            <!--td><?php //echo h($note['Note']['pending_amount']);           ?>&nbsp;</td-->
+                                                            <!--td><?php //echo h($note['Note']['pending_amount']);            ?>&nbsp;</td-->
                                                             <td><?php echo h($note['Note']['due_date']); ?>&nbsp;</td>
                                                             <td class="actions">
                                                                 <?php

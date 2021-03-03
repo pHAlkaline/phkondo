@@ -1,3 +1,6 @@
+<?php $this->Html->css('footable/footable.bootstrap.min', false); ?>
+<?php $this->Html->script('moment-with-locales', false); ?>
+<?php $this->Html->script('libs/footable/footable', false); ?>
 <?php $this->Html->script('note_create', false); ?>
 <?php
 $totalShares = 0;
@@ -38,18 +41,21 @@ foreach ($fractions as $fraction) {
             <?php echo $this->Form->hidden('Note.Budget.amount', array('value' => $budgetAmount)); ?>
             <?php echo $this->Form->hidden('Note.Budget.notes.amount', array('value' => $budgetAmount)); ?>
             <?php echo $this->Form->hidden('Note.Budget.periodicity', array('value' => $budget['Budget']['share_periodicity_id'])); ?>
-            <dvi class='clearfix'></dvi>
-            <div class="table-responsive col-sm-12">
-                <table class="table table-striped">
+            <div class="row text-center loading">
+                <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate" style="font-size: 40px;"></span>
+            </div>
+            <div class="col-sm-12 hidden">
+
+                <table data-empty="<?= __('Empty'); ?>"  class="footable table table-hover table-condensed">
                     <thead>
                         <tr>
                             <th><?php echo __n('Owner', 'Owners', 1); ?></th>
                             <th><?php echo __n('Fraction', 'Fractions', 1); ?></th>
-                            <th><?php echo __('Description'); ?></th>
-                            <th><?php echo __('permillage'); ?></th>
-                            <th><?php echo __('Amount'); ?></th>
-                            <th><?php echo __('Common Reserve Fund'); ?></th>
-                            <th><?php echo __n('Share', 'Shares', 2); ?></th>
+                            <th data-breakpoints="xs"><?php echo __('Description'); ?></th>
+                            <th data-breakpoints="xs"><?php echo __('permillage'); ?></th>
+                            <th data-breakpoints="xs"><?php echo __('Amount'); ?></th>
+                            <th data-breakpoints="xs"><?php echo __('Common Reserve Fund'); ?></th>
+                            <th data-breakpoints="xs"><?php echo __n('Share', 'Shares', 2); ?></th>
                             <th><?php echo __('Total'); ?></th>
 
                         </tr>
@@ -77,7 +83,7 @@ foreach ($fractions as $fraction) {
                                 $amountByShare = 0;
                                 switch ($budget['Budget']['share_distribution_id']) {
                                     case 2:
-                                        if($totalMilRate==0 || $numOfShares == 0) {
+                                        if ($totalMilRate == 0 || $numOfShares == 0) {
                                             $amountByShare = 0;
                                         } else {
                                             $amountByShare = $budgetAmount * ($fraction['Fraction']['permillage'] / $totalMilRate) / $numOfShares;
@@ -103,10 +109,10 @@ foreach ($fractions as $fraction) {
                                     <td><?php echo h($fraction['Fraction']['fraction']); ?>&nbsp;</td>
                                     <td><?php echo h($fraction['Fraction']['description']); ?>&nbsp;</td>
                                     <td><?php echo h($fraction['Fraction']['permillage']); ?>&nbsp;</td>
-                                    <td><?php echo $this->Form->input('Note.' . $row . '.amount', array('class' => 'form-control', 'value' => $amountByShare, 'type' => 'text', 'data-type' => 'note', 'label' => false)); ?>&nbsp;</td>
-                                    <td><?php echo $this->Form->input('Note.' . $row . '.common_reserve_fund', array('class' => 'form-control', 'value' => $commonReserveFundByShare, 'type' => 'text', 'data-type' => 'note', 'label' => false)); ?>&nbsp;</td>
-                                    <td><?php echo $this->Form->input('Note.' . $row . '.shares', array('class' => 'form-control', 'value' => $numOfShares, 'type' => 'text', 'data-type' => 'note', 'label' => false)); ?>&nbsp;</td>
-                                    <td><?php echo $this->Form->input('Note.' . $row . '.total', array('class' => 'form-control', 'value' => $total, 'type' => 'text', 'disabled' => 'disabled', 'label' => false)); ?>&nbsp;</td>
+                                    <td data-type="html" data-editable="true"><?php echo $this->Form->input('Note.' . $row . '.amount', array('class' => 'form-control', 'value' => $amountByShare, 'type' => 'text', 'data-context' => 'note', 'label' => false)); ?>&nbsp;</td>
+                                    <td data-type="html" data-editable="true"><?php echo $this->Form->input('Note.' . $row . '.common_reserve_fund', array('class' => 'form-control', 'value' => $commonReserveFundByShare, 'type' => 'text', 'data-context' => 'note', 'label' => false)); ?>&nbsp;</td>
+                                    <td data-type="html" data-editable="true"><?php echo $this->Form->input('Note.' . $row . '.shares', array('class' => 'form-control', 'value' => $numOfShares, 'type' => 'text', 'data-context' => 'note', 'label' => false)); ?>&nbsp;</td>
+                                    <td data-type="html" ><?php echo $this->Form->input('Note.' . $row . '.total', array('class' => 'form-control', 'value' => $total, 'type' => 'text', 'disabled' => 'disabled', 'label' => false)); ?>&nbsp;</td>
                                 </tr>
 
                                 <?php
@@ -117,16 +123,17 @@ foreach ($fractions as $fraction) {
                     </tbody>
                 </table>
             </div>
-            <div class="pull-right">
-                <?php
-                $pclass = "";
-                if ($this->Number->precision($totalShares, 2) != $this->Number->precision($budgetAmount, 2))
-                    $pclass = 'text-danger';
-                ?>
-                <p class="<?php echo $pclass ?>"><?php echo __('Total notes') . ': <span id="notesTotal">' . $this->Number->precision($totalShares, 2) . '</span>'; ?></p>
-                <p><?php echo __('Budget amount') . ': ' . $this->Number->precision($budgetAmount, 2); ?></p>
-
-                <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-large btn-primary pull-right')); ?>
+            <div class="col-sm-12">
+                <div class="pull-right">
+                    <?php
+                    $pclass = "";
+                    if ($this->Number->precision($totalShares, 2) != $this->Number->precision($budgetAmount, 2))
+                        $pclass = 'text-danger';
+                    ?>
+                    <p class="<?php echo $pclass ?>"><?php echo ' ( '.__('Budget').' '.$this->Number->precision($budgetAmount, 2).' ) '.__('Total notes') . ': <span id="notesTotal">' . $this->Number->precision($totalShares, 2) .' </span>'; ?></p>
+                    
+                    <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-large btn-primary pull-right')); ?>
+                </div>
             </div>
 
             <?php echo $this->Form->end(); ?>

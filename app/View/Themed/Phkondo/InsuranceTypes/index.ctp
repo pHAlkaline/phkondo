@@ -1,3 +1,7 @@
+<?php $this->Html->css('footable/footable.bootstrap.min', false); ?>
+<?php $this->Html->script('moment-with-locales', false); ?>
+<?php $this->Html->script('libs/footable/footable', false); ?>
+<?php $this->Html->script('footable', false); ?>
 <div id="page-container" class="row">
 
     <div id="page-content" class="col-sm-12">
@@ -11,14 +15,17 @@
             </div><!-- /.actions -->
 
         <?php echo $this->element('search_tool'); ?>
-            <div class="clearfix"></div>
-            <div class="table-responsive col-sm-12">
-                <table class="table table-hover table-condensed">
+            <div class="row text-center loading">
+                <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate" style="font-size: 40px;"></span>
+            </div>
+            <div class="col-sm-12 hidden">
+
+                <table data-empty="<?= __('Empty'); ?>"  class="footable table table-hover table-condensed">
                     <thead>
                         <tr>
                             <th><?php echo $this->Paginator->sort('name'); ?></th>
                             <th><?php echo $this->Paginator->sort('active'); ?></th>
-                            <th class="actions hidden-print"><?php //echo __('Actions');     ?></th>
+                            <th  data-breakpoints="xs" class="actions hidden-print"><?php //echo __('Actions');     ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -26,7 +33,7 @@
                         <tr>
                             <td><?php echo h($insuranceType['InsuranceType']['name']); ?>&nbsp;</td>
                             <td><?php echo h($insuranceType['InsuranceType']['active_string']); ?>&nbsp;</td>
-                            <td class="actions hidden-print">
+                            <td data-breakpoints="xs" class="actions hidden-print">
                                 <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $insuranceType['InsuranceType']['id']), array('title' => __('Details'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
                                 <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $insuranceType['InsuranceType']['id']), array('title' => __('Edit'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
                                 <?php

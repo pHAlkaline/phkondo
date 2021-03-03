@@ -1,4 +1,7 @@
-
+<?php $this->Html->css('footable/footable.bootstrap.min', false); ?>
+<?php $this->Html->script('moment-with-locales', false); ?>
+<?php $this->Html->script('libs/footable/footable', false); ?>
+<?php $this->Html->script('footable', false); ?>
 <div id="page-container" class="row row-offcanvas row-offcanvas-left">
 
     <div class="col-sm-3">
@@ -31,7 +34,7 @@
                 <li ><?php echo $this->Form->postLink(__('Pay Receipt'), array('action' => 'pay_receipt', $receipt['Receipt']['id'], '?' => $this->request->query), array('class' => 'btn ' . $payDisabled, 'confirm' => __('Are you sure you want to set receipt # %s as paid? - Payment as %s', $receipt['Receipt']['document'], $receipt['ReceiptPaymentType']['name']))); ?></li>
                 <li ><?php echo $this->Form->postLink(__('Cancel Receipt'), array('action' => 'cancel', $receipt['Receipt']['id'], '?' => $this->request->query), array('class' => 'btn ' . $cancelDisabled, 'confirm' => __('Are you sure you want to cancel # %s?', $receipt['Receipt']['document']))); ?> </li>
                 <li ><?php echo $this->Html->link(__('Print Receipt'), array('action' => 'print_receipt', $receipt['Receipt']['id'], '?' => $this->request->query), array('target' => '_blank', 'class' => '', 'escape' => false)); ?> </li>
-                <!--li ><?php //echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('New Notes'), array('action' => 'add_notes', $receipt['Receipt']['id']), array('class' => 'btn ' . $editDisabled, 'escape' => false));  ?> </li-->
+                <!--li ><?php //echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('New Notes'), array('action' => 'add_notes', $receipt['Receipt']['id']), array('class' => 'btn ' . $editDisabled, 'escape' => false));   ?> </li-->
 
             </ul><!-- /.list-group -->
 
@@ -157,22 +160,26 @@
                         ?>
                         <?php if (!empty($receipt['Note'])): ?>
 
-                            <div class="table-responsive col-sm-12">
-                                <table class="table table-hover table-condensed">
+                            <div class="row text-center loading">
+                                <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate" style="font-size: 40px;"></span>
+                            </div>
+                            <div class="col-sm-12 hidden">
+
+                                <table data-empty="<?= __('Empty'); ?>"  class="footable table table-hover table-condensed">
                                     <thead>
                                         <tr>
                                             <th><?php echo __('Document'); ?></th>
                                             <th><?php echo __('Note Type'); ?></th>
-                                            <th><?php echo __('Document Date'); ?></th>
-                                            <th><?php echo __('Title'); ?></th>
+                                            <th data-breakpoints="xs"><?php echo __('Document Date'); ?></th>
+                                            <th data-breakpoints="xs"><?php echo __('Title'); ?></th>
                                             <th class="amount"><?php echo __('Amount'); ?></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         $i = 0;
-                                        foreach ($receipt['Note'] as $note){
-                                         ?>
+                                        foreach ($receipt['Note'] as $note) {
+                                            ?>
                                             <tr>
                                                 <td><?php echo $note['document']; ?></td>
                                                 <td><?php echo $note['NoteType']['name']; ?></td>

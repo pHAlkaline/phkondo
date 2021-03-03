@@ -1,112 +1,110 @@
 # LANGUAGE translation of pHkondo Application
 # Copyright pHAlkaline <contact@phalkaline.net>
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pHKondo V1.1\n"
 "POT-Creation-Date: 2015-03-01 22:26+0000\n"
-"PO-Revision-Date: 2015-03-01 22:26+0000\n"
+"PO-Revision-Date: 2021-03-01 22:20-0500\n"
 "Last-Translator: pHAlkaline <contact@phalkaline.net>\n"
-"Language-Team: Portuguesa <contact@phalkaline.net>\n"
+"Language-Team: pHAlkaline <contact@phalkaline.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.5.4\n"
-"Language: pt\n"
+"X-Generator: Poedit 2.4.2\n"
+"Language: es\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 msgid "Empty"
-msgstr ""
+msgstr "Vacío"
 
 msgid "Must be unique"
-msgstr ""
+msgstr "Debe ser único"
 
 msgid "Next inspection date must be after last inspection date"
-msgstr ""
+msgstr "Próxima fecha de inspección debe ser posterior a la última fecha de inspección"
 
 msgid "Next inspection date must be after start date"
-msgstr ""
+msgstr "Próxima fecha de inspección debe ser posterior a la fecha de inicio"
 
 msgid "Passwords dont match"
-msgstr ""
+msgstr "Contraseñas no coinciden"
 
 msgid "Please enter a valid role"
-msgstr ""
+msgstr "Ingrese un rol válido"
 
 msgid "Please enter an valid percentage."
-msgstr ""
+msgstr "Ingrese un porcentaje válido."
 
 msgid "Please enter an valid rate."
-msgstr ""
+msgstr "Por favor ingresar una tasa válida."
 
 msgid "Renewal date must be after start date"
-msgstr ""
+msgstr "Fecha de renovación debe ser posterior a fecha de inicio"
 
 msgid "This status requires payment date"
-msgstr ""
+msgstr "Estado requiere fecha de pago"
 
 msgid "boolean"
-msgstr ""
+msgstr "dato booleano"
 
 msgid "close date must be after open date"
-msgstr ""
+msgstr "fecha de cierre debe ser posterior a fecha de apertura"
 
 msgid "close date must be after open date, or passed 30 days interval"
-msgstr ""
+msgstr "fecha de cierre debe ser posterior a fecha de apertura, o pasado un intervalo de 30 días"
 
 msgid "date"
-msgstr ""
+msgstr "fecha"
 
 msgid "due date must be after document date"
-msgstr ""
+msgstr "fecha de vencimiento debe ser posterior a fecha de documento"
 
 msgid "invalid active"
-msgstr ""
+msgstr "activo inválido"
 
 msgid "invalid begin date"
-msgstr ""
+msgstr "fecha de inicio inválida"
 
-msgid "invalid date, do not match active fiscal year dates"
-msgstr ""
+msgid "invalid date, do not match active accounting period dates"
+msgstr "fecha inválida, no coincide con fecha de periodo contable activo"
 
 msgid "invalid close date"
-msgstr ""
+msgstr "fecha de cierre inválida"
 
 msgid "invalid date"
-msgstr ""
+msgstr "fecha inválida"
 
 msgid "invalid movement date"
-msgstr ""
+msgstr "fecha de movimiento inválida"
 
 msgid "invalid open date"
-msgstr ""
+msgstr "fecha de apertura inválida"
 
 msgid "invalid origin date"
-msgstr ""
+msgstr "fecha de origen inválida"
 
 msgid "money"
-msgstr ""
+msgstr "dinero"
 
 msgid "NotBlank"
-msgstr ""
+msgstr "Llenar"
 
 msgid "notBlank"
-msgstr ""
+msgstr "llenar"
 
 msgid "numeric"
-msgstr ""
+msgstr "numérico"
 
 msgid "payment date must be after document date"
-msgstr ""
+msgstr "fecha de pago debe ser posterior a fecha de documento"
 
 msgid "uuid"
-msgstr ""
+msgstr "uuid"
 
 msgid "Minimum 8 characters long"
-msgstr ""
+msgstr "Mínimo 8 caracteres de largo"
 
 msgid "Must contain one upper, one lower, 1 digit or special character"
-msgstr ""
-
+msgstr "Debe contener una máyúscula, una minúscula y 1 dígito o caracter especial"

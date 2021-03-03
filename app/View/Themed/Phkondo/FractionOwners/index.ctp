@@ -1,3 +1,7 @@
+<?php $this->Html->css('footable/footable.bootstrap.min', false); ?>
+<?php $this->Html->script('moment-with-locales', false); ?>
+<?php $this->Html->script('libs/footable/footable', false); ?>
+<?php $this->Html->script('footable', false); ?>
 <?php $this->Html->script('fraction_owner_index', false); ?>
 <div id="page-container" class="row">
 
@@ -11,16 +15,19 @@
                 ?>
             </div><!-- /.actions -->
             <?php echo $this->element('search_tool'); ?>
-            <div class="clearfix"></div>
-            <div class="table-responsive col-sm-12">
-                <table class="table table-hover table-condensed">
+            <div class="row text-center loading">
+                <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate" style="font-size: 40px;"></span>
+            </div>
+            <div class="col-sm-12 hidden">
+
+                <table data-empty="<?= __('Empty'); ?>"  class="footable table table-hover table-condensed">
                     <thead>
                         <tr>
                             <th><?php echo __('Name'); ?></th>
-                            <th><?php echo __('Address'); ?></th>
-                            <th><?php echo __n('Contact', 'Contacts', 2); ?></th>
-                            <th class="amount"><?php echo __('Owner Percentage') . ' ( % )'; ?></th>
-                            <th class="actions hidden-print"><?php //echo __('Actions');       ?></th>
+                            <th data-breakpoints="xs"><?php echo __('Address'); ?></th>
+                            <th data-breakpoints="xs"><?php echo __n('Contact', 'Contacts', 2); ?></th>
+                            <th data-breakpoints="xs" class="amount"><?php echo __('Owner Percentage') . ' ( % )'; ?></th>
+                            <th data-breakpoints="xs" class="actions hidden-print"><?php //echo __('Actions');        ?></th>
                         </tr>
                     </thead>
                     <tbody>

@@ -1,3 +1,7 @@
+<?php $this->Html->css('footable/footable.bootstrap.min', false); ?>
+<?php $this->Html->script('moment-with-locales', false); ?>
+<?php $this->Html->script('libs/footable/footable', false); ?>
+<?php $this->Html->script('footable', false); ?>
 <div id="page-container" class="row">
     <div id="page-content" class="col-sm-12">
         <div class="index">
@@ -7,20 +11,22 @@
                 ?>
             </div><!-- /.actions -->
              <?php echo $this->element('search_tool'); ?>
-            <div class="clearfix"></div>
-            <div class="table-responsive col-sm-12">
-                <table class="table table-hover table-condensed">
+            <div class="row text-center loading">
+                <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate" style="font-size: 40px;"></span>
+            </div>
+            <div class="col-sm-12 hidden">
+
+                <table data-empty="<?= __('Empty'); ?>"  class="footable table table-hover table-condensed">
                     <thead>
                         <tr>
                             <th><?php echo $this->Paginator->sort('Fraction.fraction',__('Fraction')); ?></th>
                             <th><?php echo $this->Paginator->sort('subject'); ?></th>
-                            <th><?php echo $this->Paginator->sort('SupportCategory.name',__('Category')); ?></th>
-                            <th><?php echo $this->Paginator->sort('SupportStatus.name',__('Status')); ?></th>
-                            <th><?php echo $this->Paginator->sort('SupportPriority.name',__('Priority')); ?></th>
-                            <th><?php echo $this->Paginator->sort('AssignedUser.name',__('Assigned To')); ?></th>
-                            <th><?php echo $this->Paginator->sort('created'); ?></th>
-                            <th><?php echo $this->Paginator->sort('modified'); ?></th>
-                            <th class="actions hidden-print"><?php //echo __('Actions'); ?></th>
+                            <th data-breakpoints="xs"><?php echo $this->Paginator->sort('SupportCategory.name',__('Category')); ?></th>
+                            <th data-breakpoints="xs"><?php echo $this->Paginator->sort('SupportStatus.name',__('Status')); ?></th>
+                            <th data-breakpoints="xs"><?php echo $this->Paginator->sort('SupportPriority.name',__('Priority')); ?></th>
+                            <th data-breakpoints="xs"><?php echo $this->Paginator->sort('AssignedUser.name',__('Assigned To')); ?></th>
+                            <th data-breakpoints="xs"><?php echo $this->Paginator->sort('created'); ?></th>
+                            <th data-breakpoints="xs" class="actions hidden-print"><?php //echo __('Actions'); ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -33,7 +39,6 @@
                                 <td><?php echo h($support['SupportPriority']['name']); ?></td>
                                 <td><?php echo h($support['AssignedUser']['name']); ?></td>
                                 <td><?php echo h($support['Support']['created']); ?>&nbsp;</td>
-                                <td><?php echo h($support['Support']['modified']); ?>&nbsp;</td>
                                 <td class="actions hidden-print">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $support['Support']['id'], '?' => $this->request->query), array('title' => __('Details'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $support['Support']['id'], '?' => $this->request->query), array('title' => __('Edit'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
