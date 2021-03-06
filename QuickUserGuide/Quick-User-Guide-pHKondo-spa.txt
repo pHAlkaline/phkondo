@@ -1,0 +1,81 @@
+Guía de inicio rápido de pHKondo
+
+Añadir condominio(s) -> Crear condominio
+Ver detalles del condominio
+
+Introducir períodos contables
+Añadir período contable -> Crear período contable
+* Período contable se utiliza para establecer períodos de gestión, puede el período que desee, no necesariamente un año.
+Se utiliza para controlar y agrupar los datos en:
+- Saldos de cuentas, presupuestos...
+- Informes de Balance, ingresos, gastos, en deuda, mapa de cuotas
+* IMPORTANTE: Atención, los datos presentados están agrupados según el periodo contable activo, para ver datos de otro execicio este debe ser activado posteriormente.
+
+Volver a los detalles del condominio
+Introduzca las fracciones
+Añadir propiedades -> Crear Fracción
+Ver detalles de la fracción
+
+Dentro de la Fracción Entre los Propietarios
+Añadir propietarios -> Crear propietario
+O utilice Añadir propietario para buscar propietarios ya registrados en su base de datos
+
+Volver a los detalles del condominio
+Introduzca los administradores
+Añadir administradores -> Añadir administrador
+* El administrador es el propietario(s) seleccionado(s) que sirve(n) de enlace/representante(s) entre la gestión del condominio/empresa/servicio y todos los propietarios.
+
+
+Volver a los detalles del condominio
+Gestión de las cuentas bancarias y/o internas
+Introducir cuentas
+Añadir cuenta -> Nueva cuenta
+Ver detalles de la cuenta
+
+Dentro de la cuenta, introduzca los movimientos
+Añadir movimientos de la cuenta -> Crear movimiento
+* Cada transacción debe pertenecer al período contable activo
+* Para cada periodo contable se debe crear el primer movimiento ( al inicio del periodo contable - apertura ) y el último movimiento ( al final del periodo contable - cierre ) , esto permitirá a pHKondo ejecutar los informes en base a los intervalos ( inicio / final ) del periodo contable.
+* El primer movimiento debería ser:
+El importe inicial del balance de apertura en el período contable
+Seleccione Apertura / Cierre en el campo Categoría
+Seleccione Balance de apertura en el campo Movimiento de transacciones
+Tipo de operación: Crédito si el saldo de la cuenta al inicio del periodo contable es 0 o superior, Débito si el saldo de la cuenta al inicio del periodo contable es < 0
+
+* El último movimiento debe ser: ( al cerrar el periodo contable )
+Seleccione Balance de apertura/cierre en el campo Categoría
+Seleccione Cerrar Balancete en el campo Operación Movimiento
+
+Volver a los detalles del condominio
+Introducir en los presupuestos
+Añadir presupuestos -> Crear presupuesto
+Defina sus presupuestos.
+Defina bien los campos Valor, Fondo de reserva (%), Fecha de inicio, Cuotas, Periodicidad, Distribución, Plazo de pago. 
+Estos campos le permitirán crear cuotas automáticamente.
+Vaya a crear cuotas para la creación automática de cuotas relacionadas con el respectivo presupuesto, atención que el presupuesto debe estar en estado activo.
+
+
+... normas importantes a tener en cuenta
+El recibo debe estar en estado pendiente de pago para poder establecerlo como pagado.
+El recibo debe estar en estado pendiente para poder establecerlo como cancelado.
+Las cuotas no pueden ser modificadas o eliminadas cuando están asociadas a un recibo. ( eliminar la asociación para poder editar )
+Los presupuestos sólo se pueden eliminar en estado pendiente.
+Los presupuestos no pueden ser eliminados cuando están asociados a cuotas de afiliación pagadas.
+La fracción no puede ser eliminada si tiene cuotas pagadas asociadas.
+No se pueden eliminar otras tablas con registros asociados. 
+
+... extras
+Introduzca los recibos para gestionar los pagos/recibos.
+Ingrese en Verificación de Facturas para gestionar las deudas de la Condominio / pagos a proveedores.
+Entre en Mantenimiento para gestionar los horarios de mantenimiento del condominio.
+Entra en Seguros para gestionar los seguros de condominio y fracciones.
+Entre en Anexos para gestionar los documentos adjuntos.
+Entre en los informes de Balance, Ingresos, Gastos, Cuenta corriente, Mapas.
+Entre en Minutos para imprimir algunos documentos utilizados en la gestión del condominio.
+... 
+y otras funcionalidades que pHKondo puede proporcionar
+
+NOTA FINAL :
+Si estás interesado en otras funciones que pHKondo no tenga disponibles, pero quieres comprar, no lo dudes -> contact@phalkaline.net
+
+Traducción realizada con la versión gratuita del traductor www.DeepL.com/Translator
