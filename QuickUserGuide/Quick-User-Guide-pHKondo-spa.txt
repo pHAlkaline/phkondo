@@ -5,11 +5,11 @@ Ver detalles del condominio
 
 Introducir períodos contables
 Añadir período contable -> Crear período contable
-* Período contable se utiliza para establecer períodos de gestión, puede el período que desee, no necesariamente un año.
+* Período contable se utiliza para establecer períodos de gestión, puede el intervalo que desee, no necesariamente un año.
 Se utiliza para controlar y agrupar los datos en:
 - Saldos de cuentas, presupuestos...
-- Informes de Balance, ingresos, gastos, en deuda, mapa de cuotas
-* IMPORTANTE: Atención, los datos presentados están agrupados según el periodo contable activo, para ver datos de otro execicio este debe ser activado posteriormente.
+- Informes de Balances, ingresos, gastos, pendientes de pago, programación de cuotas
+* IMPORTANTE: Atención, los datos presentados están agrupados según el periodo contable activo, para ver datos de otro ejecicio este debe ser activado posteriormente.
 
 Volver a los detalles del condominio
 Introduzca las fracciones
@@ -23,7 +23,7 @@ O utilice Añadir propietario para buscar propietarios ya registrados en su base
 Volver a los detalles del condominio
 Introduzca los administradores
 Añadir administradores -> Añadir administrador
-* El administrador es el propietario(s) seleccionado(s) que sirve(n) de enlace/representante(s) entre la gestión del condominio/empresa/servicio y todos los propietarios.
+* El administrador es el/los propietario(s) seleccionado(s) que sirve(n) de enlace/representante(s) entre la gestión del condominio/empresa/servicio y todos los propietarios.
 
 
 Volver a los detalles del condominio
@@ -44,7 +44,7 @@ Tipo de operación: Crédito si el saldo de la cuenta al inicio del periodo cont
 
 * El último movimiento debe ser: ( al cerrar el periodo contable )
 Seleccione Balance de apertura/cierre en el campo Categoría
-Seleccione Cerrar Balancete en el campo Operación Movimiento
+Seleccione Cerrar Balance en el campo Operación Movimiento
 
 Volver a los detalles del condominio
 Introducir en los presupuestos
@@ -52,7 +52,7 @@ Añadir presupuestos -> Crear presupuesto
 Defina sus presupuestos.
 Defina bien los campos Valor, Fondo de reserva (%), Fecha de inicio, Cuotas, Periodicidad, Distribución, Plazo de pago. 
 Estos campos le permitirán crear cuotas automáticamente.
-Vaya a crear cuotas para la creación automática de cuotas relacionadas con el respectivo presupuesto, atención que el presupuesto debe estar en estado activo.
+Puede crear cuotas para la creación automática de cuotas relacionadas con el respectivo presupuesto, atención que el presupuesto debe estar en estado activo.
 
 
 ... normas importantes a tener en cuenta
@@ -70,12 +70,12 @@ Ingrese en Verificación de Facturas para gestionar las deudas de la Condominio 
 Entre en Mantenimiento para gestionar los horarios de mantenimiento del condominio.
 Entra en Seguros para gestionar los seguros de condominio y fracciones.
 Entre en Anexos para gestionar los documentos adjuntos.
-Entre en los informes de Balance, Ingresos, Gastos, Cuenta corriente, Mapas.
+Entre en los informes de Balances, Ingresos, Gastos, Cuenta corriente, Mapas.
 Entre en Minutos para imprimir algunos documentos utilizados en la gestión del condominio.
 ... 
 y otras funcionalidades que pHKondo puede proporcionar
 
 NOTA FINAL :
-Si estás interesado en otras funciones que pHKondo no tenga disponibles, pero quieres comprar, no lo dudes -> contact@phalkaline.net
+Si estás interesado en otras funciones que pHKondo no tenga disponibles, pero quieres agregarlas, no dudes en escribirnos -> contact@phalkaline.net
 
 Traducción realizada con la versión gratuita del traductor www.DeepL.com/Translator
