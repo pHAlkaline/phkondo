@@ -1,4 +1,6 @@
-<?php $this->Html->css('footable/footable.bootstrap.min', false); ?>
+<?php
+
+$this->Html->css('footable/footable.bootstrap.min', false); ?>
 <?php $this->Html->script('moment-with-locales', false); ?>
 <?php $this->Html->script('libs/footable/footable', false); ?>
 <?php $this->Html->script('footable', false); ?>
@@ -20,8 +22,8 @@
             <?php
             if ($milRateWarning):
                 ?>
-                <div class="alert alert-warning alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                     <?php echo __('Warning: permillage sum should be 1000'); ?></div>
 
             <?php endif; ?>
@@ -35,21 +37,21 @@
                         <tr>
                             <th><?php echo $this->Paginator->sort('fraction'); ?></th>
                             <th><?php echo $this->Paginator->sort('location'); ?></th>
-                            <th data-breakpoints="xs"><?php echo $this->Paginator->sort('description'); ?></th>
+                            <th data-breakpoints="xs" ><?php echo $this->Paginator->sort('description'); ?></th>
                             <th data-breakpoints="xs" ><?php echo $this->Paginator->sort('permillage'); ?></th>
-                            <th data-breakpoints="xs" ><?php echo $this->Paginator->sort('Manager.name', __n('Manager', 'Managers', 1)); ?></th>
+                            <th><?php echo $this->Paginator->sort('Manager.name', __n('Manager', 'Managers', 1)); ?></th>
                             <th data-breakpoints="xs"><?php echo $this->Paginator->sort('FractionType.name', __('Fraction Type')); ?></th>
-                            <th class="actions hidden-print"><?php //echo __('Actions');            ?></th>
+                            <th class="actions hidden-print" data-breakpoints="xs"><?php //echo __('Actions');            ?></th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($fractions as $index => $fraction): ?>
-                            <tr <?= $index == 0 ? 'data-expanded="true"' : ''; ?> >
-                                <td><?php echo h($fraction['Fraction']['fraction']); ?>&nbsp;</td>
-                                <td><?php echo h($fraction['Fraction']['location']); ?>&nbsp;</td>
-                                <td><?php echo h($fraction['Fraction']['description']); ?>&nbsp;</td>
-                                <td><?php echo h($fraction['Fraction']['permillage']); ?>&nbsp;</td>
-                                <td><?php
+                        <tr <?= $index == 0 ? 'data-expanded="true"' : ''; ?> >
+                            <td><?php echo h($fraction['Fraction']['fraction']); ?>&nbsp;</td>
+                            <td><?php echo h($fraction['Fraction']['location']); ?>&nbsp;</td>
+                            <td><?php echo h($fraction['Fraction']['description']); ?>&nbsp;</td>
+                            <td><?php echo h($fraction['Fraction']['permillage']); ?>&nbsp;</td>
+                            <td><?php
                                     if ($fraction['Fraction']['manager_id'] == 0) {
                                         foreach ($fraction['Entity'] as $manager) {
                                             echo $manager['name'] . "<br/>";
@@ -57,20 +59,20 @@
                                     } else {
                                         echo h($fraction['Manager']['name']);
                                     }
-
-                                    $deleteDisabled = '';
+                                 ?>
+                            </td>
+                            <td><?php echo h($fraction['FractionType']['name']); ?>&nbsp;</td>
+                            <td class="actions hidden-print">
+                                    <?php  $deleteDisabled = '';
                                     if (!$fraction['Fraction']['deletable'] == true) {
                                         $deleteDisabled = ' disabled';
                                     }
+                                    echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $fraction['Fraction']['id'], '?' => $this->request->query), array('title' => __('Details'), 'class' => 'btn btn-default btn-xs', 'escape' => false));
+                                    echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $fraction['Fraction']['id'], '?' => $this->request->query), array('title' => __('Edit'), 'class' => 'btn btn-default btn-xs', 'escape' => false));
+                                    echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'delete', $fraction['Fraction']['id'], '?' => $this->request->query), array('title' => __('Remove'), 'class' => 'btn btn-default btn-xs' . $deleteDisabled, 'escape' => false, 'confirm' => __('Are you sure you want to delete # %s?', $fraction['Fraction']['fraction']))); 
                                     ?>
-                                </td>
-                                <td><?php echo h($fraction['FractionType']['name']); ?>&nbsp;</td>
-                                <td class="actions hidden-print">
-                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $fraction['Fraction']['id'], '?' => $this->request->query), array('title' => __('Details'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
-                                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $fraction['Fraction']['id'], '?' => $this->request->query), array('title' => __('Edit'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
-                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'delete', $fraction['Fraction']['id'], '?' => $this->request->query), array('title' => __('Remove'), 'class' => 'btn btn-default btn-xs' . $deleteDisabled, 'escape' => false, 'confirm' => __('Are you sure you want to delete # %s?', $fraction['Fraction']['fraction']))); ?>
-                                </td>
-                            </tr>
+                            </td>
+                        </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
