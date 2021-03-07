@@ -52,17 +52,17 @@
             }
 
             // php version
-            if (version_compare(phpversion(), 5.6, '>=')) {
-                $message = sprintf(__d('install', 'PHP version %s >= 5.6'), phpversion());
+            if (version_compare(phpversion(), 5.6, '>=') && version_compare(phpversion(), 8.0, '<')) {
+                $message = sprintf(__d('install', 'PHP version %s >= 5.6 and <8.0.0'), phpversion());
                 echoMessage($message);
             } else {
                 $check = false;
-                $message = sprintf(__d('install', 'PHP version %s < 5.6'), phpversion());
+                $message = sprintf(__d('install', 'PHP version %s < 5.6 or =>8.0.0'), phpversion());
                 echoError($message);
             }
 
             // php version
-            $minCakeVersion = '2.10.22';
+            $minCakeVersion = '2.10.24';
             $cakeVersion = Configure::version();
             if (version_compare($cakeVersion, $minCakeVersion, '>=')) {
                 $message = __d('install', 'CakePhp version %s >= %s', $cakeVersion, $minCakeVersion);
