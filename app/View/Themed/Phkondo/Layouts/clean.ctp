@@ -90,9 +90,9 @@ if (!isset($headerTitle)) {
 
         <div id="main-container">
             <div id="content" class="container">
-                <div class="hidden-print">
+                <div class="row hidden-print">
                     <?php if (isset($breadcrumbs)) echo $this->element('breadcrumbs', array('breadcrumbs', $breadcrumbs)); ?>
-                    <div class="row">
+                    <div class="col-sm-12">
                         <p>&nbsp;</p>
                         <?php echo $this->Flash->render(); ?>
                     </div>

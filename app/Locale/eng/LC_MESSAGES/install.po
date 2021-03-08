@@ -62,6 +62,9 @@ msgstr ""
 msgid "Database and data"
 msgstr ""
 
+msgid "Database connection missing"
+msgstr ""
+
 msgid "Database connection file already exists"
 msgstr ""
 
@@ -75,6 +78,9 @@ msgid "From Email"
 msgstr ""
 
 msgid "From Name"
+msgstr ""
+
+msgid "Install or manually config pHKondo"
 msgstr ""
 
 msgid "Installation cannot continue as minimum requirements are not found."

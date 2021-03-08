@@ -61,6 +61,9 @@ msgstr ""
 msgid "Database and data"
 msgstr ""
 
+msgid "Database connection missing"
+msgstr "Datenbankverbindung fehlt"
+
 msgid "Database connection file already exists"
 msgstr ""
 
@@ -75,6 +78,9 @@ msgstr ""
 
 msgid "From Name"
 msgstr ""
+
+msgid "Install or manually config pHKondo"
+msgstr "Installieren oder konfigurieren Sie pHKondo manuell"
 
 msgid "Installation cannot continue as minimum requirements are not found."
 msgstr "Mindestanforderungen nicht erfüllt. Installation wird angehalten."

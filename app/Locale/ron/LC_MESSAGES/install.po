@@ -64,6 +64,9 @@ msgstr "Baza de date și date"
 msgid "Database connection file already exists"
 msgstr "Fișierul de conexiune la baza de date există deja"
 
+msgid "Database connection missing"
+msgstr "Conexiunea la baza de date lipsește"
+
 msgid "Dont forget to restore default access values to Config and tmp directory."
 msgstr ""
 
@@ -75,6 +78,9 @@ msgstr "De la Email"
 
 msgid "From Name"
 msgstr "De la Nume"
+
+msgid "Install or manually config pHKondo"
+msgstr "Instalați sau configurați manual pHKondo"
 
 msgid "Installation cannot continue as minimum requirements are not found."
 msgstr "Instalarea nu poate continua deoarece cerințele minime nu sunt îndeplinite"

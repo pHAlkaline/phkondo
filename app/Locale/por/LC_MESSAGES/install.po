@@ -62,6 +62,9 @@ msgstr "Base de Dados e respectivos dados"
 msgid "Database connection file already exists"
 msgstr "Ficheiro de configuração de acesso à base de dados já existe"
 
+msgid "Database connection missing"
+msgstr "Configuração de acesso à base de dados não existe"
+
 msgid "Dont forget to restore default access values to Config and tmp directory."
 msgstr "Não se esqueça de restaurar os valores de defeito para as directorias de Config e tmp"
 
@@ -73,6 +76,9 @@ msgstr "Email de envio"
 
 msgid "From Name"
 msgstr "Nome de envio"
+
+msgid "Install or manually config pHKondo"
+msgstr "Instalar ou configurar manualmente pHKondo"
 
 msgid "Installation cannot continue as minimum requirements are not found."
 msgstr "A instalação não pode continuar, requisitos minimos não foram encontrados."
