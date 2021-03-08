@@ -103,10 +103,10 @@ msgstr "Încarcă date"
 msgid "New Password"
 msgstr "Parolă nouă"
 
-msgid "PHP version %s < 5.3"
+msgid "PHP version %s < 5.6 or =>8.0.0"
 msgstr ""
 
-msgid "PHP version %s >= 5.3"
+msgid "PHP version %s >= 5.6 and <8.0.0"
 msgstr ""
 
 msgid "Passwords secured and updated for all users"
@@ -160,11 +160,11 @@ msgstr "Directorul de configurare NU are permisiunea de scriere"
 msgid "Your Config directory is writable."
 msgstr "Directorul de configurare ARE permisiunea de scriere"
 
-msgid "Your Config/core.php file is NOT writable."
-msgstr "Config/core.php NU are permisiunea de scriere"
+msgid "Your Config/core_phapp.php file is NOT writable."
+msgstr "Config/core_phapp.php NU are permisiunea de scriere"
 
-msgid "Your Config/core.php file is writable."
-msgstr "Config/core.php ARE permisiunea de scriere"
+msgid "Your Config/core_phapp.php file is writable."
+msgstr "Config/core_phapp.php ARE permisiunea de scriere"
 
 msgid "Your tmp directory is NOT writable."
 msgstr "Directorul tmp nu poate fi scris"

@@ -103,10 +103,10 @@ msgstr ""
 msgid "New Password"
 msgstr "Neues Passwort"
 
-msgid "PHP version %s < 5.3"
+msgid "PHP version %s < 5.6 or =>8.0.0"
 msgstr ""
 
-msgid "PHP version %s >= 5.3"
+msgid "PHP version %s >= 5.6 and <8.0.0"
 msgstr ""
 
 msgid "Passwords secured and updated for all users"
@@ -160,10 +160,10 @@ msgstr "CONFIG-Verzeichnis ist NICHT beschreibbar."
 msgid "Your Config directory is writable."
 msgstr "CONFIG-Verzeichnis ist beschreibbar."
 
-msgid "Your Config/core.php file is NOT writable."
+msgid "Your Config/core_phapp.php file is NOT writable."
 msgstr "Config/core.php ist NICHT beschreibbar."
 
-msgid "Your Config/core.php file is writable."
+msgid "Your Config/core_phapp.php file is writable."
 msgstr "Config/core.php ist beschreibbar."
 
 msgid "Your tmp directory is NOT writable."

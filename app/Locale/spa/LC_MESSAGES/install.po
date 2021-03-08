@@ -103,11 +103,11 @@ msgstr "Cargar datos"
 msgid "New Password"
 msgstr "Nueva contraseña"
 
-msgid "PHP version %s < 5.3"
-msgstr "PHP version %s < 5.3"
+msgid "PHP version %s < 5.6 or =>8.0.0"
+msgstr ""
 
-msgid "PHP version %s >= 5.3"
-msgstr "PHP version %s >= 5.3"
+msgid "PHP version %s >= 5.6 and <8.0.0"
+msgstr ""
 
 msgid "Passwords secured and updated for all users"
 msgstr "Contraseña asegurada y actualizada para todos los usuarios"
@@ -160,11 +160,11 @@ msgstr "El directorio Config NO es escribible."
 msgid "Your Config directory is writable."
 msgstr "El directorio Config es escribible."
 
-msgid "Your Config/core.php file is NOT writable."
-msgstr "El archivo Config/core.php NO es escribible."
+msgid "Your Config/core_phapp.php file is NOT writable."
+msgstr "El archivo Config/core_phapp.php NO es escribible."
 
-msgid "Your Config/core.php file is writable."
-msgstr "El archivo Config/core.php es escribible."
+msgid "Your Config/core_phapp.php file is writable."
+msgstr "El archivo Config/core_phapp.php es escribible."
 
 msgid "Your tmp directory is NOT writable."
 msgstr "El directorio tmp NO es escribible."

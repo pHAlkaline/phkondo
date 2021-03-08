@@ -101,10 +101,10 @@ msgstr "Carregar dados"
 msgid "New Password"
 msgstr "Nova Palavra Passe"
 
-msgid "PHP version %s < 5.3"
+msgid "PHP version %s < 5.6 or =>8.0.0"
 msgstr ""
 
-msgid "PHP version %s >= 5.3"
+msgid "PHP version %s >= 5.6 and <8.0.0"
 msgstr ""
 
 msgid "Passwords secured and updated for all users"
@@ -158,11 +158,11 @@ msgstr "A directoria Config não tem permisão de escrita."
 msgid "Your Config directory is writable."
 msgstr "A directoria Config tem permisão de escrita."
 
-msgid "Your Config/core.php file is NOT writable."
-msgstr "A ficheiro Config/core.php não tem permisão de escrita."
+msgid "Your Config/core_phapp.php file is NOT writable."
+msgstr "A ficheiro Config/core_phapp.php não tem permisão de escrita."
 
-msgid "Your Config/core.php file is writable."
-msgstr "A ficheiro Config/core.php tem permisão de escrita."
+msgid "Your Config/core_phapp.php file is writable."
+msgstr "A ficheiro Config/core_phapp.php tem permisão de escrita."
 
 msgid "Your tmp directory is NOT writable."
 msgstr "A directoria tmp não permite escrita."
