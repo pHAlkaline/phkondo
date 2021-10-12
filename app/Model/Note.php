@@ -174,9 +174,6 @@ class Note extends AppModel {
                 'message' => 'due date must be after document date'),
         ),
         'payment_date' => array(
-            'empty' => array(
-                'allowEmpty' => true
-            ),
             'date' => array(
                 'rule' => array('date'),
                 //'message' => 'Your custom message here',
@@ -186,10 +183,7 @@ class Note extends AppModel {
             ),
             'pastDate' => array(
                 'rule' => array('checkPastDate', 'payment_date'),
-                'message' => 'invalid date.'),
-            'afterDocumentDate' => array(
-                'rule' => array('compareDates', 'payment_date'),
-                'message' => 'payment date must be at or after document date'),
+                'message' => 'invalid date.')
         ),
         'note_status_id' => array(
             'numeric' => array(
