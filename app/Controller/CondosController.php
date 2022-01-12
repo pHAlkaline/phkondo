@@ -56,15 +56,15 @@ class CondosController extends AppController {
      */
     public function index() {
 
-
+        $total = $this->Condo->find('count');
+        $limit = Configure::read('Application.mode') == 'one' ? 1 : 50;
         $this->Paginator->settings = array_merge($this->Paginator->settings, array(
             'contain' => array('FiscalYear', 'Insurance', 'Maintenance'),
-            'limit' => 50,
-            'conditions' => array(
-                "AND" => array("Condo.active" => "1"))
+            'limit' => $limit,
         ));
         $this->setFilter(array('Condo.title', 'Condo.address'));
         $this->set('condos', $this->Paginator->paginate('Condo'));
+        $this->set(compact('total','limit'));
     }
 
     /**
@@ -94,7 +94,6 @@ class CondosController extends AppController {
         $condo = $this->Condo->find('first', $options);
         $hasSharesDebt = $this->Condo->hasSharesDebt($id);
 
-
         $InvoiceConference = $this->InvoiceConference;
         $InvoiceConference->virtualFields = array('total_amount' => 'SUM(amount)');
         $hasDebt = 0;
@@ -118,7 +117,6 @@ class CondosController extends AppController {
         if ($this->request->is('post')) {
             $this->Condo->create();
             if ($this->Condo->save($this->request->data)) {
-                //debug($this->request->data);
                 $this->Condo->ReceiptCounter->create();
                 $this->Condo->ReceiptCounter->save(array('ReceiptCounter' => array('condo_id' => $this->Condo->id, 'counter' => 0)));
                 $this->Flash->success(__('The condo has been saved'));
@@ -127,6 +125,13 @@ class CondosController extends AppController {
                 $this->Flash->error(__('The condo could not be saved. Please, try again.'));
             }
         }
+        $total = $this->Condo->find('count');
+        $limit = Configure::read('Application.mode') == 'one' ? true : false;
+        if ($limit && $total>=1){
+                $this->Flash->error(__('The condo could not be saved. Please, try again.'));
+                $this->redirect(array('action' => 'index'));
+        }
+        
     }
 
     /**

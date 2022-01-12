@@ -14,10 +14,15 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
                       <?php endif; ?>
         <div class="index">
             <h2 class="col-sm-9"><?php echo __n('Condo', 'Condos', 2); ?></h2>
+            <?php 
+            $allowAdd=($limit==1 && $total>0)?false:true;
+            if ($allowAdd) { 
+                ?>
             <div class="actions hidden-print col-sm-3">
                 <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Condo'), array('action' => 'add'), array('class' => 'btn btn-primary', 'style' => 'margin: 8px 0; float: right;', 'escape' => false));
                 ?>
             </div><!-- /.actions -->
+            <?php } ?>
             <?php echo $this->element('search_tool'); ?>
             <div class="row text-center loading">
                 <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate" style="font-size: 40px;"></span>

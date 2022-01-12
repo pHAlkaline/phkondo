@@ -103,7 +103,7 @@ Configure::write('dateFormat', 'd-m-Y H:i:s'); // phkondo dateformat with time
 Configure::write('dateFormatSimple', 'd-m-Y'); // phkondo dateformat
 Configure::write('calendarDateFormat', 'dd-mm-yyyy'); // input date fields date format
 Configure::write('currencySign', '&euro;'); // more at http://www.w3schools.com/html/html_entities.asp
-Configure::write('Application.mode', 'app'); // app, demo -> use demo for demo mode;
+Configure::write('Application.mode', 'app'); // one, pro, app, demo -> use demo for demo mode;
 
 /**
  * The settings for maintenance component 
