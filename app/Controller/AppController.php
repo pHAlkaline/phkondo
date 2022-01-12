@@ -176,9 +176,9 @@ class AppController extends Controller {
         if (isset($this->phkRequestData['condo_id']) && !isset($this->phkRequestData['condo_text'])) {
             App::import("Model", "Condo");
             $condo = new Condo();
-            $result = $condo->find("first", array('conditions' => array('Condo.id' => $this->phkRequestData['condo_id'])));
-            $this->phkRequestData['condo_id'] = $result['Condo']['id'];
-            $this->phkRequestData['condo_text'] = $result['Condo']['title'];
+            $result = $condo->find('first', array('conditions' => array('Condo.id' => $this->phkRequestData['condo_id'])));
+            $this->phkRequestData['condo_id'] = isset($result['Condo']['id'])?$result['Condo']['id']:0;
+            $this->phkRequestData['condo_text'] = isset($result['Condo']['title'])?$result['Condo']['id']:'';
         }
     }
 
