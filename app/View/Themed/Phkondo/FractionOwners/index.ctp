@@ -73,7 +73,7 @@
                             <?php echo $this->Form->input('client', array('type' => 'select', 'label' => array('text' => __('Entity'), 'class' => 'col-sm-2 control-label'), 'class' => 'form-control select2-phkondo')); ?>
                         </div><!-- .form-group -->
                         <div class="form-group">
-                            <?php echo $this->Form->input('owner_percentage', array('min' => '0.00', 'max' => '100.00')); ?>
+                            <?php echo $this->Form->input('owner_percentage', array('min' => '0.00', 'max' => '100.00','required'=>'required')); ?>
                         </div><!-- .form-group -->
 
 

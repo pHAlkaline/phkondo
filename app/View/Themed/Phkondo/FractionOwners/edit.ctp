@@ -35,7 +35,7 @@
                     <?php echo $this->Form->input('vat_number', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
-                    <?php echo $this->Form->input('EntitiesFraction.owner_percentage', array('class' => 'form-control','min'=>'0.00','max'=>'100.00')); ?>
+                    <?php echo $this->Form->input('EntitiesFraction.owner_percentage', array('class' => 'form-control','min'=>'0.00','max'=>'100.00','required'=>'required')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
                     <?php echo $this->Form->input('representative', array('class' => 'form-control')); ?>
