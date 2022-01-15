@@ -135,6 +135,9 @@ class FractionOwnersController extends AppController {
                 $this->Flash->error(__('Invalid owner'));
                 $this->redirect(array('action' => 'index', '?' => $this->request->query));
             }
+            if (!isset($this->request->data['EntitiesFraction']['owner_percentage']) || $this->request->data['EntitiesFraction']['owner_percentage'] == '') {
+                $this->request->data['EntitiesFraction']['owner_percentage']=0;
+            }
             $this->request->data['EntitiesFraction']['entity_id'] = $this->request->data['EntitiesFraction']['client'];
             $this->Fraction->EntitiesFraction->validator()->add(
                     'owner_percentage', array(

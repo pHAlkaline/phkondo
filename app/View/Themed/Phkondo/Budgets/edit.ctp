@@ -30,7 +30,7 @@
                     $datefield = ' datefield';
                 }
                 ?>
-                <li ><?php echo $this->Html->link(__('View Budget'), array('action' => 'view', $budget['Budget']['id'], '?' => $this->request->query), array('class' => 'btn ')); ?> </li>
+                <li ><?php echo $this->Html->link(('View %s', __n('Budget', 'Budgets', 1), array('action' => 'view', $budget['Budget']['id'], '?' => $this->request->query), array('class' => 'btn ')); ?> </li>
                 <li ><?php echo $this->Form->postLink(__('Delete Budget'), array('action' => 'delete', $budget['Budget']['id'], '?' => $this->request->query), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $budget['Budget']['title']))); ?> </li>
                 <li ><?php echo $this->Html->link(__('List Budgets'), array('action' => 'index', '?' => $this->request->query), array('class' => 'btn ')); ?> </li>
                </ul><!-- /.list-group -->

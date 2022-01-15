@@ -66,8 +66,8 @@ class FractionsController extends AppController {
         $fractions = $this->Paginator->paginate('Fraction');
         $milRateWarning = false;
         $milRate = Set::extract('/Fraction/permillage', $fractions);
-        if ($this->Session->read('Condo.' . $this->getPhkRequestVar('condo_id') . '.Fraction.milrate') != 'show' && array_sum($milRate) != 1000 && array_sum($milRate) != 0) {
-            $this->Session->write('Condo.' . $this->getPhkRequestVar('condo_id') . '.Fraction.milrate', 'show');
+        if ($this->Session->read('Condo.' . $this->getPhkRequestVar('condo_id') . '.Fraction.mill_rate') != 'show' && array_sum($milRate) != 1000 && array_sum($milRate) != 0) {
+            $this->Session->write('Condo.' . $this->getPhkRequestVar('condo_id') . '.Fraction.mill_rate', 'show');
             $milRateWarning = true;
         }
 
@@ -103,7 +103,7 @@ class FractionsController extends AppController {
             $this->Fraction->create();
             if ($this->Fraction->save($this->request->data)) {
                 $this->Flash->success(__('The fraction has been saved'));
-                $this->Session->delete('Condo.' . $this->getPhkRequestVar('condo_id') . '.Fraction.milrate');
+                $this->Session->delete('Condo.' . $this->getPhkRequestVar('condo_id') . '.Fraction.mill_rate');
                 $this->redirect(array('action' => 'view', $this->Fraction->id, '?' => $this->request->query));
             } else {
                 $this->Flash->error(__('The fraction could not be saved. Please, try again.'));
@@ -129,7 +129,7 @@ class FractionsController extends AppController {
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Fraction->save($this->request->data)) {
                 $this->Flash->success(__('The fraction has been saved'));
-                $this->Session->delete('Condo.' . $this->getPhkRequestVar('condo_id') . '.Fraction.milrate');
+                $this->Session->delete('Condo.' . $this->getPhkRequestVar('condo_id') . '.Fraction.mill_rate');
                 $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
             } else {
                 $this->Flash->error(__('The fraction could not be saved. Please, try again.'));

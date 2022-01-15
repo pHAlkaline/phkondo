@@ -347,7 +347,7 @@ class BudgetNotesController extends AppController {
         }
 
         if ($budget['Budget']['amount'] == 0 || $numOfShares == 0) {
-            $this->Flash->error(__('Invalid Budget values, check amount, total sum of properties milrate and number of shares'));
+            $this->Flash->error(__('Invalid Budget values, check amount, total sum of properties mill rate and number of shares'));
             $this->redirect(array('controller' => 'budgets', 'action' => 'view', $this->getPhkRequestVar('budget_id'), '?' => array('condo_id' => $this->getPhkRequestVar('condo_id'))));
         }
 
