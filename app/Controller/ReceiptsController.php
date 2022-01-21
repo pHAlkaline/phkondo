@@ -89,7 +89,15 @@ class ReceiptsController extends AppController {
         ));
         $options = array('conditions' => array('Receipt.' . $this->Receipt->primaryKey => $id, 'Receipt.condo_id' => $this->getPhkRequestVar('condo_id')));
         $receipt = $this->Receipt->find('first', $options);
-        $this->set(compact('receipt'));
+        $this->Receipt->Client->order = 'Client.name';
+        $notificationEntities = $condos = $this->Receipt->Client->find('list', array('fields' => array('Client.email', 'Client.email'), 'conditions' => array('id' => $receipt['Client']['id'])));
+        
+        App::uses('CakeEmail', 'Network/Email');
+        $Email = new CakeEmail();
+        $Email->config('default');
+        $config = $Email->config();
+
+        $this->set(compact('receipt', 'notificationEntities', 'config'));
         $this->setPhkRequestVar('receipt_id', $id);
     }
 
@@ -107,6 +115,25 @@ class ReceiptsController extends AppController {
         }
 
         $event = new CakeEvent('Phkondo.Receipt.print', $this, array(
+            'id' => $id,
+        ));
+        $this->getEventManager()->dispatch($event);
+    }
+
+    /**
+     * print_receipt method
+     *
+     * @throws NotFoundException
+     * @param string $id
+     * @return void
+     */
+    public function send_email($id) {
+        if (!$this->Receipt->exists($id)) {
+            $this->Flash->error(__('Invalid receipt'));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
+        }
+
+        $event = new CakeEvent('Phkondo.Receipt.email', $this, array(
             'id' => $id,
         ));
         $this->getEventManager()->dispatch($event);
@@ -391,8 +418,8 @@ class ReceiptsController extends AppController {
      */
     public function close($id = null) {
         if (!$this->Receipt->exists($id)) {
-          $this->Flash->error(__('Invalid receipt'));
-          $this->redirect(array('action' => 'index', '?' => $this->request->query));
+            $this->Flash->error(__('Invalid receipt'));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
 
 

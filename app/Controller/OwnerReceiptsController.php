@@ -66,7 +66,6 @@ class OwnerReceiptsController extends AppController {
         ));
         $this->setFilter(array('Receipt.document', 'Client.name', 'ReceiptStatus.name', 'ReceiptPaymentType.name', 'Receipt.total_amount'));
 
-
         $this->set('receipts', $this->Paginator->paginate('Receipt'));
     }
 
@@ -92,7 +91,15 @@ class OwnerReceiptsController extends AppController {
         ));
         $options = array('conditions' => array('Receipt.id' => $id, 'Receipt.client_id' => $this->getPhkRequestVar('owner_id'), 'Receipt.fraction_id' => $this->getPhkRequestVar('fraction_id')));
         $receipt = $this->Receipt->find('first', $options);
-        $this->set(compact('receipt'));
+        $this->Receipt->Client->order = 'Client.name';
+        $notificationEntities = $condos = $this->Receipt->Client->find('list', array('fields' => array('Client.email', 'Client.email'), 'conditions' => array('id' => $receipt['Client']['id'])));
+
+        App::uses('CakeEmail', 'Network/Email');
+        $Email = new CakeEmail();
+        $Email->config('default');
+        $config = $Email->config();
+
+        $this->set(compact('receipt', 'notificationEntities', 'config'));
         $this->setPhkRequestVar('receipt_id', $id);
         $this->setPhkRequestVar('receipt_view', $receipt['Receipt']['document']);
     }
@@ -111,6 +118,25 @@ class OwnerReceiptsController extends AppController {
         }
 
         $event = new CakeEvent('Phkondo.Receipt.print', $this, array(
+            'id' => $id,
+        ));
+        $this->getEventManager()->dispatch($event);
+    }
+    
+     /**
+     * print_receipt method
+     *
+     * @throws NotFoundException
+     * @param string $id
+     * @return void
+     */
+    public function send_email($id) {
+        if (!$this->Receipt->exists($id)) {
+            $this->Flash->error(__('Invalid receipt'));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
+        }
+
+        $event = new CakeEvent('Phkondo.Receipt.email', $this, array(
             'id' => $id,
         ));
         $this->getEventManager()->dispatch($event);
@@ -398,8 +424,8 @@ class OwnerReceiptsController extends AppController {
      */
     public function close($id = null) {
         if (!$this->Receipt->exists($id)) {
-          $this->Flash->error(__('Invalid receipt'));
-          $this->redirect(array('action' => 'index', '?' => $this->request->query));
+            $this->Flash->error(__('Invalid receipt'));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
 
 

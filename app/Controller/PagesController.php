@@ -80,7 +80,7 @@ class PagesController extends AppController {
         parent::beforeRender();
         $headerTitle = __('pHKondo');
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => '')
+            array('link' => Router::url(array('controller' => 'condos')), 'text' => __('Home'), 'active' => '')
         );
 
         if ($this->viewVars['page'] == 'login') {

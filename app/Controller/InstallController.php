@@ -81,10 +81,10 @@ class InstallController extends AppController {
      * @access public
      */
     public $defaultEmail = array(
+        'sender_email' => 'noreply@yourdomain.com',
         'email' => 'noreply@yourdomain.com',
         'name' => 'reply to',
         'subject' => 'pHKondo Notification',
-        'sender_email' => 'Your Site name',
         'host' => '',
         'port' => '',
         'username' => '',
@@ -390,6 +390,7 @@ class InstallController extends AppController {
         if (empty($this->request->data)) {
             return;
         }
+        
         $config = $this->defaultEmail;
         foreach ($this->request->data as $key => $value) {
             if (isset($config[$key])) {

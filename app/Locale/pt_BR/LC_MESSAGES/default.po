@@ -534,7 +534,7 @@ msgid "Edit User"
 msgstr "Editar Utilizador"
 
 msgid "Email"
-msgstr "Correio Electronico"
+msgstr "Correio Electrónico"
 
 msgid "Employee"
 msgstr "Colaborador"

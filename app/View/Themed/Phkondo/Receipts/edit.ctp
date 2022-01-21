@@ -1,4 +1,6 @@
-<?php $this->Html->css('footable/footable.bootstrap.min', false); ?>
+<?php
+
+$this->Html->css('footable/footable.bootstrap.min', false); ?>
 <?php $this->Html->script('moment-with-locales', false); ?>
 <?php $this->Html->script('libs/footable/footable', false); ?>
 <?php $this->Html->script('footable', false); ?>
@@ -44,6 +46,7 @@
                 <li role="presentation">
                     <a href="#notes" aria-controls="notes" role="tab" data-toggle="tab"><?= __n('Note', 'Notes', 2); ?></a>
                 </li>
+     
             </ul>
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active" id="details" aria-labelledby="details-tab">
@@ -91,56 +94,56 @@
                 <div role="tabpanel" class="tab-pane" id="notes" aria-labelledby="notes-tab">
                     <br/>
                     <?php if (count($notes)): ?>
-                        <div class="receipts form">
+                    <div class="receipts form">
                             <?php $this->Html->script('receipt_add_notes', false); ?>
-                            <div class="row">
-                                <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-12">
 
-                                    <div class="index">
+                                <div class="index">
                                         <?php echo $this->Form->create('Note', array('url' => array('controller' => 'receipts', 'action' => 'add_notes', $this->Form->value('Receipt.id'), '?' => $this->request->query))); ?>
                                         <?php echo $this->Form->hidden('Receipt.amount', array('value' => $receiptAmount)); ?>
                                         <?php echo $this->Form->hidden('Fraction.id', array('value' => $this->Form->value('Receipt.fraction_id'))); ?>
-                                        <!--h4 class="col-sm-8"><?php //echo __('Pick Notes');  ?></h4-->
+                                    <!--h4 class="col-sm-8"><?php //echo __('Pick Notes');  ?></h4-->
 
-                                        <div class="actions col-sm-12 float-right text-right">
-                                            <div class="float-right text-right">
+                                    <div class="actions col-sm-12 float-right text-right">
+                                        <div class="float-right text-right">
                                                 <?php if (count($notes)): ?>
                                                     <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 0;')); ?>            
                                                 <?php endif; ?>
-                                            </div>
-                                        </div><!-- /.actions -->
-                                        <div class="row text-center loading">
-                                            <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate" style="font-size: 40px;"></span>
                                         </div>
-                                        <div class="col-sm-12 hidden">
+                                    </div><!-- /.actions -->
+                                    <div class="row text-center loading">
+                                        <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate" style="font-size: 40px;"></span>
+                                    </div>
+                                    <div class="col-sm-12 hidden">
 
-                                            <table data-empty="<?= __('Empty'); ?>"  class="footable table table-hover table-condensed">
-                                                <thead>
-                                                    <tr>
-                                                        <th data-breakpoints="xs"><?php echo __('Document'); ?></th>
-                                                        <th><?php echo __('Document date'); ?></th>
-                                                        <th><?php echo __('Title'); ?></th>
-                                                        <th data-breakpoints="xs"><?php echo __('Note Type'); ?></th>
-                                                        <th data-breakpoints="xs"><?php echo __n('Fraction', 'Fractions', 1); ?></th>
-                                                        <th data-breakpoints="xs"><?php echo __('Client'); ?></th>
-                                                        <th data-breakpoints="xs"><?php echo __('Amount'); ?></th>
-                                                        <th data-breakpoints="xs"><?php echo __('Due Date'); ?></th>
-                                                        <th class="actions"><?php echo __('Pick'); ?></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
+                                        <table data-empty="<?= __('Empty'); ?>"  class="footable table table-hover table-condensed">
+                                            <thead>
+                                                <tr>
+                                                    <th data-breakpoints="xs"><?php echo __('Document'); ?></th>
+                                                    <th><?php echo __('Document date'); ?></th>
+                                                    <th><?php echo __('Title'); ?></th>
+                                                    <th data-breakpoints="xs"><?php echo __('Note Type'); ?></th>
+                                                    <th data-breakpoints="xs"><?php echo __n('Fraction', 'Fractions', 1); ?></th>
+                                                    <th data-breakpoints="xs"><?php echo __('Client'); ?></th>
+                                                    <th data-breakpoints="xs"><?php echo __('Amount'); ?></th>
+                                                    <th data-breakpoints="xs"><?php echo __('Due Date'); ?></th>
+                                                    <th class="actions"><?php echo __('Pick'); ?></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
                                                     <?php foreach ($notes as $key => $note): ?>
-                                                        <tr>
-                                                            <td><?php echo h($note['Note']['document']); ?>&nbsp;</td>
-                                                            <td><?php echo h($note['Note']['document_date']); ?>&nbsp;</td>
-                                                            <td><?php echo h($note['Note']['title']); ?>&nbsp;</td>
-                                                            <td><?php echo h($note['NoteType']['name']); ?></td>
-                                                            <td><?php echo h($note['Fraction']['fraction']); ?></td>
-                                                            <td><?php echo h($note['Entity']['name']); ?></td>
-                                                            <td><?php echo h($note['Note']['amount']); ?>&nbsp;<?php echo Configure::read('currencySign'); ?></td>
-                                                            <!--td><?php //echo h($note['Note']['pending_amount']);                ?>&nbsp;</td-->
-                                                            <td><?php echo h($note['Note']['due_date']); ?>&nbsp;</td>
-                                                            <td class="actions">
+                                                <tr>
+                                                    <td><?php echo h($note['Note']['document']); ?>&nbsp;</td>
+                                                    <td><?php echo h($note['Note']['document_date']); ?>&nbsp;</td>
+                                                    <td><?php echo h($note['Note']['title']); ?>&nbsp;</td>
+                                                    <td><?php echo h($note['NoteType']['name']); ?></td>
+                                                    <td><?php echo h($note['Fraction']['fraction']); ?></td>
+                                                    <td><?php echo h($note['Entity']['name']); ?></td>
+                                                    <td><?php echo h($note['Note']['amount']); ?>&nbsp;<?php echo Configure::read('currencySign'); ?></td>
+                                                    <!--td><?php //echo h($note['Note']['pending_amount']);                ?>&nbsp;</td-->
+                                                    <td><?php echo h($note['Note']['due_date']); ?>&nbsp;</td>
+                                                    <td class="actions">
                                                                 <?php
                                                                 $checked = '';
                                                                 if ($note['Note']['receipt_id'] != '') {
@@ -151,30 +154,30 @@
                                                                 <?php echo $this->Form->hidden('Note.' . $note['Note']['id'] . '.amount', array('value' => $note['Note']['amount'])); ?>
                                                                 <?php echo $this->Form->checkbox('Note.' . $note['Note']['id'] . '.check', array('class' => '', 'hiddenField' => false, 'checked' => $checked)); ?>
 
-                                                            </td>
-                                                        </tr>
+                                                    </td>
+                                                </tr>
                                                     <?php endforeach; ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                        <div class="actions col-sm-12 float-right text-right">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="actions col-sm-12 float-right text-right">
 
-                                            <div class="float-right text-right">
+                                        <div class="float-right text-right">
                                                 <?php if (count($notes)): ?>
                                                     <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 0;')); ?>            
                                                 <?php endif; ?>
 
-                                            </div>
+                                        </div>
 
 
-                                        </div><!-- /.actions -->
+                                    </div><!-- /.actions -->
 
                                         <?php echo $this->Form->end(); ?>
-                                    </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
                     <?php endif; ?>
                 </div>
             </div>

@@ -37,9 +37,8 @@
  *
  */
 class EmailConfig {
-
-	 public $default = array(
-        'sender' => array('{default_sender_email}'),
+    public $default = array(
+        'sender' => array('{default_email}'),
         'from' => array('{default_email}' => '{default_name}'),
         'subject' => '{default_subject}',
         'charset' => 'utf-8',
@@ -48,7 +47,10 @@ class EmailConfig {
         'port' => '{default_port}',
         'username' => '{default_username}',
         'password' => '{default_password}',
-        'transport' => 'Smtp'
-        );
+        'transport' => 'Smtp',
+        'tls' => true,
+        'receipt_subject'=> '{default_receipt_subject}',
+        'receipt_message'=>'{default_receipt_message}'
+    );
 
 }

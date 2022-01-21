@@ -17,41 +17,41 @@
         "wiki": "https://github.com/pHAlkaline/phkondo/wiki",
         "source": "https://github.com/pHAlkaline/phkondo.git"
     },
-    
+
     "repositories": [
         {
             "type": "vcs",
-            "url":  "https://gitlab.com/phkondo-private-plugins/attachments.git"
+            "url": "https://gitlab.com/phkondo-private-plugins/attachments.git"
         },
         {
             "type": "vcs",
-            "url":  "https://gitlab.com/phkondo-private-plugins/drafts.git"
+            "url": "https://gitlab.com/phkondo-private-plugins/drafts.git"
         },
         {
             "type": "vcs",
-            "url":  "https://gitlab.com/phkondo-private-plugins/print-receipt.git"
+            "url": "https://gitlab.com/phkondo-private-plugins/print-receipt.git"
         },
         {
             "type": "vcs",
-            "url":  "https://gitlab.com/phkondo-private-plugins/reports.git"
+            "url": "https://gitlab.com/phkondo-private-plugins/reports.git"
         }
     ],
     "extra": {
         "installer-paths": {
             "app/Plugin/DebugKit": ["cakephp/debug_kit"],
             "app/Plugin/ClearCache": ["ceeram/clear_cache"],
-	    "app/Plugin/Cacher": ["jeremyharris/cacher"],
+            "app/Plugin/Cacher": ["jeremyharris/cacher"],
             "app/Plugin/Migrations": ["cakedc/migrations"],
             "app/Plugin/Feedback": ["phalkaline/cakephp-feedback-plugin"],
+            "app/Plugin/CakePDF": ["friendsofcake/cakepdf"],
             "app/Plugin/Attachments": ["phalkaline/phkondo-attachments"],
             "app/Plugin/Upload": ["josegonzalez/cakephp-upload"],
             "app/Plugin/Drafts": ["phalkaline/phkondo-drafts"],
             "app/Plugin/PrintReceipt": ["phalkaline/phkondo-print-receipt"],
             "app/Plugin/Reports": ["phalkaline/phkondo-reports"]
         }
-
     },
-   
+
     "require": {
         "php": ">=5.6,<8.0.0",
         "ext-openssl": "*",
@@ -63,11 +63,12 @@
         "phalkaline/cakephp-feedback-plugin": "dev-master",
         "phalkaline/phkondo-attachments": "1.6.*",
         "josegonzalez/cakephp-upload": "2.x-dev",
-        "phalkaline/phkondo-drafts" : "1.6.*",
-        "phalkaline/phkondo-print-receipt" : "1.6.*",
-        "phalkaline/phkondo-reports" : "1.6.*"
-        
+        "phalkaline/phkondo-drafts": "1.6.*",
+        "phalkaline/phkondo-print-receipt": "1.6.*",
+        "phalkaline/phkondo-reports": "1.6.*",
+        "friendsofcake/cakepdf": "1.0.*",
+        "mpdf/mpdf": "^8.0"
     },
-    "minimum-stability" : "dev",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }

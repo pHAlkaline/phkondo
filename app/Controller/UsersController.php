@@ -180,7 +180,7 @@ class UsersController extends AppController {
     public function profile() {
         if (!$this->User->exists($this->Auth->user('id'))) {
             $this->Flash->error(__('Invalid user'));
-            $this->redirect(array('controller' => 'pages', 'action' => 'home'));
+            $this->redirect(array('controller' => 'condos'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             $this->request->data['User']['id'] = $this->Auth->user('id');
