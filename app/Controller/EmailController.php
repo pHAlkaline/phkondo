@@ -87,10 +87,10 @@ class EmailController extends AppController {
         }
 
         if (!$file->write($content)) {
-            $this->Flash->error(__('Could not write email.php file.'));
+            $this->Flash->error(__d('email','Could not write email.php file.'));
             return;
         }
-        $this->Flash->success(__('Config saved with success.'));
+        $this->Flash->success(__d('email','Config saved with success.'));
         $this->redirect(array('action' => 'config'));
     }
 

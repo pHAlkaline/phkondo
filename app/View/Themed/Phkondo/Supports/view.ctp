@@ -41,7 +41,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><strong><?php echo __('Subject'); ?></strong></td>
+                        <td><strong><?php echo __d('email','Subject'); ?></strong></td>
                         <td>
                             <?php echo h($support['Support']['subject']); ?>
                             &nbsp;

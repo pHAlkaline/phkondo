@@ -1,0 +1,81 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Controller/EmailController.php:90
+msgid "Could not write email.php file."
+msgstr ""
+
+#: Controller/EmailController.php:93
+msgid "Config saved with success."
+msgstr ""
+
+#: Controller/OwnerReceiptsController.php:135
+#: Controller/ReceiptsController.php:132
+msgid "Email sent with success."
+msgstr ""
+
+#: Plugin/PrintReceipt/Event/PrintReceiptListener.php:61
+msgid "Invalid Client Email."
+msgstr ""
+
+#: Plugin/PrintReceipt/Event/PrintReceiptListener.php:74
+msgid ""
+msgstr ""
+
+#: View/Themed/Phkondo/Email/config.ctp:6
+msgid "Setup notification email"
+msgstr ""
+
+#: View/Themed/Phkondo/Email/config.ctp:8
+msgid "Using SMTP with TLS delivery enabled"
+msgstr ""
+
+#: View/Themed/Phkondo/Email/config.ctp:12
+#: View/Themed/Phkondo/Install/database.ctp:28
+msgid "Host"
+msgstr ""
+
+#: View/Themed/Phkondo/Email/config.ctp:17
+msgid "Port"
+msgstr ""
+
+#: View/Themed/Phkondo/Email/config.ctp:34
+msgid "From Email"
+msgstr ""
+
+#: View/Themed/Phkondo/Email/config.ctp:39
+msgid "From Name"
+msgstr ""
+
+#: View/Themed/Phkondo/Email/config.ctp:44
+#: View/Themed/Phkondo/OwnerReceipts/view.ctp:245
+#: View/Themed/Phkondo/Receipts/view.ctp:235
+#: View/Themed/Phkondo/Supports/view.ctp:44
+msgid "Subject"
+msgstr ""
+
+#: View/Themed/Phkondo/Email/config.ctp:49
+msgid "Receipt Subject"
+msgstr ""
+
+#: View/Themed/Phkondo/Email/config.ctp:53
+msgid "Receipt Message"
+msgstr ""
+
+#: View/Themed/Phkondo/OwnerReceipts/view.ctp:249
+#: View/Themed/Phkondo/Receipts/view.ctp:239
+msgid "Message"
+msgstr ""
+

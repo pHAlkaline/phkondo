@@ -3,18 +3,18 @@
         <?php echo $this->Form->create(false, array('url' => array('controller' => 'email', 'action' => 'config')),['autocomplete'=>'off']);
         ?>
         <fieldset>
-            <legend><?php echo __('Setup notification email'); ?></legend>
+            <legend><?php echo __d('email','Setup notification email'); ?></legend>
             <div class="alert alert-info">
-                    <?php echo  __('Using SMTP with TLS delivery enabled'); ?>
+                    <?php echo  __d('email','Using SMTP with TLS delivery enabled'); ?>
             </div>
             <div class="form-group">
                 <?php
-                echo $this->Form->input('host', array('class' => 'form-control', 'label' => __('Host'), 'default' => $config['host']));
+                echo $this->Form->input('host', array('class' => 'form-control', 'label' => __d('email','Host'), 'default' => $config['host']));
                 ?>
             </div>
             <div class="form-group">
                 <?php
-                echo $this->Form->input('port', array('class' => 'form-control', 'label' => __('Port'), 'default' => $config['port']));
+                echo $this->Form->input('port', array('class' => 'form-control', 'label' => __d('email','Port'), 'default' => $config['port']));
                 ?>
             </div>
             <div class="form-group">
@@ -31,26 +31,26 @@
             <div class="form-group">
 
                 <?php
-                echo $this->Form->input('email', array('type'=>'email', 'class' => 'form-control', 'label' => __('From Email'), 'default' => key($config['from'])));
+                echo $this->Form->input('email', array('type'=>'email', 'class' => 'form-control', 'label' => __d('email','From Email'), 'default' => key($config['from'])));
                 ?>
             </div>
             <div class="form-group">
                 <?php
-                echo $this->Form->input('name', array('class' => 'form-control', 'label' => __('From Name'), 'default' => $config['from']));
+                echo $this->Form->input('name', array('class' => 'form-control', 'label' => __d('email','From Name'), 'default' => $config['from']));
                 ?>
             </div>
             <div class="form-group">
                 <?php
-                echo $this->Form->input('subject', array('class' => 'form-control', 'label' => __('Subject'), 'default' => $config['subject']));
+                echo $this->Form->input('subject', array('class' => 'form-control', 'label' => __d('email','Subject'), 'default' => $config['subject']));
                 ?>
             </div>
             <hr/>
             <div class="form-group">
-                                <?php echo $this->Form->input('receipt_subject', array('label' => __('Receipt Subject'), 'class' => 'form-control', 'default' => $config['receipt_subject']!=''?$config['receipt_subject']:$config['subject'])); ?>
+                                <?php echo $this->Form->input('receipt_subject', array('label' => __d('email','Receipt Subject'), 'class' => 'form-control', 'default' => $config['receipt_subject']!=''?$config['receipt_subject']:$config['subject'])); ?>
             </div><!-- .form-group -->
 
             <div class="form-group">
-                                <?php echo $this->Form->input('receipt_message', array('label' => __('Receipt Message'), 'type'=>'textarea', 'label' => __('Receipt Message'), 'class' => 'form-control', 'default' => $config['receipt_message'])); ?>
+                                <?php echo $this->Form->input('receipt_message', array('label' => __d('email','Receipt Message'), 'type'=>'textarea', 'label' => __d('email','Receipt Message'), 'class' => 'form-control', 'default' => $config['receipt_message'])); ?>
             </div><!-- .form-group -->
 
 

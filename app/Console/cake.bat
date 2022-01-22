@@ -23,6 +23,8 @@
 
 SET app=%0
 SET lib=%~dp0
+path=%path%;C:\xampp7426\php
+php -v
 
 php -q "%lib%cake.php" -working "%CD% " %*
 

@@ -1,0 +1,165 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Plugin/Attachments/Controller/AttachmentsAppController.php:17
+msgid "Requires a valid condo and active fiscal year."
+msgstr ""
+
+#: Plugin/Attachments/Controller/AttachmentsController.php:43;84;143
+#: Plugin/Attachments/Controller/FractionAttachmentsController.php:46;87;146
+#: Plugin/Attachments/Controller/InsuranceAttachmentsController.php:46;87;146
+#: Plugin/Attachments/Controller/MaintenanceAttachmentsController.php:45;86;145
+msgid "Invalid attachment"
+msgstr ""
+
+#: Plugin/Attachments/Controller/AttachmentsController.php:61;70;93
+#: Plugin/Attachments/Controller/FractionAttachmentsController.php:64;73;96
+#: Plugin/Attachments/Controller/InsuranceAttachmentsController.php:64;73;96
+#: Plugin/Attachments/Controller/MaintenanceAttachmentsController.php:63;72;95
+msgid "The attachment could not be saved. Please, try again."
+msgstr ""
+
+#: Plugin/Attachments/Controller/AttachmentsController.php:67;90
+#: Plugin/Attachments/Controller/FractionAttachmentsController.php:70;93
+#: Plugin/Attachments/Controller/InsuranceAttachmentsController.php:70;93
+#: Plugin/Attachments/Controller/MaintenanceAttachmentsController.php:69;92
+msgid "The attachment has been saved"
+msgstr ""
+
+#: Plugin/Attachments/Controller/AttachmentsController.php:147
+#: Plugin/Attachments/Controller/FractionAttachmentsController.php:150
+#: Plugin/Attachments/Controller/InsuranceAttachmentsController.php:150
+#: Plugin/Attachments/Controller/MaintenanceAttachmentsController.php:149
+msgid "Attachment deleted"
+msgstr ""
+
+#: Plugin/Attachments/Controller/AttachmentsController.php:150
+#: Plugin/Attachments/Controller/FractionAttachmentsController.php:153
+#: Plugin/Attachments/Controller/InsuranceAttachmentsController.php:153
+#: Plugin/Attachments/Controller/MaintenanceAttachmentsController.php:152
+msgid "Attachment can not be deleted"
+msgstr ""
+
+#: Plugin/Attachments/Controller/AttachmentsController.php:160;164;168;172
+#: Plugin/Attachments/Controller/FractionAttachmentsController.php:165;169;173;177
+#: Plugin/Attachments/Controller/InsuranceAttachmentsController.php:165;169;173;177
+#: Plugin/Attachments/Controller/MaintenanceAttachmentsController.php:164;168;172;176
+#: Plugin/Attachments/View/Attachments/index.ctp:11
+#: Plugin/Attachments/View/Attachments/view.ctp:25
+#: Plugin/Attachments/View/FractionAttachments/index.ctp:12
+#: Plugin/Attachments/View/FractionAttachments/view.ctp:25
+#: Plugin/Attachments/View/InsuranceAttachments/index.ctp:12
+#: Plugin/Attachments/View/InsuranceAttachments/view.ctp:25
+#: Plugin/Attachments/View/MaintenanceAttachments/index.ctp:12
+#: Plugin/Attachments/View/MaintenanceAttachments/view.ctp:25
+msgid "Attachment"
+msgid_plural "Attachments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: Plugin/Attachments/View/Attachments/add.ctp:8
+#: Plugin/Attachments/View/Attachments/edit.ctp:11
+#: Plugin/Attachments/View/Attachments/view.ctp:11
+#: Plugin/Attachments/View/FractionAttachments/add.ctp:8
+#: Plugin/Attachments/View/FractionAttachments/edit.ctp:11
+#: Plugin/Attachments/View/FractionAttachments/view.ctp:11
+#: Plugin/Attachments/View/InsuranceAttachments/add.ctp:8
+#: Plugin/Attachments/View/InsuranceAttachments/edit.ctp:11
+#: Plugin/Attachments/View/InsuranceAttachments/view.ctp:11
+#: Plugin/Attachments/View/MaintenanceAttachments/add.ctp:8
+#: Plugin/Attachments/View/MaintenanceAttachments/edit.ctp:11
+#: Plugin/Attachments/View/MaintenanceAttachments/view.ctp:11
+msgid "List Attachments"
+msgstr ""
+
+#: Plugin/Attachments/View/Attachments/add.ctp:33
+#: Plugin/Attachments/View/FractionAttachments/add.ctp:33
+#: Plugin/Attachments/View/InsuranceAttachments/add.ctp:33
+#: Plugin/Attachments/View/MaintenanceAttachments/add.ctp:33
+msgid "Add Attachment"
+msgstr ""
+
+#: Plugin/Attachments/View/Attachments/edit.ctp:8
+#: Plugin/Attachments/View/FractionAttachments/edit.ctp:8
+#: Plugin/Attachments/View/InsuranceAttachments/edit.ctp:8
+#: Plugin/Attachments/View/MaintenanceAttachments/edit.ctp:8
+msgid "View Attachment"
+msgstr ""
+
+#: Plugin/Attachments/View/Attachments/edit.ctp:10
+#: Plugin/Attachments/View/Attachments/view.ctp:9
+#: Plugin/Attachments/View/FractionAttachments/edit.ctp:10
+#: Plugin/Attachments/View/FractionAttachments/view.ctp:9
+#: Plugin/Attachments/View/InsuranceAttachments/edit.ctp:10
+#: Plugin/Attachments/View/InsuranceAttachments/view.ctp:9
+#: Plugin/Attachments/View/MaintenanceAttachments/edit.ctp:10
+#: Plugin/Attachments/View/MaintenanceAttachments/view.ctp:9
+msgid "Delete Attachment"
+msgstr ""
+
+#: Plugin/Attachments/View/Attachments/edit.ctp:13
+#: Plugin/Attachments/View/Attachments/view.ctp:13
+#: Plugin/Attachments/View/FractionAttachments/edit.ctp:13
+#: Plugin/Attachments/View/FractionAttachments/view.ctp:13
+#: Plugin/Attachments/View/InsuranceAttachments/edit.ctp:13
+#: Plugin/Attachments/View/InsuranceAttachments/view.ctp:13
+#: Plugin/Attachments/View/MaintenanceAttachments/edit.ctp:13
+#: Plugin/Attachments/View/MaintenanceAttachments/view.ctp:13
+msgid "Download Attachment"
+msgstr ""
+
+#: Plugin/Attachments/View/Attachments/edit.ctp:38
+#: Plugin/Attachments/View/Attachments/view.ctp:8
+#: Plugin/Attachments/View/FractionAttachments/edit.ctp:38
+#: Plugin/Attachments/View/FractionAttachments/view.ctp:8
+#: Plugin/Attachments/View/InsuranceAttachments/edit.ctp:38
+#: Plugin/Attachments/View/InsuranceAttachments/view.ctp:8
+#: Plugin/Attachments/View/MaintenanceAttachments/edit.ctp:38
+#: Plugin/Attachments/View/MaintenanceAttachments/view.ctp:8
+msgid "Edit Attachment"
+msgstr ""
+
+#: Plugin/Attachments/View/Attachments/index.ctp:13
+#: Plugin/Attachments/View/Attachments/view.ctp:10
+#: Plugin/Attachments/View/FractionAttachments/index.ctp:14
+#: Plugin/Attachments/View/FractionAttachments/view.ctp:10
+#: Plugin/Attachments/View/InsuranceAttachments/index.ctp:14
+#: Plugin/Attachments/View/InsuranceAttachments/view.ctp:10
+#: Plugin/Attachments/View/MaintenanceAttachments/index.ctp:14
+#: Plugin/Attachments/View/MaintenanceAttachments/view.ctp:10
+msgid "New Attachment"
+msgstr ""
+
+#: Plugin/Attachments/Model/Attachment.php:validation for field name;validation for field attachment
+#: Plugin/Attachments/Model/FractionAttachment.php:validation for field name;validation for field attachment
+#: Plugin/Attachments/Model/InsuranceAttachment.php:validation for field name;validation for field attachment
+#: Plugin/Attachments/Model/MaintenanceAttachment.php:validation for field name;validation for field attachment
+msgid "unique"
+msgstr ""
+
+#: Plugin/Attachments/Model/Attachment.php:validation for field attachment
+#: Plugin/Attachments/Model/FractionAttachment.php:validation for field attachment
+#: Plugin/Attachments/Model/InsuranceAttachment.php:validation for field attachment
+#: Plugin/Attachments/Model/MaintenanceAttachment.php:validation for field attachment
+msgid "Attachment is larger than the maximum filesize allowed."
+msgstr ""
+
+#: Plugin/Attachments/Model/Attachment.php:validation for field attachment
+#: Plugin/Attachments/Model/FractionAttachment.php:validation for field attachment
+#: Plugin/Attachments/Model/InsuranceAttachment.php:validation for field attachment
+#: Plugin/Attachments/Model/MaintenanceAttachment.php:validation for field attachment
+msgid "Attachment does not have a valid extension."
+msgstr ""
+

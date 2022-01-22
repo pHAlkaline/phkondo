@@ -1,0 +1,235 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Controller/InstallController.php:116;151;152
+msgid "Installation: Welcome"
+msgstr ""
+
+#: Controller/InstallController.php:126;131
+msgid "Already Installed"
+msgstr ""
+
+#: Controller/InstallController.php:176;177
+msgid "Step 1 : Database connection"
+msgstr ""
+
+#: Controller/InstallController.php:180
+msgid "Database connection file already exists"
+msgstr ""
+
+#: Controller/InstallController.php:200
+msgid "Could not connect to database: %s"
+msgstr ""
+
+#: Controller/InstallController.php:204;249
+msgid "Could not connect to database."
+msgstr ""
+
+#: Controller/InstallController.php:219
+msgid "Could not write database.php file."
+msgstr ""
+
+#: Controller/InstallController.php:233;234
+msgid "Step 2 : Build database , load table values"
+msgstr ""
+
+#: Controller/InstallController.php:261;272;285;297;313;326
+msgid "Could not load database: %s"
+msgstr ""
+
+#: Controller/InstallController.php:362;469;491
+msgid "Unable to secure your application, your Config %s core.php file is not writable. Please check the permissions."
+msgstr ""
+
+#: Controller/InstallController.php:382;383
+msgid "Step 3 : Email notification"
+msgstr ""
+
+#: Controller/InstallController.php:386
+msgid "Email settings file already exists"
+msgstr ""
+
+#: Controller/InstallController.php:409
+msgid "Could not write email.php file."
+msgstr ""
+
+#: Controller/InstallController.php:420;421
+msgid "Step 4 : Secure app"
+msgstr ""
+
+#: Controller/InstallController.php:429
+msgid "Could not be secured. Please, try again."
+msgstr ""
+
+#: Controller/InstallController.php:430
+msgid "Unable to secure app."
+msgstr ""
+
+#: Controller/InstallController.php:438
+msgid "Saved with success."
+msgstr ""
+
+#: Controller/InstallController.php:443
+msgid "Could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/InstallController.php:444
+msgid "Unable to create administrative user."
+msgstr ""
+
+#: Controller/InstallController.php:460;461;478;481
+msgid "Installation completed successfully"
+msgstr ""
+
+#: Controller/InstallController.php:483;484
+msgid "Installation not completed successfully"
+msgstr ""
+
+#: Controller/InstallController.php:485
+msgid "Something went wrong during installation. Please check your server logs."
+msgstr ""
+
+#: Controller/InstallController.php:542
+msgid "Unable to generate users password."
+msgstr ""
+
+#: Controller/InstallController.php:543
+msgid "install"
+msgstr ""
+
+#: Controller/UsersController.php:293
+msgid "Database connection missing"
+msgstr ""
+
+#: Controller/UsersController.php:294
+msgid "Install or manually config pHKondo"
+msgstr ""
+
+#: View/Themed/Phkondo/Install/adminuser.ctp:8
+msgid "Admin user password"
+msgstr ""
+
+#: View/Themed/Phkondo/Install/adminuser.ctp:11
+msgid "New Password"
+msgstr ""
+
+#: View/Themed/Phkondo/Install/adminuser.ctp:16
+msgid "Verify Password"
+msgstr ""
+
+#: View/Themed/Phkondo/Install/data.ctp:8
+msgid "Database and data"
+msgstr ""
+
+#: View/Themed/Phkondo/Install/data.ctp:15
+msgid "Load data"
+msgstr ""
+
+#: View/Themed/Phkondo/Install/data.ctp:20
+msgid "Check load data option to insert dafault values to auxiliary tables."
+msgstr ""
+
+#: View/Themed/Phkondo/Install/database.ctp:8
+msgid "Setup database connection"
+msgstr ""
+
+#: View/Themed/Phkondo/Install/database.ctp:43
+msgid "Database"
+msgstr ""
+
+#: View/Themed/Phkondo/Install/email.ctp:8
+msgid "Setup notification email"
+msgstr ""
+
+#: View/Themed/Phkondo/Install/email.ctp:12
+msgid "From Email"
+msgstr ""
+
+#: View/Themed/Phkondo/Install/email.ctp:17
+msgid "From Name"
+msgstr ""
+
+#: View/Themed/Phkondo/Install/email.ctp:22
+msgid "Subject"
+msgstr ""
+
+#: View/Themed/Phkondo/Install/finish.ctp:9
+msgid "Dont forget to restore default access values to Config and tmp directory."
+msgstr ""
+
+#: View/Themed/Phkondo/Install/finish.ctp:14
+msgid "Passwords secured and updated for all users"
+msgstr ""
+
+#: View/Themed/Phkondo/Install/finish.ctp:19
+msgid "pHKondo: %s"
+msgstr ""
+
+#: View/Themed/Phkondo/Install/finish.ctp:24
+msgid "Resources"
+msgstr ""
+
+#: View/Themed/Phkondo/Install/index.ctp:8
+msgid "Language"
+msgstr ""
+
+#: View/Themed/Phkondo/Install/index.ctp:26
+msgid "Your tmp directory is writable."
+msgstr ""
+
+#: View/Themed/Phkondo/Install/index.ctp:30
+msgid "Your tmp directory is NOT writable."
+msgstr ""
+
+#: View/Themed/Phkondo/Install/index.ctp:36
+msgid "Your Config directory is writable."
+msgstr ""
+
+#: View/Themed/Phkondo/Install/index.ctp:40
+msgid "Your Config directory is NOT writable."
+msgstr ""
+
+#: View/Themed/Phkondo/Install/index.ctp:46
+msgid "Your Config/core_phapp.php file is writable."
+msgstr ""
+
+#: View/Themed/Phkondo/Install/index.ctp:50
+msgid "Your Config/core_phapp.php file is NOT writable."
+msgstr ""
+
+#: View/Themed/Phkondo/Install/index.ctp:56
+msgid "PHP version %s >= 5.6 and <8.0.0"
+msgstr ""
+
+#: View/Themed/Phkondo/Install/index.ctp:60
+msgid "PHP version %s < 5.6 or =>8.0.0"
+msgstr ""
+
+#: View/Themed/Phkondo/Install/index.ctp:68
+msgid "CakePhp version %s >= %s"
+msgstr ""
+
+#: View/Themed/Phkondo/Install/index.ctp:72
+msgid "CakePHP version %s < %s"
+msgstr ""
+
+#: View/Themed/Phkondo/Install/index.ctp:77
+msgid "Click here to begin installation"
+msgstr ""
+
+#: View/Themed/Phkondo/Install/index.ctp:80
+msgid "Installation cannot continue as minimum requirements are not found."
+msgstr ""
+

@@ -242,11 +242,11 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
 
                                 </div>
                                 <div class="form-group">
-                                <?php echo $this->Form->input('subject', array('label' => array('text' => __('Subject'), 'class' => 'col-sm-2 control-label'),'required'=>'required', 'class' => 'form-control', 'default' => $config['receipt_subject']!=''?$config['receipt_subject']:$config['subject'])); ?>
+                                <?php echo $this->Form->input('subject', array('label' => array('text' => __d('email','Subject'), 'class' => 'col-sm-2 control-label'),'required'=>'required', 'class' => 'form-control', 'default' => $config['receipt_subject']!=''?$config['receipt_subject']:$config['subject'])); ?>
                                 </div><!-- .form-group -->
 
                                 <div class="form-group">
-                                <?php echo $this->Form->input('message', array('label' => array('text' => __('Message'), 'class' => 'col-sm-2 control-label'),'required'=>'required', 'type'=>'textarea','class' => 'form-control', 'default' => $config['receipt_message'])); ?>
+                                <?php echo $this->Form->input('message', array('label' => array('text' => __d('email','Message'), 'class' => 'col-sm-2 control-label'),'required'=>'required', 'type'=>'textarea','class' => 'form-control', 'default' => $config['receipt_message'])); ?>
                                 </div><!-- .form-group -->
 
 

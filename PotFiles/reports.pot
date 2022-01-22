@@ -1,0 +1,42 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Plugin/Reports/Controller/ReportsController.php:114
+msgid "Shares Debt"
+msgstr ""
+
+#: Plugin/Reports/View/Budgets/budget_shares_map.ctp:73
+#: Plugin/Reports/View/Reports/payments_map.ctp:68
+#: Plugin/Reports/View/Reports/shares_map.ctp:65
+msgid "Subtotal"
+msgstr ""
+
+#: Plugin/Reports/View/Budgets/budget_shares_map.ctp:88
+#: Plugin/Reports/View/Reports/payments_map.ctp:85
+#: Plugin/Reports/View/Reports/shares_map.ctp:80
+msgid "Predicted Income"
+msgstr ""
+
+#: Plugin/Reports/View/Budgets/budget_shares_map.ctp:103
+#: Plugin/Reports/View/Reports/payments_map.ctp:102
+#: Plugin/Reports/View/Reports/shares_map.ctp:95
+msgid "To Receive"
+msgstr ""
+
+#: Plugin/Reports/View/Reports/condo_current_account.ctp:23
+#: Plugin/Reports/View/Reports/current_account.ctp:23
+msgid "Total"
+msgstr ""
+

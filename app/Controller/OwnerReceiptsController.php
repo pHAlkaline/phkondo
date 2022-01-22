@@ -132,7 +132,7 @@ class OwnerReceiptsController extends AppController {
      */
     public function send_email($id) {
         if (Configure::read('Application.mode') == 'demo') {
-            $this->Flash->success(__('Email sent with success.'));
+            $this->Flash->success(__d('email','Email sent with success.'));
             $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
         }
         if (!$this->Receipt->exists($id)) {

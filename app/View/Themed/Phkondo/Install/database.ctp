@@ -25,7 +25,7 @@
 
             <div class="form-group">
                 <?php
-                echo $this->Form->input('host', array('class' => 'form-control', 'label' => __('Host'), 'default' => 'localhost'));
+                echo $this->Form->input('host', array('class' => 'form-control', 'label' => __d('email','Host'), 'default' => 'localhost'));
                 ?>
             </div>
             <div class="form-group">
