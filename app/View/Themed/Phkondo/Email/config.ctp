@@ -46,11 +46,11 @@
             </div>
             <hr/>
             <div class="form-group">
-                                <?php echo $this->Form->input('receipt_subject', array('class' => 'form-control', 'default' => $config['receipt_subject']!=''?$config['receipt_subject']:$config['subject'])); ?>
+                                <?php echo $this->Form->input('receipt_subject', array('label' => __('Receipt Subject'), 'class' => 'form-control', 'default' => $config['receipt_subject']!=''?$config['receipt_subject']:$config['subject'])); ?>
             </div><!-- .form-group -->
 
             <div class="form-group">
-                                <?php echo $this->Form->input('receipt_message', array('type'=>'textarea', 'label' => __('Receipt Message'), 'class' => 'form-control', 'default' => $config['receipt_message'])); ?>
+                                <?php echo $this->Form->input('receipt_message', array('label' => __('Receipt Message'), 'type'=>'textarea', 'label' => __('Receipt Message'), 'class' => 'form-control', 'default' => $config['receipt_message'])); ?>
             </div><!-- .form-group -->
 
 
