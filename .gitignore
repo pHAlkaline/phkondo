@@ -8,6 +8,11 @@
 /app/Config/bootstrap_phapp.php
 
 /app/tmp
+!/app/tmp/keep
+!/app/tmp/cache/keep
+!/app/tmp/cache/models/keep
+!/app/tmp/cache/persistent/keep
+!/app/tmp/cache/views/keep
 /app/files/*
 !/app/files/empty
 /app/Test
