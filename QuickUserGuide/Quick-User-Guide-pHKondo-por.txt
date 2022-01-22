@@ -5,11 +5,12 @@ Ver detalhes do condomínio
 
 Entrar em Períodos Contabilísticos
 Adicionar período contabilístico -> Criar período contabilístico
-* Período Contabilístico é usado para configurar períodos de gestão, pode o período que entender, não necessariamente um ano.
+* Período Contabilístico é usado para configurar períodos de gestão
+* Pode criar o período que entender, não necessariamente um ano.
 É usado para controlar e agrupar dados em:
 - Saldos de contas, Orçamentos...
 - Relatórios para Balancete, receitas, despesas, em dívida, mapa de quotas
-* IMPORTANTE: Atenção, os dados apresentados são agrupados conforme o período contabilístico ativo, para ver dados de outro execicio este deve ser ativado posteriormente.
+* IMPORTANTE: Atenção, os dados apresentados são agrupados conforme o período contabilístico ativo, para ver dados de outro execicio contabilistico este deve ser ativado posteriormente.
 
 Regresse ao detalhes do condomínio
 Entrar nas Frações
