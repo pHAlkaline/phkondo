@@ -35,7 +35,7 @@ $this->Html->script('footable', false);
                 <li ><?php echo $this->Html->link(__('List Receipts'), array('action' => 'index', '?' => $this->request->query), array('class' => 'btn ')); ?> </li>
                 <li ><?php echo $this->Form->postLink(__('Pay Receipt'), array('action' => 'pay_receipt', $receipt['Receipt']['id'], '?' => $this->request->query), array('class' => 'btn ' . $payDisabled, 'confirm' => __('Are you sure you want to set receipt # %s as paid? - Payment as %s', $receipt['Receipt']['document'], $receipt['ReceiptPaymentType']['name']))); ?></li>
                 <li ><?php echo $this->Form->postLink(__('Cancel Receipt'), array('action' => 'cancel', $receipt['Receipt']['id'], '?' => $this->request->query), array('class' => 'btn ' . $cancelDisabled, 'confirm' => __('Are you sure you want to cancel # %s?', $receipt['Receipt']['document']))); ?> </li>
-                <li ><?php echo $this->Html->link(__('Print Receipt'), array('action' => 'print_receipt', $receipt['Receipt']['id'], '?' => $this->request->query), array('target' => '_blank', 'class' => '', 'escape' => false)); ?> </li>
+                <li ><?php echo $this->Html->link(__('Print'), array('action' => 'print_receipt', $receipt['Receipt']['id'], '?' => $this->request->query), array('target' => '_blank', 'class' => '', 'escape' => false)); ?> </li>
 
 <!--li ><?php //echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('New Notes'), array('action' => 'add_notes', $receipt['Receipt']['id']), array('class' => 'btn ' . $editDisabled, 'escape' => false));    ?> </li-->
 
@@ -61,7 +61,7 @@ $this->Html->script('footable', false);
                         <a href="#notes" aria-controls="notes" role="tab" data-toggle="tab"><?= __n('Note', 'Notes', 2); ?></a>
                     </li>
                     <li role="presentation">
-                        <a href="#send-by-email" aria-controls="send-by-email" role="tab" data-toggle="tab"><?= __('Send By Email'); ?></a>
+                        <a href="#send-by-email" aria-controls="send-by-email" role="tab" data-toggle="tab"><?= __d('email','Send By Email'); ?></a>
                     </li>
 
                 </ul>
@@ -246,7 +246,7 @@ $this->Html->script('footable', false);
                             </fieldset>
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-6">
-                                <?php echo $this->Form->button(__('Send'), array('class' => 'btn btn-large btn-primary pull-right')); ?>
+                                <?php echo $this->Form->button(__d('email','Send'), array('class' => 'btn btn-large btn-primary pull-right')); ?>
                                 </div>
                             </div>
                         <?php echo $this->Form->end(); ?>

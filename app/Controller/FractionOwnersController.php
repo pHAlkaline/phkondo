@@ -89,10 +89,16 @@ class FractionOwnersController extends AppController {
         $this->Fraction->Entity->contain(array(
             'Comment'));
         $entity = $this->Fraction->Entity->find('first', $options);
-        $totalDebit = $this->Fraction->Note->sumDebitNotes($id, null);
-        $totalCredit = $this->Fraction->Note->sumCreditNotes($id, null);
+        $totalDebit = $this->Fraction->Note->sumDebitNotes($this->getPhkRequestVar('fraction_id'), $id);
+        $totalCredit = $this->Fraction->Note->sumCreditNotes($this->getPhkRequestVar('fraction_id'), $id);
+        $notificationEntities = $this->Fraction->Entity->find('list', array('fields' => array('Entity.email', 'Entity.email'), 'conditions' => array('id' => $id)));
 
-        $this->set(compact('entity', 'entitiesFraction', 'totalDebit', 'totalCredit'));
+        App::uses('CakeEmail', 'Network/Email');
+        $Email = new CakeEmail();
+        $Email->config('default');
+        $config = $Email->config();
+
+        $this->set(compact('entity', 'entitiesFraction', 'totalDebit', 'totalCredit', 'notificationEntities', 'config'));
         $this->setPhkRequestVar('owner_id', $id);
         $this->setPhkRequestVar('owner_text', $entity['Entity']['name']);
     }
@@ -204,6 +210,29 @@ class FractionOwnersController extends AppController {
     }
 
     /**
+     * send_current_account method
+     *
+     * @throws NotFoundException
+     * @param string $id
+     * @return void
+     */
+    public function send_current_account($id) {
+        if (Configure::read('Application.mode') == 'demo') {
+            $this->Flash->success(__d('email', 'Email sent with success.'));
+            $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
+        }
+        if (!$this->Fraction->Entity->exists($id)) {
+            $this->Flash->error(__('Invalid owner'));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
+        }
+
+        $event = new CakeEvent('Phkondo.FractionOwner.send_current_account', $this, array(
+            'id' => $id,
+        ));
+        $this->getEventManager()->dispatch($event);
+    }
+
+    /**
      * current_account method
      *
      * @throws NotFoundException
@@ -223,7 +252,7 @@ class FractionOwnersController extends AppController {
             $this->redirect(array('controller' => 'entities', 'action' => 'index', '?' => $this->request->query));
         }
 
-        $event = new CakeEvent('Phkondo.FractionOwner.currentAccount', $this, array(
+        $event = new CakeEvent('Phkondo.FractionOwner.current_account', $this, array(
             'id' => $id,
             'fraction_id' => $fraction_id
         ));

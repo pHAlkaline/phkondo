@@ -238,7 +238,7 @@ class FractionsController extends AppController {
             $this->Flash->error(__('Invalid fraction'));
             $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
-        $event = new CakeEvent('Phkondo.Fraction.currentAccount', $this, array(
+        $event = new CakeEvent('Phkondo.Fraction.current_account', $this, array(
             'id' => $id,
         ));
         $this->getEventManager()->dispatch($event);
