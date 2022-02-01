@@ -20,7 +20,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  * @copyright     Copyright (c) pHAlkaline . (http://phalkaline.net)
- * @link          http://phkondo.net pHKondo Project
+ * @link          https://phkondo.net pHKondo Project
  * @package       app.Controller
  * @since         pHKondo v 0.0.1
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
@@ -134,9 +134,7 @@ class AppController extends Controller {
             foreach ($fields as $field) {
                 $arrayConditions[$field . ' LIKE'] = "%" . $keyword . "%";
             }
-            $this->Paginator->settings['conditions'] = Set::merge($this->Paginator->settings['conditions'], array
-                        ("OR" => $arrayConditions
-            ));
+            $this->Paginator->settings['conditions'] = isset($this->Paginator->settings['conditions']) ? Set::merge($this->Paginator->settings['conditions'],array("OR" => $arrayConditions)) : array("OR" => $arrayConditions);
             $this->set('keyword', $keyword);
         }
     }
@@ -177,8 +175,8 @@ class AppController extends Controller {
             App::import("Model", "Condo");
             $condo = new Condo();
             $result = $condo->find('first', array('conditions' => array('Condo.id' => $this->phkRequestData['condo_id'])));
-            $this->phkRequestData['condo_id'] = isset($result['Condo']['id'])?$result['Condo']['id']:0;
-            $this->phkRequestData['condo_text'] = isset($result['Condo']['title'])?$result['Condo']['id']:'';
+            $this->phkRequestData['condo_id'] = isset($result['Condo']['id']) ? $result['Condo']['id'] : 0;
+            $this->phkRequestData['condo_text'] = isset($result['Condo']['title']) ? $result['Condo']['id'] : '';
         }
     }
 

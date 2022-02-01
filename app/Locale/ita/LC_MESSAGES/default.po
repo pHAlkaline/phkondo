@@ -272,7 +272,7 @@ msgstr ""
 msgid "Budget deleted"
 msgstr "Budget cancellato"
 
-msgid "Buy plugins"
+msgid "Buy FullPack"
 msgstr "Compra plugin"
 
 msgid "CakePHP: the rapid development php framework"

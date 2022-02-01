@@ -20,7 +20,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  * @copyright     Copyright (c) pHAlkaline . (http://phalkaline.net)
- * @link          http://phkondo.net pHKondo Project
+ * @link          https://phkondo.net pHKondo Project
  * @package       app.Controller
  * @since         pHKondo v 0.0.1
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
@@ -42,6 +42,7 @@ class FractionsController extends AppController {
      * @var array
      */
     public $components = array(
+        'RequestHandler',
         'Paginator',
         'Feedback.Comments' => array('on' => array('view'))
     );
@@ -64,6 +65,11 @@ class FractionsController extends AppController {
 
         $this->setFilter(array('Fraction.fraction', 'Fraction.location', 'Fraction.description', 'Fraction.permillage', 'Manager.name', 'FractionType.name'));
         $fractions = $this->Paginator->paginate('Fraction');
+        foreach($fractions as $key => $fraction){
+            $totalDebit=$this->Fraction->Note->sumDebitNotes(null, $fraction['Fraction']['id']);
+            $current_amount=isset($totalDebit['Note']['amount'])?$totalDebit['Note']['amount']:0;
+            $fractions[$key]['Fraction']['current_account']=$current_amount;
+        }
         $milRateWarning = false;
         $milRate = Set::extract('/Fraction/permillage', $fractions);
         if ($this->Session->read('Condo.' . $this->getPhkRequestVar('condo_id') . '.Fraction.mill_rate') != 'show' && array_sum($milRate) != 1000 && array_sum($milRate) != 0) {
@@ -89,7 +95,16 @@ class FractionsController extends AppController {
         $this->Fraction->contain('Manager', 'Comment', 'FractionType');
         $options = array('conditions' => array('Fraction.id' => $id));
         $fraction = $this->Fraction->find('first', $options);
-        $this->set(compact('fraction'));
+        $totalDebit = $this->Fraction->Note->sumDebitNotes(null, $id);
+        $totalCredit = $this->Fraction->Note->sumCreditNotes(null, $id);
+        $notificationEntities = ClassRegistry::init('Entity')->find('list', array('fields' => array('Entity.email', 'Entity.email'), 'conditions' => array('id' => $fraction['Manager']['id'])));
+
+        App::uses('CakeEmail', 'Network/Email');
+        $Email = new CakeEmail();
+        $Email->config('default');
+        $config = $Email->config();
+
+        $this->set(compact('fraction', 'totalDebit', 'totalCredit', 'notificationEntities', 'config'));
         $this->setPhkRequestVar('fraction_id', $id);
     }
 
@@ -142,7 +157,6 @@ class FractionsController extends AppController {
 
         $this->setPhkRequestVar('fraction_id', $id);
 
-
         $this->Fraction->contain('Entity');
         $fraction = $this->Fraction->find('first', array('conditions' => array('Fraction.id' => $id)));
         $entitiesInFraction = Set::extract('/Entity/id', $fraction);
@@ -189,6 +203,29 @@ class FractionsController extends AppController {
     }
 
     /**
+     * send_current_account method
+     *
+     * @throws NotFoundException
+     * @param string $id
+     * @return void
+     */
+    public function send_current_account($id) {
+        if (Configure::read('Application.mode') == 'demo') {
+            $this->Flash->success(__d('email','Email sent with success.'));
+            $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
+        }
+        
+        if (!$this->Fraction->exists($id)) {
+            $this->Flash->error(__('Invalid fraction'));
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
+        }
+
+        $event = new CakeEvent('Phkondo.Fraction.send_current_account', $this, array(
+            'id' => $id,
+        ));
+        $this->getEventManager()->dispatch($event);
+    }
+    /**
      * current_account method
      *
      * @throws NotFoundException
@@ -224,7 +261,7 @@ class FractionsController extends AppController {
             array('link' => Router::url(array('controller' => 'fractions', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Fraction', 'Fractions', 2), 'active' => 'active')
         );
         switch ($this->action) {
-           case 'view':
+            case 'view':
                 $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'fractions', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Fraction', 'Fractions', 2), 'active' => '');
                 $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('fraction_text'), 'active' => 'active');
                 break;

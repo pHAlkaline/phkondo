@@ -1,12 +1,13 @@
 <?php
 
-$this->Html->css('footable/footable.bootstrap.min', false); ?>
-<?php $this->Html->script('moment-with-locales', false); ?>
-<?php $this->Html->script('libs/footable/footable', false); ?>
-<?php $this->Html->script('footable', false); ?>
+$this->Html->css('footable/footable.bootstrap.min', false);
+$this->Html->script('moment-with-locales', false);
+$this->Html->script('libs/footable/footable', false);
+$this->Html->script('footable', false);
+?>
 <div id="page-container" class="row row-offcanvas row-offcanvas-left">
 
-    <div class="col-sm-3">
+    <div class="col-sm-2">
         <div id="sidebar" class="hidden-print actions sidebar-offcanvas">
 
             <ul class="nav nav-pills nav-stacked">
@@ -35,7 +36,6 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
                 <li ><?php echo $this->Form->postLink(__('Pay Receipt'), array('action' => 'pay_receipt', $receipt['Receipt']['id'], '?' => $this->request->query), array('class' => 'btn ' . $payDisabled, 'confirm' => __('Are you sure you want to set receipt # %s as paid? - Payment as %s', $receipt['Receipt']['document'], $receipt['ReceiptPaymentType']['name']))); ?></li>
                 <li ><?php echo $this->Form->postLink(__('Cancel Receipt'), array('action' => 'cancel', $receipt['Receipt']['id'], '?' => $this->request->query), array('class' => 'btn ' . $cancelDisabled, 'confirm' => __('Are you sure you want to cancel # %s?', $receipt['Receipt']['document']))); ?> </li>
                 <li ><?php echo $this->Html->link(__('Print Receipt'), array('action' => 'print_receipt', $receipt['Receipt']['id'], '?' => $this->request->query), array('target' => '_blank', 'class' => '', 'escape' => false)); ?> </li>
-                <li ><?php echo $this->Html->link(__('Send Email'), array('action' => 'send_email', $receipt['Receipt']['id'], '?' => $this->request->query), array('target' => '_blank', 'class' => '', 'escape' => false)); ?> </li>
 
 <!--li ><?php //echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('New Notes'), array('action' => 'add_notes', $receipt['Receipt']['id']), array('class' => 'btn ' . $editDisabled, 'escape' => false));    ?> </li-->
 
@@ -45,7 +45,7 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
 
     </div><!-- /#sidebar .span3 -->
 
-    <div id="page-content" class="col-sm-9">
+    <div id="page-content" class="col-sm-10">
 
         <div class="receipts view">
 
@@ -157,14 +157,15 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
                             <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate" style="font-size: 40px;"></span>
                         </div>
                         <div class="col-sm-12 hidden">
+                            <h4 class="text-right"><?php echo __('Total Amount').' : '.number_format($receipt['Receipt']['total_amount'], 2).' '.Configure::read('currencySign'); ?></h4>
 
                             <table data-empty="<?= __('Empty'); ?>"  class="footable table table-hover table-condensed">
                                 <thead>
                                     <tr>
                                         <th><?php echo __('Document'); ?></th>
-                                        <th><?php echo __('Note Type'); ?></th>
+                                        <th><?php echo __('Type'); ?></th>
                                         <th><?php echo __n('Fraction', 'Fractions', 1); ?></th>
-                                        <th data-breakpoints="xs"><?php echo __('Document Date'); ?></th>
+                                        <th data-breakpoints="xs"><?php echo __('Date'); ?></th>
                                         <th data-breakpoints="xs"><?php echo __('Title'); ?></th>
                                         <th class="amount"><?php echo __('Amount'); ?></th>
                                     </tr>
@@ -212,7 +213,7 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
                         <div class="receipts form">
                             <br/>
                         <?php echo $this->Form->create('Receipt', array(
-                            'url' => array('action' => 'send_email', $receipt['Receipt']['id'], '?' => $this->request->query),
+                            'url' => array('controller'=>'Receipts','action' => 'send_receipt', $receipt['Receipt']['id'], '?' => $this->request->query),
                             'class' => 'form-horizontal', 
                             'role' => 'form', 
                             'inputDefaults' => array(
@@ -227,23 +228,25 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
                             <?php echo $this->Form->input('id'); ?>
 
                                 <div class="form-group">
-                                        <?php echo $this->Form->input('send_to', ['type'=>'select','label' => array('text' => __('Send To'), 'class' => 'col-sm-2 control-label'), 'class' => 'form-control select2-phkondo', 'options' => $notificationEntities, 'multiple' => true, 'value' => $notificationEntities, 'data-allow-clear' => true, 'data-tags' => true, 'required'=>'required']); ?>
-
-
+                                        <?php echo $this->Form->input('send_to', ['type'=>'select','label' => array('text' => __d('email','Send To'), 'class' => 'col-sm-2 control-label'), 'class' => 'form-control select2-phkondo', 'options' => $notificationEntities, 'multiple' => true, 'value' => $notificationEntities, 'data-allow-clear' => true, 'data-tags' => true, 'required'=>'required']); ?>
                                 </div>
-                                   <div class="form-group">
+                                <div class="form-group">
                                 <?php echo $this->Form->input('subject', array('label' => array('text' => __d('email','Subject'), 'class' => 'col-sm-2 control-label'),'required'=>'required', 'class' => 'form-control', 'default' => $config['receipt_subject']!=''?$config['receipt_subject']:$config['subject'])); ?>
                                 </div><!-- .form-group -->
 
                                 <div class="form-group">
                                 <?php echo $this->Form->input('message', array('label' => array('text' => __d('email','Message'), 'class' => 'col-sm-2 control-label'),'required'=>'required', 'type'=>'textarea','class' => 'form-control', 'default' => $config['receipt_message'])); ?>
                                 </div><!-- .form-group -->
+                                <div class="form-group">
+                                        <?php echo $this->Form->input('attachment_format', ['type'=>'select','label' => array('text' => __d('email','Format'), 'class' => 'col-sm-2 control-label'), 'class' => 'form-control select2-phkondo', 'options' => ['pdf'=>__d('email','PDF'), 'html'=>__d('html','HTML')], 'value' => $config['receipt_attachment_format'], 'required'=>'required']); ?>
+                                </div>
 
+                                <!-- .form-group -->
 
                             </fieldset>
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-6">
-                                <?php echo $this->Form->submit(__('Send'), array('class' => 'btn btn-large btn-primary pull-right')); ?>
+                                <?php echo $this->Form->button(__('Send'), array('class' => 'btn btn-large btn-primary pull-right')); ?>
                                 </div>
                             </div>
                         <?php echo $this->Form->end(); ?>

@@ -20,7 +20,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  * @copyright     Copyright (c) pHAlkaline . (http://phalkaline.net)
- * @link          http://phkondo.net pHKondo Project
+ * @link          https://phkondo.net pHKondo Project
  * @package       app.Controller
  * @since         pHKondo v 0.0.1
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
@@ -121,14 +121,14 @@ class ReceiptsController extends AppController {
     }
 
     /**
-     * print_receipt method
+     * send_receipt method
      *
      * @throws NotFoundException
      * @param string $id
      * @return void
      */
-    public function send_email($id) {
-        if (Configure::read('Application.mode') != 'demo') {
+    public function send_receipt($id) {
+        if (Configure::read('Application.mode') == 'demo') {
             $this->Flash->success(__d('email','Email sent with success.'));
             $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
         }
@@ -138,7 +138,7 @@ class ReceiptsController extends AppController {
             $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
 
-        $event = new CakeEvent('Phkondo.Receipt.email', $this, array(
+        $event = new CakeEvent('Phkondo.Receipt.send_receipt', $this, array(
             'id' => $id,
         ));
         $this->getEventManager()->dispatch($event);

@@ -278,7 +278,7 @@ msgstr "Não foi possível apagar Orçamento"
 msgid "Budget deleted"
 msgstr "Orçamento apagado"
 
-msgid "Buy plugins"
+msgid "Buy FullPack"
 msgstr "Obter plugin"
 
 msgid "CakePHP: the rapid development php framework"

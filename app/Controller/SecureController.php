@@ -19,7 +19,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  * @copyright     Copyright (c) pHAlkaline . (http://phalkaline.net)
- * @link          http://phkondo.net pHKondo Project
+ * @link          https://phkondo.net pHKondo Project
  * @package       app.Controller
  * @since         pHKondo v 1.6.3
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)

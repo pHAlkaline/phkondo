@@ -79,7 +79,7 @@
 
                     </fieldset>
                     <div class="form-group col-sm-8">
-                        <?php echo $this->Form->submit(__('Submit'), array('escape' => false, 'class' => 'btn btn-large btn-primary pull-right')); ?>
+                        <?php echo $this->Form->button(__('Submit'), array('escape' => false, 'class' => 'btn btn-large btn-primary pull-right')); ?>
                     </div>
                     <?php echo $this->Form->end(); ?>
 

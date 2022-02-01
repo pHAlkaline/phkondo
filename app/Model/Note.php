@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * pHKondo : pHKondo software for condominium property managers (http://phalkaline.net)
@@ -19,13 +20,12 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  * @copyright     Copyright (c) pHAlkaline . (http://phalkaline.net)
- * @link          http://phkondo.net pHKondo Project
+ * @link          https://phkondo.net pHKondo Project
  * @package       app.Model
  * @since         pHKondo v 0.0.1
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
-
 App::uses('AppModel', 'Model');
 
 /**
@@ -176,8 +176,7 @@ class Note extends AppModel {
         'payment_date' => array(
             'date' => array(
                 'rule' => array('date'),
-                //'message' => 'Your custom message here',
-                
+            //'message' => 'Your custom message here',
             //'last' => false, // Stop validation after this rule
             //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
@@ -268,24 +267,22 @@ class Note extends AppModel {
         if ($this->field('receipt_id') != null) {
             return false;
         }
-        /*if (in_array($this->field('note_status_id'), array(2, 3))) {
-            return false;
-        }*/
+        /* if (in_array($this->field('note_status_id'), array(2, 3))) {
+          return false;
+          } */
         $this->receipt_id = $this->field('note_status_id');
         $this->budget_id = $this->field('budget_id');
         return true;
     }
 
     public function beforeSave($options = array()) {
-        if (!empty($this->data['Note']['note_status_id']) && $this->data['Note']['note_status_id']==1){
-            $this->data['Note']['payment_date']=null;
-            $this->data['Note']['receipt_id']=null;
+        if (!empty($this->data['Note']['note_status_id']) && $this->data['Note']['note_status_id'] == 1) {
+            $this->data['Note']['payment_date'] = null;
+            $this->data['Note']['receipt_id'] = null;
         }
-       
+
         return true;
     }
-
-    
 
     /**
      * afterFind callback
@@ -360,14 +357,13 @@ class Note extends AppModel {
         if (isset($record['receipt_id']) && $record['receipt_id'] != '') {
             return false;
         }
-        /*if (isset($record['note_status_id']) && in_array($record['note_status_id'], array(2, 3))) {
-            return false;
-        }*/
-        
+        /* if (isset($record['note_status_id']) && in_array($record['note_status_id'], array(2, 3))) {
+          return false;
+          } */
+
         return true;
     }
 
-   
     // Update Receipt Amount
     private function _updateReceiptAmount($id = null) {
 
@@ -405,11 +401,63 @@ class Note extends AppModel {
             $this->Budget->saveField('amount', $total);
         }
     }
-    
-     function compareDates($data, $key) {
+
+    function sumDebitNotes($owner_id, $fraction_id) {
+        $tmpVirtualFields = $this->virtualFields;
+        $this->virtualFields = array(
+            'amount' => 'SUM(Note.amount)',
+        );
+        $conditions = [];
+        array_push($conditions,[
+            'Note.note_type_id =' => 2,
+            'Note.note_status_id <' => 3,
+            'Note.due_date < NOW()']);
+        if ($owner_id) {
+            array_push($conditions,['Note.entity_id' => $owner_id]);
+        }
+        if ($fraction_id) {
+            array_push($conditions,['Note.fraction_id' => $fraction_id]);
+        }
+        $debt_amount = $this->find('first', array(
+            'order' => array('Note.document_date'),
+            'fields' => array('amount'),
+            'conditions' => $conditions,
+            'group' => array('Note.fraction_id')
+        ));
+        $this->virtualFields = $tmpVirtualFields;
+        return $debt_amount;
+    }
+
+    function sumCreditNotes($owner_id, $fraction_id) {
+        $tmpVirtualFields = $this->virtualFields;
+        $this->virtualFields = array(
+            'amount' => 'SUM(Note.amount)',
+        );
+        $conditions = [];
+        array_push($conditions,[
+            'Note.note_type_id =' => 1,
+            'Note.note_status_id <' => 3,
+            'Note.due_date < NOW()']);
+        if ($owner_id) {
+            array_push($conditions,['Note.entity_id' => $owner_id]);
+        }
+        if ($fraction_id) {
+            array_push($conditions,['Note.fraction_id' => $fraction_id]);
+        }
+        $credit_amount = $this->find('first', array(
+            'order' => array('Note.document_date'),
+            'fields' => array('amount'),
+            'conditions' => $conditions,
+            'group' => array('Note.fraction_id')
+        ));
+        $this->virtualFields = $tmpVirtualFields;
+        return $credit_amount;
+    }
+
+    function compareDates($data, $key) {
         return CakeTime::fromString($data[$key]) >= CakeTime::fromString($this->data[$this->alias]['document_date']);
     }
-    
+
     /**
      * checkPastDate
      * Custom Validation Rule: Ensures a selected date is either the

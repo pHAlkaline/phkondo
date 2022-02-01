@@ -19,7 +19,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  * @copyright     Copyright (c) pHAlkaline . (http://phalkaline.net)
- * @link          http://phkondo.net pHKondo Project
+ * @link          https://phkondo.net pHKondo Project
  * @@package      app.View.Themed.Layouts
  * @since         pHKondo v 0.0.1
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
@@ -151,7 +151,10 @@ if (!isset($headerTitle)) {
             $(document).ready(function () {
                 $("form").submit(function () {
                     // prevent duplicate form submissions
-                    $(this).find(":submit").attr('disabled', 'disabled').prepend(' <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> ');
+                    var submitBtns=$(this).find(":submit");
+                    console.log(submitBtns);
+                    submitBtns.attr('disabled', 'disabled').prepend(' <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> ');
+                    
                 });
                 var phkondolang = 'en-GB';
                 switch (phkondo.APP_LANG) {

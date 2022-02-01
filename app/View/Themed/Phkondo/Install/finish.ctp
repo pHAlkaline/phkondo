@@ -1,5 +1,5 @@
 <h2><?php echo $title_for_step; ?></h2>
-<div id="page-content" class="col-sm-9">
+<div id="page-content" class="col-sm-10">
 
     <div class="install form">
         <div class = "row">
@@ -23,7 +23,7 @@
         <div class = "row">
             <h3><?php echo __d('install', 'Resources'); ?></h3>
             <ul >
-                <li><?php echo $this->Html->link('Official', 'http://phkondo.net', array('target' => '_blank')); ?></li>
+                <li><?php echo $this->Html->link('Official', 'https://phkondo.net', array('target' => '_blank')); ?></li>
                 <li><?php echo $this->Html->link('Wiki', 'http://github.com/pHAlkaline/phkondo/wiki', array('target' => '_blank')); ?></li>
                 <li><?php echo $this->Html->link('pHKondo Google Group', 'http://groups.google.com/group/phkondo', array('target' => '_blank')); ?></li>
                 <li><?php echo $this->Html->link('Code repository', 'http://github.com/phalkaline/phkondo', array('target' => '_blank')); ?></li>

@@ -267,7 +267,7 @@ msgstr "El presupuesto no puede ser eliminado"
 msgid "Budget deleted"
 msgstr "Presupuesto eliminado"
 
-msgid "Buy plugins"
+msgid "Buy FullPack"
 msgstr "Comprar plugins"
 
 msgid "CakePHP: the rapid development php framework"

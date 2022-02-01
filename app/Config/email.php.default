@@ -50,7 +50,12 @@ class EmailConfig {
         'transport' => 'Smtp',
         'tls' => true,
         'receipt_subject'=> '{default_receipt_subject}',
-        'receipt_message'=>'{default_receipt_message}'
-    );
+        'receipt_message'=>'{default_receipt_message}',
+        'receipt_attachment_format'=>'{default_receipt_attachment_format}',
+        'current_account_subject'=> '{default_current_account_subject}',
+        'current_account_message'=>'{default_current_account_message}',
+        'current_account_attachment_format'=>'{default_current_account_attachment_format}'
+ 
+);
 
 }

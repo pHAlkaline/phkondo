@@ -33,9 +33,6 @@ class AppHelper extends Helper {
 
     public function assetUrl($path, $options = array()) {
         $options['fullBase'] = true;
-        if (!empty($this->request->params['ext']) && $this->request->params['ext'] === 'pdf') {
-            $options['fullBase'] = true;
-        }
         return parent::assetUrl($path, $options);
     }
 

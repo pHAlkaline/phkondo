@@ -3,7 +3,7 @@
 $roles=Configure::read('User.role'); ?>
 
 <div id="page-container" class="row row-offcanvas row-offcanvas-left">
-    <div class="col-sm-3">
+    <div class="col-sm-2">
         <div id="sidebar" class="hidden-print actions sidebar-offcanvas">
             <ul class="nav nav-pills nav-stacked">			
                 <li ><?php echo $this->Html->link(__('Edit User'), array('action' => 'edit', $user['User']['id']), array('class' => 'btn ')); ?> </li>
@@ -18,7 +18,7 @@ $roles=Configure::read('User.role'); ?>
 
     </div><!-- /#sidebar .span3 -->
 
-    <div id="page-content" class="col-sm-9">
+    <div id="page-content" class="col-sm-10">
 
         <div class="users view">
 

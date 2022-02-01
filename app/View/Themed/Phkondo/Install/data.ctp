@@ -1,5 +1,5 @@
 <h2><?php echo $title_for_step; ?></h2>
-<div id="page-content" class="col-sm-9">
+<div id="page-content" class="col-sm-10">
 
     <div class="install form">
         <?php echo $this->Form->create(false, array('url' => array('controller' => 'install', 'action' => 'data')));

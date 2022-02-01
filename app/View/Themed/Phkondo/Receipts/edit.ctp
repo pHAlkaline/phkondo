@@ -6,7 +6,7 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
 <?php $this->Html->script('footable', false); ?>
 <div id="page-container" class="row row-offcanvas row-offcanvas-left">
 
-    <div class="col-sm-3">
+    <div class="col-sm-2">
 
         <div id="sidebar" class="hidden-print actions sidebar-offcanvas">
 
@@ -29,7 +29,7 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
 
     </div><!-- /#sidebar .col-sm-3 -->
 
-    <div id="page-content" class="col-sm-9">
+    <div id="page-content" class="col-sm-10">
         <legend><?php echo __('Edit Receipt'); ?>&nbsp;<?php echo $receiptId; ?></legend>
         <div class="actions col-sm-12">
             <div class="float-right text-right">
@@ -85,7 +85,7 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
                         </fieldset>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-6">
-                                <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-large btn-primary pull-right')); ?>
+                                <?php echo $this->Form->button(__('Submit'), array('class' => 'btn btn-large btn-primary pull-right')); ?>
                             </div>
                         </div>
                         <?php echo $this->Form->end(); ?>
@@ -108,7 +108,7 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
                                     <div class="actions col-sm-12 float-right text-right">
                                         <div class="float-right text-right">
                                                 <?php if (count($notes)): ?>
-                                                    <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 0;')); ?>            
+                                                    <?php echo $this->Form->button(__('Submit'), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 0;')); ?>            
                                                 <?php endif; ?>
                                         </div>
                                     </div><!-- /.actions -->
@@ -165,7 +165,7 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
 
                                         <div class="float-right text-right">
                                                 <?php if (count($notes)): ?>
-                                                    <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 0;')); ?>            
+                                                    <?php echo $this->Form->button(__('Submit'), array('class' => 'btn btn-primary', 'style' => 'margin: 14px 0;')); ?>            
                                                 <?php endif; ?>
 
                                         </div>

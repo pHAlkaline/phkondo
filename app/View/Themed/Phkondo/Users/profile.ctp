@@ -8,7 +8,7 @@ foreach ($role_options as $key => $value){
 ?>
 <div id="page-container" class="row row-offcanvas row-offcanvas-left">
 
-    <div class="col-sm-3">
+    <div class="col-sm-2">
 
         <div class="actions">
 
@@ -19,7 +19,7 @@ foreach ($role_options as $key => $value){
 
     </div><!-- /#sidebar .col-sm-3 -->
 
-    <div id="page-content" class="col-sm-9">
+    <div id="page-content" class="col-sm-10">
 
         <div class="users form">
 
@@ -55,7 +55,7 @@ foreach ($role_options as $key => $value){
             </fieldset>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-6">
-                    <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-large btn-primary pull-right')); ?>
+                    <?php echo $this->Form->button(__('Submit'), array('class' => 'btn btn-large btn-primary pull-right')); ?>
                 </div>
             </div>
             <?php echo $this->Form->end(); ?>

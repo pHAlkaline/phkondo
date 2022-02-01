@@ -20,7 +20,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  * @copyright     Copyright (c) pHAlkaline . (http://phalkaline.net)
- * @link          http://phkondo.net pHKondo Project
+ * @link          https://phkondo.net pHKondo Project
  * @package       app.Controller
  * @since         pHKondo v 0.0.1
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
@@ -92,7 +92,7 @@ class OwnerReceiptsController extends AppController {
         $options = array('conditions' => array('Receipt.id' => $id, 'Receipt.client_id' => $this->getPhkRequestVar('owner_id'), 'Receipt.fraction_id' => $this->getPhkRequestVar('fraction_id')));
         $receipt = $this->Receipt->find('first', $options);
         $this->Receipt->Client->order = 'Client.name';
-        $notificationEntities = $condos = $this->Receipt->Client->find('list', array('fields' => array('Client.email', 'Client.email'), 'conditions' => array('id' => $receipt['Client']['id'])));
+        $notificationEntities = $this->Receipt->Client->find('list', array('fields' => array('Client.email', 'Client.email'), 'conditions' => array('id' => $receipt['Client']['id'])));
 
         App::uses('CakeEmail', 'Network/Email');
         $Email = new CakeEmail();
@@ -124,13 +124,13 @@ class OwnerReceiptsController extends AppController {
     }
 
     /**
-     * print_receipt method
+     * send_owner_receipt method
      *
      * @throws NotFoundException
      * @param string $id
      * @return void
      */
-    public function send_email($id) {
+    public function send_owner_receipt($id) {
         if (Configure::read('Application.mode') == 'demo') {
             $this->Flash->success(__d('email','Email sent with success.'));
             $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
@@ -140,7 +140,7 @@ class OwnerReceiptsController extends AppController {
             $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
 
-        $event = new CakeEvent('Phkondo.Receipt.email', $this, array(
+        $event = new CakeEvent('Phkondo.Receipt.send_owner_receipt', $this, array(
             'id' => $id,
         ));
         $this->getEventManager()->dispatch($event);

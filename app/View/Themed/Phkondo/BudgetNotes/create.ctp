@@ -13,7 +13,7 @@ foreach ($fractions as $fraction) {
 }
 ?>
 <div id="page-container" class="row row-offcanvas row-offcanvas-left">
-    <div class="col-sm-3">
+    <div class="col-sm-2">
 
         <div id="sidebar" class="hidden-print actions sidebar-offcanvas">
             <ul class="nav nav-pills nav-stacked">
@@ -23,7 +23,7 @@ foreach ($fractions as $fraction) {
         </div><!-- /.actions -->
 
     </div><!-- /#sidebar .col-sm-3 -->
-    <div id="page-content" class="col-sm-9">
+    <div id="page-content" class="col-sm-10">
         <?php
         if ($budget['Budget']['share_distribution_id'] == 2 && $totalMilRate <> 1000):
             ?>
@@ -132,7 +132,7 @@ foreach ($fractions as $fraction) {
                     ?>
                     <p class="<?php echo $pclass ?>"><?php echo ' ( '.__('Budget').' '.$this->Number->precision($budgetAmount, 2).' ) '.__('Total notes') . ': <span id="notesTotal">' . $this->Number->precision($totalShares, 2) .' </span>'; ?></p>
                     
-                    <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-large btn-primary pull-right')); ?>
+                    <?php echo $this->Form->button(__('Submit'), array('class' => 'btn btn-large btn-primary pull-right')); ?>
                 </div>
             </div>
 

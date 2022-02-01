@@ -1,4 +1,4 @@
-<div id="page-content" class="col-sm-9">
+<div id="page-content" class="col-sm-10">
     <div class="install form">
         <?php echo $this->Form->create(false, array('url' => array('controller' => 'email', 'action' => 'config')),['autocomplete'=>'off']);
         ?>
@@ -28,6 +28,7 @@
                 ?>
             </div>
             <hr/>
+            <h2><?php echo __d('email','Default'); ?></h2>
             <div class="form-group">
 
                 <?php
@@ -45,20 +46,37 @@
                 ?>
             </div>
             <hr/>
+            <h2><?php echo __d('email','Receipt'); ?></h2>
             <div class="form-group">
-                                <?php echo $this->Form->input('receipt_subject', array('label' => __d('email','Receipt Subject'), 'class' => 'form-control', 'default' => $config['receipt_subject']!=''?$config['receipt_subject']:$config['subject'])); ?>
+                                <?php echo $this->Form->input('receipt_subject', array('label' => __d('email','Subject'), 'class' => 'form-control', 'default' => $config['receipt_subject']!=''?$config['receipt_subject']:$config['subject'])); ?>
             </div><!-- .form-group -->
 
             <div class="form-group">
-                                <?php echo $this->Form->input('receipt_message', array('label' => __d('email','Receipt Message'), 'type'=>'textarea', 'label' => __d('email','Receipt Message'), 'class' => 'form-control', 'default' => $config['receipt_message'])); ?>
+                                <?php echo $this->Form->input('receipt_message', array('label' => __d('email','Message'), 'type'=>'textarea', 'class' => 'form-control', 'default' => $config['receipt_message'])); ?>
             </div><!-- .form-group -->
+
+            <div class="form-group">
+                     <?php echo $this->Form->input('receipt_attachment_format', ['type'=>'select','label' => __d('email','Format'), 'class' => 'form-control select2-phkondo', 'options' => ['pdf'=>__d('email','PDF'), 'html'=>__d('html','HTML')], 'value' => $config['receipt_attachment_format'], 'required'=>'required']); ?>
+            </div>
+             <hr/>
+             <h2><?php echo __d('email','Current Account'); ?></h2>
+             <div class="form-group">
+                                <?php echo $this->Form->input('current_account_subject', array('label' => __d('email','Subject'), 'class' => 'form-control', 'default' => $config['current_account_subject']!=''?$config['current_account_subject']:$config['subject'])); ?>
+            </div><!-- .form-group -->
+
+            <div class="form-group">
+                                <?php echo $this->Form->input('current_account_message', array('label' => __d('email','Message'), 'type'=>'textarea', 'class' => 'form-control', 'default' => $config['current_account_message'])); ?>
+            </div><!-- .form-group -->
+
+            <div class="form-group">
+                     <?php echo $this->Form->input('current_account_attachment_format', ['type'=>'select','label' => __d('email','Format'), 'class' => 'form-control select2-phkondo', 'options' => ['pdf'=>__d('email','PDF'), 'html'=>__d('html','HTML')], 'value' => $config['current_account_attachment_format'], 'required'=>'required']); ?>
+            </div>
 
 
         </fieldset>
         <div class="form-group">                
-            <?php echo $this->Form->button(__('Submit'), array('type'=>'submit','class' => 'btn btn-large btn-primary')); ?>  
+            <?php echo $this->Form->button(__('Submit'), array('type'=>'submit','class' => 'btn btn-large btn-primary pull-right')); ?>  
         </div>
         <?php echo $this->Form->end(); ?>
-
     </div>
 </div>

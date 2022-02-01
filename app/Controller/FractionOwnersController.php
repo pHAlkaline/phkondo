@@ -20,7 +20,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  * @copyright     Copyright (c) pHAlkaline . (http://phalkaline.net)
- * @link          http://phkondo.net pHKondo Project
+ * @link          https://phkondo.net pHKondo Project
  * @package       app.Controller
  * @since         pHKondo v 0.0.1
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
@@ -89,8 +89,10 @@ class FractionOwnersController extends AppController {
         $this->Fraction->Entity->contain(array(
             'Comment'));
         $entity = $this->Fraction->Entity->find('first', $options);
+        $totalDebit = $this->Fraction->Note->sumDebitNotes($id, null);
+        $totalCredit = $this->Fraction->Note->sumCreditNotes($id, null);
 
-        $this->set(compact('entity', 'entitiesFraction'));
+        $this->set(compact('entity', 'entitiesFraction', 'totalDebit', 'totalCredit'));
         $this->setPhkRequestVar('owner_id', $id);
         $this->setPhkRequestVar('owner_text', $entity['Entity']['name']);
     }
@@ -136,7 +138,7 @@ class FractionOwnersController extends AppController {
                 $this->redirect(array('action' => 'index', '?' => $this->request->query));
             }
             if (!isset($this->request->data['EntitiesFraction']['owner_percentage']) || $this->request->data['EntitiesFraction']['owner_percentage'] == '') {
-                $this->request->data['EntitiesFraction']['owner_percentage']=0;
+                $this->request->data['EntitiesFraction']['owner_percentage'] = 0;
             }
             $this->request->data['EntitiesFraction']['entity_id'] = $this->request->data['EntitiesFraction']['client'];
             $this->Fraction->EntitiesFraction->validator()->add(

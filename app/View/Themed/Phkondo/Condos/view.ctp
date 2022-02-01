@@ -7,7 +7,7 @@ $administrators = implode(", ", $administrators);
 ?>
 <div id="page-container" class="row row-offcanvas row-offcanvas-left">
 
-    <div class="col-sm-3">
+    <div class="col-sm-2">
         <div id="sidebar" class="hidden-print actions sidebar-offcanvas">
             <ul class="nav nav-pills nav-stacked nav-stacked">
                 <li ><?php echo $this->Html->link(__('Edit Condo'), array('action' => 'edit', $condo['Condo']['id']), array('class' => 'btn ', 'escape' => false)); ?></li>
@@ -52,7 +52,7 @@ $administrators = implode(", ", $administrators);
 
         </div><!-- /#sidebar .actions -->
     </div>
-    <div id="page-content" class="col-sm-9">
+    <div id="page-content" class="col-sm-10">
 
         <div class="condos view">
 

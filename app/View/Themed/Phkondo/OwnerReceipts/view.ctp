@@ -6,7 +6,7 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
 <?php $this->Html->script('footable', false); ?>
 <div id="page-container" class="row row-offcanvas row-offcanvas-left">
 
-    <div class="col-sm-3">
+    <div class="col-sm-2">
 
         <div id="sidebar" class="hidden-print actions sidebar-offcanvas">
 
@@ -44,7 +44,7 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
 
     </div><!-- /#sidebar .span3 -->
 
-    <div id="page-content" class="col-sm-9">
+    <div id="page-content" class="col-sm-10">
 
         <div class="receipts view">
 
@@ -170,23 +170,25 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
                             <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate" style="font-size: 40px;"></span>
                         </div>
                         <div class="col-sm-12 hidden">
-
+                            <h4 class="text-right"><?php echo __('Total Amount').' : '.number_format($receipt['Receipt']['total_amount'], 2).' '.Configure::read('currencySign'); ?></h4>
+                              
                             <table data-empty="<?= __('Empty'); ?>"  class="footable table table-hover table-condensed">
                                 <thead>
                                     <tr>
                                         <th><?php echo __('Document'); ?></th>
-                                        <th><?php echo __('Note Type'); ?></th>
-                                        <th data-breakpoints="xs"><?php echo __('Document Date'); ?></th>
+                                        <th><?php echo __('Type'); ?></th>
+                                        <th data-breakpoints="xs"><?php echo __('Date'); ?></th>
                                         <th data-breakpoints="xs"><?php echo __('Title'); ?></th>
                                         <th class="amount"><?php echo __('Amount'); ?></th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                   
                                         <?php
                                         $i = 0;
-                                        foreach ($receipt['Note'] as $note) {
+                                        foreach ($receipt['Note'] as $index => $note) {
                                             ?>
-                                    <tr>
+                                    <tr <?= $index == 0 ? 'data-expanded="true"' : ''; ?> >
                                         <td><?php echo $note['document']; ?></td>
                                         <td><?php echo $note['NoteType']['name']; ?></td>
                                         <td><?php echo h($note['document_date']); ?></td>
@@ -200,16 +202,17 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
                                         </td>
                                     </tr>
                                         <?php } ?>
-                                    <tr>
+                                 <tr>
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td></td>
-                                        <td><?php echo __('Total amount'); ?></td>
+                                        
+                                        <td class="text-right"><?php echo __('Total amount'); ?>&nbsp;:&nbsp;</td>
                                         <td class="amount"><?php echo number_format($receipt['Receipt']['total_amount'], 2); ?>&nbsp;<?php echo Configure::read('currencySign'); ?></td>
 
 
                                     </tr>
+                                   
                                 </tbody>
                             </table><!-- /.table table-hover table-condensed -->
                         </div>    
@@ -222,8 +225,8 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
                         <div class="receipts form">
                             <br/>
                         <?php echo $this->Form->create('Receipt', array(
-                            'url' => array('controller'=>'OwnerReceipts','action' => 'send_email', $receipt['Receipt']['id'], '?' => $this->request->query),
-                            'class' => 'form-horizontal', 
+                            'url' => array('controller'=>'OwnerReceipts','action' => 'send_owner_receipt', $receipt['Receipt']['id'], '?' => $this->request->query),
+                          'class' => 'form-horizontal', 
                             'role' => 'form', 
                             'inputDefaults' => array(
                                 'class' => 'form-control', 
@@ -237,9 +240,7 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
                             <?php echo $this->Form->input('id'); ?>
 
                                 <div class="form-group">
-                                        <?php echo $this->Form->input('send_to', ['type'=>'select','label' => array('text' => __('Send To'), 'class' => 'col-sm-2 control-label'), 'class' => 'form-control select2-phkondo', 'options' => $notificationEntities, 'multiple' => true, 'value' => $notificationEntities, 'data-allow-clear' => true, 'data-tags' => true, 'required'=>'required']); ?>
-
-
+                                        <?php echo $this->Form->input('send_to', ['type'=>'select','label' => array('text' => __d('email','Send To'), 'class' => 'col-sm-2 control-label'), 'class' => 'form-control select2-phkondo', 'options' => $notificationEntities, 'multiple' => true, 'value' => $notificationEntities, 'data-allow-clear' => true, 'data-tags' => true, 'required'=>'required']); ?>
                                 </div>
                                 <div class="form-group">
                                 <?php echo $this->Form->input('subject', array('label' => array('text' => __d('email','Subject'), 'class' => 'col-sm-2 control-label'),'required'=>'required', 'class' => 'form-control', 'default' => $config['receipt_subject']!=''?$config['receipt_subject']:$config['subject'])); ?>
@@ -248,12 +249,16 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
                                 <div class="form-group">
                                 <?php echo $this->Form->input('message', array('label' => array('text' => __d('email','Message'), 'class' => 'col-sm-2 control-label'),'required'=>'required', 'type'=>'textarea','class' => 'form-control', 'default' => $config['receipt_message'])); ?>
                                 </div><!-- .form-group -->
+                                <div class="form-group">
+                                        <?php echo $this->Form->input('attachment_format', ['type'=>'select','label' => array('text' => __d('email','Format'), 'class' => 'col-sm-2 control-label'), 'class' => 'form-control select2-phkondo', 'options' => ['pdf'=>__d('email','PDF'), 'html'=>__d('html','HTML')], 'value' => $config['receipt_attachment_format'], 'required'=>'required']); ?>
+                                </div>
 
+                                <!-- .form-group -->
 
                             </fieldset>
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-6">
-                                <?php echo $this->Form->submit(__('Send'), array('class' => 'btn btn-large btn-primary pull-right')); ?>
+                                <?php echo $this->Form->button(__('Send'), array('class' => 'btn btn-large btn-primary pull-right')); ?>
                                 </div>
                             </div>
                         <?php echo $this->Form->end(); ?>
