@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * pHKondo : pHKondo software for condominium property managers (http://phalkaline.net)
@@ -25,68 +26,77 @@
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
-
 CakePlugin::load('DebugKit');
 CakePlugin::load('ClearCache');
 CakePlugin::load('Feedback');
 CakePlugin::load('Migrations');
-CakePlugin::load('CakePdf', array('bootstrap' => true, 'routes' => true));
-
 
 /*
  * PrintReceipt Plugin
  */
-//CakePlugin::load('PrintReceipt',array('bootstrap'=>true));
+CakePlugin::load('PrintReceipt', array('bootstrap' => true));
 
 /*
  * Reports Plugin
  */
-//CakePlugin::load('Reports',array('bootstrap'=>true));
+CakePlugin::load('Reports', array('bootstrap' => true));
 
 /*
  * Drafts Plugin
  */
-//CakePlugin::load('Drafts',array('bootstrap'=>true));
+CakePlugin::load('Drafts', array('bootstrap' => true));
 
 /*
  * Attachments Plugin
  */
-//CakePlugin::load('Attachments',array('bootstrap'=>true));
+//CakePlugin::load('Attachments', array('bootstrap' => true));
 Configure::write('Attachment.attachment', array(
-        'path' => '{ROOT}files{DS}{model}{DS}{field}{DS}',
-        'pathMethod' => 'foreignKey',
-        'nameCallback' => 'fileRename',
-        'thumbnails' => false,
-        'thumbnailMethod' => 'php',
-        'thumbnailSizes' => array(
-            'xvga' => '1024x768',
-            'vga' => '640x480',
-            'thumb' => '80x80',
-        ),
-        'maxSize' => '200000',
-        'extensions' => array('pdf', 'txt', 'png', 'gif', 'jpg')
-    ));
+    'path' => '{ROOT}files{DS}{model}{DS}{field}{DS}',
+    'pathMethod' => 'foreignKey',
+    'nameCallback' => 'fileRename',
+    'thumbnails' => false,
+    'thumbnailMethod' => 'php',
+    'thumbnailSizes' => array(
+        'xvga' => '1024x768',
+        'vga' => '640x480',
+        'thumb' => '80x80',
+    ),
+    'maxSize' => '200000',
+    'extensions' => array('pdf', 'txt', 'png', 'gif', 'jpg')
+));
 
+
+/*
+ * CakePdf Plugin
+ * Requires PrintReceipt and Reports Plugin
+ * Requires wkhtmltopdf engine in your system / server
+ * https://wkhtmltopdf.org/ 
+ */
+//CakePlugin::load('CakePdf', array('bootstrap' => true, 'routes' => false));
 Configure::write('CakePdf', array(
-        'engine' => 'CakePdf.WkHtmlToPdf',
-        'options' => array(
-            'print-media-type' => false,
-            'outline' => true,
-            'dpi' => 96
-        ),
-        'margin' => array(
-            'bottom' => 15,
-            'left' => 50,
-            'right' => 30,
-            'top' => 45
-        ),
-        'orientation' => 'landscape',
-        'download' => true
-    ));
+    'binary' => '{your_system_path_to_wkhtmltopdf.exe}', 
+    // C:\xampp7426\wkhtmltopdf\bin\wkhtmltopdf.exe
+    // CakePdf plugin requires wkhtmltopdf engine in your system / server
+    // https://wkhtmltopdf.org/
+    'engine' => 'CakePdf.WkHtmlToPdf',
+    'orientation' => 'portrait',
+    'download' => true,
+    'options' => [
+        'disable-javascript' => true,
+        'print-media-type' => true,
+        'enable-local-file-access' => true
+    ],
+    'phkondo' => [
+        'active' => false, // Requires CakePdf Plugin 
+        'cssPath' => APP . 'View' . DS . 'Themed' . DS . 'Phkondo' . DS . WEBROOT_DIR . DS . 'css' . DS,
+        'imgPath' => APP . 'View' . DS . 'Themed' . DS . 'Phkondo' . DS . WEBROOT_DIR . DS . 'img' . DS,
+    ]
+));
 
 
-/** Theme Settings
- * 
+
+/**
+ * Theme Settings
  */
 Configure::write('Theme.name', 'phkondo');
 Configure::write('Theme.list', array(
@@ -102,10 +112,7 @@ Configure::write('Theme.owner_address', 'Administration Company Address , Contac
 Configure::write('Theme.base_color', '#428bca');
 
 /**
- * Default app settings
- */
-/**
- * Languages available
+ * Idiom Settings
  */
 Configure::write('Config.language', 'eng');
 Configure::write('Language.list', array(
@@ -115,13 +122,16 @@ Configure::write('Language.list', array(
     'por' => 'Português',
 ));
 
+/**
+ * Idiom Settings
+ */
 Configure::write('Config.timezone', 'Europe/London'); // Europe/Lisbon
 Configure::write('databaseDateFormat', 'Y-m-d'); // database dateformat
 Configure::write('dateFormat', 'd-m-Y H:i:s'); // phkondo dateformat with time
 Configure::write('dateFormatSimple', 'd-m-Y'); // phkondo dateformat
 Configure::write('calendarDateFormat', 'dd-mm-yyyy'); // input date fields date format
 Configure::write('currencySign', '&euro;'); // more at http://www.w3schools.com/html/html_entities.asp
-Configure::write('Application.mode', 'app'); // one, pro, app, demo -> use demo for demo mode;
+Configure::write('Application.mode', 'full'); // free, full, one, pro, demo -> use demo for demo mode;
 
 /**
  * The settings for maintenance component 

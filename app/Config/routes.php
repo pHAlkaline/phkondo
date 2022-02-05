@@ -44,7 +44,8 @@ CakePlugin::routes();
  * the built-in default routes.
  */
 require CAKE . 'Config' . DS . 'routes.php';
-
-
-Router::parseExtensions('pdf', 'csv');
-require 'routes_phapp.php';
+if (Configure::check('CakePdf.phkondo.active') && Configure::read('CakePdf.phkondo.active')==true) {
+    Router::parseExtensions('csv', 'pdf');
+} else {
+    Router::parseExtensions('csv');
+}

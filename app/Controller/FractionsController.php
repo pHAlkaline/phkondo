@@ -27,6 +27,7 @@
  * 
  */
 App::uses('AppController', 'Controller');
+App::uses('CakeEmail', 'Network/Email');
 
 /**
  * Fractions Controller
@@ -65,10 +66,10 @@ class FractionsController extends AppController {
 
         $this->setFilter(array('Fraction.fraction', 'Fraction.location', 'Fraction.description', 'Fraction.permillage', 'Manager.name', 'FractionType.name'));
         $fractions = $this->Paginator->paginate('Fraction');
-        foreach($fractions as $key => $fraction){
-            $totalDebit=$this->Fraction->Note->sumDebitNotes(null, $fraction['Fraction']['id']);
-            $current_amount=isset($totalDebit['Note']['amount'])?$totalDebit['Note']['amount']:0;
-            $fractions[$key]['Fraction']['current_account']=$current_amount;
+        foreach ($fractions as $key => $fraction) {
+            $totalDebit = $this->Fraction->Note->sumDebitNotes(null, $fraction['Fraction']['id']);
+            $current_amount = isset($totalDebit['Note']['amount']) ? $totalDebit['Note']['amount'] : 0;
+            $fractions[$key]['Fraction']['current_account'] = $current_amount;
         }
         $milRateWarning = false;
         $milRate = Set::extract('/Fraction/permillage', $fractions);
@@ -98,13 +99,8 @@ class FractionsController extends AppController {
         $totalDebit = $this->Fraction->Note->sumDebitNotes(null, $id);
         $totalCredit = $this->Fraction->Note->sumCreditNotes(null, $id);
         $notificationEntities = ClassRegistry::init('Entity')->find('list', array('fields' => array('Entity.email', 'Entity.email'), 'conditions' => array('id' => $fraction['Manager']['id'])));
-
-        App::uses('CakeEmail', 'Network/Email');
-        $Email = new CakeEmail();
-        $Email->config('default');
-        $config = $Email->config();
-
-        $this->set(compact('fraction', 'totalDebit', 'totalCredit', 'notificationEntities', 'config'));
+        $emailNotifications = Configure::read('EmailNotifications');
+        $this->set(compact('fraction', 'totalDebit', 'totalCredit', 'notificationEntities','emailNotifications'));
         $this->setPhkRequestVar('fraction_id', $id);
     }
 
@@ -211,10 +207,10 @@ class FractionsController extends AppController {
      */
     public function send_current_account($id) {
         if (Configure::read('Application.mode') == 'demo') {
-            $this->Flash->success(__d('email','Email sent with success.'));
+            $this->Flash->success(__d('email', 'Email sent with success.'));
             $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
         }
-        
+
         if (!$this->Fraction->exists($id)) {
             $this->Flash->error(__('Invalid fraction'));
             $this->redirect(array('action' => 'index', '?' => $this->request->query));
@@ -225,6 +221,7 @@ class FractionsController extends AppController {
         ));
         $this->getEventManager()->dispatch($event);
     }
+
     /**
      * current_account method
      *

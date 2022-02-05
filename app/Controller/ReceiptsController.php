@@ -91,13 +91,10 @@ class ReceiptsController extends AppController {
         $receipt = $this->Receipt->find('first', $options);
         $this->Receipt->Client->order = 'Client.name';
         $notificationEntities = $condos = $this->Receipt->Client->find('list', array('fields' => array('Client.email', 'Client.email'), 'conditions' => array('id' => $receipt['Client']['id'])));
-        
-        App::uses('CakeEmail', 'Network/Email');
-        $Email = new CakeEmail();
-        $Email->config('default');
-        $config = $Email->config();
 
-        $this->set(compact('receipt', 'notificationEntities', 'config'));
+        $emailNotifications = Configure::read('EmailNotifications');
+
+        $this->set(compact('receipt', 'notificationEntities', 'emailNotifications'));
         $this->setPhkRequestVar('receipt_id', $id);
     }
 
@@ -129,10 +126,10 @@ class ReceiptsController extends AppController {
      */
     public function send_receipt($id) {
         if (Configure::read('Application.mode') == 'demo') {
-            $this->Flash->success(__d('email','Email sent with success.'));
+            $this->Flash->success(__d('email', 'Email sent with success.'));
             $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
         }
-        
+
         if (!$this->Receipt->exists($id)) {
             $this->Flash->error(__('Invalid receipt'));
             $this->redirect(array('action' => 'index', '?' => $this->request->query));

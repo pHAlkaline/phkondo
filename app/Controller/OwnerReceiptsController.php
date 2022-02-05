@@ -94,12 +94,9 @@ class OwnerReceiptsController extends AppController {
         $this->Receipt->Client->order = 'Client.name';
         $notificationEntities = $this->Receipt->Client->find('list', array('fields' => array('Client.email', 'Client.email'), 'conditions' => array('id' => $receipt['Client']['id'])));
 
-        App::uses('CakeEmail', 'Network/Email');
-        $Email = new CakeEmail();
-        $Email->config('default');
-        $config = $Email->config();
+        $emailNotifications = Configure::read('EmailNotifications');
 
-        $this->set(compact('receipt', 'notificationEntities', 'config'));
+        $this->set(compact('receipt', 'notificationEntities', 'emailNotifications'));
         $this->setPhkRequestVar('receipt_id', $id);
         $this->setPhkRequestVar('receipt_view', $receipt['Receipt']['document']);
     }
@@ -132,7 +129,7 @@ class OwnerReceiptsController extends AppController {
      */
     public function send_owner_receipt($id) {
         if (Configure::read('Application.mode') == 'demo') {
-            $this->Flash->success(__d('email','Email sent with success.'));
+            $this->Flash->success(__d('email', 'Email sent with success.'));
             $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
         }
         if (!$this->Receipt->exists($id)) {

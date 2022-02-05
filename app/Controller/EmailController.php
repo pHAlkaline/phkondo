@@ -29,6 +29,7 @@
 App::uses('AppController', 'Controller');
 App::uses('Condo', 'Model');
 App::uses('Receipt', 'Model');
+App::uses('CakeEmail', 'Network/Email');
 
 /**
  * Email Controller
@@ -53,13 +54,6 @@ class EmailController extends AppController {
         'port' => '',
         'username' => '',
         'password' => '',
-        'receipt_subject' => '',
-        'receipt_message' => '',
-        'receipt_attachment_format'=>'html',
-        'current_account_subject' => '',
-        'current_account_message' => '',
-        'current_account_attachment_format'=>'html'
-                             
     );
 
     /**
@@ -72,7 +66,6 @@ class EmailController extends AppController {
     public function config() {
         $this->set('title_for_layout', __('Email'));
         $this->set('title_for_step', __('Email'));
-          
         if (empty($this->request->data)) {
             return;
         }
@@ -92,10 +85,28 @@ class EmailController extends AppController {
         }
 
         if (!$file->write($content)) {
-            $this->Flash->error(__d('email','Could not write email.php file.'));
+            $this->Flash->error(__d('email', 'Could not save email client settings.'));
             return;
         }
-        $this->Flash->success(__d('email','Config saved with success.'));
+
+
+        foreach ($this->request->data as $key => $value) {
+            if (Configure::check('EmailNotifications.' . $key)) {
+                Configure::write('EmailNotifications.' . $key, $value);
+            }
+        }
+
+        Configure::write('EmailNotifications.active', true);
+        if (!Configure::dump('email_notifications.php', 'default', array('EmailNotifications'))) {
+            $this->Flash->error(__d('email', 'Could not save notification settings.'));
+            return;
+        }
+
+
+        $this->Flash->success(__d('email', 'Config saved with success.'));
+        if ($this->request->data['test']) {
+            $this->_sendTest();
+        }
         $this->redirect(array('action' => 'config'));
     }
 
@@ -106,12 +117,12 @@ class EmailController extends AppController {
             array('link' => Router::url(array('controller' => 'email', 'action' => 'config')), 'text' => __('Email'), 'active' => 'active'));
 
         $headerTitle = __('Email');
-        App::uses('CakeEmail', 'Network/Email');
+
         $Email = new CakeEmail();
         $Email->config('default');
-        $config = $Email->config();
-      
-        $this->set(compact('breadcrumbs', 'headerTitle', 'config'));
+        $emailClient = $Email->config();
+        $emailNotifications = Configure::read('EmailNotifications');
+        $this->set(compact('breadcrumbs', 'headerTitle', 'emailClient', 'emailNotifications'));
     }
 
     public function isAuthorized($user) {
@@ -132,6 +143,23 @@ class EmailController extends AppController {
 
 
         return parent::isAuthorized($user);
+    }
+
+    private function _sendTest() {
+        if (!extension_loaded('openssl')) {
+            throw new Exception('This app needs the Open SSL PHP extension.');
+        }
+        try {
+            $Email = new CakeEmail();
+            $Email->from(array($this->request->data['email'] => $this->request->data['name']))
+                    ->sender($this->request->data['email'], $this->request->data['name'])
+                    ->to($this->request->data['email'])
+                    ->subject($this->request->data['subject'])
+                    ->send(__d('email', 'Test message'));
+            $this->Flash->success(__d('email', 'Email sent with success.'));
+        } catch (\Exception $e) {
+            $this->Flash->error($e->getMessage());
+        }
     }
 
 }

@@ -66,8 +66,8 @@
         "phalkaline/phkondo-drafts": "1.6.*",
         "phalkaline/phkondo-print-receipt": "1.6.*",
         "phalkaline/phkondo-reports": "1.6.*",
-        "friendsofcake/cakepdf": "1.0.*",
-        "mpdf/mpdf": "^8.0"
+        "friendsofcake/cakepdf": "1.0.*"
+        
     },
     "minimum-stability": "dev",
     "prefer-stable": true

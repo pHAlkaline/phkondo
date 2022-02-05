@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * pHKondo : pHKondo software for condominium property managers (http://phalkaline.net)
@@ -62,12 +63,13 @@ if (!isset($headerTitle)) {
         echo $this->Html->meta('icon');
         echo $this->fetch('meta');
         ?>
-        <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,531;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,531;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-        <?php
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,531;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,531;1,600;1,700;1,800;1,900&display=swap">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" integrity="sha512-i8+QythOYyQke6XbStjt9T4yQHhhM+9Y9yTY1fOxoDQwsQpKMEpIoSQZ8mVomtnVCf9PBvoQDnKl06gGOOD19Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
+
+ <?php
         echo $this->Html->css(array(
             'animate/animate.min',
             //'bootstrap/bootstrap-glyphicons',
-            'bootstrap/font-awesome.min',
             'bootstrap/bootstrap',
             'bootstrap/bootstrap-theme',
             'select2/select2',
@@ -124,7 +126,7 @@ if (!isset($headerTitle)) {
                     phkondolang = 'it';
                     break;
             }
-            
+
             $('.datefield').attr('autocomplete', 'off');
 
             $('select').select2({

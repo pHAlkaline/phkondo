@@ -22,7 +22,7 @@
  * @copyright     Copyright (c) pHAlkaline . (http://phalkaline.net)
  * @link          https://phkondo.net pHKondo Project
  * @@package      app.View.Themed.Layouts
- * @since         pHKondo v 1.6.2
+ * @since         pHKondo v 1.7
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  *
  */
@@ -65,7 +65,8 @@ if (!isset($headerTitle)) {
         ?>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,531;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,531;1,600;1,700;1,800;1,900&display=swap">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" integrity="sha512-i8+QythOYyQke6XbStjt9T4yQHhhM+9Y9yTY1fOxoDQwsQpKMEpIoSQZ8mVomtnVCf9PBvoQDnKl06gGOOD19Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
-        <?php
+
+            <?php
         echo $this->Html->css(array(
             'animate/animate.min',
             //'bootstrap/bootstrap-glyphicons',
@@ -90,13 +91,15 @@ if (!isset($headerTitle)) {
     <body>
 
         <div id="main-container">
+
+            <div id="header" class="container hidden-print">
+                <?php echo $this->element('menu/top_menu', array('headerDescription' => '')); ?>
+            </div><!-- #header .container -->
+
             <div id="content" class="container">
-                <div class="row hidden-print">
+                <div class="hidden-print">
                     <?php if (isset($breadcrumbs)) echo $this->element('breadcrumbs', array('breadcrumbs', $breadcrumbs)); ?>
-                    <div class="col-sm-12">
-                        <p>&nbsp;</p>
-                        <?php echo $this->Flash->render(); ?>
-                    </div>
+                    <?php echo $this->Flash->render(); ?>
                 </div>
                 <?php echo $this->fetch('content'); ?>
             </div><!-- #header .container -->
@@ -150,8 +153,10 @@ if (!isset($headerTitle)) {
             $(document).ready(function () {
                 $("form").submit(function () {
                     // prevent duplicate form submissions
-                    $(this).find(":submit").attr('disabled', 'disabled').prepend(' <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> ');
-                    ;
+                    var submitBtns = $(this).find(":submit");
+                    console.log(submitBtns);
+                    submitBtns.attr('disabled', 'disabled').prepend(' <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> ');
+
                 });
                 var phkondolang = 'en-GB';
                 switch (phkondo.APP_LANG) {
@@ -175,6 +180,15 @@ if (!isset($headerTitle)) {
                 );
                 $("li.disabled").find('a').removeAttr("href");
                 $("li.disabled").find('a').removeAttr("onclick");
+
+                // tabs keep state
+                $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                    localStorage.setItem('activeTab', $(e.target).attr('href'));
+                });
+                var activeTab = localStorage.getItem('activeTab');
+                if (activeTab) {
+                    $('.nav-tabs a[href="' + activeTab + '"]').tab('show');
+                }
             });
         </script>
         <?php
