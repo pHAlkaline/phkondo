@@ -13,20 +13,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: Config/bootstrap_phapp.php:132
+#: Config/bootstrap_phapp.php:154
 msgid "App Administrator"
 msgstr ""
 
-#: Config/bootstrap_phapp.php:134
+#: Config/bootstrap_phapp.php:156
 msgid "Employee"
 msgstr ""
 
-#: Config/bootstrap_phapp.php:133
+#: Config/bootstrap_phapp.php:155
 #: Plugin/Drafts/View/CondoDrafts/view.ctp:70
 #: View/Themed/Phkondo/Entities/view.ctp:123
 #: View/Themed/Phkondo/FractionEntities/view.ctp:24
 #: View/Themed/Phkondo/Fractions/index.ctp:42
-#: View/Themed/Phkondo/Fractions/view.ctp:52
+#: View/Themed/Phkondo/Fractions/view.ctp:56;121
 msgid "Manager"
 msgid_plural "Managers"
 msgstr[0] ""
@@ -115,9 +115,10 @@ msgstr[1] ""
 #: View/Themed/Phkondo/Elements/search_tool.ctp:21;22;25
 #: View/Themed/Phkondo/Elements/search_tool_notes.ctp:29;30;34
 #: View/Themed/Phkondo/Elements/search_tool_notes_owner.ctp:29;30;34
-#: View/Themed/Phkondo/Layouts/clean.ctp:143
-#: View/Themed/Phkondo/Layouts/default.ctp:145
-#: View/Themed/Phkondo/Layouts/login.ctp:111
+#: View/Themed/Phkondo/Layouts/clean.ctp:144
+#: View/Themed/Phkondo/Layouts/default.ctp:146
+#: View/Themed/Phkondo/Layouts/login.ctp:113
+#: View/Themed/Phkondo/Layouts/pdf/default.ctp:147
 msgid "Search"
 msgstr ""
 
@@ -126,11 +127,11 @@ msgstr ""
 #: Controller/DraftsController.php:57
 #: Controller/FractionInsurancesController.php:172
 #: Controller/FractionNotesController.php:257
-#: Controller/FractionOwnersController.php:259
-#: Controller/FractionsController.php:213
+#: Controller/FractionOwnersController.php:287
+#: Controller/FractionsController.php:247
 #: Controller/InsurancesController.php:163
 #: Controller/MaintenancesController.php:161
-#: Controller/ReceiptsController.php:569
+#: Controller/ReceiptsController.php:566
 #: Controller/ReportsController.php:57
 #: Controller/SuppliersController.php:129;173
 msgid "Invalid condo"
@@ -143,7 +144,7 @@ msgstr ""
 #: Plugin/Attachments/View/MaintenanceAttachments/view.ctp:36
 #: View/Themed/Phkondo/Condos/view.ctp:35
 #: View/Themed/Phkondo/FractionInsurances/view.ctp:12
-#: View/Themed/Phkondo/Fractions/view.ctp:21
+#: View/Themed/Phkondo/Fractions/view.ctp:23
 #: View/Themed/Phkondo/Insurances/view.ctp:12
 #: View/Themed/Phkondo/Maintenances/view.ctp:12
 msgid "Attachment"
@@ -154,20 +155,17 @@ msgstr[1] ""
 #: Controller/AttachmentsController.php:73
 #: Controller/FractionInsurancesController.php:183
 #: Controller/FractionNotesController.php:268
-#: Controller/FractionOwnersController.php:270
-#: Controller/FractionsController.php:224;228;232;236
+#: Controller/FractionOwnersController.php:298
+#: Controller/FractionsController.php:258;262;266;270
 #: Controller/OwnerNotesController.php:270
-#: Controller/OwnerReceiptsController.php:588
+#: Controller/OwnerReceiptsController.php:585
 #: Plugin/Attachments/Controller/FractionAttachmentsController.php:163
 #: Plugin/Drafts/View/CondoDrafts/draft_presence.ctp:36
 #: Plugin/Drafts/View/CondoDrafts/view.ctp:71
-#: Plugin/PrintReceipt/View/OwnerReceipts/receipt.ctp:58
-#: Plugin/PrintReceipt/View/OwnerReceipts/pdf/receipt.ctp:58
-#: Plugin/PrintReceipt/View/Pdf/receipt.ctp:58
-#: Plugin/PrintReceipt/View/Receipts/receipt.ctp:58
-#: Plugin/PrintReceipt/View/Receipts/pdf/receipt.ctp:58
-#: Plugin/Reports/View/Reports/income_report.ctp:38
-#: Plugin/Reports/View/Reports/income_report_detailed.ctp:40
+#: Plugin/Reports/View/Reports/income_report.ctp:37
+#: Plugin/Reports/View/Reports/income_report_detailed.ctp:39
+#: Plugin/Reports/View/Reports/Pdf/income_report.ctp:37
+#: Plugin/Reports/View/Reports/Pdf/income_report_detailed.ctp:39
 #: View/Themed/Phkondo/BudgetNotes/create.ctp:53
 #: View/Themed/Phkondo/BudgetNotes/index.ctp:42
 #: View/Themed/Phkondo/BudgetNotes/view.ctp:71
@@ -177,7 +175,7 @@ msgstr[1] ""
 #: View/Themed/Phkondo/FractionNotes/view.ctp:60
 #: View/Themed/Phkondo/Fractions/edit.ctp:9
 #: View/Themed/Phkondo/Fractions/index.ctp:13
-#: View/Themed/Phkondo/Fractions/view.ctp:33;64
+#: View/Themed/Phkondo/Fractions/view.ctp:34;68
 #: View/Themed/Phkondo/Insurances/index.ctp:28
 #: View/Themed/Phkondo/Insurances/view.ctp:35
 #: View/Themed/Phkondo/OwnerNotes/view.ctp:62
@@ -185,7 +183,7 @@ msgstr[1] ""
 #: View/Themed/Phkondo/OwnerReceipts/view.ctp:82
 #: View/Themed/Phkondo/Receipts/edit.ctp:127
 #: View/Themed/Phkondo/Receipts/index.ctp:27
-#: View/Themed/Phkondo/Receipts/view.ctp:80;166
+#: View/Themed/Phkondo/Receipts/view.ctp:80;167
 #: View/Themed/Phkondo/Supports/index.ctp:22
 #: View/Themed/Phkondo/Supports/view.ctp:30
 msgid "Fraction"
@@ -200,7 +198,7 @@ msgstr[1] ""
 #: View/Themed/Phkondo/Condos/view.ctp:33
 #: View/Themed/Phkondo/FractionInsurances/index.ctp:11
 #: View/Themed/Phkondo/FractionInsurances/view.ctp:25
-#: View/Themed/Phkondo/Fractions/view.ctp:20
+#: View/Themed/Phkondo/Fractions/view.ctp:22
 #: View/Themed/Phkondo/Insurances/index.ctp:11
 #: View/Themed/Phkondo/Insurances/view.ctp:25
 msgid "Insurance"
@@ -311,8 +309,8 @@ msgstr[1] ""
 #: View/Themed/Phkondo/FractionNotes/edit.ctp:9
 #: View/Themed/Phkondo/FractionNotes/index.ctp:13
 #: View/Themed/Phkondo/FractionNotes/view.ctp:33
-#: View/Themed/Phkondo/FractionOwners/view.ctp:12
-#: View/Themed/Phkondo/Fractions/view.ctp:19
+#: View/Themed/Phkondo/FractionOwners/view.ctp:11
+#: View/Themed/Phkondo/Fractions/view.ctp:21
 #: View/Themed/Phkondo/OwnerNotes/edit.ctp:9
 #: View/Themed/Phkondo/OwnerNotes/index.ctp:11
 #: View/Themed/Phkondo/OwnerNotes/view.ctp:32
@@ -384,20 +382,24 @@ msgstr[1] ""
 msgid "Drafts"
 msgstr ""
 
-#: Controller/EmailController.php:68;69;101;103
+#: Controller/EmailController.php:67;68;117;119
 #: Plugin/Feedback/View/Elements/comment_add.ctp:33
-#: Plugin/PrintReceipt/View/OwnerReceipts/receipt.ctp:38
-#: Plugin/PrintReceipt/View/OwnerReceipts/pdf/receipt.ctp:38
-#: Plugin/PrintReceipt/View/Pdf/receipt.ctp:38
-#: Plugin/PrintReceipt/View/Receipts/receipt.ctp:38
-#: Plugin/PrintReceipt/View/Receipts/pdf/receipt.ctp:38
-#: Plugin/Reports/View/FractionOwners/fraction_owner_current_account.ctp:18;27
-#: Plugin/Reports/View/Fractions/fraction_current_account.ctp:18
+#: Plugin/PrintReceipt/View/OwnerReceipts/receipt.ctp:27;36
+#: Plugin/PrintReceipt/View/OwnerReceipts/pdf/receipt.ctp:27;36
+#: Plugin/PrintReceipt/View/Pdf/receipt.ctp:27;36
+#: Plugin/PrintReceipt/View/Receipts/receipt.ctp:28;37
+#: Plugin/PrintReceipt/View/Receipts/pdf/receipt.ctp:27;36
+#: Plugin/Reports/View/FractionOwners/entity_current_account.ctp:17;26
+#: Plugin/Reports/View/FractionOwners/Pdf/entity_current_account.ctp:17;26
+#: Plugin/Reports/View/Fractions/fraction_current_account.ctp:17
+#: Plugin/Reports/View/Fractions/Pdf/fraction_current_account.ctp:17
+#: Plugin/Reports/View/Pdf/entity_current_account.ctp:17;26
+#: Plugin/Reports/View/Pdf/fraction_current_account.ctp:17
 #: View/Themed/Phkondo/Condos/view.ctp:101
 #: View/Themed/Phkondo/Elements/menu/top_menu.ctp:103
 #: View/Themed/Phkondo/Entities/view.ctp:66
 #: View/Themed/Phkondo/FractionEntities/view.ctp:54
-#: View/Themed/Phkondo/FractionOwners/view.ctp:60
+#: View/Themed/Phkondo/FractionOwners/view.ctp:74
 #: View/Themed/Phkondo/Suppliers/view.ctp:61
 msgid "Email"
 msgstr ""
@@ -427,8 +429,10 @@ msgstr ""
 
 #: Controller/EntitiesController.php:178;182;186;191
 #: Plugin/Drafts/View/CondoDrafts/draft_presence.ctp:37
-#: Plugin/Reports/View/Reports/income_report.ctp:39
-#: Plugin/Reports/View/Reports/income_report_detailed.ctp:41
+#: Plugin/Reports/View/Reports/income_report.ctp:38
+#: Plugin/Reports/View/Reports/income_report_detailed.ctp:40
+#: Plugin/Reports/View/Reports/Pdf/income_report.ctp:38
+#: Plugin/Reports/View/Reports/Pdf/income_report_detailed.ctp:40
 #: View/Themed/Phkondo/Administrators/index.ctp:26
 #: View/Themed/Phkondo/Administrators/view.ctp:29
 #: View/Themed/Phkondo/BudgetNotes/index.ctp:43
@@ -521,47 +525,47 @@ msgstr ""
 msgid "Insurance can not be deleted"
 msgstr ""
 
-#: Controller/FractionOwnersController.php:77;135;168;215;245
+#: Controller/FractionOwnersController.php:77;140;173;222;243;273
 msgid "Invalid owner"
 msgstr ""
 
-#: Controller/FractionOwnersController.php:82;220
+#: Controller/FractionOwnersController.php:82;248
 msgid "The owner could not be found at this fraction. Please, try again."
 msgstr ""
 
-#: Controller/FractionOwnersController.php:109;151;181
+#: Controller/FractionOwnersController.php:114;156;186
 msgid "The owner has been saved"
 msgstr ""
 
-#: Controller/FractionOwnersController.php:111;153;184
+#: Controller/FractionOwnersController.php:116;158;189
 msgid "The owner could not be saved. Please, try again."
 msgstr ""
 
-#: Controller/FractionOwnersController.php:118
+#: Controller/FractionOwnersController.php:123
 msgid "The owner has been saved and related"
 msgstr ""
 
-#: Controller/FractionOwnersController.php:120
+#: Controller/FractionOwnersController.php:125
 msgid "The owner has been saved but could not be related. Please, try again."
 msgstr ""
 
-#: Controller/FractionOwnersController.php:249
+#: Controller/FractionOwnersController.php:277
 msgid "Owner removed"
 msgstr ""
 
-#: Controller/FractionOwnersController.php:252
+#: Controller/FractionOwnersController.php:280
 msgid "Owner was not removed"
 msgstr ""
 
-#: Controller/FractionOwnersController.php:272;276;280;284
+#: Controller/FractionOwnersController.php:300;304;308;312
 #: Controller/OwnerNotesController.php:272
-#: Controller/OwnerReceiptsController.php:590
+#: Controller/OwnerReceiptsController.php:587
 #: Plugin/Drafts/View/CondoDrafts/view.ctp:70
 #: View/Themed/Phkondo/BudgetNotes/create.ctp:52
 #: View/Themed/Phkondo/FractionOwners/edit.ctp:9;10
 #: View/Themed/Phkondo/FractionOwners/index.ctp:12
-#: View/Themed/Phkondo/FractionOwners/view.ctp:9;26
-#: View/Themed/Phkondo/Fractions/view.ctp:18
+#: View/Themed/Phkondo/FractionOwners/view.ctp:139;8;23
+#: View/Themed/Phkondo/Fractions/view.ctp:20
 msgid "Owner"
 msgid_plural "Owners"
 msgstr[0] ""
@@ -597,29 +601,29 @@ msgstr ""
 msgid "Fraction Types"
 msgstr ""
 
-#: Controller/FractionsController.php:86;126;170;201
+#: Controller/FractionsController.php:93;137;180;215;235
 #: Controller/OwnerNotesController.php:259
-#: Controller/OwnerReceiptsController.php:577
+#: Controller/OwnerReceiptsController.php:574
 msgid "Invalid fraction"
 msgstr ""
 
-#: Controller/FractionsController.php:105;131
+#: Controller/FractionsController.php:116;142
 msgid "The fraction has been saved"
 msgstr ""
 
-#: Controller/FractionsController.php:109;135
+#: Controller/FractionsController.php:120;146
 msgid "The fraction could not be saved. Please, try again."
 msgstr ""
 
-#: Controller/FractionsController.php:175
+#: Controller/FractionsController.php:185
 msgid "This Fraction can not be deleted, check existing notes already paid."
 msgstr ""
 
-#: Controller/FractionsController.php:184
+#: Controller/FractionsController.php:194
 msgid "Fraction deleted"
 msgstr ""
 
-#: Controller/FractionsController.php:187
+#: Controller/FractionsController.php:197
 msgid "Fraction can not be deleted"
 msgstr ""
 
@@ -631,13 +635,14 @@ msgid "Income Control"
 msgstr ""
 
 #: Controller/IncomeController.php:102
-#: Controller/OwnerReceiptsController.php:592;596;601;605;609;613;617
-#: Controller/ReceiptsController.php:580;585;590;594;599
-#: Plugin/Reports/View/Reports/income_report_detailed.ctp:42
+#: Controller/OwnerReceiptsController.php:589;593;598;602;606;610;614
+#: Controller/ReceiptsController.php:577;582;587;591;596
+#: Plugin/Reports/View/Reports/income_report_detailed.ctp:41
+#: Plugin/Reports/View/Reports/Pdf/income_report_detailed.ctp:41
 #: View/Themed/Phkondo/BudgetNotes/view.ctp:118
 #: View/Themed/Phkondo/Condos/view.ctp:29
 #: View/Themed/Phkondo/FractionNotes/view.ctp:107
-#: View/Themed/Phkondo/FractionOwners/view.ctp:13
+#: View/Themed/Phkondo/FractionOwners/view.ctp:12
 #: View/Themed/Phkondo/Income/index.ctp:19;21
 #: View/Themed/Phkondo/Income/receipts.ctp:36;65
 #: View/Themed/Phkondo/OwnerNotes/view.ctp:125
@@ -846,37 +851,37 @@ msgstr ""
 msgid "Invalid account or fiscal year"
 msgstr ""
 
-#: Controller/OwnerReceiptsController.php:81;116;139;191;271;277;293;328;333;358;403;409;431;437;455;461;479
-#: Controller/ReceiptsController.php:79;113;137;199;279;284;300;331;336;355;398;404;426;432;450;456;474
+#: Controller/OwnerReceiptsController.php:81;113;136;188;268;274;290;325;330;355;400;406;428;434;452;458;476
+#: Controller/ReceiptsController.php:79;110;134;196;276;281;297;328;333;352;395;401;423;429;447;453;471
 msgid "Invalid receipt"
 msgstr ""
 
-#: Controller/OwnerReceiptsController.php:168;284;339;470
-#: Controller/ReceiptsController.php:165;291;342;465
+#: Controller/OwnerReceiptsController.php:165;281;336;467
+#: Controller/ReceiptsController.php:162;288;339;462
 msgid "The receipt has been saved"
 msgstr ""
 
-#: Controller/OwnerReceiptsController.php:173;287;342;473
-#: Controller/ReceiptsController.php:169;294;345;468
+#: Controller/OwnerReceiptsController.php:170;284;339;470
+#: Controller/ReceiptsController.php:166;291;342;465
 msgid "The receipt could not be saved. Please, try again."
 msgstr ""
 
-#: Controller/OwnerReceiptsController.php:215
-#: Controller/ReceiptsController.php:222
+#: Controller/OwnerReceiptsController.php:212
+#: Controller/ReceiptsController.php:219
 msgid "The notes could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/OwnerReceiptsController.php:412
+#: Controller/ReceiptsController.php:407
+msgid "Receipt deleted"
 msgstr ""
 
 #: Controller/OwnerReceiptsController.php:415
 #: Controller/ReceiptsController.php:410
-msgid "Receipt deleted"
-msgstr ""
-
-#: Controller/OwnerReceiptsController.php:418
-#: Controller/ReceiptsController.php:413
 msgid "Receipt can not be deleted"
 msgstr ""
 
-#: Controller/OwnerReceiptsController.php:598
+#: Controller/OwnerReceiptsController.php:595
 msgid "Pick Notes"
 msgstr ""
 
@@ -886,12 +891,16 @@ msgstr ""
 #: View/Themed/Phkondo/Condos/drafts.ctp:3
 #: View/Themed/Phkondo/Drafts/notfound.ctp:3
 #: View/Themed/Phkondo/FractionOwners/current_account.ctp:3
+#: View/Themed/Phkondo/FractionOwners/send_current_account.ctp:3
 #: View/Themed/Phkondo/Fractions/current_account.ctp:3
+#: View/Themed/Phkondo/Fractions/send_current_account.ctp:3
 #: View/Themed/Phkondo/Install/not_found.ctp:3
 #: View/Themed/Phkondo/OwnerReceipts/print_receipt.ctp:3
+#: View/Themed/Phkondo/OwnerReceipts/send_owner_receipt.ctp:3
 #: View/Themed/Phkondo/Pages/drafts.ctp:3
 #: View/Themed/Phkondo/Receipts/print_receipt.ctp:3
-#: View/Themed/Phkondo/Receipts/send_email.ctp:3
+#: View/Themed/Phkondo/Receipts/send_receipt.ctp:3
+#: View/Themed/Phkondo/Receipts/pdf/print_receipt.ctp:3
 #: View/Themed/Phkondo/Reports/notfound.ctp:3
 msgid "pHKondo"
 msgstr ""
@@ -901,10 +910,6 @@ msgstr ""
 #: View/Themed/Phkondo/Pages/login.ctp:43
 #: View/Themed/Phkondo/Users/login.ctp:43
 msgid "Start Session"
-msgstr ""
-
-#: Controller/ReceiptsController.php:587
-msgid "Pick   Notes"
 msgstr ""
 
 #: Controller/ReportsController.php:68;70
@@ -1109,7 +1114,7 @@ msgstr ""
 #: Plugin/Attachments/View/MaintenanceAttachments/edit.ctp:56
 #: Plugin/Drafts/View/Drafts/add.ctp:62
 #: Plugin/Drafts/View/Drafts/edit.ctp:73
-#: View/Themed/Phkondo/Accounts/add.ctp:80
+#: View/Themed/Phkondo/Accounts/add.ctp:82
 #: View/Themed/Phkondo/Accounts/edit.ctp:85
 #: View/Themed/Phkondo/Administrators/add.ctp:54
 #: View/Themed/Phkondo/Administrators/edit.ctp:59
@@ -1119,8 +1124,8 @@ msgstr ""
 #: View/Themed/Phkondo/Budgets/add.ctp:108
 #: View/Themed/Phkondo/Budgets/edit.ctp:136
 #: View/Themed/Phkondo/Condos/add.ctp:67
-#: View/Themed/Phkondo/Condos/edit.ctp:58
-#: View/Themed/Phkondo/Email/config.ctp:59
+#: View/Themed/Phkondo/Condos/edit.ctp:56
+#: View/Themed/Phkondo/Email/config.ctp:122
 #: View/Themed/Phkondo/Entities/add.ctp:73
 #: View/Themed/Phkondo/Entities/add_from_fraction.ctp:74
 #: View/Themed/Phkondo/Entities/edit.ctp:68
@@ -1138,7 +1143,7 @@ msgstr ""
 #: View/Themed/Phkondo/FractionTypes/add.ctp:48
 #: View/Themed/Phkondo/FractionTypes/edit.ctp:56
 #: View/Themed/Phkondo/Fractions/add.ctp:56
-#: View/Themed/Phkondo/Fractions/edit.ctp:73
+#: View/Themed/Phkondo/Fractions/edit.ctp:72
 #: View/Themed/Phkondo/Install/adminuser.ctp:22
 #: View/Themed/Phkondo/Install/data.ctp:27
 #: View/Themed/Phkondo/Install/database.ctp:60
@@ -1229,8 +1234,8 @@ msgstr ""
 #: View/Themed/Phkondo/FractionTypes/index.ctp:45
 #: View/Themed/Phkondo/FractionTypes/view.ctp:14
 #: View/Themed/Phkondo/Fractions/edit.ctp:16
-#: View/Themed/Phkondo/Fractions/index.ctp:72
-#: View/Themed/Phkondo/Fractions/view.ctp:15
+#: View/Themed/Phkondo/Fractions/index.ctp:74
+#: View/Themed/Phkondo/Fractions/view.ctp:17
 #: View/Themed/Phkondo/InsuranceTypes/edit.ctp:17
 #: View/Themed/Phkondo/InsuranceTypes/index.ctp:45
 #: View/Themed/Phkondo/InsuranceTypes/view.ctp:14
@@ -1260,7 +1265,7 @@ msgstr ""
 #: View/Themed/Phkondo/OwnerReceipts/view.ctp:33
 #: View/Themed/Phkondo/Receipts/edit.ctp:22
 #: View/Themed/Phkondo/Receipts/index.ctp:82
-#: View/Themed/Phkondo/Receipts/view.ctp:32
+#: View/Themed/Phkondo/Receipts/view.ctp:33
 #: View/Themed/Phkondo/Suppliers/edit.ctp:17
 #: View/Themed/Phkondo/Suppliers/index.ctp:47
 #: View/Themed/Phkondo/Suppliers/view.ctp:16
@@ -1309,10 +1314,10 @@ msgstr ""
 #: View/Themed/Phkondo/OwnerNotes/index.ctp:22
 #: View/Themed/Phkondo/OwnerReceipts/edit.ctp:124
 #: View/Themed/Phkondo/OwnerReceipts/index.ctp:22
-#: View/Themed/Phkondo/OwnerReceipts/view.ctp:174
+#: View/Themed/Phkondo/OwnerReceipts/view.ctp:175
 #: View/Themed/Phkondo/Receipts/edit.ctp:120
 #: View/Themed/Phkondo/Receipts/index.ctp:22
-#: View/Themed/Phkondo/Receipts/view.ctp:161
+#: View/Themed/Phkondo/Receipts/view.ctp:162
 #: View/Themed/Phkondo/Suppliers/index.ctp:21
 #: View/Themed/Phkondo/SupportCategories/index.ctp:21
 #: View/Themed/Phkondo/Supports/index.ctp:19
@@ -1348,9 +1353,10 @@ msgstr ""
 #: View/Themed/Phkondo/FractionInsurances/index.ctp:44
 #: View/Themed/Phkondo/FractionNotes/index.ctp:63
 #: View/Themed/Phkondo/FractionOwners/index.ctp:41
+#: View/Themed/Phkondo/FractionOwners/view.ctp:28
 #: View/Themed/Phkondo/FractionTypes/index.ctp:37
-#: View/Themed/Phkondo/Fractions/index.ctp:70
-#: View/Themed/Phkondo/Fractions/view.ctp:38
+#: View/Themed/Phkondo/Fractions/index.ctp:72
+#: View/Themed/Phkondo/Fractions/view.ctp:39
 #: View/Themed/Phkondo/InsuranceTypes/index.ctp:37
 #: View/Themed/Phkondo/Insurances/index.ctp:45
 #: View/Themed/Phkondo/InvoiceConference/index.ctp:36
@@ -1388,7 +1394,7 @@ msgstr ""
 #: View/Themed/Phkondo/FractionNotes/index.ctp:64
 #: View/Themed/Phkondo/FractionOwners/index.ctp:42
 #: View/Themed/Phkondo/FractionTypes/index.ctp:38
-#: View/Themed/Phkondo/Fractions/index.ctp:71
+#: View/Themed/Phkondo/Fractions/index.ctp:73
 #: View/Themed/Phkondo/InsuranceTypes/index.ctp:38
 #: View/Themed/Phkondo/Insurances/index.ctp:46
 #: View/Themed/Phkondo/InvoiceConference/index_by_supplier.ctp:46
@@ -1420,7 +1426,7 @@ msgstr ""
 #: View/Themed/Phkondo/FractionNotes/index.ctp:65
 #: View/Themed/Phkondo/FractionOwners/index.ctp:43
 #: View/Themed/Phkondo/FractionTypes/index.ctp:45
-#: View/Themed/Phkondo/Fractions/index.ctp:72
+#: View/Themed/Phkondo/Fractions/index.ctp:74
 #: View/Themed/Phkondo/InsuranceTypes/index.ctp:45
 #: View/Themed/Phkondo/Insurances/index.ctp:47
 #: View/Themed/Phkondo/InvoiceConference/index_by_supplier.ctp:47
@@ -1452,7 +1458,7 @@ msgstr ""
 #: View/Themed/Phkondo/FractionInsurances/index.ctp:56
 #: View/Themed/Phkondo/FractionNotes/index.ctp:76
 #: View/Themed/Phkondo/FractionTypes/index.ctp:57
-#: View/Themed/Phkondo/Fractions/index.ctp:83
+#: View/Themed/Phkondo/Fractions/index.ctp:85
 #: View/Themed/Phkondo/InsuranceTypes/index.ctp:56
 #: View/Themed/Phkondo/Insurances/index.ctp:57
 #: View/Themed/Phkondo/InvoiceConference/index.ctp:48
@@ -1487,7 +1493,7 @@ msgstr ""
 #: View/Themed/Phkondo/FractionInsurances/index.ctp:62
 #: View/Themed/Phkondo/FractionNotes/index.ctp:82
 #: View/Themed/Phkondo/FractionTypes/index.ctp:63
-#: View/Themed/Phkondo/Fractions/index.ctp:89
+#: View/Themed/Phkondo/Fractions/index.ctp:91
 #: View/Themed/Phkondo/InsuranceTypes/index.ctp:62
 #: View/Themed/Phkondo/Insurances/index.ctp:63
 #: View/Themed/Phkondo/InvoiceConference/index.ctp:54
@@ -1522,7 +1528,7 @@ msgstr ""
 #: View/Themed/Phkondo/FractionInsurances/index.ctp:64
 #: View/Themed/Phkondo/FractionNotes/index.ctp:84
 #: View/Themed/Phkondo/FractionTypes/index.ctp:65
-#: View/Themed/Phkondo/Fractions/index.ctp:91
+#: View/Themed/Phkondo/Fractions/index.ctp:93
 #: View/Themed/Phkondo/InsuranceTypes/index.ctp:64
 #: View/Themed/Phkondo/Insurances/index.ctp:65
 #: View/Themed/Phkondo/InvoiceConference/index.ctp:56
@@ -1549,7 +1555,7 @@ msgstr ""
 #: View/Themed/Phkondo/Entities/view.ctp:41
 #: View/Themed/Phkondo/FractionEntities/view.ctp:29
 #: View/Themed/Phkondo/FractionOwners/index.ctp:26
-#: View/Themed/Phkondo/FractionOwners/view.ctp:30
+#: View/Themed/Phkondo/FractionOwners/view.ctp:44
 #: View/Themed/Phkondo/FractionTypes/view.ctp:34
 #: View/Themed/Phkondo/InsuranceTypes/view.ctp:34
 #: View/Themed/Phkondo/MovementCategories/view.ctp:35
@@ -1564,7 +1570,10 @@ msgstr ""
 #: Plugin/Attachments/View/FractionAttachments/view.ctp:42
 #: Plugin/Attachments/View/InsuranceAttachments/view.ctp:42
 #: Plugin/Attachments/View/MaintenanceAttachments/view.ctp:42
-#: Plugin/Reports/View/Reports/income_report_detailed.ctp:38
+#: Plugin/Reports/View/Reports/income_report_detailed.ctp:37
+#: Plugin/Reports/View/Reports/Pdf/income_report_detailed.ctp:37
+#: View/Themed/Phkondo/OwnerReceipts/view.ctp:179
+#: View/Themed/Phkondo/Receipts/view.ctp:166
 msgid "Type"
 msgstr ""
 
@@ -1590,9 +1599,9 @@ msgstr ""
 #: View/Themed/Phkondo/FractionEntities/view.ctp:71
 #: View/Themed/Phkondo/FractionInsurances/view.ctp:70
 #: View/Themed/Phkondo/FractionNotes/view.ctp:112
-#: View/Themed/Phkondo/FractionOwners/view.ctp:77
+#: View/Themed/Phkondo/FractionOwners/view.ctp:108
 #: View/Themed/Phkondo/FractionTypes/view.ctp:47
-#: View/Themed/Phkondo/Fractions/view.ctp:92
+#: View/Themed/Phkondo/Fractions/view.ctp:96
 #: View/Themed/Phkondo/InsuranceTypes/view.ctp:47
 #: View/Themed/Phkondo/Insurances/view.ctp:70
 #: View/Themed/Phkondo/InvoiceConference/view.ctp:102
@@ -1626,9 +1635,9 @@ msgstr ""
 #: View/Themed/Phkondo/FractionEntities/view.ctp:76
 #: View/Themed/Phkondo/FractionInsurances/view.ctp:75
 #: View/Themed/Phkondo/FractionNotes/view.ctp:117
-#: View/Themed/Phkondo/FractionOwners/view.ctp:82
+#: View/Themed/Phkondo/FractionOwners/view.ctp:113
 #: View/Themed/Phkondo/FractionTypes/view.ctp:52
-#: View/Themed/Phkondo/Fractions/view.ctp:97
+#: View/Themed/Phkondo/Fractions/view.ctp:101
 #: View/Themed/Phkondo/InsuranceTypes/view.ctp:52
 #: View/Themed/Phkondo/Insurances/view.ctp:75
 #: View/Themed/Phkondo/InvoiceConference/view.ctp:109
@@ -1661,7 +1670,7 @@ msgstr ""
 #: Plugin/Drafts/View/CondoDrafts/draft_presence.ctp:38;49
 #: View/Themed/Phkondo/Entities/view.ctp:51
 #: View/Themed/Phkondo/FractionEntities/view.ctp:39
-#: View/Themed/Phkondo/FractionOwners/view.ctp:45
+#: View/Themed/Phkondo/FractionOwners/view.ctp:59
 #: View/Themed/Phkondo/Suppliers/view.ctp:46
 msgid "Representative"
 msgstr ""
@@ -1673,7 +1682,8 @@ msgstr ""
 
 #: Plugin/Drafts/View/CondoDrafts/view.ctp:37
 #: Plugin/Drafts/View/Drafts/view.ctp:34
-#: Plugin/Reports/View/Reports/income_report_detailed.ctp:39
+#: Plugin/Reports/View/Reports/income_report_detailed.ctp:38
+#: Plugin/Reports/View/Reports/Pdf/income_report_detailed.ctp:38
 #: View/Themed/Phkondo/Accounts/view.ctp:34
 #: View/Themed/Phkondo/Administrators/view.ctp:39
 #: View/Themed/Phkondo/BudgetNotes/view.ctp:55
@@ -1687,23 +1697,25 @@ msgstr ""
 #: View/Themed/Phkondo/Maintenances/view.ctp:30
 #: View/Themed/Phkondo/OwnerNotes/view.ctp:90
 #: View/Themed/Phkondo/OwnerReceipts/edit.ctp:129
-#: View/Themed/Phkondo/OwnerReceipts/view.ctp:180
+#: View/Themed/Phkondo/OwnerReceipts/view.ctp:181
 #: View/Themed/Phkondo/Receipts/edit.ctp:125
-#: View/Themed/Phkondo/Receipts/view.ctp:168
+#: View/Themed/Phkondo/Receipts/view.ctp:169
 msgid "Title"
 msgstr ""
 
 #: Plugin/Drafts/View/CondoDrafts/view.ctp:72
 #: View/Themed/Phkondo/Entities/view.ctp:120
-#: View/Themed/Phkondo/Fractions/view.ctp:76
+#: View/Themed/Phkondo/Fractions/view.ctp:80
 msgid "Location"
 msgstr ""
 
-#: Plugin/Drafts/View/Layouts/print.ctp:18;19
-#: Plugin/PrintReceipt/View/Layouts/print.ctp:3;4
-#: Plugin/PrintReceipt/View/Layouts/pdf/print.ctp:3;4
-#: Plugin/PrintReceipt/View/Pdf/print.ctp:3;4
-#: Plugin/Reports/View/Layouts/print.ctp:18;19
+#: Plugin/Drafts/View/Layouts/print.ctp:28;29
+#: Plugin/PrintReceipt/View/Layouts/attachment.ctp:32;33
+#: Plugin/PrintReceipt/View/Layouts/print.ctp:32;33
+#: Plugin/PrintReceipt/View/Layouts/Pdf/print.ctp:31;32
+#: Plugin/Reports/View/Layouts/attachment.ctp:31;32
+#: Plugin/Reports/View/Layouts/print.ctp:31;32
+#: Plugin/Reports/View/Layouts/pdf/print.ctp:32;33
 msgid "pHkondo Condominium Management"
 msgstr ""
 
@@ -1731,7 +1743,8 @@ msgstr ""
 #: Plugin/Feedback/View/Elements/comment_add.ctp:36
 #: Plugin/Feedback/View/Elements/comment_index.ctp:16
 #: View/Themed/Phkondo/Condos/view.ctp:67
-#: View/Themed/Phkondo/Fractions/view.ctp:41
+#: View/Themed/Phkondo/FractionOwners/view.ctp:34
+#: View/Themed/Phkondo/Fractions/view.ctp:45
 msgid "Comments"
 msgstr ""
 
@@ -1776,121 +1789,65 @@ msgstr ""
 msgid "Missing item with id %d for %s::%s() call"
 msgstr ""
 
-#: Plugin/PrintReceipt/View/Layouts/print.ctp:187
-#: View/Themed/Phkondo/OwnerReceipts/index.ctp:77
-#: View/Themed/Phkondo/Receipts/index.ctp:85
-msgid "Print"
-msgstr ""
-
-#: Plugin/PrintReceipt/View/OwnerReceipts/receipt.ctp:20
-#: Plugin/PrintReceipt/View/OwnerReceipts/pdf/receipt.ctp:20
-#: Plugin/PrintReceipt/View/Pdf/receipt.ctp:20
-#: Plugin/PrintReceipt/View/Receipts/receipt.ctp:20
-#: Plugin/PrintReceipt/View/Receipts/pdf/receipt.ctp:20
-#: Plugin/Reports/View/Reports/income_report_detailed.ctp:37
-#: View/Themed/Phkondo/BudgetNotes/view.ctp:49
-#: View/Themed/Phkondo/FractionNotes/view.ctp:38
-#: View/Themed/Phkondo/Income/receipts.ctp:76
-#: View/Themed/Phkondo/InvoiceConference/view.ctp:37
-#: View/Themed/Phkondo/Movements/view.ctp:79
-#: View/Themed/Phkondo/OwnerNotes/view.ctp:38
-#: View/Themed/Phkondo/OwnerReceipts/edit.ctp:127
-#: View/Themed/Phkondo/OwnerReceipts/view.ctp:75;177
-#: View/Themed/Phkondo/Receipts/edit.ctp:123
-#: View/Themed/Phkondo/Receipts/view.ctp:76;164
-msgid "Document"
-msgstr ""
-
-#: Plugin/PrintReceipt/View/OwnerReceipts/receipt.ctp:22;56
-#: Plugin/PrintReceipt/View/OwnerReceipts/pdf/receipt.ctp:22;56
-#: Plugin/PrintReceipt/View/Pdf/receipt.ctp:22;56
-#: Plugin/PrintReceipt/View/Receipts/receipt.ctp:22;56
-#: Plugin/PrintReceipt/View/Receipts/pdf/receipt.ctp:22;56
-msgid "Date"
-msgstr ""
-
-#: Plugin/PrintReceipt/View/OwnerReceipts/receipt.ctp:37;45
-#: Plugin/PrintReceipt/View/OwnerReceipts/pdf/receipt.ctp:37;45
-#: Plugin/PrintReceipt/View/Pdf/receipt.ctp:37;45
-#: Plugin/PrintReceipt/View/Receipts/receipt.ctp:37;45
-#: Plugin/PrintReceipt/View/Receipts/pdf/receipt.ctp:37;45
-#: Plugin/Reports/View/FractionOwners/fraction_owner_current_account.ctp:17;26
-#: Plugin/Reports/View/Fractions/fraction_current_account.ctp:17
+#: Plugin/PrintReceipt/View/OwnerReceipts/receipt.ctp:26;35
+#: Plugin/PrintReceipt/View/OwnerReceipts/pdf/receipt.ctp:26;35
+#: Plugin/PrintReceipt/View/Pdf/receipt.ctp:26;35
+#: Plugin/PrintReceipt/View/Receipts/receipt.ctp:27;36
+#: Plugin/PrintReceipt/View/Receipts/pdf/receipt.ctp:26;35
+#: Plugin/Reports/View/FractionOwners/entity_current_account.ctp:16;25
+#: Plugin/Reports/View/FractionOwners/Pdf/entity_current_account.ctp:16;25
+#: Plugin/Reports/View/Fractions/fraction_current_account.ctp:16
+#: Plugin/Reports/View/Fractions/Pdf/fraction_current_account.ctp:16
+#: Plugin/Reports/View/Pdf/entity_current_account.ctp:16;25
+#: Plugin/Reports/View/Pdf/fraction_current_account.ctp:16
 msgid "VAT"
 msgstr ""
 
-#: Plugin/PrintReceipt/View/OwnerReceipts/receipt.ctp:39
-#: Plugin/PrintReceipt/View/OwnerReceipts/pdf/receipt.ctp:39
-#: Plugin/PrintReceipt/View/Pdf/receipt.ctp:39
-#: Plugin/PrintReceipt/View/Receipts/receipt.ctp:39
-#: Plugin/PrintReceipt/View/Receipts/pdf/receipt.ctp:39
+#: Plugin/PrintReceipt/View/OwnerReceipts/receipt.ctp:28
+#: Plugin/PrintReceipt/View/OwnerReceipts/pdf/receipt.ctp:28
+#: Plugin/PrintReceipt/View/Pdf/receipt.ctp:28
+#: Plugin/PrintReceipt/View/Receipts/receipt.ctp:29
+#: Plugin/PrintReceipt/View/Receipts/pdf/receipt.ctp:28
 msgid "NIB"
 msgstr ""
 
-#: Plugin/PrintReceipt/View/OwnerReceipts/receipt.ctp:55
-#: Plugin/PrintReceipt/View/OwnerReceipts/pdf/receipt.ctp:55
-#: Plugin/PrintReceipt/View/Pdf/receipt.ctp:55
-#: Plugin/PrintReceipt/View/Receipts/receipt.ctp:55
-#: Plugin/PrintReceipt/View/Receipts/pdf/receipt.ctp:55
-msgid "Doc."
+#: Plugin/PrintReceipt/View/OwnerReceipts/receipt.ctp:42
+#: Plugin/PrintReceipt/View/OwnerReceipts/pdf/receipt.ctp:42
+#: Plugin/PrintReceipt/View/Pdf/receipt.ctp:42
+#: Plugin/PrintReceipt/View/Receipts/receipt.ctp:43
+#: Plugin/PrintReceipt/View/Receipts/pdf/receipt.ctp:42
+#: Plugin/Reports/View/FractionOwners/entity_current_account.ctp:32
+#: Plugin/Reports/View/FractionOwners/Pdf/entity_current_account.ctp:32
+#: Plugin/Reports/View/Fractions/fraction_current_account.ctp:38
+#: Plugin/Reports/View/Fractions/Pdf/fraction_current_account.ctp:38
+#: Plugin/Reports/View/Pdf/entity_current_account.ctp:32
+#: Plugin/Reports/View/Pdf/fraction_current_account.ctp:38
+#: Plugin/Reports/View/Reports/income_report_detailed.ctp:42
+#: Plugin/Reports/View/Reports/Pdf/income_report_detailed.ctp:42
+#: View/Themed/Phkondo/BudgetNotes/view.ctp:60
+#: View/Themed/Phkondo/FractionNotes/view.ctp:49
+#: View/Themed/Phkondo/Income/receipts.ctp:77
+#: View/Themed/Phkondo/InvoiceConference/view.ctp:58
+#: View/Themed/Phkondo/OwnerNotes/view.ctp:46
+#: View/Themed/Phkondo/OwnerReceipts/edit.ctp:128
+#: View/Themed/Phkondo/OwnerReceipts/view.ctp:105
+#: View/Themed/Phkondo/Receipts/view.ctp:96
+msgid "Document Date"
 msgstr ""
 
-#: Plugin/PrintReceipt/View/OwnerReceipts/receipt.ctp:59
-#: Plugin/PrintReceipt/View/OwnerReceipts/pdf/receipt.ctp:59
-#: Plugin/PrintReceipt/View/Pdf/receipt.ctp:59
-#: Plugin/PrintReceipt/View/Receipts/receipt.ctp:59
-#: Plugin/PrintReceipt/View/Receipts/pdf/receipt.ctp:59
-msgid "Descrição"
-msgstr ""
-
-#: Plugin/PrintReceipt/View/OwnerReceipts/receipt.ctp:60
-#: Plugin/PrintReceipt/View/OwnerReceipts/pdf/receipt.ctp:60
-#: Plugin/PrintReceipt/View/Pdf/receipt.ctp:60
-#: Plugin/PrintReceipt/View/Receipts/receipt.ctp:60
-#: Plugin/PrintReceipt/View/Receipts/pdf/receipt.ctp:60
-#: Plugin/Reports/View/Reports/expenses.ctp:18
-#: Plugin/Reports/View/Reports/income_report.ctp:40;78
-#: Plugin/Reports/View/Reports/income_report_detailed.ctp:45
-#: View/Themed/Phkondo/BudgetNotes/create.ctp:56
-#: View/Themed/Phkondo/BudgetNotes/view.ctp:93
-#: View/Themed/Phkondo/Budgets/view.ctp:81
-#: View/Themed/Phkondo/FractionNotes/view.ctp:82
-#: View/Themed/Phkondo/Income/receipts.ctp:83
-#: View/Themed/Phkondo/InvoiceConference/view.ctp:51
-#: View/Themed/Phkondo/Movements/view.ctp:59
-#: View/Themed/Phkondo/OwnerNotes/view.ctp:97
-#: View/Themed/Phkondo/OwnerReceipts/edit.ctp:133
-#: View/Themed/Phkondo/OwnerReceipts/view.ctp:181
-#: View/Themed/Phkondo/Receipts/edit.ctp:129
-#: View/Themed/Phkondo/Receipts/view.ctp:169
-msgid "Amount"
-msgstr ""
-
-#: Plugin/PrintReceipt/View/OwnerReceipts/receipt.ctp:82
-#: Plugin/PrintReceipt/View/OwnerReceipts/pdf/receipt.ctp:82
-#: Plugin/PrintReceipt/View/Pdf/receipt.ctp:82
-#: Plugin/PrintReceipt/View/Receipts/receipt.ctp:82
-#: Plugin/PrintReceipt/View/Receipts/pdf/receipt.ctp:82
-#: Plugin/Reports/View/Reports/expenses.ctp:39
-#: Plugin/Reports/View/Reports/income_report.ctp:63;99
-#: Plugin/Reports/View/Reports/income_report_detailed.ctp:79
-#: View/Themed/Phkondo/BudgetNotes/create.ctp:59
-msgid "Total"
-msgstr ""
-
-#: Plugin/PrintReceipt/View/OwnerReceipts/receipt.ctp:89
-#: Plugin/PrintReceipt/View/OwnerReceipts/pdf/receipt.ctp:89
-#: Plugin/PrintReceipt/View/Pdf/receipt.ctp:89
-#: Plugin/PrintReceipt/View/Receipts/receipt.ctp:89
-#: Plugin/PrintReceipt/View/Receipts/pdf/receipt.ctp:89
+#: Plugin/PrintReceipt/View/OwnerReceipts/receipt.ctp:91
+#: Plugin/PrintReceipt/View/OwnerReceipts/pdf/receipt.ctp:91
+#: Plugin/PrintReceipt/View/Pdf/receipt.ctp:91
+#: Plugin/PrintReceipt/View/Receipts/receipt.ctp:92
+#: Plugin/PrintReceipt/View/Receipts/pdf/receipt.ctp:91
 msgid "Payment"
 msgstr ""
 
-#: Plugin/PrintReceipt/View/OwnerReceipts/receipt.ctp:95
-#: Plugin/PrintReceipt/View/OwnerReceipts/pdf/receipt.ctp:95
-#: Plugin/PrintReceipt/View/Pdf/receipt.ctp:95
+#: Plugin/PrintReceipt/View/OwnerReceipts/receipt.ctp:94
+#: Plugin/PrintReceipt/View/OwnerReceipts/pdf/receipt.ctp:94
+#: Plugin/PrintReceipt/View/Pdf/receipt.ctp:94
 #: Plugin/PrintReceipt/View/Receipts/receipt.ctp:95
-#: Plugin/PrintReceipt/View/Receipts/pdf/receipt.ctp:95
+#: Plugin/PrintReceipt/View/Receipts/pdf/receipt.ctp:94
 #: View/Themed/Phkondo/Accounts/add.ctp:76
 #: View/Themed/Phkondo/Accounts/edit.ctp:79
 #: View/Themed/Phkondo/Accounts/view.ctp:98
@@ -1909,7 +1866,7 @@ msgstr ""
 #: View/Themed/Phkondo/FractionEntities/view.ctp:83
 #: View/Themed/Phkondo/FractionOwners/add.ctp:57
 #: View/Themed/Phkondo/FractionOwners/edit.ctp:64
-#: View/Themed/Phkondo/FractionOwners/view.ctp:89
+#: View/Themed/Phkondo/FractionOwners/view.ctp:120
 #: View/Themed/Phkondo/InvoiceConference/add.ctp:66
 #: View/Themed/Phkondo/InvoiceConference/edit.ctp:64
 #: View/Themed/Phkondo/InvoiceConference/view.ctp:116
@@ -1938,44 +1895,82 @@ msgstr ""
 msgid "Income extra and previous exercices"
 msgstr ""
 
-#: Plugin/Reports/Event/ReportListener.php:112
+#: Plugin/Reports/Event/ReportListener.php:113
 msgid "Shares Map"
 msgstr ""
 
-#: Plugin/Reports/View/FractionOwners/fraction_owner_current_account.ctp:33
-#: Plugin/Reports/View/Fractions/fraction_current_account.ctp:39
-#: Plugin/Reports/View/Reports/income_report_detailed.ctp:43
-#: View/Themed/Phkondo/BudgetNotes/view.ctp:60
-#: View/Themed/Phkondo/FractionNotes/view.ctp:49
-#: View/Themed/Phkondo/Income/receipts.ctp:77
-#: View/Themed/Phkondo/InvoiceConference/view.ctp:58
-#: View/Themed/Phkondo/OwnerNotes/view.ctp:46
-#: View/Themed/Phkondo/OwnerReceipts/edit.ctp:128
-#: View/Themed/Phkondo/OwnerReceipts/view.ctp:105;179
-#: View/Themed/Phkondo/Receipts/view.ctp:96;167
-msgid "Document Date"
-msgstr ""
-
-#: Plugin/Reports/View/Fractions/fraction_current_account.ctp:29
+#: Plugin/Reports/View/Fractions/fraction_current_account.ctp:28
+#: Plugin/Reports/View/Fractions/Pdf/fraction_current_account.ctp:28
+#: Plugin/Reports/View/Pdf/fraction_current_account.ctp:28
 #: View/Themed/Phkondo/Entities/view.ctp:140
 #: View/Themed/Phkondo/Fractions/edit.ctp:48
-#: View/Themed/Phkondo/Fractions/view.ctp:56
+#: View/Themed/Phkondo/Fractions/view.ctp:60;125
 msgid "All owners"
 msgstr ""
 
 #: Plugin/Reports/View/Reports/expenses.ctp:8
+#: Plugin/Reports/View/Reports/Pdf/expenses.ctp:8
 msgid "Expenses report"
 msgstr ""
 
 #: Plugin/Reports/View/Reports/expenses.ctp:17
-#: Plugin/Reports/View/Reports/income_report.ctp:77
+#: Plugin/Reports/View/Reports/income_report.ctp:76
+#: Plugin/Reports/View/Reports/Pdf/expenses.ctp:17
+#: Plugin/Reports/View/Reports/Pdf/income_report.ctp:76
 #: View/Themed/Phkondo/MovementCategories/view.ctp:30
 #: View/Themed/Phkondo/Movements/index.ctp:32
 #: View/Themed/Phkondo/Movements/view.ctp:64
 msgid "Movement Category"
 msgstr ""
 
+#: Plugin/Reports/View/Reports/expenses.ctp:18
+#: Plugin/Reports/View/Reports/income_report.ctp:39;77
 #: Plugin/Reports/View/Reports/income_report_detailed.ctp:44
+#: Plugin/Reports/View/Reports/Pdf/expenses.ctp:18
+#: Plugin/Reports/View/Reports/Pdf/income_report.ctp:39;77
+#: Plugin/Reports/View/Reports/Pdf/income_report_detailed.ctp:44
+#: View/Themed/Phkondo/BudgetNotes/create.ctp:56
+#: View/Themed/Phkondo/BudgetNotes/view.ctp:93
+#: View/Themed/Phkondo/Budgets/view.ctp:81
+#: View/Themed/Phkondo/FractionNotes/view.ctp:82
+#: View/Themed/Phkondo/Income/receipts.ctp:83
+#: View/Themed/Phkondo/InvoiceConference/view.ctp:51
+#: View/Themed/Phkondo/Movements/view.ctp:59
+#: View/Themed/Phkondo/OwnerNotes/view.ctp:97
+#: View/Themed/Phkondo/OwnerReceipts/edit.ctp:133
+#: View/Themed/Phkondo/OwnerReceipts/view.ctp:182
+#: View/Themed/Phkondo/Receipts/edit.ctp:129
+#: View/Themed/Phkondo/Receipts/view.ctp:170
+msgid "Amount"
+msgstr ""
+
+#: Plugin/Reports/View/Reports/expenses.ctp:39
+#: Plugin/Reports/View/Reports/income_report.ctp:62;98
+#: Plugin/Reports/View/Reports/income_report_detailed.ctp:78
+#: Plugin/Reports/View/Reports/Pdf/expenses.ctp:39
+#: Plugin/Reports/View/Reports/Pdf/income_report.ctp:62;98
+#: Plugin/Reports/View/Reports/Pdf/income_report_detailed.ctp:78
+#: View/Themed/Phkondo/BudgetNotes/create.ctp:59
+msgid "Total"
+msgstr ""
+
+#: Plugin/Reports/View/Reports/income_report_detailed.ctp:36
+#: Plugin/Reports/View/Reports/Pdf/income_report_detailed.ctp:36
+#: View/Themed/Phkondo/BudgetNotes/view.ctp:49
+#: View/Themed/Phkondo/FractionNotes/view.ctp:38
+#: View/Themed/Phkondo/Income/receipts.ctp:76
+#: View/Themed/Phkondo/InvoiceConference/view.ctp:37
+#: View/Themed/Phkondo/Movements/view.ctp:79
+#: View/Themed/Phkondo/OwnerNotes/view.ctp:38
+#: View/Themed/Phkondo/OwnerReceipts/edit.ctp:127
+#: View/Themed/Phkondo/OwnerReceipts/view.ctp:75;178
+#: View/Themed/Phkondo/Receipts/edit.ctp:123
+#: View/Themed/Phkondo/Receipts/view.ctp:76;165
+msgid "Document"
+msgstr ""
+
+#: Plugin/Reports/View/Reports/income_report_detailed.ctp:43
+#: Plugin/Reports/View/Reports/Pdf/income_report_detailed.ctp:43
 #: View/Themed/Phkondo/BudgetNotes/view.ctp:108
 #: View/Themed/Phkondo/FractionNotes/view.ctp:97
 #: View/Themed/Phkondo/Income/receipts.ctp:79
@@ -2054,7 +2049,7 @@ msgstr ""
 #: View/Themed/Phkondo/Accounts/view.ctp:44
 #: View/Themed/Phkondo/Entities/view.ctp:71
 #: View/Themed/Phkondo/FractionEntities/view.ctp:59
-#: View/Themed/Phkondo/FractionOwners/view.ctp:65
+#: View/Themed/Phkondo/FractionOwners/view.ctp:79
 #: View/Themed/Phkondo/Suppliers/view.ctp:66
 msgid "Bank"
 msgstr ""
@@ -2070,7 +2065,7 @@ msgstr ""
 #: View/Themed/Phkondo/Accounts/view.ctp:64
 #: View/Themed/Phkondo/Entities/view.ctp:76
 #: View/Themed/Phkondo/FractionEntities/view.ctp:64
-#: View/Themed/Phkondo/FractionOwners/view.ctp:70
+#: View/Themed/Phkondo/FractionOwners/view.ctp:84
 #: View/Themed/Phkondo/Suppliers/view.ctp:71
 msgid "Nib"
 msgstr ""
@@ -2091,7 +2086,7 @@ msgstr ""
 #: View/Themed/Phkondo/Entities/view.ctp:61
 #: View/Themed/Phkondo/FractionEntities/view.ctp:49
 #: View/Themed/Phkondo/FractionOwners/index.ctp:28
-#: View/Themed/Phkondo/FractionOwners/view.ctp:55
+#: View/Themed/Phkondo/FractionOwners/view.ctp:69
 #: View/Themed/Phkondo/Suppliers/view.ctp:56
 msgid "Contact"
 msgid_plural "Contacts"
@@ -2132,12 +2127,16 @@ msgstr ""
 #: View/Themed/Phkondo/Condos/drafts.ctp:4
 #: View/Themed/Phkondo/Drafts/notfound.ctp:4
 #: View/Themed/Phkondo/FractionOwners/current_account.ctp:4
+#: View/Themed/Phkondo/FractionOwners/send_current_account.ctp:4
 #: View/Themed/Phkondo/Fractions/current_account.ctp:4
+#: View/Themed/Phkondo/Fractions/send_current_account.ctp:4
 #: View/Themed/Phkondo/Install/not_found.ctp:4
 #: View/Themed/Phkondo/OwnerReceipts/print_receipt.ctp:4
+#: View/Themed/Phkondo/OwnerReceipts/send_owner_receipt.ctp:4
 #: View/Themed/Phkondo/Pages/drafts.ctp:4
 #: View/Themed/Phkondo/Receipts/print_receipt.ctp:4
-#: View/Themed/Phkondo/Receipts/send_email.ctp:4
+#: View/Themed/Phkondo/Receipts/send_receipt.ctp:4
+#: View/Themed/Phkondo/Receipts/pdf/print_receipt.ctp:4
 #: View/Themed/Phkondo/Reports/notfound.ctp:4
 msgid "Plugin NotFound"
 msgstr ""
@@ -2147,12 +2146,16 @@ msgstr ""
 #: View/Themed/Phkondo/Condos/drafts.ctp:5
 #: View/Themed/Phkondo/Drafts/notfound.ctp:5
 #: View/Themed/Phkondo/FractionOwners/current_account.ctp:5
+#: View/Themed/Phkondo/FractionOwners/send_current_account.ctp:5
 #: View/Themed/Phkondo/Fractions/current_account.ctp:5
+#: View/Themed/Phkondo/Fractions/send_current_account.ctp:5
 #: View/Themed/Phkondo/Install/not_found.ctp:5
 #: View/Themed/Phkondo/OwnerReceipts/print_receipt.ctp:5
+#: View/Themed/Phkondo/OwnerReceipts/send_owner_receipt.ctp:5
 #: View/Themed/Phkondo/Pages/drafts.ctp:5
 #: View/Themed/Phkondo/Receipts/print_receipt.ctp:5
-#: View/Themed/Phkondo/Receipts/send_email.ctp:5
+#: View/Themed/Phkondo/Receipts/send_receipt.ctp:5
+#: View/Themed/Phkondo/Receipts/pdf/print_receipt.ctp:5
 #: View/Themed/Phkondo/Reports/notfound.ctp:5
 msgid "This plugin is not included on this release."
 msgstr ""
@@ -2162,12 +2165,16 @@ msgstr ""
 #: View/Themed/Phkondo/Condos/drafts.ctp:6
 #: View/Themed/Phkondo/Drafts/notfound.ctp:6
 #: View/Themed/Phkondo/FractionOwners/current_account.ctp:6
+#: View/Themed/Phkondo/FractionOwners/send_current_account.ctp:6
 #: View/Themed/Phkondo/Fractions/current_account.ctp:6
+#: View/Themed/Phkondo/Fractions/send_current_account.ctp:6
 #: View/Themed/Phkondo/Install/not_found.ctp:6
 #: View/Themed/Phkondo/OwnerReceipts/print_receipt.ctp:6
+#: View/Themed/Phkondo/OwnerReceipts/send_owner_receipt.ctp:6
 #: View/Themed/Phkondo/Pages/drafts.ctp:6
 #: View/Themed/Phkondo/Receipts/print_receipt.ctp:6
-#: View/Themed/Phkondo/Receipts/send_email.ctp:6
+#: View/Themed/Phkondo/Receipts/send_receipt.ctp:6
+#: View/Themed/Phkondo/Receipts/pdf/print_receipt.ctp:6
 #: View/Themed/Phkondo/Reports/notfound.ctp:6
 msgid "Case you wish to have a free access to this plugin contact pHAlkaline."
 msgstr ""
@@ -2177,17 +2184,36 @@ msgstr ""
 #: View/Themed/Phkondo/Condos/drafts.ctp:7
 #: View/Themed/Phkondo/Drafts/notfound.ctp:7
 #: View/Themed/Phkondo/FractionOwners/current_account.ctp:7
+#: View/Themed/Phkondo/FractionOwners/send_current_account.ctp:7
 #: View/Themed/Phkondo/Fractions/current_account.ctp:7
+#: View/Themed/Phkondo/Fractions/send_current_account.ctp:7
 #: View/Themed/Phkondo/Install/not_found.ctp:7
 #: View/Themed/Phkondo/OwnerReceipts/print_receipt.ctp:7
+#: View/Themed/Phkondo/OwnerReceipts/send_owner_receipt.ctp:7
 #: View/Themed/Phkondo/Pages/drafts.ctp:7
 #: View/Themed/Phkondo/Receipts/print_receipt.ctp:7
-#: View/Themed/Phkondo/Receipts/send_email.ctp:7
+#: View/Themed/Phkondo/Receipts/send_receipt.ctp:7
+#: View/Themed/Phkondo/Receipts/pdf/print_receipt.ctp:7
 #: View/Themed/Phkondo/Reports/notfound.ctp:7
 msgid "pHAlkaline provides services in customization & new features."
 msgstr ""
 
 #: View/Themed/Phkondo/Attachments/notfound.ctp:8
+#: View/Themed/Phkondo/Budgets/shares_map.ctp:8
+#: View/Themed/Phkondo/Condos/drafts.ctp:8
+#: View/Themed/Phkondo/Drafts/notfound.ctp:8
+#: View/Themed/Phkondo/FractionOwners/current_account.ctp:8
+#: View/Themed/Phkondo/FractionOwners/send_current_account.ctp:8
+#: View/Themed/Phkondo/Fractions/current_account.ctp:8
+#: View/Themed/Phkondo/Fractions/send_current_account.ctp:8
+#: View/Themed/Phkondo/Install/not_found.ctp:8
+#: View/Themed/Phkondo/OwnerReceipts/print_receipt.ctp:8
+#: View/Themed/Phkondo/OwnerReceipts/send_owner_receipt.ctp:8
+#: View/Themed/Phkondo/Pages/drafts.ctp:8
+#: View/Themed/Phkondo/Receipts/print_receipt.ctp:8
+#: View/Themed/Phkondo/Receipts/send_receipt.ctp:8
+#: View/Themed/Phkondo/Receipts/pdf/print_receipt.ctp:8
+#: View/Themed/Phkondo/Reports/notfound.ctp:8
 msgid "Buy FullPack"
 msgstr ""
 
@@ -2196,12 +2222,16 @@ msgstr ""
 #: View/Themed/Phkondo/Condos/drafts.ctp:9
 #: View/Themed/Phkondo/Drafts/notfound.ctp:9
 #: View/Themed/Phkondo/FractionOwners/current_account.ctp:9
+#: View/Themed/Phkondo/FractionOwners/send_current_account.ctp:9
 #: View/Themed/Phkondo/Fractions/current_account.ctp:9
+#: View/Themed/Phkondo/Fractions/send_current_account.ctp:9
 #: View/Themed/Phkondo/Install/not_found.ctp:9
 #: View/Themed/Phkondo/OwnerReceipts/print_receipt.ctp:9
+#: View/Themed/Phkondo/OwnerReceipts/send_owner_receipt.ctp:9
 #: View/Themed/Phkondo/Pages/drafts.ctp:9
 #: View/Themed/Phkondo/Receipts/print_receipt.ctp:9
-#: View/Themed/Phkondo/Receipts/send_email.ctp:9
+#: View/Themed/Phkondo/Receipts/send_receipt.ctp:9
+#: View/Themed/Phkondo/Receipts/pdf/print_receipt.ctp:9
 #: View/Themed/Phkondo/Reports/notfound.ctp:9
 msgid "http://phalkaline.net"
 msgstr ""
@@ -2249,7 +2279,7 @@ msgstr ""
 
 #: View/Themed/Phkondo/BudgetNotes/create.ctp:54
 #: View/Themed/Phkondo/Entities/view.ctp:121
-#: View/Themed/Phkondo/Fractions/view.ctp:81
+#: View/Themed/Phkondo/Fractions/view.ctp:85
 #: View/Themed/Phkondo/InvoiceConference/view.ctp:44
 #: View/Themed/Phkondo/Movements/view.ctp:54
 #: View/Themed/Phkondo/Supports/view.ctp:51
@@ -2305,9 +2335,7 @@ msgstr ""
 #: View/Themed/Phkondo/OwnerNotes/index.ctp:29
 #: View/Themed/Phkondo/OwnerNotes/view.ctp:83
 #: View/Themed/Phkondo/OwnerReceipts/edit.ctp:130
-#: View/Themed/Phkondo/OwnerReceipts/view.ctp:178
 #: View/Themed/Phkondo/Receipts/edit.ctp:126
-#: View/Themed/Phkondo/Receipts/view.ctp:165
 msgid "Note Type"
 msgstr ""
 
@@ -2365,20 +2393,6 @@ msgstr ""
 #: View/Themed/Phkondo/Budgets/index.ctp:26
 #: View/Themed/Phkondo/Budgets/view.ctp:61
 msgid "Budget Status"
-msgstr ""
-
-#: View/Themed/Phkondo/Budgets/shares_map.ctp:8
-#: View/Themed/Phkondo/Condos/drafts.ctp:8
-#: View/Themed/Phkondo/Drafts/notfound.ctp:8
-#: View/Themed/Phkondo/FractionOwners/current_account.ctp:8
-#: View/Themed/Phkondo/Fractions/current_account.ctp:8
-#: View/Themed/Phkondo/Install/not_found.ctp:8
-#: View/Themed/Phkondo/OwnerReceipts/print_receipt.ctp:8
-#: View/Themed/Phkondo/Pages/drafts.ctp:8
-#: View/Themed/Phkondo/Receipts/print_receipt.ctp:8
-#: View/Themed/Phkondo/Receipts/send_email.ctp:8
-#: View/Themed/Phkondo/Reports/notfound.ctp:8
-msgid "Buy plugins"
 msgstr ""
 
 #: View/Themed/Phkondo/Budgets/view.ctp:32
@@ -2474,7 +2488,7 @@ msgstr ""
 #: View/Themed/Phkondo/Entities/view.ctp:56
 #: View/Themed/Phkondo/FractionEntities/view.ctp:44
 #: View/Themed/Phkondo/FractionOwners/index.ctp:27
-#: View/Themed/Phkondo/FractionOwners/view.ctp:50
+#: View/Themed/Phkondo/FractionOwners/view.ctp:64
 #: View/Themed/Phkondo/OwnerReceipts/view.ctp:100
 #: View/Themed/Phkondo/Receipts/view.ctp:92
 #: View/Themed/Phkondo/Suppliers/view.ctp:51
@@ -2593,12 +2607,24 @@ msgstr ""
 msgid "End Session"
 msgstr ""
 
-#: View/Themed/Phkondo/Email/config.ctp:22
+#: View/Themed/Phkondo/Email/config.ctp:26
+msgid "Receipts"
+msgstr ""
+
+#: View/Themed/Phkondo/Email/config.ctp:29
+#: View/Themed/Phkondo/FractionOwners/view.ctp:31;91;149
+#: View/Themed/Phkondo/Fractions/index.ctp:44
+#: View/Themed/Phkondo/Fractions/view.ctp:42;136
+#: View/Themed/Phkondo/InvoiceConference/index.ctp:26
+msgid "Current Account"
+msgstr ""
+
+#: View/Themed/Phkondo/Email/config.ctp:57
 #: View/Themed/Phkondo/Users/view.ctp:35
 msgid "Username"
 msgstr ""
 
-#: View/Themed/Phkondo/Email/config.ctp:27
+#: View/Themed/Phkondo/Email/config.ctp:62
 #: View/Themed/Phkondo/Install/database.ctp:38
 msgid "Password"
 msgstr ""
@@ -2651,7 +2677,7 @@ msgstr ""
 
 #: View/Themed/Phkondo/Entities/view.ctp:46
 #: View/Themed/Phkondo/FractionEntities/view.ctp:34
-#: View/Themed/Phkondo/FractionOwners/view.ctp:35
+#: View/Themed/Phkondo/FractionOwners/view.ctp:49
 #: View/Themed/Phkondo/Suppliers/view.ctp:41
 msgid "Vat Number"
 msgstr ""
@@ -2774,34 +2800,34 @@ msgstr ""
 
 #: View/Themed/Phkondo/FractionOwners/add.ctp:9
 #: View/Themed/Phkondo/FractionOwners/edit.ctp:11
-#: View/Themed/Phkondo/FractionOwners/view.ctp:11
+#: View/Themed/Phkondo/FractionOwners/view.ctp:10
 msgid "List Owners"
 msgstr ""
 
 #: View/Themed/Phkondo/FractionOwners/add.ctp:23
 #: View/Themed/Phkondo/FractionOwners/index.ctp:14
-#: View/Themed/Phkondo/FractionOwners/view.ctp:10
+#: View/Themed/Phkondo/FractionOwners/view.ctp:9
 msgid "New Owner"
 msgstr ""
 
 #: View/Themed/Phkondo/FractionOwners/edit.ctp:10
-#: View/Themed/Phkondo/FractionOwners/view.ctp:9
+#: View/Themed/Phkondo/FractionOwners/view.ctp:8
 msgid "Remove %s"
 msgstr ""
 
 #: View/Themed/Phkondo/FractionOwners/edit.ctp:10
 #: View/Themed/Phkondo/FractionOwners/index.ctp:43
-#: View/Themed/Phkondo/FractionOwners/view.ctp:9
+#: View/Themed/Phkondo/FractionOwners/view.ctp:8
 msgid "Are you sure you want to remove # %s?"
 msgstr ""
 
 #: View/Themed/Phkondo/FractionOwners/edit.ctp:25
-#: View/Themed/Phkondo/FractionOwners/view.ctp:8
+#: View/Themed/Phkondo/FractionOwners/view.ctp:7
 msgid "Edit Owner"
 msgstr ""
 
 #: View/Themed/Phkondo/FractionOwners/index.ctp:29
-#: View/Themed/Phkondo/FractionOwners/view.ctp:40
+#: View/Themed/Phkondo/FractionOwners/view.ctp:54
 msgid "Owner Percentage"
 msgstr ""
 
@@ -2809,10 +2835,23 @@ msgstr ""
 msgid "Add Owner"
 msgstr ""
 
-#: View/Themed/Phkondo/FractionOwners/view.ctp:14
-#: View/Themed/Phkondo/Fractions/view.ctp:22
-#: View/Themed/Phkondo/InvoiceConference/index.ctp:26
-msgid "Current Account"
+#: View/Themed/Phkondo/FractionOwners/view.ctp:102;156
+#: View/Themed/Phkondo/Fractions/view.ctp:143
+msgid "Crédits"
+msgstr ""
+
+#: View/Themed/Phkondo/FractionOwners/view.ctp:134
+#: View/Themed/Phkondo/Fractions/view.ctp:116
+#: View/Themed/Phkondo/OwnerReceipts/index.ctp:77
+#: View/Themed/Phkondo/OwnerReceipts/view.ctp:38
+#: View/Themed/Phkondo/Receipts/index.ctp:85
+#: View/Themed/Phkondo/Receipts/view.ctp:38
+msgid "Print"
+msgstr ""
+
+#: View/Themed/Phkondo/FractionOwners/view.ctp:134
+#: View/Themed/Phkondo/Fractions/view.ctp:116
+msgid "Report"
 msgstr ""
 
 #: View/Themed/Phkondo/FractionTypes/add.ctp:9
@@ -2830,7 +2869,7 @@ msgstr ""
 #: View/Themed/Phkondo/FractionTypes/edit.ctp:16;17
 #: View/Themed/Phkondo/FractionTypes/view.ctp:29
 #: View/Themed/Phkondo/Fractions/index.ctp:43
-#: View/Themed/Phkondo/Fractions/view.ctp:70
+#: View/Themed/Phkondo/Fractions/view.ctp:74
 msgid "Fraction Type"
 msgid_plural "Fraction Types"
 msgstr[0] ""
@@ -2847,27 +2886,27 @@ msgstr ""
 
 #: View/Themed/Phkondo/Fractions/add.ctp:9
 #: View/Themed/Phkondo/Fractions/edit.ctp:17
-#: View/Themed/Phkondo/Fractions/view.ctp:17
+#: View/Themed/Phkondo/Fractions/view.ctp:19
 msgid "List Fractions"
 msgstr ""
 
 #: View/Themed/Phkondo/Fractions/add.ctp:32
 #: View/Themed/Phkondo/Fractions/index.ctp:17
-#: View/Themed/Phkondo/Fractions/view.ctp:16
+#: View/Themed/Phkondo/Fractions/view.ctp:18
 msgid "New Fraction"
 msgstr ""
 
 #: View/Themed/Phkondo/Fractions/edit.ctp:16
-#: View/Themed/Phkondo/Fractions/view.ctp:15
+#: View/Themed/Phkondo/Fractions/view.ctp:17
 msgid "Delete Fraction"
 msgstr ""
 
 #: View/Themed/Phkondo/Fractions/edit.ctp:41
-#: View/Themed/Phkondo/Fractions/view.ctp:8
+#: View/Themed/Phkondo/Fractions/view.ctp:10
 msgid "Edit Fraction"
 msgstr ""
 
-#: View/Themed/Phkondo/Fractions/view.ctp:86
+#: View/Themed/Phkondo/Fractions/view.ctp:90
 msgid "Permillage"
 msgstr ""
 
@@ -2906,8 +2945,8 @@ msgid "Client"
 msgstr ""
 
 #: View/Themed/Phkondo/Income/receipts.ctp:144
-#: View/Themed/Phkondo/OwnerReceipts/view.ctp:95
-#: View/Themed/Phkondo/Receipts/view.ctp:88
+#: View/Themed/Phkondo/OwnerReceipts/view.ctp:95;173
+#: View/Themed/Phkondo/Receipts/view.ctp:88;160
 msgid "Total Amount"
 msgstr ""
 
@@ -2924,7 +2963,7 @@ msgid "Port (leave blank if unknown)"
 msgstr ""
 
 #: View/Themed/Phkondo/Install/secure.ctp:4
-msgid "pHKapa is now Secure."
+msgid "pHKondo is now Secure."
 msgstr ""
 
 #: View/Themed/Phkondo/InsuranceTypes/add.ctp:9
@@ -3160,7 +3199,7 @@ msgstr ""
 #: View/Themed/Phkondo/Receipts/cancel.ctp:10
 #: View/Themed/Phkondo/Receipts/edit.ctp:23
 #: View/Themed/Phkondo/Receipts/pay_receipt.ctp:10
-#: View/Themed/Phkondo/Receipts/view.ctp:34
+#: View/Themed/Phkondo/Receipts/view.ctp:35
 msgid "List Receipts"
 msgstr ""
 
@@ -3169,35 +3208,35 @@ msgstr ""
 #: View/Themed/Phkondo/OwnerReceipts/view.ctp:34
 #: View/Themed/Phkondo/Receipts/add.ctp:25
 #: View/Themed/Phkondo/Receipts/index.ctp:13
-#: View/Themed/Phkondo/Receipts/view.ctp:33
+#: View/Themed/Phkondo/Receipts/view.ctp:34
 msgid "New Receipt"
 msgstr ""
 
 #: View/Themed/Phkondo/OwnerReceipts/cancel.ctp:31
 #: View/Themed/Phkondo/OwnerReceipts/view.ctp:37
 #: View/Themed/Phkondo/Receipts/cancel.ctp:24
-#: View/Themed/Phkondo/Receipts/view.ctp:36
+#: View/Themed/Phkondo/Receipts/view.ctp:37
 msgid "Cancel Receipt"
 msgstr ""
 
 #: View/Themed/Phkondo/OwnerReceipts/edit.ctp:20
 #: View/Themed/Phkondo/OwnerReceipts/view.ctp:33
 #: View/Themed/Phkondo/Receipts/edit.ctp:22
-#: View/Themed/Phkondo/Receipts/view.ctp:32
+#: View/Themed/Phkondo/Receipts/view.ctp:33
 msgid "Delete Receipt"
 msgstr ""
 
 #: View/Themed/Phkondo/OwnerReceipts/edit.ctp:28
 #: View/Themed/Phkondo/OwnerReceipts/view.ctp:32
 #: View/Themed/Phkondo/Receipts/edit.ctp:33
-#: View/Themed/Phkondo/Receipts/view.ctp:31
+#: View/Themed/Phkondo/Receipts/view.ctp:32
 msgid "Edit Receipt"
 msgstr ""
 
 #: View/Themed/Phkondo/OwnerReceipts/edit.ctp:31
-#: View/Themed/Phkondo/OwnerReceipts/view.ctp:208
+#: View/Themed/Phkondo/OwnerReceipts/view.ctp:210
 #: View/Themed/Phkondo/Receipts/edit.ctp:36
-#: View/Themed/Phkondo/Receipts/view.ctp:198
+#: View/Themed/Phkondo/Receipts/view.ctp:199
 msgid "Total amount"
 msgstr ""
 
@@ -3214,7 +3253,7 @@ msgstr ""
 #: View/Themed/Phkondo/OwnerReceipts/index.ctp:75
 #: View/Themed/Phkondo/OwnerReceipts/view.ctp:36
 #: View/Themed/Phkondo/Receipts/index.ctp:83
-#: View/Themed/Phkondo/Receipts/view.ctp:35
+#: View/Themed/Phkondo/Receipts/view.ctp:36
 msgid "Are you sure you want to set receipt # %s as paid? - Payment as %s"
 msgstr ""
 
@@ -3226,25 +3265,15 @@ msgstr ""
 #: View/Themed/Phkondo/OwnerReceipts/index.ctp:76
 #: View/Themed/Phkondo/OwnerReceipts/view.ctp:37
 #: View/Themed/Phkondo/Receipts/index.ctp:84
-#: View/Themed/Phkondo/Receipts/view.ctp:36
+#: View/Themed/Phkondo/Receipts/view.ctp:37
 msgid "Are you sure you want to cancel # %s?"
 msgstr ""
 
 #: View/Themed/Phkondo/OwnerReceipts/pay_receipt.ctp:32
 #: View/Themed/Phkondo/OwnerReceipts/view.ctp:36
 #: View/Themed/Phkondo/Receipts/pay_receipt.ctp:24
-#: View/Themed/Phkondo/Receipts/view.ctp:35
+#: View/Themed/Phkondo/Receipts/view.ctp:36
 msgid "Pay Receipt"
-msgstr ""
-
-#: View/Themed/Phkondo/OwnerReceipts/view.ctp:38
-#: View/Themed/Phkondo/Receipts/view.ctp:37
-msgid "Print Receipt"
-msgstr ""
-
-#: View/Themed/Phkondo/OwnerReceipts/view.ctp:63
-#: View/Themed/Phkondo/Receipts/view.ctp:64
-msgid "Send By Email"
 msgstr ""
 
 #: View/Themed/Phkondo/OwnerReceipts/view.ctp:118
@@ -3252,14 +3281,9 @@ msgstr ""
 msgid "Cancel Motive"
 msgstr ""
 
-#: View/Themed/Phkondo/OwnerReceipts/view.ctp:240
-#: View/Themed/Phkondo/Receipts/view.ctp:230
-msgid "Send To"
-msgstr ""
-
-#: View/Themed/Phkondo/OwnerReceipts/view.ctp:256
-#: View/Themed/Phkondo/Receipts/view.ctp:246
-msgid "Send"
+#: View/Themed/Phkondo/OwnerReceipts/view.ctp:180
+#: View/Themed/Phkondo/Receipts/view.ctp:168
+msgid "Date"
 msgstr ""
 
 #: View/Themed/Phkondo/Pages/home.ctp:25
@@ -3298,14 +3322,6 @@ msgstr ""
 
 #: View/Themed/Phkondo/Pages/welcome.ctp:10
 msgid "Condominium / HOA Management"
-msgstr ""
-
-#: View/Themed/Phkondo/Receipts/edit.ctp:124
-msgid "Document date"
-msgstr ""
-
-#: View/Themed/Phkondo/Receipts/view.ctp:38
-msgid "Send Email"
 msgstr ""
 
 #: View/Themed/Phkondo/Suppliers/add.ctp:9

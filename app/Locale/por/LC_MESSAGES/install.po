@@ -1,180 +1,248 @@
-# LANGUAGE translation of pHKapa Install Plugin
+# LANGUAGE translation of pHKondo Install Plugin
 # Copyright pHAlkaline <contact@phalkaline.net>
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: phkapa.net\n"
-"POT-Creation-Date: 2013-02-12 21:57+0000\n"
-"PO-Revision-Date: 2014-06-20 00:00-0000\n"
+"Project-Id-Version: phkondo.net\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2022-02-07 15:50+0000\n"
 "Last-Translator: Paulo <contact@phalkaline.net>\n"
 "Language-Team: pHAlkaline <contact@phalkaline.net>\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.5.4\n"
-"Language: por\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-msgid "Admin panel: %s"
-msgstr "Administração de Acessos: %s"
-
-msgid "Admin user password"
-msgstr "Palavra passe do utilizador administrador"
-
-msgid "Already Installed"
-msgstr "Applicação instalada"
-
-msgid "CakePHP version %s < %s"
-msgstr "Versão Framework CakePHP %s < %s"
-
-msgid "CakePhp version %s >= %s"
-msgstr "Versão Framework CakePHP %s >= %s"
-
-msgid "Check load data option to insert dafault values to auxiliary tables."
-msgstr "Seleccione carregar dados para adicionar valores na base de dados. Carrega dados para tabelas auxiliares."
-
-msgid "Click here to begin installation"
-msgstr "Inicie aqui a sua instalação"
-
-msgid "Could not be saved. Please, try again."
-msgstr "Não foi possível gravar. Por favor tente outra vez."
-
-msgid "Could not connect to database."
-msgstr "Não foi possível a ligação à base de dados."
-
-msgid "Could not load database: %s"
-msgstr "Não foi possível carregar a base de dados: %s"
-
-msgid "Could not write database.php file."
-msgstr "Não foi possivél gravar o ficheiro database.php"
-
-msgid "Could not write email.php file."
-msgstr "Não foi possivél gravar o ficheiro email.php"
-
-msgid "Database"
-msgstr "Base de dados"
-
-msgid "Database and data"
-msgstr "Base de Dados e respectivos dados"
-
-msgid "Database connection file already exists"
-msgstr "Ficheiro de configuração de acesso à base de dados já existe"
-
-msgid "Database connection missing"
-msgstr "Configuração de acesso à base de dados não existe"
-
-msgid "Dont forget to restore default access values to Config and tmp directory."
-msgstr "Não se esqueça de restaurar os valores de defeito para as directorias de Config e tmp"
-
-msgid "Email settings file already exists"
-msgstr "Ficheiro de configuração email.php já existe"
-
-msgid "From Email"
-msgstr "Email de envio"
-
-msgid "From Name"
-msgstr "Nome de envio"
-
-msgid "Install or manually config pHKondo"
-msgstr "Instalar ou configurar manualmente pHKondo"
-
-msgid "Installation cannot continue as minimum requirements are not found."
-msgstr "A instalação não pode continuar, requisitos minimos não foram encontrados."
-
-msgid "Installation completed successfully"
-msgstr "A Instalação terminou com sucesso"
-
-msgid "Installation not completed successfully"
-msgstr "Não foi possível terminar a instalação com sucesso"
-
+#: Controller/InstallController.php:116;151;152
 msgid "Installation: Welcome"
 msgstr "Instalação: Bem Vindo"
 
-msgid "Language"
-msgstr "Idioma"
+#: Controller/InstallController.php:126;131
+msgid "Already Installed"
+msgstr "Applicação instalada"
 
-msgid "Load data"
-msgstr "Carregar dados"
-
-msgid "New Password"
-msgstr "Nova Palavra Passe"
-
-msgid "PHP version %s < 5.6 or =>8.0.0"
-msgstr ""
-
-msgid "PHP version %s >= 5.6 and <8.0.0"
-msgstr ""
-
-msgid "Passwords secured and updated for all users"
-msgstr "Palava passe assegurada e actualizada para todos os utilizadores"
-
-msgid "Resources"
-msgstr "Recursos"
-
-msgid "Saved with success."
-msgstr "Gravado com sucesso."
-
-msgid "Setup database connection"
-msgstr "Definir ligação á base de dados"
-
-msgid "Setup notification email"
-msgstr "Configuração notificações por email"
-
-msgid "Something went wrong during installation. Please check your server logs."
-msgstr "Algo correu mal durante a instalação. Verifique os logs do servidor."
-
+#: Controller/InstallController.php:176;177
 msgid "Step 1 : Database connection"
 msgstr "Passo 1 : Configuração de acesso à base de dados"
 
+#: Controller/InstallController.php:180
+msgid "Database connection file already exists"
+msgstr "Ficheiro de configuração de acesso à base de dados já existe"
+
+#: Controller/InstallController.php:200
+msgid "Could not connect to database: %s"
+msgstr "Não foi possível a ligação à base de dados"
+
+#: Controller/InstallController.php:204;249
+msgid "Could not connect to database."
+msgstr "Não foi possível a ligação à base de dados."
+
+#: Controller/InstallController.php:219
+msgid "Could not write database.php file."
+msgstr "Não foi possivél gravar o ficheiro database.php."
+
+#: Controller/InstallController.php:233;234
 msgid "Step 2 : Build database , load table values"
 msgstr "Passo 2 : Construir base de dados e carregar valores nas tabelas"
 
+#: Controller/InstallController.php:261;272;285;297;313;326
+msgid "Could not load database: %s"
+msgstr "Não foi possível carregar a base de dados: %s"
+
+#: Controller/InstallController.php:362;469;491
+msgid ""
+"Unable to secure your application, your Config %s core.php file is not "
+"writable. Please check the permissions."
+msgstr ""
+"Não foi possivel tornar a aplicação mais segura, a sua pasta Config %s core."
+"php não permite escrita. Verifique as permisões."
+
+#: Controller/InstallController.php:382;383
 msgid "Step 3 : Email notification"
 msgstr "Passo 3 : Configuração de notificações por email"
 
+#: Controller/InstallController.php:386
+msgid "Email settings file already exists"
+msgstr "Ficheiro de configuração email.php já existe"
+
+#: Controller/InstallController.php:409
+msgid "Could not write email.php file."
+msgstr "Não foi possivél gravar o ficheiro email.php."
+
+#: Controller/InstallController.php:420;421
 msgid "Step 4 : Secure app"
 msgstr "Passo 4 : Tornar a aplicação mais segura"
 
-msgid "Subject"
-msgstr "Assunto"
+#: Controller/InstallController.php:429
+msgid "Could not be secured. Please, try again."
+msgstr "Não foi possível gravar. Por favor tente outra vez."
 
+#: Controller/InstallController.php:430
+msgid "Unable to secure app."
+msgstr ""
+
+#: Controller/InstallController.php:438
+msgid "Saved with success."
+msgstr "Gravado com sucesso."
+
+#: Controller/InstallController.php:443
+msgid "Could not be saved. Please, try again."
+msgstr "Não foi possível gravar. Por favor tente outra vez."
+
+#: Controller/InstallController.php:444
 msgid "Unable to create administrative user."
 msgstr "Não foi possivel criar utilizador de administração."
 
+#: Controller/InstallController.php:460;461;478;481
+msgid "Installation completed successfully"
+msgstr "A Instalação terminou com sucesso"
+
+#: Controller/InstallController.php:483;484
+msgid "Installation not completed successfully"
+msgstr "Não foi possível terminar a instalação com sucesso"
+
+#: Controller/InstallController.php:485
+msgid ""
+"Something went wrong during installation. Please check your server logs."
+msgstr "Algo correu mal durante a instalação. Verifique os logs do servidor."
+
+#: Controller/InstallController.php:542
 msgid "Unable to generate users password."
 msgstr "Não foi possível criar palavras passe para os utilizadores."
 
-msgid "Unable to secure your application, your Config %s core.php file is not writable. Please check the permissions."
-msgstr "Não foi possivel tornar a aplicação mais segura, a sua pasta Config %s core.php não permite escrita. Verifique as permisões."
+#: Controller/InstallController.php:543
+msgid "install"
+msgstr "instalar"
 
+#: Controller/UsersController.php:293
+msgid "Database connection missing"
+msgstr "Configuração de acesso à base de dados não existe"
+
+#: Controller/UsersController.php:294
+msgid "Install or manually config pHKondo"
+msgstr "Instalar ou configurar manualmente pHKondo"
+
+#: View/Themed/Phkondo/Install/adminuser.ctp:8
+msgid "Admin user password"
+msgstr "Palavra passe do utilizador administrador"
+
+#: View/Themed/Phkondo/Install/adminuser.ctp:11
+msgid "New Password"
+msgstr "Nova Palavra Passe"
+
+#: View/Themed/Phkondo/Install/adminuser.ctp:16
 msgid "Verify Password"
 msgstr "Verificar Palavra Passe"
 
-msgid "Your Config directory is NOT writable."
-msgstr "A directoria Config não tem permisão de escrita."
+#: View/Themed/Phkondo/Install/data.ctp:8
+msgid "Database and data"
+msgstr "Base de Dados e respectivos dados"
 
-msgid "Your Config directory is writable."
-msgstr "A directoria Config tem permisão de escrita."
+#: View/Themed/Phkondo/Install/data.ctp:15
+msgid "Load data"
+msgstr "Carregar dados"
 
-msgid "Your Config/core_phapp.php file is NOT writable."
-msgstr "A ficheiro Config/core_phapp.php não tem permisão de escrita."
+#: View/Themed/Phkondo/Install/data.ctp:20
+msgid "Check load data option to insert dafault values to auxiliary tables."
+msgstr ""
+"Seleccione carregar dados para adicionar valores na base de dados. Carrega "
+"dados para tabelas auxiliares."
 
-msgid "Your Config/core_phapp.php file is writable."
-msgstr "A ficheiro Config/core_phapp.php tem permisão de escrita."
+#: View/Themed/Phkondo/Install/database.ctp:8
+msgid "Setup database connection"
+msgstr "Definir ligação á base de dados"
 
+#: View/Themed/Phkondo/Install/database.ctp:43
+msgid "Database"
+msgstr "Base de dados"
+
+#: View/Themed/Phkondo/Install/email.ctp:8
+msgid "Setup notification email"
+msgstr "Configuração notificações por email"
+
+#: View/Themed/Phkondo/Install/email.ctp:12
+msgid "From Email"
+msgstr "Email de envio"
+
+#: View/Themed/Phkondo/Install/email.ctp:17
+msgid "From Name"
+msgstr "Nome de envio"
+
+#: View/Themed/Phkondo/Install/email.ctp:22
+msgid "Subject"
+msgstr "Assunto"
+
+#: View/Themed/Phkondo/Install/finish.ctp:9
+msgid ""
+"Dont forget to restore default access values to Config and tmp directory."
+msgstr ""
+"Não se esqueça de restaurar os valores de defeito para as directorias de "
+"Config e tmp."
+
+#: View/Themed/Phkondo/Install/finish.ctp:14
+msgid "Passwords secured and updated for all users"
+msgstr "Palava passe assegurada e actualizada para todos os utilizadores"
+
+#: View/Themed/Phkondo/Install/finish.ctp:19
+msgid "pHKondo: %s"
+msgstr ""
+
+#: View/Themed/Phkondo/Install/finish.ctp:24
+msgid "Resources"
+msgstr "Recursos"
+
+#: View/Themed/Phkondo/Install/index.ctp:8
+msgid "Language"
+msgstr "Idioma"
+
+#: View/Themed/Phkondo/Install/index.ctp:26
+msgid "Your tmp directory is writable."
+msgstr "A directoria tmp tem permisão de escrita."
+
+#: View/Themed/Phkondo/Install/index.ctp:30
 msgid "Your tmp directory is NOT writable."
 msgstr "A directoria tmp não permite escrita."
 
-msgid "Your tmp directory is writable."
-msgstr "A directoria tmp tem permisão de escrita"
+#: View/Themed/Phkondo/Install/index.ctp:36
+msgid "Your Config directory is writable."
+msgstr "A directoria Config tem permisão de escrita."
 
-msgid "install"
+#: View/Themed/Phkondo/Install/index.ctp:40
+msgid "Your Config directory is NOT writable."
+msgstr "A directoria Config não tem permisão de escrita."
+
+#: View/Themed/Phkondo/Install/index.ctp:46
+msgid "Your Config/core_phapp.php file is writable."
+msgstr "A ficheiro Config/core_phapp.php tem permisão de escrita."
+
+#: View/Themed/Phkondo/Install/index.ctp:50
+msgid "Your Config/core_phapp.php file is NOT writable."
+msgstr "A ficheiro Config/core_phapp.php não tem permisão de escrita."
+
+#: View/Themed/Phkondo/Install/index.ctp:56
+msgid "PHP version %s >= 5.6 and <8.0.0"
 msgstr ""
 
-msgid "pHKapa Admin panel: %s"
-msgstr "pHKapa Painel de Administração: %s"
-
-msgid "pHKapa: %s"
+#: View/Themed/Phkondo/Install/index.ctp:60
+msgid "PHP version %s < 5.6 or =>8.0.0"
 msgstr ""
+
+#: View/Themed/Phkondo/Install/index.ctp:68
+msgid "CakePhp version %s >= %s"
+msgstr "Versão Framework CakePHP %s >= %s"
+
+#: View/Themed/Phkondo/Install/index.ctp:72
+msgid "CakePHP version %s < %s"
+msgstr "Versão Framework CakePHP %s < %s"
+
+#: View/Themed/Phkondo/Install/index.ctp:77
+msgid "Click here to begin installation"
+msgstr "Inicie aqui a sua instalação"
+
+#: View/Themed/Phkondo/Install/index.ctp:80
+msgid "Installation cannot continue as minimum requirements are not found."
+msgstr ""
+"A instalação não pode continuar, requisitos minimos não foram encontrados."

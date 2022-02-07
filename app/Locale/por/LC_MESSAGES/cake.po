@@ -1,20 +1,19 @@
 # LANGUAGE translation of pHkondo Application
 # Copyright pHAlkaline <contact@phalkaline.net>
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pHKondo V0.1\n"
 "POT-Creation-Date: 2015-03-01 22:26+0000\n"
-"PO-Revision-Date: 2015-03-01 22:26+0000\n"
+"PO-Revision-Date: 2022-02-07 15:43+0000\n"
 "Last-Translator: pHAlkaline <contact@phalkaline.net>\n"
 "Language-Team: Portuguesa <contact@phalkaline.net>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.5.4\n"
 "Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 msgid " of "
@@ -22,13 +21,13 @@ msgstr " de "
 
 msgid "%d Byte"
 msgid_plural "%d Bytes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d Byte"
+msgstr[1] "%d Bytes"
 
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d dia"
-msgstr[1] "%d dias "
+msgstr[1] "%d dias"
 
 msgid "%d hour"
 msgid_plural "%d hours"
@@ -61,16 +60,16 @@ msgstr[0] "%d ano"
 msgstr[1] "% anos"
 
 msgid "%s GB"
-msgstr ""
+msgstr "%s GB"
 
 msgid "%s KB"
 msgstr "%s KB"
 
 msgid "%s MB"
-msgstr ""
+msgstr "%s MB"
 
 msgid "%s TB"
-msgstr ""
+msgstr "%s TB"
 
 msgid "%s ago"
 msgstr "%s após"
@@ -118,7 +117,7 @@ msgid "Friday"
 msgstr "Sexta-Feira"
 
 msgid "Home"
-msgstr ""
+msgstr "Início"
 
 msgid "Invalid %s"
 msgstr "%s Inválido"
@@ -175,7 +174,7 @@ msgid "Saturday"
 msgstr "Sábado"
 
 msgid "Scaffold :: "
-msgstr ""
+msgstr "Scaffold :: "
 
 msgid "September"
 msgstr "Setembro"

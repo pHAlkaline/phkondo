@@ -1,112 +1,229 @@
 # LANGUAGE translation of pHkondo Application
 # Copyright pHAlkaline <contact@phalkaline.net>
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: pHKondo V1.1\n"
-"POT-Creation-Date: 2015-03-01 22:26+0000\n"
-"PO-Revision-Date: 2015-03-01 22:26+0000\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2022-02-07 15:15+0000\n"
 "Last-Translator: pHAlkaline <contact@phalkaline.net>\n"
-"Language-Team: Portuguesa <contact@phalkaline.net>\n"
+"Language-Team: pHAlkaline <contact@phalkaline.net>\n"
+"Language: ro_RO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.5.4\n"
-"Language: pt\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-msgid "Empty"
-msgstr ""
-
-msgid "Must be unique"
-msgstr ""
-
-msgid "Next inspection date must be after last inspection date"
-msgstr ""
-
-msgid "Next inspection date must be after start date"
-msgstr ""
-
-msgid "Passwords dont match"
-msgstr ""
-
-msgid "Please enter a valid role"
-msgstr ""
-
-msgid "Please enter an valid percentage."
-msgstr ""
-
-msgid "Please enter an valid rate."
-msgstr ""
-
-msgid "Renewal date must be after start date"
-msgstr ""
-
-msgid "This status requires payment date"
-msgstr ""
-
-msgid "boolean"
-msgstr ""
-
-msgid "close date must be after open date"
-msgstr ""
-
-msgid "close date must be after open date, or passed 30 days interval"
-msgstr ""
-
-msgid "date"
-msgstr ""
-
-msgid "due date must be after document date"
-msgstr ""
-
-msgid "invalid active"
-msgstr ""
-
-msgid "invalid begin date"
-msgstr ""
-
-msgid "invalid date, do not match active fiscal year dates"
-msgstr ""
-
-msgid "invalid close date"
-msgstr ""
-
-msgid "invalid date"
-msgstr ""
-
-msgid "invalid movement date"
-msgstr ""
-
-msgid "invalid open date"
-msgstr ""
-
-msgid "invalid origin date"
-msgstr ""
-
-msgid "money"
-msgstr ""
-
-msgid "NotBlank"
-msgstr ""
-
-msgid "notBlank"
-msgstr ""
-
+#: Model/Account.php:validation for field condo_id
+#: Model/Administrator.php:validation condo_id;validation entity_id;validation
+#: fiscal_year_id Model/Budget.php:validation fiscal_year_id;validation
+#: budget_type_id;validation budget_status_id;validation shares;validation
+#: share_periodicity_id;validation share_distribution_id;validation due_days
+#: Model/Condo.php:validation taxpayer_number Model/FiscalYear.php:validation
+#: Model/Fraction.php:validation manager_id;validation fraction_type_id
+#: Model/IncomeReceipt.php:validation status_id Model/Insurance.php:validation
+#: insurance_type_id Model/InvoiceConference.php:validation
+#: supplier_id;validation invoice_conference_status_id
+#: Model/Maintenance.php:validation Model/Movement.php:validation
+#: account_id;validation movement_category_id;validation
+#: movement_operation_id;validation movement_type_id Model/Note.php:validation
+#: note_type_id;validation fraction_id;validation budget_id;validation
+#: note_status_id;validation receipt_id Model/Receipt.php:validation
+#: client_id;validation receipt_status_id;validation receipt_payment_type_id
+#: Model/Support.php:validation support_category_id;validation
+#: support_priority_id;validation support_status_id;validation entity_id
 msgid "numeric"
 msgstr ""
 
-msgid "payment date must be after document date"
+#: Model/Account.php:validation for field title;validation bank;validation
+#: balcony;validation contacts Model/Administrator.php:validation title
+#: Model/Budget.php:validation Model/Condo.php:validation address
+#: Model/Entity.php:validation name Model/FiscalYear.php:validation
+#: Model/Fraction.php:validation fraction;validation location
+#: Model/FractionType.php:validation Model/Insurance.php:validation
+#: insurance_company;validation policy Model/InsuranceType.php:validation
+#: Model/InvoiceConference.php:validation description
+#: Model/Maintenance.php:validation Model/Movement.php:validation
+#: Model/MovementCategory.php:validation Model/MovementOperation.php:validation
+#: Model/Note.php:validation document;validation Model/Receipt.php:validation
+#: document Model/Supplier.php:validation Model/SupportCategory.php:validation
+#: Plugin/Feedback/Model/Comment.php:validation foreign_id
+#: Plugin/Feedback/Model/Rating.php:validation foreign_model;validation
+#: foreign_id;validation rating
+msgid "notBlank"
 msgstr ""
 
+#: Model/Account.php:validation for field account_number;validation nib
 msgid "uuid"
 msgstr ""
 
+#: Model/Account.php:validation for field main_account
+#: Model/FiscalYear.php:validation active Model/FractionType.php:validation
+#: Model/InsuranceType.php:validation Model/MovementCategory.php:validation
+#: Model/MovementOperation.php:validation Model/SupportCategory.php:validation
+msgid "boolean"
+msgstr ""
+
+#: Model/Budget.php:validation for field budget_date;validation begin_date
+#: Model/FiscalYear.php:validation open_date;validation close_date
+#: Model/IncomeReceipt.php:validation Model/Insurance.php:validation
+#: expiration_date Model/InvoiceConference.php:validation
+#: document_date;validation payment_due_date;validation payment_date
+#: Model/Maintenance.php:validation start_date;validation
+#: renewal_date;validation last_inspection;validation next_inspection
+#: Model/Movement.php:validation movement_date Model/Note.php:validation
+#: due_date;validation Model/Receipt.php:validation
+msgid "date"
+msgstr ""
+
+#: Model/Budget.php:validation for field budget_date;validation begin_date
+#: Model/InvoiceConference.php:validation document_date
+#: Model/Movement.php:validation movement_date
+msgid "invalid date, do not match active fiscal year dates"
+msgstr ""
+
+#: Model/Budget.php:validation for field amount Model/Insurance.php:validation
+#: insurance_amount;validation insurance_premium
+#: Model/InvoiceConference.php:validation Model/Movement.php:validation
+#: Model/Note.php:validation amount;validation pending_amount
+#: Model/Receipt.php:validation total_amount
+msgid "money"
+msgstr ""
+
+#: Model/Budget.php:validation for field common_reserve_fund
+msgid "Please enter an valid percentage."
+msgstr ""
+
+#: Model/Condo.php:validation for field email
+msgid "email"
+msgstr ""
+
+#: Model/FiscalYear.php:validation for field open_date
+msgid "invalid open date"
+msgstr ""
+
+#: Model/FiscalYear.php:validation for field close_date
+msgid "invalid close date"
+msgstr ""
+
+#: Model/FiscalYear.php:validation for field close_date
+msgid "close date must be after open date"
+msgstr ""
+
+#: Model/FiscalYear.php:validation for field active
+msgid "invalid active"
+msgstr ""
+
+#: Model/Fraction.php:validation for field permillage
+msgid "Please enter an valid rate."
+msgstr ""
+
+#: Model/FractionType.php:validation for field name
+#: Model/InsuranceType.php:validation Model/MovementCategory.php:validation
+#: Model/MovementOperation.php:validation Model/User.php:validation
+#: name;validation username
+msgid "Must be unique"
+msgstr ""
+
+#: Model/IncomeReceipt.php:validation for field close_date
+msgid "close date must be after open date, or passes 30 days interval"
+msgstr ""
+
+#: Model/InvoiceConference.php:validation for field payment_due_date
+#: Model/Note.php:validation due_date
+msgid "due date must be after document date"
+msgstr ""
+
+#: Model/InvoiceConference.php:validation for field payment_date
+#: Model/Note.php:validation
+msgid "invalid date."
+msgstr ""
+
+#: Model/InvoiceConference.php:validation for field
+#: invoice_conference_status_id
+msgid "This status requires payment date"
+msgstr ""
+
+#: Model/Maintenance.php:validation for field renewal_date
+msgid "Renewal date must be after start date"
+msgstr ""
+
+#: Model/Maintenance.php:validation for field last_inspection
+#: Model/Receipt.php:validation payment_date
+msgid "invalid date"
+msgstr ""
+
+#: Model/Maintenance.php:validation for field next_inspection
+msgid "Next inspection date must be after start date"
+msgstr ""
+
+#: Model/Maintenance.php:validation for field next_inspection
+msgid "Next inspection date must be after last inspection date"
+msgstr ""
+
+#: Model/Note.php:validation for field receipt_id
+msgid "empty"
+msgstr ""
+
+#: Model/Receipt.php:validation for field payment_date
+msgid "payment date must be at or after document date"
+msgstr ""
+
+#: Model/User.php:validation for field name;validation username;validation
+#: password
+msgid "Empty"
+msgstr ""
+
+#: Model/User.php:validation for field password
 msgid "Minimum 8 characters long"
 msgstr ""
 
+#: Model/User.php:validation for field password
 msgid "Must contain one upper, one lower, 1 digit or special character"
 msgstr ""
 
+#: Model/User.php:validation for field verify_password
+msgid "Passwords dont match"
+msgstr ""
+
+#: Model/User.php:validation for field role
+msgid "Please enter a valid role"
+msgstr ""
+
+#: Plugin/Drafts/Model/Draft.php:validation for field title;validation content
+msgid "NotBlank"
+msgstr ""
+
+#: Plugin/Feedback/Model/Comment.php:validation for field author_name
+msgid "Name cannot be empty"
+msgstr ""
+
+#: Plugin/Feedback/Model/Comment.php:validation for field author_email
+msgid "E-mail address cannot be empty"
+msgstr ""
+
+#: Plugin/Feedback/Model/Comment.php:validation for field author_email
+msgid "E-mail address is not valid"
+msgstr ""
+
+#: Plugin/Feedback/Model/Comment.php:validation for field author_ip
+msgid "Invalid IP address"
+msgstr ""
+
+#: Plugin/Feedback/Model/Comment.php:validation for field content
+msgid "Comment cannot be empty"
+msgstr ""
+
+#: Plugin/Feedback/Model/Rating.php:validation for field rating
+msgid "decimal"
+msgstr ""
+
+#: Plugin/Feedback/Model/Rating.php:validation for field rating
+msgid "minimum"
+msgstr ""
+
+#: Plugin/Feedback/Model/Rating.php:validation for field rating
+msgid "maximum"
+msgstr ""

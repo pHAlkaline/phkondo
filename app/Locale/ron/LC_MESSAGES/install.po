@@ -1,182 +1,248 @@
-# LANGUAGE translation of pHKapa Install Plugin
+# LANGUAGE translation of pHKondo Install Plugin
 # Copyright pHAlkaline <contact@phalkaline.net>
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: phkapa.net\n"
-"POT-Creation-Date: 2015-06-08 21:57+0000\n"
-"PO-Revision-Date: 2015-06-09 19:31+0200\n"
+"Project-Id-Version: phkondo.net\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2022-02-07 15:15+0000\n"
 "Last-Translator: Dragos Pascale <dragos.pascale@gmail.com>\n"
 "Language-Team: Dragos Pascale <dragos.pascale@gmail.com>\n"
+"Language: ro_RO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.5.5\n"
-"Language: rum\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-msgid "Admin panel: %s"
-msgstr "Panou de Administrare: %s"
+#: Controller/InstallController.php:116;151;152
+msgid "Installation: Welcome"
+msgstr "Instalare: Bun Venit"
 
-msgid "Admin user password"
-msgstr "Parola utilizatorului admin"
-
+#: Controller/InstallController.php:126;131
 msgid "Already Installed"
 msgstr "Deja Instalat"
 
-msgid "CakePHP version %s < %s"
-msgstr "Versiunea CakePHP %s < %s"
-
-msgid "CakePhp version %s >= %s"
-msgstr "Versiunea CakePHP %s >= %s"
-
-msgid "Check load data option to insert dafault values to auxiliary tables."
-msgstr ""
-
-msgid "Click here to begin installation"
-msgstr "Click aici pentru a începe instalarea"
-
-msgid "Could not be saved. Please, try again."
-msgstr "Nu poate fi salvat. Vă rog încercați din nou"
-
-msgid "Could not connect to database."
-msgstr "Nu mă pot conecta la baza de date"
-
-msgid "Could not connect to database: %s"
-msgstr "Nu mă pot conecta la baza de date: %s"
-
-msgid "Could not load database: %s"
-msgstr "Nu pot încărca baza de date: %s"
-
-msgid "Could not write database.php file."
-msgstr "Nu pot să scriu fișierul database.php"
-
-msgid "Could not write email.php file."
-msgstr "Nu pot să scriu fișierul  email.php"
-
-msgid "Database"
-msgstr ""
-
-msgid "Database and data"
-msgstr "Baza de date și date"
-
-msgid "Database connection file already exists"
-msgstr "Fișierul de conexiune la baza de date există deja"
-
-msgid "Database connection missing"
-msgstr "Conexiunea la baza de date lipsește"
-
-msgid "Dont forget to restore default access values to Config and tmp directory."
-msgstr ""
-
-msgid "Email settings file already exists"
-msgstr "Fișierul de setări pentru email există deja"
-
-msgid "From Email"
-msgstr "De la Email"
-
-msgid "From Name"
-msgstr "De la Nume"
-
-msgid "Install or manually config pHKondo"
-msgstr "Instalați sau configurați manual pHKondo"
-
-msgid "Installation cannot continue as minimum requirements are not found."
-msgstr "Instalarea nu poate continua deoarece cerințele minime nu sunt îndeplinite"
-
-msgid "Installation completed successfully"
-msgstr "Instalarea s-a finalizat cu succes"
-
-msgid "Installation not completed successfully"
-msgstr "Instalarea nu  s-a încheiat cu succes"
-
-msgid "Installation: Welcome"
-msgstr "Instalare: Bun Venit !"
-
-msgid "Language"
-msgstr "Idioma"
-
-msgid "Load data"
-msgstr "Încarcă date"
-
-msgid "New Password"
-msgstr "Parolă nouă"
-
-msgid "PHP version %s < 5.6 or =>8.0.0"
-msgstr ""
-
-msgid "PHP version %s >= 5.6 and <8.0.0"
-msgstr ""
-
-msgid "Passwords secured and updated for all users"
-msgstr "Parolele securizate și actualizate pentru toți utilizatorii"
-
-msgid "Resources"
-msgstr "Resurse"
-
-msgid "Saved with success."
-msgstr "Salvat cu succes"
-
-msgid "Setup database connection"
-msgstr "Configurarea conexiunii la baza de date"
-
-msgid "Setup notification email"
-msgstr "Configurare notificării prin email"
-
-msgid "Something went wrong during installation. Please check your server logs."
-msgstr "Ceva nu a mers bine în timpul instalării. Vă rog verificați log-urile de pe server."
-
+#: Controller/InstallController.php:176;177
 msgid "Step 1 : Database connection"
 msgstr "Pasul 1: Conexiunea la baza de date"
 
+#: Controller/InstallController.php:180
+msgid "Database connection file already exists"
+msgstr "Fișierul de conexiune la baza de date există deja"
+
+#: Controller/InstallController.php:200
+msgid "Could not connect to database: %s"
+msgstr "Nu mă pot conecta la baza de date: %s"
+
+#: Controller/InstallController.php:204;249
+msgid "Could not connect to database."
+msgstr "Nu mă pot conecta la baza de date."
+
+#: Controller/InstallController.php:219
+msgid "Could not write database.php file."
+msgstr "Nu pot să scriu fișierul database.php."
+
+#: Controller/InstallController.php:233;234
 msgid "Step 2 : Build database , load table values"
 msgstr "Pasul 2: Crearea bazei de date, încărcarea valorilor în tabele"
 
+#: Controller/InstallController.php:261;272;285;297;313;326
+msgid "Could not load database: %s"
+msgstr "Nu pot încărca baza de date: %s"
+
+#: Controller/InstallController.php:362;469;491
+msgid ""
+"Unable to secure your application, your Config %s core.php file is not "
+"writable. Please check the permissions."
+msgstr ""
+"Nu am putut să securizez aplicația, fișierul de configurare %s core.php nu "
+"poate fi scris. Vă rog verificați permisiunile."
+
+#: Controller/InstallController.php:382;383
 msgid "Step 3 : Email notification"
 msgstr "Pasul 3: Notificarea prin email"
 
+#: Controller/InstallController.php:386
+msgid "Email settings file already exists"
+msgstr "Fișierul de setări pentru email există deja"
+
+#: Controller/InstallController.php:409
+msgid "Could not write email.php file."
+msgstr "Nu pot să scriu fișierul  email.php."
+
+#: Controller/InstallController.php:420;421
 msgid "Step 4 : Secure app"
 msgstr "Pasul 4: Securizarea aplicației și stabilirea"
 
-msgid "Subject"
-msgstr "Subiect"
+#: Controller/InstallController.php:429
+#, fuzzy
+#| msgid "Could not be saved. Please, try again."
+msgid "Could not be secured. Please, try again."
+msgstr "Nu poate fi salvat. Vă rog încercați din nou."
 
+#: Controller/InstallController.php:430
+msgid "Unable to secure app."
+msgstr ""
+
+#: Controller/InstallController.php:438
+msgid "Saved with success."
+msgstr "Salvat cu succes."
+
+#: Controller/InstallController.php:443
+msgid "Could not be saved. Please, try again."
+msgstr "Nu poate fi salvat. Vă rog încercați din nou."
+
+#: Controller/InstallController.php:444
 msgid "Unable to create administrative user."
-msgstr "Nu am putut să creez utilizatorul administrator"
+msgstr "Nu am putut să creez utilizatorul administrator."
 
+#: Controller/InstallController.php:460;461;478;481
+msgid "Installation completed successfully"
+msgstr "Instalarea s-a finalizat cu succes"
+
+#: Controller/InstallController.php:483;484
+msgid "Installation not completed successfully"
+msgstr "Instalarea nu  s-a încheiat cu succes"
+
+#: Controller/InstallController.php:485
+msgid ""
+"Something went wrong during installation. Please check your server logs."
+msgstr ""
+"Ceva nu a mers bine în timpul instalării. Vă rog verificați log-urile de pe "
+"server."
+
+#: Controller/InstallController.php:542
 msgid "Unable to generate users password."
-msgstr "Nu am putut să generez parolele utilizator"
+msgstr "Nu am putut să generez parolele utilizator."
 
-msgid "Unable to secure your application, your Config %s core.php file is not writable. Please check the permissions."
-msgstr "Nu am putut să securizez aplicația, fișierul de configurare %s core.php nu poate fi scris. Vă rog verificați permisiunile."
+#: Controller/InstallController.php:543
+msgid "install"
+msgstr "instalarea"
 
+#: Controller/UsersController.php:293
+msgid "Database connection missing"
+msgstr "Conexiunea la baza de date lipsește"
+
+#: Controller/UsersController.php:294
+msgid "Install or manually config pHKondo"
+msgstr "Instalați sau configurați manual pHKondo"
+
+#: View/Themed/Phkondo/Install/adminuser.ctp:8
+msgid "Admin user password"
+msgstr "Parola utilizatorului admin"
+
+#: View/Themed/Phkondo/Install/adminuser.ctp:11
+msgid "New Password"
+msgstr "Parolă nouă"
+
+#: View/Themed/Phkondo/Install/adminuser.ctp:16
 msgid "Verify Password"
 msgstr "Verifică parola"
 
-msgid "Your Config directory is NOT writable."
-msgstr "Directorul de configurare NU are permisiunea de scriere"
+#: View/Themed/Phkondo/Install/data.ctp:8
+msgid "Database and data"
+msgstr "Baza de date și date"
 
-msgid "Your Config directory is writable."
-msgstr "Directorul de configurare ARE permisiunea de scriere"
+#: View/Themed/Phkondo/Install/data.ctp:15
+msgid "Load data"
+msgstr "Încarcă date"
 
-msgid "Your Config/core_phapp.php file is NOT writable."
-msgstr "Config/core_phapp.php NU are permisiunea de scriere"
+#: View/Themed/Phkondo/Install/data.ctp:20
+msgid "Check load data option to insert dafault values to auxiliary tables."
+msgstr ""
 
-msgid "Your Config/core_phapp.php file is writable."
-msgstr "Config/core_phapp.php ARE permisiunea de scriere"
+#: View/Themed/Phkondo/Install/database.ctp:8
+msgid "Setup database connection"
+msgstr "Configurarea conexiunii la baza de date"
 
-msgid "Your tmp directory is NOT writable."
-msgstr "Directorul tmp nu poate fi scris"
+#: View/Themed/Phkondo/Install/database.ctp:43
+msgid "Database"
+msgstr ""
 
+#: View/Themed/Phkondo/Install/email.ctp:8
+msgid "Setup notification email"
+msgstr "Configurare notificării prin email"
+
+#: View/Themed/Phkondo/Install/email.ctp:12
+msgid "From Email"
+msgstr "De la Email"
+
+#: View/Themed/Phkondo/Install/email.ctp:17
+msgid "From Name"
+msgstr "De la Nume"
+
+#: View/Themed/Phkondo/Install/email.ctp:22
+msgid "Subject"
+msgstr "Subiect"
+
+#: View/Themed/Phkondo/Install/finish.ctp:9
+msgid ""
+"Dont forget to restore default access values to Config and tmp directory."
+msgstr ""
+
+#: View/Themed/Phkondo/Install/finish.ctp:14
+msgid "Passwords secured and updated for all users"
+msgstr "Parolele securizate și actualizate pentru toți utilizatorii"
+
+#: View/Themed/Phkondo/Install/finish.ctp:19
+msgid "pHKondo: %s"
+msgstr ""
+
+#: View/Themed/Phkondo/Install/finish.ctp:24
+msgid "Resources"
+msgstr "Resurse"
+
+#: View/Themed/Phkondo/Install/index.ctp:8
+msgid "Language"
+msgstr "Idioma"
+
+#: View/Themed/Phkondo/Install/index.ctp:26
 msgid "Your tmp directory is writable."
 msgstr ""
 
-msgid "install"
-msgstr "Instalarea"
+#: View/Themed/Phkondo/Install/index.ctp:30
+msgid "Your tmp directory is NOT writable."
+msgstr "Directorul tmp nu poate fi scris."
 
-msgid "pHKapa Admin panel: %s"
-msgstr "Panou de administrare pHKapa: %s"
+#: View/Themed/Phkondo/Install/index.ctp:36
+msgid "Your Config directory is writable."
+msgstr "Directorul de configurare ARE permisiunea de scriere."
 
-msgid "pHKapa: %s"
+#: View/Themed/Phkondo/Install/index.ctp:40
+msgid "Your Config directory is NOT writable."
+msgstr "Directorul de configurare NU are permisiunea de scriere."
+
+#: View/Themed/Phkondo/Install/index.ctp:46
+msgid "Your Config/core_phapp.php file is writable."
+msgstr "Config/core_phapp.php ARE permisiunea de scriere."
+
+#: View/Themed/Phkondo/Install/index.ctp:50
+msgid "Your Config/core_phapp.php file is NOT writable."
+msgstr "Config/core_phapp.php NU are permisiunea de scriere."
+
+#: View/Themed/Phkondo/Install/index.ctp:56
+msgid "PHP version %s >= 5.6 and <8.0.0"
 msgstr ""
+
+#: View/Themed/Phkondo/Install/index.ctp:60
+msgid "PHP version %s < 5.6 or =>8.0.0"
+msgstr ""
+
+#: View/Themed/Phkondo/Install/index.ctp:68
+msgid "CakePhp version %s >= %s"
+msgstr "Versiunea CakePHP %s >= %s"
+
+#: View/Themed/Phkondo/Install/index.ctp:72
+msgid "CakePHP version %s < %s"
+msgstr "Versiunea CakePHP %s < %s"
+
+#: View/Themed/Phkondo/Install/index.ctp:77
+msgid "Click here to begin installation"
+msgstr "Click aici pentru a începe instalarea"
+
+#: View/Themed/Phkondo/Install/index.ctp:80
+msgid "Installation cannot continue as minimum requirements are not found."
+msgstr ""
+"Instalarea nu poate continua deoarece cerințele minime nu sunt îndeplinite."

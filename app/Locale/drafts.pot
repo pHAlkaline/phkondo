@@ -13,10 +13,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: Plugin/Drafts/Controller/CondoDraftsController.php:125
-msgid "Requires a valid condo and active fiscal year."
-msgstr ""
-
 #: Plugin/Drafts/Controller/CondoDraftsController.php:49;73
 #: Plugin/Drafts/Controller/DraftsController.php:41;77;111
 msgid "Invalid draft"
@@ -27,6 +23,10 @@ msgstr ""
 #: Plugin/Drafts/View/CondoDrafts/index.ctp:12
 #: Plugin/Drafts/View/Drafts/index.ctp:12
 msgid "Drafts"
+msgstr ""
+
+#: Plugin/Drafts/Controller/CondoDraftsController.php:125
+msgid "Requires a valid condo and active fiscal year."
 msgstr ""
 
 #: Plugin/Drafts/Controller/DraftsController.php:60;84

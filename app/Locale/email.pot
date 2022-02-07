@@ -1,36 +1,33 @@
-# LANGUAGE translation of pHkondo Application
-# Copyright pHAlkaline <contact@phalkaline.net>
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
 #
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pHKondo V1.1\n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: 2022-02-07 15:49+0000\n"
-"Last-Translator: pHAlkaline <contact@phalkaline.net>\n"
-"Language-Team: Portuguesa <contact@phalkaline.net>\n"
-"Language: pt\n"
+"Project-Id-Version: PROJECT VERSION\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
-"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 #: Controller/EmailController.php:88
 msgid "Could not save email client settings."
-msgstr "Não foi possível o registo de configurações."
+msgstr ""
 
 #: Controller/EmailController.php:101
 msgid "Could not save notification settings."
-msgstr "Não foi possível o registo de configurações. "
+msgstr ""
 
 #: Controller/EmailController.php:106
 msgid "Config saved with success."
-msgstr "Configuração registada com sucesso."
+msgstr ""
 
 #: Controller/EmailController.php:158
 msgid "Test message"
-msgstr "Mensagem Teste"
+msgstr ""
 
 #: Controller/EmailController.php:159
 #: Controller/FractionOwnersController.php:218
@@ -40,46 +37,46 @@ msgstr "Mensagem Teste"
 #: Plugin/PrintReceipt/Event/PrintReceiptListener.php:97
 #: Plugin/Reports/Event/SendReportListener.php:105;208
 msgid "Email sent with success."
-msgstr "Email envidado com sucesso."
+msgstr ""
 
 #: Plugin/PrintReceipt/Event/PrintReceiptListener.php:64
 #: Plugin/Reports/Event/SendReportListener.php:32;132
 msgid "Invalid Email."
-msgstr "Email inválido."
+msgstr ""
 
 #: Plugin/PrintReceipt/Event/PrintReceiptListener.php:73;99
 #: Plugin/Reports/Event/SendReportListener.php:81;107;184;210
 msgid "Not possible to send Email."
-msgstr "Não foi possível o envio de email."
+msgstr ""
 
 #: View/Themed/Phkondo/Email/config.ctp:7
 msgid "Config Email Client"
-msgstr "Configuração de Cliente Email"
+msgstr ""
 
 #: View/Themed/Phkondo/Email/config.ctp:23
 msgid "Connection"
-msgstr "Ligação"
+msgstr ""
 
 #: View/Themed/Phkondo/Email/config.ctp:42
 #: View/Themed/Phkondo/Install/database.ctp:28
 msgid "Host"
-msgstr "Servidor"
+msgstr ""
 
 #: View/Themed/Phkondo/Email/config.ctp:46
 msgid "Requires SMTP host account with TLS delivery enabled"
-msgstr "Requere serviço SMTP com TLS "
+msgstr ""
 
 #: View/Themed/Phkondo/Email/config.ctp:52
 msgid "Port"
-msgstr "Porta"
+msgstr ""
 
 #: View/Themed/Phkondo/Email/config.ctp:69
 msgid "From Email"
-msgstr "Email de envio"
+msgstr ""
 
 #: View/Themed/Phkondo/Email/config.ctp:75
 msgid "From Name"
-msgstr "Nome "
+msgstr ""
 
 #: View/Themed/Phkondo/Email/config.ctp:80;94;109
 #: View/Themed/Phkondo/FractionOwners/view.ctp:187
@@ -88,11 +85,11 @@ msgstr "Nome "
 #: View/Themed/Phkondo/Receipts/view.ctp:234
 #: View/Themed/Phkondo/Supports/view.ctp:44
 msgid "Subject"
-msgstr "Assunto"
+msgstr ""
 
 #: View/Themed/Phkondo/Email/config.ctp:85
 msgid "Send Test"
-msgstr "Efectuar Teste"
+msgstr ""
 
 #: View/Themed/Phkondo/Email/config.ctp:98;113
 #: View/Themed/Phkondo/FractionOwners/view.ctp:191
@@ -100,7 +97,7 @@ msgstr "Efectuar Teste"
 #: View/Themed/Phkondo/OwnerReceipts/view.ctp:250
 #: View/Themed/Phkondo/Receipts/view.ctp:238
 msgid "Message"
-msgstr "Mensagem"
+msgstr ""
 
 #: View/Themed/Phkondo/Email/config.ctp:102;117
 #: View/Themed/Phkondo/FractionOwners/view.ctp:194
@@ -108,7 +105,7 @@ msgstr "Mensagem"
 #: View/Themed/Phkondo/OwnerReceipts/view.ctp:253
 #: View/Themed/Phkondo/Receipts/view.ctp:241
 msgid "Format"
-msgstr "Formato"
+msgstr ""
 
 #: View/Themed/Phkondo/Email/config.ctp:102;117
 #: View/Themed/Phkondo/FractionOwners/view.ctp:194
@@ -116,23 +113,24 @@ msgstr "Formato"
 #: View/Themed/Phkondo/OwnerReceipts/view.ctp:253
 #: View/Themed/Phkondo/Receipts/view.ctp:241
 msgid "PDF"
-msgstr "PDF"
+msgstr ""
 
 #: View/Themed/Phkondo/FractionOwners/view.ctp:184
 #: View/Themed/Phkondo/Fractions/view.ctp:172
 #: View/Themed/Phkondo/OwnerReceipts/view.ctp:243
 #: View/Themed/Phkondo/Receipts/view.ctp:231
 msgid "Send To"
-msgstr "Enviar Para"
+msgstr ""
 
 #: View/Themed/Phkondo/FractionOwners/view.ctp:202
 #: View/Themed/Phkondo/Fractions/view.ctp:190
 #: View/Themed/Phkondo/OwnerReceipts/view.ctp:261
 #: View/Themed/Phkondo/Receipts/view.ctp:249
 msgid "Send"
-msgstr "Enviar"
+msgstr ""
 
 #: View/Themed/Phkondo/OwnerReceipts/view.ctp:63
 #: View/Themed/Phkondo/Receipts/view.ctp:64
 msgid "Send By Email"
-msgstr "Enviar Por Correio Electrónico"
+msgstr ""
+

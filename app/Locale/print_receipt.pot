@@ -13,12 +13,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: Plugin/PrintReceipt/View/Layouts/print.ctp:180
-#: Plugin/PrintReceipt/View/Layouts/pdf/print.ctp:134
-#: Plugin/PrintReceipt/View/Pdf/print.ctp:134
-msgid "Computer Processed"
-msgstr ""
-
 #: Plugin/PrintReceipt/View/OwnerReceipts/receipt.ctp:4
 #: Plugin/PrintReceipt/View/OwnerReceipts/pdf/receipt.ctp:4
 #: Plugin/PrintReceipt/View/Pdf/receipt.ctp:4
@@ -51,11 +45,11 @@ msgstr ""
 msgid "Canceled"
 msgstr ""
 
-#: Plugin/PrintReceipt/View/OwnerReceipts/receipt.ctp:21
-#: Plugin/PrintReceipt/View/OwnerReceipts/pdf/receipt.ctp:21
-#: Plugin/PrintReceipt/View/Pdf/receipt.ctp:21
-#: Plugin/PrintReceipt/View/Receipts/receipt.ctp:21
-#: Plugin/PrintReceipt/View/Receipts/pdf/receipt.ctp:21
-msgid "Original"
+#: Plugin/PrintReceipt/View/OwnerReceipts/receipt.ctp:79
+#: Plugin/PrintReceipt/View/OwnerReceipts/pdf/receipt.ctp:79
+#: Plugin/PrintReceipt/View/Pdf/receipt.ctp:79
+#: Plugin/PrintReceipt/View/Receipts/receipt.ctp:80
+#: Plugin/PrintReceipt/View/Receipts/pdf/receipt.ctp:79
+msgid "Total"
 msgstr ""
 

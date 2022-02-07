@@ -13,7 +13,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.5.4\n"
-"Language: pt\n"
+"Language: en\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 msgid " of "

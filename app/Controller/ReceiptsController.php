@@ -581,7 +581,7 @@ class ReceiptsController extends AppController {
             case 'add_notes':
                 $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'receipts', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Receipt', 'Receipts', 2), 'active' => '');
                 $breadcrumbs[2] = array('link' => Router::url(array('controller' => 'receipts', 'action' => 'view', $this->getPhkRequestVar('receipt_id'))), 'text' => $this->getPhkRequestVar('receipt_text'), 'active' => '');
-                $breadcrumbs[3] = array('link' => '', 'text' => __('Pick   Notes'), 'active' => 'active');
+                $breadcrumbs[3] = array('link' => '', 'text' => __('Pick Notes'), 'active' => 'active');
                 break;
             case 'view':
                 $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'receipts', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Receipt', 'Receipts', 2), 'active' => '');

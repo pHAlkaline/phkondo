@@ -121,7 +121,7 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
                                             <thead>
                                                 <tr>
                                                     <th data-breakpoints="xs"><?php echo __('Document'); ?></th>
-                                                    <th><?php echo __('Document date'); ?></th>
+                                                    <th><?php echo __('Document Date'); ?></th>
                                                     <th><?php echo __('Title'); ?></th>
                                                     <th data-breakpoints="xs"><?php echo __('Note Type'); ?></th>
                                                     <th data-breakpoints="xs"><?php echo __n('Fraction', 'Fractions', 1); ?></th>

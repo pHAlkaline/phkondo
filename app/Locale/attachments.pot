@@ -13,10 +13,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: Plugin/Attachments/Controller/AttachmentsAppController.php:17
-msgid "Requires a valid condo and active fiscal year."
-msgstr ""
-
 #: Plugin/Attachments/Controller/AttachmentsController.php:43;84;143
 #: Plugin/Attachments/Controller/FractionAttachmentsController.php:46;87;146
 #: Plugin/Attachments/Controller/InsuranceAttachmentsController.php:46;87;146
@@ -140,13 +136,6 @@ msgstr ""
 #: Plugin/Attachments/View/MaintenanceAttachments/index.ctp:14
 #: Plugin/Attachments/View/MaintenanceAttachments/view.ctp:10
 msgid "New Attachment"
-msgstr ""
-
-#: Plugin/Attachments/Model/Attachment.php:validation for field name;validation for field attachment
-#: Plugin/Attachments/Model/FractionAttachment.php:validation for field name;validation for field attachment
-#: Plugin/Attachments/Model/InsuranceAttachment.php:validation for field name;validation for field attachment
-#: Plugin/Attachments/Model/MaintenanceAttachment.php:validation for field name;validation for field attachment
-msgid "unique"
 msgstr ""
 
 #: Plugin/Attachments/Model/Attachment.php:validation for field attachment
