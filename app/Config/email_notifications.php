@@ -6,7 +6,7 @@ $config = array (
     'receipt_subject' => 'Notificação Recibo',
     'receipt_message' => 'Exmo(a). Sr(a).
 
-Foi-lhe emitido a seguinte documento , o qual pode ser consultado em anexo.
+Foi-lhe emitido a seguinte recibo, o qual pode ser consultado em anexo.
  
 A administração do condomínio,',
     'receipt_attachment_format' => 'pdf',
@@ -17,6 +17,6 @@ Foi-lhe emitido a seguinte documento , o qual pode ser consultado em anexo.
  
 A administração do condomínio,
 ',
-    'current_account_attachment_format' => 'pdf',
+    'current_account_attachment_format' => 'html',
   ),
 );

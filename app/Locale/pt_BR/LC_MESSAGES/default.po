@@ -2392,7 +2392,7 @@ msgid ""
 "Warning: when you set a budget as pending, ALL DEBIT NOTES created by this "
 "budget will be set as WAITING PAYMENT, EXCEPT the ones already paid."
 msgstr ""
-"Aviso: quando se coloca o orçamento como inativo, TODAS AS NOTAS DE DEBITO "
+"Aviso: quando se coloca o orçamento como pendente, TODAS AS NOTAS DE DEBITO "
 "criadas por esse orçamento serão alteradas para o estado de AGUARDA "
 "PAGAMENTO, EXCEPTO as quotas que já foram pagas."
 
@@ -2732,7 +2732,7 @@ msgstr "Editar Período Contabilístico"
 
 #: View/Themed/Phkondo/FiscalYears/view.ctp:18
 msgid "Set as Active"
-msgstr "Activar Período Contabilístico"
+msgstr "Activar"
 
 #: View/Themed/Phkondo/FiscalYears/view.ctp:47
 msgid "Open Date"
@@ -3573,3 +3573,16 @@ msgstr "Hoje, %s"
 
 msgid "Tomorrow, %s"
 msgstr "Amanhã, %s"
+
+
+msgid "Language"
+msgstr "Idioma"
+
+msgid "Theme"
+msgstr "Tema Visual"
+
+msgid "Verify Password"
+msgstr "Repita Palavra Passe"
+
+msgid "Payment Due Date"
+msgstr "Vencimento"

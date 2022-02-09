@@ -3578,3 +3578,16 @@ msgstr ""
 
 msgid "Tomorrow, %s"
 msgstr ""
+
+
+msgid "Language"
+msgstr ""
+
+msgid "Theme"
+msgstr ""
+
+msgid "Verify Password"
+msgstr ""
+
+msgid "Payment Due Date"
+msgstr ""

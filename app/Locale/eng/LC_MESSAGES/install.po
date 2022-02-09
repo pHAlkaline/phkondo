@@ -1,4 +1,4 @@
-# LANGUAGE translation of pHKondo Install Plugin
+# LANGUAGE translation of pHkondo Application
 # Copyright pHAlkaline <contact@phalkaline.net>
 #
 msgid ""
