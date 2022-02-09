@@ -1,4 +1,6 @@
-<?php $this->Html->script('budget_edit', false); ?>
+<?php 
+$this->Html->script('budget_edit', false); 
+?>
 <div id="page-container" class="row row-offcanvas row-offcanvas-left">
 
     <div class="col-sm-2">
@@ -30,7 +32,7 @@
                     $datefield = ' datefield';
                 }
                 ?>
-                <li ><?php echo $this->Html->link(('View %s', __n('Budget', 'Budgets', 1), array('action' => 'view', $budget['Budget']['id'], '?' => $this->request->query), array('class' => 'btn ')); ?> </li>
+                <li ><?php echo $this->Html->link(__('View %s', __n('Budget', 'Budgets', 1)), array('action' => 'view', $budget['Budget']['id'], '?' => $this->request->query), array('class' => 'btn ')); ?> </li>
                 <li ><?php echo $this->Form->postLink(__('Delete Budget'), array('action' => 'delete', $budget['Budget']['id'], '?' => $this->request->query), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $budget['Budget']['title']))); ?> </li>
                 <li ><?php echo $this->Html->link(__('List Budgets'), array('action' => 'index', '?' => $this->request->query), array('class' => 'btn ')); ?> </li>
                </ul><!-- /.list-group -->
@@ -107,7 +109,7 @@
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-                    <?php echo $this->Form->input('shares', array($readonlyDisabled, 'class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('shares', array($readonlyDisabled, 'label'=>['text' => __n('Share','Shares',2), 'class' => 'col-sm-2 control-label'], 'class' => 'form-control')); ?>
                 </div><!-- .form-group -->
 
                 <div class="form-group">

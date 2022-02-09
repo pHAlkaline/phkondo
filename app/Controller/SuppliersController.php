@@ -178,7 +178,7 @@ class SuppliersController extends AppController {
             //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
             //array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text') . ' ( ' . $this->phkRequestData['fiscal_year_text'] . ' ) ', 'active' => ''),
-            array('link' => Router::url(array('controller' => 'invoice_conference', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Invoice Conference', 'Invoice Conferences', 2), 'active' => ''),
+            array('link' => Router::url(array('controller' => 'invoice_conference', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Invoice Conference', 'Invoices Conference', 2), 'active' => ''),
             array('link' => '', 'text' => __n('Supplier', 'Suppliers', 2), 'active' => 'active')
         );
         $headerTitle = __n('Supplier', 'Suppliers', 2);

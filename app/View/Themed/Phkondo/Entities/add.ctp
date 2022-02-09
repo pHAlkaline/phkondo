@@ -48,7 +48,7 @@
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-                    <?php echo $this->Form->input('contacts', array('class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('contacts', array('label'=>['text'=>__n('Contact','Contacts',2),'class'=>'col-sm-2 control-label'], 'class' => 'form-control')); ?>
                 </div><!-- .form-group -->
 
                 <div class="form-group">

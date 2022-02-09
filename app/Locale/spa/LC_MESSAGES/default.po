@@ -733,7 +733,7 @@ msgstr "Factura no pueden ser eliminadas"
 #: View/Themed/Phkondo/Condos/view.ctp:26
 #: View/Themed/Phkondo/InvoiceConference/index.ctp:11
 msgid "Invoice Conference"
-msgid_plural "Invoice Conferences"
+msgid_plural "Invoices Conference"
 msgstr[0] "Verificación de Facturas"
 msgstr[1] "Verificación de Facturas"
 

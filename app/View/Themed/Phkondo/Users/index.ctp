@@ -1,4 +1,6 @@
-<?php $this->Html->css('footable/footable.bootstrap.min', false); ?>
+<?php
+
+$this->Html->css('footable/footable.bootstrap.min', false); ?>
 <?php $this->Html->script('moment-with-locales', false); ?>
 <?php $this->Html->script('libs/footable/footable', false); ?>
 <?php $this->Html->script('footable', false); ?>
@@ -23,8 +25,9 @@
                     <thead>
                         <tr>
                             <th><?php echo $this->Paginator->sort('name'); ?></th>
-                            <th><?php echo $this->Paginator->sort('username'); ?></th>
                             <th data-breakpoints="xs"><?php echo $this->Paginator->sort('role'); ?></th>
+
+                            <th><?php echo $this->Paginator->sort('username'); ?></th>
                             <th data-breakpoints="xs" class="actions hidden-print"><?php //echo __('Actions');    ?></th>
                         </tr>
                     </thead>
@@ -36,16 +39,17 @@
                                 $deletable = '';
                             }
                             ?>
-                            <tr>
-                                <td><?php echo h($user['User']['name']); ?>&nbsp;</td>
-                                <td><?php echo h($user['User']['username']); ?>&nbsp;</td>
-                                <td><?php echo h(__($roles[$user['User']['role']])); ?>&nbsp;</td>
-                                <td class="actions hidden-print">
+                        <tr>
+                            <td><?php echo h($user['User']['name']); ?>&nbsp;</td>
+                            <td><?php echo h(__($roles[$user['User']['role']])); ?>&nbsp;</td>
+
+                            <td><?php echo h($user['User']['username']); ?>&nbsp;</td>
+                            <td class="actions hidden-print">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $user['User']['id']), array('class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $user['User']['id']), array('class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
                                     <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'delete', $user['User']['id']), array('title' => __('Remove'), 'class' => 'btn btn-default btn-xs ' . $deletable, 'escape' => false, 'confirm' => __('Are you sure you want to delete # %s?', $user['User']['name']))); ?>
-                                </td>
-                            </tr>
+                            </td>
+                        </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>

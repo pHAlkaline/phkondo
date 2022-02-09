@@ -8,7 +8,7 @@
 
         <div class="index">
 
-            <h2 class="col-sm-9"><?php echo __('Invoice Conference'); ?></h2>
+            <h2 class="col-sm-9"><?php echo __n('Invoice Conference','Invoices Conference', 2); ?></h2>
             <div class="actions hidden-print col-sm-3">
                 <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Invoice'), array('action' => 'add', '?' => $this->request->query), array('class' => 'btn btn-primary', 'style' => 'margin: 8px 0; float: right;', 'escape' => false));
                 ?>

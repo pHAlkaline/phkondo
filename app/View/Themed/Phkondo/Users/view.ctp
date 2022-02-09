@@ -32,17 +32,21 @@ $roles=Configure::read('User.role'); ?>
                                 <?php echo h($user['User']['name']); ?>
                             &nbsp;
                         </td>
-                    </tr><tr>		<td><strong><?php echo __('Username'); ?></strong></td>
-                        <td>
-                                <?php echo h($user['User']['username']); ?>
-                            &nbsp;
-                        </td>
-                    </tr><tr>		<td><strong><?php echo __('Role'); ?></strong></td>
+                    </tr>
+                    <tr>		<td><strong><?php echo __('Role'); ?></strong></td>
                         <td>
                                 <?php echo h(__($roles[$user['User']['role']])); ?>
                             &nbsp;
                         </td>
-                    </tr><tr>		<td><strong><?php echo __('Active'); ?></strong></td>
+                    </tr>
+                    
+                    <tr>		<td><strong><?php echo __('Username'); ?></strong></td>
+                        <td>
+                                <?php echo h($user['User']['username']); ?>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>		<td><strong><?php echo __('Active'); ?></strong></td>
                         <td>
                                 <?php echo h($user['User']['active_string']); ?>
                             &nbsp;

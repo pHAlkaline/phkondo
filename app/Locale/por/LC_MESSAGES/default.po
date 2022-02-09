@@ -729,7 +729,7 @@ msgstr "Não foi possível apagar Quota"
 #: View/Themed/Phkondo/Condos/view.ctp:26
 #: View/Themed/Phkondo/InvoiceConference/index.ctp:11
 msgid "Invoice Conference"
-msgid_plural "Invoice Conferences"
+msgid_plural "Invoices Conference"
 msgstr[0] "Conferência de Fatura"
 msgstr[1] "Conferência de Faturas"
 
@@ -3394,7 +3394,7 @@ msgstr "Editar Categoria de Suporte"
 msgid "Support Category"
 msgid_plural "Support Categories"
 msgstr[0] "Categoria de Suporte"
-msgstr[1] "Categoriaa de Suporte"
+msgstr[1] "Categoria de Suporte"
 
 #: View/Themed/Phkondo/Supports/add.ctp:10
 #: View/Themed/Phkondo/Supports/edit.ctp:10
@@ -3574,3 +3574,14 @@ msgstr "Hoje, %s"
 msgid "Tomorrow, %s"
 msgstr "Amanhã, %s"
 
+msgid "Language"
+msgstr "Idioma"
+
+msgid "Theme"
+msgstr "Tema Visual"
+
+msgid "Verify Password"
+msgstr "Repita Palavra Passe"
+
+msgid "Payment Due Date"
+msgstr "Vencimento"

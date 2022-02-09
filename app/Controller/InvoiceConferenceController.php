@@ -245,26 +245,26 @@ class InvoiceConferenceController extends AppController {
             //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
             //array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text') . ' ( ' . $this->phkRequestData['fiscal_year_text'] . ' ) ', 'active' => ''),
-            array('link' => Router::url(array('controller' => 'invoice_conference', 'action' => 'index', '?' => $this->request->query), true), 'text' => __('Invoice Conference'), 'active' => 'active')
+            array('link' => Router::url(array('controller' => 'invoice_conference', 'action' => 'index', '?' => $this->request->query), true), 'text' => __n('Invoice Conference','Invoices Conference', 2), 'active' => 'active')
         );
 
         switch ($this->action) {
             case 'index_by_supplier':
-                $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'invoice_conference', 'action' => 'index', '?' => $this->request->query)), 'text' => __('Invoice Conference'), 'active' => '');
+                $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'invoice_conference', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Invoice Conference','Invoices Conference', 2), 'active' => '');
                 $breadcrumbs[2] = array('link' => '', 'text' => $this->getPhkRequestVar('supplier_text'), 'active' => 'active');
                 break;
             case 'view':
-                $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'invoice_conference', 'action' => 'index', '?' => $this->request->query)), 'text' => __('Invoice Conference'), 'active' => '');
+                $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'invoice_conference', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Invoice Conference','Invoices Conference', 2), 'active' => '');
                 $breadcrumbs[2] = array('link' => Router::url(array('controller' => 'invoice_conference', 'action' => 'index_by_supplier', $this->getPhkRequestVar('supplier_id'), '?' => $this->request->query)), 'text' => $this->getPhkRequestVar('supplier_text'), 'active' => '');
                 $breadcrumbs[3] = array('link' => '', 'text' => $this->getPhkRequestVar('invoice_text'), 'active' => 'active');
                 break;
             case 'edit':
-                $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'invoice_conference', 'action' => 'index', '?' => $this->request->query)), 'text' => __('Invoice Conference'), 'active' => '');
+                $breadcrumbs[1] = array('link' => Router::url(array('controller' => 'invoice_conference', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Invoice Conference','Invoices Conference', 2), 'active' => '');
                 $breadcrumbs[2] = array('link' => Router::url(array('controller' => 'invoice_conference', 'action' => 'index_by_supplier', $this->getPhkRequestVar('supplier_id'), '?' => $this->request->query)), 'text' => $this->getPhkRequestVar('supplier_text'), 'active' => '');
                 $breadcrumbs[3] = array('link' => '', 'text' => $this->getPhkRequestVar('invoice_text'), 'active' => 'active');
                 break;
         }
-        $headerTitle = __('Invoice Conference');
+        $headerTitle = __n('Invoice Conference','Invoices Conference', 2);
         $this->set(compact('breadcrumbs', 'headerTitle'));
     }
 

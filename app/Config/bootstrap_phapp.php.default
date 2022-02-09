@@ -49,7 +49,7 @@ CakePlugin::load('Drafts', array('bootstrap' => true));
 /*
  * Attachments Plugin
  */
-//CakePlugin::load('Attachments', array('bootstrap' => true));
+CakePlugin::load('Attachments', array('bootstrap' => true));
 Configure::write('Attachment.attachment', array(
     'path' => '{ROOT}files{DS}{model}{DS}{field}{DS}',
     'pathMethod' => 'foreignKey',
@@ -69,14 +69,14 @@ Configure::write('Attachment.attachment', array(
 /*
  * CakePdf Plugin
  * Requires PrintReceipt and Reports Plugin
- * Requires wkhtmltopdf engine in your system / server
+ * Requires wkhtmltopdf engine at your system
  * https://wkhtmltopdf.org/ 
  */
-//CakePlugin::load('CakePdf', array('bootstrap' => true, 'routes' => false));
+CakePlugin::load('CakePdf', array('bootstrap' => true, 'routes' => false));
 Configure::write('CakePdf', array(
-    'binary' => '{your_system_path_to_wkhtmltopdf.exe}', 
-    // C:\xampp7426\wkhtmltopdf\bin\wkhtmltopdf.exe
-    // CakePdf plugin requires wkhtmltopdf engine in your system / server
+    'binary' => 'C:\xampp7426\wkhtmltopdf\bin\wkhtmltopdf.exe', 
+    // {your_system_path_to_wkhtmltopdf.exe}
+    // Requires wkhtmltopdf engine 
     // https://wkhtmltopdf.org/
     'engine' => 'CakePdf.WkHtmlToPdf',
     'orientation' => 'portrait',
@@ -87,7 +87,7 @@ Configure::write('CakePdf', array(
         'enable-local-file-access' => true
     ],
     'phkondo' => [
-        'active' => false, // Requires CakePdf Plugin 
+        'active' => true, // Requires CakePdf Plugin 
         'cssPath' => APP . 'View' . DS . 'Themed' . DS . 'Phkondo' . DS . WEBROOT_DIR . DS . 'css' . DS,
         'imgPath' => APP . 'View' . DS . 'Themed' . DS . 'Phkondo' . DS . WEBROOT_DIR . DS . 'img' . DS,
     ]

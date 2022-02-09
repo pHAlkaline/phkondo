@@ -1,4 +1,6 @@
-<?php $this->Html->script('user_edit', false); ?>
+<?php
+
+$this->Html->script('user_edit', false); ?>
 <?php
 $role_options=Configure::read('User.role');
 foreach ($role_options as $key => $value){
@@ -41,10 +43,14 @@ foreach ($role_options as $key => $value){
                 <div class="form-group">
                     <?php echo $this->Form->input('name', array('autocomplete'=>'off','class' => 'form-control')); ?>
                 </div><!-- .form-group -->
+                <div class="form-group">
+                    <?php echo $this->Form->input('role', array('options' => $role_options, 'class' => 'form-control')); ?>
+                </div><!-- .form-group -->
 
                 <div class="form-group">
                     <?php echo $this->Form->input('username', array('autocomplete'=>'off','class' => 'form-control','maxLength' => '40')); ?>
                 </div><!-- .form-group -->
+
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10 ">
                         <?php echo $this->Form->input('edpassword', array('class' => 'checkbox styled', 'label' => __('Enable password change'), 'div' => array('class' => 'checkbox checkbox-success'), 'between' => '', 'after' => '', 'type' => 'checkbox')); ?>
@@ -56,9 +62,6 @@ foreach ($role_options as $key => $value){
                 </div><!-- .form-group -->
                 <div class="form-group">
                     <?php echo $this->Form->input('verify_password', array('autocomplete'=>'new-password','disabled' => 'disabled', 'class' => 'form-control','minlength'=>'8', 'maxLength' => '40', 'type' => 'password')); ?>
-                </div><!-- .form-group -->
-                <div class="form-group">
-                    <?php echo $this->Form->input('role', array('options' => $role_options, 'class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">

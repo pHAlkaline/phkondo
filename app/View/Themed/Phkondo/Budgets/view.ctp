@@ -21,7 +21,7 @@
                     $createNotesDisabled = '';
                     //$hasNotesDisabled=' disabled';
                 }
-                
+               
                 ?>
                 <li ><?php echo $this->Html->link(__('Edit Budget'), array('action' => 'edit', $budget['Budget']['id'], '?' => $this->request->query), array('class' => 'btn ' . $editDisabled)); ?> </li>
                 <li ><?php echo $this->Form->postLink(__('Delete Budget'), array('action' => 'delete', $budget['Budget']['id'], '?' => $this->request->query), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $budget['Budget']['title']))); ?> </li>

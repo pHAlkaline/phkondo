@@ -79,7 +79,7 @@
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-                    <?php echo $this->Form->input('shares', array('class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('shares', array('label' => ['text' => __n('Share','Shares',2), 'class' => 'col-sm-2 control-label'],'class' => 'form-control')); ?>
                 </div><!-- .form-group -->
 
                 <div class="form-group">
