@@ -96,6 +96,10 @@ body {
     height: 0px;
     border: none;
 }
+
+table, tr, td, th, tbody, thead, tfoot {
+    page-break-inside: avoid !important;
+}
   
   #debug-kit-toolbar {
       display: none;
