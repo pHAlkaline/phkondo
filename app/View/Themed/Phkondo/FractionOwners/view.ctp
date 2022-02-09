@@ -8,7 +8,7 @@
                 <li ><?php echo $this->Form->postLink(__('Remove %s', __n('Owner', 'Owners', 1)), array('action' => 'remove', $entity['Entity']['id'],'?'=>$this->request->query), array('class' => 'btn ', 'confirm' => __('Are you sure you want to remove # %s?', $entity['Entity']['name']))); ?> </li>
                 <li ><?php echo $this->Html->link(__('New Owner'), array('action' => 'add','?'=>$this->request->query), array('class' => 'btn ')); ?> </li>
                 <li ><?php echo $this->Html->link(__('List Owners'), array('action' => 'index','?'=>$this->request->query), array('class' => 'btn ')); ?> </li>
-                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Note','Notes',2), array('controller' => 'owner_notes', 'action' => 'index','?'=>array_merge(array('owner_id'=>$entity['Entity']['id']),$this->request->query)), array('class' => 'btn ', 'escape' => false)); ?> </li>
+                <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Note','Notes',2), array('controller' => 'owner_notes', 'action' => 'index','?'=>array_merge(array('note_status_id' => '1','owner_id'=>$entity['Entity']['id']),$this->request->query)), array('class' => 'btn ', 'escape' => false)); ?> </li>
                 <li ><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Receipt', 'Receipts', 2), array('controller' => 'owner_receipts', 'action' => 'index','?'=>array_merge(array('owner_id'=>$entity['Entity']['id']),$this->request->query)), array('class' => 'btn ', 'escape' => false)); ?> </li>
             </ul><!-- /.list-group -->
 
