@@ -51,7 +51,6 @@
             "app/Plugin/Reports": ["phalkaline/phkondo-reports"]
         }
     },
-
     "require": {
         "php": ">=5.6,<8.0.0",
         "ext-openssl": "*",
@@ -61,11 +60,12 @@
         "jeremyharris/cacher": "dev-master",
         "cakedc/migrations": "^2.5",
         "friendsofcake/cakepdf": "1.0.*",
-        "phalkaline/cakephp-feedback-plugin": "dev-master",
         "josegonzalez/cakephp-upload": "2.x-dev",
-        "phalkaline/phkondo-drafts": "1.7.*",
-        "phalkaline/phkondo-print-receipt": "1.7.*",
-        "phalkaline/phkondo-reports": "1.7.*"
+        "phalkaline/phkondo-attachments": "dev-master",
+        "phalkaline/cakephp-feedback-plugin": "dev-master",
+        "phalkaline/phkondo-drafts": "dev-master",
+        "phalkaline/phkondo-print-receipt": "dev-master",
+        "phalkaline/phkondo-reports": "dev-master"
     },
     "minimum-stability": "dev",
     "prefer-stable": true
