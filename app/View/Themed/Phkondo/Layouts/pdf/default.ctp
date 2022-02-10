@@ -175,6 +175,7 @@ if (!isset($headerTitle)) {
                 });
                 $('.datefield').attr('autocomplete', 'off');
 
+
                 $('select').select2({
                     theme: "bootstrap"}
                 );
