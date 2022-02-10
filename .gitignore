@@ -1,40 +1,64 @@
 
 # User specific & automatically generated files #
 #################################################
-/app/webroot/files
-/app/Config/database.php
-/app/Config/email.php
-/app/Config/core_phapp.php
-/app/Config/bootstrap_phapp.php
+app/webroot/files
+app/Config/database.php
+app/Config/email.php
+app/Config/core_phapp.php
+app/Config/bootstrap_phapp.php
 
-/app/tmp
-!/app/tmp/keep
-!/app/tmp/cache/keep
-!/app/tmp/cache/models/keep
-!/app/tmp/cache/persistent/keep
-!/app/tmp/cache/views/keep
-/app/files/*
-!/app/files/empty
-/app/Test
-/lib
-/plugins
-/vendors
-/build
-/dist
-/tags
+app/tmp/*
+!app/tmp/.gitkeep
+!app/tmp/cache
+app/tmp/cache/*
+!app/tmp/cache/.gitkeep
+!app/tmp/cache/models
+app/tmp/cache/models/*
+!app/tmp/cache/models/.gitkeep
+!app/tmp/cache/persistent
+app/tmp/cache/persistent/*
+!app/tmp/cache/persistent/.gitkeep
+!app/tmp/cache/views
+app/tmp/cache/views/*
+!app/tmp/cache/views/.gitkeep
+!app/tmp/logs
+app/tmp/logs/*
+!app/tmp/logs/.gitkeep
+!app/tmp/sessions
+app/tmp/sessions/*
+!app/tmp/sessions/.gitkeep
+!app/tmp/tests
+app/tmp/tests/*
+!app/tmp/tests/.gitkeep
+
+
+
+app/files/*
+!app/files/.giteep
+
+app/Test
+lib
+plugins
+vendors
+build
+dist
+tags
 *.mo
+*.pot
 !empty
+!keep
+!.gitkeep
 
-/lib/Cake/Console/Templates/skel/tmp/
+lib/Cake/Console/Templates/skel/tmp/
 
 # Themes
-/app/View/Themed/*
-!/app/View/Themed/Phkondo
-!/app/View/Themed/empty
+app/View/Themed/*
+!app/View/Themed/Phkondo
+!app/View/Themed/empty
 
 # Plugins
-/app/Plugin/*
-!/app/Plugin/empty
+app/Plugin/*
+!app/Plugin/empty
 
 
 # OS generated files #
@@ -53,35 +77,35 @@ Access.log
 
  
 # Ignore private folder
-/app/private/*
-!/app/private/empty
+app/private/*
+!app/private/empty
  
 # Ignore packed asset files
-/app/webroot/css/packed/*
+app/webroot/css/packed/*
 !app/webroot/css/packed/.htaccess
-/app/webroot/js/packed/*
+app/webroot/js/packed/*
 !app/webroot/js/packed/.htaccess
 
 #Ignore bower componentes
-/app/webroot/bower_components
+app/webroot/bower_components
  
 # IDE and editor specific files #
 #################################
-/nbproject
+nbproject
 .idea
 
 
 # Eclipse project files
-/.cache
+.cache
 .project
-/.settings
+.settings
 .buildpath
 
 # composer vendor 
-/vendor/*
-!/vendor/empty
+vendor/*
+!vendor/empty
 
 # root files 
-/TODO
-/TODO.php
-/composer.lock
+TODO
+TODO.php
+composer.lock
