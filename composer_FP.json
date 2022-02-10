@@ -43,7 +43,7 @@
             "app/Plugin/Cacher": ["jeremyharris/cacher"],
             "app/Plugin/Migrations": ["cakedc/migrations"],
             "app/Plugin/Feedback": ["phalkaline/cakephp-feedback-plugin"],
-            "app/Plugin/CakePDF": ["friendsofcake/cakepdf"],
+            "app/Plugin/CakePdf": ["friendsofcake/cakepdf"],
             "app/Plugin/Attachments": ["phalkaline/phkondo-attachments"],
             "app/Plugin/Upload": ["josegonzalez/cakephp-upload"],
             "app/Plugin/Drafts": ["phalkaline/phkondo-drafts"],
