@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * pHKondo : pHKondo software for condominium property managers (http://phalkaline.net)
@@ -62,7 +63,7 @@ if (!isset($headerTitle)) {
         echo $this->Html->meta('icon');
         echo $this->fetch('meta');
         ?>
-       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,531;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,531;1,600;1,700;1,800;1,900&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,531;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,531;1,600;1,700;1,800;1,900&display=swap">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" integrity="sha512-i8+QythOYyQke6XbStjt9T4yQHhhM+9Y9yTY1fOxoDQwsQpKMEpIoSQZ8mVomtnVCf9PBvoQDnKl06gGOOD19Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
 
         <?php
@@ -137,6 +138,10 @@ if (!isset($headerTitle)) {
                 echo $this->Html->script(array('libs/select2/i18n/it'));
                 echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.it.min'));
                 break;
+            case 'spa':
+                echo $this->Html->script(array('libs/select2/i18n/es'));
+                echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.es.min'));
+                break;
         }
         $phkondo = array(
             'APP_PATH' => Router::url('/', true),
@@ -152,10 +157,10 @@ if (!isset($headerTitle)) {
             $(document).ready(function () {
                 $("form").submit(function () {
                     // prevent duplicate form submissions
-                    var submitBtns=$(this).find(":submit");
+                    var submitBtns = $(this).find(":submit");
                     console.log(submitBtns);
                     submitBtns.attr('disabled', 'disabled').prepend(' <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> ');
-                    
+
                 });
                 var phkondolang = 'en-GB';
                 switch (phkondo.APP_LANG) {
@@ -164,6 +169,9 @@ if (!isset($headerTitle)) {
                         break;
                     case 'ita':
                         phkondolang = 'it';
+                        break;
+                    case 'spa':
+                        phkondolang = 'es';
                         break;
                 }
                 $('.datefield').datepicker({
@@ -175,7 +183,9 @@ if (!isset($headerTitle)) {
                 $('.datefield').attr('autocomplete', 'off');
 
                 $('select').select2({
-                    theme: "bootstrap"}
+                    language: phkondolang,
+                    theme: "bootstrap"
+                }
                 );
                 $("li.disabled").find('a').removeAttr("href");
                 $("li.disabled").find('a').removeAttr("onclick");

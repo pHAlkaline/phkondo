@@ -161,6 +161,9 @@ if (!isset($headerTitle)) {
                     case 'ita':
                         phkondolang = 'it';
                         break;
+                    case 'spa':
+                        phkondolang = 'es';
+                        break;
                 }
                 $('.datefield').datepicker({
                     format: "<?php echo Configure::read('calendarDateFormat'); ?>",
@@ -171,6 +174,7 @@ if (!isset($headerTitle)) {
                 $('.datefield').attr('autocomplete', 'off');
 
                 $('select').select2({
+                    language: phkondolang,
                     theme: "bootstrap"}
                 );
                 $("li.disabled").find('a').removeAttr("href");

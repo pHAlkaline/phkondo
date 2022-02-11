@@ -277,8 +277,8 @@ class BudgetNotesController extends AppController {
         }
 
         if ($this->request->is('post')) {
+            set_time_limit(90); 
             $notes = $this->request->data['Note'];
-
             unset($notes['Budget']);
             App::uses('CakeTime', 'Utility');
             foreach ($notes as $key => $note) {
