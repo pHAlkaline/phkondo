@@ -57,3 +57,4 @@ Configure::write('Security.useOpenSsl', true);
  * any date & time related errors.
  */
 date_default_timezone_set('Europe/Lisbon');
+

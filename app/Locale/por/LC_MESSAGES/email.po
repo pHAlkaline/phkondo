@@ -107,8 +107,8 @@ msgstr "Mensagem"
 #: View/Themed/Phkondo/Fractions/view.ctp:182
 #: View/Themed/Phkondo/OwnerReceipts/view.ctp:253
 #: View/Themed/Phkondo/Receipts/view.ctp:241
-msgid "Format"
-msgstr "Formato"
+msgid "Document Format"
+msgstr "Formato Do Documento"
 
 #: View/Themed/Phkondo/Email/config.ctp:102;117
 #: View/Themed/Phkondo/FractionOwners/view.ctp:194

@@ -84,6 +84,8 @@ Configure::write('Exception', array(
     'renderer' => 'ExceptionRenderer',
     'log' => true
 ));
+Configure::write('Exception.handler', 'AppExceptionHandler::handleException');
+
 
 /**
  * Application wide charset encoding

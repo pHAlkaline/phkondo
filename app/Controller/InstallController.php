@@ -204,7 +204,7 @@ class InstallController extends AppController {
             $this->Flash->error(__d('install', 'Could not connect to database.'));
             return;
         }
-          if (!file_exists(APP . 'Config' . DS . 'database.php')) {
+        if (!file_exists(APP . 'Config' . DS . 'database.php')) {
             copy(APP . 'Config' . DS . 'database.php.default', APP . 'Config' . DS . 'database.php');
         }
 
@@ -382,22 +382,28 @@ class InstallController extends AppController {
         $this->set('title_for_layout', __d('install', 'Step 3 : Email notification'));
         $this->set('title_for_step', __d('install', 'Step 3 : Email notification'));
 
-        if (file_exists(APP . 'Config' . DS . 'email.php')) {
-            $this->Flash->info(__d('install', 'Email settings file already exists'));
-            $this->redirect(array('action' => 'adminuser'));
-        }
-
         if (empty($this->request->data)) {
+            if (file_exists(APP . 'Config' . DS . 'email_notifications.php')) {
+                unlink(APP . 'Config' . DS . 'email_notifications.php');
+                copy(APP . 'Config' . DS . 'email_notifications.php.default', APP . 'Config' . DS . 'email_notifications.php');
+            }
             return;
         }
-        
+
+        if (file_exists(APP . 'Config' . DS . 'email.php')) {
+            unlink(APP . 'Config' . DS . 'email.php');
+            copy(APP . 'Config' . DS . 'email.php.default', APP . 'Config' . DS . 'email.php');
+            //$this->Flash->info(__d('install', 'Email settings file already exists'));
+            //$this->redirect(array('action' => 'adminuser'));
+        }
+
+
         $config = $this->defaultEmail;
         foreach ($this->request->data as $key => $value) {
             if (isset($config[$key])) {
                 $config[$key] = $value;
             }
         }
-        copy(APP . 'Config' . DS . 'email.php.default', APP . 'Config' . DS . 'email.php');
         $file = new File(APP . 'Config' . DS . 'email.php', true);
         $content = $file->read();
 
@@ -409,6 +415,19 @@ class InstallController extends AppController {
             $this->Flash->error(__d('install', 'Could not write email.php file.'));
             return;
         }
+
+        $emailNotifications = Configure::read('EmailNotifications.eng');
+        if (Configure::check('EmailNotifications.' . Configure::read('Config.language'))) {
+            $emailNotifications = Configure::read('EmailNotifications.' . Configure::read('Config.language'));
+        }
+        Configure::write('EmailNotifications', $emailNotifications);
+
+        Configure::write('EmailNotifications.active', true);
+        if (!Configure::dump('email_notifications.php', 'default', array('EmailNotifications'))) {
+            $this->Flash->error(__d('email', 'Could not save notification settings.'));
+            return;
+        }
+
         $this->redirect(array('action' => 'adminuser'));
     }
 
