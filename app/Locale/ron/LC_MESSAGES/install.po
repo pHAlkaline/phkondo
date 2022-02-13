@@ -69,16 +69,13 @@ msgid "Could not write email.php file."
 msgstr "Nu pot să scriu fișierul  email.php."
 
 #: Controller/InstallController.php:452;453
-msgid "Step 4 : Secure app"
-msgstr "Pasul 4: Securizarea aplicației și stabilirea"
+msgid "Step 4 : Admin Account"
+msgstr "Pasul 4: Cont de administrator"
 
 #: Controller/InstallController.php:461
-msgid "Could not be secured. Please, try again."
-msgstr "Nu poate fi salvat. Vă rog încercați din nou."
-
-#: Controller/InstallController.php:462
-msgid "Unable to secure app."
-msgstr ""
+#: Controller/InstallController.php:476
+msgid "Unable to create administrative user."
+msgstr "Nu am putut să creez utilizatorul administrator."
 
 #: Controller/InstallController.php:470
 msgid "Saved with success."
@@ -87,10 +84,6 @@ msgstr "Salvat cu succes."
 #: Controller/InstallController.php:475
 msgid "Could not be saved. Please, try again."
 msgstr "Nu poate fi salvat. Vă rog încercați din nou."
-
-#: Controller/InstallController.php:476
-msgid "Unable to create administrative user."
-msgstr "Nu am putut să creez utilizatorul administrator."
 
 #: Controller/InstallController.php:492;493;514;517
 msgid "Installation completed successfully"
@@ -136,8 +129,9 @@ msgid "Are you sure you want to reinstall # %s?"
 msgstr ""
 
 #: View/Themed/Phkondo/Install/adminuser.ctp:8
-msgid "Admin user password"
-msgstr "Parola utilizatorului admin"
+msgid "Administrator Account"
+msgstr "Account amministratore
+"
 
 #: View/Themed/Phkondo/Install/adminuser.ctp:11
 msgid "New Password"

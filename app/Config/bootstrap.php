@@ -111,9 +111,13 @@ CakeLog::config('error', array(
 	'file' => 'error',
 ));
 App::uses('AppExceptionHandler', 'Lib');
-Configure::load('email_notifications');
 
 if (!file_exists(APP . 'Config' . DS . 'bootstrap_phapp.php')) {
     copy(APP . 'Config' . DS . 'bootstrap_phapp.php.default', APP . 'Config' . DS . 'bootstrap_phapp.php');
 }
+if (!file_exists(APP . 'Config' . DS . 'email_notifications.php')) {
+    copy(APP . 'Config' . DS . 'email_notifications.php.default', APP . 'Config' . DS . 'email_notifications.php');
+}
+
+Configure::load('email_notifications');
 require 'bootstrap_phapp.php';

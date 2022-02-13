@@ -87,9 +87,9 @@ class InstallController extends AppController {
         'email' => 'noreply@yourdomain.com',
         'name' => 'reply to',
         'subject' => 'pHKondo Notification',
-        'host' => '',
-        'port' => '',
-        'username' => '',
+        'host' => 'localhost',
+        'port' => '25',
+        'username' => 'username',
         'password' => '',
     );
 
@@ -406,9 +406,7 @@ class InstallController extends AppController {
         if (file_exists(APP . 'Config' . DS . 'email.php')) {
             unlink(APP . 'Config' . DS . 'email.php');
             copy(APP . 'Config' . DS . 'email.php.default', APP . 'Config' . DS . 'email.php');
-            //$this->Flash->info(__d('install', 'Email settings file already exists'));
-            //$this->redirect(array('action' => 'adminuser'));
-        }
+         }
 
 
         $config = $this->defaultEmail;
@@ -449,8 +447,8 @@ class InstallController extends AppController {
      */
     public function adminuser() {
         $this->__check();
-        $this->set('title_for_layout', __d('install', 'Step 4 : Secure app'));
-        $this->set('title_for_step', __d('install', 'Step 4 : Secure app'));
+        $this->set('title_for_layout', __d('install', 'Step 4 : Admin Account'));
+        $this->set('title_for_step', __d('install', 'Step 4 : Admin Account'));
         if (empty($this->request->data)) {
             return;
         }
@@ -458,8 +456,8 @@ class InstallController extends AppController {
         if ($this->request->is('post')) {
             // secure app
             if (!$this->__secure()) {
-                $this->Flash->error(__d('install', 'Could not be secured. Please, try again.'));
-                $this->log(__d('install', 'Unable to secure app.'));
+                $this->Flash->error(__d('install', 'Unable to create administrative user.'));
+                $this->log(__d('install', 'Unable to create administrative user.'));
                 return;
             }
             // save new admin password
@@ -472,7 +470,7 @@ class InstallController extends AppController {
                 $this->Cookie->write('Install.key', $key, false, 3600);
                 $this->redirect(array('action' => 'finish', $key));
             } else {
-                $this->Flash->error(__d('install', 'Could not be saved. Please, try again.'));
+                $this->Flash->error(__d('install', 'Unable to create administrative user.'));
                 $this->log(__d('install', 'Unable to create administrative user.'));
                 $this->log($this->User->validationErrors);
             }

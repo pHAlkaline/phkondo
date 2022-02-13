@@ -69,16 +69,13 @@ msgid "Could not write email.php file."
 msgstr "Não foi possivél gravar o ficheiro email.php."
 
 #: Controller/InstallController.php:452;453
-msgid "Step 4 : Secure app"
-msgstr "Passo 4 : Tornar a aplicação mais segura"
+msgid "Step 4 : Admin Account"
+msgstr "Passo 4 : Conta de Administração"
 
 #: Controller/InstallController.php:461
-msgid "Could not be secured. Please, try again."
-msgstr "Não foi possível gravar. Por favor tente outra vez."
-
-#: Controller/InstallController.php:462
-msgid "Unable to secure app."
-msgstr "Não foi possível tornar a aplicação mais segura."
+#: Controller/InstallController.php:476
+msgid "Unable to create administrative user."
+msgstr "Não foi possível criar conta administrativa."
 
 #: Controller/InstallController.php:470
 msgid "Saved with success."
@@ -87,10 +84,6 @@ msgstr "Gravado com sucesso."
 #: Controller/InstallController.php:475
 msgid "Could not be saved. Please, try again."
 msgstr "Não foi possível gravar. Por favor tente outra vez."
-
-#: Controller/InstallController.php:476
-msgid "Unable to create administrative user."
-msgstr "Não foi possivel criar utilizador de administração."
 
 #: Controller/InstallController.php:492;493;514;517
 msgid "Installation completed successfully"
@@ -134,8 +127,8 @@ msgid "Are you sure you want to reinstall # %s?"
 msgstr "Irá perder todos os dados, Tem a certeza que quer reinstalar o # %s?"
 
 #: View/Themed/Phkondo/Install/adminuser.ctp:8
-msgid "Admin user password"
-msgstr "Palavra passe do utilizador administrador"
+msgid "Administrator Account"
+msgstr "Conta de Administrador"
 
 #: View/Themed/Phkondo/Install/adminuser.ctp:11
 msgid "New Password"

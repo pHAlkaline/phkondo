@@ -67,16 +67,13 @@ msgid "Could not write email.php file."
 msgstr ""
 
 #: Controller/InstallController.php:452;453
-msgid "Step 4 : Secure app"
-msgstr ""
+msgid "Step 4 : Admin Account"
+msgstr "Step 4 : Admin-Konto"
 
 #: Controller/InstallController.php:461
-msgid "Could not be secured. Please, try again."
-msgstr "Speichern fehlgeschlagen. Bitte erneut versuchen."
-
-#: Controller/InstallController.php:462
-msgid "Unable to secure app."
-msgstr ""
+#: Controller/InstallController.php:476
+msgid "Unable to create administrative user."
+msgstr "Administratorbenutzer kann nicht erstellt werden"
 
 #: Controller/InstallController.php:470
 msgid "Saved with success."
@@ -85,10 +82,6 @@ msgstr "Gespeichert."
 #: Controller/InstallController.php:475
 msgid "Could not be saved. Please, try again."
 msgstr "Speichern fehlgeschlagen. Bitte erneut versuchen."
-
-#: Controller/InstallController.php:476
-msgid "Unable to create administrative user."
-msgstr ""
 
 #: Controller/InstallController.php:492;493;514;517
 msgid "Installation completed successfully"
@@ -132,8 +125,8 @@ msgid "Are you sure you want to reinstall # %s?"
 msgstr ""
 
 #: View/Themed/Phkondo/Install/adminuser.ctp:8
-msgid "Admin user password"
-msgstr "Admin-Passwort"
+msgid "Administrator Account"
+msgstr "Administratorkonto"
 
 #: View/Themed/Phkondo/Install/adminuser.ctp:11
 msgid "New Password"

@@ -5,10 +5,14 @@
         <?php echo $this->Form->create(false, array('url' => array('controller' => 'install', 'action' => 'adminuser')));
         ?>
         <fieldset>
-            <legend><?php echo __d('install', 'Admin user password'); ?></legend>
+            <legend><?php echo __d('install', 'Administrator Account'); ?></legend>
+            <div class="form-group">
+                    <?php echo $this->Form->input('User.username', array('class' => 'form-control','maxLength' => '40', 'label' => __('Username'), 'value' => 'admin')); ?>
+            </div><!-- .form-group -->
+
             <div class="form-group">
                 <?php
-                echo $this->Form->input('User.password', array('class' => 'form-control', 'minlength' => '8', 'maxlength' => '40', 'label' => __d('install', 'New Password'), 'value' => ''));
+                echo $this->Form->input('User.password', array('class' => 'form-control', 'minlength' => '8', 'maxlength' => '40', 'label' => __('Password'), 'value' => ''));
                 ?>
             </div>
             <div class="form-group">
