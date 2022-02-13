@@ -25,3 +25,9 @@
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
+Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'welcome'));
+if (Configure::check('CakePdf.phkondo.active') && Configure::read('CakePdf.phkondo.active')==true) {
+    Router::parseExtensions('csv', 'pdf');
+} else {
+    Router::parseExtensions('csv');
+}

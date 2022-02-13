@@ -12,16 +12,27 @@
             ?>
             <div class="form-group">
                 <?php
+                echo __d('install', 'Check option to load default values to auxiliary tables.');
+                ?>
+            </div>
+            
+            <div class="form-group">
+                <?php
                 echo $this->Form->input('demo_data', array('class' => 'form-control', 'type' => 'checkbox', 'label' => __d('install', 'Load data')));
                 ?>
             </div>
             <div class="form-group">
                 <?php
-                echo __d('install', 'Check load data option to insert dafault values to auxiliary tables.');
-                echo '<br/>';
+                echo __d('install', 'Check option to add demonstration condo.');
                 ?>
             </div>
 
+            <div class="form-group">
+                <?php
+                echo $this->Form->input('demo_condo', array('class' => 'form-control', 'type' => 'checkbox', 'label' => __d('install', 'Load demonstration condo')));
+                ?>
+            </div>
+           
         </fieldset>
         <div class="form-group">                
             <?php echo $this->Form->button(__('Submit'), array('type'=>'submit','class' => 'btn btn-large btn-primary')); ?>  

@@ -92,7 +92,6 @@ class AppController extends Controller {
     }
 
     public function isAuthorized($user) {
-//debug($this->request->controller);
         if (isset($user['role'])) {
 
             switch ($user['role']) {
@@ -107,8 +106,6 @@ class AppController extends Controller {
                     break;
             }
         }
-
-// Default deny
         return false;
     }
 

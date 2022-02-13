@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pHKondo V1.1\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2022-02-07 15:49+0000\n"
+"PO-Revision-Date: 2022-02-13 13:53+0000\n"
 "Last-Translator: PauloHomem <contact@phalkaline.net>\n"
 "Language-Team: PauloHomem <contact@phalkaline.net>\n"
 "Language: deu\n"
@@ -20,7 +20,7 @@ msgstr ""
 msgid "Could not save email client settings."
 msgstr ""
 
-#: Controller/EmailController.php:101
+#: Controller/EmailController.php:101 Controller/InstallController.php:440
 msgid "Could not save notification settings."
 msgstr ""
 
@@ -107,7 +107,7 @@ msgstr ""
 #: View/Themed/Phkondo/Fractions/view.ctp:182
 #: View/Themed/Phkondo/OwnerReceipts/view.ctp:253
 #: View/Themed/Phkondo/Receipts/view.ctp:241
-msgid "Document Format"
+msgid "Format"
 msgstr ""
 
 #: View/Themed/Phkondo/Email/config.ctp:102;117

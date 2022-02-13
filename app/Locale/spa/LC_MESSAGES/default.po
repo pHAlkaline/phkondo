@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pHKondo V1.1\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2022-02-07 15:09+0000\n"
+"PO-Revision-Date: 2022-02-13 14:04+0000\n"
 "Last-Translator: pHAlkaline <contact@phalkaline.net>\n"
 "Language-Team: pHAlkaline <contact@phalkaline.net>\n"
 "Language: es_ES\n"
@@ -15,15 +15,16 @@ msgstr ""
 "X-Generator: Poedit 3.0.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: Config/bootstrap_phapp.php:154
+#: Config/core_phapp.php:89
 msgid "App Administrator"
 msgstr "Administrador del Programa"
 
-#: Config/bootstrap_phapp.php:156
+#: Config/core_phapp.php:91
 msgid "Employee"
 msgstr "Empleado"
 
-#: Config/bootstrap_phapp.php:155 Plugin/Drafts/View/CondoDrafts/view.ctp:70
+#: Config/core_phapp.php:90 Plugin/Drafts/View/CondoDrafts/view.ctp:70
+#: Plugin/Drafts/View/CondoDrafts/pdf/view.ctp:70
 #: View/Themed/Phkondo/Entities/view.ctp:123
 #: View/Themed/Phkondo/FractionEntities/view.ctp:24
 #: View/Themed/Phkondo/Fractions/index.ctp:42
@@ -99,6 +100,9 @@ msgid "Administrator can not be deleted"
 msgstr "Este administrador no puede ser eliminado"
 
 #: Controller/AdministratorsController.php:192
+#: Plugin/Attachments/Controller/AttachmentsAppController.php:17
+#: Plugin/Drafts/Controller/CondoDraftsController.php:127
+#: Plugin/Reports/Controller/ReportsAppController.php:17
 msgid "Requires a valid condo and active fiscal year."
 msgstr "Requiere una propiedad válida y un periodo fiscal activo."
 
@@ -112,14 +116,13 @@ msgid_plural "Administrator"
 msgstr[0] "Administrador"
 msgstr[1] "Administradores"
 
-#: Controller/AppController.php:129
+#: Controller/AppController.php:126
 #: View/Themed/Phkondo/Elements/search_tool.ctp:21;22;25
 #: View/Themed/Phkondo/Elements/search_tool_notes.ctp:29;30;34
 #: View/Themed/Phkondo/Elements/search_tool_notes_owner.ctp:29;30;34
 #: View/Themed/Phkondo/Layouts/clean.ctp:144
-#: View/Themed/Phkondo/Layouts/default.ctp:146
+#: View/Themed/Phkondo/Layouts/default.ctp:151
 #: View/Themed/Phkondo/Layouts/login.ctp:113
-#: View/Themed/Phkondo/Layouts/pdf/default.ctp:147
 msgid "Search"
 msgstr "Buscar"
 
@@ -160,12 +163,14 @@ msgstr[1] "Documents"
 #: Controller/OwnerNotesController.php:270
 #: Controller/OwnerReceiptsController.php:585
 #: Plugin/Attachments/Controller/FractionAttachmentsController.php:163
-#: Plugin/Drafts/View/CondoDrafts/draft_presence.ctp:36
+#: Plugin/Drafts/View/CondoDrafts/draft_presence.ctp:34
 #: Plugin/Drafts/View/CondoDrafts/view.ctp:71
+#: Plugin/Drafts/View/CondoDrafts/pdf/draft_presence.ctp:34
+#: Plugin/Drafts/View/CondoDrafts/pdf/view.ctp:71
 #: Plugin/Reports/View/Reports/income_report.ctp:37
 #: Plugin/Reports/View/Reports/income_report_detailed.ctp:39
-#: Plugin/Reports/View/Reports/Pdf/income_report.ctp:37
-#: Plugin/Reports/View/Reports/Pdf/income_report_detailed.ctp:39
+#: Plugin/Reports/View/Reports/pdf/income_report.ctp:37
+#: Plugin/Reports/View/Reports/pdf/income_report_detailed.ctp:39
 #: View/Themed/Phkondo/BudgetNotes/create.ctp:53
 #: View/Themed/Phkondo/BudgetNotes/index.ctp:42
 #: View/Themed/Phkondo/BudgetNotes/view.ctp:71
@@ -280,6 +285,8 @@ msgstr "La cuotas no se pueden crear. Por favor intente de nuevo."
 
 #: Controller/BudgetNotesController.php:294
 #: View/Themed/Phkondo/BudgetNotes/create.ctp:58
+#: View/Themed/Phkondo/Budgets/add.ctp:82
+#: View/Themed/Phkondo/Budgets/edit.ctp:112
 #: View/Themed/Phkondo/Budgets/view.ctp:98
 msgid "Share"
 msgid_plural "Shares"
@@ -290,7 +297,7 @@ msgstr[1] "Cuotas"
 #: Controller/BudgetsController.php:224;228;232;236
 #: View/Themed/Phkondo/BudgetNotes/create.ctp:133;20
 #: View/Themed/Phkondo/BudgetNotes/view.ctp:81
-#: View/Themed/Phkondo/Budgets/edit.ctp:33
+#: View/Themed/Phkondo/Budgets/edit.ctp:35
 #: View/Themed/Phkondo/Budgets/index.ctp:11
 #: View/Themed/Phkondo/Budgets/view.ctp:43
 #: View/Themed/Phkondo/Condos/view.ctp:27
@@ -398,9 +405,9 @@ msgstr "Borrador"
 #: Plugin/PrintReceipt/View/Receipts/receipt.ctp:28;37
 #: Plugin/PrintReceipt/View/Receipts/pdf/receipt.ctp:27;36
 #: Plugin/Reports/View/FractionOwners/entity_current_account.ctp:17;26
-#: Plugin/Reports/View/FractionOwners/Pdf/entity_current_account.ctp:17;26
+#: Plugin/Reports/View/FractionOwners/pdf/entity_current_account.ctp:17;26
 #: Plugin/Reports/View/Fractions/fraction_current_account.ctp:17
-#: Plugin/Reports/View/Fractions/Pdf/fraction_current_account.ctp:17
+#: Plugin/Reports/View/Fractions/pdf/fraction_current_account.ctp:17
 #: Plugin/Reports/View/Pdf/entity_current_account.ctp:17;26
 #: Plugin/Reports/View/Pdf/fraction_current_account.ctp:17
 #: View/Themed/Phkondo/Condos/view.ctp:101
@@ -436,11 +443,12 @@ msgid "Entity can not be deleted"
 msgstr "Esta entidad no puede ser eliminada"
 
 #: Controller/EntitiesController.php:178;182;186;191
-#: Plugin/Drafts/View/CondoDrafts/draft_presence.ctp:37
+#: Plugin/Drafts/View/CondoDrafts/draft_presence.ctp:35
+#: Plugin/Drafts/View/CondoDrafts/pdf/draft_presence.ctp:35
 #: Plugin/Reports/View/Reports/income_report.ctp:38
 #: Plugin/Reports/View/Reports/income_report_detailed.ctp:40
-#: Plugin/Reports/View/Reports/Pdf/income_report.ctp:38
-#: Plugin/Reports/View/Reports/Pdf/income_report_detailed.ctp:40
+#: Plugin/Reports/View/Reports/pdf/income_report.ctp:38
+#: Plugin/Reports/View/Reports/pdf/income_report_detailed.ctp:40
 #: View/Themed/Phkondo/Administrators/index.ctp:26
 #: View/Themed/Phkondo/Administrators/view.ctp:29
 #: View/Themed/Phkondo/BudgetNotes/index.ctp:43
@@ -573,6 +581,7 @@ msgstr "Dueño no puede ser borrado"
 #: Controller/OwnerNotesController.php:272
 #: Controller/OwnerReceiptsController.php:587
 #: Plugin/Drafts/View/CondoDrafts/view.ctp:70
+#: Plugin/Drafts/View/CondoDrafts/pdf/view.ctp:70
 #: View/Themed/Phkondo/BudgetNotes/create.ctp:52
 #: View/Themed/Phkondo/FractionOwners/edit.ctp:9;10
 #: View/Themed/Phkondo/FractionOwners/index.ctp:12
@@ -654,7 +663,7 @@ msgstr "Control de Ingresos"
 #: Controller/OwnerReceiptsController.php:589;593;598;602;606;610;614
 #: Controller/ReceiptsController.php:577;582;587;591;596
 #: Plugin/Reports/View/Reports/income_report_detailed.ctp:41
-#: Plugin/Reports/View/Reports/Pdf/income_report_detailed.ctp:41
+#: Plugin/Reports/View/Reports/pdf/income_report_detailed.ctp:41
 #: View/Themed/Phkondo/BudgetNotes/view.ctp:118
 #: View/Themed/Phkondo/Condos/view.ctp:29
 #: View/Themed/Phkondo/FractionNotes/view.ctp:107
@@ -901,6 +910,7 @@ msgid "Receipt can not be deleted"
 msgstr "Recibo no puede ser eliminado"
 
 #: Controller/OwnerReceiptsController.php:595
+#: Controller/ReceiptsController.php:584
 msgid "Pick Notes"
 msgstr "Escoger cuotas"
 
@@ -937,7 +947,7 @@ msgstr "Reportes"
 
 #: Controller/SecureController.php:96
 msgid ""
-"Unable to secure your application, your Config %s core.php file is not "
+"Unable to secure your application, your Config %s core_phapp.php file is not "
 "writable. Please check the permissions."
 msgstr ""
 
@@ -1064,7 +1074,7 @@ msgstr "Usuario o contraseña inválidos, por favor intente de nuevo"
 
 #: Controller/UsersController.php:245;248
 #: View/Themed/Phkondo/Elements/menu/top_menu.ctp:97;99
-#: View/Themed/Phkondo/Users/index.ctp:11
+#: View/Themed/Phkondo/Users/index.ctp:13
 msgid "Users"
 msgstr "Usuarios"
 
@@ -1114,8 +1124,8 @@ msgstr "La aplicación estará en modo mantenimiento a las %s "
 #: View/Themed/Phkondo/SupportCategories/add.ctp:38
 #: View/Themed/Phkondo/SupportCategories/edit.ctp:48
 #: View/Themed/Phkondo/SupportCategories/view.ctp:42
-#: View/Themed/Phkondo/Users/add.ctp:48 View/Themed/Phkondo/Users/edit.ctp:65
-#: View/Themed/Phkondo/Users/view.ctp:45
+#: View/Themed/Phkondo/Users/add.ctp:49 View/Themed/Phkondo/Users/edit.ctp:68
+#: View/Themed/Phkondo/Users/view.ctp:49
 msgid "Active"
 msgstr "Activos"
 
@@ -1127,7 +1137,7 @@ msgstr "Activos"
 #: Plugin/Attachments/View/InsuranceAttachments/edit.ctp:56
 #: Plugin/Attachments/View/MaintenanceAttachments/add.ctp:50
 #: Plugin/Attachments/View/MaintenanceAttachments/edit.ctp:56
-#: Plugin/Drafts/View/Drafts/add.ctp:62 Plugin/Drafts/View/Drafts/edit.ctp:73
+#: Plugin/Drafts/View/Drafts/add.ctp:65 Plugin/Drafts/View/Drafts/edit.ctp:76
 #: View/Themed/Phkondo/Accounts/add.ctp:82
 #: View/Themed/Phkondo/Accounts/edit.ctp:85
 #: View/Themed/Phkondo/Administrators/add.ctp:54
@@ -1136,7 +1146,7 @@ msgstr "Activos"
 #: View/Themed/Phkondo/BudgetNotes/create.ctp:135
 #: View/Themed/Phkondo/BudgetNotes/edit.ctp:87
 #: View/Themed/Phkondo/Budgets/add.ctp:108
-#: View/Themed/Phkondo/Budgets/edit.ctp:136
+#: View/Themed/Phkondo/Budgets/edit.ctp:138
 #: View/Themed/Phkondo/Condos/add.ctp:67 View/Themed/Phkondo/Condos/edit.ctp:56
 #: View/Themed/Phkondo/Email/config.ctp:122
 #: View/Themed/Phkondo/Entities/add.ctp:73
@@ -1158,7 +1168,7 @@ msgstr "Activos"
 #: View/Themed/Phkondo/Fractions/add.ctp:56
 #: View/Themed/Phkondo/Fractions/edit.ctp:72
 #: View/Themed/Phkondo/Install/adminuser.ctp:22
-#: View/Themed/Phkondo/Install/data.ctp:27
+#: View/Themed/Phkondo/Install/data.ctp:38
 #: View/Themed/Phkondo/Install/database.ctp:60
 #: View/Themed/Phkondo/Install/email.ctp:28
 #: View/Themed/Phkondo/InsuranceTypes/add.ctp:48
@@ -1195,7 +1205,7 @@ msgstr "Activos"
 #: View/Themed/Phkondo/SupportCategories/edit.ctp:55
 #: View/Themed/Phkondo/Supports/add.ctp:73
 #: View/Themed/Phkondo/Supports/edit.ctp:75
-#: View/Themed/Phkondo/Users/add.ctp:54 View/Themed/Phkondo/Users/edit.ctp:72
+#: View/Themed/Phkondo/Users/add.ctp:55 View/Themed/Phkondo/Users/edit.ctp:75
 #: View/Themed/Phkondo/Users/profile.ctp:58
 msgid "Submit"
 msgstr "Enviar"
@@ -1212,7 +1222,7 @@ msgstr "Enviar"
 #: Plugin/Attachments/View/MaintenanceAttachments/edit.ctp:10
 #: Plugin/Attachments/View/MaintenanceAttachments/index.ctp:51
 #: Plugin/Attachments/View/MaintenanceAttachments/view.ctp:9
-#: Plugin/Drafts/View/Drafts/edit.ctp:30 Plugin/Drafts/View/Drafts/index.ctp:39
+#: Plugin/Drafts/View/Drafts/edit.ctp:33 Plugin/Drafts/View/Drafts/index.ctp:39
 #: Plugin/Drafts/View/Drafts/view.ctp:10
 #: View/Themed/Phkondo/Accounts/edit.ctp:8
 #: View/Themed/Phkondo/Accounts/index.ctp:44
@@ -1223,7 +1233,7 @@ msgstr "Enviar"
 #: View/Themed/Phkondo/BudgetNotes/edit.ctp:16
 #: View/Themed/Phkondo/BudgetNotes/index.ctp:77
 #: View/Themed/Phkondo/BudgetNotes/view.ctp:29
-#: View/Themed/Phkondo/Budgets/edit.ctp:34
+#: View/Themed/Phkondo/Budgets/edit.ctp:36
 #: View/Themed/Phkondo/Budgets/index.ctp:59
 #: View/Themed/Phkondo/Budgets/view.ctp:27
 #: View/Themed/Phkondo/Condos/index.ctp:98
@@ -1286,7 +1296,7 @@ msgstr "Enviar"
 #: View/Themed/Phkondo/Supports/edit.ctp:9
 #: View/Themed/Phkondo/Supports/index.ctp:45
 #: View/Themed/Phkondo/Supports/view.ctp:9
-#: View/Themed/Phkondo/Users/edit.ctp:17 View/Themed/Phkondo/Users/index.ctp:46
+#: View/Themed/Phkondo/Users/edit.ctp:19 View/Themed/Phkondo/Users/index.ctp:50
 #: View/Themed/Phkondo/Users/view.ctp:10
 msgid "Are you sure you want to delete # %s?"
 msgstr "¿Está seguro de que desea borrar # %s?"
@@ -1297,6 +1307,8 @@ msgstr "¿Está seguro de que desea borrar # %s?"
 #: Plugin/Attachments/View/MaintenanceAttachments/index.ctp:23
 #: Plugin/Drafts/View/CondoDrafts/index.ctp:18
 #: Plugin/Drafts/View/CondoDrafts/view.ctp:65
+#: Plugin/Drafts/View/CondoDrafts/pdf/index.ctp:18
+#: Plugin/Drafts/View/CondoDrafts/pdf/view.ctp:65
 #: Plugin/Drafts/View/Drafts/index.ctp:23
 #: View/Themed/Phkondo/Accounts/index.ctp:22
 #: View/Themed/Phkondo/Administrators/index.ctp:23
@@ -1331,7 +1343,7 @@ msgstr "¿Está seguro de que desea borrar # %s?"
 #: View/Themed/Phkondo/Suppliers/index.ctp:21
 #: View/Themed/Phkondo/SupportCategories/index.ctp:21
 #: View/Themed/Phkondo/Supports/index.ctp:19
-#: View/Themed/Phkondo/Users/index.ctp:22
+#: View/Themed/Phkondo/Users/index.ctp:24
 msgid "Empty"
 msgstr "Vacío"
 
@@ -1351,6 +1363,7 @@ msgstr ""
 #: Plugin/Attachments/View/InsuranceAttachments/index.ctp:49
 #: Plugin/Attachments/View/MaintenanceAttachments/index.ctp:49
 #: Plugin/Drafts/View/CondoDrafts/index.ctp:44
+#: Plugin/Drafts/View/CondoDrafts/pdf/index.ctp:44
 #: Plugin/Drafts/View/Drafts/index.ctp:37
 #: View/Themed/Phkondo/Accounts/index.ctp:42
 #: View/Themed/Phkondo/Administrators/index.ctp:44
@@ -1448,7 +1461,7 @@ msgstr "Editar"
 #: View/Themed/Phkondo/Suppliers/index.ctp:47
 #: View/Themed/Phkondo/SupportCategories/index.ctp:37
 #: View/Themed/Phkondo/Supports/index.ctp:45
-#: View/Themed/Phkondo/Users/index.ctp:46
+#: View/Themed/Phkondo/Users/index.ctp:50
 msgid "Remove"
 msgstr "Remover"
 
@@ -1457,6 +1470,7 @@ msgstr "Remover"
 #: Plugin/Attachments/View/InsuranceAttachments/index.ctp:61
 #: Plugin/Attachments/View/MaintenanceAttachments/index.ctp:61
 #: Plugin/Drafts/View/CondoDrafts/index.ctp:56
+#: Plugin/Drafts/View/CondoDrafts/pdf/index.ctp:56
 #: Plugin/Drafts/View/Drafts/index.ctp:49
 #: View/Themed/Phkondo/Accounts/index.ctp:55
 #: View/Themed/Phkondo/Administrators/index.ctp:56
@@ -1483,7 +1497,7 @@ msgstr "Remover"
 #: View/Themed/Phkondo/Suppliers/index.ctp:57
 #: View/Themed/Phkondo/SupportCategories/index.ctp:47
 #: View/Themed/Phkondo/Supports/index.ctp:55
-#: View/Themed/Phkondo/Users/index.ctp:57
+#: View/Themed/Phkondo/Users/index.ctp:61
 msgid ""
 "Page {:page} of {:pages}, showing {:current} records out of {:count} total, "
 "starting on record {:start}, ending on {:end}"
@@ -1496,6 +1510,7 @@ msgstr ""
 #: Plugin/Attachments/View/InsuranceAttachments/index.ctp:67
 #: Plugin/Attachments/View/MaintenanceAttachments/index.ctp:67
 #: Plugin/Drafts/View/CondoDrafts/index.ctp:62
+#: Plugin/Drafts/View/CondoDrafts/pdf/index.ctp:62
 #: Plugin/Drafts/View/Drafts/index.ctp:55
 #: View/Themed/Phkondo/Accounts/index.ctp:61
 #: View/Themed/Phkondo/Administrators/index.ctp:62
@@ -1522,7 +1537,7 @@ msgstr ""
 #: View/Themed/Phkondo/Suppliers/index.ctp:63
 #: View/Themed/Phkondo/SupportCategories/index.ctp:53
 #: View/Themed/Phkondo/Supports/index.ctp:61
-#: View/Themed/Phkondo/Users/index.ctp:63
+#: View/Themed/Phkondo/Users/index.ctp:67
 msgid "Previous"
 msgstr "Anterior"
 
@@ -1531,6 +1546,7 @@ msgstr "Anterior"
 #: Plugin/Attachments/View/InsuranceAttachments/index.ctp:69
 #: Plugin/Attachments/View/MaintenanceAttachments/index.ctp:69
 #: Plugin/Drafts/View/CondoDrafts/index.ctp:64
+#: Plugin/Drafts/View/CondoDrafts/pdf/index.ctp:64
 #: Plugin/Drafts/View/Drafts/index.ctp:57
 #: View/Themed/Phkondo/Accounts/index.ctp:63
 #: View/Themed/Phkondo/Administrators/index.ctp:64
@@ -1557,7 +1573,7 @@ msgstr "Anterior"
 #: View/Themed/Phkondo/Suppliers/index.ctp:65
 #: View/Themed/Phkondo/SupportCategories/index.ctp:55
 #: View/Themed/Phkondo/Supports/index.ctp:63
-#: View/Themed/Phkondo/Users/index.ctp:65
+#: View/Themed/Phkondo/Users/index.ctp:69
 msgid "Next"
 msgstr "Siguiente"
 
@@ -1585,7 +1601,7 @@ msgstr "Nombre"
 #: Plugin/Attachments/View/InsuranceAttachments/view.ctp:42
 #: Plugin/Attachments/View/MaintenanceAttachments/view.ctp:42
 #: Plugin/Reports/View/Reports/income_report_detailed.ctp:37
-#: Plugin/Reports/View/Reports/Pdf/income_report_detailed.ctp:37
+#: Plugin/Reports/View/Reports/pdf/income_report_detailed.ctp:37
 #: View/Themed/Phkondo/OwnerReceipts/view.ctp:179
 #: View/Themed/Phkondo/Receipts/view.ctp:166
 msgid "Type"
@@ -1603,6 +1619,7 @@ msgstr ""
 #: Plugin/Attachments/View/InsuranceAttachments/view.ctp:62
 #: Plugin/Attachments/View/MaintenanceAttachments/view.ctp:62
 #: Plugin/Drafts/View/CondoDrafts/view.ctp:42
+#: Plugin/Drafts/View/CondoDrafts/pdf/view.ctp:42
 #: Plugin/Drafts/View/Drafts/view.ctp:39
 #: View/Themed/Phkondo/Accounts/view.ctp:86
 #: View/Themed/Phkondo/Administrators/view.ctp:49
@@ -1629,7 +1646,7 @@ msgstr ""
 #: View/Themed/Phkondo/Suppliers/view.ctp:77
 #: View/Themed/Phkondo/SupportCategories/view.ctp:47
 #: View/Themed/Phkondo/Supports/view.ctp:93
-#: View/Themed/Phkondo/Users/view.ctp:50
+#: View/Themed/Phkondo/Users/view.ctp:54
 msgid "Modified"
 msgstr "Modificado"
 
@@ -1638,6 +1655,7 @@ msgstr "Modificado"
 #: Plugin/Attachments/View/InsuranceAttachments/view.ctp:67
 #: Plugin/Attachments/View/MaintenanceAttachments/view.ctp:67
 #: Plugin/Drafts/View/CondoDrafts/view.ctp:47
+#: Plugin/Drafts/View/CondoDrafts/pdf/view.ctp:47
 #: Plugin/Drafts/View/Drafts/view.ctp:44
 #: View/Themed/Phkondo/Accounts/view.ctp:91
 #: View/Themed/Phkondo/Administrators/view.ctp:54
@@ -1665,7 +1683,7 @@ msgstr "Modificado"
 #: View/Themed/Phkondo/Suppliers/view.ctp:82
 #: View/Themed/Phkondo/SupportCategories/view.ctp:52
 #: View/Themed/Phkondo/Supports/view.ctp:100
-#: View/Themed/Phkondo/Users/view.ctp:55
+#: View/Themed/Phkondo/Users/view.ctp:59
 msgid "Created"
 msgstr "Creado"
 
@@ -1681,7 +1699,8 @@ msgstr ""
 msgid "<success>Groups cleaned:</success> %d"
 msgstr ""
 
-#: Plugin/Drafts/View/CondoDrafts/draft_presence.ctp:38;49
+#: Plugin/Drafts/View/CondoDrafts/draft_presence.ctp:36;47
+#: Plugin/Drafts/View/CondoDrafts/pdf/draft_presence.ctp:36;47
 #: View/Themed/Phkondo/Entities/view.ctp:51
 #: View/Themed/Phkondo/FractionEntities/view.ctp:39
 #: View/Themed/Phkondo/FractionOwners/view.ctp:59
@@ -1690,14 +1709,16 @@ msgid "Representative"
 msgstr "Representante"
 
 #: Plugin/Drafts/View/CondoDrafts/view.ctp:32
+#: Plugin/Drafts/View/CondoDrafts/pdf/view.ctp:32
 #: Plugin/Drafts/View/Drafts/view.ctp:29
 msgid "Id"
 msgstr ""
 
 #: Plugin/Drafts/View/CondoDrafts/view.ctp:37
+#: Plugin/Drafts/View/CondoDrafts/pdf/view.ctp:37
 #: Plugin/Drafts/View/Drafts/view.ctp:34
 #: Plugin/Reports/View/Reports/income_report_detailed.ctp:38
-#: Plugin/Reports/View/Reports/Pdf/income_report_detailed.ctp:38
+#: Plugin/Reports/View/Reports/pdf/income_report_detailed.ctp:38
 #: View/Themed/Phkondo/Accounts/view.ctp:34
 #: View/Themed/Phkondo/Administrators/view.ctp:39
 #: View/Themed/Phkondo/BudgetNotes/view.ctp:55
@@ -1718,17 +1739,19 @@ msgid "Title"
 msgstr "Título"
 
 #: Plugin/Drafts/View/CondoDrafts/view.ctp:72
+#: Plugin/Drafts/View/CondoDrafts/pdf/view.ctp:72
 #: View/Themed/Phkondo/Entities/view.ctp:120
 #: View/Themed/Phkondo/Fractions/view.ctp:80
 msgid "Location"
 msgstr "Localización"
 
-#: Plugin/Drafts/View/Layouts/print.ctp:28;29
+#: Plugin/Drafts/View/Layouts/print.ctp:29;30
+#: Plugin/Drafts/View/Layouts/pdf/print.ctp:31;32
 #: Plugin/PrintReceipt/View/Layouts/attachment.ctp:32;33
 #: Plugin/PrintReceipt/View/Layouts/print.ctp:32;33
-#: Plugin/PrintReceipt/View/Layouts/Pdf/print.ctp:31;32
+#: Plugin/PrintReceipt/View/Layouts/pdf/print.ctp:32;33
 #: Plugin/Reports/View/Layouts/attachment.ctp:31;32
-#: Plugin/Reports/View/Layouts/print.ctp:31;32
+#: Plugin/Reports/View/Layouts/print.ctp:32;33
 #: Plugin/Reports/View/Layouts/pdf/print.ctp:32;33
 msgid "pHkondo Condominium Management"
 msgstr "pHKondo Manejo de Condominios"
@@ -1809,9 +1832,9 @@ msgstr ""
 #: Plugin/PrintReceipt/View/Receipts/receipt.ctp:27;36
 #: Plugin/PrintReceipt/View/Receipts/pdf/receipt.ctp:26;35
 #: Plugin/Reports/View/FractionOwners/entity_current_account.ctp:16;25
-#: Plugin/Reports/View/FractionOwners/Pdf/entity_current_account.ctp:16;25
+#: Plugin/Reports/View/FractionOwners/pdf/entity_current_account.ctp:16;25
 #: Plugin/Reports/View/Fractions/fraction_current_account.ctp:16
-#: Plugin/Reports/View/Fractions/Pdf/fraction_current_account.ctp:16
+#: Plugin/Reports/View/Fractions/pdf/fraction_current_account.ctp:16
 #: Plugin/Reports/View/Pdf/entity_current_account.ctp:16;25
 #: Plugin/Reports/View/Pdf/fraction_current_account.ctp:16
 msgid "VAT"
@@ -1831,13 +1854,13 @@ msgstr ""
 #: Plugin/PrintReceipt/View/Receipts/receipt.ctp:43
 #: Plugin/PrintReceipt/View/Receipts/pdf/receipt.ctp:42
 #: Plugin/Reports/View/FractionOwners/entity_current_account.ctp:32
-#: Plugin/Reports/View/FractionOwners/Pdf/entity_current_account.ctp:32
+#: Plugin/Reports/View/FractionOwners/pdf/entity_current_account.ctp:32
 #: Plugin/Reports/View/Fractions/fraction_current_account.ctp:38
-#: Plugin/Reports/View/Fractions/Pdf/fraction_current_account.ctp:38
+#: Plugin/Reports/View/Fractions/pdf/fraction_current_account.ctp:38
 #: Plugin/Reports/View/Pdf/entity_current_account.ctp:32
 #: Plugin/Reports/View/Pdf/fraction_current_account.ctp:38
 #: Plugin/Reports/View/Reports/income_report_detailed.ctp:42
-#: Plugin/Reports/View/Reports/Pdf/income_report_detailed.ctp:42
+#: Plugin/Reports/View/Reports/pdf/income_report_detailed.ctp:42
 #: View/Themed/Phkondo/BudgetNotes/view.ctp:60
 #: View/Themed/Phkondo/FractionNotes/view.ctp:49
 #: View/Themed/Phkondo/Income/receipts.ctp:77
@@ -1845,6 +1868,7 @@ msgstr ""
 #: View/Themed/Phkondo/OwnerNotes/view.ctp:46
 #: View/Themed/Phkondo/OwnerReceipts/edit.ctp:128
 #: View/Themed/Phkondo/OwnerReceipts/view.ctp:105
+#: View/Themed/Phkondo/Receipts/edit.ctp:124
 #: View/Themed/Phkondo/Receipts/view.ctp:96
 msgid "Document Date"
 msgstr "Fecha del Documento"
@@ -1866,7 +1890,7 @@ msgstr "Pago"
 #: View/Themed/Phkondo/Accounts/edit.ctp:79
 #: View/Themed/Phkondo/Accounts/view.ctp:98
 #: View/Themed/Phkondo/Budgets/add.ctp:102
-#: View/Themed/Phkondo/Budgets/edit.ctp:130
+#: View/Themed/Phkondo/Budgets/edit.ctp:132
 #: View/Themed/Phkondo/Budgets/view.ctp:136
 #: View/Themed/Phkondo/Condos/add.ctp:60 View/Themed/Phkondo/Condos/edit.ctp:51
 #: View/Themed/Phkondo/Condos/view.ctp:147
@@ -1896,15 +1920,15 @@ msgstr "Pago"
 msgid "Observations"
 msgstr "Observaciones"
 
-#: Plugin/Reports/Controller/ReportsController.php:376
+#: Plugin/Reports/Controller/ReportsController.php:378
 msgid "Others"
 msgstr "Otros"
 
-#: Plugin/Reports/Controller/ReportsController.php:452
+#: Plugin/Reports/Controller/ReportsController.php:454
 msgid "Other or quotes without reference"
 msgstr "Cuotas no incluídas en presupuesto"
 
-#: Plugin/Reports/Controller/ReportsController.php:470
+#: Plugin/Reports/Controller/ReportsController.php:472
 msgid "Income extra and previous exercices"
 msgstr "Ingresos extra y ejercicios anteriores"
 
@@ -1913,7 +1937,7 @@ msgid "Shares Map"
 msgstr "Mapa de cuotas"
 
 #: Plugin/Reports/View/Fractions/fraction_current_account.ctp:28
-#: Plugin/Reports/View/Fractions/Pdf/fraction_current_account.ctp:28
+#: Plugin/Reports/View/Fractions/pdf/fraction_current_account.ctp:28
 #: Plugin/Reports/View/Pdf/fraction_current_account.ctp:28
 #: View/Themed/Phkondo/Entities/view.ctp:140
 #: View/Themed/Phkondo/Fractions/edit.ctp:48
@@ -1921,27 +1945,27 @@ msgstr "Mapa de cuotas"
 msgid "All owners"
 msgstr "Todos los propietarios"
 
-#: Plugin/Reports/View/Reports/expenses.ctp:8
-#: Plugin/Reports/View/Reports/Pdf/expenses.ctp:8
+#: Plugin/Reports/View/Reports/expenses.ctp:9
+#: Plugin/Reports/View/Reports/pdf/expenses.ctp:8
 msgid "Expenses report"
 msgstr "Reporte de gastos"
 
-#: Plugin/Reports/View/Reports/expenses.ctp:17
+#: Plugin/Reports/View/Reports/expenses.ctp:18
 #: Plugin/Reports/View/Reports/income_report.ctp:76
-#: Plugin/Reports/View/Reports/Pdf/expenses.ctp:17
-#: Plugin/Reports/View/Reports/Pdf/income_report.ctp:76
+#: Plugin/Reports/View/Reports/pdf/expenses.ctp:17
+#: Plugin/Reports/View/Reports/pdf/income_report.ctp:76
 #: View/Themed/Phkondo/MovementCategories/view.ctp:30
 #: View/Themed/Phkondo/Movements/index.ctp:32
 #: View/Themed/Phkondo/Movements/view.ctp:64
 msgid "Movement Category"
 msgstr "Categoría del movimiento"
 
-#: Plugin/Reports/View/Reports/expenses.ctp:18
+#: Plugin/Reports/View/Reports/expenses.ctp:19
 #: Plugin/Reports/View/Reports/income_report.ctp:39;77
 #: Plugin/Reports/View/Reports/income_report_detailed.ctp:44
-#: Plugin/Reports/View/Reports/Pdf/expenses.ctp:18
-#: Plugin/Reports/View/Reports/Pdf/income_report.ctp:39;77
-#: Plugin/Reports/View/Reports/Pdf/income_report_detailed.ctp:44
+#: Plugin/Reports/View/Reports/pdf/expenses.ctp:18
+#: Plugin/Reports/View/Reports/pdf/income_report.ctp:39;77
+#: Plugin/Reports/View/Reports/pdf/income_report_detailed.ctp:44
 #: View/Themed/Phkondo/BudgetNotes/create.ctp:56
 #: View/Themed/Phkondo/BudgetNotes/view.ctp:93
 #: View/Themed/Phkondo/Budgets/view.ctp:81
@@ -1957,18 +1981,18 @@ msgstr "Categoría del movimiento"
 msgid "Amount"
 msgstr "Monto"
 
-#: Plugin/Reports/View/Reports/expenses.ctp:39
+#: Plugin/Reports/View/Reports/expenses.ctp:40
 #: Plugin/Reports/View/Reports/income_report.ctp:62;98
 #: Plugin/Reports/View/Reports/income_report_detailed.ctp:78
-#: Plugin/Reports/View/Reports/Pdf/expenses.ctp:39
-#: Plugin/Reports/View/Reports/Pdf/income_report.ctp:62;98
-#: Plugin/Reports/View/Reports/Pdf/income_report_detailed.ctp:78
+#: Plugin/Reports/View/Reports/pdf/expenses.ctp:39
+#: Plugin/Reports/View/Reports/pdf/income_report.ctp:62;98
+#: Plugin/Reports/View/Reports/pdf/income_report_detailed.ctp:78
 #: View/Themed/Phkondo/BudgetNotes/create.ctp:59
 msgid "Total"
 msgstr "Total"
 
 #: Plugin/Reports/View/Reports/income_report_detailed.ctp:36
-#: Plugin/Reports/View/Reports/Pdf/income_report_detailed.ctp:36
+#: Plugin/Reports/View/Reports/pdf/income_report_detailed.ctp:36
 #: View/Themed/Phkondo/BudgetNotes/view.ctp:49
 #: View/Themed/Phkondo/FractionNotes/view.ctp:38
 #: View/Themed/Phkondo/Income/receipts.ctp:76
@@ -1983,7 +2007,7 @@ msgid "Document"
 msgstr "Documento"
 
 #: Plugin/Reports/View/Reports/income_report_detailed.ctp:43
-#: Plugin/Reports/View/Reports/Pdf/income_report_detailed.ctp:43
+#: Plugin/Reports/View/Reports/pdf/income_report_detailed.ctp:43
 #: View/Themed/Phkondo/BudgetNotes/view.ctp:108
 #: View/Themed/Phkondo/FractionNotes/view.ctp:97
 #: View/Themed/Phkondo/Income/receipts.ctp:79
@@ -2018,10 +2042,35 @@ msgstr "Listar de Cuentas"
 msgid "New Account"
 msgstr "Nueva cuenta"
 
+#: View/Themed/Phkondo/Accounts/add.ctp:50
+#: View/Themed/Phkondo/Accounts/edit.ctp:52
+#: View/Themed/Phkondo/Accounts/view.ctp:54
+#: View/Themed/Phkondo/Entities/add.ctp:51
+#: View/Themed/Phkondo/Entities/add_from_fraction.ctp:52
+#: View/Themed/Phkondo/Entities/edit.ctp:48
+#: View/Themed/Phkondo/Entities/view.ctp:61
+#: View/Themed/Phkondo/FractionEntities/add.ctp:43
+#: View/Themed/Phkondo/FractionEntities/edit.ctp:38
+#: View/Themed/Phkondo/FractionEntities/view.ctp:49
+#: View/Themed/Phkondo/FractionOwners/add.ctp:41
+#: View/Themed/Phkondo/FractionOwners/edit.ctp:48
+#: View/Themed/Phkondo/FractionOwners/index.ctp:28
+#: View/Themed/Phkondo/FractionOwners/view.ctp:69
+#: View/Themed/Phkondo/Suppliers/add.ctp:50
+#: View/Themed/Phkondo/Suppliers/add_from_invoice.ctp:50
+#: View/Themed/Phkondo/Suppliers/add_from_maintenance.ctp:50
+#: View/Themed/Phkondo/Suppliers/edit.ctp:48
+#: View/Themed/Phkondo/Suppliers/view.ctp:56
+msgid "Contact"
+msgid_plural "Contacts"
+msgstr[0] "Contacto"
+msgstr[1] "Contactos"
+
 #: View/Themed/Phkondo/Accounts/edit.ctp:7
 #: View/Themed/Phkondo/Administrators/edit.ctp:9
 #: View/Themed/Phkondo/BudgetNotes/create.ctp:20
 #: View/Themed/Phkondo/BudgetNotes/edit.ctp:9
+#: View/Themed/Phkondo/Budgets/edit.ctp:35
 #: View/Themed/Phkondo/Entities/edit.ctp:9
 #: View/Themed/Phkondo/FiscalYears/edit.ctp:9
 #: View/Themed/Phkondo/FractionNotes/edit.ctp:9
@@ -2040,7 +2089,7 @@ msgstr "Nueva cuenta"
 #: View/Themed/Phkondo/Receipts/edit.ctp:14
 #: View/Themed/Phkondo/Receipts/pay_receipt.ctp:9
 #: View/Themed/Phkondo/Suppliers/edit.ctp:9
-#: View/Themed/Phkondo/Users/edit.ctp:16
+#: View/Themed/Phkondo/Users/edit.ctp:18
 msgid "View %s"
 msgstr "Vista %s"
 
@@ -2094,17 +2143,6 @@ msgstr "Swift"
 #: View/Themed/Phkondo/Accounts/view.ctp:79
 msgid "Main Account"
 msgstr "Cuenta principal"
-
-#: View/Themed/Phkondo/Accounts/view.ctp:54
-#: View/Themed/Phkondo/Entities/view.ctp:61
-#: View/Themed/Phkondo/FractionEntities/view.ctp:49
-#: View/Themed/Phkondo/FractionOwners/index.ctp:28
-#: View/Themed/Phkondo/FractionOwners/view.ctp:69
-#: View/Themed/Phkondo/Suppliers/view.ctp:56
-msgid "Contact"
-msgid_plural "Contacts"
-msgstr[0] "Contacto"
-msgstr[1] "Contactos"
 
 #: View/Themed/Phkondo/Administrators/add.ctp:9
 #: View/Themed/Phkondo/Administrators/edit.ctp:11
@@ -2275,7 +2313,7 @@ msgstr "Nueva cuota"
 
 #: View/Themed/Phkondo/BudgetNotes/create.ctp:21
 #: View/Themed/Phkondo/Budgets/add.ctp:9
-#: View/Themed/Phkondo/Budgets/edit.ctp:35
+#: View/Themed/Phkondo/Budgets/edit.ctp:37
 #: View/Themed/Phkondo/Budgets/view.ctp:29
 msgid "List Budgets"
 msgstr "Listar presupuestos"
@@ -2376,12 +2414,12 @@ msgstr "Fecha de Vencimiento"
 msgid "New Budget"
 msgstr "Nuevo presupuesto"
 
-#: View/Themed/Phkondo/Budgets/edit.ctp:34
+#: View/Themed/Phkondo/Budgets/edit.ctp:36
 #: View/Themed/Phkondo/Budgets/view.ctp:27
 msgid "Delete Budget"
 msgstr "Eliminar Presupuesto"
 
-#: View/Themed/Phkondo/Budgets/edit.ctp:46
+#: View/Themed/Phkondo/Budgets/edit.ctp:48
 msgid ""
 "Warning: when you cancel a budget, ALL DEBIT NOTES created by this budget "
 "will be set as CANCELED, EXCEPT the ones already paid."
@@ -2390,7 +2428,7 @@ msgstr ""
 "creadas para este presupuesto aparecerán como ANULADAS, EXCEPTO las que ya "
 "están pagadas."
 
-#: View/Themed/Phkondo/Budgets/edit.ctp:49
+#: View/Themed/Phkondo/Budgets/edit.ctp:51
 msgid ""
 "Warning: when you set a budget as pending, ALL DEBIT NOTES created by this "
 "budget will be set as WAITING PAYMENT, EXCEPT the ones already paid."
@@ -2399,7 +2437,7 @@ msgstr ""
 "creadas para este presupuesto aparecerán como PENDIENTES DE PAGO, EXCEPTO "
 "las que ya están pagadas."
 
-#: View/Themed/Phkondo/Budgets/edit.ctp:52
+#: View/Themed/Phkondo/Budgets/edit.ctp:54
 msgid ""
 "Warning: field set read only by budget status, you must change budget to "
 "pending to allow change."
@@ -2407,7 +2445,7 @@ msgstr ""
 "Atención: Campo configurado de solo lectura por estado del presupuesto, Ud. "
 "debe cambiar el presupuesto a pendiente para permitir el cambio."
 
-#: View/Themed/Phkondo/Budgets/edit.ctp:59
+#: View/Themed/Phkondo/Budgets/edit.ctp:61
 #: View/Themed/Phkondo/Budgets/view.ctp:26
 msgid "Edit Budget"
 msgstr "Editar Presupuesto"
@@ -2617,18 +2655,18 @@ msgstr "Contabilidad"
 msgid "System"
 msgstr ""
 
-#: View/Themed/Phkondo/Elements/menu/top_menu.ctp:114
+#: View/Themed/Phkondo/Elements/menu/top_menu.ctp:122
 #: View/Themed/Phkondo/Install/database.ctp:33
-#: View/Themed/Phkondo/Users/edit.ctp:16 View/Themed/Phkondo/Users/view.ctp:25
+#: View/Themed/Phkondo/Users/edit.ctp:18 View/Themed/Phkondo/Users/view.ctp:25
 msgid "User"
 msgstr "Usuario"
 
-#: View/Themed/Phkondo/Elements/menu/top_menu.ctp:117
+#: View/Themed/Phkondo/Elements/menu/top_menu.ctp:125
 #: View/Themed/Phkondo/Users/profile.ctp:36
 msgid "Reserved area"
 msgstr "Área reservada"
 
-#: View/Themed/Phkondo/Elements/menu/top_menu.ctp:119
+#: View/Themed/Phkondo/Elements/menu/top_menu.ctp:127
 msgid "End Session"
 msgstr "Terminar Sesión"
 
@@ -2645,7 +2683,7 @@ msgid "Current Account"
 msgstr "Cuenta Corriente"
 
 #: View/Themed/Phkondo/Email/config.ctp:57
-#: View/Themed/Phkondo/Users/view.ctp:35
+#: View/Themed/Phkondo/Users/view.ctp:43
 msgid "Username"
 msgstr "Nombre de Usuario"
 
@@ -2985,10 +3023,6 @@ msgstr ""
 
 #: View/Themed/Phkondo/Install/database.ctp:54
 msgid "Port (leave blank if unknown)"
-msgstr ""
-
-#: View/Themed/Phkondo/Install/secure.ctp:4
-msgid "pHKondo is now Secure."
 msgstr ""
 
 #: View/Themed/Phkondo/InsuranceTypes/add.ctp:9
@@ -3444,147 +3478,29 @@ msgstr "Nueva solicitud de soporte"
 msgid "Notes"
 msgstr "Couta"
 
-#: View/Themed/Phkondo/Users/add.ctp:14 View/Themed/Phkondo/Users/edit.ctp:18
+#: View/Themed/Phkondo/Users/add.ctp:15 View/Themed/Phkondo/Users/edit.ctp:20
 #: View/Themed/Phkondo/Users/view.ctp:12
 msgid "List Users"
 msgstr "Listar Usuarios"
 
-#: View/Themed/Phkondo/Users/add.ctp:27 View/Themed/Phkondo/Users/index.ctp:13
+#: View/Themed/Phkondo/Users/add.ctp:28 View/Themed/Phkondo/Users/index.ctp:15
 #: View/Themed/Phkondo/Users/view.ctp:11
 msgid "New User"
 msgstr "Nuevo usuario"
 
-#: View/Themed/Phkondo/Users/edit.ctp:17 View/Themed/Phkondo/Users/view.ctp:10
+#: View/Themed/Phkondo/Users/edit.ctp:19 View/Themed/Phkondo/Users/view.ctp:10
 msgid "Delete User"
 msgstr "Eliminar Usuario"
 
-#: View/Themed/Phkondo/Users/edit.ctp:39 View/Themed/Phkondo/Users/view.ctp:9
+#: View/Themed/Phkondo/Users/edit.ctp:41 View/Themed/Phkondo/Users/view.ctp:9
 msgid "Edit User"
 msgstr "Editar Usuario"
 
-#: View/Themed/Phkondo/Users/edit.ctp:50
+#: View/Themed/Phkondo/Users/edit.ctp:56
 #: View/Themed/Phkondo/Users/profile.ctp:45
 msgid "Enable password change"
 msgstr "Habilitar cambio de contraseña"
 
-#: View/Themed/Phkondo/Users/view.ctp:40
+#: View/Themed/Phkondo/Users/view.ctp:36
 msgid "Role"
 msgstr "Rol"
-
-
-msgid " of "
-msgstr ""
-
-msgid "%d day"
-msgid_plural "%d days"
-msgstr[0] ""
-msgstr[1] ""
-
-msgid "%d hour"
-msgid_plural "%d hours"
-msgstr[0] ""
-msgstr[1] ""
-
-msgid "%d minute"
-msgid_plural "%d minutes"
-msgstr[0] ""
-msgstr[1] ""
-
-msgid "%d month"
-msgid_plural "%d months"
-msgstr[0] ""
-msgstr[1] ""
-
-msgid "%d second"
-msgid_plural "%d seconds"
-msgstr[0] ""
-msgstr[1] ""
-
-msgid "%d week"
-msgid_plural "%d weeks"
-msgstr[0] ""
-msgstr[1] ""
-
-msgid "%d year"
-msgid_plural "%d years"
-msgstr[0] ""
-msgstr[1] ""
-
-msgid "%s KB"
-msgstr ""
-
-msgid "%s ago"
-msgstr ""
-
-msgid "January"
-msgstr ""
-
-msgid "February"
-msgstr ""
-
-msgid "March"
-msgstr ""
-
-msgid "April"
-msgstr ""
-
-msgid "May"
-msgstr ""
-
-msgid "June"
-msgstr ""
-
-msgid "July"
-msgstr ""
-
-msgid "August"
-msgstr ""
-
-msgid "September"
-msgstr ""
-
-msgid "October"
-msgstr ""
-
-msgid "November"
-msgstr ""
-
-msgid "December"
-msgstr ""
-
-msgid "Sunday"
-msgstr ""
-
-msgid "Monday"
-msgstr ""
-
-msgid "Tuesday"
-msgstr ""
-
-msgid "Thursday"
-msgstr ""
-
-msgid "Friday"
-msgstr ""
-
-msgid "Saturday"
-msgstr ""
-
-msgid "Today, %s"
-msgstr ""
-
-msgid "Tomorrow, %s"
-msgstr ""
-
-
-msgid "Language"
-msgstr ""
-
-msgid "Theme"
-msgstr ""
-
-msgid "Verify Password"
-msgstr ""
-
-msgid "Payment Due Date"
-msgstr ""

@@ -36,7 +36,12 @@
  * In development mode, you need to click the flash message to continue.
  */
 Configure::write('debug',0);
-
+Configure::write('Exception.handler', 'AppExceptionHandler::handleException');
+Configure::write('Session', array(
+    'defaults' => 'php',
+    'cookie'=>'pHKondoSession'
+    )
+        );
 /**
  * 
  */
@@ -57,4 +62,33 @@ Configure::write('Security.useOpenSsl', true);
  * any date & time related errors.
  */
 date_default_timezone_set('Europe/Lisbon');
+
+/**
+ * Idiom Settings
+ */
+Configure::write('Config.language', 'eng');
+Configure::write('Language.list', array(
+    'eng' => 'English',
+    'spa' => 'Español',
+    'ita' => 'Italiano',
+    'por' => 'Português',
+    'pt-br' => 'Português ( Brasil)'
+));
+
+/**
+ * The settings below can be used to open access to pHKondo.
+ * - set to true / false
+ * - true will open pHKondo to all access. 
+ */
+Configure::write('Access.open', false); // For SECURITY keep this FALSE , use only on emergency.
+
+/**
+ * User role settings , do not change unless you know what you are doing 
+ */
+Configure::write('User.role', array(
+    'admin' => __('App Administrator'),
+    'store_admin' => __n('Manager', 'Managers', 1),
+    'colaborator' => __('Employee')
+        )
+);
 

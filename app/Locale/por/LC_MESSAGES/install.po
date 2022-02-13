@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: phkondo.net\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2022-02-07 15:50+0000\n"
+"PO-Revision-Date: 2022-02-13 13:36+0000\n"
 "Last-Translator: Paulo <contact@phalkaline.net>\n"
 "Language-Team: pHAlkaline <contact@phalkaline.net>\n"
 "Language: pt\n"
@@ -16,106 +16,106 @@ msgstr ""
 "X-Generator: Poedit 3.0.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: Controller/InstallController.php:116;151;152
+#: Controller/InstallController.php:118;153;154
 msgid "Installation: Welcome"
 msgstr "Instalação: Bem Vindo"
 
-#: Controller/InstallController.php:126;131
+#: Controller/InstallController.php:128;133;594
 msgid "Already Installed"
-msgstr "Applicação instalada"
+msgstr "Aplicação instalada"
 
-#: Controller/InstallController.php:176;177
+#: Controller/InstallController.php:178;179
 msgid "Step 1 : Database connection"
 msgstr "Passo 1 : Configuração de acesso à base de dados"
 
-#: Controller/InstallController.php:180
+#: Controller/InstallController.php:182
 msgid "Database connection file already exists"
 msgstr "Ficheiro de configuração de acesso à base de dados já existe"
 
-#: Controller/InstallController.php:200
+#: Controller/InstallController.php:201
 msgid "Could not connect to database: %s"
 msgstr "Não foi possível a ligação à base de dados"
 
-#: Controller/InstallController.php:204;249
+#: Controller/InstallController.php:205;246
 msgid "Could not connect to database."
 msgstr "Não foi possível a ligação à base de dados."
 
-#: Controller/InstallController.php:219
+#: Controller/InstallController.php:220
 msgid "Could not write database.php file."
 msgstr "Não foi possivél gravar o ficheiro database.php."
 
-#: Controller/InstallController.php:233;234
+#: Controller/InstallController.php:234;235
 msgid "Step 2 : Build database , load table values"
 msgstr "Passo 2 : Construir base de dados e carregar valores nas tabelas"
 
-#: Controller/InstallController.php:261;272;285;297;313;326
+#: Controller/InstallController.php:258;269;282;294;310;323;339
 msgid "Could not load database: %s"
 msgstr "Não foi possível carregar a base de dados: %s"
 
-#: Controller/InstallController.php:362;469;491
+#: Controller/InstallController.php:375;504
 msgid ""
-"Unable to secure your application, your Config %s core.php file is not "
+"Unable to secure your application, your Config %s core_phapp.php file is not "
 "writable. Please check the permissions."
 msgstr ""
-"Não foi possivel tornar a aplicação mais segura, a sua pasta Config %s core."
-"php não permite escrita. Verifique as permisões."
+"Não foi possível tornar a aplicação mais segura, a sua pasta Config %s core."
+"php não permite escrita. Verifique as permissões."
 
-#: Controller/InstallController.php:382;383
+#: Controller/InstallController.php:395;396
 msgid "Step 3 : Email notification"
 msgstr "Passo 3 : Configuração de notificações por email"
 
-#: Controller/InstallController.php:386
-msgid "Email settings file already exists"
-msgstr "Ficheiro de configuração email.php já existe"
-
-#: Controller/InstallController.php:409
+#: Controller/InstallController.php:428
 msgid "Could not write email.php file."
 msgstr "Não foi possivél gravar o ficheiro email.php."
 
-#: Controller/InstallController.php:420;421
+#: Controller/InstallController.php:452;453
 msgid "Step 4 : Secure app"
 msgstr "Passo 4 : Tornar a aplicação mais segura"
 
-#: Controller/InstallController.php:429
+#: Controller/InstallController.php:461
 msgid "Could not be secured. Please, try again."
 msgstr "Não foi possível gravar. Por favor tente outra vez."
 
-#: Controller/InstallController.php:430
+#: Controller/InstallController.php:462
 msgid "Unable to secure app."
-msgstr ""
+msgstr "Não foi possível tornar a aplicação mais segura."
 
-#: Controller/InstallController.php:438
+#: Controller/InstallController.php:470
 msgid "Saved with success."
 msgstr "Gravado com sucesso."
 
-#: Controller/InstallController.php:443
+#: Controller/InstallController.php:475
 msgid "Could not be saved. Please, try again."
 msgstr "Não foi possível gravar. Por favor tente outra vez."
 
-#: Controller/InstallController.php:444
+#: Controller/InstallController.php:476
 msgid "Unable to create administrative user."
 msgstr "Não foi possivel criar utilizador de administração."
 
-#: Controller/InstallController.php:460;461;478;481
+#: Controller/InstallController.php:492;493;514;517
 msgid "Installation completed successfully"
 msgstr "A Instalação terminou com sucesso"
 
-#: Controller/InstallController.php:483;484
+#: Controller/InstallController.php:519;520
 msgid "Installation not completed successfully"
 msgstr "Não foi possível terminar a instalação com sucesso"
 
-#: Controller/InstallController.php:485
+#: Controller/InstallController.php:521
 msgid ""
 "Something went wrong during installation. Please check your server logs."
 msgstr "Algo correu mal durante a instalação. Verifique os logs do servidor."
 
-#: Controller/InstallController.php:542
+#: Controller/InstallController.php:570
 msgid "Unable to generate users password."
 msgstr "Não foi possível criar palavras passe para os utilizadores."
 
-#: Controller/InstallController.php:543
+#: Controller/InstallController.php:571
 msgid "install"
 msgstr "instalar"
+
+#: Controller/SecureController.php:141
+msgid "Already Secured"
+msgstr "Aplicação Segura"
 
 #: Controller/UsersController.php:293
 msgid "Database connection missing"
@@ -124,6 +124,14 @@ msgstr "Configuração de acesso à base de dados não existe"
 #: Controller/UsersController.php:294
 msgid "Install or manually config pHKondo"
 msgstr "Instalar ou configurar manualmente pHKondo"
+
+#: View/Themed/Phkondo/Elements/menu/top_menu.ctp:108
+msgid "Reinstall"
+msgstr "Voltar a Instalar!!!"
+
+#: View/Themed/Phkondo/Elements/menu/top_menu.ctp:108
+msgid "Are you sure you want to reinstall # %s?"
+msgstr "Irá perder todos os dados, Tem a certeza que quer reinstalar o # %s?"
 
 #: View/Themed/Phkondo/Install/adminuser.ctp:8
 msgid "Admin user password"
@@ -142,14 +150,20 @@ msgid "Database and data"
 msgstr "Base de Dados e respectivos dados"
 
 #: View/Themed/Phkondo/Install/data.ctp:15
+msgid "Check option to load default values to auxiliary tables."
+msgstr "Selecione para carregar dados em tabelas auxiliares."
+
+#: View/Themed/Phkondo/Install/data.ctp:21
 msgid "Load data"
 msgstr "Carregar dados"
 
-#: View/Themed/Phkondo/Install/data.ctp:20
-msgid "Check load data option to insert dafault values to auxiliary tables."
-msgstr ""
-"Seleccione carregar dados para adicionar valores na base de dados. Carrega "
-"dados para tabelas auxiliares."
+#: View/Themed/Phkondo/Install/data.ctp:26
+msgid "Check option to add demonstration condo."
+msgstr "Selecione opção para carregar exemplo de condomínio de demonstração."
+
+#: View/Themed/Phkondo/Install/data.ctp:32
+msgid "Load demonstration condo"
+msgstr "Carregar Condomínio De Demonstração"
 
 #: View/Themed/Phkondo/Install/database.ctp:8
 msgid "Setup database connection"
@@ -246,3 +260,7 @@ msgstr "Inicie aqui a sua instalação"
 msgid "Installation cannot continue as minimum requirements are not found."
 msgstr ""
 "A instalação não pode continuar, requisitos minimos não foram encontrados."
+
+#: View/Themed/Phkondo/Install/secure.ctp:4
+msgid "pHKondo is now Secure."
+msgstr "pHKondo está agora seguro"

@@ -86,15 +86,15 @@ class SecureController extends AppController {
 
     private function __setNewSaltSeed() {
         // set new salt and seed value
-        $File = new File(APP . 'Config' . DS . 'core.php');
+        $File = new File(APP . 'Config' . DS . 'core_app.php');
         $salt = Security::generateAuthKey();
         $seed = mt_rand() . mt_rand();
         $contents = $File->read();
         $contents = preg_replace('/(?<=Configure::write\(\'Security.salt\', \')([^\' ]+)(?=\'\))/', $salt, $contents);
         $contents = preg_replace('/(?<=Configure::write\(\'Security.cipherSeed\', \')(\d+)(?=\'\))/', $seed, $contents);
         if (!$File->write($contents)) {
-            $this->Flash->info(__('Unable to secure your application, your Config %s core.php file is not writable. Please check the permissions.', DS));
-            $this->log('Unable to secure your application, your Config %s core.php file is not writable. Please check the permissions.', DS);
+            $this->Flash->info(__('Unable to secure your application, your Config %s core_phapp.php file is not writable. Please check the permissions.', DS));
+            $this->log('Unable to secure your application, your Config %s core_phapp.php file is not writable. Please check the permissions.', DS);
             return false;
         }
         Configure::write('Security.salt', $salt);
@@ -137,9 +137,12 @@ class SecureController extends AppController {
      * @throws 
      */
     public function isAuthorized($user = null) {
-        //echo "auth";
-        $result = true;
-        return $result;
+        if ($user['role'] != 'store_admin') {
+            $this->Flash->info(__d('install', 'Already Secured'));
+            $this->redirect('/');
+            return false;
+        }
+        return true;
     }
 
     /**

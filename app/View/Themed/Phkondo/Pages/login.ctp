@@ -5,7 +5,7 @@
         </div>
         <p class="login-box-msg"></p>
        <?php echo $this->Flash->render(); ?>
-       
+
         <?php
         echo $this->Form->create('User', array(
             'url' => array('controller' => 'users', 'action' => 'login'),
@@ -25,7 +25,7 @@
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-            <?php echo $this->Form->input('language', array('div' => null, 'class' => 'form-control', 'placeholder' => 'language', 'options' => Configure::read('Language.list'))); ?>
+            <?php echo $this->Form->input('language', array('div' => null, 'class' => 'form-control', 'placeholder' => 'language', 'options' => Configure::read('Language.list'), 'value' => Configure::read('Config.language'))); ?>
             <span class="glyphicon glyphicon-flag form-control-feedback"></span>
         </div><!-- .form-group -->
         <div class="form-group has-feedback">
@@ -33,7 +33,7 @@
             <?php echo $this->Form->input('theme', array('div' => null, 'class' => 'form-control', 'placeholder' => 'theme', 'options' => Configure::read('Theme.list'))); ?>
             <span class="glyphicon glyphicon-flag form-control-feedback"></span>
         </div><!-- .form-group -->
-        
+
         <div class="form-group">
             <div class="col-md-6 checkbox checkbox-success required">
                 <input type="checkbox" name="data[User][rememberMe]" id="UserRememberMe" class="styled">

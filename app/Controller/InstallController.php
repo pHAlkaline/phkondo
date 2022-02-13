@@ -27,6 +27,8 @@
  * 
  */
 App::uses('File', 'Utility');
+App::uses('CakeSchema', 'Model');
+App::uses('ConnectionManager', 'Model');
 
 class InstallController extends AppController {
 
@@ -185,7 +187,6 @@ class InstallController extends AppController {
             return;
         }
 
-        App::uses('ConnectionManager', 'Model');
         $config = $this->defaultConfig;
         foreach ($this->request->data as $key => $value) {
             if (isset($config[$key])) {
@@ -238,10 +239,6 @@ class InstallController extends AppController {
         if (!isset($this->request->data['demo_data']) || $this->request->data['demo_data'] == '0') {
             $this->redirect(array('action' => 'email'));
         }
-
-        App::uses('File', 'Utility');
-        App::uses('CakeSchema', 'Model');
-        App::uses('ConnectionManager', 'Model');
 
         $db = ConnectionManager::getDataSource('default');
         $brokenSequence = $db instanceof Postgres;
@@ -328,6 +325,22 @@ class InstallController extends AppController {
                     }
                 }
             }
+            if ($this->request->data['demo_condo'] == '1') {
+
+                // phkondo demo data
+                $demo_data_file = APP . 'Config' . DS . 'Schema' . DS . 'phkondo-democondo_' . Configure::read('Config.language') . '.sql';
+                if (!file_exists($demo_data_file)) {
+                    $demo_data_file = APP . 'Config' . DS . 'Schema' . DS . 'phkondo-democondo.sql';
+                }
+
+                try {
+                    $this->__executeSQLScript($db, $demo_data_file);
+                } catch (MissingConnectionException $e) {
+                    $this->Flash->error(__d('install', 'Could not load database: %s', $e->getMessage()));
+                    return;
+                }
+
+            }
         }
 
         $this->redirect(array('action' => 'email'));
@@ -359,7 +372,7 @@ class InstallController extends AppController {
         $contents = preg_replace('/(?<=Configure::write\(\'Security.salt\', \')([^\' ]+)(?=\'\))/', $salt, $contents);
         $contents = preg_replace('/(?<=Configure::write\(\'Security.cipherSeed\', \')(\d+)(?=\'\))/', $seed, $contents);
         if (!$File->write($contents)) {
-            $this->Flash->error(__d('install', 'Unable to secure your application, your Config %s core.php file is not writable. Please check the permissions.', DS));
+            $this->Flash->error(__d('install', 'Unable to secure your application, your Config %s core_phapp.php file is not writable. Please check the permissions.', DS));
             $this->log('Unable to secure your application, your Config %s core_phapp.php file is not writable. Please check the permissions.', DS);
             return false;
         }
@@ -484,12 +497,16 @@ class InstallController extends AppController {
             $File = new File(APP . 'Config' . DS . 'core_phapp.php');
             $contents = $File->read();
             $contents = preg_replace('/(?<=Configure::write\(\'installed_key\', \')([^\' ]+)(?=\'\))/', $key, $contents);
+            if ($this->Cookie->check('Config.language')) {
+                $contents = preg_replace('/(?<=Configure::write\(\'Config.language\', \')([^\' ]+)(?=\'\))/', $this->Cookie->read('Config.language'), $contents);
+            }
             if (!$File->write($contents)) {
-                $this->Flash->error(__d('install', 'Unable to secure your application, your Config %s core.php file is not writable. Please check the permissions.', DS));
+                $this->Flash->error(__d('install', 'Unable to secure your application, your Config %s core_phapp.php file is not writable. Please check the permissions.', DS));
                 $this->log('Unable to secure your application, your Config %s core_phapp.php file is not writable. Please check the permissions.', DS);
                 $this->redirect('/');
             }
             Configure::write('installed_key', $key);
+            Configure::write('Config.language', $this->Cookie->read('Config.language'));
 
             // Create a new file with 0644 permissions
             $file = new File(TMP . 'installed.txt', true, 0644);
@@ -503,16 +520,8 @@ class InstallController extends AppController {
                 $this->set('title_for_step', __d('install', 'Installation not completed successfully'));
                 $this->Flash->error(__d('install', 'Something went wrong during installation. Please check your server logs.'));
             }
-            $File = new File(APP . 'Config' . DS . 'core_phapp.php');
-            $contents = $File->read();
-            $contents = preg_replace('/(?<=Configure::write\(\'installed\', \')([^\' ]+)(?=\'\))/', $key, $contents);
-            if (!$File->write($contents)) {
-                $this->Flash->error(__d('install', 'Unable to secure your application, your Config %s core.php file is not writable. Please check the permissions.', DS));
-                $this->log('Unable to secure your application, your Config %s core_phapp.php file is not writable. Please check the permissions.', DS);
-                $this->redirect('/');
-            }
-            unset($install['key']);
             $this->Cookie->delete('Install');
+            $this->Cookie->delete('Config.language');
         } else {
 //$this->redirect('/');
         }
@@ -566,6 +575,12 @@ class InstallController extends AppController {
         return true;
     }
 
+    public function reinstall() {
+        unlink(APP . 'Config' . DS . 'core_phapp.php');
+        unlink(TMP . 'installed.txt');
+        $this->redirect(array('action' => 'index'));
+    }
+
     /**
      * isAuthorized
      *
@@ -575,8 +590,12 @@ class InstallController extends AppController {
      * @throws 
      */
     public function isAuthorized($user = null) {
-        $result = true;
-        return $result;
+        if ($user['role'] != 'store_admin') {
+            $this->Flash->info(__d('install', 'Already Installed'));
+            $this->redirect('/');
+            return false;
+        }
+        return true;
     }
 
 }

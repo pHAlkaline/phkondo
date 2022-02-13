@@ -74,8 +74,9 @@ Configure::write('Attachment.attachment', array(
  */
 CakePlugin::load('CakePdf', array('bootstrap' => true, 'routes' => false));
 Configure::write('CakePdf', array(
-    'binary' => 'C:\xampp7426\wkhtmltopdf\bin\wkhtmltopdf.exe', 
-    // {your_system_path_to_wkhtmltopdf.exe}
+    'binary' => '{your_system_path_to_wkhtmltopdf.exe}', 
+    // windows: C:\xampp7426\wkhtmltopdf\bin\wkhtmltopdf.exe
+    // linux: /usr/local/bin/wkhtmltopdf
     // Requires wkhtmltopdf engine 
     // https://wkhtmltopdf.org/
     'engine' => 'CakePdf.WkHtmlToPdf',
@@ -87,7 +88,7 @@ Configure::write('CakePdf', array(
         'enable-local-file-access' => true
     ],
     'phkondo' => [
-        'active' => true, // Requires CakePdf Plugin 
+        'active' => false, // Requires CakePdf Plugin 
         'cssPath' => APP . 'View' . DS . 'Themed' . DS . 'Phkondo' . DS . WEBROOT_DIR . DS . 'css' . DS,
         'imgPath' => APP . 'View' . DS . 'Themed' . DS . 'Phkondo' . DS . WEBROOT_DIR . DS . 'img' . DS,
     ]
@@ -112,18 +113,7 @@ Configure::write('Theme.owner_address', 'Administration Company Address , Contac
 Configure::write('Theme.base_color', '#428bca');
 
 /**
- * Idiom Settings
- */
-Configure::write('Config.language', 'eng');
-Configure::write('Language.list', array(
-    'eng' => 'English',
-    'spa' => 'Español',
-    'ita' => 'Italiano',
-    'por' => 'Português',
-));
-
-/**
- * Idiom Settings
+ * App Settings
  */
 Configure::write('Config.timezone', 'Europe/London'); // Europe/Lisbon
 Configure::write('databaseDateFormat', 'Y-m-d'); // database dateformat
@@ -139,20 +129,3 @@ Configure::write('Application.mode', 'full'); // free, full, one, pro, demo -> u
 Configure::write('MaintenanceMode.start', '01-01-2000 00:00:00');
 Configure::write('MaintenanceMode.duration', '48'); // Duration in hours
 Configure::write('MaintenanceMode.site_offline_url', '/pages/offline');
-
-/**
- * The settings below can be used to open access to pHKondo.
- * - set to true / false
- * - true will open pHKondo to all access. 
- */
-Configure::write('Access.open', false); // For SECURITY keep this FALSE , use only on emergency.
-
-/**
- * User role settings , do not change unless you know what you are doing 
- */
-Configure::write('User.role', array(
-    'admin' => __('App Administrator'),
-    'store_admin' => __n('Manager', 'Managers', 1),
-    'colaborator' => __('Employee')
-        )
-);
