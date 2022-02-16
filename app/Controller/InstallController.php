@@ -102,6 +102,7 @@ class InstallController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         $this->Auth->allow();
+        $this->Auth->deny('reinstall');
         $this->layout = 'clean';
     }
 
@@ -339,7 +340,6 @@ class InstallController extends AppController {
                     $this->Flash->error(__d('install', 'Could not load database: %s', $e->getMessage()));
                     return;
                 }
-
             }
         }
 
@@ -406,7 +406,7 @@ class InstallController extends AppController {
         if (file_exists(APP . 'Config' . DS . 'email.php')) {
             unlink(APP . 'Config' . DS . 'email.php');
             copy(APP . 'Config' . DS . 'email.php.default', APP . 'Config' . DS . 'email.php');
-         }
+        }
 
 
         $config = $this->defaultEmail;
@@ -593,7 +593,7 @@ class InstallController extends AppController {
             $this->redirect('/');
             return false;
         }
-        return true;
+        return parent::isAuthorized($user);
     }
 
 }
