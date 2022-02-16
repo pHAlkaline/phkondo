@@ -115,6 +115,9 @@ App::uses('AppExceptionHandler', 'Lib');
 if (!file_exists(APP . 'Config' . DS . 'bootstrap_phapp.php')) {
     copy(APP . 'Config' . DS . 'bootstrap_phapp.php.default', APP . 'Config' . DS . 'bootstrap_phapp.php');
 }
+if (!file_exists(APP . 'Config' . DS . 'email.php')) {
+    copy(APP . 'Config' . DS . 'email.php.default', APP . 'Config' . DS . 'email.php');
+}
 if (!file_exists(APP . 'Config' . DS . 'email_notifications.php')) {
     copy(APP . 'Config' . DS . 'email_notifications.php.default', APP . 'Config' . DS . 'email_notifications.php');
 }
