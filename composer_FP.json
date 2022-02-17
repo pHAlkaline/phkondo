@@ -63,8 +63,8 @@
         "josegonzalez/cakephp-upload": "2.x-dev",
         "phalkaline/cakephp-feedback-plugin": "dev-master",
         "phalkaline/phkondo-attachments": "1.7",
-        "phalkaline/phkondo-drafts": "^1.7",
-        "phalkaline/phkondo-print-receipt": "^1.7",
+        "phalkaline/phkondo-drafts": "1.7",
+        "phalkaline/phkondo-print-receipt": "1.7",
         "phalkaline/phkondo-reports": "1.7"
     },
     "minimum-stability": "dev",

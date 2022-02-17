@@ -588,9 +588,8 @@ class InstallController extends AppController {
      * @throws 
      */
     public function isAuthorized($user = null) {
-        if ($user['role'] != 'store_admin') {
+        if ($user['role'] != 'admin') {
             $this->Flash->info(__d('install', 'Already Installed'));
-            $this->redirect('/');
             return false;
         }
         return parent::isAuthorized($user);
