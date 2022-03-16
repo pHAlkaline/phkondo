@@ -24,7 +24,7 @@
  * @package       app.Model
  * @since         pHKondo v 1.1.1
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
- * 
+ *
  */
 App::uses('AppHelper', 'View/Helper');
 
@@ -32,7 +32,7 @@ class PhkondoHelper extends AppHelper {
 
     private $_hasFiscalYear = null;
     var $helpers = array('Session');
-    
+
     public function hasFiscalYear($condo_id='') {
         if ($this->_hasFiscalYear !== null) {
             return $this->_hasFiscalYear;

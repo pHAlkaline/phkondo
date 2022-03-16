@@ -173,7 +173,7 @@ class AppController extends Controller {
             $condo = new Condo();
             $result = $condo->find('first', array('conditions' => array('Condo.id' => $this->phkRequestData['condo_id'])));
             $this->phkRequestData['condo_id'] = isset($result['Condo']['id']) ? $result['Condo']['id'] : 0;
-            $this->phkRequestData['condo_text'] = isset($result['Condo']['title']) ? $result['Condo']['id'] : '';
+            $this->phkRequestData['condo_text'] = isset($result['Condo']['title']) ? $result['Condo']['title'] : '';
         }
     }
 

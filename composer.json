@@ -42,5 +42,12 @@
         "friendsofcake/cakepdf": "1.0.*"
     },
     "minimum-stability" : "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "cakephp/plugin-installer": true,
+            "composer/installers": true
+        }
+    }
 }
