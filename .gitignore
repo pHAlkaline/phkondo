@@ -76,11 +76,11 @@ Thumbs.db
 Error.log
 Access.log
 
- 
+
 # Ignore private folder
 app/private/*
 !app/private/empty
- 
+
 # Ignore packed asset files
 app/webroot/css/packed/*
 !app/webroot/css/packed/.htaccess
@@ -89,7 +89,7 @@ app/webroot/js/packed/*
 
 #Ignore bower componentes
 app/webroot/bower_components
- 
+
 # IDE and editor specific files #
 #################################
 nbproject
@@ -102,11 +102,13 @@ nbproject
 .settings
 .buildpath
 
-# composer vendor 
+# composer vendor
 vendor/*
 !vendor/empty
 
-# root files 
+# root files
 TODO
 TODO.php
+composer.json
 composer.lock
+auth.json
