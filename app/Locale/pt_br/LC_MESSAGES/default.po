@@ -64,7 +64,7 @@ msgstr "Não foi possível apagar Conta"
 #: Controller/InvoiceConferenceController.php:237
 #: Controller/SupportsController.php:186
 msgid "Invalid condo or fiscal year"
-msgstr "Condomínio ou exercício inválido"
+msgstr "Condomínio ou ano contabilístico inválido"
 
 #: Controller/AccountsController.php:175;179;183;187
 #: Controller/MovementCategoriesController.php:129
@@ -473,11 +473,11 @@ msgstr "Período Contabilístico inválido"
 
 #: Controller/FiscalYearsController.php:89;116
 msgid "The fiscal year has been saved"
-msgstr "O exercício foi registado"
+msgstr "O ano contabilístico foi registado"
 
 #: Controller/FiscalYearsController.php:92;119
 msgid "The fiscal year could not be saved. Please, try again."
-msgstr "Não foi possivel registar exercício. Por favor, tente outra vez."
+msgstr "Não foi possivel registar ano contabilístico. Por favor, tente outra vez."
 
 #: Controller/FiscalYearsController.php:150
 msgid "Fiscal Year active"
@@ -485,7 +485,7 @@ msgstr "Período Contabilístico activo"
 
 #: Controller/FiscalYearsController.php:153
 msgid "Fiscal Year is not active"
-msgstr "O exercício não está activo"
+msgstr "O ano contabilístico não está activo"
 
 #: Controller/FiscalYearsController.php:177
 msgid "This Fiscal Year can not be deleted, check existing notes already paid."
@@ -871,7 +871,7 @@ msgstr "Não foi possível apagar Movimento"
 
 #: Controller/MovementsController.php:211
 msgid "Invalid account or fiscal year"
-msgstr "Conta ou exercício inválido"
+msgstr "Conta ou ano contabilístico inválido"
 
 #: Controller/OwnerReceiptsController.php:81;113;136;188;268;274;290;325;330;355;400;406;428;434;452;458;476
 #: Controller/ReceiptsController.php:79;110;134;196;276;281;297;328;333;352;395;401;423;429;447;453;471
@@ -1925,7 +1925,7 @@ msgstr "Quotas livres ou sem orçamento"
 
 #: Plugin/Reports/Controller/ReportsController.php:472
 msgid "Income extra and previous exercices"
-msgstr "Receitas extraordinarias ou de exercícios anteriores"
+msgstr "Receitas extraordinarias ou de ano contabilísticos anteriores"
 
 #: Plugin/Reports/Event/ReportListener.php:113
 msgid "Shares Map"
@@ -2570,7 +2570,7 @@ msgstr "Ano de Registo Predial"
 
 #: View/Themed/Phkondo/Condos/view.ctp:175
 msgid "Please activate one fiscal year."
-msgstr "Deve activar um exercício."
+msgstr "Deve activar um ano contabilístico."
 
 #: View/Themed/Phkondo/Condos/view.ctp:196
 msgid "Expired insurance"
