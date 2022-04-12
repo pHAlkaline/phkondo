@@ -109,6 +109,5 @@ vendor/*
 # root files
 TODO
 TODO.php
-composer.json
 composer.lock
 auth.json
