@@ -71,7 +71,7 @@ class IncomeController extends AppController {
                     $conditions['conditions']['Receipt.condo_id'] = $model->data['IncomeReceipt']['condo_id'];
                 }
                 if ($model->data['IncomeReceipt']['status_id'] != '') {
-                    $conditions['conditions']['Receipt.receipt_status_id'] = $model->data['Receipt']['status_id'];
+                    $conditions['conditions']['Receipt.receipt_status_id'] = $model->data['IncomeReceipt']['status_id'];
                 }
                 $open_date = date(Configure::read('databaseDateFormat'), strtotime($model->data['IncomeReceipt']['open_date']));
                 $close_date = date(Configure::read('databaseDateFormat'), strtotime($model->data['IncomeReceipt']['close_date']));
