@@ -39,7 +39,7 @@ CakePlugin::load('Migrations');
 CakePlugin::load('CakePdf', array('bootstrap' => true, 'routes' => false));
 Configure::write('CakePdf', array(
     'binary' => '{your_system_path_to_wkhtmltopdf.exe}', 
-    // windows: C:\xampp7426\wkhtmltopdf\bin\wkhtmltopdf.exe
+    // windows: C:\xampp7427\wkhtmltopdf\bin\wkhtmltopdf.exe
     // linux: /usr/local/bin/wkhtmltopdf
     // Requires wkhtmltopdf engine 
     // https://wkhtmltopdf.org/
@@ -119,8 +119,15 @@ Configure::write('currencySign', '&euro;'); // more at http://www.w3schools.com/
 Configure::write('Application.mode', 'full'); // free, full, one, pro, demo -> use demo for demo mode;
 
 /**
- * The settings for maintenance component 
+ * Settings for maintenance component
  */
-Configure::write('MaintenanceMode.start', '01-01-2000 00:00:00');
-Configure::write('MaintenanceMode.duration', '48'); // Duration in hours
-Configure::write('MaintenanceMode.site_offline_url', '/pages/offline');
+Configure::write('MaintenanceMode.start', '01-01-2000 00:00:00'); // Date 01-01-2000 00:00:00
+Configure::write('MaintenanceMode.duration', ''); // Duration in hours
+Configure::write('MaintenanceMode.site_offline_url', '/pages/maintenance_offline');
+
+/**
+ * Settings for Subscription component
+ */
+Configure::write('SubscriptionManager.start', '31-12-9999'); // Date 31-12-9999
+Configure::write('SubscriptionManager.duration', '30'); // Duration in days
+Configure::write('SubscriptionManager.site_offline_url', '/pages/subscription_offline');

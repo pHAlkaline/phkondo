@@ -38,7 +38,8 @@ class AppController extends Controller {
         'Flash',
         'Auth',
         'Cookie',
-        'MaintenanceMode');
+        'MaintenanceMode',
+        'SubscriptionManager');
     public $phkRequestData = array();
 
     public function beforeFilter() {

@@ -3355,29 +3355,61 @@ msgstr "Contribuir Aquí"
 msgid "Remember Me"
 msgstr ""
 
-#: View/Themed/Phkondo/Pages/offline.ctp:6
+#: View/Themed/Phkondo/Pages/maintenance_offline.ctp:6
 msgid "Application Offline"
 msgstr "Programa Deshabilitado"
 
-#: View/Themed/Phkondo/Pages/offline.ctp:8
+#: View/Themed/Phkondo/Pages/maintenance_offline.ctp:8
 msgid "This application is now on maintenance mode, back soon as possible!"
 msgstr "La aplicación está en modo mantenimiento. Regresaremos pronto !"
 
-#: View/Themed/Phkondo/Pages/offline.ctp:9
+#: View/Themed/Phkondo/Pages/maintenance_offline.ctp:9
 msgid "Maintenance start at %s "
 msgstr "Mantenimiento inicia a las %s "
 
-#: View/Themed/Phkondo/Pages/offline.ctp:10
+#: View/Themed/Phkondo/Pages/maintenance_offline.ctp:10
 msgid "Maintenance duration %s Hours"
 msgstr "Duración del mantenimiento %s horas"
 
-#: View/Themed/Phkondo/Pages/offline.ctp:16
+#: View/Themed/Phkondo/Pages/maintenance_offline.ctp:16
 msgid "Application Online"
 msgstr "Programa Habilitado"
 
-#: View/Themed/Phkondo/Pages/offline.ctp:19
+#: View/Themed/Phkondo/Pages/maintenance_offline.ctp:19
 msgid "This application is back online, please refresh!"
 msgstr "La aplicación estará en modo mantenimiento a las %s !"
+
+
+#: View/Themed/Phkondo/Pages/subscription_offline.ctp:6
+msgid "Subscription Expired"
+msgstr ""
+
+#: View/Themed/Phkondo/Pages/subscription_offline.ctp:8
+msgid "This subscription has expired!"
+msgstr ""
+
+#: View/Themed/Phkondo/Pages/subscription_offline.ctp:9
+msgid "Subscription started at %s "
+msgstr ""
+
+#: View/Themed/Phkondo/Pages/subscription_offline.ctp:10
+msgid "Subscription expipred after %s days"
+msgstr ""
+
+msgid "For subscription payments use our international platform at "
+msgstr ""
+
+#: View/Themed/Phkondo/Pages/subscription_offline.ctp:16
+msgid "Subscription Active"
+msgstr ""
+
+#: View/Themed/Phkondo/Pages/subscription_offline.ctp:19
+msgid "This subscription is back online, please refresh!"
+msgstr ""
+
+#: Controller/Component/SubscriptionManagerComponent.php:102
+msgid "This subscription will expire in %s days"
+msgstr ""
 
 #: View/Themed/Phkondo/Pages/welcome.ctp:10
 msgid "Condominium / HOA Management"

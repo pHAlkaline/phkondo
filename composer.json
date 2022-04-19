@@ -17,36 +17,44 @@
         "wiki": "https://github.com/pHAlkaline/phkondo/wiki",
         "source": "https://github.com/pHAlkaline/phkondo.git"
     },
+    "repositories": [
+        { "type": "composer", "url": "https://gitlab.com/api/v4/group/1081010/-/packages/composer/" }
 
+    ],
     "extra": {
         "installer-paths": {
             "app/Plugin/DebugKit": ["cakephp/debug_kit"],
             "app/Plugin/ClearCache": ["ceeram/clear_cache"],
-	    "app/Plugin/Cacher": ["jeremyharris/cacher"],
-            "app/Plugin/Feedback": ["phalkaline/cakephp-feedback-plugin"],
+            "app/Plugin/Cacher": ["jeremyharris/cacher"],
             "app/Plugin/Migrations": ["cakedc/migrations"],
-            "app/Plugin/CakePDF": ["friendsofcake/cakepdf"]
+            "app/Plugin/Feedback": ["phalkaline/cakephp-feedback-plugin"],
+            "app/Plugin/CakePdf": ["friendsofcake/cakepdf"],
+            "app/Plugin/Attachments": ["phalkaline/phkondo-attachments"],
+            "app/Plugin/Upload": ["josegonzalez/cakephp-upload"],
+            "app/Plugin/Drafts": ["phalkaline/phkondo-drafts"],
+            "app/Plugin/PrintReceipt": ["phalkaline/phkondo-print-receipt"],
+            "app/Plugin/Reports": ["phalkaline/phkondo-reports"]
         }
-
     },
-
     "require": {
         "php": ">=5.6,<8.0.0",
         "ext-openssl": "*",
         "cakephp/cakephp": "2.10.*",
         "cakephp/debug_kit": "2.2.*",
-        "ceeram/clear_cache": "1.*",
+        "ceeram/clear_cache": "1.1.*",
         "jeremyharris/cacher": "dev-master",
+        "cakedc/migrations": "^2.5",
+        "friendsofcake/cakepdf": "1.0.*",
         "phalkaline/cakephp-feedback-plugin": "dev-master",
-        "cakedc/migrations": "2.*",
-        "friendsofcake/cakepdf": "1.0.*"
+        "phalkaline/phkondo-attachments": "1.7",
+        "phalkaline/phkondo-drafts": "1.7",
+        "phalkaline/phkondo-print-receipt": "1.7",
+        "phalkaline/phkondo-reports": "1.7"
     },
-    "minimum-stability" : "dev",
+    "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
         "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true,
-            "cakephp/plugin-installer": true,
             "composer/installers": true
         }
     }
