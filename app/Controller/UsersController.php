@@ -161,7 +161,7 @@ class UsersController extends AppController {
             $this->request->data['User']['language'] = $this->Cookie->check('Config.language') ? $this->Cookie->read('Config.language') : Configure::read('Config.language');
         }
         if (!isset($this->request->data['User']['theme'])) {
-            $this->request->data['User']['theme'] = $this->Cookie->check('User.theme') ? $this->Cookie->read('Config.theme') : Configure::read('Config.theme');
+            $this->request->data['User']['theme'] = $this->Cookie->check('Config.theme') ? $this->Cookie->read('Config.theme') : Configure::read('Config.theme');
         }
     }
 
@@ -275,7 +275,7 @@ class UsersController extends AppController {
             $theme_path = APP . 'View' . DS . 'Themed' . DS . $this->request->data['User']['theme'];
             $folder = new Folder($theme_path);
             if (is_null($folder->path)) {
-                $this->Cookie->delete('User.theme');
+                $this->Cookie->delete('Config.theme');
                 Configure::write('Theme.name', 'Phkondo');
                 $this->Flash->error(__('Selected Theme not found.'));
             }

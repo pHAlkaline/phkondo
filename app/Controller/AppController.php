@@ -43,8 +43,8 @@ class AppController extends Controller {
     public $phkRequestData = array();
 
     public function beforeFilter() {
-        $this->Cookie->name = 'pHKondo';
-
+        $this->Cookie->name = Configure::read('Cookie.name');
+        
         $this->Paginator->settings['paramType'] = 'querystring';
         if (!$this->Cookie->check('Config.language')) {
              $this->Cookie->write('Config.language',Configure::read('Config.language'));

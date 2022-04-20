@@ -37,11 +37,8 @@
  */
 Configure::write('debug',0);
 Configure::write('Exception.handler', 'AppExceptionHandler::handleException');
-Configure::write('Session', array(
-    'defaults' => 'php',
-    'cookie'=>'pHKondoSession'
-    )
-        );
+Configure::write('Session', array('defaults' => 'php','cookie' => 'pHKondo.Session'));
+Configure::write('Cookie', array('name' => 'pHKondo'));
 /**
  * 
  */
@@ -66,7 +63,7 @@ date_default_timezone_set('Europe/Lisbon');
 /**
  * Idiom Settings
  */
-Configure::write('Config.language', '');
+Configure::write('Config.language', 'eng');
 Configure::write('Language.list', array(
     'eng' => 'English',
     'spa' => 'Español',
