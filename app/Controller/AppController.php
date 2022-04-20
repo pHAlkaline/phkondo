@@ -46,9 +46,10 @@ class AppController extends Controller {
         $this->Cookie->name = 'pHKondo';
 
         $this->Paginator->settings['paramType'] = 'querystring';
-        if ($this->Cookie->check('Config.language')) {
-            Configure::write('Config.language', $this->Cookie->read('Config.language'));
+        if (!$this->Cookie->check('Config.language')) {
+             $this->Cookie->write('Config.language',Configure::read('Config.language'));
         }
+        Configure::write('Config.language', $this->Cookie->read('Config.language'));
 
         $this->theme = $this->getTheme();
         $this->Auth->authenticate = array(AuthComponent::ALL => array('userModel' => 'User', 'scope' => array("User.active" => 1)), 'Form');
