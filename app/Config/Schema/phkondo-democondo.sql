@@ -88,7 +88,7 @@ TRUNCATE TABLE `condos`;
 --
 
 INSERT INTO `condos` (`id`, `title`, `taxpayer_number`, `address`, `email`, `land_registry_year`, `comments`, `active`, `modified`, `created`, `matrix_registration`, `land_registry`) VALUES
-(1, 'COND-0001', '123321123', 'Rua da Escola Primária N51\r\n5482-651 Beja\r\n', 'cond0001@email.com', 1977, '', 1, '2021-09-23 14:57:53', '2021-09-23 14:53:53', '', '');
+(1, 'COND-DEMO', '123321123', 'Rua da Escola Primária N51\r\n5482-651 Algures\r\n', 'cond0001@email.com', 1977, '', 1, '2021-09-23 14:57:53', '2021-09-23 14:53:53', '', '');
 
 -- --------------------------------------------------------
 
