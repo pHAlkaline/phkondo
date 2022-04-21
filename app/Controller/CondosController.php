@@ -57,7 +57,7 @@ class CondosController extends AppController {
     public function index() {
 
         $total = $this->Condo->find('count');
-        $limit = Configure::read('Application.mode') == 'one' ? 1 : 50;
+        $limit = Configure::read('Application.mode') == 'one' ? 2 : 50;
         $this->Paginator->settings = array_merge($this->Paginator->settings, array(
             'contain' => array('FiscalYear', 'Insurance', 'Maintenance'),
             'limit' => $limit,
@@ -127,7 +127,7 @@ class CondosController extends AppController {
         }
         $total = $this->Condo->find('count');
         $limit = Configure::read('Application.mode') == 'one' ? true : false;
-        if ($limit && $total>=1){
+        if ($limit && $total>=2){
                 $this->Flash->error(__('The condo could not be saved. Please, try again.'));
                 $this->redirect(array('action' => 'index'));
         }
