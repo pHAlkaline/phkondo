@@ -33,8 +33,8 @@ TRUNCATE TABLE `accounts`;
 --
 
 INSERT INTO `accounts` (`id`, `condo_id`, `title`, `bank`, `balcony`, `contacts`, `account_number`, `nib`, `iban`, `swift`, `main_account`, `comments`, `balance`, `modified`, `created`) VALUES
-(1, 1, 'Main Account', 'Banco Condominum', 'Beja', 'agent@condobank.pt', '004578984123', '0033004578984123', '0033004578984123', '2545', 1, '', '3162.34', '2021-11-21 23:44:55', '2021-09-26 17:17:57'),
-(2, 1, 'Reserv Account', 'Banco Condominum', 'Beja', 'agent@condobank.pt', '004578984124', '0033004578984124', '0033004578984124', '2545', 1, '', '4030.00', '2021-09-26 19:02:11', '2021-09-26 18:16:08');
+(1, 1, 'Main Account', 'Banco Condominum', 'Nenhures', 'agent@condobank.pt', '004578984123', '0033004578984123', '0033004578984123', '2545', 1, '', '3162.34', '2021-11-21 23:44:55', '2021-09-26 17:17:57'),
+(2, 1, 'Reserv Account', 'Banco Condominum', 'Nenhures', 'agent@condobank.pt', '004578984124', '0033004578984124', '0033004578984124', '2545', 1, '', '4030.00', '2021-09-26 19:02:11', '2021-09-26 18:16:08');
 
 -- --------------------------------------------------------
 
@@ -104,20 +104,20 @@ TRUNCATE TABLE `entities`;
 INSERT INTO `entities` (`id`, `name`, `vat_number`, `representative`, `address`, `contacts`, `email`, `bank`, `nib`, `comments`, `modified`, `created`) VALUES
 (1, 'Joana Monteiro', '321123321', '', 'Rua da Escola Primária N51 1ºDto', '96111222', 'joana@email.pt', 'Banco de Portugal', '0032 195628 5000 ', 'Nada a declarar', '2021-09-23 15:03:40', '2021-09-23 15:03:40'),
 (2, 'Rui Monteiro', '213312212', 'Joana Monteiro', 'Rua do Casal Do Marco N36\r\nCasal do Marco\r\nSeixal', '96987456', 'joana@email.pt', 'Banco de Portugal', '0032 195628 5000 ', '', '2021-09-23 15:07:48', '2021-09-23 15:07:48'),
-(3, 'José dos Santos Silva', '987789987', '', 'Rua da Escola Primária Nº51\r\n5482-651 Beja', '998788789', 'jose@email.com', 'Banco do Brasil', '0032 195628 5000 ', '', '2021-09-23 15:22:57', '2021-09-23 15:21:28'),
-(4, 'Irene Garcia', '852258852', '', 'Rua da Escola Primária n51\r\n5482-651 Beja', '998745621', '', '', '', '', '2021-09-23 15:22:31', '2021-09-23 15:22:31'),
-(5, 'Paulino Rato', '65445665', '', 'Rua da Escola Primária N15 3E\r\n5428-654 Beja', '', '', '', '', '', '2021-09-23 15:31:31', '2021-09-23 15:31:31'),
-(6, 'Antonio Figueiredo', '852456852', '', 'Rua da Escola Primária N51 4ºEsq\r\n5482-651 Beja\r\n', '699858745', '', '', '', '', '2021-09-23 15:33:20', '2021-09-23 15:33:20'),
+(3, 'José dos Santos Silva', '987789987', '', 'Rua da Escola Primária Nº51\r\n5482-651 Nenhures', '998788789', 'jose@email.com', 'Banco do Brasil', '0032 195628 5000 ', '', '2021-09-23 15:22:57', '2021-09-23 15:21:28'),
+(4, 'Irene Garcia', '852258852', '', 'Rua da Escola Primária n51\r\n5482-651 Nenhures', '998745621', '', '', '', '', '2021-09-23 15:22:31', '2021-09-23 15:22:31'),
+(5, 'Paulino Rato', '65445665', '', 'Rua da Escola Primária N15 3E\r\n5428-654 Nenhures', '', '', '', '', '', '2021-09-23 15:31:31', '2021-09-23 15:31:31'),
+(6, 'Antonio Figueiredo', '852456852', '', 'Rua da Escola Primária N51 4ºEsq\r\n5482-651 Nenhures\r\n', '699858745', '', '', '', '', '2021-09-23 15:33:20', '2021-09-23 15:33:20'),
 (7, 'Manuela Maluca', '852777654', '', '', '', '', '', '', '', '2021-09-23 15:34:45', '2021-09-23 15:34:45'),
 (8, 'Alice Profirio', '89878787', '', '', '888778899', 'alice@email.com', 'Banco de Angola', '0032 195628 5000 ', '', '2021-09-23 15:36:19', '2021-09-23 15:36:19'),
-(9, 'Silva Falção Palhares', '879852445', '', 'Rua da Escola Primária N51 1ºDto\r\n5482-651 Beja', '', '', '', '', '', '2021-09-23 15:37:46', '2021-09-23 15:37:46'),
-(10, 'José Simplicio', '587896541', '', 'Rua da Escola Primária N51 2ºDto\r\n5482-651 Beja ', '', '', '', '', '', '2021-09-23 15:38:46', '2021-09-23 15:38:46'),
-(11, 'Carlos Simplicio', '666666666', '', 'Rua da Escola Primária N51 2ºDto\r\n5482-651 Beja ', '', '', '', '', '', '2021-09-23 15:39:18', '2021-09-23 15:39:18'),
-(12, 'Carlos Taveira', '666666555', 'Joana Monteiro', 'Rua da Escola Primária N51 3ºDto\r\n5482-651 Beja ', '', '', '', '', '', '2021-09-23 15:40:43', '2021-09-23 15:40:43'),
-(13, 'Manuela Bentini', '852456987', '', 'Rua da Escola Primária N51 4ºDto\r\n5482-651 Beja ', '587897888', 'bentini@email.com', 'Banco de Italia', '', '', '2021-09-23 15:42:05', '2021-09-23 15:42:05'),
-(14, 'Joaquim Homem', '87985245', '', 'Rua da Escola Primária N51 5ºDto\r\n5482-651 Beja ', '', '', '', '', '', '2021-09-23 15:42:52', '2021-09-23 15:42:52'),
-(15, 'Manuel Galo', '879879878', '', 'Rua da Escola Primária N51 6ºDto\r\n5482-651 Beja ', '', '', '', '', '', '2021-09-23 15:43:39', '2021-09-23 15:43:39'),
-(16, 'Matilde Galo', '878954565', '', 'Rua da Escola Primária N51 6ºDto\r\n5482-651 Beja ', '', '', '', '', '', '2021-09-23 15:44:02', '2021-09-23 15:44:02');
+(9, 'Silva Falção Palhares', '879852445', '', 'Rua da Escola Primária N51 1ºDto\r\n5482-651 Nenhures', '', '', '', '', '', '2021-09-23 15:37:46', '2021-09-23 15:37:46'),
+(10, 'José Simplicio', '587896541', '', 'Rua da Escola Primária N51 2ºDto\r\n5482-651 Nenhures ', '', '', '', '', '', '2021-09-23 15:38:46', '2021-09-23 15:38:46'),
+(11, 'Carlos Simplicio', '666666666', '', 'Rua da Escola Primária N51 2ºDto\r\n5482-651 Nenhures ', '', '', '', '', '', '2021-09-23 15:39:18', '2021-09-23 15:39:18'),
+(12, 'Carlos Taveira', '666666555', 'Joana Monteiro', 'Rua da Escola Primária N51 3ºDto\r\n5482-651 Nenhures ', '', '', '', '', '', '2021-09-23 15:40:43', '2021-09-23 15:40:43'),
+(13, 'Manuela Bentini', '852456987', '', 'Rua da Escola Primária N51 4ºDto\r\n5482-651 Nenhures ', '587897888', 'bentini@email.com', 'Banco de Italia', '', '', '2021-09-23 15:42:05', '2021-09-23 15:42:05'),
+(14, 'Joaquim Homem', '87985245', '', 'Rua da Escola Primária N51 5ºDto\r\n5482-651 Nenhures ', '', '', '', '', '', '2021-09-23 15:42:52', '2021-09-23 15:42:52'),
+(15, 'Manuel Galo', '879879878', '', 'Rua da Escola Primária N51 6ºDto\r\n5482-651 Nenhures ', '', '', '', '', '', '2021-09-23 15:43:39', '2021-09-23 15:43:39'),
+(16, 'Matilde Galo', '878954565', '', 'Rua da Escola Primária N51 6ºDto\r\n5482-651 Nenhures ', '', '', '', '', '', '2021-09-23 15:44:02', '2021-09-23 15:44:02');
 
 -- --------------------------------------------------------
 
@@ -718,12 +718,12 @@ INSERT INTO `receipts` (`id`, `document`, `document_date`, `receipt_status_id`, 
 (9, '12021-000009', '2021-10-01', 1, NULL, 1, NULL, '15.00', 1, 1, 1, 'Rua da Escola Primária N51 1ºDto', '', NULL, NULL, '2021-10-16 23:54:50', '2021-09-27 13:49:44'),
 (10, '12021-000010', '2021-05-01', 3, 1, 1, '2021-05-30', '60.00', 1, 2, 2, 'Rua do Casal Do Marco N36\r\nCasal do Marco\r\nSeixal', '', NULL, NULL, '2021-09-27 15:06:35', '2021-09-27 15:05:15'),
 (11, '12021-000011', '2021-09-01', 2, NULL, 1, NULL, '43.64', 1, 2, 2, 'Rua do Casal Do Marco N36\r\nCasal do Marco\r\nSeixal', 'Teste ', NULL, NULL, '2021-11-21 23:04:57', '2021-09-27 15:08:18'),
-(12, '12021-000012', '2021-03-01', 3, 1, 1, '2021-03-08', '75.00', 1, 3, 3, 'Rua da Escola Primária Nº51\r\n5482-651 Beja', '', NULL, NULL, '2021-09-27 15:10:58', '2021-09-27 15:10:03'),
-(13, '12021-000013', '2021-09-01', 3, 1, 3, '2021-09-08', '150.00', 1, 3, 3, 'Rua da Escola Primária Nº51\r\n5482-651 Beja', '', NULL, NULL, '2021-09-27 15:12:55', '2021-09-27 15:12:13'),
-(14, '12021-000014', '2021-01-01', 3, 1, 1, '2021-01-08', '25.00', 1, 4, 4, 'Rua da Escola Primária n51\r\n5482-651 Beja', '', NULL, NULL, '2021-09-27 15:16:30', '2021-09-27 15:15:43'),
-(15, '12021-000015', '2021-02-01', 3, 1, 1, '2021-02-08', '25.00', 1, 4, 4, 'Rua da Escola Primária n51\r\n5482-651 Beja', '', NULL, NULL, '2021-09-27 15:17:47', '2021-09-27 15:16:56'),
-(16, '12021-000016', '2021-03-01', 3, 1, 1, '2021-03-08', '25.00', 1, 4, 4, 'Rua da Escola Primária n51\r\n5482-651 Beja', '', NULL, NULL, '2021-09-27 15:19:28', '2021-09-27 15:18:43'),
-(17, '12021-000017', '2021-09-01', 3, 1, 5, '2021-09-08', '150.00', 1, 4, 4, 'Rua da Escola Primária n51\r\n5482-651 Beja', '', NULL, NULL, '2021-09-27 15:20:44', '2021-09-27 15:19:50'),
+(12, '12021-000012', '2021-03-01', 3, 1, 1, '2021-03-08', '75.00', 1, 3, 3, 'Rua da Escola Primária Nº51\r\n5482-651 Nenhures', '', NULL, NULL, '2021-09-27 15:10:58', '2021-09-27 15:10:03'),
+(13, '12021-000013', '2021-09-01', 3, 1, 3, '2021-09-08', '150.00', 1, 3, 3, 'Rua da Escola Primária Nº51\r\n5482-651 Nenhures', '', NULL, NULL, '2021-09-27 15:12:55', '2021-09-27 15:12:13'),
+(14, '12021-000014', '2021-01-01', 3, 1, 1, '2021-01-08', '25.00', 1, 4, 4, 'Rua da Escola Primária n51\r\n5482-651 Nenhures', '', NULL, NULL, '2021-09-27 15:16:30', '2021-09-27 15:15:43'),
+(15, '12021-000015', '2021-02-01', 3, 1, 1, '2021-02-08', '25.00', 1, 4, 4, 'Rua da Escola Primária n51\r\n5482-651 Nenhures', '', NULL, NULL, '2021-09-27 15:17:47', '2021-09-27 15:16:56'),
+(16, '12021-000016', '2021-03-01', 3, 1, 1, '2021-03-08', '25.00', 1, 4, 4, 'Rua da Escola Primária n51\r\n5482-651 Nenhures', '', NULL, NULL, '2021-09-27 15:19:28', '2021-09-27 15:18:43'),
+(17, '12021-000017', '2021-09-01', 3, 1, 5, '2021-09-08', '150.00', 1, 4, 4, 'Rua da Escola Primária n51\r\n5482-651 Nenhures', '', NULL, NULL, '2021-09-27 15:20:44', '2021-09-27 15:19:50'),
 (22, '12021-000019', '2021-11-04', 1, NULL, NULL, NULL, '0.00', 1, 1, 1, 'Rua da Escola Primária N51 1ºDto', '', NULL, NULL, '2021-11-04 22:50:57', '2021-11-04 22:50:57');
 
 -- --------------------------------------------------------
