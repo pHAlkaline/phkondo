@@ -47,7 +47,7 @@ class AppController extends Controller {
         
         $this->Paginator->settings['paramType'] = 'querystring';
         if (!$this->Cookie->check('Config.language')) {
-             $this->Cookie->write('Config.language',Configure::read('Config.language'));
+             $this->Cookie->write('Config.language',Configure::read('Language.default'));
         }
         Configure::write('Config.language', $this->Cookie->read('Config.language'));
 
