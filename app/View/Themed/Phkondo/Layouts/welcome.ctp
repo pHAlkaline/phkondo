@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * pHKondo : pHKondo software for condominium property managers (http://phalkaline.net)
@@ -91,4 +92,13 @@ if (!isset($headerTitle)) {
     <?php
     echo $this->Html->script(array('libs/jquery-2.2.2.min', 'libs/bootstrap.min'));
     ?>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            const myClickAnchor = setTimeout(clickAnchor, 3000);
+
+            function clickAnchor() {
+                $('#go-pHKondo')[0].click();
+            }
+        });
+    </script>
 </html>
