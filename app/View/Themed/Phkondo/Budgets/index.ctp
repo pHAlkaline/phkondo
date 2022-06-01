@@ -35,8 +35,8 @@
                     <tbody>
                         <?php foreach ($budgets as $budget):; ?>
                             <tr>
-                                <td><?php echo $budget['BudgetType']['name']; ?></td>
-                                <td><?php echo $budget['BudgetStatus']['name']; ?></td>
+                                <td><?php echo h($budget['BudgetType']['name']); ?></td>
+                                <td><?php echo h($budget['BudgetStatus']['name']); ?></td>
                                 <td><?php echo h($budget['Budget']['title']); ?>&nbsp;</td>
                                 <td><?php echo h( $budget['Budget']['budget_date']); ?>&nbsp;</td>
                                 <td><?php echo h( $budget['Budget']['begin_date']); ?>&nbsp;</td>

@@ -100,28 +100,28 @@ $administrators = implode(", ", $administrators);
                     <tr>		
                         <td><strong><?php echo __('Email'); ?></strong></td>
                         <td>
-                            <?php echo nl2br(h($condo['Condo']['email'])); ?>
+                            <?php echo h($condo['Condo']['email']); ?>
                             &nbsp;
                         </td>
                     </tr>
                     <tr>		
                         <td><strong><?php echo __('Matrix Registration'); ?></strong></td>
                         <td>
-                            <?php echo nl2br(h($condo['Condo']['matrix_registration'])); ?>
+                            <?php echo h($condo['Condo']['matrix_registration']); ?>
                             &nbsp;
                         </td>
                     </tr>
                     <tr>		
                         <td><strong><?php echo __('Land Registry'); ?></strong></td>
                         <td>
-                            <?php echo nl2br(h($condo['Condo']['land_registry'])); ?>
+                            <?php echo h($condo['Condo']['land_registry']); ?>
                             &nbsp;
                         </td>
                     </tr>
                     <tr>		
                         <td><strong><?php echo __('Land Registry Year'); ?></strong></td>
                         <td>
-                            <?php echo nl2br(h($condo['Condo']['land_registry_year'])); ?>
+                            <?php echo h($condo['Condo']['land_registry_year']); ?>
                             &nbsp;
                         </td>
                     </tr>

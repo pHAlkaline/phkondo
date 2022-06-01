@@ -237,10 +237,7 @@ class InstallController extends AppController {
         if (empty($this->request->data)) {
             return;
         }
-        if (!isset($this->request->data['demo_data']) || $this->request->data['demo_data'] == '0') {
-            $this->redirect(array('action' => 'email'));
-        }
-
+        
         $db = ConnectionManager::getDataSource('default');
         $brokenSequence = $db instanceof Postgres;
         if (!$db->isConnected()) {
@@ -296,6 +293,7 @@ class InstallController extends AppController {
                     return;
                 }
             }
+            
             if ($this->request->data['demo_data'] == '1') {
 
                 // phkondo demo data

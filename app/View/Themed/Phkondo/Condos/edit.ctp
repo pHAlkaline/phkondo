@@ -1,20 +1,12 @@
 <div id="page-container" class="row row-offcanvas row-offcanvas-left">
-
     <div class="col-sm-2">
-
         <div id="sidebar" class="hidden-print actions sidebar-offcanvas">
-
             <ul class="nav nav-pills nav-stacked">
                 <li ><?php echo $this->Html->link(__('View Condo'), array('action' => 'view', $this->Form->value('Condo.id'))); ?></li>
                 <li ><?php echo $this->Html->link(__('List Condos'), array('action' => 'index')); ?></li>
-
-
             </ul><!-- /.list-group -->
-
         </div><!-- /.actions -->
-
     </div><!-- /#sidebar .col-sm-3 -->
-
     <div id="page-content" class="col-sm-10">
 
         <div class="condos form">

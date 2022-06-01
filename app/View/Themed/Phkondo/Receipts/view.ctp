@@ -177,11 +177,11 @@ $this->Html->script('footable', false);
                                             //debug($note);
                                             ?>
                                     <tr>
-                                        <td><?php echo $note['document']; ?></td>
-                                        <td><?php echo $note['NoteType']['name']; ?></td>
-                                        <td><?php echo $note['Fraction']['fraction']; ?></td>
+                                        <td><?php echo h($note['document']); ?></td>
+                                        <td><?php echo h($note['NoteType']['name']); ?></td>
+                                        <td><?php echo h($note['Fraction']['fraction']); ?></td>
                                         <td><?php echo h($note['document_date']); ?></td>
-                                        <td><?php echo $note['title']; ?></td>
+                                        <td><?php echo h($note['title']); ?></td>
                                         <td class="amount"><?php
                                                     if ($note['NoteType']['id'] == 1) {
                                                         echo '-';

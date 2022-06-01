@@ -189,10 +189,10 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
                                         foreach ($receipt['Note'] as $index => $note) {
                                             ?>
                                     <tr <?= $index == 0 ? 'data-expanded="true"' : ''; ?> >
-                                        <td><?php echo $note['document']; ?></td>
-                                        <td><?php echo $note['NoteType']['name']; ?></td>
+                                        <td><?php echo h($note['document']); ?></td>
+                                        <td><?php echo h($note['NoteType']['name']); ?></td>
                                         <td><?php echo h($note['document_date']); ?></td>
-                                        <td><?php echo $note['title']; ?></td>
+                                        <td><?php echo h($note['title']); ?></td>
                                         <td class="amount"><?php
                                                     if ($note['NoteType']['id'] == 1) {
                                                         echo '-';

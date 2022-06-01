@@ -59,7 +59,7 @@ if ($phkRequestData['budget_status'] == 1) {
                         </td>
                     </tr><tr>		<td><strong><?php echo __('Document Date'); ?></strong></td>
                         <td>
-                                <?php echo h( $note['Note']['document_date']); ?>
+                                <?php echo h($note['Note']['document_date']); ?>
                             &nbsp;
                         </td>
                     </tr>
@@ -102,7 +102,7 @@ if ($phkRequestData['budget_status'] == 1) {
                         </td>
                     </tr--><tr>		<td><strong><?php echo __('Due Date'); ?></strong></td>
                         <td>
-                                <?php echo h( $note['Note']['due_date']); ?>
+                                <?php echo h($note['Note']['due_date']); ?>
                             &nbsp;
                         </td>
                     </tr><tr>		<td><strong><?php echo __('Payment Date'); ?></strong></td>

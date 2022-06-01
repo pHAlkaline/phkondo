@@ -55,7 +55,7 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
                             <td><?php
                                     if ($fraction['Fraction']['manager_id'] == 0) {
                                         foreach ($fraction['Entity'] as $manager) {
-                                            echo $manager['name'] . "<br/>";
+                                            echo h($manager['name']) . "<br/>";
                                         }
                                     } else {
                                         echo h($fraction['Manager']['name']);
