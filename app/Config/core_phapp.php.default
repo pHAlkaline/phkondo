@@ -60,17 +60,6 @@ Configure::write('Security.useOpenSsl', true);
  */
 date_default_timezone_set('Europe/Lisbon');
 
-/**
- * Idiom Settings
- */
-Configure::write('Language.default', 'eng');
-Configure::write('Language.list', array(
-    'eng' => 'English',
-    'spa' => 'Español',
-    'ita' => 'Italiano',
-    'por' => 'Português',
-    'pt-br' => 'Português ( Brasil)'
-));
 
 /**
  * The settings below can be used to open access to pHKondo.
