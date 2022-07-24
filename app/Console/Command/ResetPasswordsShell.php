@@ -17,7 +17,7 @@ class ResetPasswordsShell extends AppShell {
 
         $users = $this->User->find('all');
         foreach ($users as $key => $user) {
-            $users[$key]['User']['password'] = str_pad($users[$key]['User']['username'], 8, "0", STR_PAD_RIGHT);
+            $users[$key]['User']['password'] = str_pad($users[$key]['User']['username'], 8, "0", STR_PAD_RIGHT).'0';
             $this->out($users[$key]['User']['username'] . ':' . $users[$key]['User']['password']);
             $user=$users[$key];
             // update user
