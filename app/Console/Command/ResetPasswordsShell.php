@@ -25,7 +25,7 @@ class ResetPasswordsShell extends AppShell {
         if (!$this->User->saveAll($users)) {
 
             $this->out(__d('install', 'Unable to generate users password.'));
-            $this->log(__d('install', 'install', 'Unable to generate users password.'));
+            $this->log(__d('install', 'Unable to generate users password.'));
             //$this->log($users->validationErrors);
             return false;
         }
