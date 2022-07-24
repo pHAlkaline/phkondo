@@ -38,6 +38,7 @@ app/files/*
 !app/files/.giteep
 
 app/Test
+tmp
 lib
 plugins
 vendors

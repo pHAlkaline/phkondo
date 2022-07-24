@@ -180,9 +180,10 @@ class InstallController extends AppController {
         $this->set('title_for_step', __d('install', 'Step 1 : Database connection'));
 
         if (file_exists(APP . 'Config' . DS . 'database.php')) {
-            $this->Flash->info(__d('install', 'Database connection file already exists'));
-            $this->redirect(array('action' => 'data'));
+            unlink(APP . 'Config' . DS . 'database.php');
+            copy(APP . 'Config' . DS . 'database.php.default', APP . 'Config' . DS . 'database.php');
         }
+
 
         if (empty($this->request->data)) {
             return;
@@ -206,17 +207,15 @@ class InstallController extends AppController {
             $this->Flash->error(__d('install', 'Could not connect to database.'));
             return;
         }
-        if (!file_exists(APP . 'Config' . DS . 'database.php')) {
-            copy(APP . 'Config' . DS . 'database.php.default', APP . 'Config' . DS . 'database.php');
-        }
 
-
+        
         $file = new File(APP . 'Config' . DS . 'database.php', true);
         $content = $file->read();
 
         foreach ($config as $configKey => $configValue) {
             $content = str_replace('{default_' . $configKey . '}', $configValue, $content);
         }
+
         if (!$file->write($content)) {
             $this->Flash->error(__d('install', 'Could not write database.php file.'));
             return;
@@ -344,7 +343,7 @@ class InstallController extends AppController {
         $this->redirect(array('action' => 'email'));
     }
 
-    function __executeSQLScript($db, $fileName, $separator = ';') {
+    private function __executeSQLScript($db, $fileName, $separator = ';') {
 
         $file_contents = file_get_contents($fileName);
         $statements = $separator ? explode($separator, $file_contents) : $file_contents;

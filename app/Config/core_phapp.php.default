@@ -52,7 +52,7 @@ Configure::write('Security.salt', 'salt');
 /**
  * A random numeric string (digits only) used to encrypt/decrypt strings.
  */
-Configure::write('Security.cipherSeed', 'cipherSeed');
+Configure::write('Security.cipherSeed', '13456');
 Configure::write('Security.useOpenSsl', true);
 /**
  * Uncomment this line and correct your server timezone to fix

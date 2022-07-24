@@ -1,7 +1,10 @@
 <?php
+
 $this->layout = 'welcome';
 $url= AuthComponent::user('id') ? array('controller' => 'condos', 'action' => 'index') : array('controller' => 'users', 'action'=>'login');
-
+if (!file_exists(TMP . 'installed.txt') || Configure::read('installed_key') == 'xyz') {
+    $url= array('controller' => 'install', 'action' => 'index');
+}
 ?>
 <div class="row">
     <div class="centered text-center col-12">
