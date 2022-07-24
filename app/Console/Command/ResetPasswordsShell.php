@@ -25,10 +25,10 @@ class ResetPasswordsShell extends AppShell {
 
                 $this->out(__d('install', 'Unable to generate users password.'));
                 $this->out(print_r($user));
-                $this->out($user->validationErrors);
+                $this->out($this->User->validationErrors);
                 $this->log(__d('install', 'Unable to generate users password.'));
                 $this->log(print_r($user));
-                $this->log($user->validationErrors);
+                $this->log($this->User->validationErrors);
             }
         }
 
