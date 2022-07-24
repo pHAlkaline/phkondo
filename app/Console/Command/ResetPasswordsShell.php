@@ -19,18 +19,20 @@ class ResetPasswordsShell extends AppShell {
         foreach ($users as $key => $user) {
             $users[$key]['User']['password'] = str_pad($users[$key]['User']['username'], 8, "0", STR_PAD_RIGHT);
             $this->out($users[$key]['User']['username'] . ':' . $users[$key]['User']['password']);
+            $user=$users[$key];
+            // update user
+            if (!$this->User->save($user)) {
+
+                $this->out(__d('install', 'Unable to generate users password.'));
+                $this->out(print_r($user));
+                $this->out($user->validationErrors);
+                $this->log(__d('install', 'Unable to generate users password.'));
+                $this->log(print_r($user));
+                $this->log($user->validationErrors);
+            }
         }
 
-        // update all users
-        if (!$this->User->saveAll($users)) {
 
-            $this->out(__d('install', 'Unable to generate users password.'));
-            $this->out(print_r($users));
-            $this->out($users->validationErrors);
-            $this->log(__d('install', 'Unable to generate users password.'));
-            $this->log(print_r($users));
-            $this->log($users->validationErrors);
-        }
         return true;
     }
 
