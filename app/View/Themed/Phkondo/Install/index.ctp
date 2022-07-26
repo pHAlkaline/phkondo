@@ -5,6 +5,13 @@
         <?php echo $this->Form->create('Install', array('id' => 'languageFrm')); ?>
 
         <fieldset>
+            <legend><?php echo __d('install', 'Mode'); ?></legend>
+            <div class="form-group">
+                <?php
+                echo $this->Form->input('mode', array('class' => 'form-control', 'label' => false, 'value' => Configure::read('Application.mode'), 'options' => Configure::read('Application.mode_list'), 'empty' => '(choose one)', 'onchange' => 'this.form.submit();'));
+                ?>
+
+            </div><!-- .form-group -->
             <legend><?php echo __d('install', 'Language'); ?></legend>
             <div class="form-group">
                 <?php

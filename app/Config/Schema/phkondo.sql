@@ -1018,7 +1018,9 @@ SET FOREIGN_KEY_CHECKS=1;
 
 LOCK tables `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` ( `name`, `username`, `password`, `role`, `active`, `modified`, `created`) VALUES ( 'Administrator' , 'admin' , 'b8sbs5d64db2e878e267d8b3d0ad4b0753ea9d38' , 'admin',1,NOW() ,NOW()); 
+INSERT INTO `users` ( `name`, `username`, `password`, `role`, `active`, `modified`, `created`) VALUES ( 'Administrator' , 'admin' , '37a2954e802ce7e3e22fc8ba556482e0dba52d45' , 'admin',1,NOW() ,NOW());
+INSERT INTO `users` ( `name`, `username`, `password`, `role`, `active`, `modified`, `created`) VALUES ( 'Demonstration' , 'demo' , '4be522cbc9828be322575cc78952e24f01c2dabd' , 'colaborator',1,NOW() ,NOW());
+
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK tables;
 

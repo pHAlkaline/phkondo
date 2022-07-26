@@ -110,7 +110,14 @@ Configure::write('Theme.base_color', '#428bca');
 /**
  * App Settings
  */
-Configure::write('Application.mode', 'full'); // free, full, one, pro, demo -> use demo for demo mode;
+Configure::write('Application.mode_list', array(
+    'free' => 'Community',
+    'full' => 'Full Pack',
+    'one' => 'Full Pack One',
+    'pro' => 'Full Pack Pro',
+    'demo' => 'Demonstration'
+));
+Configure::write('Application.mode', 'free'); // free, full, one, pro, demo -> use demo for demo mode;
 Configure::write('Config.timezone', 'Europe/London'); // Europe/Lisbon
 Configure::write('databaseDateFormat', 'Y-m-d'); // database dateformat
 Configure::write('dateFormat', 'd-m-Y H:i:s'); // phkondo dateformat with time

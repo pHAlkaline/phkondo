@@ -151,17 +151,17 @@ class InstallController extends AppController {
             $this->Cookie->write('Config.language', $this->request->data['Install']['language'], false, "12 months");
             Configure::write('Config.language', $this->request->data['Install']['language']);
         }
+        if (isset($this->request->data['Install']['mode']) && $this->request->data['Install']['mode'] != '') {
+            $this->Cookie->write('Application.mode', $this->request->data['Install']['mode'], false, "12 months");
+            Configure::write('Application.mode', $this->request->data['Install']['mode']);
+        }
         $this->set('title_for_layout', __d('install', 'Installation: Welcome'));
         $this->set('title_for_step', __d('install', 'Installation: Welcome'));
     }
 
     private function __files() {
-        if (!file_exists(APP . 'Config' . DS . 'core_phapp.php')) {
-            copy(APP . 'Config' . DS . 'core_phapp.php.default', APP . 'Config' . DS . 'core_phapp.php');
-        }
-        if (!file_exists(APP . 'Config' . DS . 'bootstrap_phapp.php')) {
-            copy(APP . 'Config' . DS . 'bootstrap_phapp.php.default', APP . 'Config' . DS . 'bootstrap_phapp.php');
-        }
+        copy(APP . 'Config' . DS . 'core_phapp.php.default', APP . 'Config' . DS . 'core_phapp.php');
+        copy(APP . 'Config' . DS . 'bootstrap_phapp.php.default', APP . 'Config' . DS . 'bootstrap_phapp.php');
     }
 
     /**
@@ -178,6 +178,15 @@ class InstallController extends AppController {
         $this->__check();
         $this->set('title_for_layout', __d('install', 'Step 1 : Database connection'));
         $this->set('title_for_step', __d('install', 'Step 1 : Database connection'));
+
+        if (isset($this->request->data['Install']['language']) && $this->request->data['Install']['language'] != '') {
+            $this->Cookie->write('Config.language', $this->request->data['Install']['language'], false, "12 months");
+            Configure::write('Config.language', $this->request->data['Install']['language']);
+        }
+        if (isset($this->request->data['Install']['mode']) && $this->request->data['Install']['mode'] != '') {
+            $this->Cookie->write('Application.mode', $this->request->data['Install']['mode'], false, "12 months");
+            Configure::write('Application.mode', $this->request->data['Install']['mode']);
+        }
 
         if (file_exists(APP . 'Config' . DS . 'database.php')) {
             unlink(APP . 'Config' . DS . 'database.php');
@@ -208,7 +217,7 @@ class InstallController extends AppController {
             return;
         }
 
-        
+
         $file = new File(APP . 'Config' . DS . 'database.php', true);
         $content = $file->read();
 
@@ -292,7 +301,7 @@ class InstallController extends AppController {
                     return;
                 }
             }
-            
+
             if ($this->request->data['demo_data'] == '1') {
 
                 // phkondo demo data
@@ -457,7 +466,7 @@ class InstallController extends AppController {
                 $this->log(__d('install', 'Unable to create administrative user.'));
                 return;
             }
-            // save new admin password
+            // add admin password
             $this->loadModel('User');
             $this->User->read(null, 1);
             $this->User->set($this->request->data);
@@ -492,17 +501,44 @@ class InstallController extends AppController {
             $File = new File(APP . 'Config' . DS . 'core_phapp.php');
             $contents = $File->read();
             $contents = preg_replace('/(?<=Configure::write\(\'installed_key\', \')([^\' ]+)(?=\'\))/', $key, $contents);
-            if ($this->Cookie->check('Config.language')) {
-                $contents = preg_replace('/(?<=Configure::write\(\'Config.language\', \')([^\' ]+)(?=\'\))/', $this->Cookie->read('Config.language'), $contents);
-            }
             if (!$File->write($contents)) {
                 $this->Flash->error(__d('install', 'Unable to secure your application, your Config %s core_phapp.php file is not writable. Please check the permissions.', DS));
                 $this->log('Unable to secure your application, your Config %s core_phapp.php file is not writable. Please check the permissions.', DS);
                 $this->redirect('/');
             }
-            Configure::write('installed_key', $key);
-            Configure::write('Config.language', $this->Cookie->read('Config.language'));
+            
+            $File = new File(APP . 'Config' . DS . 'bootstrap_phapp.php');
+            $contents = $File->read();
+            $application_language = Configure::read('Config.language');
+            $contents = preg_replace('/(?<=Configure::write\(\'Language.default\', \')([^\' ]+)(?=\'\))/', $application_language, $contents);
 
+            $application_mode = Configure::read('Application.mode');
+            if ($this->Cookie->check('Application.mode')) {
+                $application_mode = $this->Cookie->read('Application.mode');
+            }
+            $contents = preg_replace('/(?<=Configure::write\(\'Application.mode\', \')([^\' ]+)(?=\'\))/', $application_mode, $contents);
+            if ($application_mode != 'free') {
+                $search = array(
+                    "//CakePlugin::load('PrintReceipt', array('bootstrap' => true))",
+                    "//CakePlugin::load('Reports', array('bootstrap' => true))",
+                    "//CakePlugin::load('Drafts', array('bootstrap' => true))",
+                    "//CakePlugin::load('Attachments', array('bootstrap' => true))"
+                );
+                $replace = array(
+                    "CakePlugin::load('PrintReceipt', array('bootstrap' => true))",
+                    "CakePlugin::load('Reports', array('bootstrap' => true))",
+                    "CakePlugin::load('Drafts', array('bootstrap' => true))",
+                    "CakePlugin::load('Attachments', array('bootstrap' => true))"
+                );
+                $contents = str_replace($search, $replace, $contents);
+            }
+
+            if (!$File->write($contents)) {
+                $this->Flash->error(__d('install', 'Unable to config your application, your Config %s bootstrap_phapp.php file is not writable. Please check the permissions.', DS));
+                $this->log('Unable to config your application, your Config %s bootstrap_phapp.php file is not writable. Please check the permissions.', DS);
+                $this->redirect('/');
+            }
+            
             // Create a new file with 0644 permissions
             $file = new File(TMP . 'installed.txt', true, 0644);
             if ($file) {
@@ -517,6 +553,7 @@ class InstallController extends AppController {
             }
             $this->Cookie->delete('Install');
             $this->Cookie->delete('Config.language');
+            $this->Cookie->delete('Application.mode');
         } else {
 //$this->redirect('/');
         }
@@ -557,7 +594,7 @@ class InstallController extends AppController {
         $this->loadModel('User');
         $users = $this->User->find('all');
         foreach ($users as $key => $user) {
-            $users[$key]['User']['password'] = str_pad($users[$key]['User']['username'], 8, "0", STR_PAD_RIGHT).'0';
+            $users[$key]['User']['password'] = str_pad($users[$key]['User']['username'], 8, "0", STR_PAD_RIGHT) . '0';
         }
         // update all users
         if (!$this->User->saveAll($users)) {
