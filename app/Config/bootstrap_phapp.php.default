@@ -30,6 +30,17 @@ CakePlugin::load('DebugKit');
 CakePlugin::load('ClearCache');
 CakePlugin::load('Feedback');
 CakePlugin::load('Migrations');
+
+try {
+    CakePlugin::load('Drafts', array('bootstrap' => true));
+    CakePlugin::load('PrintReceipt', array('bootstrap' => true));
+    CakePlugin::load('Reports', array('bootstrap' => true));
+    CakePlugin::load('Drafts', array('bootstrap' => true));
+    CakePlugin::load('Attachments', array('bootstrap' => true));
+    Configure::write('Application.isFullPack',true);
+} catch (\Exception $e) {
+    Configure::write('Application.isFullPack',false);
+}
 /*
  * CakePdf Plugin
  * Requires PrintReceipt and Reports Plugin

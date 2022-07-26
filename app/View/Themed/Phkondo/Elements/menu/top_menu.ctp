@@ -105,7 +105,7 @@
                                 <?php } ?>
                                 <?php if (AuthComponent::user('role') == 'admin') { ?>
                         <li >
-                            <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-eject"></span> '. __d('install','Reinstall'), array('controller'=>'install', 'action' => 'reinstall'), array('confirm' => __d('install','Are you sure you want to reinstall # %s?', 'pHKondo'), 'escape'=> false)); ?>
+                            <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-eject"></span> '. __d('install','Reinstall'), array('plugin' => '', 'controller'=>'install', 'action' => 'reinstall'), array('confirm' => __d('install','Are you sure you want to reinstall # %s?', 'pHKondo'), 'escape'=> false)); ?>
                         </li>
                <?php } ?>
 

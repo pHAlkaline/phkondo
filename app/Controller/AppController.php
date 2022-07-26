@@ -41,17 +41,14 @@ class AppController extends Controller {
         'MaintenanceMode',
         'SubscriptionManager');
     public $phkRequestData = array();
-
+  
     public function beforeFilter() {
 
-        if (!$this- $this->loadPlugins()){
-            Configure::write('Application.mode', 'free');
-        }
-
+        
         $this->Cookie->name = Configure::read('Cookie.name');
         $this->Paginator->settings['paramType'] = 'querystring';
         if (!$this->Cookie->check('Config.language')) {
-             $this->Cookie->write('Config.language',Configure::read('Language.default'));
+            $this->Cookie->write('Config.language', Configure::read('Language.default'));
         }
         Configure::write('Config.language', $this->Cookie->read('Config.language'));
 
@@ -72,18 +69,6 @@ class AppController extends Controller {
     public function beforeRender() {
         $phkRequestData = $this->phkRequestData;
         $this->set(compact('phkRequestData'));
-    }
-
-    private function loadPlugins() {
-        try {
-            CakePlugin::load('PrintReceipt', array('bootstrap' => true));
-            CakePlugin::load('Reports', array('bootstrap' => true));
-            CakePlugin::load('Drafts', array('bootstrap' => true));
-            CakePlugin::load('Attachments', array('bootstrap' => true));
-        } catch (\Exception $e) {
-            return false;
-        }
-        return true;
     }
 
     private function rememberMe() {
@@ -149,7 +134,7 @@ class AppController extends Controller {
             foreach ($fields as $field) {
                 $arrayConditions[$field . ' LIKE'] = "%" . $keyword . "%";
             }
-            $this->Paginator->settings['conditions'] = isset($this->Paginator->settings['conditions']) ? Set::merge($this->Paginator->settings['conditions'],array("OR" => $arrayConditions)) : array("OR" => $arrayConditions);
+            $this->Paginator->settings['conditions'] = isset($this->Paginator->settings['conditions']) ? Set::merge($this->Paginator->settings['conditions'], array("OR" => $arrayConditions)) : array("OR" => $arrayConditions);
             $this->set('keyword', $keyword);
         }
     }

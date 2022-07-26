@@ -147,7 +147,7 @@ class InstallController extends AppController {
     public function index() {
         $this->__check();
         $this->__files();
-        $isFullPack = $this->__plugins();
+       
         if (isset($this->request->data['Install']['language']) && $this->request->data['Install']['language'] != '') {
             $this->Cookie->write('Config.language', $this->request->data['Install']['language'], false, "12 months");
             Configure::write('Config.language', $this->request->data['Install']['language']);
@@ -156,11 +156,11 @@ class InstallController extends AppController {
             $this->Cookie->write('Application.mode', $this->request->data['Install']['mode'], false, "12 months");
             Configure::write('Application.mode', $this->request->data['Install']['mode']);
         }
-        $this->set('title_for_layout', __d('install', 'Installation: Welcome'));
+        $this->set('title_foApplication.isFullPackr_layout', __d('install', 'Installation: Welcome'));
         $this->set('title_for_step', __d('install', 'Installation: Welcome'));
 
         $packList = array('free' => 'Community');
-        if ($isFullPack) {
+        if (Configure::read('Application.isFullPack')) {
             $packList = array(
                 'free' => 'Community',
                 'full' => 'Full Pack',
@@ -177,17 +177,6 @@ class InstallController extends AppController {
         copy(APP . 'Config' . DS . 'bootstrap_phapp.php.default', APP . 'Config' . DS . 'bootstrap_phapp.php');
     }
 
-    private function __plugins() {
-        try {
-            CakePlugin::load('PrintReceipt', array('bootstrap' => true));
-            CakePlugin::load('Reports', array('bootstrap' => true));
-            CakePlugin::load('Drafts', array('bootstrap' => true));
-            CakePlugin::load('Attachments', array('bootstrap' => true));
-        } catch (\Exception $e) {
-            return false;
-        }
-        return true;
-    }
 
     /**
      * Step : database
