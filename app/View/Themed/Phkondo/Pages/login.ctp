@@ -13,7 +13,7 @@
         ));
         ?>
         <?php if (Configure::read('Application.mode') == 'demo') { ?>
-        <p class="login-box-msg"><strong>Username:</strong> demo<br/><strong>Password:</strong> demo1234</p>
+        <p class="login-box-msg"><strong>Username:</strong> demo<br/><strong>Password:</strong> demo00000</p>
         <p class="login-box-msg"></p>
         <?php } ?>
         <div class="form-group has-feedback">

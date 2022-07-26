@@ -609,9 +609,6 @@ class InstallController extends AppController {
         $users = $this->User->find('all');
         foreach ($users as $key => $user) {
             $newPass=$users[$key]['User']['username'];
-            if ($users[$key]['User']['username']=='demo'){
-                $newPass='demo1234';
-            }
             $users[$key]['User']['password'] = str_pad($newPass, 8, "0", STR_PAD_RIGHT) . '0';
         }
         // update all users
