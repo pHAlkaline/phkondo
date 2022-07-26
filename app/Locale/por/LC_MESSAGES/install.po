@@ -257,3 +257,12 @@ msgstr ""
 #: View/Themed/Phkondo/Install/secure.ctp:4
 msgid "pHKondo is now Secure."
 msgstr "pHKondo está agora seguro"
+
+
+msgid "Unable to config your application, your Config %s bootstrap_phapp.php file is not writable. Please check the permissions."
+msgstr ""
+"Não foi possível configurar a aplicaçao, a sua pasta Config %s core."
+"php não permite escrita. Verifique as permissões."
+
+msgid "Unable to generate users password."
+msgstr "Não foi possivel criar passwords."

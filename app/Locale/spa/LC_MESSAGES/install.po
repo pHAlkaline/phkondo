@@ -261,5 +261,10 @@ msgstr ""
 msgid "pHKondo is now Secure."
 msgstr ""
 
-#~ msgid "Email settings file already exists"
-#~ msgstr "Archivo de configuración de correo ya existe"
+msgid "Unable to config your application, your Config %s bootstrap_phapp.php file is not writable. Please check the permissions."
+msgstr ""
+"Imposible configurar la aplicación, el archivo Config %s boostrap_phapp.php no es "
+"escribible. Por favor revisar los permisos de archivo."
+
+msgid "Unable to generate users password."
+msgstr "No se puede generar la contraseña de los usuarios."

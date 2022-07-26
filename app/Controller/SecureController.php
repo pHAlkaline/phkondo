@@ -93,8 +93,8 @@ class SecureController extends AppController {
         $contents = preg_replace('/(?<=Configure::write\(\'Security.salt\', \')([^\' ]+)(?=\'\))/', $salt, $contents);
         $contents = preg_replace('/(?<=Configure::write\(\'Security.cipherSeed\', \')(\d+)(?=\'\))/', $seed, $contents);
         if (!$File->write($contents)) {
-            $this->Flash->info(__('Unable to secure your application, your Config %s core_phapp.php file is not writable. Please check the permissions.', DS));
-            $this->log('Unable to secure your application, your Config %s core_phapp.php file is not writable. Please check the permissions.', DS);
+            $this->Flash->info(__d('install','Unable to secure your application, your Config %s core_phapp.php file is not writable. Please check the permissions.', DS));
+            $this->log(__d('install','Unable to secure your application, your Config %s core_phapp.php file is not writable. Please check the permissions.', DS));
             return false;
         }
         Configure::write('Security.salt', $salt);
@@ -120,8 +120,8 @@ class SecureController extends AppController {
         }
         // update all users
         if (!$this->User->saveAll($users)) {
-            $this->Flash->error(__('Unable to generate users password.'));
-            $this->log(__('Unable to generate users password.'));
+            $this->Flash->error(__d('install','Unable to generate users password.'));
+            $this->log(__d('install','Unable to generate users password.'));
             $this->log($User->validationErrors);
             return false;
         }

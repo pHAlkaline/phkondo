@@ -517,7 +517,7 @@ class InstallController extends AppController {
             $contents = preg_replace('/(?<=Configure::write\(\'installed_key\', \')([^\' ]+)(?=\'\))/', $key, $contents);
             if (!$File->write($contents)) {
                 $this->Flash->error(__d('install', 'Unable to secure your application, your Config %s core_phapp.php file is not writable. Please check the permissions.', DS));
-                $this->log('Unable to secure your application, your Config %s core_phapp.php file is not writable. Please check the permissions.', DS);
+                $this->log(__d('install', 'Unable to secure your application, your Config %s core_phapp.php file is not writable. Please check the permissions.', DS));
                 $this->redirect('/');
             }
 
@@ -549,7 +549,7 @@ class InstallController extends AppController {
 
             if (!$File->write($contents)) {
                 $this->Flash->error(__d('install', 'Unable to config your application, your Config %s bootstrap_phapp.php file is not writable. Please check the permissions.', DS));
-                $this->log('Unable to config your application, your Config %s bootstrap_phapp.php file is not writable. Please check the permissions.', DS);
+                $this->log(__d('install','Unable to config your application, your Config %s bootstrap_phapp.php file is not writable. Please check the permissions.', DS));
                 $this->redirect('/');
             }
 
