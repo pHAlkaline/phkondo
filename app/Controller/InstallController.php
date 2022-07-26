@@ -147,6 +147,7 @@ class InstallController extends AppController {
     public function index() {
         $this->__check();
         $this->__files();
+        $isFullPack = $this->__plugins();
         if (isset($this->request->data['Install']['language']) && $this->request->data['Install']['language'] != '') {
             $this->Cookie->write('Config.language', $this->request->data['Install']['language'], false, "12 months");
             Configure::write('Config.language', $this->request->data['Install']['language']);
@@ -157,11 +158,35 @@ class InstallController extends AppController {
         }
         $this->set('title_for_layout', __d('install', 'Installation: Welcome'));
         $this->set('title_for_step', __d('install', 'Installation: Welcome'));
+
+        $packList = array('free' => 'Community');
+        if ($isFullPack) {
+            $packList = array(
+                'free' => 'Community',
+                'full' => 'Full Pack',
+                'one' => 'Full Pack One',
+                'pro' => 'Full Pack Pro',
+                'demo' => 'Demonstration'
+            );
+        }
+        $this->set('packList', $packList);
     }
 
     private function __files() {
         copy(APP . 'Config' . DS . 'core_phapp.php.default', APP . 'Config' . DS . 'core_phapp.php');
         copy(APP . 'Config' . DS . 'bootstrap_phapp.php.default', APP . 'Config' . DS . 'bootstrap_phapp.php');
+    }
+
+    private function __plugins() {
+        try {
+            CakePlugin::load('PrintReceipt', array('bootstrap' => true));
+            CakePlugin::load('Reports', array('bootstrap' => true));
+            CakePlugin::load('Drafts', array('bootstrap' => true));
+            CakePlugin::load('Attachments', array('bootstrap' => true));
+        } catch (\Exception $e) {
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -245,7 +270,7 @@ class InstallController extends AppController {
         if (empty($this->request->data)) {
             return;
         }
-        
+
         $db = ConnectionManager::getDataSource('default');
         $brokenSequence = $db instanceof Postgres;
         if (!$db->isConnected()) {
@@ -506,7 +531,7 @@ class InstallController extends AppController {
                 $this->log('Unable to secure your application, your Config %s core_phapp.php file is not writable. Please check the permissions.', DS);
                 $this->redirect('/');
             }
-            
+
             $File = new File(APP . 'Config' . DS . 'bootstrap_phapp.php');
             $contents = $File->read();
             $application_language = Configure::read('Config.language');
@@ -517,7 +542,7 @@ class InstallController extends AppController {
                 $application_mode = $this->Cookie->read('Application.mode');
             }
             $contents = preg_replace('/(?<=Configure::write\(\'Application.mode\', \')([^\' ]+)(?=\'\))/', $application_mode, $contents);
-            if ($application_mode != 'free') {
+            /*if ($application_mode != 'free') {
                 $search = array(
                     "//CakePlugin::load('PrintReceipt', array('bootstrap' => true))",
                     "//CakePlugin::load('Reports', array('bootstrap' => true))",
@@ -531,14 +556,14 @@ class InstallController extends AppController {
                     "CakePlugin::load('Attachments', array('bootstrap' => true))"
                 );
                 $contents = str_replace($search, $replace, $contents);
-            }
+            }*/
 
             if (!$File->write($contents)) {
                 $this->Flash->error(__d('install', 'Unable to config your application, your Config %s bootstrap_phapp.php file is not writable. Please check the permissions.', DS));
                 $this->log('Unable to config your application, your Config %s bootstrap_phapp.php file is not writable. Please check the permissions.', DS);
                 $this->redirect('/');
             }
-            
+
             // Create a new file with 0644 permissions
             $file = new File(TMP . 'installed.txt', true, 0644);
             if ($file) {
