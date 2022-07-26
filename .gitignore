@@ -103,14 +103,15 @@ nbproject
 .settings
 .buildpath
 
-# composer vendor
+# composer
+composer.json
+composer.lock
+composer_community.lock
+composer_full_pack.lock
 vendor/*
 !vendor/empty
 
 # root files
 TODO
 TODO.php
-composer.lock
-composer_community.lock
-composer_full_pack.lock
 auth.json
