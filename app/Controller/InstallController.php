@@ -147,7 +147,7 @@ class InstallController extends AppController {
     public function index() {
         $this->__check();
         $this->__files();
-       
+
         if (isset($this->request->data['Install']['language']) && $this->request->data['Install']['language'] != '') {
             $this->Cookie->write('Config.language', $this->request->data['Install']['language'], false, "12 months");
             Configure::write('Config.language', $this->request->data['Install']['language']);
@@ -156,7 +156,7 @@ class InstallController extends AppController {
             $this->Cookie->write('Application.mode', $this->request->data['Install']['mode'], false, "12 months");
             Configure::write('Application.mode', $this->request->data['Install']['mode']);
         }
-        $this->set('title_foApplication.isFullPackr_layout', __d('install', 'Installation: Welcome'));
+        $this->set('title_for_layout', __d('install', 'Installation: Welcome'));
         $this->set('title_for_step', __d('install', 'Installation: Welcome'));
 
         $packList = array('free' => 'Community');
@@ -176,7 +176,6 @@ class InstallController extends AppController {
         copy(APP . 'Config' . DS . 'core_phapp.php.default', APP . 'Config' . DS . 'core_phapp.php');
         copy(APP . 'Config' . DS . 'bootstrap_phapp.php.default', APP . 'Config' . DS . 'bootstrap_phapp.php');
     }
-
 
     /**
      * Step : database
@@ -531,25 +530,25 @@ class InstallController extends AppController {
                 $application_mode = $this->Cookie->read('Application.mode');
             }
             $contents = preg_replace('/(?<=Configure::write\(\'Application.mode\', \')([^\' ]+)(?=\'\))/', $application_mode, $contents);
-            /*if ($application_mode != 'free') {
-                $search = array(
-                    "//CakePlugin::load('PrintReceipt', array('bootstrap' => true))",
-                    "//CakePlugin::load('Reports', array('bootstrap' => true))",
-                    "//CakePlugin::load('Drafts', array('bootstrap' => true))",
-                    "//CakePlugin::load('Attachments', array('bootstrap' => true))"
-                );
-                $replace = array(
-                    "CakePlugin::load('PrintReceipt', array('bootstrap' => true))",
-                    "CakePlugin::load('Reports', array('bootstrap' => true))",
-                    "CakePlugin::load('Drafts', array('bootstrap' => true))",
-                    "CakePlugin::load('Attachments', array('bootstrap' => true))"
-                );
-                $contents = str_replace($search, $replace, $contents);
-            }*/
+            /* if ($application_mode != 'free') {
+              $search = array(
+              "//CakePlugin::load('PrintReceipt', array('bootstrap' => true))",
+              "//CakePlugin::load('Reports', array('bootstrap' => true))",
+              "//CakePlugin::load('Drafts', array('bootstrap' => true))",
+              "//CakePlugin::load('Attachments', array('bootstrap' => true))"
+              );
+              $replace = array(
+              "CakePlugin::load('PrintReceipt', array('bootstrap' => true))",
+              "CakePlugin::load('Reports', array('bootstrap' => true))",
+              "CakePlugin::load('Drafts', array('bootstrap' => true))",
+              "CakePlugin::load('Attachments', array('bootstrap' => true))"
+              );
+              $contents = str_replace($search, $replace, $contents);
+              } */
 
             if (!$File->write($contents)) {
                 $this->Flash->error(__d('install', 'Unable to config your application, your Config %s bootstrap_phapp.php file is not writable. Please check the permissions.', DS));
-                $this->log(__d('install','Unable to config your application, your Config %s bootstrap_phapp.php file is not writable. Please check the permissions.', DS));
+                $this->log(__d('install', 'Unable to config your application, your Config %s bootstrap_phapp.php file is not writable. Please check the permissions.', DS));
                 $this->redirect('/');
             }
 
@@ -608,7 +607,7 @@ class InstallController extends AppController {
         $this->loadModel('User');
         $users = $this->User->find('all');
         foreach ($users as $key => $user) {
-            $newPass=$users[$key]['User']['username'];
+            $newPass = $users[$key]['User']['username'];
             $users[$key]['User']['password'] = str_pad($newPass, 8, "0", STR_PAD_RIGHT) . '0';
         }
         // update all users
@@ -624,6 +623,10 @@ class InstallController extends AppController {
 
     public function reinstall() {
         unlink(APP . 'Config' . DS . 'core_phapp.php');
+        unlink(APP . 'Config' . DS . 'bootstrap_phapp.php');
+        unlink(APP . 'Config' . DS . 'database.php');
+        unlink(APP . 'Config' . DS . 'email.php');
+        unlink(APP . 'Config' . DS . 'email_notifiations.php');
         unlink(TMP . 'installed.txt');
         $this->redirect(array('action' => 'index'));
     }

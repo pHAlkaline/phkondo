@@ -44,14 +44,13 @@ class AppController extends Controller {
   
     public function beforeFilter() {
 
-        
         $this->Cookie->name = Configure::read('Cookie.name');
-        $this->Paginator->settings['paramType'] = 'querystring';
         if (!$this->Cookie->check('Config.language')) {
             $this->Cookie->write('Config.language', Configure::read('Language.default'));
         }
         Configure::write('Config.language', $this->Cookie->read('Config.language'));
 
+        $this->Paginator->settings['paramType'] = 'querystring';
         $this->theme = $this->getTheme();
         $this->Auth->authenticate = array(AuthComponent::ALL => array('userModel' => 'User', 'scope' => array("User.active" => 1)), 'Form');
         $this->Auth->loginRedirect = Router::url(array('plugin' => null, 'controller' => 'condos', 'action' => 'index'), true);
@@ -72,7 +71,7 @@ class AppController extends Controller {
     }
 
     private function rememberMe() {
-// set cookie options
+        // set cookie options
         $this->Cookie->httpOnly = true;
 
         if (!$this->Auth->loggedIn() && $this->Cookie->read('rememberMe')) {
