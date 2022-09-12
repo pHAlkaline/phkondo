@@ -3516,3 +3516,6 @@ msgstr ""
 
 msgid "Organization"
 msgstr "Organisation"
+
+msgid "Edit Organization"
+msgstr "Organisation bearbeiten"

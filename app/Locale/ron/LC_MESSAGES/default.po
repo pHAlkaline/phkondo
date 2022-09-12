@@ -3542,3 +3542,7 @@ msgstr ""
 
 msgid "Organization"
 msgstr "Organizare"
+
+
+msgid "Edit Organization"
+msgstr "Editați organizația"

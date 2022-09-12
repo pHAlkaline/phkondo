@@ -3539,3 +3539,6 @@ msgstr "Rol"
 
 msgid "Organization"
 msgstr "Organización"
+
+msgid "Edit Organization"
+msgstr "Editar Organización"

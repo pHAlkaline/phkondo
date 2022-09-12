@@ -3650,3 +3650,6 @@ msgstr "Vencimento"
 
 msgid "Organization"
 msgstr "Organização"
+
+msgid "Edit Organization"
+msgstr "Editar Organização"

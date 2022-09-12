@@ -3530,3 +3530,6 @@ msgstr "Ruolo"
 
 msgid "Organization"
 msgstr "Organizzazione"
+
+msgid "Edit Organization"
+msgstr "Modifica Organization"
