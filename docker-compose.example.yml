@@ -1,0 +1,46 @@
+version: '3'
+
+networks:
+    default:
+        name: phkondo
+
+services:
+
+  mariadb:
+    image: mariadb
+    container_name: phkondo-db
+    environment:
+        MYSQL_ROOT_PASSWORD: docker
+        MYSQL_DATABASE: phkondo
+        MYSQL_USER: docker
+        MYSQL_PASSWORD: docker
+    volumes:
+      - ./docker/db:/var/lib/mysql
+    ports:
+      - '3306:3306'
+
+  webserver:
+    image: webdevops/php-apache-dev:7.4
+    container_name: phkondo-webserver
+    working_dir: /application
+    volumes:
+      - ./:/application
+    environment:
+      - XDEBUG_MODE=develop,debug
+      - XDEBUG_CLIENT_HOST=host.docker.internal
+      - XDEBUG_CLIENT_PORT=9000
+      - XDEBUG_IDE_KEY=netbeans-docker
+      - WEB_DOCUMENT_ROOT=/application/app/webroot
+      - DATABASE_URL=mysql://docker:docker@phkondo-db/phkondo
+    ports:
+      - "80:80"
+      - "443:443"
+
+  phpmyadmin:
+    image: phpmyadmin:5.2.0
+    container_name: phkondo-phpmyadmin
+    ports:
+      - 8081:80
+    environment:
+      - PMA_ARBITRARY=1
+

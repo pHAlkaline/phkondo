@@ -96,6 +96,10 @@ app/webroot/bower_components
 nbproject
 .idea
 
+# Docker
+Dockerfile
+docker-compose.yml
+docker/*
 
 # Eclipse project files
 .cache
