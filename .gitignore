@@ -8,6 +8,9 @@ app/Config/core_phapp.php
 app/Config/bootstrap_phapp.php
 app/Config/email_notifications.php
 
+app/webroot/img/logos/*
+!app/webroot/img/logos/.gitkeep
+
 app/tmp/*
 !app/tmp/.gitkeep
 !app/tmp/cache

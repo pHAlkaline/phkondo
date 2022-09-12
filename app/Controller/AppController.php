@@ -41,9 +41,9 @@ class AppController extends Controller {
         'MaintenanceMode',
         'SubscriptionManager');
     public $phkRequestData = array();
-  
-    public function beforeFilter() {
 
+    public function beforeFilter() {
+        Configure::load('organization.php', 'default');
         $this->Cookie->name = Configure::read('Cookie.name');
         if (!$this->Cookie->check('Config.language')) {
             $this->Cookie->write('Config.language', Configure::read('Language.default'));
@@ -66,8 +66,13 @@ class AppController extends Controller {
     }
 
     public function beforeRender() {
+        $logoImage = 'logo_phkondo_flat.png';
+
+        if (Configure::read('Organization.logo')) {
+            $logoImage = 'logos' . DS . Configure::read('Organization.logo');
+        }
         $phkRequestData = $this->phkRequestData;
-        $this->set(compact('phkRequestData'));
+        $this->set(compact('phkRequestData', 'logoImage'));
     }
 
     private function rememberMe() {

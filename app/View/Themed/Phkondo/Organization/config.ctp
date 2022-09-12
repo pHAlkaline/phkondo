@@ -1,10 +1,11 @@
+<?php
+
+$this->Html->script('organization_config', false);
+?>
 <div id="page-content" class="col-sm-10">
     <div class="form">
         <section>
-              <?php echo $this->Form->create(false, 
-                      array('url' => array('controller' => 'organization', 'action' => 'config')),
-                      ['autocomplete'=>'off'],
-                      array(
+              <?php echo $this->Form->create(false,array(
                 'type' => 'file',
                 'class' => 'form-horizontal',
                 'role' => 'form',
@@ -36,10 +37,10 @@
                     <?php echo $this->Form->input('email', array('default' => $organization['email'], 'class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
-                    <?php echo $this->Form->input('logo', array('type' => 'file', 'class' => 'form-control', 'accept'=>'image/*')); ?>
+                    <?php echo $this->Form->input('logo', array('label' => array('text'=>'Logo (Max:380x65)','class' => 'col-sm-2 control-label'),'type' => 'file', 'class' => 'form-control')); ?>
                 </div><!-- .form-group -->
-                <h1><?php echo $this->Html->image('logo_phkondo_flat.png', array('alt' => 'pHKondo','class'=>'img-responsive center-block'));?></h1>
-    
+                <h1 class=""><?php echo $this->Html->image($logoImage, array('alt' => 'pHKondo','class'=>'logoimg img-responsive center-block'));?></h1>
+
             </fieldset>
 
             <div class="form-group">                

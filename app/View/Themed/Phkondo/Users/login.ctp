@@ -1,7 +1,7 @@
 <div class="login-box ">
     <div class="login-box-body">
         <div class="animate__animated animate__fadeIn">
-        <?php echo $this->Html->image('logo_phkondo_flat.png', array('alt' => 'pHKondo', 'class' => 'img-responsive center-block')); ?>
+        <?php echo $this->Html->image($logoImage, array('alt' => 'pHKondo', 'class' => 'img-responsive center-block')); ?>
         </div>
         <p class="login-box-msg"></p>
        <?php echo $this->Flash->render(); ?>

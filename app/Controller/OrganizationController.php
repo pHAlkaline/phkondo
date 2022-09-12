@@ -37,7 +37,6 @@ App::uses('AppController', 'Controller');
 class OrganizationController extends AppController {
 
     public $useModel = false;
-    
 
     /**
      * Components
@@ -47,29 +46,57 @@ class OrganizationController extends AppController {
     public $components = array('RequestHandler');
 
     public function config() {
-        Configure::load('organization.php', 'default');
         $this->set('title_for_layout', __('Organization'));
         $this->set('title_for_step', __('Organization'));
         if (empty($this->request->data)) {
             return;
         }
 
-        foreach ($this->request->data as $key => $value) {
-            $key=substr(h($key), 0, 30);
-            $value=substr(h($value), 0, 100);
-            if (Configure::check('Organization.' . $key)) {
-                Configure::write('Organization.' . $key, $value);
+        if ($this->request->is('post')) {
+            //Check if image was sent
+            if (!empty($this->request->data['logo'])) {
+                $file = $this->request->data['logo'];
+                $validImage = true;
+                //if extension is valid
+                list($width, $height) = getimagesize($file['tmp_name']);
+                if ($width > "380" || $height > "65") {
+                    $validImage = false;
+                }
+
+                $ext = substr(strtolower(strrchr($file['name'], '.')), 1); //get the extension
+                $arr_ext = array('jpg', 'jpeg', 'gif', 'png'); //processing file extension
+
+                if (!in_array($ext, $arr_ext)) {
+                    $validImage = false;
+                }
+
+                if ($validImage) {
+                    // delete old file
+                    if (Configure::read('Organization.logo')) {
+                        unlink(WWW_ROOT . 'img' . DS . 'logos' . DS . Configure::read('Organization.logo'));
+                    }
+                    //do the actual uploading of the file. First arg is the tmp name, second arg is
+                    //where we are putting it
+                    move_uploaded_file($file['tmp_name'], WWW_ROOT . 'img' . DS . 'logos' . DS . $file['name']);
+                    //saving file on database
+                    $this->request->data['logo'] = $file['name'];
+                } else {
+                    $this->request->data['logo'] = '';
+                }
             }
+            foreach ($this->request->data as $key => $value) {
+                $key = substr(h($key), 0, 30);
+                $value = substr(h($value), 0, 100);
+                if (Configure::check('Organization.' . $key)) {
+                    Configure::write('Organization.' . $key, $value);
+                }
+            }
+            if (!Configure::dump('organization.php', 'default', array('Organization'))) {
+                $this->Flash->error(__d('email', 'Could not be saved. Please, try again..'));
+                return;
+            }
+            $this->Flash->success(__d('email', 'Saved with success.'));
         }
-
-       
-        if (!Configure::dump('organization.php', 'default', array('Organization'))) {
-            $this->Flash->error(__d('email', 'Could not be saved. Please, try again..'));
-            return;
-        }
-
-
-        $this->Flash->success(__d('email', 'Saved with success.'));
         $this->redirect(array('action' => 'config'));
     }
 
