@@ -3546,3 +3546,10 @@ msgstr "Organizare"
 
 msgid "Edit Organization"
 msgstr "Editați organizația"
+
+
+msgid "Saved with success."
+msgstr "Registado com sucesso."
+
+msgid "Could not be saved. Please, try again."
+msgstr "Nu se poate înregistra, vă rugăm să încercați din nou."

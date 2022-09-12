@@ -3521,3 +3521,9 @@ msgstr ""
 
 msgid "Edit Organization"
 msgstr ""
+
+msgid "Saved with success."
+msgstr ""
+
+msgid "Could not be saved. Please, try again."
+msgstr ""

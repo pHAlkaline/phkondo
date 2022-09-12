@@ -3653,3 +3653,9 @@ msgstr "Organização"
 
 msgid "Edit Organization"
 msgstr "Editar Organização"
+
+msgid "Saved with success."
+msgstr "Registado com sucesso."
+
+msgid "Could not be saved. Please, try again."
+msgstr "Não foi possível o registo, tente outra vez."

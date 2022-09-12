@@ -3519,3 +3519,9 @@ msgstr "Organisation"
 
 msgid "Edit Organization"
 msgstr "Organisation bearbeiten"
+
+msgid "Saved with success."
+msgstr "Mit Erfolg gespeichert."
+
+msgid "Could not be saved. Please, try again."
+msgstr "RImpossibile registrarsi, riprova."

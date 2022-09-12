@@ -3533,3 +3533,9 @@ msgstr "Organizzazione"
 
 msgid "Edit Organization"
 msgstr "Modifica Organization"
+
+msgid "Saved with success."
+msgstr "Salvato con successo."
+
+msgid "Could not be saved. Please, try again."
+msgstr "Registrierung nicht möglich, bitte versuchen Sie es erneut."

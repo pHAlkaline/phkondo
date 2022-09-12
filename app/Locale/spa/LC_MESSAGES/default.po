@@ -3542,3 +3542,10 @@ msgstr "Organización"
 
 msgid "Edit Organization"
 msgstr "Editar Organización"
+
+
+msgid "Saved with success."
+msgstr "Guardado con éxito."
+
+msgid "Could not be saved. Please, try again."
+msgstr "No se puede registrar, inténtelo de nuevo."

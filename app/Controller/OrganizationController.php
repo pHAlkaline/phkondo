@@ -94,10 +94,10 @@ class OrganizationController extends AppController {
                 }
             }
             if (!Configure::dump('organization.php', 'default', array('Organization'))) {
-                $this->Flash->error(__d('email', 'Could not be saved. Please, try again..'));
+                $this->Flash->error(__('Could not be saved. Please, try again.'));
                 return;
             }
-            $this->Flash->success(__d('email', 'Saved with success.'));
+            $this->Flash->success(__('Saved with success.'));
         }
         $this->redirect(array('action' => 'config'));
     }
