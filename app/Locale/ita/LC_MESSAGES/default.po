@@ -3527,3 +3527,6 @@ msgstr "Abilita la modifica della password"
 #: View/Themed/Phkondo/Users/view.ctp:36
 msgid "Role"
 msgstr "Ruolo"
+
+msgid "Organization"
+msgstr "Organizzazione"

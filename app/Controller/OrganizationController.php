@@ -54,7 +54,7 @@ class OrganizationController extends AppController {
 
         if ($this->request->is('post')) {
             //Check if image was sent
-            if (!empty($this->request->data['logo'])) {
+            if (!$this->request->data['logo']['size']==0) {
                 $file = $this->request->data['logo'];
                 $validImage = true;
                 //if extension is valid
@@ -83,6 +83,8 @@ class OrganizationController extends AppController {
                 } else {
                     $this->request->data['logo'] = '';
                 }
+            } else {
+                unset($this->request->data['logo']);
             }
             foreach ($this->request->data as $key => $value) {
                 $key = substr(h($key), 0, 30);

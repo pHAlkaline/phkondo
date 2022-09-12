@@ -3515,3 +3515,6 @@ msgstr ""
 #: View/Themed/Phkondo/Users/view.ctp:36
 msgid "Role"
 msgstr ""
+
+msgid "Organization"
+msgstr "Organisation"
