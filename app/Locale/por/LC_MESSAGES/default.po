@@ -2650,7 +2650,7 @@ msgstr "Contabilidade"
 
 #: View/Themed/Phkondo/Elements/menu/top_menu.ctp:101
 msgid "System"
-msgstr "System"
+msgstr "Sistema"
 
 #: View/Themed/Phkondo/Elements/menu/top_menu.ctp:122
 #: View/Themed/Phkondo/Install/database.ctp:33

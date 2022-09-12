@@ -1,5 +1,14 @@
 Guía de inicio rápido de pHKondo
 
+Iniciar sesión con la cuenta de administrador
+Añadir usuario(s) -> Configuración -> Usuarios
+* Para cada usuario tres niveles de acceso
+** Administrador (Control Total Sobre pHKONDO)
+** Administrador (Control total sobre pHKONDO, excepto la administración de usuarios y la configuración del sistema)
+** Empleado (Sin acceso a opciones de configuración y mantenimiento)
+
+Iniciar sesión con otra cuenta
+
 Añadir condominio(s) -> Crear condominio
 Ver detalles del condominio
 

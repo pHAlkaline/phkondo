@@ -1,5 +1,14 @@
 pHKondo quick guide
 
+Log in with the administrator account
+Add user(s) -> Configuration -> Users
+* For each user three access levels
+** Administrator ( Total Control Over pHKONDO )
+** Manager (Full Control Over pHKONDO except user management and system settings)
+** Employee (No access to configuration and maintenance options)
+
+Sign in with another account
+
 Add condo(s) -> New condo 
 Enter condo details
 

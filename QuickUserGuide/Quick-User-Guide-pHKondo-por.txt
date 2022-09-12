@@ -1,6 +1,15 @@
 pHKondo Guia Rápido
 
-Adicionar condomínio (s) -> Criar Condomínio
+Iniciar Sessão com a conta administrador
+Adicionar utilizador(es) -> Configuração -> Utilizadores
+* Para cada utilizador tres niveis de accesso
+** Administrador ( Total Controlo Sobre o pHKONDO )
+** Gestor ( Total Controlo Sobre o pHKONDO excepto gestão de utilizadore e configurações de sistema  )
+** Colaborador ( Sem Acesso a opções de configuração e manutenção  )
+
+Iniciar Sessão com outra conta
+
+Adicionar condomínio(s) -> Criar Condomínio
 Ver detalhes do condomínio
 
 Entrar em Períodos Contabilísticos

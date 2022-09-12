@@ -210,7 +210,7 @@ class InstallController extends AppController {
         if (empty($this->request->data)) {
             return;
         }
-
+        
         $config = $this->defaultConfig;
         foreach ($this->request->data as $key => $value) {
             if (isset($config[$key])) {
@@ -530,22 +530,7 @@ class InstallController extends AppController {
                 $application_mode = $this->Cookie->read('Application.mode');
             }
             $contents = preg_replace('/(?<=Configure::write\(\'Application.mode\', \')([^\' ]+)(?=\'\))/', $application_mode, $contents);
-            /* if ($application_mode != 'free') {
-              $search = array(
-              "//CakePlugin::load('PrintReceipt', array('bootstrap' => true))",
-              "//CakePlugin::load('Reports', array('bootstrap' => true))",
-              "//CakePlugin::load('Drafts', array('bootstrap' => true))",
-              "//CakePlugin::load('Attachments', array('bootstrap' => true))"
-              );
-              $replace = array(
-              "CakePlugin::load('PrintReceipt', array('bootstrap' => true))",
-              "CakePlugin::load('Reports', array('bootstrap' => true))",
-              "CakePlugin::load('Drafts', array('bootstrap' => true))",
-              "CakePlugin::load('Attachments', array('bootstrap' => true))"
-              );
-              $contents = str_replace($search, $replace, $contents);
-              } */
-
+            
             if (!$File->write($contents)) {
                 $this->Flash->error(__d('install', 'Unable to config your application, your Config %s bootstrap_phapp.php file is not writable. Please check the permissions.', DS));
                 $this->log(__d('install', 'Unable to config your application, your Config %s bootstrap_phapp.php file is not writable. Please check the permissions.', DS));
@@ -626,7 +611,7 @@ class InstallController extends AppController {
         unlink(APP . 'Config' . DS . 'bootstrap_phapp.php');
         unlink(APP . 'Config' . DS . 'database.php');
         unlink(APP . 'Config' . DS . 'email.php');
-        unlink(APP . 'Config' . DS . 'email_notifiations.php');
+        unlink(APP . 'Config' . DS . 'email_notifications.php');
         unlink(TMP . 'installed.txt');
         $this->redirect(array('action' => 'index'));
     }
