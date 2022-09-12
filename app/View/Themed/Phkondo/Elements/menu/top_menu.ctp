@@ -13,7 +13,7 @@
             </button>
 
             <a class="navbar-brand" href="<?php echo Router::url(array('plugin'=>null,'controller' => 'condos'), true); ?>">
-                <?php echo $this->Html->image('logo_phkondo_flat.svg', array('alt' => 'pHKondo', 'style' => 'height:100%', 'class' => 'animate__animated animate__fadeIn')); ?>
+                <?php echo $this->Html->image('logo_phkondo_flat.png', array('alt' => 'pHKondo', 'style' => 'height:100%', 'class' => 'animate__animated animate__fadeIn')); ?>
             </a>
         </div>
 
@@ -42,6 +42,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo __('Config'); ?><b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <h6 class="dropdown-header"><?php echo __('General'); ?></h6>
+                        <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-home"></span> ' . __('Organization'), array('plugin' => '', 'controller' => 'organization', 'action'=>'config'), array('escape' => false)); ?></li>
                         <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-user"></span> ' . __n('Entity', 'Entities', 2), array('plugin' => '', 'controller' => 'entities', 'action' => 'index'), array('escape' => false)); ?></li>
                         <li><?php echo $this->Html->link('<span class="fa fa-truck"></span> ' . __n('Supplier', 'Suppliers', 2), array('plugin' => '', 'controller' => 'suppliers', 'action' => 'index'), array('escape' => false)); ?></li>
                         <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-home"></span> ' . __('Fraction Types'), array('plugin' => '', 'controller' => 'fraction_types', 'action' => 'index'), array('escape' => false)); ?></li>

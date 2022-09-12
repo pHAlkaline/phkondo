@@ -51,6 +51,7 @@ class PagesController extends AppController {
      * @return void
      */
     public function display() {
+       
         $path = func_get_args();
 
         if (!empty($path[0]) && $path[0] == 'home' && !(bool) AuthComponent::user()) {
@@ -88,7 +89,7 @@ class PagesController extends AppController {
             $headerTitle = __('Start Session');
         }
 
-        
+
         $this->set(compact('breadcrumbs', 'headerTitle'));
     }
 
