@@ -25,6 +25,7 @@ services:
     working_dir: /application
     volumes:
       - ./:/application
+      - ./docker/bin/wkhtmltopdf:/usr/local/bin/wkhtmltopdf
     environment:
       - XDEBUG_MODE=develop,debug
       - XDEBUG_CLIENT_HOST=host.docker.internal
