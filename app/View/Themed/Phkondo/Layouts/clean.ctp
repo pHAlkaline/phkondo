@@ -56,7 +56,7 @@ if (!isset($headerTitle)) {
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
         <meta name="theme-color" content="#ffffff">
         <title>
-            <?php echo $headerTitle; ?>&nbsp;<?php echo Configure::read('Theme.owner_name'); ?>
+            <?php echo $headerTitle; ?>&nbsp;
         </title>
 
         <?php

@@ -66,13 +66,20 @@ class AppController extends Controller {
     }
 
     public function beforeRender() {
-        $logoImage = 'logo_phkondo_flat.png';
-
+        $img_logo_src = WWW_ROOT . 'img' . DS . 'logo_phkondo_flat.png';
         if (Configure::read('Organization.logo')) {
-            $logoImage = 'logos' . DS . Configure::read('Organization.logo');
+             $img_logo_src = WWW_ROOT . 'img' . DS . 'logos' . DS . Configure::read('Organization.logo');
         }
+
+        $logo_src_data = file_get_contents($img_logo_src);
+        $base64 = base64_encode($logo_src_data);
+
+        $logo_image_src = 'data: ' . mime_content_type($img_logo_src) . ';base64,' . $base64;
+      
+
+
         $phkRequestData = $this->phkRequestData;
-        $this->set(compact('phkRequestData', 'logoImage'));
+        $this->set(compact('phkRequestData', 'logo_image_src'));
     }
 
     private function rememberMe() {

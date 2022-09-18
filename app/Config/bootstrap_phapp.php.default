@@ -24,7 +24,7 @@
  * @package       app.Config
  * @since         pHKondo v 0.0.1
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
- * 
+ *
  */
 
 CakePlugin::load('DebugKit');
@@ -52,7 +52,7 @@ CakePlugin::load('CakePdf', array('bootstrap' => true, 'routes' => false));
 Configure::write('CakePdf', array(
     // Requires wkhtmltopdf engine
     // https://wkhtmltopdf.org/
-    'binary' => '{your_system_path_to_wkhtmltopdf}',
+    'binary' => 'C:\xampp7427\wkhtmltopdf\bin\wkhtmltopdf.exe',
     // windows: C:\xampp7427\wkhtmltopdf\bin\wkhtmltopdf.exe
     // linux: /usr/local/bin/wkhtmltopdf
     'engine' => 'CakePdf.WkHtmlToPdf',
@@ -64,7 +64,7 @@ Configure::write('CakePdf', array(
         'enable-local-file-access' => true
     ],
     'phkondo' => [
-        'active' => true, // Requires CakePdf Plugin
+        'active' => false, // Requires CakePdf Plugin
         'cssPath' => APP . 'View' . DS . 'Themed' . DS . 'Phkondo' . DS . WEBROOT_DIR . DS . 'css' . DS,
         'imgPath' => APP . 'View' . DS . 'Themed' . DS . 'Phkondo' . DS . WEBROOT_DIR . DS . 'img' . DS,
     ]
@@ -97,16 +97,11 @@ Configure::write('Theme.list', array(
         //'GreenAdm'=>'GreenAdm',
         //'SBAdmin'=>'SBAdmin',
 ));
-Configure::write('Theme.owner_name', 'pHKondo');
-Configure::write('Theme.owner_name_abbrv', 'PHK');
-Configure::write('Theme.owner_description', 'Condominium Management');
-Configure::write('Theme.owner_title', 'Administration Company Name');
-Configure::write('Theme.owner_address', 'Administration Company Address , Contacts: 968258741 / admin@company.com');
-Configure::write('Theme.base_color', '#428bca');
 
 /**
  * App Settings
  */
+Configure::write('Application.isSAAS', false); // set true if you sell this as a SAAS Service;
 Configure::write('Application.mode', 'free'); // free, full, one, pro, demo -> use demo for demo mode;
 Configure::write('Config.timezone', 'Europe/London'); // Europe/Lisbon
 Configure::write('databaseDateFormat', 'Y-m-d'); // database dateformat

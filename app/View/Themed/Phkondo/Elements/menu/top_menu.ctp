@@ -13,7 +13,7 @@
             </button>
 
             <a class="navbar-brand" href="<?php echo Router::url(array('plugin'=>null,'controller' => 'condos'), true); ?>">
-                <?php echo $this->Html->image($logoImage, array('alt' => 'pHKondo', 'style' => 'height:100%', 'class' => 'animate__animated animate__fadeIn')); ?>
+                <img src="<?php echo $logo_image_src; ?>" style="height:100%;" alt="phkondo" class="img-responsive center-block" />
             </a>
         </div>
 

@@ -1,6 +1,6 @@
 
 <div class="jumbotron">
-    <h1><?php echo $this->Html->image($logoImage, array('alt' => 'pHKondo','class'=>'img-responsive center-block'));?></h1>
+    <h1><img src="<?php echo $logo_image_src; ?>" style="height:100%;" alt="phkondo" class="img-responsive center-block" /></h1>
     <!--p><?php //echo  __('Welcome'); ?></p-->
     <?php if (Configure::read('Config.language')=='por'){ ?>
     <div class="col-lg-12 text-center">

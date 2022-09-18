@@ -39,7 +39,7 @@ $this->Html->script('organization_config', false);
                 <div class="form-group">
                     <?php echo $this->Form->input('logo', array('label' => array('text'=>'Logo (Max:380x65)','class' => 'col-sm-2 control-label'),'type' => 'file', 'class' => 'form-control')); ?>
                 </div><!-- .form-group -->
-                <h1 class=""><?php echo $this->Html->image($logoImage, array('alt' => 'pHKondo','class'=>'logoimg img-responsive center-block'));?></h1>
+                <h1 class=""><img src="<?php echo $logo_image_src; ?>" style="height:100%;" alt="phkondo" class="img-responsive center-block" /></h1>
 
             </fieldset>
 
