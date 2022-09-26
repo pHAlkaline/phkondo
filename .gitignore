@@ -7,6 +7,7 @@ app/Config/email.php
 app/Config/core_phapp.php
 app/Config/bootstrap_phapp.php
 app/Config/email_notifications.php
+app/Config/organization.php
 
 app/webroot/img/logos/*
 !app/webroot/img/logos/.gitkeep
