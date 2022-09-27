@@ -101,7 +101,7 @@ class CondosController extends AppController {
             $hasDebt = $InvoiceConference->field('total_amount', array(
                 'InvoiceConference.condo_id' => $this->getPhkRequestVar('condo_id'),
                 'InvoiceConference.document_date <=' => $condo['FiscalYear'][0]['close_date'],
-                'InvoiceConference.payment_due_date <' => date(Configure::read('databaseDateFormat')),
+                'InvoiceConference.payment_due_date <' => date(Configure::read('Application.databaseDateFormat')),
                 'OR' => array('InvoiceConference.payment_date' => null, 'InvoiceConference.payment_date >' => $condo['FiscalYear'][0]['close_date']),
             ));
         }

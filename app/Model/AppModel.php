@@ -37,8 +37,8 @@ class AppModel extends Model {
     public $validationDomain = 'validation';
 
     public function __construct($id = false, $table = null, $ds = null) {
-        $this->actsAs['DateFormat']['dateFormat'] = Configure::read('dateFormatSimple');
-        $this->actsAs['DateFormat']['databaseFormat'] = Configure::read('databaseDateFormat');
+        $this->actsAs['DateFormat']['dateFormat'] = Configure::read('Application.dateFormatSimple');
+        $this->actsAs['DateFormat']['databaseFormat'] = Configure::read('Application.databaseDateFormat');
         parent::__construct($id, $table, $ds);
     }
 

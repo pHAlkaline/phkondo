@@ -73,8 +73,8 @@ class IncomeController extends AppController {
                 if ($model->data['IncomeReceipt']['status_id'] != '') {
                     $conditions['conditions']['Receipt.receipt_status_id'] = $model->data['IncomeReceipt']['status_id'];
                 }
-                $open_date = date(Configure::read('databaseDateFormat'), strtotime($model->data['IncomeReceipt']['open_date']));
-                $close_date = date(Configure::read('databaseDateFormat'), strtotime($model->data['IncomeReceipt']['close_date']));
+                $open_date = date(Configure::read('Application.databaseDateFormat'), strtotime($model->data['IncomeReceipt']['open_date']));
+                $close_date = date(Configure::read('Application.databaseDateFormat'), strtotime($model->data['IncomeReceipt']['close_date']));
 
                 $conditions['conditions']['And'] = ['payment_date BETWEEN ? AND ?' => array($open_date, $close_date)];
                 $Receipt->contain(array('PaymentUser', 'ReceiptStatus', 'ReceiptPaymentType', 'Client', 'Condo', 'CancelUser'));

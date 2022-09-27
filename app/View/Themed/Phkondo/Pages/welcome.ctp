@@ -2,7 +2,7 @@
 
 $this->layout = 'welcome';
 $url= AuthComponent::user('id') ? array('controller' => 'condos', 'action' => 'index') : array('controller' => 'users', 'action'=>'login');
-if (!file_exists(TMP . 'installed.txt') || Configure::read('installed_key') == 'xyz') {
+if (!file_exists(TMP . 'installed.txt') || strlen(Configure::read('installed_key'))<5) {
     $url= array('controller' => 'install', 'action' => 'index');
 }
 ?>

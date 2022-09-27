@@ -166,7 +166,7 @@ if (!isset($headerTitle)) {
                         break;
                 }
                 $('.datefield').datepicker({
-                    format: "<?php echo Configure::read('calendarDateFormat'); ?>",
+                    format: "<?php echo Configure::read('Application.calendarDateFormat'); ?>",
                     weekStart: 1,
                     language: phkondolang,
                     todayHighlight: true

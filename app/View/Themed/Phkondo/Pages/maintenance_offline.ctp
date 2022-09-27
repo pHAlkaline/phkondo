@@ -1,12 +1,12 @@
 <div id="page-container" class="row">
     <div id="page-content" class="col-sm-12">
         <div class="display home text-center" >
-            <?php if (MaintenanceModeComponent::isOn()) { ?>
+            <?php if (MaintenanceManagerComponent::isOn()) { ?>
                 <h1><?php echo __('Application Offline'); ?></h1>
                 <div class="alert alert-warning offline form">
                     <p><?php echo __('This application is now on maintenance mode, back soon as possible!'); ?></p>
-                    <p><?php echo __('Maintenance start at %s ', Configure::read('MaintenanceMode.start')); ?></p>
-                    <p><?php echo __('Maintenance duration %s Hours', Configure::read('MaintenanceMode.duration')); ?></p>
+                    <p><?php echo __('Maintenance start at %s ', Configure::read('MaintenanceManager.start')); ?></p>
+                    <p><?php echo __('Maintenance duration %s Hours', Configure::read('MaintenanceManager.duration')); ?></p>
 
                 </div>
             <?php } else { ?>

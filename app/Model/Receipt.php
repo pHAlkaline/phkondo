@@ -290,7 +290,7 @@ class Receipt extends AppModel {
      */
     public function checkPastDate($check) {
         $value = array_values($check);
-        return (CakeTime::fromString($value[0]) <= CakeTime::fromString(date(Configure::read('databaseDateFormat'))));
+        return (CakeTime::fromString($value[0]) <= CakeTime::fromString(date(Configure::read('Application.databaseDateFormat'))));
     }
 
     /**

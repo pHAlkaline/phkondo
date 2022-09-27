@@ -130,10 +130,35 @@ class InstallController extends AppController {
             $this->redirect('/');
         }
 
-        if (Configure::read('installed_key') != 'xyz') {
+        if (strlen(Configure::read('installed_key')) > 5) {
             $this->Flash->info(__d('install', 'Already Installed'));
             $this->redirect('/');
         }
+    }
+
+    private function __setPackList() {
+        $packList = array('free' => 'Community');
+        if (Configure::read('Application.isFullPack')) {
+            $packList = array(
+                'free' => 'Community',
+                'full' => 'Full Pack',
+                'one' => 'Full Pack One',
+                'pro' => 'Full Pack Pro',
+                'demo' => 'Demonstration'
+            );
+        }
+        if (getenv('PHKONDO_STAGE') && getenv('PHKONDO_STAGE') == 'SAAS' && Configure::read('Application.mode')) {
+            $onlyKeys = [Configure::read('Application.mode')];
+            $packList = array_filter($packList, function ($v) use ($onlyKeys) {
+                return in_array($v, $onlyKeys);
+            }, ARRAY_FILTER_USE_KEY);
+        }
+        $this->set('packList', $packList);
+    }
+
+    private function __files() {
+//copy(APP . 'Config' . DS . 'core_phapp.php.default', APP . 'Config' . DS . 'core_phapp.php');
+//copy(APP . 'Config' . DS . 'bootstrap_phapp.php.default', APP . 'Config' . DS . 'bootstrap_phapp.php');
     }
 
     /**
@@ -146,35 +171,24 @@ class InstallController extends AppController {
      */
     public function index() {
         $this->__check();
-        $this->__files();
+//$this->__files();
+        $this->__setPackList();
 
         if (isset($this->request->data['Install']['language']) && $this->request->data['Install']['language'] != '') {
             $this->Cookie->write('Config.language', $this->request->data['Install']['language'], false, "12 months");
             Configure::write('Config.language', $this->request->data['Install']['language']);
         }
+
+        if (getenv('PHKONDO_STAGE') && getenv('PHKONDO_STAGE') == 'SAAS' && Configure::read('Application.mode')) {
+            $this->request->data['Install']['mode'] = Configure::read('Application.mode');
+        }
+
         if (isset($this->request->data['Install']['mode']) && $this->request->data['Install']['mode'] != '') {
             $this->Cookie->write('Application.mode', $this->request->data['Install']['mode'], false, "12 months");
             Configure::write('Application.mode', $this->request->data['Install']['mode']);
         }
         $this->set('title_for_layout', __d('install', 'Installation: Welcome'));
         $this->set('title_for_step', __d('install', 'Installation: Welcome'));
-
-        $packList = array('free' => 'Community');
-        if (Configure::read('Application.isFullPack')) {
-            $packList = array(
-                'free' => 'Community',
-                'full' => 'Full Pack',
-                'one' => 'Full Pack One',
-                'pro' => 'Full Pack Pro',
-                'demo' => 'Demonstration'
-            );
-        }
-        $this->set('packList', $packList);
-    }
-
-    private function __files() {
-        copy(APP . 'Config' . DS . 'core_phapp.php.default', APP . 'Config' . DS . 'core_phapp.php');
-        copy(APP . 'Config' . DS . 'bootstrap_phapp.php.default', APP . 'Config' . DS . 'bootstrap_phapp.php');
     }
 
     /**
@@ -196,9 +210,24 @@ class InstallController extends AppController {
             $this->Cookie->write('Config.language', $this->request->data['Install']['language'], false, "12 months");
             Configure::write('Config.language', $this->request->data['Install']['language']);
         }
+
+        if (getenv('PHKONDO_STAGE') && getenv('PHKONDO_STAGE') == 'SAAS' && Configure::read('Application.mode')) {
+            $this->request->data['Install']['mode'] = Configure::read('Application.mode');
+        }
+
         if (isset($this->request->data['Install']['mode']) && $this->request->data['Install']['mode'] != '') {
             $this->Cookie->write('Application.mode', $this->request->data['Install']['mode'], false, "12 months");
             Configure::write('Application.mode', $this->request->data['Install']['mode']);
+        }
+
+        if (getenv('PHKONDO_STAGE') && getenv('PHKONDO_STAGE') == 'SAAS' && file_exists(APP . 'Config' . DS . 'database.php')) {
+            $db = ConnectionManager::getDataSource('default');
+            if (!$db->isConnected()) {
+                $this->Flash->error(__d('install', 'Could not connect to database.'));
+                return;
+            }
+            $this->Flash->info(__d('install', 'Database connection file already exists'));
+            return $this->redirect(array('action' => 'data'));
         }
 
         if (file_exists(APP . 'Config' . DS . 'database.php')) {
@@ -210,7 +239,7 @@ class InstallController extends AppController {
         if (empty($this->request->data)) {
             return;
         }
-        
+
         $config = $this->defaultConfig;
         foreach ($this->request->data as $key => $value) {
             if (isset($config[$key])) {
@@ -260,12 +289,11 @@ class InstallController extends AppController {
         }
 
         $db = ConnectionManager::getDataSource('default');
-        $brokenSequence = $db instanceof Postgres;
         if (!$db->isConnected()) {
             $this->Flash->error(__d('install', 'Could not connect to database.'));
         } else {
 
-            //phkondo structure
+//phkondo structure
             $structure_file = APP . 'Config' . DS . 'Schema' . DS . 'phkondo_' . Configure::read('Config.language') . '.sql';
             if (!file_exists($structure_file)) {
                 $structure_file = APP . 'Config' . DS . 'Schema' . DS . 'phkondo.sql';
@@ -278,7 +306,7 @@ class InstallController extends AppController {
                 return;
             }
 
-            // attachement plugin
+// attachement plugin
             $attachment_file = APP . 'Plugin' . DS . 'Attachments' . DS . 'Config' . DS . 'Schema' . DS . 'attachment.sql';
             if (file_exists($attachment_file)) {
                 try {
@@ -290,7 +318,7 @@ class InstallController extends AppController {
                 }
             }
 
-            // feedback plugin
+// feedback plugin
             $feedback_file = APP . 'Plugin' . DS . 'Feedback' . DS . 'Config' . DS . 'Schema' . DS . 'feedback.sql';
             if (file_exists($feedback_file)) {
 
@@ -303,7 +331,7 @@ class InstallController extends AppController {
                 }
             }
 
-            // drafts plugin
+// drafts plugin
             $drafts_file = APP . 'Plugin' . DS . 'Drafts' . DS . 'Config' . DS . 'Schema' . DS . 'drafts.sql';
             if (file_exists($drafts_file)) {
                 try {
@@ -317,7 +345,7 @@ class InstallController extends AppController {
 
             if ($this->request->data['demo_data'] == '1') {
 
-                // phkondo demo data
+// phkondo demo data
                 $demo_data_file = APP . 'Config' . DS . 'Schema' . DS . 'phkondodata_' . Configure::read('Config.language') . '.sql';
                 if (!file_exists($demo_data_file)) {
                     $demo_data_file = APP . 'Config' . DS . 'Schema' . DS . 'phkondodata.sql';
@@ -331,7 +359,7 @@ class InstallController extends AppController {
                     return;
                 }
 
-                // drafts demo data
+// drafts demo data
 
                 $drafts_data_file = APP . 'Plugin' . DS . 'Drafts' . DS . 'Config' . DS . 'Schema' . DS . 'draftsdata_' . Configure::read('Config.language') . '.sql';
                 if (file_exists($drafts_data_file)) {
@@ -347,7 +375,7 @@ class InstallController extends AppController {
             }
             if ($this->request->data['demo_condo'] == '1') {
 
-                // phkondo demo data
+// phkondo demo data
                 $demo_data_file = APP . 'Config' . DS . 'Schema' . DS . 'phkondo-democondo_' . Configure::read('Config.language') . '.sql';
                 if (!file_exists($demo_data_file)) {
                     $demo_data_file = APP . 'Config' . DS . 'Schema' . DS . 'phkondo-democondo.sql';
@@ -383,7 +411,7 @@ class InstallController extends AppController {
     }
 
     private function __setNewSaltSeed() {
-        // set new salt and seed value
+// set new salt and seed value
         $File = new File(APP . 'Config' . DS . 'core_phapp.php');
         $salt = Security::generateAuthKey();
         $seed = mt_rand() . mt_rand();
@@ -410,23 +438,24 @@ class InstallController extends AppController {
      * @access public
      */
     public function email() {
+
         $this->__check();
         $this->set('title_for_layout', __d('install', 'Step 3 : Email notification'));
         $this->set('title_for_step', __d('install', 'Step 3 : Email notification'));
-
-        if (empty($this->request->data)) {
-            if (file_exists(APP . 'Config' . DS . 'email_notifications.php')) {
-                unlink(APP . 'Config' . DS . 'email_notifications.php');
-                copy(APP . 'Config' . DS . 'email_notifications.php.default', APP . 'Config' . DS . 'email_notifications.php');
-            }
-            return;
-        }
 
         if (file_exists(APP . 'Config' . DS . 'email.php')) {
             unlink(APP . 'Config' . DS . 'email.php');
             copy(APP . 'Config' . DS . 'email.php.default', APP . 'Config' . DS . 'email.php');
         }
 
+        if (file_exists(APP . 'Config' . DS . 'email_notifications.php')) {
+            unlink(APP . 'Config' . DS . 'email_notifications.php');
+            copy(APP . 'Config' . DS . 'email_notifications.php.default', APP . 'Config' . DS . 'email_notifications.php');
+        }
+
+        if (empty($this->request->data)) {
+            return;
+        }
 
         $config = $this->defaultEmail;
         foreach ($this->request->data as $key => $value) {
@@ -434,6 +463,7 @@ class InstallController extends AppController {
                 $config[$key] = $value;
             }
         }
+        
         $file = new File(APP . 'Config' . DS . 'email.php', true);
         $content = $file->read();
 
@@ -446,7 +476,7 @@ class InstallController extends AppController {
             return;
         }
 
-        $emailNotifications = Configure::read('EmailNotifications.eng');
+        $emailNotifications = Configure::read('EmailNotifications.default');
         if (Configure::check('EmailNotifications.' . Configure::read('Config.language'))) {
             $emailNotifications = Configure::read('EmailNotifications.' . Configure::read('Config.language'));
         }
@@ -473,13 +503,13 @@ class InstallController extends AppController {
         }
 
         if ($this->request->is('post')) {
-            // secure app
+// secure app
             if (!$this->__secure()) {
                 $this->Flash->error(__d('install', 'Unable to create administrative user.'));
                 $this->log(__d('install', 'Unable to create administrative user.'));
                 return;
             }
-            // add admin password
+// add admin password
             $this->loadModel('User');
             $this->User->read(null, 1);
             $this->User->set($this->request->data);
@@ -510,7 +540,7 @@ class InstallController extends AppController {
         $this->set('title_for_step', __d('install', 'Installation completed successfully'));
         $install = $this->Cookie->read('Install');
         if (isset($install['key']) && $install['key'] == $key) {
-            /// alter configuration
+/// alter configuration
             $File = new File(APP . 'Config' . DS . 'core_phapp.php');
             $contents = $File->read();
             $contents = preg_replace('/(?<=Configure::write\(\'installed_key\', \')([^\' ]+)(?=\'\))/', $key, $contents);
@@ -523,27 +553,30 @@ class InstallController extends AppController {
             $File = new File(APP . 'Config' . DS . 'bootstrap_phapp.php');
             $contents = $File->read();
             $application_language = Configure::read('Config.language');
-            $contents = preg_replace('/(?<=Configure::write\(\'Language.default\', \')([^\' ]+)(?=\'\))/', $application_language, $contents);
+            $contents = preg_replace('/(?<=Configure::write\(\'Application.languageDefault\', \')([^\' ]+)(?=\'\))/', $application_language, $contents);
 
             $application_mode = Configure::read('Application.mode');
             if ($this->Cookie->check('Application.mode')) {
                 $application_mode = $this->Cookie->read('Application.mode');
             }
+            if (getenv('PHKONDO_STAGE') && getenv('PHKONDO_STAGE') == 'SAAS' && Configure::read('Application.mode')) {
+                $application_mode = Configure::read('Application.mode');
+            }
             $contents = preg_replace('/(?<=Configure::write\(\'Application.mode\', \')([^\' ]+)(?=\'\))/', $application_mode, $contents);
-            
+
             if (!$File->write($contents)) {
                 $this->Flash->error(__d('install', 'Unable to config your application, your Config %s bootstrap_phapp.php file is not writable. Please check the permissions.', DS));
                 $this->log(__d('install', 'Unable to config your application, your Config %s bootstrap_phapp.php file is not writable. Please check the permissions.', DS));
                 $this->redirect('/');
             }
 
-            // Create a new file with 0644 permissions
+// Create a new file with 0644 permissions
             $file = new File(TMP . 'installed.txt', true, 0644);
             if ($file) {
                 $file->append(__d('install', 'Installation completed successfully'));
                 $file->append(' - ' . $key);
                 $file->close();
-                $this->Flash->info(__d('install', 'Installation completed successfully'));
+//$this->Flash->info(__d('install', 'Installation completed successfully'));
             } else {
                 $this->set('title_for_layout', __d('install', 'Installation not completed successfully'));
                 $this->set('title_for_step', __d('install', 'Installation not completed successfully'));
@@ -568,11 +601,11 @@ class InstallController extends AppController {
      */
     private function __secure() {
 
-        // secure app
+// secure app
         if (!$this->__setNewSaltSeed()) {
             return false;
         }
-        // update all user passwords with new salt/seed 
+// update all user passwords with new salt/seed
         if (!$this->__updatePasswords()) {
             return false;
         }
@@ -583,7 +616,7 @@ class InstallController extends AppController {
      * Update Passwords
      *
      * Updates all users passwords with new salt value
-     * Setting new password equals username 
+     * Setting new password equals username
      * @param $user
      * @return $mixed if false, indicates processing failure
      */
@@ -595,23 +628,18 @@ class InstallController extends AppController {
             $newPass = $users[$key]['User']['username'];
             $users[$key]['User']['password'] = str_pad($newPass, 8, "0", STR_PAD_RIGHT) . '0';
         }
-        // update all users
+// update all users
         if (!$this->User->saveAll($users)) {
 
             $this->Flash->error(__d('install', 'Unable to generate users password.'));
             $this->log(__d('install', 'install', 'Unable to generate users password.'));
-            //$this->log($users->validationErrors);
+//$this->log($users->validationErrors);
             return false;
         }
         return true;
     }
 
     public function reinstall() {
-        unlink(APP . 'Config' . DS . 'core_phapp.php');
-        unlink(APP . 'Config' . DS . 'bootstrap_phapp.php');
-        unlink(APP . 'Config' . DS . 'database.php');
-        unlink(APP . 'Config' . DS . 'email.php');
-        unlink(APP . 'Config' . DS . 'email_notifications.php');
         unlink(TMP . 'installed.txt');
         $this->redirect(array('action' => 'index'));
     }

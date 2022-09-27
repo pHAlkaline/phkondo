@@ -39,7 +39,7 @@
                                 <td><?php echo h($note['Note']['document']); ?>&nbsp;</td>
                                 <td><?php echo h($note['Note']['document_date']); ?>&nbsp;</td>
                                 <td><?php echo h($note['Note']['title']); ?>&nbsp;</td>
-                                <td class="amount"><?php echo number_format($note['Note']['amount'], 2); ?>&nbsp;<?php echo Configure::read('currencySign'); ?></td>
+                                <td class="amount"><?php echo number_format($note['Note']['amount'], 2); ?>&nbsp;<?php echo Configure::read('Application.currencySign'); ?></td>
                                 <td><?php echo h($note['NoteType']['name']); ?></td>
                                 <td><?php echo h($note['NoteStatus']['name']); ?>    </td>
                                 <td><?php echo h($note['Note']['due_date']); ?>&nbsp;</td>

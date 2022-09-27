@@ -63,7 +63,7 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
                                  ?>
                             </td>
                             <td><?php echo h($fraction['Fraction']['permillage']); ?>&nbsp;</td>
-                            <td class="text-right"><?php echo number_format($fraction['Fraction']['current_account'], 2); ?>&nbsp;<?php echo Configure::read('currencySign'); ?></td>
+                            <td class="text-right"><?php echo number_format($fraction['Fraction']['current_account'], 2); ?>&nbsp;<?php echo Configure::read('Application.currencySign'); ?></td>
                             <td class="actions hidden-print">
                                     <?php  $deleteDisabled = '';
                                     if (!$fraction['Fraction']['deletable'] == true) {

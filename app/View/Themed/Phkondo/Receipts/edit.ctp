@@ -33,7 +33,7 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
         <legend><?php echo __('Edit Receipt'); ?>&nbsp;<?php echo $receiptId; ?></legend>
         <div class="actions col-sm-12">
             <div class="float-right text-right">
-                <h4><?php echo __('Total amount'); ?>&nbsp;:&nbsp;<span id="addNotesTotalAmount"></span>&nbsp;<?php echo Configure::read('currencySign'); ?></h4>
+                <h4><?php echo __('Total amount'); ?>&nbsp;:&nbsp;<span id="addNotesTotalAmount"></span>&nbsp;<?php echo Configure::read('Application.currencySign'); ?></h4>
             </div>
 
         </div><!-- /.actions -->            
@@ -140,7 +140,7 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
                                                     <td><?php echo h($note['NoteType']['name']); ?></td>
                                                     <td><?php echo h($note['Fraction']['fraction']); ?></td>
                                                     <td><?php echo h($note['Entity']['name']); ?></td>
-                                                    <td><?php echo h($note['Note']['amount']); ?>&nbsp;<?php echo Configure::read('currencySign'); ?></td>
+                                                    <td><?php echo h($note['Note']['amount']); ?>&nbsp;<?php echo Configure::read('Application.currencySign'); ?></td>
                                                     <!--td><?php //echo h($note['Note']['pending_amount']);                ?>&nbsp;</td-->
                                                     <td><?php echo h($note['Note']['due_date']); ?>&nbsp;</td>
                                                     <td class="actions">

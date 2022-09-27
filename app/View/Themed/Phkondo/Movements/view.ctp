@@ -59,7 +59,7 @@
                     </tr><tr>		<td><strong><?php echo __('Amount'); ?></strong></td>
                         <td>
                             <?php echo h($movement['Movement']['amount']); ?>
-                            &nbsp;<?php echo  Configure::read('currencySign'); ?>
+                            &nbsp;<?php echo  Configure::read('Application.currencySign'); ?>
                         </td>
                     </tr><tr>		<td><strong><?php echo __('Movement Category'); ?></strong></td>
                         <td>

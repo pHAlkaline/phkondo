@@ -293,26 +293,26 @@ class BudgetNotesController extends AppController {
                     $month = CakeTime::format('F', $tmpDate);
                     $this->request->data['Note']['title'] = __n('Share', 'Shares', 1) . ' ' . $shares . ' ' . __($month) . ' ' . $budget['Budget']['title'];
                     $this->request->data['Note']['document_date'] = $tmpDate;
-                    $this->request->data['Note']['due_date'] = date(Configure::read('dateFormatSimple'), strtotime($tmpDate . ' +' . $budget['Budget']['due_days'] . ' days'));
+                    $this->request->data['Note']['due_date'] = date(Configure::read('Application.dateFormatSimple'), strtotime($tmpDate . ' +' . $budget['Budget']['due_days'] . ' days'));
                     $this->request->data['Note']['note_status_id'] = '1';
                     switch ($budget['Budget']['share_periodicity_id']):
                         case 1:
                             $tmpDate = $tmpDate;
                             break;
                         case 2:
-                            $tmpDate = date(Configure::read('dateFormatSimple'), strtotime($tmpDate . ' +1 year'));
+                            $tmpDate = date(Configure::read('Application.dateFormatSimple'), strtotime($tmpDate . ' +1 year'));
                             break;
                         case 3:
-                            $tmpDate = date(Configure::read('dateFormatSimple'), strtotime($tmpDate . ' +6 months'));
+                            $tmpDate = date(Configure::read('Application.dateFormatSimple'), strtotime($tmpDate . ' +6 months'));
                             break;
                         case 4:
-                            $tmpDate = date(Configure::read('dateFormatSimple'), strtotime($tmpDate . ' +3 months'));
+                            $tmpDate = date(Configure::read('Application.dateFormatSimple'), strtotime($tmpDate . ' +3 months'));
                             break;
                         case 5:
-                            $tmpDate = date(Configure::read('dateFormatSimple'), strtotime($tmpDate . ' +1 month'));
+                            $tmpDate = date(Configure::read('Application.dateFormatSimple'), strtotime($tmpDate . ' +1 month'));
                             break;
                         case 6:
-                            $tmpDate = date(Configure::read('dateFormatSimple'), strtotime($tmpDate . ' +1 week'));
+                            $tmpDate = date(Configure::read('Application.dateFormatSimple'), strtotime($tmpDate . ' +1 week'));
                             break;
                         default:
                             break;

@@ -48,16 +48,7 @@
                 echoError($message);
             }
 
-            // config/core.php is writable
-            if (is_writable(APP . 'Config' . DS . 'core.php')) {
-                $message = __d('install', 'Your Config/core_phapp.php file is writable.');
-                echoMessage($message);
-            } else {
-                $check = false;
-                $message = __d('install', 'Your Config/core_phapp.php file is NOT writable.') . ' --> ' . APP . 'Config' . DS . 'core_phapp.php';
-                echoError($message);
-            }
-
+            
             // php version
             if (version_compare(phpversion(), 5.6, '>=') && version_compare(phpversion(), 8.0, '<')) {
                 $message = sprintf(__d('install', 'PHP version %s >= 5.6 and <8.0.0'), phpversion());

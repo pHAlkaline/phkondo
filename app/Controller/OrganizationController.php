@@ -109,7 +109,6 @@ class OrganizationController extends AppController {
             array('link' => Router::url(array('controller' => 'organization', 'action' => 'config')), 'text' => __('Organization'), 'active' => 'active'));
 
         $headerTitle = __('Organization');
-        Configure::load('organization.php', 'default');
         $organization = Configure::read('Organization');
         $this->set(compact('breadcrumbs', 'headerTitle', 'organization'));
     }

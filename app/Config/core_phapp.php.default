@@ -47,18 +47,20 @@ Configure::write('installed_key', 'xyz');
 /**
  * A random string used in security hashing methods.
  */
-Configure::write('Security.salt', 'salt');
+Configure::write('Security.salt', 'xyz');
 
 /**
  * A random numeric string (digits only) used to encrypt/decrypt strings.
  */
-Configure::write('Security.cipherSeed', '13456');
+Configure::write('Security.cipherSeed', '123');
 Configure::write('Security.useOpenSsl', true);
+
 /**
  * Uncomment this line and correct your server timezone to fix
  * any date & time related errors.
  */
 date_default_timezone_set('Europe/Lisbon');
+Configure::write('Config.timezone', 'Europe/London'); // Europe/Lisbon
 
 
 /**
@@ -69,7 +71,7 @@ date_default_timezone_set('Europe/Lisbon');
 Configure::write('Access.open', false); // For SECURITY keep this FALSE , use only on emergency.
 
 /**
- * User role settings , do not change unless you know what you are doing 
+ * User role list , do not change unless you know what you are doing
  */
 Configure::write('User.role', array(
     'admin' => __('App Administrator'),
@@ -77,4 +79,26 @@ Configure::write('User.role', array(
     'colaborator' => __('Employee')
         )
 );
+
+/**
+ * Idiom list , do not change unless you know what you are doing
+ */
+Configure::write('Language.list', array(
+    'eng' => 'English',
+    'spa' => 'Español',
+    'ita' => 'Italiano',
+    'por' => 'Português',
+    'pt-br' => 'Português ( Brasil)'
+));
+
+
+/**
+ * Idiom list , do not change unless you know what you are doing
+ */
+Configure::write('Theme.list', array(
+    'Phkondo' => 'pHKondo',
+        //'GreenAdm'=>'GreenAdm',
+        //'SBAdmin'=>'SBAdmin',
+));
+Configure::write('Theme.name','Phkondo');
 

@@ -1077,7 +1077,7 @@ msgstr "Utilizadores"
 msgid "Selected Theme not found."
 msgstr "Tema selecionado não foi encontrado."
 
-#: Controller/Component/MaintenanceModeComponent.php:102
+#: Controller/Component/MaintenanceManagerComponent.php:102
 msgid "This application will be on maintenance mode at  %s "
 msgstr "A aplicação vai estar em manutenção em %s "
 

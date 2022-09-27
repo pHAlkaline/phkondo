@@ -38,20 +38,15 @@ class AppController extends Controller {
         'Flash',
         'Auth',
         'Cookie',
-        'MaintenanceMode',
+        'MaintenanceManager',
         'SubscriptionManager');
     public $phkRequestData = array();
 
     public function beforeFilter() {
-        Configure::load('organization.php', 'default');
-        $this->Cookie->name = Configure::read('Cookie.name');
-        if (!$this->Cookie->check('Config.language')) {
-            $this->Cookie->write('Config.language', Configure::read('Language.default'));
-        }
-        Configure::write('Config.language', $this->Cookie->read('Config.language'));
-
+        $this->configure();
+        
         $this->Paginator->settings['paramType'] = 'querystring';
-        $this->theme = $this->getTheme();
+      
         $this->Auth->authenticate = array(AuthComponent::ALL => array('userModel' => 'User', 'scope' => array("User.active" => 1)), 'Form');
         $this->Auth->loginRedirect = Router::url(array('plugin' => null, 'controller' => 'condos', 'action' => 'index'), true);
         $this->Auth->logoutRedirect = Router::url(array('plugin' => null, 'controller' => 'users', 'action' => 'login'), true);
@@ -82,28 +77,6 @@ class AppController extends Controller {
         $this->set(compact('phkRequestData', 'logo_image_src'));
     }
 
-    private function rememberMe() {
-        // set cookie options
-        $this->Cookie->httpOnly = true;
-
-        if (!$this->Auth->loggedIn() && $this->Cookie->read('rememberMe')) {
-            $cookie = $this->Cookie->read('rememberMe');
-            $user = false;
-            if (isset($cookie['username']) && isset($cookie['password'])) {
-                $this->loadModel('User'); // If the User model is not loaded already
-                $user = $this->User->find('first', array(
-                    'conditions' => array(
-                        'User.username' => $cookie['username'],
-                        'User.password' => $cookie['password']
-                    )
-                ));
-            }
-
-            if ($user && !$this->Auth->login($user['User'])) {
-                Router::url(array('plugin' => null, 'controller' => 'condos', 'action' => 'index'), true); // destroy session & cookie
-            }
-        }
-    }
 
     public function isAuthorized($user) {
         if (isset($user['role'])) {
@@ -179,6 +152,44 @@ class AppController extends Controller {
         $this->setAdministratorData();
         $this->setCondoData();
         $this->setFiscalYearData();
+    }
+
+
+    private function configure(){
+       
+        $this->Cookie->name = Configure::read('Cookie.name');
+        if (!$this->Cookie->check('Config.language')) {
+            $this->Cookie->write('Config.language', Configure::read('Application.languageDefault'));
+        }
+        Configure::write('Config.language', $this->Cookie->read('Config.language'));
+        date_default_timezone_set(Configure::read('Config.server_timezone'));
+
+        $this->theme =  Configure::read('Application.theme');
+        Configure::load('organization.php', 'default');
+
+    }
+
+    private function rememberMe() {
+        // set cookie options
+        $this->Cookie->httpOnly = true;
+
+        if (!$this->Auth->loggedIn() && $this->Cookie->read('rememberMe')) {
+            $cookie = $this->Cookie->read('rememberMe');
+            $user = false;
+            if (isset($cookie['username']) && isset($cookie['password'])) {
+                $this->loadModel('User'); // If the User model is not loaded already
+                $user = $this->User->find('first', array(
+                    'conditions' => array(
+                        'User.username' => $cookie['username'],
+                        'User.password' => $cookie['password']
+                    )
+                ));
+            }
+
+            if ($user && !$this->Auth->login($user['User'])) {
+                Router::url(array('plugin' => null, 'controller' => 'condos', 'action' => 'index'), true); // destroy session & cookie
+            }
+        }
     }
 
     private function setCondoData() {
@@ -349,8 +360,5 @@ class AppController extends Controller {
         }
     }
 
-    private function getTheme() {
-        return Configure::read('Theme.name');
-    }
 
 }

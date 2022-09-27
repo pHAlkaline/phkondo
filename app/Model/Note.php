@@ -467,7 +467,7 @@ class Note extends AppModel {
      * @return bool True if in the past or today, False otherwise
      */
     public function checkPastDate($data, $key) {
-        return CakeTime::fromString($data[$key]) <= CakeTime::fromString(date(Configure::read('databaseDateFormat')));
+        return CakeTime::fromString($data[$key]) <= CakeTime::fromString(date(Configure::read('Application.databaseDateFormat')));
     }
 
 }

@@ -27,107 +27,38 @@
  *
  */
 
-CakePlugin::load('DebugKit');
-CakePlugin::load('ClearCache');
-CakePlugin::load('Feedback');
-CakePlugin::load('Migrations');
-
-try {
-    CakePlugin::load('Drafts', array('bootstrap' => true));
-    CakePlugin::load('PrintReceipt', array('bootstrap' => true));
-    CakePlugin::load('Reports', array('bootstrap' => true));
-    CakePlugin::load('Drafts', array('bootstrap' => true));
-    CakePlugin::load('Attachments', array('bootstrap' => true));
-    Configure::write('Application.isFullPack',true);
-} catch (\Exception $e) {
-    Configure::write('Application.isFullPack',false);
-}
-
-/*
- * CakePdf Plugin
- * Requires wkhtmltopdf engine at your system
- * https://wkhtmltopdf.org/
- */
-CakePlugin::load('CakePdf', array('bootstrap' => true, 'routes' => false));
-Configure::write('CakePdf', array(
-    // Requires wkhtmltopdf engine
-    // https://wkhtmltopdf.org/
-    'binary' => 'C:\xampp7427\wkhtmltopdf\bin\wkhtmltopdf.exe',
-    // windows: C:\xampp7427\wkhtmltopdf\bin\wkhtmltopdf.exe
-    // linux: /usr/local/bin/wkhtmltopdf
-    'engine' => 'CakePdf.WkHtmlToPdf',
-    'orientation' => 'portrait',
-    'download' => false,
-    'options' => [
-        'disable-javascript' => true,
-        'print-media-type' => true,
-        'enable-local-file-access' => true
-    ],
-    'phkondo' => [
-        'active' => false, // Requires CakePdf Plugin
-        'cssPath' => APP . 'View' . DS . 'Themed' . DS . 'Phkondo' . DS . WEBROOT_DIR . DS . 'css' . DS,
-        'imgPath' => APP . 'View' . DS . 'Themed' . DS . 'Phkondo' . DS . WEBROOT_DIR . DS . 'img' . DS,
-    ]
-));
-
-/*
- * Attachment Plugin
- */
-Configure::write('Attachment.attachment', array(
-    'path' => '{ROOT}files{DS}{model}{DS}{field}{DS}',
-    'pathMethod' => 'foreignKey',
-    'nameCallback' => 'fileRename',
-    'thumbnails' => false,
-    'thumbnailMethod' => 'php',
-    'thumbnailSizes' => array(
-        'xvga' => '1024x768',
-        'vga' => '640x480',
-        'thumb' => '80x80',
-    ),
-    'maxSize' => '200000',
-    'extensions' => array('pdf', 'txt', 'png', 'gif', 'jpg')
-));
-
-/**
- * Theme Settings
- */
-Configure::write('Theme.name', 'phkondo');
-Configure::write('Theme.list', array(
-    'Phkondo' => 'pHKondo',
-        //'GreenAdm'=>'GreenAdm',
-        //'SBAdmin'=>'SBAdmin',
-));
+Configure::write('Config.server_timezone', 'Europe/London'); // Server TimeZone, Europe/London
+Configure::write('Config.timezone', 'Europe/Lisbon'); // User TimeZone, Europe/London
 
 /**
  * App Settings
  */
-Configure::write('Application.isSAAS', false); // set true if you sell this as a SAAS Service;
 Configure::write('Application.mode', 'free'); // free, full, one, pro, demo -> use demo for demo mode;
-Configure::write('Config.timezone', 'Europe/London'); // Europe/Lisbon
-Configure::write('databaseDateFormat', 'Y-m-d'); // database dateformat
-Configure::write('dateFormat', 'd-m-Y H:i:s'); // phkondo dateformat with time
-Configure::write('dateFormatSimple', 'd-m-Y'); // phkondo dateformat
-Configure::write('calendarDateFormat', 'dd-mm-yyyy'); // input date fields date format
-Configure::write('currencySign', '&euro;'); // more at http://www.w3schools.com/html/html_entities.asp
+Configure::write('Application.databaseDateFormat', 'Y-m-d'); // database dateformat
+Configure::write('Application.dateFormat', 'd-m-Y H:i:s'); // phkondo dateformat with time
+Configure::write('Application.dateFormatSimple', 'd-m-Y'); // phkondo dateformat
+Configure::write('Application.calendarDateFormat', 'dd-mm-yyyy'); // input date fields date format
+Configure::write('Application.currencySign', '&euro;'); // more at http://www.w3schools.com/html/html_entities.asp
+Configure::write('Application.languageDefault', 'eng');
+Configure::write('Application.theme', 'Phkondo');
 
-/**
- * Idiom Settings
- */
-Configure::write('Language.default', 'eng');
-Configure::write('Language.list', array(
-    'eng' => 'English',
-    'spa' => 'Español',
-    'ita' => 'Italiano',
-    'por' => 'Português',
-    'pt-br' => 'Português ( Brasil)'
-));
+Configure::write('Attachment.attachment.maxSize', '200000');
+Configure::write('Attachment.attachment.extensions', array('pdf', 'txt', 'png', 'gif', 'jpg'));
+
+Configure::write('CakePdf.phkondo.Active', false);
+Configure::write('CakePdf.binary', 'C:\xampp7427\wkhtmltopdf\bin\wkhtmltopdf.exe');
+// Requires wkhtmltopdf engine
+    // https://wkhtmltopdf.org/
+    // windows: C:\xampp7427\wkhtmltopdf\bin\wkhtmltopdf.exe
+    // linux: /usr/local/bin/wkhtmltopdf
+
 
 /**
  * Settings for maintenance component
  */
-Configure::write('MaintenanceMode.start', '01-01-2000 00:00:00'); // Date 01-01-2000 00:00:00
-Configure::write('MaintenanceMode.duration', ''); // Duration in hours
-Configure::write('MaintenanceMode.site_offline_url', '/pages/maintenance_offline');
+Configure::write('MaintenanceManager.start', '01-01-2000 00:00:00'); // Date 01-01-2000 00:00:00
+Configure::write('MaintenanceManager.duration', '1'); // Duration in hours
+Configure::write('MaintenanceManager.site_offline_url', '/pages/maintenance_offline');
 
 /**
  * Settings for Subscription component

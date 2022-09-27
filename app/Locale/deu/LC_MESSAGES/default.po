@@ -1070,7 +1070,7 @@ msgstr ""
 msgid "Selected Theme not found."
 msgstr ""
 
-#: Controller/Component/MaintenanceModeComponent.php:102
+#: Controller/Component/MaintenanceManagerComponent.php:102
 msgid "This application will be on maintenance mode at  %s "
 msgstr ""
 
@@ -3384,7 +3384,7 @@ msgstr ""
 msgid "This subscription is back online, please refresh!"
 msgstr ""
 
-#: Controller/Component/MaintenanceModeComponent.php:102
+#: Controller/Component/MaintenanceManagerComponent.php:102
 msgid "This subscription will expire in %s days"
 msgstr ""
 

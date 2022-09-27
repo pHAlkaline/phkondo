@@ -155,7 +155,7 @@ class ReceiptsController extends AppController {
             $number = $this->_getNextReceiptIndex($this->getPhkRequestVar('condo_id'));
             $this->request->data['Receipt']['document'] = $this->getPhkRequestVar('condo_id') . Date('Y') . '-' . sprintf('%06d', $number);
             if ($this->request->data['Receipt']['document_date'] == '') {
-                $this->request->data['Receipt']['document_date'] = date(Configure::read('dateFormatSimple'));
+                $this->request->data['Receipt']['document_date'] = date(Configure::read('Application.dateFormatSimple'));
             }
             if ($this->Receipt->save($this->request->data)) {
                 $this->_setReceiptIndex($this->getPhkRequestVar('condo_id'), $number);

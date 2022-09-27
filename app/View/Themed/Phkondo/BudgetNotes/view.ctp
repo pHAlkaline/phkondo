@@ -93,7 +93,7 @@ if ($phkRequestData['budget_status'] == 1) {
                     <tr>		<td><strong><?php echo __('Amount'); ?></strong></td>
                         <td>
                                 <?php echo h($note['Note']['amount']); ?>
-                            &nbsp;<?php echo  Configure::read('currencySign'); ?>
+                            &nbsp;<?php echo  Configure::read('Application.currencySign'); ?>
                         </td>
                     </tr><!--tr>		<td><strong><?php //echo __('Pending Amount'); ?></strong></td>
                         <td>

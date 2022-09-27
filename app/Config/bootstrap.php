@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is loaded automatically by the app/webroot/index.php file after core.php
  *
@@ -92,8 +93,8 @@ Cache::config('default', array('engine' => 'File'));
  * ));
  */
 Configure::write('Dispatcher.filters', array(
-	'AssetDispatcher',
-	'CacheDispatcher'
+    'AssetDispatcher',
+    'CacheDispatcher'
 ));
 
 /**
@@ -101,16 +102,77 @@ Configure::write('Dispatcher.filters', array(
  */
 App::uses('CakeLog', 'Log');
 CakeLog::config('debug', array(
-	'engine' => 'File',
-	'types' => array('notice', 'info', 'debug'),
-	'file' => 'debug',
+    'engine' => 'File',
+    'types' => array('notice', 'info', 'debug'),
+    'file' => 'debug',
 ));
 CakeLog::config('error', array(
-	'engine' => 'File',
-	'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
-	'file' => 'error',
+    'engine' => 'File',
+    'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
+    'file' => 'error',
 ));
 App::uses('AppExceptionHandler', 'Lib');
+
+CakePlugin::load('DebugKit');
+CakePlugin::load('ClearCache');
+CakePlugin::load('Feedback');
+CakePlugin::load('Migrations');
+
+try {
+    CakePlugin::load('Drafts', array('bootstrap' => true));
+    CakePlugin::load('PrintReceipt', array('bootstrap' => true));
+    CakePlugin::load('Reports', array('bootstrap' => true));
+    CakePlugin::load('Drafts', array('bootstrap' => true));
+    CakePlugin::load('Attachments', array('bootstrap' => true));
+    Configure::write('Application.isFullPack', true);
+} catch (\Exception $e) {
+    Configure::write('Application.isFullPack', false);
+}
+
+/*
+ * CakePdf Plugin
+ * Requires wkhtmltopdf engine at your system
+ * https://wkhtmltopdf.org/
+ */
+
+Configure::write('CakePdf', array(
+    // Requires wkhtmltopdf engine
+    // https://wkhtmltopdf.org/
+    'binary' => 'C:\xampp7427\wkhtmltopdf\bin\wkhtmltopdf.exe',
+    // windows: C:\xampp7427\wkhtmltopdf\bin\wkhtmltopdf.exe
+    // linux: /usr/local/bin/wkhtmltopdf
+    'engine' => 'CakePdf.WkHtmlToPdf',
+    'orientation' => 'portrait',
+    'download' => false,
+    'options' => [
+        'disable-javascript' => true,
+        'print-media-type' => true,
+        'enable-local-file-access' => true
+    ],
+    'phkondo' => [
+        'active' => false, // Requires CakePdf Plugin
+        'cssPath' => APP . 'View' . DS . 'Themed' . DS . 'Phkondo' . DS . WEBROOT_DIR . DS . 'css' . DS,
+        'imgPath' => APP . 'View' . DS . 'Themed' . DS . 'Phkondo' . DS . WEBROOT_DIR . DS . 'img' . DS,
+    ]
+));
+
+/*
+ * Attachment Plugin
+ */
+Configure::write('Attachment.attachment', array(
+    'path' => '{ROOT}files{DS}{model}{DS}{field}{DS}',
+    'pathMethod' => 'foreignKey',
+    'nameCallback' => 'fileRename',
+    'thumbnails' => false,
+    'thumbnailMethod' => 'php',
+    'thumbnailSizes' => array(
+        'xvga' => '1024x768',
+        'vga' => '640x480',
+        'thumb' => '80x80',
+    ),
+    'maxSize' => '200000',
+    'extensions' => array('pdf', 'txt', 'png', 'gif', 'jpg')
+));
 
 if (!file_exists(APP . 'Config' . DS . 'bootstrap_phapp.php')) {
     copy(APP . 'Config' . DS . 'bootstrap_phapp.php.default', APP . 'Config' . DS . 'bootstrap_phapp.php');
@@ -123,7 +185,16 @@ if (!file_exists(APP . 'Config' . DS . 'email.php')) {
 }
 if (!file_exists(APP . 'Config' . DS . 'email_notifications.php')) {
     copy(APP . 'Config' . DS . 'email_notifications.php.default', APP . 'Config' . DS . 'email_notifications.php');
+    Configure::load('email_notifications');
+    $emailNotifications = Configure::read('EmailNotifications.default');
+    Configure::write('EmailNotifications', $emailNotifications);
+    Configure::write('EmailNotifications.active', false);
+    Configure::dump('email_notifications.php', 'default', array('EmailNotifications'));
+}
+Configure::load('email_notifications');
+
+if (!file_exists(APP . 'Config' . DS . 'organization.php')) {
+    copy(APP . 'Config' . DS . 'organization.php.default', APP . 'Config' . DS . 'organization.php');
 }
 
-Configure::load('email_notifications');
 require 'bootstrap_phapp.php';

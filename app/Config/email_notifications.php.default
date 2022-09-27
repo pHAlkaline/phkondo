@@ -2,6 +2,34 @@
 
 $config = array(
     'EmailNotifications' => array(
+        'default' => array(
+            'active' => false,
+            'receipt_subject' => '[ReceiptSubject]',
+            'receipt_message' => '[ReceiptMessage]',
+            'receipt_attachment_format' => 'html',
+            'current_account_subject' => '[CurrentAccountSubject]',
+            'current_account_message' => '[CurrentAccountMessage]',
+            'current_account_attachment_format' => 'html',
+        ),
+         'eng' => array(
+            'active' => true,
+            'receipt_subject' => 'Receipt Notification',
+            'receipt_message' => 'Excellency Mr.
+
+The following document was issued to you, which can be consulted in the attachment.
+
+condominium management,
+',
+            'receipt_attachment_format' => 'html',
+            'current_account_subject' => 'Current Account Notification',
+            'current_account_message' => 'Excellency Mr.
+
+The following document was issued to you, which can be consulted in the annex.
+
+condominium management,
+',
+            'current_account_attachment_format' => 'html',
+        ),
         'ita' => array(
             'active' => true,
             'receipt_subject' => 'Notifica Di Ricevuta',
@@ -11,7 +39,7 @@ Vi è stato rilasciato il seguente documento, consultabile in allegato.
  
 gestione condominiale,
 ',
-            'receipt_attachment_format' => 'pdf',
+            'receipt_attachment_format' => 'html',
             'current_account_subject' => 'Notifica Del Conto Corrente',
             'current_account_message' => 'Eccellenza Sig.
 
@@ -19,45 +47,7 @@ Vi è stato rilasciato il seguente documento, consultabile in allegato.
  
 gestione condominiale,
 ',
-            'current_account_attachment_format' => 'pdf',
-        ),
-        'spa' => array(
-            'active' => true,
-            'receipt_subject' => 'Notificación De Recibo',
-            'receipt_message' => 'Excelencia Señor.
-
-Se le emitió el siguiente documento, el cual puede ser consultado en el anexo.
- 
-administración de condominios,
-',
-            'receipt_attachment_format' => 'pdf',
-            'current_account_subject' => 'Notificación De Cuenta Corriente',
-            'current_account_message' => 'Excelencia Señor.
-
-Se le emitió el siguiente documento, el cual puede ser consultado en el anexo.
- 
-administración de condominios,
-',
-            'current_account_attachment_format' => 'pdf',
-        ),
-        'eng' => array(
-            'active' => true,
-            'receipt_subject' => 'Receipt Notification',
-            'receipt_message' => 'Excellency Mr.
-
-The following document was issued to you, which can be consulted in the annex.
- 
-condominium management,
-',
-            'receipt_attachment_format' => 'pdf',
-            'current_account_subject' => 'Current Account Notification',
-            'current_account_message' => 'Excellency Mr.
-
-The following document was issued to you, which can be consulted in the annex.
- 
-condominium management,
-',
-            'current_account_attachment_format' => 'pdf',
+            'current_account_attachment_format' => 'html',
         ),
         'por' => array(
             'active' => true,
@@ -68,7 +58,7 @@ Foi-lhe emitido a seguinte recibo, o qual pode ser consultado em anexo.
  
 A administração do condomínio,
 ',
-            'receipt_attachment_format' => 'pdf',
+            'receipt_attachment_format' => 'html',
             'current_account_subject' => 'Notificação Conta Corrente',
             'current_account_message' => 'Exmo(a). Sr(a).
 
@@ -76,7 +66,7 @@ Foi-lhe emitido a seguinte documento , o qual pode ser consultado em anexo.
  
 A administração do condomínio,
 ',
-            'current_account_attachment_format' => 'pdf',
+            'current_account_attachment_format' => 'html',
         ),
         'pt_BR' => array(
             'active' => true,
@@ -87,7 +77,7 @@ Foi-lhe emitido a seguinte recibo, o qual pode ser consultado em anexo.
  
 A administração do condomínio,
 ',
-            'receipt_attachment_format' => 'pdf',
+            'receipt_attachment_format' => 'html',
             'current_account_subject' => 'Notificação Conta Corrente',
             'current_account_message' => 'Exmo(a). Sr(a).
 
@@ -95,7 +85,26 @@ Foi-lhe emitido a seguinte documento , o qual pode ser consultado em anexo.
  
 A administração do condomínio,
 ',
-            'current_account_attachment_format' => 'pdf',
+            'current_account_attachment_format' => 'html',
+        ),
+        'spa' => array(
+            'active' => true,
+            'receipt_subject' => 'Notificación De Recibo',
+            'receipt_message' => 'Excelencia Señor.
+
+Se le emitió el siguiente documento, el cual puede ser consultado en el anexo.
+
+administración de condominios,
+',
+            'receipt_attachment_format' => 'html',
+            'current_account_subject' => 'Notificación De Cuenta Corriente',
+            'current_account_message' => 'Excelencia Señor.
+
+Se le emitió el siguiente documento, el cual puede ser consultado en el anexo.
+
+administración de condominios,
+',
+            'current_account_attachment_format' => 'html',
         ),
     )
 );

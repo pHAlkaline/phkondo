@@ -86,7 +86,7 @@ $this->Html->script('footable', false);
                                 </tr>
                                 <tr>
                                     <td><strong><?php echo __('Total Amount'); ?></strong></td>
-                                    <td><?php echo h($receipt['Receipt']['total_amount']); ?>&nbsp;<?php echo Configure::read('currencySign'); ?></td>
+                                    <td><?php echo h($receipt['Receipt']['total_amount']); ?>&nbsp;<?php echo Configure::read('Application.currencySign'); ?></td>
                                 </tr>
                                 <tr>
                                     <td><strong><?php echo __('Address'); ?></strong></td>
@@ -157,7 +157,7 @@ $this->Html->script('footable', false);
                             <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate" style="font-size: 40px;"></span>
                         </div>
                         <div class="col-sm-12 hidden">
-                            <h4 class="text-right"><?php echo __('Total Amount').' : '.number_format($receipt['Receipt']['total_amount'], 2).' '.Configure::read('currencySign'); ?></h4>
+                            <h4 class="text-right"><?php echo __('Total Amount').' : '.number_format($receipt['Receipt']['total_amount'], 2).' '.Configure::read('Application.currencySign'); ?></h4>
 
                             <table data-empty="<?= __('Empty'); ?>"  class="footable table table-hover table-condensed">
                                 <thead>
@@ -187,7 +187,7 @@ $this->Html->script('footable', false);
                                                         echo '-';
                                                     }
                                                     echo $note['amount'];
-                                                    ?>&nbsp;<?php echo Configure::read('currencySign'); ?>
+                                                    ?>&nbsp;<?php echo Configure::read('Application.currencySign'); ?>
                                         </td>
                                     </tr>
                                         <?php endforeach; ?>
@@ -197,7 +197,7 @@ $this->Html->script('footable', false);
                                         <td></td>
                                         <td></td>
                                         <td class="text-right"><?php echo __('Total amount'); ?>&nbsp;:&nbsp;</td>
-                                        <td class="amount"><?php echo number_format($receipt['Receipt']['total_amount'], 2); ?>&nbsp;<?php echo Configure::read('currencySign'); ?></td>
+                                        <td class="amount"><?php echo number_format($receipt['Receipt']['total_amount'], 2); ?>&nbsp;<?php echo Configure::read('Application.currencySign'); ?></td>
 
 
                                     </tr>

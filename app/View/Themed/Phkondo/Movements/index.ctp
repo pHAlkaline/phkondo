@@ -13,7 +13,7 @@ if (isset($movements[0]['Account']['balance'])) {
 
         <div class="index">
 
-            <h2 class="col-sm-9"><?php echo __n('Movement', 'Movements', 2) . ' (' . __('Balance') . ': ' . number_format($balance, 2) . ' ' . Configure::read('currencySign') . ')'; ?></h2>
+            <h2 class="col-sm-9"><?php echo __n('Movement', 'Movements', 2) . ' (' . __('Balance') . ': ' . number_format($balance, 2) . ' ' . Configure::read('Application.currencySign') . ')'; ?></h2>
             <div class="actions hidden-print col-sm-3">
                 <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Movement'), array('action' => 'add', '?' => $this->request->query), array('class' => 'btn btn-primary', 'style' => 'margin: 8px 0; float: right;', 'escape' => false));
                 ?>
@@ -45,7 +45,7 @@ if (isset($movements[0]['Account']['balance'])) {
                                 <td><?php echo h($movement['MovementOperation']['name']); ?></td>
                                 <td><?php echo h($movement['MovementType']['name']); ?></td>
                                 <td class="amount"><?php if ($movement['MovementType']['id'] == 2) echo '-';
-                        echo number_format($movement['Movement']['amount'], 2); ?>&nbsp;<?php echo Configure::read('currencySign'); ?></td>
+                        echo number_format($movement['Movement']['amount'], 2); ?>&nbsp;<?php echo Configure::read('Application.currencySign'); ?></td>
 
                                 <td class="actions hidden-print">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $movement['Movement']['id'], '?' => $this->request->query), array('title' => __('Details'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>

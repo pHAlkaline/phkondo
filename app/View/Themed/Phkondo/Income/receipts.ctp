@@ -129,7 +129,7 @@
                                         <?php echo h($receipt['Condo']['title']); ?>
                                     </td>
 
-                                    <td class="amount"><?php echo number_format($total_amount, 2); ?>&nbsp;<?php echo Configure::read('currencySign'); ?></td>
+                                    <td class="amount"><?php echo number_format($total_amount, 2); ?>&nbsp;<?php echo Configure::read('Application.currencySign'); ?></td>
 
                                 </tr>
                             <?php endforeach; ?>
@@ -142,7 +142,7 @@
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
                                 <td><strong><?php echo __('Total Amount'); ?></strong></td>
-                                <td class="amount"><strong><?php echo number_format($amount_sum, 2); ?>&nbsp;<?php echo Configure::read('currencySign'); ?></strong></td>
+                                <td class="amount"><strong><?php echo number_format($amount_sum, 2); ?>&nbsp;<?php echo Configure::read('Application.currencySign'); ?></strong></td>
 
                             </tr>
                         </tbody>

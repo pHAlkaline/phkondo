@@ -39,7 +39,7 @@
                         </tr><tr>		<td><strong><?php echo __('Balance'); ?></strong></td>
                             <td>
                                 <?php echo h($account['Account']['balance']); ?>
-                                &nbsp;<?php echo  Configure::read('currencySign'); ?>
+                                &nbsp;<?php echo  Configure::read('Application.currencySign'); ?>
                             </td>
                         </tr><tr>		<td><strong><?php echo __('Bank'); ?></strong></td>
                             <td>

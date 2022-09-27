@@ -41,7 +41,7 @@
                                 <td><?php echo h( $budget['Budget']['budget_date']); ?>&nbsp;</td>
                                 <td><?php echo h( $budget['Budget']['begin_date']); ?>&nbsp;</td>
                                 <td><?php echo h($budget['Budget']['shares']); ?>&nbsp;</td>
-                                <td class="amount"><?php echo number_format($budget['Budget']['amount'],2); ?>&nbsp;<?php echo  Configure::read('currencySign'); ?></td>
+                                <td class="amount"><?php echo number_format($budget['Budget']['amount'],2); ?>&nbsp;<?php echo  Configure::read('Application.currencySign'); ?></td>
                                 <td class="actions hidden-print">
                                     <?php 
                                     $editDisabled=' disabled';

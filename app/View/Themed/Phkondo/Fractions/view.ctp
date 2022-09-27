@@ -135,14 +135,14 @@ $this->Html->script('fraction_view', false); ?>
                                 <tr>
                                     <td><strong><?php echo __('Current Account'); ?></strong></td>
                                     <td>
-                            <?php echo number_format($current_account, 2); ?>&nbsp;<?php echo Configure::read('currencySign'); ?>
+                            <?php echo number_format($current_account, 2); ?>&nbsp;<?php echo Configure::read('Application.currencySign'); ?>
                                         &nbsp;
                                     </td>
                                 </tr>
                                 <tr>
                                     <td><strong><?php echo  __('Crédits'); ?></strong></td>
                                     <td>
-                            <?php echo number_format($credits, 2); ?>&nbsp;<?php echo Configure::read('currencySign'); ?>
+                            <?php echo number_format($credits, 2); ?>&nbsp;<?php echo Configure::read('Application.currencySign'); ?>
                                         &nbsp;
                                     </td>
                                 </tr>

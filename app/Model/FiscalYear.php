@@ -166,8 +166,8 @@ class FiscalYear extends AppModel {
         if (isset($this->data[$this->alias]['id']))
             $fiscalYearId = $this->data[$this->alias]['id'];
         
-        $open_date=date(Configure::read('databaseDateFormat'), strtotime($this->data[$this->alias]['open_date']));
-        $close_date=date(Configure::read('databaseDateFormat'), strtotime($this->data[$this->alias]['close_date']));
+        $open_date=date(Configure::read('Application.databaseDateFormat'), strtotime($this->data[$this->alias]['open_date']));
+        $close_date=date(Configure::read('Application.databaseDateFormat'), strtotime($this->data[$this->alias]['close_date']));
         $inInterval = $this->find('count', array('conditions' =>
             array('and' =>
                 array('or' =>

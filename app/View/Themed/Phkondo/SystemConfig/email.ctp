@@ -7,7 +7,7 @@ $this->Html->script('email', false); ?>
         <legend><?php echo __d('email','Config Email Client'); ?></legend>
         <section>
               <?php echo $this->Form->create(false, 
-                      array('url' => array('controller' => 'email', 'action' => 'config')),
+                      array('url' => array('controller' => 'config', 'action' => 'email')),
                       ['autocomplete'=>'off'],
                       array(
                 'class' => 'form-horizontal',
@@ -34,7 +34,8 @@ $this->Html->script('email', false); ?>
                 <div role="tabpanel" class="tab-pane active" id="connection" aria-labelledby="connection-tab">
                     <h2>&nbsp;</h2>
 
-
+                    <p><?php echo __('You will need to have access for less secure apps enabled in your Google account for this to work') ?>:
+                        <a class="reference external" href="https://support.google.com/accounts/answer/6010255"><?php __('Allowing less secure apps to access your account'); ?></a>.</p>
                     <fieldset>
 
                         <div class="form-group">
