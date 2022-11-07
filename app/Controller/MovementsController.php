@@ -160,7 +160,7 @@ class MovementsController extends AppController {
             $this->request->data = $this->Movement->find('first', $options);
         }
         $accounts = $this->Movement->Account->find('list', array('conditions' => array('id' => $this->request->data['Movement']['account_id'])));
-        $fiscalYears = $this->Movement->FiscalYear->find('list', array('conditions' => array('condo_id' => $this->getPhkRequestVar('condo_id'), 'id' => $this->getPhkRequestVar('condo_id'))));
+        $fiscalYears = $this->Movement->FiscalYear->find('list', array('conditions' => array('condo_id' => $this->getPhkRequestVar('condo_id'), 'id' => $this->request->data['Movement']['fiscal_year_id'])));
         $fiscalYearData = $this->Movement->FiscalYear->find('first', array('fields' => array('open_date', 'close_date'), 'conditions' => array('active' => '1', 'condo_id' => $this->getPhkRequestVar('condo_id'), 'id' => $this->request->data['Movement']['fiscal_year_id'])));
         $movementTypes = $this->Movement->MovementType->find('list', array('conditions' => array('active' => '1')));
         $movementCategories = $this->Movement->MovementCategory->find('list', array('conditions' => array('active' => '1')));

@@ -117,12 +117,11 @@ CakePlugin::load('DebugKit');
 CakePlugin::load('ClearCache');
 CakePlugin::load('Feedback');
 CakePlugin::load('Migrations');
-
+CakePlugin::load('CakePdf', array('bootstrap' => true, 'routes' => true));
 try {
     CakePlugin::load('Drafts', array('bootstrap' => true));
     CakePlugin::load('PrintReceipt', array('bootstrap' => true));
     CakePlugin::load('Reports', array('bootstrap' => true));
-    CakePlugin::load('Drafts', array('bootstrap' => true));
     CakePlugin::load('Attachments', array('bootstrap' => true));
     Configure::write('Application.isFullPack', true);
 } catch (\Exception $e) {
@@ -174,9 +173,41 @@ Configure::write('Attachment.attachment', array(
     'extensions' => array('pdf', 'txt', 'png', 'gif', 'jpg')
 ));
 
-if (!file_exists(APP . 'Config' . DS . 'bootstrap_phapp.php')) {
-    copy(APP . 'Config' . DS . 'bootstrap_phapp.php.default', APP . 'Config' . DS . 'bootstrap_phapp.php');
+if (!file_exists(APP . 'Config' . DS . 'bootstrap_app.ini')) {
+    copy(APP . 'Config' . DS . 'bootstrap_app.ini.default', APP . 'Config' . DS . 'bootstrap_app.ini');
 }
+
+App::uses('IniReader', 'Configure');
+Configure::config('BootstrapApp', new IniReader());
+Configure::load('bootstrap_app', 'BootstrapApp');
+$allows_keys = [
+    'installed_key',
+    'Config.server_timezone',
+    'Config.timezone',
+    'Application.mode',
+    'Application.databaseDateFormat',
+    'Application.dateFormat',
+    'Application.dateFormatSimple',
+    'Application.calendarDateFormat',
+    'Application.currencySign',
+    'Application.languageDefault',
+    'Application.theme',
+    'Attachment.attachment.maxSize',
+    'Attachment.attachment.extensions',
+    'CakePdf.phkondo.active',
+    'CakePdf.binary',
+    'MaintenanceManager.start',
+    'MaintenanceManager.duration',
+    'MaintenanceManager.site_offline_url',
+    'SubscriptionManager.start',
+    'SubscriptionManager.duration',
+    'SubscriptionManager.site_offline_url'
+];
+foreach ($allows_keys as $value) {
+     Configure::write($value, Configure::read('BootstrapApp.' . $value));
+}
+
+
 if (!file_exists(APP . 'Config' . DS . 'database.php')) {
     copy(APP . 'Config' . DS . 'database.php.default', APP . 'Config' . DS . 'database.php');
 }
@@ -196,5 +227,3 @@ Configure::load('email_notifications');
 if (!file_exists(APP . 'Config' . DS . 'organization.php')) {
     copy(APP . 'Config' . DS . 'organization.php.default', APP . 'Config' . DS . 'organization.php');
 }
-
-require 'bootstrap_phapp.php';

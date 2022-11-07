@@ -1,0 +1,73 @@
+;/
+;
+; pHKondo : pHKondo software for condominium property managers (http://phalkaline.net)
+; Copyright (c) pHAlkaline . (http://phalkaline.net)
+;
+; This program is free software; you can redistribute it and/or modify
+; it under the terms of the GNU General Public License as published by
+; the Free Software Foundation; either version 2 of the License, or
+; (at your option) any later version.
+;
+; This program is distributed in the hope that it will be useful,
+; but WITHOUT ANY WARRANTY; without even the implied warranty of
+; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+; GNU General Public License for more details.
+;
+; You should have received a copy of the GNU General Public License along
+; with this program; if not, write to the Free Software Foundation, Inc.,
+; 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+;
+; @copyright     Copyright (c) pHAlkaline . (http://phalkaline.net)
+; @link          https://phkondo.net pHKondo Project
+; @package       app.Config
+; @since         pHKondo v 1.7.2
+; @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
+;
+;/
+
+[BootstrapApp]
+
+installed_key = 'xyz'
+
+; Server TimeZone, Europe/Lisbon
+Config.server_timezone = Europe/Lisbon
+
+;User TimeZone, Europe/Lisbon
+Config.timezone = Europe/Lisbon
+
+; free, full, one, pro, demo -> use demo for demo mode;
+Application.mode = free
+
+; system and pHKondo dateFormats
+Application.databaseDateFormat = Y-m-d
+Application.dateFormat = d-m-Y H:i:s
+Application.dateFormatSimple = d-m-Y
+Application.calendarDateFormat = dd-mm-yyyy
+
+; more at https://www.toptal.com/designers/htmlarrows/currency/
+Application.currencySign = '€'
+
+
+Application.languageDefault = eng
+Application.theme = Phkondo
+Attachment.attachment.maxSize = 200000
+Attachment.attachment.extensions.0 = pdf
+Attachment.attachment.extensions.1 = txt
+Attachment.attachment.extensions.2 = png
+Attachment.attachment.extensions.3 = gif
+Attachment.attachment.extensions.4 = jpg
+
+; Requires wkhtmltopdf engine
+; https://wkhtmltopdf.org/
+; windows: C:\xampp7427\wkhtmltopdf\bin\wkhtmltopdf.exe
+; linux: /usr/local/bin/wkhtmltopdf
+CakePdf.phkondo.active = false
+CakePdf.binary = /usr/local/bin/wkhtmltopdf
+
+MaintenanceManager.start = 01-01-2000 00:00:00
+MaintenanceManager.duration = 1
+MaintenanceManager.site_offline_url = /pages/maintenance_offline
+
+SubscriptionManager.start = 31-12-9999
+SubscriptionManager.duration = 30
+SubscriptionManager.site_offline_url = /pages/subscription_offline

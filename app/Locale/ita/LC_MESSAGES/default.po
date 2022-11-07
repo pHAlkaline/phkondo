@@ -3539,3 +3539,31 @@ msgstr "Salvato con successo."
 
 msgid "Could not be saved. Please, try again."
 msgstr "Registrierung nicht möglich, bitte versuchen Sie es erneut."
+
+
+msgid "Currency Symbol"
+msgstr "Simbolo di valuta"
+
+msgid "Calendar Date Format"
+msgstr "Formato data calendario"
+
+msgid "Time Zone"
+msgstr "Fuso orario"
+
+msgid "List Of Supported Timezones"
+msgstr "Elenco dei fusi orari supportati"
+
+msgid "Attachment Max Size"
+msgstr "Dimensione massima dell'allegato"
+
+msgid "Attachment Allowed Extensions"
+msgstr "Estensioni consentite per gli allegati"
+
+msgid "You will need to have access for less secure apps enabled in your Google account for this to work"
+msgstr "Affinché funzioni, dovrai avere accesso alle app meno sicure abilitate nel tuo account Google"
+
+msgid "Allowing less secure apps to access your account"
+msgstr "Consenti alle app meno sicure di accedere al tuo account"
+
+msgid "USING GOOGLE ACCOUNT?"
+msgstr "UTILIZZI UN ACCOUNT GOOGLE?"

@@ -36,7 +36,8 @@ App::uses('CakeEmail', 'Network/Email');
  *
  * @property PaginatorComponent $Paginator
  */
-class SystemConfigController extends AppController {
+class SystemConfigController extends AppController
+{
 
     public $useModel = false;
     /*
@@ -63,7 +64,8 @@ class SystemConfigController extends AppController {
      */
     public $components = array('RequestHandler');
 
-    public function email() {
+    public function email()
+    {
         $this->set('title_for_layout', __('Email'));
         $this->set('title_for_step', __('Email'));
         if (empty($this->request->data)) {
@@ -111,42 +113,36 @@ class SystemConfigController extends AppController {
         $this->redirect(array('action' => 'email'));
     }
 
-    public function other() {
-        $this->set('title_for_layout', __('Other'));
-        $this->set('title_for_step', __('Other'));
+    public function general()
+    {
+        $this->set('title_for_layout', __('General'));
+        $this->set('title_for_step', __('General'));
         if (empty($this->request->data)) {
             return;
         }
+        $data = $this->request->data;
+        //$data['BootstrapApp']['Attachment']['attachment']['extensions'] = explode(',', trim($data['BootstrapApp']['Attachment']['attachment']['extensions']));
+       // $data['BootstrapApp']['Attachment']['attachment']['extensions'] = $data['BootstrapApp']['Attachment']['attachment']['extensions'];
+        
 
-        $File = new File(APP . 'Config' . DS . 'bootstrap_phapp.php');
-        $contents = $File->read();
+        Configure::write('BootstrapApp.Application.currencySign','\''.$data['BootstrapApp']['Application']['currencySign'].'\'');
+        Configure::write('BootstrapApp.Application.calendarDateFormat',$data['BootstrapApp']['Application']['calendarDateFormat'] );
+        Configure::write('BootstrapApp.Config.timezone',$data['BootstrapApp']['Config']['timezone'] );
+        Configure::write('BootstrapApp.Attachment.attachment.maxSize',$data['BootstrapApp']['Attachment']['attachment']['maxSize'] );
+        Configure::write('BootstrapApp.Attachment.attachment.extensions',$data['BootstrapApp']['Attachment']['attachment']['extensions'] );
 
-        foreach ($this->request->data as $key => $setting) {
-            foreach ($setting as $key2 => $value) {
-                $config_key = $key . '.' . $key2;
-                if (Configure::check($config_key)) {
-                    $valid = true;
-                    if ($config_key == 'Config.timezone' && !in_array(h($value), DateTimeZone::listIdentifiers())) {
-                        $valid = false;
-                    }
-                    if ($valid) {
-                        Configure::write($config_key, h($value));
-                        $contents = preg_replace('/(?<=Configure::write\(\'' . $config_key . '\', \')([^\' ]+)(?=\'\))/', h($value), $contents);
-                    }
-                }
-            }
-        }
-        if (!$File->write($contents)) {
-            $this->Flash->error(__d('install', 'Unable to config your application, your Config %s bootstrap_phapp.php file is not writable. Please check the permissions.', DS));
-            $this->log(__d('install', 'Unable to config your application, your Config %s bootstrap_phapp.php file is not writable. Please check the permissions.', DS));
+        if (!Configure::dump('bootstrap_app.ini', 'BootstrapApp', array('BootstrapApp'))) {
+            $this->Flash->error(__d('install', 'Unable to config your application, your Config %s bootstrap_app.ini file is not writable. Please check the permissions.', DS));
+            $this->log(__d('install', 'Unable to config your application, your Config %s bootstrap_app.ini file is not writable. Please check the permissions.', DS));
         } else {
             $this->Flash->success(__d('email', 'Config saved with success.'));
         }
 
-        $this->redirect(array('action' => 'other'));
+        $this->redirect(array('action' => 'general'));
     }
 
-    public function beforeRender() {
+    public function beforeRender()
+    {
         parent::beforeRender();
         $breadcrumbs = array(
             //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
@@ -162,15 +158,16 @@ class SystemConfigController extends AppController {
                 $emailNotifications = Configure::read('EmailNotifications');
                 $this->set(compact('breadcrumbs', 'headerTitle', 'emailClient', 'emailNotifications'));
                 break;
-            case 'other':
-                $breadcrumbs[0] = array('link' => Router::url(array('controller' => 'system-config', 'action' => 'other')), 'text' => __('Other'), 'active' => 'active');
-                $headerTitle = __('Other');
+            case 'general':
+                $breadcrumbs[0] = array('link' => Router::url(array('controller' => 'system-config', 'action' => 'general')), 'text' => __('General'), 'active' => 'active');
+                $headerTitle = __('General');
                 $this->set(compact('breadcrumbs', 'headerTitle'));
                 break;
         }
     }
 
-    public function isAuthorized($user) {
+    public function isAuthorized($user)
+    {
 
         if (isset($user['role'])) {
             switch ($user['role']) {
@@ -190,21 +187,21 @@ class SystemConfigController extends AppController {
         return parent::isAuthorized($user);
     }
 
-    private function _sendTest() {
+    private function _sendTest()
+    {
         if (!extension_loaded('openssl')) {
             throw new Exception('This app needs the Open SSL PHP extension.');
         }
         try {
             $Email = new CakeEmail();
             $Email->from(array($this->request->data['email'] => $this->request->data['name']))
-                    ->sender($this->request->data['email'], $this->request->data['name'])
-                    ->to($this->request->data['email'])
-                    ->subject($this->request->data['subject'])
-                    ->send(__d('email', 'Test message'));
+                ->sender($this->request->data['email'], $this->request->data['name'])
+                ->to($this->request->data['email'])
+                ->subject($this->request->data['subject'])
+                ->send(__d('email', 'Test message'));
             $this->Flash->success(__d('email', 'Email sent with success.'));
         } catch (\Exception $e) {
             $this->Flash->error($e->getMessage());
         }
     }
-
 }

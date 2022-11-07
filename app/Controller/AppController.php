@@ -27,8 +27,9 @@
  * 
  */
 App::uses('Controller', 'Controller');
-
-class AppController extends Controller {
+App::uses('IniReader', 'Configure');
+class AppController extends Controller
+{
 
     public $theme = null;
     public $components = array(
@@ -39,14 +40,16 @@ class AppController extends Controller {
         'Auth',
         'Cookie',
         'MaintenanceManager',
-        'SubscriptionManager');
+        'SubscriptionManager'
+    );
     public $phkRequestData = array();
 
-    public function beforeFilter() {
+    public function beforeFilter()
+    {
         $this->configure();
-        
+
         $this->Paginator->settings['paramType'] = 'querystring';
-      
+
         $this->Auth->authenticate = array(AuthComponent::ALL => array('userModel' => 'User', 'scope' => array("User.active" => 1)), 'Form');
         $this->Auth->loginRedirect = Router::url(array('plugin' => null, 'controller' => 'condos', 'action' => 'index'), true);
         $this->Auth->logoutRedirect = Router::url(array('plugin' => null, 'controller' => 'users', 'action' => 'login'), true);
@@ -60,17 +63,18 @@ class AppController extends Controller {
         $this->setPhkRequestVars($this->request->query);
     }
 
-    public function beforeRender() {
+    public function beforeRender()
+    {
         $img_logo_src = WWW_ROOT . 'img' . DS . 'logo_phkondo_flat.png';
         if (Configure::read('Organization.logo')) {
-             $img_logo_src = WWW_ROOT . 'img' . DS . 'logos' . DS . Configure::read('Organization.logo');
+            $img_logo_src = WWW_ROOT . 'img' . DS . 'logos' . DS . Configure::read('Organization.logo');
         }
 
         $logo_src_data = file_get_contents($img_logo_src);
         $base64 = base64_encode($logo_src_data);
 
         $logo_image_src = 'data: ' . mime_content_type($img_logo_src) . ';base64,' . $base64;
-      
+
 
 
         $phkRequestData = $this->phkRequestData;
@@ -78,7 +82,8 @@ class AppController extends Controller {
     }
 
 
-    public function isAuthorized($user) {
+    public function isAuthorized($user)
+    {
         if (isset($user['role'])) {
 
             switch ($user['role']) {
@@ -96,7 +101,8 @@ class AppController extends Controller {
         return false;
     }
 
-    public function setFilter($fields) {
+    public function setFilter($fields)
+    {
 
         $this->set('keyword', '');
         /* if (isset($this->request->params['named']['keyword'])) {
@@ -118,12 +124,13 @@ class AppController extends Controller {
             foreach ($fields as $field) {
                 $arrayConditions[$field . ' LIKE'] = "%" . $keyword . "%";
             }
-            $this->Paginator->settings['conditions'] = isset($this->Paginator->settings['conditions']) ? Set::merge($this->Paginator->settings['conditions'], array("OR" => $arrayConditions)) : array("OR" => $arrayConditions);
+            $this->Paginator->settings['conditions'] = isset($this->Paginator->settings['conditions']) ? Hash::merge($this->Paginator->settings['conditions'], array("OR" => $arrayConditions)) : array("OR" => $arrayConditions);
             $this->set('keyword', $keyword);
         }
     }
 
-    public function getPhkRequestVar($key = '') {
+    public function getPhkRequestVar($key = '')
+    {
         if (isset($this->phkRequestData[$key])) {
             return $this->phkRequestData[$key];
         }
@@ -131,13 +138,15 @@ class AppController extends Controller {
         return null;
     }
 
-    public function setPhkRequestVars($values = null) {
+    public function setPhkRequestVars($values = null)
+    {
         foreach ($values as $key => $value) {
             $this->setPhkRequestVar($key, $value);
         }
     }
 
-    public function setPhkRequestVar($key, $value) {
+    public function setPhkRequestVar($key, $value)
+    {
         $this->phkRequestData[$key] = $value;
         $this->setInvoiceData();
         $this->setInsuranceData();
@@ -155,25 +164,35 @@ class AppController extends Controller {
     }
 
 
-    private function configure(){
-       
+    private function configure()
+    {
         $this->Cookie->name = Configure::read('Cookie.name');
         if (!$this->Cookie->check('Config.language')) {
             $this->Cookie->write('Config.language', Configure::read('Application.languageDefault'));
         }
         Configure::write('Config.language', $this->Cookie->read('Config.language'));
+
+        //timezones check
+
+        if (!in_array(Configure::read('Config.server_timezone'), timezone_identifiers_list())) {
+            Configure::write('Config.server_timezone', 'Europe/London');
+        }
+        if (!in_array(Configure::read('Config.timezone'), timezone_identifiers_list())) {
+            Configure::write('Config.timezone', 'Europe/London');
+        }
+
         date_default_timezone_set(Configure::read('Config.server_timezone'));
 
         $this->theme =  Configure::read('Application.theme');
         Configure::load('organization.php', 'default');
-
     }
 
-    private function rememberMe() {
+    private function rememberMe()
+    {
         // set cookie options
         $this->Cookie->httpOnly = true;
 
-        if (!$this->Auth->loggedIn() && $this->Cookie->read('rememberMe')) {
+        if (!$this->Auth->user() && $this->Cookie->read('rememberMe')) {
             $cookie = $this->Cookie->read('rememberMe');
             $user = false;
             if (isset($cookie['username']) && isset($cookie['password'])) {
@@ -192,7 +211,8 @@ class AppController extends Controller {
         }
     }
 
-    private function setCondoData() {
+    private function setCondoData()
+    {
         if (isset($this->phkRequestData['condo_id']) && !isset($this->phkRequestData['condo_text'])) {
             App::import("Model", "Condo");
             $condo = new Condo();
@@ -202,7 +222,8 @@ class AppController extends Controller {
         }
     }
 
-    private function setFiscalYearData() {
+    private function setFiscalYearData()
+    {
 
         if (isset($this->phkRequestData['condo_id']) && !isset($this->phkRequestData['fiscal_year_text'])) {
             $this->phkRequestData['fiscal_year_id'] = '';
@@ -219,7 +240,8 @@ class AppController extends Controller {
         }
     }
 
-    private function setAccountData() {
+    private function setAccountData()
+    {
         if (isset($this->phkRequestData['account_id']) && !isset($this->phkRequestData['account_text'])) {
             App::import("Model", "Account");
             $account = new Account();
@@ -232,7 +254,8 @@ class AppController extends Controller {
         }
     }
 
-    private function setFractionData() {
+    private function setFractionData()
+    {
         if (isset($this->phkRequestData['fraction_id']) && !isset($this->phkRequestData['fraction_text'])) {
             App::import("Model", "Fraction");
             $fraction = new Fraction();
@@ -245,7 +268,8 @@ class AppController extends Controller {
         }
     }
 
-    private function setOwnerData() {
+    private function setOwnerData()
+    {
         if (isset($this->phkRequestData['owner_id']) && !isset($this->phkRequestData['owner_text'])) {
             App::import("Model", "Entity");
             $entity = new Entity();
@@ -257,7 +281,8 @@ class AppController extends Controller {
         }
     }
 
-    private function setSupplierData() {
+    private function setSupplierData()
+    {
         if (isset($this->phkRequestData['supplier_id']) && !isset($this->phkRequestData['supplier_text'])) {
             App::import("Model", "Supplier");
             $supplier = new Supplier();
@@ -269,7 +294,8 @@ class AppController extends Controller {
         }
     }
 
-    private function setNoteData() {
+    private function setNoteData()
+    {
         if (isset($this->phkRequestData['note_id']) && !isset($this->phkRequestData['note_text'])) {
             App::import("Model", "Note");
             $note = new Note();
@@ -283,7 +309,8 @@ class AppController extends Controller {
         }
     }
 
-    private function setReceiptData() {
+    private function setReceiptData()
+    {
         if (isset($this->phkRequestData['receipt_id']) && !isset($this->phkRequestData['receipt_text'])) {
             App::import("Model", "Receipt");
             $receipt = new Receipt();
@@ -298,7 +325,8 @@ class AppController extends Controller {
         }
     }
 
-    private function setAdministratorData() {
+    private function setAdministratorData()
+    {
         if (isset($this->phkRequestData['administrator_id']) && !isset($this->phkRequestData['administrator_text'])) {
             App::import("Model", "Administrator");
             $administrator = new Administrator();
@@ -309,7 +337,8 @@ class AppController extends Controller {
         }
     }
 
-    private function setInvoiceData() {
+    private function setInvoiceData()
+    {
         if (isset($this->phkRequestData['invoice_id']) && !isset($this->phkRequestData['invoice_text'])) {
             App::import("Model", "InvoiceConference");
             $invoice = new InvoiceConference();
@@ -320,7 +349,8 @@ class AppController extends Controller {
         }
     }
 
-    private function setMaintenanceData() {
+    private function setMaintenanceData()
+    {
         if (isset($this->phkRequestData['maintenance_id']) && !isset($this->phkRequestData['maintenance_text'])) {
             App::import("Model", "Maintenance");
             $maintenance = new Maintenance();
@@ -333,7 +363,8 @@ class AppController extends Controller {
         }
     }
 
-    private function setInsuranceData() {
+    private function setInsuranceData()
+    {
         if (isset($this->phkRequestData['insurance_id']) && !isset($this->phkRequestData['insurance_text'])) {
             App::import("Model", "Insurance");
             $insurance = new Insurance();
@@ -346,7 +377,8 @@ class AppController extends Controller {
         }
     }
 
-    private function setBudgetData() {
+    private function setBudgetData()
+    {
         if (isset($this->phkRequestData['budget_id']) && !isset($this->phkRequestData['budget_text'])) {
             App::import("Model", "Budget");
             $budget = new Budget();
@@ -359,6 +391,4 @@ class AppController extends Controller {
             }
         }
     }
-
-
 }

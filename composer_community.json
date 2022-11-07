@@ -2,7 +2,13 @@
     "name": "phalkaline/phkondo",
     "description": "Condominium Management Software",
     "type": "project",
-    "keywords": ["application", "php", "condominium", "condominium", "management"],
+    "keywords": [
+        "application",
+        "php",
+        "condominium",
+        "condominium",
+        "management"
+    ],
     "homepage": "https://phkondo.net",
     "license": "GPL-2.0",
     "authors": [
@@ -17,19 +23,28 @@
         "wiki": "https://github.com/pHAlkaline/phkondo/wiki",
         "source": "https://github.com/pHAlkaline/phkondo.git"
     },
-
     "extra": {
         "installer-paths": {
-            "app/Plugin/DebugKit": ["cakephp/debug_kit"],
-            "app/Plugin/ClearCache": ["ceeram/clear_cache"],
-	    "app/Plugin/Cacher": ["jeremyharris/cacher"],
-            "app/Plugin/Feedback": ["phalkaline/cakephp-feedback-plugin"],
-            "app/Plugin/Migrations": ["cakedc/migrations"],
-            "app/Plugin/CakePDF": ["friendsofcake/cakepdf"]
+            "app/Plugin/DebugKit": [
+                "cakephp/debug_kit"
+            ],
+            "app/Plugin/ClearCache": [
+                "ceeram/clear_cache"
+            ],
+            "app/Plugin/Cacher": [
+                "jeremyharris/cacher"
+            ],
+            "app/Plugin/Feedback": [
+                "phalkaline/cakephp-feedback-plugin"
+            ],
+            "app/Plugin/Migrations": [
+                "cakedc/migrations"
+            ],
+            "app/Plugin/CakePdf": [
+                "friendsofcake/cakepdf"
+            ]
         }
-
     },
-
     "require": {
         "php": ">=5.6,<8.0.0",
         "ext-openssl": "*",
@@ -41,7 +56,7 @@
         "cakedc/migrations": "2.*",
         "friendsofcake/cakepdf": "1.0.*"
     },
-    "minimum-stability" : "dev",
+    "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
         "allow-plugins": {

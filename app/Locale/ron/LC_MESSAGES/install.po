@@ -262,8 +262,8 @@ msgstr ""
 msgid "Email settings file already exists"
 msgstr "Fișierul de setări pentru email există deja"
 
-msgid "Unable to config your application, your Config %s bootstrap_phapp.php file is not writable. Please check the permissions."
-msgstr "Imposibil de configurat aplicația dvs., fișierul dvs. de configurare %s bootstrap_phapp.php nu poate fi scris. Vă rugăm să verificați permisiunile."
+msgid "Unable to config your application, your Config %s bootstrap_app.ini file is not writable. Please check the permissions."
+msgstr "Imposibil de configurat aplicația dvs., fișierul dvs. de configurare %s bootstrap_app.ini nu poate fi scris. Vă rugăm să verificați permisiunile."
 
 msgid "Unable to generate users password."
 msgstr "Nu se poate genera parola utilizatorilor."

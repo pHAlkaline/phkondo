@@ -24,13 +24,15 @@ services:
     container_name: phkondo-webserver
     working_dir: /application
     volumes:
-      - ./:/application
+      - ./:/application:cached
       - ./docker/bin/wkhtmltopdf:/usr/local/bin/wkhtmltopdf
     environment:
-      - XDEBUG_MODE=develop,debug
+      - PHKONDO_STAGE=COMMUNITY 
+      - XDEBUG_MODE=debug
       - XDEBUG_CLIENT_HOST=host.docker.internal
-      - XDEBUG_CLIENT_PORT=9000
-      - XDEBUG_IDE_KEY=netbeans-docker
+      - XDEBUG_CLIENT_PORT=9003
+      - XDEBUG_IDE_KEY=docker
+      - XDEBUG_START_WITH_REQUEST=yes
       - WEB_DOCUMENT_ROOT=/application/app/webroot
       - DATABASE_URL=mysql://docker:docker@phkondo-db/phkondo
     ports:

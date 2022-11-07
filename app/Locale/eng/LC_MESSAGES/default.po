@@ -3527,3 +3527,31 @@ msgstr ""
 
 msgid "Could not be saved. Please, try again."
 msgstr ""
+
+
+msgid "Currency Symbol"
+msgstr ""
+
+msgid "Calendar Date Format"
+msgstr ""
+
+msgid "Time Zone"
+msgstr ""
+
+msgid "List Of Supported Timezones"
+msgstr ""
+
+msgid "Attachment Max Size"
+msgstr ""
+
+msgid "Attachment Allowed Extensions"
+msgstr ""
+
+msgid "You will need to have access for less secure apps enabled in your Google account for this to work"
+msgstr ""
+
+msgid "Allowing less secure apps to access your account"
+msgstr ""
+
+msgid "USING GOOGLE ACCOUNT?"
+msgstr ""

@@ -1,3 +1,4 @@
+<?php $this->Html->script('install', false); ?>
 <h2><?php echo $title_for_step; ?></h2>
 <div id="page-content" class="col-sm-10">
 
@@ -5,17 +6,17 @@
         <?php echo $this->Form->create('Install', array('id' => 'languageFrm')); ?>
 
         <fieldset>
-            <legend><?php echo __d('install', 'Mode'); ?></legend>
+            <legend><?php echo __d('install', 'pHKondo'); ?></legend>
             <div class="form-group">
                 <?php
-                echo $this->Form->input('mode', array('class' => 'form-control', 'label' => false, 'value' => Configure::read('Application.mode'), 'options' => $packList, 'empty' => '(choose one)', 'onchange' => 'this.form.submit();'));
+                echo $this->Form->input('mode', array('class' => 'form-control', 'label' => false, 'value' => Configure::read('Application.mode'), 'options' => $packList, 'empty' => '(choose one)'));
                 ?>
 
             </div><!-- .form-group -->
             <legend><?php echo __d('install', 'Language'); ?></legend>
             <div class="form-group">
                 <?php
-                echo $this->Form->input('language', array('class' => 'form-control', 'label' => false, 'value' => Configure::read('Config.language'), 'options' => Configure::read('Language.list'), 'empty' => '(choose one)', 'onchange' => 'this.form.submit();'));
+                echo $this->Form->input('language', array('class' => 'form-control', 'label' => false, 'value' => Configure::read('Config.language'), 'options' => Configure::read('Language.list'), 'empty' => '(choose one)'));
                 ?>
 
             </div><!-- .form-group -->

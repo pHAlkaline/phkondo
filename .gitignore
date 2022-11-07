@@ -97,8 +97,14 @@ app/webroot/bower_components
 
 # IDE and editor specific files #
 #################################
-nbproject
 .idea
+# NetBeans
+nbproject/*
+# Visual Studio Code
+.vscode
+# Sass preprocessor
+.sass-cache/
+
 
 # Docker
 Dockerfile

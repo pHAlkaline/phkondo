@@ -259,7 +259,7 @@ msgid "pHKondo is now Secure."
 msgstr "pHKondo está agora seguro"
 
 
-msgid "Unable to config your application, your Config %s bootstrap_phapp.php file is not writable. Please check the permissions."
+msgid "Unable to config your application, your Config %s bootstrap_app.ini file is not writable. Please check the permissions."
 msgstr ""
 "Não foi possível configurar a aplicaçao, a sua pasta Config %s core."
 "php não permite escrita. Verifique as permissões."

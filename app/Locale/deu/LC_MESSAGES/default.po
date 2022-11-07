@@ -3525,3 +3525,31 @@ msgstr "Mit Erfolg gespeichert."
 
 msgid "Could not be saved. Please, try again."
 msgstr "RImpossibile registrarsi, riprova."
+
+
+msgid "Currency Symbol"
+msgstr "Währungszeichen"
+
+msgid "Calendar Date Format"
+msgstr "Kalenderdatumsformat"
+
+msgid "Time Zone"
+msgstr "Zeitzone"
+
+msgid "List Of Supported Timezones"
+msgstr "Liste der unterstützten Zeitzonen"
+
+msgid "Attachment Max Size"
+msgstr "Maximale Größe des Anhangs"
+
+msgid "Attachment Allowed Extensions"
+msgstr "Zulässige Erweiterungen für Anhänge"
+
+msgid "You will need to have access for less secure apps enabled in your Google account for this to work"
+msgstr "Sie müssen den Zugriff für weniger sichere Apps in Ihrem Google-Konto aktivieren, damit dies funktioniert"
+
+msgid "Allowing less secure apps to access your account"
+msgstr "Zulassen, dass weniger sichere Apps auf Ihr Konto zugreifen"
+
+msgid "USING GOOGLE ACCOUNT?"
+msgstr "GOOGLE-KONTO VERWENDEN?"

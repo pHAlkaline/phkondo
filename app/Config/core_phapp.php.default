@@ -39,10 +39,6 @@ Configure::write('debug',0);
 Configure::write('Exception.handler', 'AppExceptionHandler::handleException');
 Configure::write('Session', array('defaults' => 'php','cookie' => 'pHKondoSession'));
 Configure::write('Cookie', array('name' => 'pHKondoCookie'));
-/**
- * 
- */
-Configure::write('installed_key', 'xyz');
 
 /**
  * A random string used in security hashing methods.

@@ -253,7 +253,7 @@ msgstr "Mindestanforderungen nicht erfüllt. Installation wird angehalten."
 msgid "pHKondo is now Secure."
 msgstr ""
 
-msgid "Unable to config your application, your Config %s bootstrap_phapp.php file is not writable. Please check the permissions."
+msgid "Unable to config your application, your Config %s bootstrap_app.ini file is not writable. Please check the permissions."
 msgstr ""
 
 msgid "Unable to generate users password."

@@ -1,3 +1,4 @@
+<?php $this->Html->script('install', false); ?>
 <h2><?php echo $title_for_step; ?></h2>
 <div id="page-content" class="col-sm-10">
 

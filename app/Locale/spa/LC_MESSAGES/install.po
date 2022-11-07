@@ -210,7 +210,7 @@ msgstr "Idioma"
 
 #: View/Themed/Phkondo/Install/index.ctp:26
 msgid "Your tmp directory is writable."
-msgstr "El directorio tmp NO es escribible."
+msgstr "El directorio tmp es escribible."
 
 #: View/Themed/Phkondo/Install/index.ctp:30
 msgid "Your tmp directory is NOT writable."
@@ -261,7 +261,7 @@ msgstr ""
 msgid "pHKondo is now Secure."
 msgstr ""
 
-msgid "Unable to config your application, your Config %s bootstrap_phapp.php file is not writable. Please check the permissions."
+msgid "Unable to config your application, your Config %s bootstrap_app.ini file is not writable. Please check the permissions."
 msgstr ""
 "Imposible configurar la aplicación, el archivo Config %s boostrap_phapp.php no es "
 "escribible. Por favor revisar los permisos de archivo."

@@ -1,7 +1,4 @@
-<?php
-
-$this->Html->script('organization_config', false);
-?>
+<?php $this->Html->script('organization_config', false); ?>
 <div id="page-content" class="col-sm-10">
     <div class="form">
         <section>

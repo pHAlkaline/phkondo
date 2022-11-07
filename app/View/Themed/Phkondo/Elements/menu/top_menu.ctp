@@ -66,7 +66,7 @@
                         <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-user"></span> ' . __('Users'), array('plugin' => '', 'controller' => 'users', 'action' => 'index'), array('escape' => false)); ?></li>
                         <h6 class="dropdown-header"><?php echo __('System'); ?></h6>
                         <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-envelope"></span> ' . __('Email'), array('plugin' => '', 'controller' => 'system_config', 'action' => 'email'), array('escape' => false)); ?></li>
-                        <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-cog"></span> ' . __('Other'), array('plugin' => '', 'controller' => 'system_config', 'action' => 'other'), array('escape' => false)); ?></li>
+                        <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-cog"></span> ' . __('General'), array('plugin' => '', 'controller' => 'system_config', 'action' => 'general'), array('escape' => false)); ?></li>
                         <?php } ?>
                         <?php if (AuthComponent::user('role') == 'admin' && in_array(Configure::read('Application.mode'),['free', 'full', 'demo'])) { ?>
                         <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-eject"></span> '. __d('install','Reinstall'), array('plugin' => '', 'controller'=>'install', 'action' => 'reinstall'), array('confirm' => __d('install','Are you sure you want to reinstall # %s?', 'pHKondo'), 'escape'=> false)); ?></li>
