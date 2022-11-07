@@ -13,10 +13,12 @@ Official website**: [https://phkondo.net](https://phkondo.net)
 
 
 ## Requirements
-  * HTTP Server. For example: Apache. mod_rewrite is preferred, but by no means required
+  * HTTP Server or similar ( NGINX, IIS ).
+  * Apache. mod_rewrite is preferred, but by no means required
   * PHP =>5.6 && <8.0.0.
-  * MySQL 5 or higher
+  * MySQL or similar ( MariaDB , SqlServer )
   * All built-in drivers require PDO. You should make sure you have the correct PDO extensions installed.
+
 
 ## Install
 https://github.com/pHAlkaline/phkondo/wiki/Install
