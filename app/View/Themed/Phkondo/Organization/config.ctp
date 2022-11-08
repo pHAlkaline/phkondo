@@ -2,7 +2,7 @@
 <div id="page-content" class="col-sm-10">
     <div class="form">
         <section>
-              <?php echo $this->Form->create(false,array(
+            <?php echo $this->Form->create(false, array(
                 'type' => 'file',
                 'class' => 'form-horizontal',
                 'role' => 'form',
@@ -10,9 +10,9 @@
                     'class' => 'form-control',
                     'label' => array('class' => 'col-sm-2 control-label'),
                     'between' => '<div class="col-sm-6">',
-                    'after' => '</div>')
+                    'after' => '</div>'
+                )
             )); ?>
-
             <fieldset>
                 <legend><?php echo __('Edit Organization'); ?></legend>
                 <div class="form-group">
@@ -34,19 +34,14 @@
                     <?php echo $this->Form->input('email', array('default' => $organization['email'], 'class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
-                    <?php echo $this->Form->input('logo', array('label' => array('text'=>'Logo (Max:380x65)','class' => 'col-sm-2 control-label'),'type' => 'file', 'class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('logo', array('label' => array('text' => 'Logo (Max:380x65)', 'class' => 'col-sm-2 control-label'), 'type' => 'file', 'class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <h1 class=""><img src="<?php echo $logo_image_src; ?>" style="height:100%;" alt="phkondo" class="logoimg img-responsive center-block" /></h1>
-
             </fieldset>
-
-            <div class="form-group">                
-            <?php echo $this->Form->button(__('Submit'), array('type'=>'submit','class' => 'btn btn-large btn-primary pull-right')); ?>&nbsp;  
-
+            <div class="form-group">
+                <?php echo $this->Form->button(__('Submit'), array('type' => 'submit', 'class' => 'btn btn-large btn-primary pull-right')); ?>&nbsp;
             </div>
-        <?php echo $this->Form->end(); ?>
-
+            <?php echo $this->Form->end(); ?>
         </section>
-
     </div>
 </div>

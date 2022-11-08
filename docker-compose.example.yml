@@ -1,8 +1,8 @@
 version: '3'
 
 networks:
-    default:
-        name: phkondo
+  default:
+    name: phkondo
 
 services:
 
@@ -10,12 +10,12 @@ services:
     image: mariadb
     container_name: phkondo-db
     environment:
-        MYSQL_ROOT_PASSWORD: docker
-        MYSQL_DATABASE: phkondo
-        MYSQL_USER: docker
-        MYSQL_PASSWORD: docker
+      MYSQL_ROOT_PASSWORD: docker
+      MYSQL_DATABASE: phkondo
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: docker
     volumes:
-      - ./docker/db:/var/lib/mysql
+      - ./docker/db:/var/lib/mysql:cached
     ports:
       - '3306:3306'
 
@@ -25,11 +25,10 @@ services:
     working_dir: /application
     volumes:
       - ./:/application:cached
-      - ./docker/bin/wkhtmltopdf:/usr/local/bin/wkhtmltopdf
     environment:
-      - PHKONDO_STAGE=COMMUNITY 
+      - PHKONDO_STAGE=COMMUNITY
       - XDEBUG_MODE=debug
-      - XDEBUG_CLIENT_HOST=host.docker.internal
+      - XDEBUG_CLIENT_HOST=172.29.240.1
       - XDEBUG_CLIENT_PORT=9003
       - XDEBUG_IDE_KEY=docker
       - XDEBUG_START_WITH_REQUEST=yes
@@ -46,4 +45,3 @@ services:
       - 8081:80
     environment:
       - PMA_ARBITRARY=1
-
