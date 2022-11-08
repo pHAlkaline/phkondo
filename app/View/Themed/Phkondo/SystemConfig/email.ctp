@@ -4,7 +4,7 @@ $this->Html->script('email', false); ?>
 <div id="page-content" class="col-sm-10">
     <div class="install form">
 
-        <legend><?php echo __d('email', 'Config Email Client'); ?></legend>
+        <legend><?php echo __d('email', 'Email Server'); ?></legend>
         <section>
             <?php echo $this->Form->create(
                 false,

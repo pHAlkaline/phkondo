@@ -53,8 +53,8 @@ msgid "Not possible to send Email."
 msgstr "Não foi possível o envio de email."
 
 #: View/Themed/Phkondo/Email/config.ctp:7
-msgid "Config Email Client"
-msgstr "Configuração de Cliente Email"
+msgid "Email Server"
+msgstr "Servidor Email"
 
 #: View/Themed/Phkondo/Email/config.ctp:23
 msgid "Connection"
