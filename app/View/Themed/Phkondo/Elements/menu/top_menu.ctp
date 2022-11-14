@@ -12,7 +12,7 @@
                 <span class="glyphicon glyphicon-menu-hamburger"></span>
             </button>
 
-            <a class="navbar-brand" href="<?php echo Router::url(array('plugin' => null, 'controller' => 'condos'), true); ?>">
+            <a class="navbar-brand" href="<?php echo Router::url('/'); ?>">
                 <img src="<?php echo $logo_image_src; ?>" style="height:100%;" alt="phkondo" class="img-responsive center-block" />
             </a>
         </div>
@@ -25,7 +25,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo __('Menu'); ?><b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <?php if (AuthComponent::user('role') == 'admin' || AuthComponent::user('role') == 'store_admin' || AuthComponent::user('role') == 'colaborator') { ?>
-                                <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-home"></span> ' . __n('Condo', 'Condos', 2), array('plugin' => '', 'controller' => 'condos'), array('escape' => false)); ?></li>
+                                <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-home"></span> ' . __n('Condo', 'Condos', 2), array('plugin' => '', 'controller' => 'condos', 'action'=>'index'), array('escape' => false)); ?></li>
                             <?php } ?>
                             <?php if (AuthComponent::user('role') == 'admin' || AuthComponent::user('role') == 'store_admin') { ?>
                                 <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-th"></span> ' . __('Income Control'), array('plugin' => '', 'controller' => 'income', 'action' => 'index'), array('escape' => false)); ?></li>
@@ -68,7 +68,7 @@
                                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-envelope"></span> ' . __d('email', 'Email Server'), array('plugin' => '', 'controller' => 'system_config', 'action' => 'email'), array('escape' => false)); ?></li>
                                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-cog"></span> ' . __('General'), array('plugin' => '', 'controller' => 'system_config', 'action' => 'general'), array('escape' => false)); ?></li>
                                 <?php } ?>
-                                <?php if (AuthComponent::user('role') == 'admin' && in_array(Configure::read('Application.mode'), ['free', 'full', 'demo'])) { ?>
+                                <?php if (AuthComponent::user('role') == 'admin' && !in_array(Configure::read('Application.stage'), ['demo'])) { ?>
                                     <li><?php echo $this->Form->postLink('<span class="glyphicon glyphicon-eject"></span> ' . __d('install', 'Reinstall'), array('plugin' => '', 'controller' => 'install', 'action' => 'reinstall'), array('confirm' => __d('install', 'Are you sure you want to reinstall # %s?', 'pHKondo'), 'escape' => false)); ?></li>
                                 <?php } ?>
                             </ul>
@@ -79,7 +79,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo __('User'); ?><b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <?php if (Configure::read('Application.mode') != 'demo') : ?>
+                            <?php if (Configure::read('Application.stage') != 'demo') : ?>
                                 <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-user"></span> ' . __('Reserved area'), array('plugin' => '', 'controller' => 'users', 'action' => 'profile'), array('escape' => false)); ?>
                                 <?php endif; ?>
                                 <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-log-out"></span> ' . __('End Session'), array('plugin' => '', 'controller' => 'users', 'action' => 'logout'), array('escape' => false)); ?>

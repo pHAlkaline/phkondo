@@ -25,8 +25,8 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
                     <thead>
                         <tr>
                             <th><?php echo $this->Paginator->sort('name'); ?></th>
+                            <th><?php echo $this->Paginator->sort('email'); ?></th>
                             <th data-breakpoints="xs"><?php echo $this->Paginator->sort('role'); ?></th>
-
                             <th><?php echo $this->Paginator->sort('username'); ?></th>
                             <th data-breakpoints="xs" class="actions hidden-print"><?php //echo __('Actions');    ?></th>
                         </tr>
@@ -41,6 +41,7 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
                             ?>
                         <tr>
                             <td><?php echo h($user['User']['name']); ?>&nbsp;</td>
+                            <td><?php echo h($user['User']['email']); ?>&nbsp;</td>
                             <td><?php echo h(__($roles[$user['User']['role']])); ?>&nbsp;</td>
 
                             <td><?php echo h($user['User']['username']); ?>&nbsp;</td>

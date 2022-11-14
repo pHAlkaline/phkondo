@@ -147,11 +147,10 @@ class InstallController extends AppController
                 'free' => 'Community',
                 'full' => 'Full Pack',
                 'one' => 'Full Pack One',
-                'pro' => 'Full Pack Pro',
-                'demo' => 'Demonstration'
+                'pro' => 'Full Pack Pro'
             );
         }
-        if (getenv('PHKONDO_STAGE') && getenv('PHKONDO_STAGE') == 'SAAS' && Configure::read('Application.mode')) {
+        if (Configure::read('Application.stage') == 'saas' && Configure::read('Application.mode')) {
             $onlyKeys = [Configure::read('Application.mode')];
             $packList = array_filter($packList, function ($v) use ($onlyKeys) {
                 return in_array($v, $onlyKeys);
@@ -183,7 +182,7 @@ class InstallController extends AppController
             Configure::write('Config.language', $this->request->data['Install']['language']);
         }
 
-        if (getenv('PHKONDO_STAGE') && getenv('PHKONDO_STAGE') == 'SAAS' && Configure::read('Application.mode')) {
+        if (Configure::read('Application.stage') == 'saas' && Configure::read('Application.mode')) {
             $this->request->data['Install']['mode'] = Configure::read('Application.mode');
         }
 
@@ -216,7 +215,7 @@ class InstallController extends AppController
             Configure::write('Config.language', $this->request->data['Install']['language']);
         }
 
-        if (getenv('PHKONDO_STAGE') && getenv('PHKONDO_STAGE') == 'SAAS' && Configure::read('Application.mode')) {
+        if (Configure::read('Application.stage') == 'saas' && Configure::read('Application.mode')) {
             $this->request->data['Install']['mode'] = Configure::read('Application.mode');
         }
 
@@ -225,7 +224,7 @@ class InstallController extends AppController
             Configure::write('Application.mode', $this->request->data['Install']['mode']);
         }
 
-        if (getenv('PHKONDO_STAGE') && getenv('PHKONDO_STAGE') == 'SAAS' && file_exists(APP . 'Config' . DS . 'database.php')) {
+        if (Configure::read('Application.stage') == 'saas' && file_exists(APP . 'Config' . DS . 'database.php')) {
             $db = ConnectionManager::getDataSource('default');
             if (!$db->isConnected()) {
                 $this->Flash->error(__d('install', 'Could not connect to database.'));
@@ -561,7 +560,7 @@ class InstallController extends AppController
             if ($this->Cookie->check('Application.mode')) {
                 $application_mode = $this->Cookie->read('Application.mode');
             }
-            if (getenv('PHKONDO_STAGE') && getenv('PHKONDO_STAGE') == 'SAAS' && Configure::read('Application.mode')) {
+            if (Configure::read('Application.stage') == 'saas' && Configure::read('Application.mode')) {
                 $application_mode = Configure::read('Application.mode');
             }
             Configure::write('BoostrapApp.Application.mode', $application_mode);
@@ -646,11 +645,44 @@ class InstallController extends AppController
 
     public function reinstall()
     {
-        unlink(TMP . 'installed.txt');
-        Configure::write('BootstrapApp.installed_key', 'xyz');
-        Configure::dump('bootstrap_app.ini', 'BootstrapApp', array('BootstrapApp'));
-        $this->redirect(array('action' => 'index'));
-       
+        $this->layout = "default";
+        $valid_key = false;
+        if (!empty($this->request->data)) {
+            $valid_key = ($this->request->data['installed_key'] == Configure::read('installed_key'));
+            if (!$valid_key) {
+                $this->Flash->error(__d('install', 'Invalid Key.'));
+            }
+        }
+
+        if ($valid_key) {
+            unlink(TMP . 'installed.txt');
+            Configure::write('BootstrapApp.installed_key', 'xyz');
+            Configure::dump('bootstrap_app.ini', 'BootstrapApp', array('BootstrapApp'));
+            $this->redirect(array('action' => 'index'));
+        }
+
+        if (empty($this->request->data)) {
+            $emailTo = null;
+            if (isset($this->Auth)) {
+                $emailTo = $this->Auth->user('email');
+            }
+            try {
+                $content = __d('install', 'You required to reinstall.') . '<br/>';
+                $content .= __d('install', 'Are you sure you want to reinstall # %s?','pHKondo') . '<br/>';
+                $content .= __d('install', 'We need to validate your action, please use this validation key') . ' : ' . Configure::read('installed_key') . '<br/>';
+                $Email = new CakeEmail();
+                $Email->emailFormat('html');
+                //$Email->viewVars(array('content' => $content));
+                $Email->to($emailTo);
+                $Email->subject(__d('install', 'pHKondo Reinstall Required'));
+                $result = $Email->send($content);
+            } catch (\Exception $e) {
+                $this->Flash->warning($e->getMessage());
+                $result = false;
+            }
+        }
+        $this->set('title_for_layout', __d('install', 'Installation: Reinstall'));
+        $this->set('title_for_step', __d('install', 'Installation: Reinstall'));
     }
 
     /**

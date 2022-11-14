@@ -136,3 +136,6 @@ msgstr "Enviar"
 #: View/Themed/Phkondo/Receipts/view.ctp:64
 msgid "Send By Email"
 msgstr "Enviar Por Correio Electrónico"
+
+msgid "In Demo Sessions this feature is disbled to avoid spam!!."
+msgstr "Nas Sessões de Demonstração este recurso é desabilitado para evitar spam!!."

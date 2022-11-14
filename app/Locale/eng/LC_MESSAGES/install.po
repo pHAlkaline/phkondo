@@ -258,3 +258,21 @@ msgstr ""
 
 msgid "Unable to generate users password."
 msgstr ""
+
+msgid "You required to reinstall."
+msgstr ""
+
+msgid "We need to validate your action, please use this validation key"
+msgstr ""
+
+msgid "pHKondo Reinstall Required"
+msgstr ""
+
+msgid "Required validation key was sent to your user email."
+msgstr ""
+
+msgid "'Installed Key"
+msgstr ""
+
+msgid "Invalid Key."
+msgstr ""

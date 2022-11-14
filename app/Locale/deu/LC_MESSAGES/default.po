@@ -3553,3 +3553,6 @@ msgstr "Zulassen, dass weniger sichere Apps auf Ihr Konto zugreifen"
 
 msgid "USING GOOGLE ACCOUNT?"
 msgstr "GOOGLE-KONTO VERWENDEN?"
+
+msgid "You have reached the maximum number of condos allowed, request an account update accessing %s "
+msgstr "Sie haben die maximal zulässige Anzahl von Eigentumswohnungen erreicht, fordern Sie eine Kontoaktualisierung an %s "

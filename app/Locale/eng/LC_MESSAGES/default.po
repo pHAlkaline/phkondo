@@ -3555,3 +3555,6 @@ msgstr ""
 
 msgid "USING GOOGLE ACCOUNT?"
 msgstr ""
+
+msgid "You have reached the maximum number of condos allowed, request an account update accessing %s "
+msgstr ""

@@ -3567,3 +3567,6 @@ msgstr "Consenti alle app meno sicure di accedere al tuo account"
 
 msgid "USING GOOGLE ACCOUNT?"
 msgstr "UTILIZZI UN ACCOUNT GOOGLE?"
+
+msgid "You have reached the maximum number of condos allowed, request an account update accessing %s "
+msgstr "Hai raggiunto il numero massimo di condomini consentiti, richiedi un aggiornamento account accedendo %s "

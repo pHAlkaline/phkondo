@@ -30,6 +30,9 @@ foreach ($role_options as $key => $value) {
                     <?php echo $this->Form->input('name', array('class' => 'form-control','autocomplete'=>'off')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
+                    <?php echo $this->Form->input('email', array('class' => 'form-control','autocomplete'=>'off')); ?>
+                </div><!-- .form-group -->
+                <div class="form-group">
                     <?php echo $this->Form->input('role', array('autocomplete'=>'off','options' => $role_options, 'class' => 'form-control')); ?>
                 </div><!-- .form-group -->
 

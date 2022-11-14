@@ -38,6 +38,9 @@ foreach ($role_options as $key => $value){
                     <?php echo $this->Form->input('name', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
+                    <?php echo $this->Form->input('email', array('class' => 'form-control')); ?>
+                </div><!-- .form-group -->
+                <div class="form-group">
                     <?php echo $this->Form->input('username', array('class' => 'form-control','maxLength' => '40')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">

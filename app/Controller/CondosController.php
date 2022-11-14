@@ -128,7 +128,7 @@ class CondosController extends AppController {
         $total = $this->Condo->find('count');
         $limit = Configure::read('Application.mode') == 'one' ? true : false;
         if ($limit && $total>=2){
-                $this->Flash->error(__('The condo could not be saved. Please, try again.'));
+                $this->Flash->warning(__('You have reached the maximum number of condos allowed, request an account update accessing %s ','<a target="_blank" href="https://phalkaline.gumroad.com/l/phkondocloud"> GUMROAD </a>'));
                 $this->redirect(array('action' => 'index'));
         }
         

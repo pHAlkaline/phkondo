@@ -35,7 +35,10 @@ Config.server_timezone = Europe/Lisbon
 ;User TimeZone, Europe/Lisbon
 Config.timezone = Europe/Lisbon
 
-; free, full, one, pro, demo -> use demo for demo mode;
+; saas, normal, demo
+Application.stage = normal
+
+; free, full, one, pro
 Application.mode = free
 
 ; system and pHKondo dateFormats

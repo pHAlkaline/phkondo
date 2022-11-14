@@ -184,6 +184,7 @@ $allows_keys = [
     'installed_key',
     'Config.server_timezone',
     'Config.timezone',
+    'Application.stage',
     'Application.mode',
     'Application.databaseDateFormat',
     'Application.dateFormat',

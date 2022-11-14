@@ -12,7 +12,7 @@
             'role' => 'form',
         ));
         ?>
-        <?php if (Configure::read('Application.mode') == 'demo') { ?>
+        <?php if (Configure::read('Application.stage') == 'demo') { ?>
             <p class="login-box-msg"><strong>Username:</strong> demo<br /><strong>Password:</strong> demo00000</p>
             <p class="login-box-msg"></p>
         <?php } ?>

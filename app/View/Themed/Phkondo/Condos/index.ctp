@@ -7,21 +7,21 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
 <div id="page-container" class="row">
 
     <div id="page-content" class="col-sm-12">
- <?php if (Configure::read('Application.mode') == 'demo'): ?>
-        <div class="alert alert-success" role="alert">
-            <?php echo '<span class="glyphicon glyphicon-info-sign"></span> ' .__(' Click Here').' '.$this->Html->link(__('Online Tutorial  ').' '.__('Quick Guide'), 'https://github.com/pHAlkaline/phkondo/wiki/Quick-Tutorial', array('target' => '_blank', 'escape' => false)); ?>
-        </div>
-                      <?php endif; ?>
+        <?php if (Configure::read('Application.stage') == 'demo') : ?>
+            <div class="alert alert-success" role="alert">
+                <?php echo '<span class="glyphicon glyphicon-info-sign"></span> ' . __(' Click Here') . ' ' . $this->Html->link(__('Online Tutorial  ') . ' ' . __('Quick Guide'), 'https://github.com/pHAlkaline/phkondo/wiki/Quick-Tutorial', array('target' => '_blank', 'escape' => false)); ?>
+            </div>
+        <?php endif; ?>
         <div class="index">
             <h2 class="col-sm-9"><?php echo __n('Condo', 'Condos', 2); ?></h2>
-            <?php 
-            $allowAdd=($limit==1 && $total>0)?false:true;
-            if ($allowAdd) { 
-                ?>
-            <div class="actions hidden-print col-sm-3">
-                <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Condo'), array('action' => 'add'), array('class' => 'btn btn-primary', 'style' => 'margin: 8px 0; float: right;', 'escape' => false));
-                ?>
-            </div><!-- /.actions -->
+            <?php
+            $allowAdd = ($limit == 1 && $total > 0) ? false : true;
+            if ($allowAdd) {
+            ?>
+                <div class="actions hidden-print col-sm-3">
+                    <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Condo'), array('action' => 'add'), array('class' => 'btn btn-primary', 'style' => 'margin: 8px 0; float: right;', 'escape' => false));
+                    ?>
+                </div><!-- /.actions -->
             <?php } ?>
             <?php echo $this->element('search_tool'); ?>
             <div class="row text-center loading">
@@ -29,7 +29,7 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
             </div>
             <div class="col-sm-12 hidden">
 
-                <table data-empty="<?= __('Empty'); ?>"  class="footable table table-hover table-condensed">
+                <table data-empty="<?= __('Empty'); ?>" class="footable table table-hover table-condensed">
                     <thead>
                         <tr>
                             <th>&nbsp;</th>
@@ -40,7 +40,7 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($condos as $condo): ?>
+                        <?php foreach ($condos as $condo) : ?>
                             <?php
                             $viewGlyphiconState = array();
                             $viewGlyphicon = '';
@@ -85,21 +85,21 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
                                 $viewGlyphicon = '<span class="label label-danger">' . __('Alert') . '</span> ';
                             }
                             ?>
-                        <tr>
-                            <td><?php echo $viewGlyphicon; ?>&nbsp;</td>
-                            <td><?php echo h($condo['Condo']['title']); ?>&nbsp;</td>
-                            <td><?php echo nl2br(h($condo['Condo']['address'])); ?>&nbsp;</td>
-                            <td><?php if (isset($condo['FiscalYear'][0]['title'])) echo h($condo['FiscalYear'][0]['title'] . ' ( ' . h($condo['FiscalYear'][0]['open_date']) . ' a ' . h($condo['FiscalYear'][0]['close_date']) . ' ) '); ?>&nbsp;</td>
-                            <td class="actions hidden-print">
+                            <tr>
+                                <td><?php echo $viewGlyphicon; ?>&nbsp;</td>
+                                <td><?php echo h($condo['Condo']['title']); ?>&nbsp;</td>
+                                <td><?php echo nl2br(h($condo['Condo']['address'])); ?>&nbsp;</td>
+                                <td><?php if (isset($condo['FiscalYear'][0]['title'])) echo h($condo['FiscalYear'][0]['title'] . ' ( ' . h($condo['FiscalYear'][0]['open_date']) . ' a ' . h($condo['FiscalYear'][0]['close_date']) . ' ) '); ?>&nbsp;</td>
+                                <td class="actions hidden-print">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-equalizer"></span> ', array('action' => 'view', $condo['Condo']['id']), array('title' => __('Select'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
-                                    <?php if (Configure::read('Application.mode') != 'demo'): ?>
+                                    <?php if (Configure::read('Application.stage') != 'demo') : ?>
                                         <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $condo['Condo']['id']), array('title' => __('Edit'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
-                                        <?php if (in_array(AuthComponent::user('role'), array('admin', 'store_admin'))): ?>
+                                        <?php if (in_array(AuthComponent::user('role'), array('admin', 'store_admin'))) : ?>
                                             <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span>', array('action' => 'delete', $condo['Condo']['id']), array('title' => __('Delete'), 'class' => 'btn btn-default btn-xs', 'escape' => false, 'confirm' => __('Are you sure you want to delete # %s?', $condo['Condo']['title']))); ?>
                                         <?php endif; ?>
                                     <?php endif; ?>
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
@@ -110,7 +110,7 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
                     echo $this->Paginator->counter(array(
                         'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
                     ));
-                    ?>                </small></p>
+                    ?> </small></p>
             <div class="clearfix"></div>
             <ul class="hidden-print pagination pull-right">
                 <?php
@@ -125,4 +125,3 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
     </div><!-- /#page-content .col-sm-9 -->
 
 </div><!-- /#page-container .row-fluid -->
-

@@ -3581,3 +3581,6 @@ msgstr "Permițând aplicațiilor mai puțin sigure să vă acceseze contul"
 
 msgid "USING GOOGLE ACCOUNT?"
 msgstr "FOLOSITI CONT GOOGLE?"
+
+msgid "You have reached the maximum number of condos allowed, request an account update accessing %s "
+msgstr "Ați atins numărul maxim de apartamente permis, solicitați o actualizare a contului accesând %s "

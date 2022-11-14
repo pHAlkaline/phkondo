@@ -20,13 +20,12 @@ services:
       - '3306:3306'
 
   webserver:
-    image: webdevops/php-apache-dev:7.4
+    image: phalkaline/php-apache-dev-wkhtmltopdf:7.4
     container_name: phkondo-webserver
     working_dir: /application
     volumes:
       - ./:/application:cached
     environment:
-      - PHKONDO_STAGE=COMMUNITY
       - XDEBUG_MODE=debug
       - XDEBUG_CLIENT_HOST=172.29.240.1
       - XDEBUG_CLIENT_PORT=9003

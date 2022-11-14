@@ -137,3 +137,6 @@ msgstr ""
 #: View/Themed/Phkondo/Receipts/view.ctp:64
 msgid "Send By Email"
 msgstr ""
+
+msgid "In Demo Sessions this feature is disbled to avoid spam!!."
+msgstr "În sesiunile Demo, această funcție este dezactivată pentru a evita spamul!!."

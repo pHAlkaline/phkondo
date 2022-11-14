@@ -125,8 +125,9 @@ class ReceiptsController extends AppController {
      * @return void
      */
     public function send_receipt($id) {
-        if (Configure::read('Application.mode') == 'demo') {
+        if (Configure::read('Application.stage') == 'demo') {
             $this->Flash->success(__d('email', 'Email sent with success.'));
+            $this->Flash->warning(__d('email', 'In Demo Sessions this feature is disbled to avoid spam!!.'));
             $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
         }
 

@@ -33,6 +33,12 @@ $roles=Configure::read('User.role'); ?>
                             &nbsp;
                         </td>
                     </tr>
+                    <tr>		<td class='col-sm-2'><strong><?php echo __('Email'); ?></strong></td>
+                        <td>
+                                <?php echo h($user['User']['email']); ?>
+                            &nbsp;
+                        </td>
+                    </tr>
                     <tr>		<td><strong><?php echo __('Role'); ?></strong></td>
                         <td>
                                 <?php echo h(__($roles[$user['User']['role']])); ?>
