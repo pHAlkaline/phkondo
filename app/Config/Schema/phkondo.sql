@@ -1010,8 +1010,11 @@ ALTER TABLE `supports`
   ADD CONSTRAINT `fk_support_2` FOREIGN KEY (`support_priority_id`) REFERENCES `support_priorities` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_support_3` FOREIGN KEY (`support_status_id`) REFERENCES `support_statuses` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_support_7` FOREIGN KEY (`assigned_user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE;
-SET FOREIGN_KEY_CHECKS=1;
 
+ALTER TABLE `users`
+  ADD UNIQUE KEY `email` (`email`);
+
+SET FOREIGN_KEY_CHECKS=1;
 
 -- 
 -- Dumping Date is table `users`
