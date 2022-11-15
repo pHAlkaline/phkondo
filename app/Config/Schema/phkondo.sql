@@ -868,6 +868,7 @@ CREATE TABLE `users` (
   `created` datetime DEFAULT NULL,
   `model` varchar(45) DEFAULT NULL,
   `foreign_key` int(11) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 

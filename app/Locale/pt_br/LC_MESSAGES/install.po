@@ -265,3 +265,21 @@ msgstr ""
 
 msgid "Unable to generate users password."
 msgstr "Não foi possivel criar passwords."
+
+msgid "You required to reinstall."
+msgstr "Solicitou uma nova instalação."
+
+msgid "We need to validate your action, please use this validation key"
+msgstr "Precisamos validar, use esta chave de validação"
+
+msgid "pHKondo Reinstall Required"
+msgstr "Reinstalação do pHKondo solicitada"
+
+msgid "Required validation key was sent to your user email."
+msgstr "A chave de validação necessária foi enviada para seu e-mail de usuário."
+
+msgid "Installed Key"
+msgstr "Chave de Validação"
+
+msgid "Invalid Key."
+msgstr "Chave Inválida"

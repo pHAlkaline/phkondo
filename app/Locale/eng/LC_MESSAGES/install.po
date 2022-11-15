@@ -271,7 +271,7 @@ msgstr ""
 msgid "Required validation key was sent to your user email."
 msgstr ""
 
-msgid "'Installed Key"
+msgid "Installed Key"
 msgstr ""
 
 msgid "Invalid Key."

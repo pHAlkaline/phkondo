@@ -254,7 +254,25 @@ msgid "pHKondo is now Secure."
 msgstr ""
 
 msgid "Unable to config your application, your Config %s bootstrap_app.ini file is not writable. Please check the permissions."
-msgstr ""
+msgstr "Kan uw toepassing niet configureren, uw bestand Config %s bootstrap_app.ini is niet schrijfbaar. Controleer de machtigingen."
 
 msgid "Unable to generate users password."
-msgstr ""
+msgstr "Kan gebruikerswachtwoord niet genereren."
+
+msgid "You required to reinstall."
+msgstr "U moest opnieuw installeren."
+
+msgid "We need to validate your action, please use this validation key"
+msgstr "We moeten uw actie valideren, gebruik deze validatiesleutel"
+
+msgid "pHKondo Reinstall Required"
+msgstr "pHKondo opnieuw installeren vereist"
+
+msgid "Required validation key was sent to your user email."
+msgstr "De vereiste validatiesleutel is naar uw gebruikers-e-mailadres verzonden."
+
+msgid "Installed Key"
+msgstr "Geïnstalleerde sleutel"
+
+msgid "Invalid Key."
+msgstr "Ongeldige sleutel"

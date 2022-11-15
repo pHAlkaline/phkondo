@@ -267,3 +267,21 @@ msgstr "Imposibil de configurat aplicația dvs., fișierul dvs. de configurare %
 
 msgid "Unable to generate users password."
 msgstr "Nu se poate genera parola utilizatorilor."
+
+msgid "You required to reinstall."
+msgstr "Ai trebuit să reinstalezi."
+
+msgid "We need to validate your action, please use this validation key"
+msgstr "Trebuie să vă validăm acțiunea, vă rugăm să utilizați această cheie de validare"
+
+msgid "pHKondo Reinstall Required"
+msgstr "Este necesară reinstalarea pHKondo"
+
+msgid "Required validation key was sent to your user email."
+msgstr "Cheia de validare necesară a fost trimisă la adresa dvs. de e-mail de utilizator."
+
+msgid "Installed Key"
+msgstr "Cheie instalată"
+
+msgid "Invalid Key."
+msgstr "Cheie invalida."
