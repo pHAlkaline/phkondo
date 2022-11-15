@@ -70,7 +70,9 @@ CakePdf.binary = /usr/local/bin/wkhtmltopdf
 MaintenanceManager.start = 01-01-2000 00:00:00
 MaintenanceManager.duration = 1
 MaintenanceManager.site_offline_url = /pages/maintenance_offline
+MaintenanceManager.offline_destroy_session=true
 
 SubscriptionManager.start = 31-12-9999
 SubscriptionManager.duration = 30
 SubscriptionManager.site_offline_url = /pages/subscription_offline
+SubscriptionManager.offline_destroy_session=true

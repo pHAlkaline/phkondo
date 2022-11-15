@@ -33,15 +33,15 @@ class SecureShell extends AppShell {
 
     private function __setNewSaltSeed() {
         // set new salt and seed value
-        $File = new File(APP . 'Config' . DS . 'core_phapp.php');
+        $File = new File(APP . 'Config' . DS . 'core_app.php');
         $salt = Security::generateAuthKey();
         $seed = mt_rand() . mt_rand();
         $contents = $File->read();
         $contents = preg_replace('/(?<=Configure::write\(\'Security.salt\', \')([^\' ]+)(?=\'\))/', $salt, $contents);
         $contents = preg_replace('/(?<=Configure::write\(\'Security.cipherSeed\', \')(\d+)(?=\'\))/', $seed, $contents);
         if (!$File->write($contents)) {
-            $this->out(__d('install', 'Unable to secure your application, your Config %s core_phapp.php file is not writable. Please check the permissions.', DS));
-            $this->log(__d('install', 'Unable to secure your application, your Config %s core_phapp.php file is not writable. Please check the permissions.', DS));
+            $this->out(__d('install', 'Unable to secure your application, your Config %s core_app.php file is not writable. Please check the permissions.', DS));
+            $this->log(__d('install', 'Unable to secure your application, your Config %s core_app.php file is not writable. Please check the permissions.', DS));
             return false;
 
         }

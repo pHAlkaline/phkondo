@@ -15,15 +15,15 @@ msgstr ""
 "X-Generator: Poedit 3.0.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: Config/core_phapp.php:89
+#: Config/core_app.php:89
 msgid "App Administrator"
 msgstr "Administrador del Programa"
 
-#: Config/core_phapp.php:91
+#: Config/core_app.php:91
 msgid "Employee"
 msgstr "Empleado"
 
-#: Config/core_phapp.php:90 Plugin/Drafts/View/CondoDrafts/view.ctp:70
+#: Config/core_app.php:90 Plugin/Drafts/View/CondoDrafts/view.ctp:70
 #: Plugin/Drafts/View/CondoDrafts/pdf/view.ctp:70
 #: View/Themed/Phkondo/Entities/view.ctp:123
 #: View/Themed/Phkondo/FractionEntities/view.ctp:24
@@ -947,7 +947,7 @@ msgstr "Reportes"
 
 #: Controller/SecureController.php:96
 msgid ""
-"Unable to secure your application, your Config %s core_phapp.php file is not "
+"Unable to secure your application, your Config %s core_app.php file is not "
 "writable. Please check the permissions."
 msgstr ""
 

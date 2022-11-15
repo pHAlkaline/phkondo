@@ -54,10 +54,10 @@ msgstr "Nu pot încărca baza de date: %s"
 
 #: Controller/InstallController.php:375;504
 msgid ""
-"Unable to secure your application, your Config %s core_phapp.php file is not "
+"Unable to secure your application, your Config %s core_app.php file is not "
 "writable. Please check the permissions."
 msgstr ""
-"Nu am putut să securizez aplicația, fișierul de Config %s core_phapp.php nu "
+"Nu am putut să securizez aplicația, fișierul de Config %s core_app.php nu "
 "poate fi scris. Vă rog verificați permisiunile."
 
 #: Controller/InstallController.php:395;396
@@ -223,12 +223,12 @@ msgid "Your Config directory is NOT writable."
 msgstr "Directorul de configurare NU are permisiunea de scriere."
 
 #: View/Themed/Phkondo/Install/index.ctp:46
-msgid "Your Config/core_phapp.php file is writable."
-msgstr "Config/core_phapp.php ARE permisiunea de scriere."
+msgid "Your Config/core_app.php file is writable."
+msgstr "Config/core_app.php ARE permisiunea de scriere."
 
 #: View/Themed/Phkondo/Install/index.ctp:50
-msgid "Your Config/core_phapp.php file is NOT writable."
-msgstr "Config/core_phapp.php NU are permisiunea de scriere."
+msgid "Your Config/core_app.php file is NOT writable."
+msgstr "Config/core_app.php NU are permisiunea de scriere."
 
 #: View/Themed/Phkondo/Install/index.ctp:56
 msgid "PHP version %s >= 5.6 and <8.0.0"

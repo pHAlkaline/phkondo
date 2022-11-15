@@ -6,6 +6,7 @@ Aggiungi utente/i -> Configurazione -> Utenti
 **Amministratore (controllo totale su pHKONDO)
 ** Manager (controllo completo su pHKONDO eccetto gestione utente e impostazioni di sistema)
 ** Dipendente (nessun accesso alle opzioni di configurazione e manutenzione)
+Apporta modifiche alle impostazioni -> Configurazione
 
 Accedi con un altro account
 

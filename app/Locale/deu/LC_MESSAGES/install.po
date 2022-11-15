@@ -54,7 +54,7 @@ msgstr ""
 
 #: Controller/InstallController.php:375;504
 msgid ""
-"Unable to secure your application, your Config %s core_phapp.php file is not "
+"Unable to secure your application, your Config %s core_app.php file is not "
 "writable. Please check the permissions."
 msgstr ""
 
@@ -218,11 +218,11 @@ msgid "Your Config directory is NOT writable."
 msgstr "CONFIG-Verzeichnis ist NICHT beschreibbar."
 
 #: View/Themed/Phkondo/Install/index.ctp:46
-msgid "Your Config/core_phapp.php file is writable."
+msgid "Your Config/core_app.php file is writable."
 msgstr "Config/core.php ist beschreibbar."
 
 #: View/Themed/Phkondo/Install/index.ctp:50
-msgid "Your Config/core_phapp.php file is NOT writable."
+msgid "Your Config/core_app.php file is NOT writable."
 msgstr "Config/core.php ist NICHT beschreibbar."
 
 #: View/Themed/Phkondo/Install/index.ctp:56

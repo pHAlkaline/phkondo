@@ -6,6 +6,7 @@ Añadir usuario(s) -> Configuración -> Usuarios
 ** Administrador (Control Total Sobre pHKONDO)
 ** Administrador (Control total sobre pHKONDO, excepto la administración de usuarios y la configuración del sistema)
 ** Empleado (Sin acceso a opciones de configuración y mantenimiento)
+Realizar cambios en la configuración -> Configuración
 
 Iniciar sesión con otra cuenta
 

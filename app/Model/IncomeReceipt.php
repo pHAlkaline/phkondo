@@ -29,7 +29,7 @@
 App::uses('AppModel', 'Model');
 
 /**
- * Entity Model
+ * IncomeReceipt Model
  */
 class IncomeReceipt extends AppModel {
 

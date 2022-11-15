@@ -54,7 +54,7 @@ msgstr "Não foi possível carregar a base de dados: %s"
 
 #: Controller/InstallController.php:375;504
 msgid ""
-"Unable to secure your application, your Config %s core_phapp.php file is not "
+"Unable to secure your application, your Config %s core_app.php file is not "
 "writable. Please check the permissions."
 msgstr ""
 "Não foi possível tornar a aplicação mais segura, a sua pasta Config %s core."
@@ -222,12 +222,12 @@ msgid "Your Config directory is NOT writable."
 msgstr "A directoria Config não tem permisão de escrita."
 
 #: View/Themed/Phkondo/Install/index.ctp:46
-msgid "Your Config/core_phapp.php file is writable."
-msgstr "A ficheiro Config/core_phapp.php tem permisão de escrita."
+msgid "Your Config/core_app.php file is writable."
+msgstr "A ficheiro Config/core_app.php tem permisão de escrita."
 
 #: View/Themed/Phkondo/Install/index.ctp:50
-msgid "Your Config/core_phapp.php file is NOT writable."
-msgstr "A ficheiro Config/core_phapp.php não tem permisão de escrita."
+msgid "Your Config/core_app.php file is NOT writable."
+msgstr "A ficheiro Config/core_app.php não tem permisão de escrita."
 
 #: View/Themed/Phkondo/Install/index.ctp:56
 msgid "PHP version %s >= 5.6 and <8.0.0"

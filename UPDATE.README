@@ -3,7 +3,8 @@ When you are using a customized version pHAlkaline strongly suggest the use of a
 
 Make a full backup.
 Make app/Config directory contents backup.
-Make app/files directory contents and database backup.
+Make app/files directory contents
+Make database backup.
 
 Download Last Version.
 Uncompress and upload files and directories to a directory of your choice on your server or upload the content zip to your server, and extract the archive.
@@ -20,14 +21,15 @@ On valid data the script will create and populate the database and write a confi
 If the setup script has finished running with no errors, then congratulations pHKondo is installed.
 If you dont have Web Installer please goto Manual Installation.
 
-Restore.
-After fresh install you need to restore app/Config directory files.
-Take very special attention to core.php and core_phapp.php , update salt and cipherSeed with your previous values. ( app/Config directory Backup )
-Take very special attention to database.php, email.php, bootstrap_phapp.php and email.php files, edit and with your previous values. ( app/Config directory Backup )
+After fresh install you need to 
+Restore your database
+Goto app/Config directory and update your files with previous values .
+Take very special attention to salt and cipherSeed values.
+Take very special attention to database.php, email.php, bootstrap_app.ini , email_notifications.php, organization.php files, edit and update to your previous values.
 Take very special attention to database schema, also look at app/Config/Schema for schema updates.
 Clear cache , delete all files at app/tmp/cache subdirectories except empty file.
 
-restore your database
+
 restore you app/files directory with backup
 
 If you are looking for on-site teaching or consulting support, contact our sales and support teams.
