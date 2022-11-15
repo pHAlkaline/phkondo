@@ -1,7 +1,7 @@
 <?php ?>
 
-<div id="page-content" class="col-sm-10">
-    <div class="install form">
+<div id="page-content" class="col-sm-12 col-md-10">
+    <div class="config form">
 
         <legend><?php echo __('General'); ?></legend>
         <section>

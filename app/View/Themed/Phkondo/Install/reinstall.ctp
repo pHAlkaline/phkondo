@@ -1,6 +1,6 @@
 <?php $this->Html->script('install', false); ?>
 
-<div id="page-content" class="col-sm-10">
+<div id="page-content" class="col-sm-12 col-md-10">
     <div class="install form">
         <?php echo $this->Form->create(false, array('url' => array('controller' => 'install', 'action' => 'reinstall')));
         ?>

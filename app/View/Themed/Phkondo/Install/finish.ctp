@@ -1,6 +1,6 @@
 <?php $this->Html->script('install', false); ?>
 <h2><?php echo $title_for_step; ?></h2>
-<div id="page-content" class="col-sm-10">
+<div id="page-content" class="col-sm-12 col-md-10">
 
     <div class="install form">
         <div class="row">
