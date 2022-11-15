@@ -43,12 +43,12 @@ Configure::write('Cookie', array('name' => 'pHKondoCookie'));
 /**
  * A random string used in security hashing methods.
  */
-Configure::write('Security.salt', '9e3ab404edd5e2f1d6bcd21e836896fd8386399f');
+Configure::write('Security.salt', 'xyz');
 
 /**
  * A random numeric string (digits only) used to encrypt/decrypt strings.
  */
-Configure::write('Security.cipherSeed', '16229845411812862428');
+Configure::write('Security.cipherSeed', '123');
 Configure::write('Security.useOpenSsl', true);
 
 /**
