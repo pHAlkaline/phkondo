@@ -396,7 +396,7 @@ Cache::config('_cake_model_', array(
 	'duration' => $duration
 ));
 
-if (!file_exists(APP . 'Config' . DS . 'core_phapp.php')) {
-    copy(APP . 'Config' . DS . 'core_phapp.php.default', APP . 'Config' . DS . 'core_phapp.php');
+if (!file_exists(APP . 'Config' . DS . 'core_app.php')) {
+    copy(APP . 'Config' . DS . 'core_app.php.default', APP . 'Config' . DS . 'core_app.php');
 }
-require 'core_phapp.php';
+require 'core_app.php';

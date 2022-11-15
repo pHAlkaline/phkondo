@@ -200,9 +200,11 @@ $allows_keys = [
     'MaintenanceManager.start',
     'MaintenanceManager.duration',
     'MaintenanceManager.site_offline_url',
+    'MaintenanceManager.offline_destroy_session',
     'SubscriptionManager.start',
     'SubscriptionManager.duration',
-    'SubscriptionManager.site_offline_url'
+    'SubscriptionManager.site_offline_url',
+    'SubscriptionManager.offline_destroy_session'
 ];
 foreach ($allows_keys as $value) {
      Configure::write($value, Configure::read('BootstrapApp.' . $value));

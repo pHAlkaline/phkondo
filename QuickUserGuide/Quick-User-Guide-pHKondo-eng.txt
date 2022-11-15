@@ -6,6 +6,7 @@ Add user(s) -> Configuration -> Users
 ** Administrator ( Total Control Over pHKONDO )
 ** Manager (Full Control Over pHKONDO except user management and system settings)
 ** Employee (No access to configuration and maintenance options)
+Make changes to settings -> Configuration
 
 Sign in with another account
 
@@ -71,6 +72,8 @@ Budget must be in pending status to be allowed to be deleted.
 Budget can not be deleted with associated paid fees.
 Properties can not be deleted with associated fees.
 Other tables with associated records can not be deleted.
+To output PDF files pHKondo requires wkhtmltopdf engine at your system https://wkhtmltopdf.org/ and configuration at 
+
 
 .. After this you can explore ...
 Go to Receipts to create documents for income payments with receipts
