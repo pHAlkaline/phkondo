@@ -265,6 +265,9 @@ msgstr ""
 msgid "We need to validate your action, please use this validation key"
 msgstr ""
 
+msgid "We need to validate your action, please enter your validation key"
+msgstr ""
+
 msgid "pHKondo Reinstall Required"
 msgstr ""
 

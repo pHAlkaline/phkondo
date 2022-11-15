@@ -272,6 +272,9 @@ msgstr "Solicitou uma nova instalação."
 msgid "We need to validate your action, please use this validation key"
 msgstr "Precisamos validar, use esta chave de validação"
 
+msgid "We need to validate your action, please enter your validation key"
+msgstr "Precisamos validar sua ação, digite sua chave de validação"
+
 msgid "pHKondo Reinstall Required"
 msgstr "Reinstalação do pHKondo solicitada"
 

@@ -275,6 +275,9 @@ msgstr "Necesitas reinstalar."
 msgid "We need to validate your action, please use this validation key"
 msgstr "Necesitamos validar su acción, utilice esta clave de validación"
 
+msgid "We need to validate your action, please enter your validation key"
+msgstr "Necesitamos validar su acción, por favor ingrese su clave de validación"
+
 msgid "pHKondo Reinstall Required"
 msgstr "Reinstalación de pHKondo requerida"
 

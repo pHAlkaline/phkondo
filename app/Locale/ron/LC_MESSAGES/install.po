@@ -274,6 +274,9 @@ msgstr "Ai trebuit să reinstalezi."
 msgid "We need to validate your action, please use this validation key"
 msgstr "Trebuie să vă validăm acțiunea, vă rugăm să utilizați această cheie de validare"
 
+msgid "We need to validate your action, please enter your validation key"
+msgstr "Trebuie să vă validăm acțiunea, vă rugăm să introduceți cheia de validare"
+
 msgid "pHKondo Reinstall Required"
 msgstr "Este necesară reinstalarea pHKondo"
 

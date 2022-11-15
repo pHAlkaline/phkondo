@@ -265,6 +265,9 @@ msgstr "U moest opnieuw installeren."
 msgid "We need to validate your action, please use this validation key"
 msgstr "We moeten uw actie valideren, gebruik deze validatiesleutel"
 
+msgid "We need to validate your action, please enter your validation key"
+msgstr "Wir müssen Ihre Aktion validieren, bitte geben Sie Ihren Validierungsschlüssel ein"
+
 msgid "pHKondo Reinstall Required"
 msgstr "pHKondo opnieuw installeren vereist"
 
