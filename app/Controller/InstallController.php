@@ -145,9 +145,9 @@ class InstallController extends AppController
         if (Configure::read('Application.isFullPack')) {
             $packList = array(
                 'free' => 'Community',
-                'full' => 'Full Pack',
-                'one' => 'Full Pack One',
-                'pro' => 'Full Pack Pro'
+                'full' => 'FullPack',
+                'one' => 'Cloud One',
+                'pro' => 'Cloud Pro'
             );
         }
         if (Configure::read('Application.stage') == 'saas' && Configure::read('Application.mode')) {
