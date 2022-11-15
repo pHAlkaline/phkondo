@@ -676,8 +676,10 @@ class InstallController extends AppController
                 $Email->to($emailTo);
                 $Email->subject(__d('install', 'pHKondo Reinstall Required'));
                 $result = $Email->send($content);
+                $this->Flash->success(__d('email','Email sent with success.'));
+                
             } catch (\Exception $e) {
-                $this->Flash->warning($e->getMessage());
+                $this->Flash->warning(__d('email','Not possible to send Email.'));
                 $result = false;
             }
         }
