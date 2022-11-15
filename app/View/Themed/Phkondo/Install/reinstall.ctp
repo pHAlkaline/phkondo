@@ -12,7 +12,7 @@
                 <p><?php echo __d('install', 'Required validation key was sent to your user email.'); ?></p>
                 <p><?php echo __d('install', 'We need to validate your action, please enter your validation key'); ?></p>
             </div><!-- .form-group -->
-            <div class="form-group col-sm-6">
+            <div class="form-group col-sm-12 col-md-10">
                 <?php echo $this->Form->input('installed_key', array('class' => 'form-control', 'maxLength' => '40', 'label' =>  __d('install', 'Installed Key'), 'value' => null)); ?>
             </div><!-- .form-group -->
         </fieldset>
