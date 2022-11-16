@@ -2648,11 +2648,11 @@ msgstr ""
 
 #: View/Themed/Phkondo/Elements/menu/top_menu.ctp:74
 msgid "Accounting"
-msgstr ""
+msgstr "Contabilidad"
 
 #: View/Themed/Phkondo/Elements/menu/top_menu.ctp:101
 msgid "System"
-msgstr ""
+msgstr "Sistema"
 
 #: View/Themed/Phkondo/Elements/menu/top_menu.ctp:122
 #: View/Themed/Phkondo/Install/database.ctp:33

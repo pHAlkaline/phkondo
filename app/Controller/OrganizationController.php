@@ -105,7 +105,6 @@ class OrganizationController extends AppController {
     public function beforeRender() {
         parent::beforeRender();
         $breadcrumbs = array(
-            //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'organization', 'action' => 'config')), 'text' => __('Organization'), 'active' => 'active'));
 
         $headerTitle = __('Organization');

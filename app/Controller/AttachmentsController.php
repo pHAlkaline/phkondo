@@ -49,8 +49,6 @@ class AttachmentsController extends AppController {
      */
     public function index() {
         $breadcrumbs = array(
-            //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
-            //array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text') . ' ( ' . $this->phkRequestData['fiscal_year_text'] . ' ) ', 'active' => ''),
             array('link' => Router::url(array('controller' => 'attachments', 'action' => 'index', '?' => $this->request->query), true), 'text' => __n('Attachment', 'Attachments', 2), 'active' => 'active')
         );
@@ -67,8 +65,6 @@ class AttachmentsController extends AppController {
      */
     public function fraction_attachments() {
         $breadcrumbs = array(
-            //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
-            //array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text') . ' ( ' . $this->phkRequestData['fiscal_year_text'] . ' ) ', 'active' => ''),
             array('link' => Router::url(array('controller' => 'fractions', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Fraction', 'Fractions', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'fractions', 'action' => 'view', $this->getPhkRequestVar('fraction_id'))), 'text' => $this->getPhkRequestVar('fraction_text'), 'active' => ''),
@@ -87,8 +83,6 @@ class AttachmentsController extends AppController {
      */
     public function insurance_attachments() {
         $breadcrumbs = array(
-            //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
-            //array('link' => Router::url(array('controller' => 'condos', 'action' => 'index')), 'text' => __n('Condo', 'Condos', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text') . ' ( ' . $this->phkRequestData['fiscal_year_text'] . ' ) ', 'active' => ''),
             array('link' => Router::url(array('controller' => 'insurances', 'action' => 'index', '?' => $this->request->query)), 'text' => __n('Insurance', 'Insurances', 2), 'active' => ''),
             array('link' => Router::url(array('controller' => 'insurances', 'action' => 'view', $this->getPhkRequestVar('insurance_id'))), 'text' => $this->getPhkRequestVar('insurance_text'), 'active' => ''),

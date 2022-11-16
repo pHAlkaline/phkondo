@@ -150,7 +150,6 @@ class InsuranceTypesController extends AppController {
             return;
         }
         $breadcrumbs = array(
-            //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'insurance_types', 'action' => 'index', '?' => $this->request->query), true), 'text' => __('Insurance Types'), 'active' => 'active')
         );
         switch ($this->action) {

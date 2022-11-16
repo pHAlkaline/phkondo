@@ -1,14 +1,19 @@
 pHKondo Guida Rapida
 
 Accedi con l'account amministratore
-Aggiungi utente/i -> Configurazione -> Utenti
-* Per ogni utente tre livelli di accesso
-**Amministratore (controllo totale su pHKONDO)
-** Manager (controllo completo su pHKONDO eccetto gestione utente e impostazioni di sistema)
-** Dipendente (nessun accesso alle opzioni di configurazione e manutenzione)
-Apporta modifiche alle impostazioni -> Configurazione
 
-Accedi con un altro account
+Aggiungi utenti in Configurazione -> Utenti
+* 3 livelli di accesso
+** Amministratore (controllo totale su pHKONDO)
+** Manager (controllo completo su pHKONDO tranne la gestione degli utenti e le impostazioni di sistema)
+** Dipendente (nessun accesso alle opzioni di configurazione e manutenzione)
+
+Aggiorna la tua organizzazione in Configurazione -> Organizzazione
+Imposta il tuo sistema in Configurazione -> Gruppo di sistema
+Imposta le tabelle ausiliarie in Configurazione -> Generale , Contabilità, Bozze
+
+
+Accedi con un altro account se richiesto, non obbligatorio
 
 Inserisci condominio -> Nuovo Condominio 
 Inserisci i dettagli del condominio

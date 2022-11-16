@@ -4,7 +4,7 @@ $this->Html->script('email', false); ?>
 <div id="page-content" class="col-sm-12 col-md-10">
     <div class="config form">
 
-        <legend><?php echo __d('email', 'Email Server'); ?></legend>
+        <legend><?php echo __d('email', 'Email Client'); ?></legend>
         <section>
             <?php echo $this->Form->create(
                 false,

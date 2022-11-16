@@ -93,7 +93,6 @@ class IncomeController extends AppController {
     public function beforeRender() {
         parent::beforeRender();
         $breadcrumbs = array(
-            //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'income', 'action' => 'index')), 'text' => __('Income Control'), 'active' => 'active'));
 
         switch ($this->action) {

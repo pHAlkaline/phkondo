@@ -121,11 +121,11 @@ msgstr "Instalar o configurar manualmente pHKondo"
 
 #: View/Themed/Phkondo/Elements/menu/top_menu.ctp:108
 msgid "Reinstall"
-msgstr ""
+msgstr "Reinstalar"
 
 #: View/Themed/Phkondo/Elements/menu/top_menu.ctp:108
 msgid "Are you sure you want to reinstall # %s?"
-msgstr ""
+msgstr "¿Estás seguro de que quieres reinstalar #% s?"
 
 #: View/Themed/Phkondo/Install/adminuser.ctp:8
 msgid "Administrator Account"

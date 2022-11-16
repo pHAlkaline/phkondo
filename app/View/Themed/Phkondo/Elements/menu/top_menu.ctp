@@ -65,7 +65,7 @@
                                     <h6 class="dropdown-header"><?php echo __('Users'); ?></h6>
                                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-user"></span> ' . __('Users'), array('plugin' => '', 'controller' => 'users', 'action' => 'index'), array('escape' => false)); ?></li>
                                     <h6 class="dropdown-header"><?php echo __('System'); ?></h6>
-                                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-envelope"></span> ' . __d('email', 'Email Server'), array('plugin' => '', 'controller' => 'system_config', 'action' => 'email'), array('escape' => false)); ?></li>
+                                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-envelope"></span> ' . __d('email', 'Email Client'), array('plugin' => '', 'controller' => 'system_config', 'action' => 'email'), array('escape' => false)); ?></li>
                                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-cog"></span> ' . __('General'), array('plugin' => '', 'controller' => 'system_config', 'action' => 'general'), array('escape' => false)); ?></li>
                                 <?php } ?>
                                 <?php if (AuthComponent::user('role') == 'admin' && !in_array(Configure::read('Application.stage'), ['demo'])) { ?>

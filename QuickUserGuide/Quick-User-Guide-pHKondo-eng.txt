@@ -1,14 +1,19 @@
 pHKondo quick guide
 
 Log in with the administrator account
-Add user(s) -> Configuration -> Users
-* For each user three access levels
+
+Add user(s) in Configuration -> Users
+* 3 access levels
 ** Administrator ( Total Control Over pHKONDO )
 ** Manager (Full Control Over pHKONDO except user management and system settings)
 ** Employee (No access to configuration and maintenance options)
-Make changes to settings -> Configuration
 
-Sign in with another account
+Update your organization in Configuration -> Organization
+Setup your system in Configuration -> System Group
+Setup auxiliary tables in Configuration -> General , Accounting, Drafts
+
+
+Sign in with another account if required, not mandatory
 
 Add condo(s) -> New condo 
 Enter condo details
@@ -72,7 +77,7 @@ Budget must be in pending status to be allowed to be deleted.
 Budget can not be deleted with associated paid fees.
 Properties can not be deleted with associated fees.
 Other tables with associated records can not be deleted.
-To output PDF files pHKondo requires wkhtmltopdf engine at your system https://wkhtmltopdf.org/ and configuration at 
+To output PDF files pHKondo requires wkhtmltopdf engine at your system https://wkhtmltopdf.org/ and configuration 
 
 
 .. After this you can explore ...

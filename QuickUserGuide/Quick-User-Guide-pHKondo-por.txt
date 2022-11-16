@@ -1,14 +1,19 @@
 pHKondo Guia Rápido
 
 Iniciar Sessão com a conta administrador
-Adicionar utilizador(es) -> Configuração -> Utilizadores
-* Para cada utilizador tres niveis de accesso
-** Administrador ( Total Controlo Sobre o pHKONDO )
-** Gestor ( Total Controlo Sobre o pHKONDO excepto gestão de utilizadore e configurações de sistema  )
-** Colaborador ( Sem Acesso a opções de configuração e manutenção  )
-Efectuar alterações nas configurações -> Configuração
 
-Iniciar Sessão com outra conta
+Adicionar usuário(s) em Configuração -> Usuários
+* 3 níveis de acesso
+** Administrador (Controle total sobre pHKONDO)
+** Manager (controle total sobre o pHKONDO, exceto gerenciamento de usuários e configurações do sistema)
+** Funcionário (sem acesso às opções de configuração e manutenção)
+
+Atualize sua organização em Configuração -> Organização
+Configure seu sistema em Configuração -> Grupo de sistemas
+Configure tabelas auxiliares em Configuração -> Geral, Contabilidade, Minutas
+
+
+Inicie com outra conta, se necessário, não obrigatório
 
 Adicionar condomínio(s) -> Criar Condomínio
 Ver detalhes do condomínio

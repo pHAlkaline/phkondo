@@ -12,7 +12,7 @@
     <?php } else { ?>
         <div class="col-lg-12 text-center">
 
-            <h2>Condominium HOA Management</h2>
+            <h2>HOA Condominium Management</h2>
             <p class="lead">Including as main features management of properties its owners and representatives, accounting periods, budgets, fees, shares, bank accounts with movements, billing, payments, receipts, maintenance, insurances ....</p>
 
             <h2>Free Software</h2>

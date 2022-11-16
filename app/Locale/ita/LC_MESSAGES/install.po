@@ -118,11 +118,11 @@ msgstr ""
 
 #: View/Themed/Phkondo/Elements/menu/top_menu.ctp:108
 msgid "Reinstall"
-msgstr ""
+msgstr "Reinstall"
 
 #: View/Themed/Phkondo/Elements/menu/top_menu.ctp:108
 msgid "Are you sure you want to reinstall # %s?"
-msgstr ""
+msgstr "Sei sicuro di voler reinstallare # %s?"
 
 #: View/Themed/Phkondo/Install/adminuser.ctp:8
 msgid "Administrator Account"

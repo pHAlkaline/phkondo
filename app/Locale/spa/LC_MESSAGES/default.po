@@ -377,7 +377,7 @@ msgstr ""
 
 #: Controller/CondosController.php:213 Controller/PagesController.php:83
 msgid "Home"
-msgstr "Casa"
+msgstr "Empieza"
 
 #: Controller/CondosController.php:216;223
 msgid "Condos"

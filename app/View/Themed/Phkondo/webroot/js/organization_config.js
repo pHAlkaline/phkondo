@@ -37,6 +37,7 @@ $(function () {
                     var height = this.height;
                     var width = this.width;
                     if (height > 65 || width > 380) {
+                        alert('image.width > 380 || image.height > 65');
                         $("#logo").val('');
                         return false;
                     }

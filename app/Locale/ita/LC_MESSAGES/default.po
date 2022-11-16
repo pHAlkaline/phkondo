@@ -2636,15 +2636,15 @@ msgstr "Configurazione"
 
 #: View/Themed/Phkondo/Elements/menu/top_menu.ctp:55
 msgid "General"
-msgstr ""
+msgstr "Generale"
 
 #: View/Themed/Phkondo/Elements/menu/top_menu.ctp:74
 msgid "Accounting"
-msgstr ""
+msgstr "Contabilità"
 
 #: View/Themed/Phkondo/Elements/menu/top_menu.ctp:101
 msgid "System"
-msgstr ""
+msgstr "Sistema"
 
 #: View/Themed/Phkondo/Elements/menu/top_menu.ctp:122
 #: View/Themed/Phkondo/Install/database.ctp:33
@@ -2663,7 +2663,7 @@ msgstr "Fine Sessione"
 
 #: View/Themed/Phkondo/Email/config.ctp:26
 msgid "Receipts"
-msgstr ""
+msgstr "Ricevuti"
 
 #: View/Themed/Phkondo/Email/config.ctp:29
 #: View/Themed/Phkondo/FractionOwners/view.ctp:31;91;149
@@ -2681,7 +2681,7 @@ msgstr "Nome Utente"
 #: View/Themed/Phkondo/Email/config.ctp:62
 #: View/Themed/Phkondo/Install/database.ctp:38
 msgid "Password"
-msgstr ""
+msgstr "Parola d'ordine"
 
 #: View/Themed/Phkondo/Entities/add.ctp:9
 #: View/Themed/Phkondo/Entities/edit.ctp:18
@@ -2709,7 +2709,7 @@ msgstr "Ritorna"
 #: View/Themed/Phkondo/Entities/add_from_fraction.ctp:36
 #: View/Themed/Phkondo/FractionEntities/add.ctp:27
 msgid "New Manager"
-msgstr ""
+msgstr "Nuovo Direttore"
 
 #: View/Themed/Phkondo/Entities/edit.ctp:17
 #: View/Themed/Phkondo/FractionTypes/edit.ctp:17
@@ -2830,7 +2830,7 @@ msgstr[1] "Tipologia Assicurazione"
 #: View/Themed/Phkondo/FractionInsurances/view.ctp:30
 #: View/Themed/Phkondo/Insurances/view.ctp:30
 msgid "Expiration Date"
-msgstr ""
+msgstr "Data di scadenza"
 
 #: View/Themed/Phkondo/FractionInsurances/view.ctp:45
 #: View/Themed/Phkondo/Insurances/view.ctp:45
@@ -2840,7 +2840,7 @@ msgstr "Compagnia Assicurativa"
 #: View/Themed/Phkondo/FractionInsurances/view.ctp:50
 #: View/Themed/Phkondo/Insurances/view.ctp:50
 msgid "Policy"
-msgstr ""
+msgstr "Politica"
 
 #: View/Themed/Phkondo/FractionInsurances/view.ctp:60
 #: View/Themed/Phkondo/Insurances/view.ctp:60
@@ -2850,7 +2850,8 @@ msgstr "Importo Assicurazione"
 #: View/Themed/Phkondo/FractionInsurances/view.ctp:65
 #: View/Themed/Phkondo/Insurances/view.ctp:65
 msgid "Insurance Premium"
-msgstr ""
+msgstr "
+Premio assicurativo"
 
 #: View/Themed/Phkondo/FractionOwners/add.ctp:9
 #: View/Themed/Phkondo/FractionOwners/edit.ctp:11
@@ -2873,7 +2874,7 @@ msgstr "Rimuovi %s"
 #: View/Themed/Phkondo/FractionOwners/index.ctp:43
 #: View/Themed/Phkondo/FractionOwners/view.ctp:8
 msgid "Are you sure you want to remove # %s?"
-msgstr ""
+msgstr "Sei sicuro di voler rimuovere # %s?"
 
 #: View/Themed/Phkondo/FractionOwners/edit.ctp:25
 #: View/Themed/Phkondo/FractionOwners/view.ctp:7
@@ -2892,7 +2893,7 @@ msgstr "Inserisci Proprietario"
 #: View/Themed/Phkondo/FractionOwners/view.ctp:102;156
 #: View/Themed/Phkondo/Fractions/view.ctp:143
 msgid "Crédits"
-msgstr ""
+msgstr "Crediti"
 
 #: View/Themed/Phkondo/FractionOwners/view.ctp:134
 #: View/Themed/Phkondo/Fractions/view.ctp:116
@@ -2901,12 +2902,12 @@ msgstr ""
 #: View/Themed/Phkondo/Receipts/index.ctp:85
 #: View/Themed/Phkondo/Receipts/view.ctp:38
 msgid "Print"
-msgstr ""
+msgstr "Stampa"
 
 #: View/Themed/Phkondo/FractionOwners/view.ctp:134
 #: View/Themed/Phkondo/Fractions/view.ctp:116
 msgid "Report"
-msgstr ""
+msgstr "Rapporto"
 
 #: View/Themed/Phkondo/FractionTypes/add.ctp:9
 #: View/Themed/Phkondo/FractionTypes/edit.ctp:18
@@ -3010,11 +3011,11 @@ msgstr "Nessun record trovato."
 
 #: View/Themed/Phkondo/Install/database.ctp:48
 msgid "Encoding"
-msgstr ""
+msgstr "Codifica"
 
 #: View/Themed/Phkondo/Install/database.ctp:54
 msgid "Port (leave blank if unknown)"
-msgstr ""
+msgstr "Porto (lasciare vuoto se sconosciuto)"
 
 #: View/Themed/Phkondo/InsuranceTypes/add.ctp:9
 #: View/Themed/Phkondo/InsuranceTypes/edit.ctp:18
@@ -3077,7 +3078,7 @@ msgstr "Modifica Fattura"
 
 #: View/Themed/Phkondo/InvoiceConference/index_by_supplier.ctp:30
 msgid "Invoice Conference Status"
-msgstr ""
+msgstr "Fattura stato conferenza"
 
 #: View/Themed/Phkondo/InvoiceConference/view.ctp:95
 #: View/Themed/Phkondo/Supports/add.ctp:60
@@ -3281,7 +3282,7 @@ msgstr "Cancella Ricevuta"
 #: View/Themed/Phkondo/Receipts/edit.ctp:33
 #: View/Themed/Phkondo/Receipts/view.ctp:32
 msgid "Edit Receipt"
-msgstr ""
+msgstr "Modifica ricevuta"
 
 #: View/Themed/Phkondo/OwnerReceipts/edit.ctp:31
 #: View/Themed/Phkondo/OwnerReceipts/view.ctp:210
@@ -3305,7 +3306,7 @@ msgstr "Pagato"
 #: View/Themed/Phkondo/Receipts/index.ctp:83
 #: View/Themed/Phkondo/Receipts/view.ctp:36
 msgid "Are you sure you want to set receipt # %s as paid? - Payment as %s"
-msgstr ""
+msgstr "Sei sicuro di voler impostare la ricevuta # %s come pagata? - Pagamento in %s"
 
 #: View/Themed/Phkondo/OwnerReceipts/index.ctp:76
 #: View/Themed/Phkondo/Receipts/index.ctp:84
@@ -3317,7 +3318,7 @@ msgstr "Annulla"
 #: View/Themed/Phkondo/Receipts/index.ctp:84
 #: View/Themed/Phkondo/Receipts/view.ctp:37
 msgid "Are you sure you want to cancel # %s?"
-msgstr ""
+msgstr "Sei sicuro di voler annullare # %s?"
 
 #: View/Themed/Phkondo/OwnerReceipts/pay_receipt.ctp:32
 #: View/Themed/Phkondo/OwnerReceipts/view.ctp:36
@@ -3344,16 +3345,15 @@ msgstr "Contribuisci"
 #: View/Themed/Phkondo/Pages/login.ctp:40
 #: View/Themed/Phkondo/Users/login.ctp:40
 msgid "Remember Me"
-msgstr ""
+msgstr "Remember Me"
 
 #: View/Themed/Phkondo/Pages/maintenance_offline.ctp:6
 msgid "Application Offline"
-msgstr ""
+msgstr "Applicazione non in linea"
 
 #: View/Themed/Phkondo/Pages/maintenance_offline.ctp:8
 msgid "This application is now on maintenance mode, back soon as possible!"
-msgstr ""
-"Questa applicazione è in manutenzione. Sara' ripristinata il prima possibile!"
+msgstr "Questa applicazione è in manutenzione. Sara' ripristinata il prima possibile!"
 
 #: View/Themed/Phkondo/Pages/maintenance_offline.ctp:9
 msgid "Maintenance start at %s "
@@ -3365,42 +3365,42 @@ msgstr "Durata manutenzione %s Ore"
 
 #: View/Themed/Phkondo/Pages/maintenance_offline.ctp:16
 msgid "Application Online"
-msgstr ""
+msgstr "Applicazione in linea"
 
 #: View/Themed/Phkondo/Pages/maintenance_offline.ctp:19
 msgid "This application is back online, please refresh!"
-msgstr ""
+msgstr "Questa applicazione è tornata online, aggiornala!"
 
 #: View/Themed/Phkondo/Pages/subscription_offline.ctp:6
 msgid "Subscription Expired"
-msgstr ""
+msgstr "Abbonamento scaduto"
 
 #: View/Themed/Phkondo/Pages/subscription_offline.ctp:8
 msgid "This subscription has expired!"
-msgstr ""
+msgstr "Questo abbonamento è scaduto!"
 
 #: View/Themed/Phkondo/Pages/subscription_offline.ctp:9
 msgid "Subscription started at %s "
-msgstr ""
+msgstr "Abbonamento iniziato alle %s "
 
 #: View/Themed/Phkondo/Pages/subscription_offline.ctp:10
 msgid "Subscription expipred after %s days"
-msgstr ""
+msgstr "Abbonamento scaduto dopo %s giorni"
 
 msgid "For subscription payments use our international platform at "
-msgstr ""
+msgstr "Per i pagamenti degli abbonamenti utilizza la nostra piattaforma internazionale all'indirizzo"
 
 #: View/Themed/Phkondo/Pages/subscription_offline.ctp:16
 msgid "Subscription Active"
-msgstr ""
+msgstr "Per i pagamenti degli abbonamenti utilizza la nostra piattaforma internazionale all'indirizzo"
 
 #: View/Themed/Phkondo/Pages/subscription_offline.ctp:19
 msgid "This subscription is back online, please refresh!"
-msgstr ""
+msgstr "Questo abbonamento è di nuovo online, aggiorna!"
 
 #: Controller/Component/SubscriptionManagerComponent.php:102
 msgid "This subscription will expire in %s days"
-msgstr ""
+msgstr "Questo abbonamento è di nuovo online, aggiorna!"
 
 #: View/Themed/Phkondo/Pages/welcome.ctp:10
 msgid "Condominium / HOA Management"

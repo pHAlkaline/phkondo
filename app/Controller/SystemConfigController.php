@@ -145,7 +145,6 @@ class SystemConfigController extends AppController
     {
         parent::beforeRender();
         $breadcrumbs = array(
-            //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'system-config', 'action' => 'email')), 'text' => __('Email'), 'active' => 'active')
         );
         switch ($this->action) {

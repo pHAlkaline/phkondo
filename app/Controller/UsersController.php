@@ -244,7 +244,6 @@ class UsersController extends AppController {
         parent::beforeRender();
         $headerTitle = __('Users');
         $breadcrumbs = array(
-            //array('link' => Router::url(array('controller' => 'pages', 'action' => 'home')), 'text' => __('Home'), 'active' => ''),
             array('link' => Router::url(array('controller' => 'users', 'action' => 'index')), 'text' => __('Users'), 'active' => 'active'),
         );
         switch ($this->action) {
