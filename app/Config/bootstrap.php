@@ -113,6 +113,10 @@ CakeLog::config('error', array(
 ));
 App::uses('AppExceptionHandler', 'Lib');
 
+
+/*
+* pHkondo Plugins
+*/
 CakePlugin::load('DebugKit');
 CakePlugin::load('ClearCache');
 CakePlugin::load('Feedback');
