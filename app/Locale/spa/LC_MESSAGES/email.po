@@ -18,19 +18,19 @@ msgstr ""
 
 #: Controller/EmailController.php:88
 msgid "Could not save email client settings."
-msgstr ""
+msgstr "Impossibile salvare le impostazioni del client di posta elettronica."
 
 #: Controller/EmailController.php:101 Controller/InstallController.php:440
 msgid "Could not save notification settings."
-msgstr ""
+msgstr "Impossibile salvare le impostazioni di notifica."
 
 #: Controller/EmailController.php:106
 msgid "Config saved with success."
-msgstr ""
+msgstr "Config salvata con successo."
 
 #: Controller/EmailController.php:158
 msgid "Test message"
-msgstr ""
+msgstr "Messaggio di prova"
 
 #: Controller/EmailController.php:159
 #: Controller/FractionOwnersController.php:218
@@ -40,17 +40,17 @@ msgstr ""
 #: Plugin/PrintReceipt/Event/PrintReceiptListener.php:97
 #: Plugin/Reports/Event/SendReportListener.php:105;208
 msgid "Email sent with success."
-msgstr ""
+msgstr "Email inviata con successo."
 
 #: Plugin/PrintReceipt/Event/PrintReceiptListener.php:64
 #: Plugin/Reports/Event/SendReportListener.php:32;132
 msgid "Invalid Email."
-msgstr ""
+msgstr "E-mail non valida."
 
 #: Plugin/PrintReceipt/Event/PrintReceiptListener.php:73;99
 #: Plugin/Reports/Event/SendReportListener.php:81;107;184;210
 msgid "Not possible to send Email."
-msgstr ""
+msgstr "Impossibile inviare e-mail."
 
 #: View/Themed/Phkondo/Email/config.ctp:7
 msgid "Email Client"
@@ -58,28 +58,28 @@ msgstr "Cliente de Email"
 
 #: View/Themed/Phkondo/Email/config.ctp:23
 msgid "Connection"
-msgstr ""
+msgstr "Connessione"
 
 #: View/Themed/Phkondo/Email/config.ctp:42
 #: View/Themed/Phkondo/Install/database.ctp:28
 msgid "Host"
-msgstr ""
+msgstr "Ospite"
 
 #: View/Themed/Phkondo/Email/config.ctp:46
 msgid "Requires SMTP host account with TLS delivery enabled"
-msgstr ""
+msgstr "Richiede un account host SMTP con consegna TLS abilitata"
 
 #: View/Themed/Phkondo/Email/config.ctp:52
 msgid "Port"
-msgstr ""
+msgstr "Porto"
 
 #: View/Themed/Phkondo/Email/config.ctp:69
 msgid "From Email"
-msgstr ""
+msgstr "Dall'e-mail"
 
 #: View/Themed/Phkondo/Email/config.ctp:75
 msgid "From Name"
-msgstr ""
+msgstr "Dal nome"
 
 #: View/Themed/Phkondo/Email/config.ctp:80;94;109
 #: View/Themed/Phkondo/FractionOwners/view.ctp:187
@@ -88,11 +88,11 @@ msgstr ""
 #: View/Themed/Phkondo/Receipts/view.ctp:234
 #: View/Themed/Phkondo/Supports/view.ctp:44
 msgid "Subject"
-msgstr ""
+msgstr "Soggetto"
 
 #: View/Themed/Phkondo/Email/config.ctp:85
 msgid "Send Test"
-msgstr ""
+msgstr "Invia prova"
 
 #: View/Themed/Phkondo/Email/config.ctp:98;113
 #: View/Themed/Phkondo/FractionOwners/view.ctp:191
@@ -100,7 +100,7 @@ msgstr ""
 #: View/Themed/Phkondo/OwnerReceipts/view.ctp:250
 #: View/Themed/Phkondo/Receipts/view.ctp:238
 msgid "Message"
-msgstr ""
+msgstr "Messaggio"
 
 #: View/Themed/Phkondo/Email/config.ctp:102;117
 #: View/Themed/Phkondo/FractionOwners/view.ctp:194
@@ -108,7 +108,7 @@ msgstr ""
 #: View/Themed/Phkondo/OwnerReceipts/view.ctp:253
 #: View/Themed/Phkondo/Receipts/view.ctp:241
 msgid "Format"
-msgstr ""
+msgstr "Formatta"
 
 #: View/Themed/Phkondo/Email/config.ctp:102;117
 #: View/Themed/Phkondo/FractionOwners/view.ctp:194
@@ -123,19 +123,19 @@ msgstr ""
 #: View/Themed/Phkondo/OwnerReceipts/view.ctp:243
 #: View/Themed/Phkondo/Receipts/view.ctp:231
 msgid "Send To"
-msgstr ""
+msgstr "Invia a"
 
 #: View/Themed/Phkondo/FractionOwners/view.ctp:202
 #: View/Themed/Phkondo/Fractions/view.ctp:190
 #: View/Themed/Phkondo/OwnerReceipts/view.ctp:261
 #: View/Themed/Phkondo/Receipts/view.ctp:249
 msgid "Send"
-msgstr ""
+msgstr "Invia"
 
 #: View/Themed/Phkondo/OwnerReceipts/view.ctp:63
 #: View/Themed/Phkondo/Receipts/view.ctp:64
 msgid "Send By Email"
-msgstr ""
+msgstr "Invia tramite e-mail"
 
 msgid "In Demo Sessions this feature is disbled to avoid spam!!."
 msgstr "En las sesiones de demostración, esta función está deshabilitada para evitar el correo no deseado.
