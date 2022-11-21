@@ -264,9 +264,6 @@ msgstr ""
 "Não foi possível configurar a aplicaçao, a sua pasta Config %s core."
 "php não permite escrita. Verifique as permissões."
 
-msgid "Unable to generate users password."
-msgstr "Não foi possivel criar passwords."
-
 msgid "You required to reinstall."
 msgstr "Solicitou uma nova instalação."
 

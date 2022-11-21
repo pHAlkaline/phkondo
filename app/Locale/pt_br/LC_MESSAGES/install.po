@@ -75,7 +75,7 @@ msgstr "Passo 4 : Conta de Administração"
 #: Controller/InstallController.php:461
 #: Controller/InstallController.php:476
 msgid "Unable to create administrative user."
-msgstr "Não foi possível criar usuário administrativo."
+msgstr "Não foi possível criar conta administrativa."
 
 #: Controller/InstallController.php:470
 msgid "Saved with success."
@@ -258,13 +258,11 @@ msgstr ""
 msgid "pHKondo is now Secure."
 msgstr "pHKondo está agora seguro"
 
+
 msgid "Unable to config your application, your Config %s bootstrap_app.ini file is not writable. Please check the permissions."
 msgstr ""
 "Não foi possível configurar a aplicaçao, a sua pasta Config %s core."
 "php não permite escrita. Verifique as permissões."
-
-msgid "Unable to generate users password."
-msgstr "Não foi possivel criar passwords."
 
 msgid "You required to reinstall."
 msgstr "Solicitou uma nova instalação."
@@ -279,7 +277,7 @@ msgid "pHKondo Reinstall Required"
 msgstr "Reinstalação do pHKondo solicitada"
 
 msgid "Required validation key was sent to your user email."
-msgstr "A chave de validação necessária foi enviada para seu e-mail de usuário."
+msgstr "A chave de validação necessária foi enviada para seu e-mail de utilizador."
 
 msgid "Installed Key"
 msgstr "Chave de Validação"
