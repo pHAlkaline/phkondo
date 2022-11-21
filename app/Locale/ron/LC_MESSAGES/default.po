@@ -3584,3 +3584,6 @@ msgstr "FOLOSITI CONT GOOGLE?"
 
 msgid "You have reached the maximum number of condos allowed, request an account update accessing %s "
 msgstr "Ați atins numărul maxim de apartamente permis, solicitați o actualizare a contului accesând %s "
+
+msgid "Allowed dimensions are width <= 380 and height <= 65"
+msgstr "Dimensiunile permise sunt lățimea <= 380 și înălțimea <= 65"

@@ -3556,3 +3556,6 @@ msgstr "GOOGLE-KONTO VERWENDEN?"
 
 msgid "You have reached the maximum number of condos allowed, request an account update accessing %s "
 msgstr "Sie haben die maximal zulässige Anzahl von Eigentumswohnungen erreicht, fordern Sie eine Kontoaktualisierung an %s "
+
+msgid "Allowed dimensions are width <= 380 and height <= 65"
+msgstr "Zulässige Abmessungen sind Breite <= 380 und Höhe <= 65"

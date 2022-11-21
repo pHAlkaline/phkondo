@@ -3570,3 +3570,6 @@ msgstr "UTILIZZI UN ACCOUNT GOOGLE?"
 
 msgid "You have reached the maximum number of condos allowed, request an account update accessing %s "
 msgstr "Hai raggiunto il numero massimo di condomini consentiti, richiedi un aggiornamento account accedendo %s "
+
+msgid "Allowed dimensions are width <= 380 and height <= 65"
+msgstr "Le dimensioni consentite sono larghezza <= 380 e altezza <= 65"

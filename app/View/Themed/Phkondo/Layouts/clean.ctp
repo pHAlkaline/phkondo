@@ -33,157 +33,173 @@ if (!isset($headerTitle)) {
 }
 ?>
 <!DOCTYPE html>
-<html >
+<html>
 
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <?php echo $this->Html->charset(); ?>
-        <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
-        <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
-        <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
-        <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
-        <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
-        <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
-        <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-        <link rel="manifest" href="/manifest.json">
-        <meta name="msapplication-TileColor" content="#ffffff">
-        <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-        <meta name="theme-color" content="#ffffff">
-        <title>
-            <?php echo $headerTitle; ?>&nbsp;
-        </title>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?php echo $this->Html->charset(); ?>
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <title>
+        <?php echo $headerTitle; ?>&nbsp;
+    </title>
 
-        <?php
-        echo $this->Html->meta('icon');
-        echo $this->fetch('meta');
-        ?>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,531;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,531;1,600;1,700;1,800;1,900&display=swap">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" integrity="sha512-i8+QythOYyQke6XbStjt9T4yQHhhM+9Y9yTY1fOxoDQwsQpKMEpIoSQZ8mVomtnVCf9PBvoQDnKl06gGOOD19Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
-        <?php
-        echo $this->Html->css(array(
-            'animate/animate.min',
-            //'bootstrap/bootstrap-glyphicons',
-            'bootstrap/bootstrap',
-            'bootstrap/bootstrap-theme',
-            'datepicker/datepicker-bootstrap-theme',
-            //'datepicker/bootstrap-datepicker3.min',
-            'select2/select2',
-            'select2/select2-bootstrap',
-            'select2/select2.phkondo',
-            'offcanvas',
-            'checkbox-radio-styling/checkbox-radio',
-            'phkondo',
-        ));
-        echo $this->Html->css(array('phkondo_print'), null, array('media' => 'print'));
+    <?php
+    echo $this->Html->meta('icon');
+    echo $this->fetch('meta');
+    ?>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,531;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,531;1,600;1,700;1,800;1,900&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" integrity="sha512-i8+QythOYyQke6XbStjt9T4yQHhhM+9Y9yTY1fOxoDQwsQpKMEpIoSQZ8mVomtnVCf9PBvoQDnKl06gGOOD19Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <?php
+    echo $this->Html->css(array(
+        'animate/animate.min',
+        //'bootstrap/bootstrap-glyphicons',
+        'bootstrap/bootstrap',
+        'bootstrap/bootstrap-theme',
+        'datepicker/datepicker-bootstrap-theme',
+        //'datepicker/bootstrap-datepicker3.min',
+        'select2/select2',
+        'select2/select2-bootstrap',
+        'select2/select2.phkondo',
+        'offcanvas',
+        'checkbox-radio-styling/checkbox-radio',
+        'phkondo',
+    ));
+    echo $this->Html->css(array('phkondo_print'), null, array('media' => 'print'));
 
-        echo $this->fetch('css');
-        ?>
+    echo $this->fetch('css');
+    ?>
 
-    </head>
+</head>
 
-    <body>
+<body>
 
-        <div id="main-container">
-            <div id="content" class="container">
-                <div class="row hidden-print">
-                    <?php if (isset($breadcrumbs)) echo $this->element('breadcrumbs', array('breadcrumbs', $breadcrumbs)); ?>
-                    <div class="col-sm-12">
-                        <p>&nbsp;</p>
-                        <?php echo $this->Flash->render(); ?>
-                    </div>
+    <div id="main-container">
+        <div id="content" class="container">
+            <div class="row hidden-print">
+                <?php if (isset($breadcrumbs)) echo $this->element('breadcrumbs', array('breadcrumbs', $breadcrumbs)); ?>
+                <div class="col-sm-12">
+                    <p>&nbsp;</p>
+                    <?php echo $this->Flash->render(); ?>
                 </div>
-                <?php echo $this->fetch('content'); ?>
-            </div><!-- #header .container -->
+            </div>
+            <?php echo $this->fetch('content'); ?>
+        </div><!-- #header .container -->
 
-            <div id="footer" class="container hidden-print">
-                <div style="text-align: center;">Copyright (c) pHAlkaline (<a href="http://phalkaline.net" target="_blank">http://phalkaline.net</a>)</div>
-                <?php //Silence is golden      ?>
-            </div><!-- #footer .container -->
+        <div id="footer" class="container hidden-print">
+            <div style="text-align: center;">Copyright (c) pHAlkaline (<a href="http://phalkaline.net" target="_blank">http://phalkaline.net</a>)</div>
+            <?php //Silence is golden      
+            ?>
+        </div><!-- #footer .container -->
 
-        </div><!-- #main-container -->
+    </div><!-- #main-container -->
 
-        <!--div class="container">
+    <!--div class="container">
                 <div class="well">
                         <small>
-        <?php //echo $this->element('sql_dump');      ?>
+        <?php //echo $this->element('sql_dump');      
+        ?>
                         </small>
                 </div>
         </div><!-- .container -->
-        <?php
-        echo $this->Html->script(array('libs/jquery-3.5.1', 'libs/bootstrap.min'));
-        echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.min'));
-        echo $this->Html->script(array('libs/select2/select2.full'));
-        echo $this->Html->script(array('libs/offcanvas'));
+    <?php
+    echo $this->Html->script(array('libs/jquery-3.5.1', 'libs/bootstrap.min'));
+    echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.min'));
+    echo $this->Html->script(array('libs/select2/select2.full'));
+    echo $this->Html->script(array('libs/offcanvas'));
 
 
-        switch (Configure::read('Config.language')) {
-            case 'por':
-                echo $this->Html->script(array('libs/select2/i18n/pt'));
-                echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.pt.min'));
-                break;
-            case 'eng':
-                echo $this->Html->script(array('libs/select2/i18n/en'));
-                echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.en-GB.min'));
-                break;
-            case 'ita':
-                echo $this->Html->script(array('libs/select2/i18n/it'));
-                echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.it.min'));
-                break;
-        }
-        $phkondo = array(
-            'APP_PATH' => Router::url('/', true),
-            'APP_LANG' => Configure::read('Config.language'),
-            'START_DATE' => date('d-m-Y', strtotime("-1 year", time())),
-            'END_DATE' => date('d-m-Y', strtotime("+1 year", time())),
-            'SEARCH_HERE_FOR_A_CLIENT' => __('Search')
-        );
-        echo $this->Html->scriptBlock('var phkondo = ' . $this->Js->object($phkondo) . ';');
-        ?>
+    switch (Configure::read('Config.language')) {
+        case 'por':
+            echo $this->Html->script(array('libs/select2/i18n/pt'));
+            echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.pt.min'));
+            break;
+        case 'pt-br':
+            echo $this->Html->script(array('libs/select2/i18n/pt-BR'));
+            echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.pt-BR.min'));
+            break;
+        case 'eng':
+            echo $this->Html->script(array('libs/select2/i18n/en'));
+            echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.en-GB.min'));
+            break;
+        case 'ita':
+            echo $this->Html->script(array('libs/select2/i18n/it'));
+            echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.it.min'));
+            break;
+        case 'spa':
+            echo $this->Html->script(array('libs/select2/i18n/es'));
+            echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.es.min'));
+            break;
+    }
+    $phkondo = array(
+        'APP_PATH' => Router::url('/', true),
+        'APP_LANG' => Configure::read('Config.language'),
+        'START_DATE' => date('d-m-Y', strtotime("-1 year", time())),
+        'END_DATE' => date('d-m-Y', strtotime("+1 year", time())),
+        'SEARCH_HERE_FOR_A_CLIENT' => __('Search'),
+        'IMAGE_DIMENSIONS_NOT_ALLOWED' => __('Allowed dimensions are width <= 380 and height <= 65')
+    );
+    echo $this->Html->scriptBlock('var phkondo = ' . $this->Js->object($phkondo) . ';');
+    ?>
 
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $("form").submit(function () {
-                    // prevent duplicate form submissions
-                    $(this).find(":submit").attr('disabled', 'disabled').prepend(' <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> ');
-                    ;
-                });
-                var phkondolang = 'en-GB';
-                switch (phkondo.APP_LANG) {
-                    case 'por':
-                        phkondolang = 'pt';
-                        break;
-                    case 'ita':
-                        phkondolang = 'it';
-                        break;
-                    case 'spa':
-                        phkondolang = 'es';
-                        break;
-                }
-                $('.datefield').datepicker({
-                    format: "<?php echo Configure::read('Application.calendarDateFormat'); ?>",
-                    weekStart: 1,
-                    language: phkondolang,
-                    todayHighlight: true
-                });
-                $('.datefield').attr('autocomplete', 'off');
-
-                $('select').select2({
-                    language: phkondolang,
-                    theme: "bootstrap"}
-                );
-                $("li.disabled").find('a').removeAttr("href");
-                $("li.disabled").find('a').removeAttr("onclick");
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("form").submit(function() {
+                // prevent duplicate form submissions
+                $(this).find(":submit").attr('disabled', 'disabled').prepend(' <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> ');;
             });
-        </script>
-        <?php
-        echo $this->fetch('script');
-        ?>
-    </body>
+            var phkondolang = 'en-GB';
+            switch (phkondo.APP_LANG) {
+                case 'eng':
+                    phkondolang = 'en-GB';
+                    break;
+                case 'por':
+                    phkondolang = 'pt';
+                    break;
+                case 'pt-br':
+                    phkondolang = 'pt-BR';
+                    break;
+                case 'ita':
+                    phkondolang = 'it';
+                    break;
+                case 'spa':
+                    phkondolang = 'es';
+                    break;
+            }
+            $('.datefield').datepicker({
+                format: "<?php echo Configure::read('Application.calendarDateFormat'); ?>",
+                weekStart: 1,
+                language: phkondolang,
+                todayHighlight: true
+            });
+            $('.datefield').attr('autocomplete', 'off');
+
+            $('select').select2({
+                language: phkondolang,
+                theme: "bootstrap"
+            });
+            $("li.disabled").find('a').removeAttr("href");
+            $("li.disabled").find('a').removeAttr("onclick");
+        });
+    </script>
+    <?php
+    echo $this->fetch('script');
+    ?>
+</body>
 
 </html>

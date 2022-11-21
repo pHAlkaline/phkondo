@@ -97,12 +97,23 @@ if (!isset($headerTitle)) {
     switch (Configure::read('Config.language')) {
         case 'por':
             echo $this->Html->script(array('libs/select2/i18n/pt'));
+            echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.pt.min'));
+            break;
+        case 'pt-br':
+            echo $this->Html->script(array('libs/select2/i18n/pt-BR'));
+            echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.pt-BR.min'));
             break;
         case 'eng':
             echo $this->Html->script(array('libs/select2/i18n/en'));
+            echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.en-GB.min'));
             break;
         case 'ita':
             echo $this->Html->script(array('libs/select2/i18n/it'));
+            echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.it.min'));
+            break;
+        case 'spa':
+            echo $this->Html->script(array('libs/select2/i18n/es'));
+            echo $this->Html->script(array('libs/datepicker/bootstrap-datepicker.es.min'));
             break;
     }
     $phkondo = array(
@@ -110,7 +121,8 @@ if (!isset($headerTitle)) {
         'APP_LANG' => Configure::read('Config.language'),
         'START_DATE' => date('d-m-Y', strtotime("-1 year", time())),
         'END_DATE' => date('d-m-Y', strtotime("+1 year", time())),
-        'SEARCH_HERE_FOR_A_CLIENT' => __('Search')
+        'SEARCH_HERE_FOR_A_CLIENT' => __('Search'),
+        'IMAGE_DIMENSIONS_NOT_ALLOWED' => __('Allowed dimensions are width <= 380 and height <= 65')
     );
     echo $this->Html->scriptBlock('var phkondo = ' . $this->Js->object($phkondo) . ';');
     ?>
@@ -119,8 +131,14 @@ if (!isset($headerTitle)) {
 
             var phkondolang = 'en-GB';
             switch (phkondo.APP_LANG) {
+                case 'eng':
+                    phkondolang = 'en-GB';
+                    break;
                 case 'por':
                     phkondolang = 'pt';
+                    break;
+                case 'pt-br':
+                    phkondolang = 'pt-BR';
                     break;
                 case 'ita':
                     phkondolang = 'it';

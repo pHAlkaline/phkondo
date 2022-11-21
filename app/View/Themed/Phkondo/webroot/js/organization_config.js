@@ -37,7 +37,7 @@ $(function () {
                     var height = this.height;
                     var width = this.width;
                     if (height > 65 || width > 380) {
-                        alert('Logo Image To Large!! width <= 380 and height <= 65');
+                        alert(phkondo.IMAGE_DIMENSIONS_NOT_ALLOWED);
                         $("#logo").val('');
                         return false;
                     }
