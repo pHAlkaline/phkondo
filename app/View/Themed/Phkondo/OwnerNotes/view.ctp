@@ -2,7 +2,7 @@
 
     <div class="col-sm-2">
         <div id="sidebar" class="hidden-print actions sidebar-offcanvas">
-            <ul class="nav nav-pills nav-stacked">			
+            <ul class="nav nav-pills nav-stacked">
                 <?php
                 $deleteDisabled = null;
                 $editDisabled = null;
@@ -12,11 +12,11 @@
                 if (!$note['Note']['deletable']) {
                     $deleteDisabled = 'disabled';
                 }
-                ?>  
-                <li ><?php echo $this->Html->link(__('Edit Note'), array('action' => 'edit', $note['Note']['id'], '?' => $this->request->query), array('class' => 'btn ' . $editDisabled)); ?> </li>
-                <li ><?php echo $this->Form->postLink(__('Delete Note'), array('action' => 'delete', $note['Note']['id'], '?' => $this->request->query), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $note['Note']['title']))); ?> </li>
-                <li ><?php echo $this->Html->link(__('New Note'), array('action' => 'add', '?' => $this->request->query), array('class' => 'btn ')); ?> </li>
-                <li ><?php echo $this->Html->link(__('List Notes'), array('action' => 'index', '?' => $this->request->query), array('class' => 'btn ')); ?> </li>
+                ?>
+                <li><?php echo $this->Html->link(__('Edit Note'), array('action' => 'edit', $note['Note']['id'], '?' => $this->request->query), array('class' => 'btn ' . $editDisabled)); ?> </li>
+                <li><?php echo $this->Form->postLink(__('Delete Note'), array('action' => 'delete', $note['Note']['id'], '?' => $this->request->query), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $note['Note']['title']))); ?> </li>
+                <li><?php echo $this->Html->link(__('New Note'), array('action' => 'add', '?' => $this->request->query), array('class' => 'btn ')); ?> </li>
+                <li><?php echo $this->Html->link(__('List Notes'), array('action' => 'index', '?' => $this->request->query), array('class' => 'btn ')); ?> </li>
 
 
             </ul><!-- /.list-group -->
@@ -41,7 +41,7 @@
                             &nbsp;
                         </td>
                     </tr>
-                    
+
                     <tr>
                         <td><strong><?php echo __('Document Date'); ?></strong></td>
                         <td>
@@ -49,7 +49,7 @@
                             &nbsp;
                         </td>
                     </tr>
-                   
+
                     <tr>
                         <td><strong><?php echo __n('Budget', 'Budgets', 1); ?></strong></td>
                         <td>
@@ -57,8 +57,8 @@
                             &nbsp;
                         </td>
                     </tr>
-                    
-                     <tr>
+
+                    <tr>
                         <td><strong><?php echo __n('Fraction', 'Fractions', 1); ?></strong></td>
                         <td>
                             <?php echo h($note['Fraction']['fraction']); ?>
@@ -93,7 +93,7 @@
                             &nbsp;
                         </td>
                     </tr>
-                   <tr>
+                    <tr>
                         <td><strong><?php echo __('Amount'); ?></strong></td>
                         <td>
                             <?php echo h($note['Note']['amount']); ?>

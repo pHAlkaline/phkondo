@@ -34,7 +34,7 @@
                     <tbody>
                         <?php foreach ($receipts as $receipt): ?>
                             <tr>
-                                <td><?php echo h($receipt['Receipt']['document']); ?>&nbsp;</td>
+                                <td style="white-space:nowrap;"><?php echo h($receipt['Receipt']['document']); ?>&nbsp;</td>
 
                                 <td><?php echo h($receipt['Receipt']['document_date']); ?>&nbsp;</td>
                                 <td>

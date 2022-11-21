@@ -9,7 +9,7 @@
         <div id="sidebar" class="hidden-print actions sidebar-offcanvas">
 
             <ul class="nav nav-pills nav-stacked">
-                <li ><?php echo $this->Html->link(__('Income Control'), array('action' => 'index')); ?></li>
+                <li><?php echo $this->Html->link(__('Income Control'), array('action' => 'index')); ?></li>
 
             </ul><!-- /.list-group -->
 
@@ -22,7 +22,8 @@
         <div class="receipts form">
 
             <?php
-            echo $this->Form->create('IncomeReceipt', array('class' => 'form-horizontal',
+            echo $this->Form->create('IncomeReceipt', array(
+                'class' => 'form-horizontal',
                 'role' => 'form',
                 'inputDefaults' => array(
                     'class' => 'form-control',
@@ -30,7 +31,8 @@
                     'between' => '<div class="col-sm-6">',
                     'after' => '</div>',
                 ),
-                'novalidate' => true));
+                'novalidate' => true
+            ));
             ?>
             <fieldset>
                 <legend><?php echo __n('Receipt', 'Receipts', 2); ?></legend>
@@ -69,12 +71,12 @@
                 </div>
                 <div class="col-sm-12 hidden">
 
-                    <table data-empty="<?= __('Empty'); ?>"  class="footable table table-hover table-condensed">
+                    <table data-empty="<?= __('Empty'); ?>" class="footable table table-hover table-condensed">
                         <thead>
                             <tr>
                                 <th><?php echo __('Paid To'); ?></th>
                                 <th><?php echo __('Document'); ?></th>
-                                <th data-breakpoints="xs" ><?php echo __('Document Date'); ?></th>
+                                <th data-breakpoints="xs"><?php echo __('Document Date'); ?></th>
                                 <th data-breakpoints="xs"><?php echo __('Receipt Status'); ?></th>
                                 <th data-breakpoints="xs"><?php echo __('Payment Date'); ?></th>
                                 <th data-breakpoints="xs"><?php echo __('Receipt Payment Type'); ?></th>
@@ -90,7 +92,7 @@
                             $amount_sum = 0;
                             $total_amount = 0;
                             ?>
-                            <?php foreach ($receipts as $receipt): ?>
+                            <?php foreach ($receipts as $receipt) : ?>
                                 <?php
                                 if ($receipt['Receipt']['receipt_status_id'] == 3) {
                                     $total_amount = $receipt['Receipt']['total_amount'];
@@ -101,16 +103,13 @@
                                 ?>
                                 <tr>
                                     <td>
-
                                         <?php echo h($receipt['PaymentUser']['name']); ?>
                                     </td>
-                                    <td><?php echo h($receipt['Receipt']['document']); ?>&nbsp;</td>
+                                    <td style="white-space:nowrap;"><?php echo h($receipt['Receipt']['document']); ?>&nbsp;</td>
 
                                     <td><?php echo h($receipt['Receipt']['document_date']); ?>&nbsp;</td>
                                     <td>
-
                                         <?php echo h($receipt['ReceiptStatus']['name']) . ' ' . $receipt['CancelUser']['name']; ?>
-
                                     </td>
                                     <td><?php
                                         if ($receipt['Receipt']['payment_date'] != '') {
@@ -150,9 +149,9 @@
                 </div>
 
             </div><!-- /.index -->
-            <?php
+        <?php
         } elseif (isset($hasData) && $hasData == true) {
-            ?>
+        ?>
             <div class="alert alert-info" role="alert"><?php echo __('No records found.'); ?></div>
 
         <?php } ?>
