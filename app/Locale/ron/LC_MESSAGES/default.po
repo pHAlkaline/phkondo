@@ -3355,7 +3355,7 @@ msgstr ""
 #: View/Themed/Phkondo/Pages/login.ctp:40
 #: View/Themed/Phkondo/Users/login.ctp:40
 msgid "Remember Me"
-msgstr ""
+msgstr "Amintește-ți de mine"
 
 #: View/Themed/Phkondo/Pages/maintenance_offline.ctp:6
 msgid "Application Offline"
@@ -3587,3 +3587,9 @@ msgstr "Ați atins numărul maxim de apartamente permis, solicitați o actualiza
 
 msgid "Allowed dimensions are width <= 380 and height <= 65"
 msgstr "Dimensiunile permise sunt lățimea <= 380 și înălțimea <= 65"
+
+msgid "Language"
+msgstr "Limba"
+
+msgid "Theme"
+msgstr "Temă"

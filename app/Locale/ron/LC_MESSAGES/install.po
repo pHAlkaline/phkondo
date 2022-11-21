@@ -204,7 +204,7 @@ msgstr "Resurse"
 
 #: View/Themed/Phkondo/Install/index.ctp:8
 msgid "Language"
-msgstr "Idioma"
+msgstr "Limba"
 
 #: View/Themed/Phkondo/Install/index.ctp:26
 msgid "Your tmp directory is writable."
@@ -288,3 +288,4 @@ msgstr "Cheie instalată"
 
 msgid "Invalid Key."
 msgstr "Cheie invalida."
+

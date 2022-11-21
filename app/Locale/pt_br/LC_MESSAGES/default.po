@@ -3694,3 +3694,6 @@ msgstr "Você atingiu o número máximo de condomínios permitidos, solicite uma
 
 msgid "Allowed dimensions are width <= 380 and height <= 65"
 msgstr "As dimensões permitidas são largura <= 380 e altura <= 65"
+
+msgid "Language"
+msgstr "Linguagem"

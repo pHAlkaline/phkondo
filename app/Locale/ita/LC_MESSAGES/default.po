@@ -3345,7 +3345,7 @@ msgstr "Contribuisci"
 #: View/Themed/Phkondo/Pages/login.ctp:40
 #: View/Themed/Phkondo/Users/login.ctp:40
 msgid "Remember Me"
-msgstr "Remember Me"
+msgstr "Ricordati di me"
 
 #: View/Themed/Phkondo/Pages/maintenance_offline.ctp:6
 msgid "Application Offline"
@@ -3573,3 +3573,9 @@ msgstr "Hai raggiunto il numero massimo di condomini consentiti, richiedi un agg
 
 msgid "Allowed dimensions are width <= 380 and height <= 65"
 msgstr "Le dimensioni consentite sono larghezza <= 380 e altezza <= 65"
+
+msgid "Language"
+msgstr "Lingua"
+
+msgid "Theme"
+msgstr "Tema"

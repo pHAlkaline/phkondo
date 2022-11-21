@@ -25,7 +25,7 @@
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-            <?php echo $this->Form->input('language', array('div' => null, 'class' => 'form-control', 'placeholder' => 'language', 'options' => Configure::read('Language.list'), 'value' => Configure::read('Config.language'))); ?>
+            <?php echo $this->Form->input('language', array('div' => null, 'class' => 'form-control', 'options' => Configure::read('Language.list'), 'value' => Configure::read('Config.language'))); ?>
             <span class="glyphicon glyphicon-flag form-control-feedback"></span>
         </div><!-- .form-group -->
         <div class="form-group has-feedback">

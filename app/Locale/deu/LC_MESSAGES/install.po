@@ -199,7 +199,7 @@ msgstr "Ressourcen"
 
 #: View/Themed/Phkondo/Install/index.ctp:8
 msgid "Language"
-msgstr ""
+msgstr "Sprache"
 
 #: View/Themed/Phkondo/Install/index.ctp:26
 msgid "Your tmp directory is writable."

@@ -3561,3 +3561,9 @@ msgstr ""
 
 msgid "Allowed dimensions are width <= 380 and height <= 65"
 msgstr ""
+
+msgid "Language"
+msgstr ""
+
+msgid "Theme"
+msgstr ""

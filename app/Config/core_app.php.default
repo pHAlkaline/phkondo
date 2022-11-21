@@ -77,7 +77,7 @@ Configure::write('User.role', array(
 );
 
 /**
- * Idiom list , do not change unless you know what you are doing
+ * Language list , do not change unless you know what you are doing
  */
 Configure::write('Language.list', array(
     'eng' => 'English',
