@@ -17,7 +17,8 @@ Official website**: [https://phkondo.net](https://phkondo.net)
   * Apache. mod_rewrite is preferred, but by no means required
   * PHP =>5.6 && <8.0.0.
   * MySQL or similar ( MariaDB , SqlServer )
-  * All built-in drivers require PDO. You should make sure you have the correct PDO extensions installed.
+  * All built-in database drivers require PDO. You should make sure you have the correct PDO extensions installed.
+  * Fileinfo PHP Extention
 
 
 ## Install
