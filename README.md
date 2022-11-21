@@ -18,7 +18,7 @@ Official website**: [https://phkondo.net](https://phkondo.net)
   * PHP =>5.6 && <8.0.0.
   * MySQL or similar ( MariaDB , SqlServer )
   * All built-in database drivers require PDO. You should make sure you have the correct PDO extensions installed.
-  * Fileinfo PHP Extention
+  * Fileinfo PHP Extention Enabled
 
 
 ## Install
