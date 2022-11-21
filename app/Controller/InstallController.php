@@ -29,6 +29,8 @@
 App::uses('File', 'Utility');
 App::uses('CakeSchema', 'Model');
 App::uses('ConnectionManager', 'Model');
+App::uses('ClearCache', 'ClearCache.Lib');
+
 
 class InstallController extends AppController
 {
@@ -587,6 +589,9 @@ class InstallController extends AppController
             $this->Cookie->delete('Install');
             $this->Cookie->delete('Config.language');
             $this->Cookie->delete('Application.mode');
+
+            $ClearCache = new ClearCache();
+            $output = $ClearCache->run();
         } else {
             //$this->redirect('/');
         }
@@ -668,7 +673,7 @@ class InstallController extends AppController
             }
             try {
                 $content = __d('install', 'You required to reinstall.') . '<br/>';
-                $content .= __d('install', 'Are you sure you want to reinstall # %s?','pHKondo') . '<br/>';
+                $content .= __d('install', 'Are you sure you want to reinstall # %s?', 'pHKondo') . '<br/>';
                 $content .= __d('install', 'We need to validate your action, please use this validation key') . ' : ' . Configure::read('installed_key') . '<br/>';
                 $Email = new CakeEmail();
                 $Email->emailFormat('html');
@@ -676,10 +681,9 @@ class InstallController extends AppController
                 $Email->to($emailTo);
                 $Email->subject(__d('install', 'pHKondo Reinstall Required'));
                 $result = $Email->send($content);
-                $this->Flash->success(__d('email','Email sent with success.'));
-                
+                $this->Flash->success(__d('email', 'Email sent with success.'));
             } catch (\Exception $e) {
-                $this->Flash->warning(__d('email','Not possible to send Email.'));
+                $this->Flash->warning(__d('email', 'Not possible to send Email.'));
                 $result = false;
             }
         }
