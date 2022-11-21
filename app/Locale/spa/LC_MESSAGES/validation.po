@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pHKondo V1.1\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2022-02-07 15:10+0000\n"
+"PO-Revision-Date: 2022-11-21 21:22+0000\n"
 "Last-Translator: pHAlkaline <contact@phalkaline.net>\n"
 "Language-Team: pHAlkaline <contact@phalkaline.net>\n"
 "Language: es_ES\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: Model/Account.php:validation for field condo_id
@@ -203,32 +203,32 @@ msgstr "Llenar"
 
 #: Plugin/Feedback/Model/Comment.php:validation for field author_name
 msgid "Name cannot be empty"
-msgstr ""
+msgstr "El nombre no puede estar vacío"
 
 #: Plugin/Feedback/Model/Comment.php:validation for field author_email
 msgid "E-mail address cannot be empty"
-msgstr ""
+msgstr "La dirección de correo electrónico no puede estar vacía"
 
 #: Plugin/Feedback/Model/Comment.php:validation for field author_email
 msgid "E-mail address is not valid"
-msgstr ""
+msgstr "La dirección de correo electrónico no es válida"
 
 #: Plugin/Feedback/Model/Comment.php:validation for field author_ip
 msgid "Invalid IP address"
-msgstr ""
+msgstr "Dirección IP inválida"
 
 #: Plugin/Feedback/Model/Comment.php:validation for field content
 msgid "Comment cannot be empty"
-msgstr ""
+msgstr "El comentario no puede estar vacío"
 
 #: Plugin/Feedback/Model/Rating.php:validation for field rating
 msgid "decimal"
-msgstr ""
+msgstr "decimal"
 
 #: Plugin/Feedback/Model/Rating.php:validation for field rating
 msgid "minimum"
-msgstr ""
+msgstr "mínimo"
 
 #: Plugin/Feedback/Model/Rating.php:validation for field rating
 msgid "maximum"
-msgstr ""
+msgstr "máximo"

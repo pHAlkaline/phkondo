@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pHkondo.net\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2022-02-13 14:04+0000\n"
+"PO-Revision-Date: 2022-11-21 21:20+0000\n"
 "Last-Translator: Paulo <contact@phalkaline.net>\n"
 "Language-Team: pHAlkaline <contact@phalkaline.net>\n"
 "Language: es_ES\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: Controller/InstallController.php:118;153;154
@@ -53,12 +53,10 @@ msgid "Could not load database: %s"
 msgstr "No se puede cargar base de datos: %s"
 
 #: Controller/InstallController.php:375;504
-msgid ""
-"Unable to secure your application, your Config %s core_app.php file is not "
-"writable. Please check the permissions."
+msgid "Unable to secure your application, your Config %s core_app.php file is not writable. Please check the permissions."
 msgstr ""
-"Imposible asegurar la aplicación, el archivo Config %s core_app.php no es "
-"escribible. Por favor revisar los permisos de archivo."
+"Imposible asegurar la aplicación, el archivo Config %s core_app.php no es escribible. Por favor revisar los permisos de "
+"archivo."
 
 #: Controller/InstallController.php:395;396
 msgid "Step 3 : Email notification"
@@ -72,8 +70,7 @@ msgstr "No se puede escribir archivo email.php."
 msgid "Step 4 : Admin Account"
 msgstr "Paso 4 : Cuenta de administrador"
 
-#: Controller/InstallController.php:461
-#: Controller/InstallController.php:476
+#: Controller/InstallController.php:461 Controller/InstallController.php:476
 msgid "Unable to create administrative user."
 msgstr "No se puede crear un usuario administrativo."
 
@@ -94,14 +91,8 @@ msgid "Installation not completed successfully"
 msgstr "Instalación no se completó exitosamente"
 
 #: Controller/InstallController.php:521
-msgid ""
-"Something went wrong during installation. Please check your server logs."
-msgstr ""
-"Algo ha fallado en la instalación. Por favor revisar los logs del servidor."
-
-#: Controller/InstallController.php:570
-msgid "Unable to generate users password."
-msgstr "Imposible generar las contraseñas de usuarios."
+msgid "Something went wrong during installation. Please check your server logs."
+msgstr "Algo ha fallado en la instalación. Por favor revisar los logs del servidor."
 
 #: Controller/InstallController.php:571
 msgid "install"
@@ -145,9 +136,7 @@ msgstr "Base de datos y datos"
 
 #: View/Themed/Phkondo/Install/data.ctp:15
 msgid "Check option to load default values to auxiliary tables."
-msgstr ""
-"Marcar la opción de cargar datos para insertar valores por defecto en las "
-"tablas auxiliares."
+msgstr "Marcar la opción de cargar datos para insertar valores por defecto en las tablas auxiliares."
 
 #: View/Themed/Phkondo/Install/data.ctp:21
 msgid "Load data"
@@ -155,11 +144,11 @@ msgstr "Cargar datos"
 
 #: View/Themed/Phkondo/Install/data.ctp:26
 msgid "Check option to add demonstration condo."
-msgstr ""
+msgstr "Marque la opción para agregar un condominio de demostración."
 
 #: View/Themed/Phkondo/Install/data.ctp:32
 msgid "Load demonstration condo"
-msgstr ""
+msgstr "Condominio de demostración de carga"
 
 #: View/Themed/Phkondo/Install/database.ctp:8
 msgid "Setup database connection"
@@ -186,11 +175,8 @@ msgid "Subject"
 msgstr "Asunto"
 
 #: View/Themed/Phkondo/Install/finish.ctp:9
-msgid ""
-"Dont forget to restore default access values to Config and tmp directory."
-msgstr ""
-"No olvidar restaurar los valores de acceso por defecto a Config y el "
-"directorio tmp."
+msgid "Dont forget to restore default access values to Config and tmp directory."
+msgstr "No olvidar restaurar los valores de acceso por defecto a Config y el directorio tmp."
 
 #: View/Themed/Phkondo/Install/finish.ctp:14
 msgid "Passwords secured and updated for all users"
@@ -234,11 +220,11 @@ msgstr "El archivo Config/core_app.php NO es escribible."
 
 #: View/Themed/Phkondo/Install/index.ctp:56
 msgid "PHP version %s >= 5.6 and <8.0.0"
-msgstr ""
+msgstr "Versión PHP %s >= 5.6 y <8.0.0"
 
 #: View/Themed/Phkondo/Install/index.ctp:60
 msgid "PHP version %s < 5.6 or =>8.0.0"
-msgstr ""
+msgstr "Versión de PHP %s < 5.6 o =>8.0.0"
 
 #: View/Themed/Phkondo/Install/index.ctp:68
 msgid "CakePhp version %s >= %s"
@@ -254,17 +240,16 @@ msgstr "Hacer click para empezar instalación"
 
 #: View/Themed/Phkondo/Install/index.ctp:80
 msgid "Installation cannot continue as minimum requirements are not found."
-msgstr ""
-"Instalación no puede continuar, no se cumplen los requirimientos mínimos."
+msgstr "Instalación no puede continuar, no se cumplen los requirimientos mínimos."
 
 #: View/Themed/Phkondo/Install/secure.ctp:4
 msgid "pHKondo is now Secure."
-msgstr ""
+msgstr "pHKondo ahora es seguro."
 
 msgid "Unable to config your application, your Config %s bootstrap_app.ini file is not writable. Please check the permissions."
 msgstr ""
-"Imposible configurar la aplicación, el archivo Config %s boostrap_phapp.php no es "
-"escribible. Por favor revisar los permisos de archivo."
+"Imposible configurar la aplicación, el archivo Config %s boostrap_phapp.php no es escribible. Por favor revisar los permisos "
+"de archivo."
 
 msgid "Unable to generate users password."
 msgstr "No se puede generar la contraseña de los usuarios."

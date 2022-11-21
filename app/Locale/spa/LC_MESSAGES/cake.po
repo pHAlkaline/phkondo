@@ -17,7 +17,7 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 
 msgid " of "
-msgstr ""
+msgstr "di"
 
 msgid "%d Byte"
 msgid_plural "%d Bytes"
@@ -26,268 +26,267 @@ msgstr[1] ""
 
 msgid "%d day"
 msgid_plural "%d days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d día"
+msgstr[1] "%d días"
 
 msgid "%d hour"
 msgid_plural "%d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d hora"
+msgstr[1] "%d horas"
 
 msgid "%d minute"
 msgid_plural "%d minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d minuto"
+msgstr[1] "%d minutos"
 
 msgid "%d month"
 msgid_plural "%d months"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d mes"
+msgstr[1] "%d meses"
 
 msgid "%d second"
 msgid_plural "%d seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d segundo"
+msgstr[1] "%d segundos"
 
 msgid "%d week"
 msgid_plural "%d weeks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d semana"
+msgstr[1] "%d semanas"
 
 msgid "%d year"
 msgid_plural "%d years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d año"
+msgstr[1] "%d años"
 
 msgid "%s GB"
-msgstr ""
+msgstr "% GB"
 
 msgid "%s KB"
-msgstr ""
+msgstr "%sKB"
 
 msgid "%s MB"
-msgstr ""
+msgstr "% MB"
 
 msgid "%s TB"
-msgstr ""
+msgstr "% TB"
 
 msgid "%s ago"
-msgstr ""
+msgstr "%s fa"
 
 msgid "Actions"
-msgstr ""
+msgstr "Azioni"
 
 msgid "An Internal Error Has Occurred."
-msgstr ""
+msgstr "Si è verificato un errore interno."
 
 msgid "April"
-msgstr ""
+msgstr "aprile"
 
 msgid "Are you sure you want to delete # %s?"
-msgstr ""
+msgstr "Sei sicuro di voler eliminare"
 
 msgid "August"
-msgstr ""
+msgstr "agosto"
 
 msgid "December"
-msgstr ""
+msgstr "dicembre"
 
 msgid "Delete"
-msgstr ""
+msgstr "Elimina"
 
 msgid "Delete %s"
-msgstr ""
+msgstr "Elimina %s"
 
 msgid "Edit"
-msgstr ""
+msgstr "Modifica"
 
 msgid "Edit %s"
-msgstr ""
+msgstr "Modifica %s"
 
 msgid "Error"
-msgstr ""
+msgstr "Errore"
 
 msgid "Error in field %s"
-msgstr ""
+msgstr "Errore nel campo %s"
 
 msgid "February"
-msgstr ""
+msgstr "febbraio"
 
 msgid "Friday"
-msgstr ""
+msgstr "venerdì"
 
 msgid "Home"
-msgstr ""
+msgstr "Casa"
 
 msgid "Invalid %s"
-msgstr ""
+msgstr "%s non valido"
 
 msgid "January"
-msgstr ""
+msgstr "gennaio"
 
 msgid "July"
-msgstr ""
+msgstr "luglio"
 
 msgid "June"
-msgstr ""
+msgstr "giugno"
 
 msgid "List"
-msgstr ""
+msgstr "Elenco"
 
 msgid "List %s"
-msgstr ""
+msgstr "Elenco %s"
 
 msgid "March"
-msgstr ""
+msgstr "marzo"
 
 msgid "May"
-msgstr ""
+msgstr "maggio"
 
 msgid "Monday"
-msgstr ""
+msgstr "Lunedì"
 
 msgid "New %s"
-msgstr ""
+msgstr "Nuovo %s"
 
 msgid "Not Found"
-msgstr ""
+msgstr "Non trovato"
 
 msgid "November"
-msgstr ""
+msgstr "Novembre"
 
 msgid "October"
-msgstr ""
+msgstr "ottobre"
 
 msgid "On %s %s"
-msgstr ""
+msgstr "A %s %s"
 
-msgid ""
-"Page {:page} of {:pages}, showing {:current} records out of {:count} total, "
-"starting on record {:start}, ending on {:end}"
-msgstr ""
+msgid "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
+msgstr "Página {:page} de {:pages}, que muestra {:actual} registros de {:count} total, comenzando en el registro {:start}, terminando en {:end}"
 
 msgid "Please correct errors below."
-msgstr ""
+msgstr "Si prega di correggere gli errori di seguito."
 
 msgid "Related %s"
-msgstr ""
+msgstr "%s correlato"
 
 msgid "Saturday"
-msgstr ""
+msgstr "sabato"
 
 msgid "Scaffold :: "
-msgstr ""
+msgstr "Impalcatura ::"
 
 msgid "September"
-msgstr ""
+msgstr "settembre"
 
 msgid "Submit"
-msgstr ""
+msgstr "Invia"
 
 msgid "Sunday"
-msgstr ""
+msgstr "Domenica"
 
 msgid "The %1$s has been %2$s"
-msgstr ""
+msgstr "Il %1$s è stato %2$s"
 
 msgid "The %1$s with id: %2$s has been deleted."
-msgstr ""
+msgstr "Il %1$s con id: %2$s è stato cancellato."
 
 msgid "The requested address %s was not found on this server."
-msgstr ""
+msgstr "L'indirizzo richiesto %s non è stato trovato su questo server."
 
 msgid "The requested file was not found"
-msgstr ""
+msgstr "Il file richiesto non è stato trovato"
 
 msgid "There was an error deleting the %1$s with id: %2$s"
-msgstr ""
+msgstr "Si è verificato un errore durante l'eliminazione di %1$s con id: %2$s"
 
 msgid "This field cannot be left blank"
-msgstr ""
+msgstr "Questo campo non può essere lasciato vuoto"
 
 msgid "Thursday"
-msgstr ""
+msgstr "giovedì"
 
 msgid "Today, %s"
-msgstr ""
+msgstr "Oggi, %s"
 
 msgid "Tomorrow, %s"
-msgstr ""
+msgstr "Domani, %s"
 
 msgid "Tuesday"
-msgstr ""
+msgstr "martedì"
 
 msgid "View"
-msgstr ""
+msgstr "Vedi"
 
 msgid "View %s"
-msgstr ""
+msgstr "Visualizza %s"
 
 msgid "Wednesday"
-msgstr ""
+msgstr "mercoledì"
 
 msgid "Yesterday, %s"
-msgstr ""
+msgstr "Ieri, %s"
 
 msgid "You are not authorized to access that location."
-msgstr ""
+msgstr "Non sei autorizzato ad accedere a quella posizione."
 
 msgid "about a day ago"
-msgstr ""
+msgstr "circa un giorno fa"
 
 msgid "about a minute ago"
-msgstr ""
+msgstr "circa un minuto fa"
 
 msgid "about a second ago"
-msgstr ""
+msgstr "circa un secondo fa"
 
 msgid "about a week ago"
-msgstr ""
+msgstr "circa una settimana fa"
 
 msgid "about a year ago"
-msgstr ""
+msgstr "circa un anno fa"
 
 msgid "about an hour ago"
-msgstr ""
+msgstr "circa un'ora fa"
 
 msgid "days"
-msgstr ""
+msgstr "giorni"
 
 msgid "empty"
-msgstr ""
+msgstr "vuoto"
 
 msgid "in about a day"
-msgstr ""
+msgstr "tra circa un giorno"
 
 msgid "in about a minute"
-msgstr ""
+msgstr "tra circa un minuto"
 
 msgid "in about a second"
-msgstr ""
+msgstr "in circa un secondo"
 
 msgid "in about a week"
-msgstr ""
+msgstr "in circa una settimana"
 
 msgid "in about a year"
-msgstr ""
+msgstr "tra circa un anno"
 
 msgid "in about an hour"
-msgstr ""
+msgstr "tra circa un'ora"
 
 msgid "just now"
-msgstr ""
+msgstr "proprio ora"
 
 msgid "next"
-msgstr ""
+msgstr "prossimo"
 
 msgid "on %s"
-msgstr ""
+msgstr "su %s"
 
 msgid "previous"
-msgstr ""
+msgstr "precedente"
 
 msgid "saved"
-msgstr ""
+msgstr "salvato"
 
 msgid "updated"
-msgstr ""
+msgstr "aggiornato"
+
