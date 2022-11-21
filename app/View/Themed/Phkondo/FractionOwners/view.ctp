@@ -1,4 +1,9 @@
-<?php ?>
+<?php
+$attachmentFormats=['pdf' => __d('email', 'PDF'), 'html' => __d('html', 'HTML')];
+if (!Configure::check('CakePdf.phkondo.active') || Configure::read('CakePdf.phkondo.active') == false) {
+    unset($attachmentFormats['pdf']);
+ }
+?>
 <div id="page-container" class="row row-offcanvas row-offcanvas-left ">
 
     <div class="col-sm-2">
@@ -191,7 +196,7 @@
                                 <?php echo $this->Form->input('message', array('label' => array('text' => __d('email','Message'), 'class' => 'col-sm-2 control-label'),'required'=>'required', 'type'=>'textarea','class' => 'form-control', 'default' => $emailNotifications['current_account_message'])); ?>
                                 </div><!-- .form-group -->
                                 <div class="form-group">
-                                        <?php echo $this->Form->input('attachment_format', ['type'=>'select','label' => array('text' => __d('email','Format'), 'class' => 'col-sm-2 control-label'), 'class' => 'form-control select2-phkondo', 'options' => ['pdf'=>__d('email','PDF'), 'html'=>__d('html','HTML')], 'value' => $emailNotifications['current_account_attachment_format'], 'required'=>'required']); ?>
+                                        <?php echo $this->Form->input('attachment_format', ['type'=>'select','label' => array('text' => __d('email','Format'), 'class' => 'col-sm-2 control-label'), 'class' => 'form-control select2-phkondo', 'options' => $attachmentFormats, 'value' => $emailNotifications['current_account_attachment_format'], 'required'=>'required']); ?>
                                 </div>
 
                                 <!-- .form-group -->
