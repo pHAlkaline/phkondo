@@ -1,6 +1,10 @@
 <?php
-
-$this->Html->script('email', false); ?>
+$attachmentFormats=['pdf' => __d('email', 'PDF'), 'html' => __d('html', 'HTML')];
+if (!Configure::check('CakePdf.phkondo.active') || Configure::read('CakePdf.phkondo.active') == false) {
+    unset($attachmentFormats['pdf']);
+ }
+?>
+<?php $this->Html->script('email', false); ?>
 <div id="page-content" class="col-sm-12 col-md-10">
     <div class="config form">
 
@@ -109,7 +113,7 @@ $this->Html->script('email', false); ?>
                     </div><!-- .form-group -->
 
                     <div class="form-group">
-                        <?php echo $this->Form->input('receipt_attachment_format', ['type' => 'select', 'label' => __d('email', 'Format'), 'class' => 'form-control select2-phkondo', 'options' => ['pdf' => __d('email', 'PDF'), 'html' => __d('html', 'HTML')], 'value' => $emailNotifications['receipt_attachment_format'], 'required' => 'required']); ?>
+                        <?php echo $this->Form->input('receipt_attachment_format', ['type' => 'select', 'label' => __d('email', 'Format'), 'class' => 'form-control select2-phkondo', 'options' => $attachmentFormats, 'value' => $emailNotifications['receipt_attachment_format'], 'required' => 'required']); ?>
                     </div>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="current-account" aria-labelledby="curren-account-tab">
@@ -124,7 +128,7 @@ $this->Html->script('email', false); ?>
                     </div><!-- .form-group -->
 
                     <div class="form-group">
-                        <?php echo $this->Form->input('current_account_attachment_format', ['type' => 'select', 'label' => __d('email', 'Format'), 'class' => 'form-control select2-phkondo', 'options' => ['pdf' => __d('email', 'PDF'), 'html' => __d('html', 'HTML')], 'value' => $emailNotifications['current_account_attachment_format'], 'required' => 'required']); ?>
+                        <?php echo $this->Form->input('current_account_attachment_format', ['type' => 'select', 'label' => __d('email', 'Format'), 'class' => 'form-control select2-phkondo', 'options' => $attachmentFormats, 'value' => $emailNotifications['current_account_attachment_format'], 'required' => 'required']); ?>
                     </div>
                 </div>
             </div>
