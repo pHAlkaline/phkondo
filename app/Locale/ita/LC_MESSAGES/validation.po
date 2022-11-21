@@ -205,32 +205,32 @@ msgstr "Non vuoto"
 
 #: Plugin/Feedback/Model/Comment.php:validation for field author_name
 msgid "Name cannot be empty"
-msgstr ""
+msgstr "Il nome non può essere vuoto"
 
 #: Plugin/Feedback/Model/Comment.php:validation for field author_email
 msgid "E-mail address cannot be empty"
-msgstr ""
+msgstr "L'indirizzo e-mail non può essere vuoto"
 
 #: Plugin/Feedback/Model/Comment.php:validation for field author_email
 msgid "E-mail address is not valid"
-msgstr ""
+msgstr "L'indirizzo e-mail non è valido"
 
 #: Plugin/Feedback/Model/Comment.php:validation for field author_ip
 msgid "Invalid IP address"
-msgstr ""
+msgstr "Indirizzo IP non valido"
 
 #: Plugin/Feedback/Model/Comment.php:validation for field content
 msgid "Comment cannot be empty"
-msgstr ""
+msgstr "il commento non può essere vuoto"
 
 #: Plugin/Feedback/Model/Rating.php:validation for field rating
 msgid "decimal"
-msgstr ""
+msgstr "decimale"
 
 #: Plugin/Feedback/Model/Rating.php:validation for field rating
 msgid "minimum"
-msgstr ""
+msgstr "minimo"
 
 #: Plugin/Feedback/Model/Rating.php:validation for field rating
 msgid "maximum"
-msgstr ""
+msgstr "massimo"

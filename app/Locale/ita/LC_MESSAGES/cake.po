@@ -46,30 +46,30 @@ msgstr[1] "%d mesi"
 
 msgid "%d second"
 msgid_plural "%d seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d secondo"
+msgstr[1] "%d secondi"
 
 msgid "%d week"
 msgid_plural "%d weeks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d settimana"
+msgstr[1] "%d settimane"
 
 msgid "%d year"
 msgid_plural "%d years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d anno"
+msgstr[1] "%d anni"
 
 msgid "%s GB"
-msgstr ""
+msgstr "% GB"
 
 msgid "%s KB"
-msgstr ""
+msgstr "%sKB"
 
 msgid "%s MB"
-msgstr ""
+msgstr "% MB"
 
 msgid "%s TB"
-msgstr ""
+msgstr "% TB"
 
 msgid "%s ago"
 msgstr "%s anno"
@@ -102,7 +102,7 @@ msgid "Edit"
 msgstr "Modifica"
 
 msgid "Edit %s"
-msgstr ""
+msgstr "Modifica %s"
 
 msgid "Error"
 msgstr "Errore"
@@ -117,7 +117,7 @@ msgid "Friday"
 msgstr "Venerd&igrave;"
 
 msgid "Home"
-msgstr ""
+msgstr "Casa"
 
 msgid "Invalid %s"
 msgstr "Non valido"
@@ -159,138 +159,138 @@ msgid "October"
 msgstr "Ottobre"
 
 msgid "On %s %s"
-msgstr ""
+msgstr "A %s %s"
 
 msgid ""
-"Page {:page} of {:pages}, showing {:current} records out of {:count} total, "
-"starting on record {:start}, ending on {:end}"
-msgstr ""
+"Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
+msgstr "Pagina {:page} di {:pages}, che mostra {:current} record su {:count} totali, che inizia il record {:start}, termina il {:end}"
 
 msgid "Please correct errors below."
 msgstr "Cortesemente correggi i seguenti errori."
 
 msgid "Related %s"
-msgstr ""
+msgstr "%s correlato"
 
 msgid "Saturday"
 msgstr "Sabato"
 
 msgid "Scaffold :: "
-msgstr ""
+msgstr "Impalcatura ::"
 
 msgid "September"
 msgstr "Settembre"
 
 msgid "Submit"
-msgstr ""
+msgstr "Invia"
 
 msgid "Sunday"
 msgstr "Domenica"
 
 msgid "The %1$s has been %2$s"
-msgstr ""
+msgstr "Il %1$s è stato %2$s"
 
 msgid "The %1$s with id: %2$s has been deleted."
-msgstr ""
+msgstr "Il %1$s con id: %2$s è stato cancellato."
 
 msgid "The requested address %s was not found on this server."
-msgstr ""
+msgstr "L'indirizzo richiesto %s non è stato trovato su questo server."
 
 msgid "The requested file was not found"
-msgstr ""
+msgstr "Il file richiesto non è stato trovato"
 
 msgid "There was an error deleting the %1$s with id: %2$s"
-msgstr ""
+msgstr "Si è verificato un errore durante l'eliminazione di %1$s con id: %2$s"
 
 msgid "This field cannot be left blank"
-msgstr ""
+msgstr "Questo campo non può essere lasciato vuoto"
 
 msgid "Thursday"
-msgstr ""
+msgstr "giovedì"
 
 msgid "Today, %s"
-msgstr ""
+msgstr "Oggi, %s"
 
 msgid "Tomorrow, %s"
-msgstr ""
+msgstr "Domani, %s"
 
 msgid "Tuesday"
-msgstr ""
+msgstr "martedì"
 
 msgid "View"
-msgstr ""
+msgstr "Vedi"
 
 msgid "View %s"
-msgstr ""
+msgstr "Visualizza %s"
 
 msgid "Wednesday"
-msgstr ""
+msgstr "mercoledì"
 
 msgid "Yesterday, %s"
-msgstr ""
+msgstr "Ieri, %s"
 
 msgid "You are not authorized to access that location."
-msgstr ""
+msgstr "Non sei autorizzato ad accedere a quella posizione."
 
 msgid "about a day ago"
-msgstr ""
+msgstr "circa un giorno fa"
 
 msgid "about a minute ago"
-msgstr ""
+msgstr "circa un minuto fa"
 
 msgid "about a second ago"
-msgstr ""
+msgstr "circa un secondo fa"
 
 msgid "about a week ago"
-msgstr ""
+msgstr "circa una settimana fa"
 
 msgid "about a year ago"
-msgstr ""
+msgstr "circa un anno fa"
 
 msgid "about an hour ago"
-msgstr ""
+msgstr "circa un'ora fa"
 
 msgid "days"
-msgstr ""
+msgstr "giorni"
 
 msgid "empty"
-msgstr ""
+msgstr "vuoto"
 
 msgid "in about a day"
-msgstr ""
+msgstr "tra circa un giorno"
 
 msgid "in about a minute"
-msgstr ""
+msgstr "tra circa un minuto"
 
 msgid "in about a second"
-msgstr ""
+msgstr "in circa un secondo"
 
 msgid "in about a week"
-msgstr ""
+msgstr "in circa una settimana"
 
 msgid "in about a year"
-msgstr ""
+msgstr "tra circa un anno"
 
 msgid "in about an hour"
-msgstr ""
+msgstr "tra circa un'ora"
 
 msgid "just now"
-msgstr ""
+msgstr "proprio ora"
 
 msgid "next"
-msgstr ""
+msgstr "prossimo"
 
 msgid "on %s"
-msgstr ""
+msgstr "su %s"
 
 msgid "previous"
-msgstr ""
+msgstr "precedente"
 
 msgid "saved"
-msgstr ""
+msgstr "salvato"
 
 msgid "updated"
-msgstr ""
+msgstr "aggiornato"
 
 msgid "username"
 msgstr "Nome Utente"
+
