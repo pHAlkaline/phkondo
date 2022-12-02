@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://phkondo.net/" target="_blank" >
+  <a href="https://www.phkondo.net/" target="_blank" >
     <img alt="pHKondo" src="https://raw.githubusercontent.com/pHAlkaline/phkondo/master/app/View/Themed/Phkondo/webroot/img/logo_phkondo_flat.svg" width="400" />
   </a>
 </p>
@@ -9,7 +9,7 @@
 **pHKondo** , Condominium management software. 
 It provides effective mechanism to condominium management, released under [GNU GLP V2]
 
-Official website**: [https://phkondo.net](https://phkondo.net)
+Official website**: [https://www.phkondo.net](https://www.phkondo.net)
 
 
 ## Requirements
