@@ -2,8 +2,8 @@
 
 /**
  *
- * pHKondo : pHKondo software for condominium property managers (http://phalkaline.net)
- * Copyright (c) pHAlkaline . (http://phalkaline.net)
+ * pHKondo : pHKondo software for condominium property managers (https://www.phalkaline.net)
+ * Copyright (c) pHAlkaline . (https://www.phalkaline.net)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
- * @copyright     Copyright (c) pHAlkaline . (http://phalkaline.net)
+ * @copyright     Copyright (c) pHAlkaline . (https://www.phalkaline.net)
  * @link          https://phkondo.net pHKondo Project
  * @package       app.Controller
  * @since         pHKondo v 0.0.1
@@ -58,7 +58,11 @@ class OwnerNotesController extends AppController {
     public function index() {
         $this->setConditions();
         $this->Paginator->settings = array_replace_recursive($this->Paginator->settings, array(
-            'contain' => array('NoteType', 'NoteStatus', 'Fraction', 'Entity'),
+            'contain' => array(
+                'NoteType', 
+                'NoteStatus', 
+                'Fraction', 
+                'Entity'),
             'conditions' => array(
                 'Note.entity_id' => $this->getPhkRequestVar('owner_id'),
                 'Note.fraction_id' => $this->getPhkRequestVar('fraction_id'))));
@@ -84,8 +88,8 @@ class OwnerNotesController extends AppController {
         $noteStatuses = $this->Note->NoteStatus->find('list', array('order' => 'name', 'conditions' => array('active' => 1)));
 
         if (isset($queryData['note_type_id']) && $queryData['note_type_id'] != null) {
-            $note_status_id = $queryData['note_type_id'];
-            $filterOptions['conditions'] = array_merge($filterOptions['conditions'], array('Note.note_type_id' => $note_status_id));
+            $note_type_id = $queryData['note_type_id'];
+            $filterOptions['conditions'] = array_merge($filterOptions['conditions'], array('Note.note_type_id' => $note_type_id));
             $this->request->data['Note']['note_type_id'] = $queryData['note_type_id'];
             $hasAdvSearch = true;
         }

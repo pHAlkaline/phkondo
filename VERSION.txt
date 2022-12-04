@@ -6,12 +6,12 @@
 //
 // pHKondo(tm) :Condominium management software. 
 // It provides effective mechanism to condominium management, released under [GNU GLP V2]
-// Copyright (c) pHAlkaline (http://phalkaline.net)
+// Copyright (c) pHAlkaline (https://www.phalkaline.net)
 //
 // Licensed under The GNU GLP V2
 // Redistributions of files must retain the above copyright notice.
 //
-// @copyright     Copyright (c)  pHAlkaline (http://phalkaline.net)
+// @copyright     Copyright (c)  pHAlkaline (https://www.phalkaline.net)
 // @link          https://phkondo.net
 // @since         pHKondo v 0.0.1
 // @license       GNU GLP V2 (http://opensource.org/licenses/GPL-2.0)

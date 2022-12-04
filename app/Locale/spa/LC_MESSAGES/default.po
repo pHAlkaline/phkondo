@@ -1685,7 +1685,7 @@ msgstr "Comprar plugins"
 #: View/Themed/Phkondo/Pages/drafts.ctp:9 View/Themed/Phkondo/Receipts/print_receipt.ctp:9
 #: View/Themed/Phkondo/Receipts/send_receipt.ctp:9 View/Themed/Phkondo/Receipts/pdf/print_receipt.ctp:9
 #: View/Themed/Phkondo/Reports/notfound.ctp:9
-msgid "http://phalkaline.net"
+msgid "https://www.phalkaline.net"
 msgstr ""
 
 #: View/Themed/Phkondo/BudgetNotes/add.ctp:9 View/Themed/Phkondo/BudgetNotes/edit.ctp:17
@@ -2278,13 +2278,6 @@ msgstr "Estado del recibo"
 #: View/Themed/Phkondo/Receipts/view.ctp:104
 msgid "Receipt Payment Type"
 msgstr "Tipo de recibo de pago"
-
-#: View/Themed/Phkondo/Income/receipts.ctp:81 View/Themed/Phkondo/OwnerReceipts/edit.ctp:132
-#: View/Themed/Phkondo/OwnerReceipts/view.ctp:89 View/Themed/Phkondo/Receipts/edit.ctp:128
-#: View/Themed/Phkondo/Receipts/index.ctp:28 View/Themed/Phkondo/Receipts/view.ctp:84
-#: View/Themed/Phkondo/Supports/view.ctp:37
-msgid "Client"
-msgstr "Cliente"
 
 #: View/Themed/Phkondo/Income/receipts.ctp:144 View/Themed/Phkondo/OwnerReceipts/view.ctp:95;173
 #: View/Themed/Phkondo/Receipts/view.ctp:88;160

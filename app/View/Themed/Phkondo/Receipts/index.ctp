@@ -25,7 +25,7 @@
                             <th><?php echo $this->Paginator->sort('document'); ?></th>
                             <th data-breakpoints="xs"><?php echo $this->Paginator->sort('document_date'); ?></th>
                             <th><?php echo $this->Paginator->sort('Fraction.fraction',__n('Fraction','Fractions',1)); ?></th>
-                            <th data-breakpoints="xs"><?php echo $this->Paginator->sort('Client.name',__('Client')); ?></th>
+                            <th data-breakpoints="xs"><?php echo $this->Paginator->sort('Client.name',__n('Entity', 'Entities', 1)); ?></th>
                             <th data-breakpoints="xs"><?php echo $this->Paginator->sort('ReceiptStatus.name',__('Receipt Status')); ?></th>
                             <th data-breakpoints="xs"><?php echo $this->Paginator->sort('ReceiptPaymentType.name',__('Receipt Payment Type')); ?></th>
                             <th data-breakpoints="xs"><?php echo $this->Paginator->sort('payment_date'); ?></th>

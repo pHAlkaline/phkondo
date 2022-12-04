@@ -16,7 +16,7 @@ $config = array(
             'receipt_subject' => 'Receipt Notification',
             'receipt_message' => 'Excellency Mr.
 
-The following document was issued to you, which can be consulted in the attachment.
+The following document was issued to you, which can be consulted in attachment.
 
 condominium management,
 ',
@@ -24,7 +24,7 @@ condominium management,
             'current_account_subject' => 'Current Account Notification',
             'current_account_message' => 'Excellency Mr.
 
-The following document was issued to you, which can be consulted in the annex.
+The following document was issued to you, which can be consulted in attachment.
 
 condominium management,
 ',

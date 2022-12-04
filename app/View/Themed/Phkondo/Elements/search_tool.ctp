@@ -25,7 +25,7 @@ if (isset($keyword)) :
                 <button type="submit" class="btn btn-default" aria-label="<?php echo __('Search'); ?>">
                     <span class="glyphicon glyphicon-search"></span>
                 </button>
-                <button type="submit" id="searchFormClear" class="btn btn-default" aria-label="<?php echo __('Clear'); ?>">
+                <button type="button" id="searchFormClear" class="btn btn-default" aria-label="<?php echo __('Clear'); ?>">
                     <span class="glyphicon glyphicon-remove"></span>
                 </button>
             </div>

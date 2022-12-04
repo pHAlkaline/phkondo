@@ -2,6 +2,8 @@
 <?php $this->Html->script('moment-with-locales', false); ?>
 <?php $this->Html->script('libs/footable/footable', false); ?>
 <?php $this->Html->script('footable', false); ?>
+<?php $this->Html->script('libs/table2csv/table2csv.min', false); ?>
+<?php $this->Html->script('table2csv', false); ?>
 <?php
 $balance = "0.00";
 if (isset($movements[0]['Account']['balance'])) {
@@ -18,13 +20,13 @@ if (isset($movements[0]['Account']['balance'])) {
                 <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New Movement'), array('action' => 'add', '?' => $this->request->query), array('class' => 'btn btn-primary', 'style' => 'margin: 8px 0; float: right;', 'escape' => false));
                 ?>
             </div><!-- /.actions -->
-            <?php echo $this->element('search_tool'); ?>
+            <?php echo $this->element('search_tool_movements'); ?>
             <div class="row text-center loading">
                 <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate" style="font-size: 40px;"></span>
             </div>
             <div class="col-sm-12 hidden">
 
-                <table data-empty="<?= __('Empty'); ?>"  class="footable table table-hover table-condensed">
+                <table data-empty="<?= __('Empty'); ?>"  class="footable table table-hover table-condensed table-export">
                     <thead>
                         <tr>
                             <th><?php echo $this->Paginator->sort('movement_date'); ?></th>

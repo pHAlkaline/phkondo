@@ -1,0 +1,49 @@
+1. run sql database updates , check app/Config/Schema directory in version you want to update
+
+*** BACKUP ENTITY PHKONDO JUST FOR SAFE RECOVERY
+
+2. Other Backups
+2.1 dump/backup database
+2.2 backup app/files directory
+
+
+3. backup app/Config files
+: bootstrap_phapp.php 
+: email_notifications.php 
+: email.php 
+: database.php 
+: core_phapp.php
+
+4. clear/delete all files from pHKondo directory
+
+
+5 Make a fresh files uploading your pHKondo files if you have customized version , you will need to merge with new version first
+
+6. run http://[yourpHKondoURL] and install
+
+7. go to your pHKondo app/Config directory compare merge/update file settings with backup from app/Config ( 3 )
+database.php <- database.php
+bootstrap_app.ini <- bootstrap_phapp.php 
+email_notifications.php <- email_notifications.php 
+email.php <- email.php 
+core_phapp.php <- core_phapp.php and bootstrap_phapp.php
+organization.php <- bootstrap_phapp.php
+
+/** IN core_phapp.php IMPORTANT SETTINGS Security.salt and Security.cipherSeed
+/** can be found in previous core_phapp.php and bootstrap_phapp.php
+
+8. Restore database ( 2 )
+
+9. Restore app/Files directory ( 2 )
+
+10. run http://[yourpHKondoURL]
+
+
+ALTER TABLE `users` ADD `email` varchar(50) NULL;
+ALTER TABLE `users` ADD UNIQUE(`email`);
+rm -rf .*
+rm -rf *
+git clone https://github.com/pHAlkaline/phkondo.git .
+cp composer_full_pack.json composer.json
+composer update
+

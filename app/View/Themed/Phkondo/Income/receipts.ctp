@@ -80,7 +80,7 @@
                                 <th data-breakpoints="xs"><?php echo __('Receipt Status'); ?></th>
                                 <th data-breakpoints="xs"><?php echo __('Payment Date'); ?></th>
                                 <th data-breakpoints="xs"><?php echo __('Receipt Payment Type'); ?></th>
-                                <th data-breakpoints="xs"><?php echo __('Client'); ?></th>
+                                <th data-breakpoints="xs"><?php echo __n('Entity', 'Entities', 1); ?></th>
                                 <th data-breakpoints="xs"><?php echo __n('Condo', 'Condos', 1); ?></th>
                                 <th class="amount"><?php echo __('Amount'); ?></th>
 

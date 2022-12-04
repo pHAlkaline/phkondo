@@ -125,7 +125,7 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
                                                     <th><?php echo __('Title'); ?></th>
                                                     <th data-breakpoints="xs"><?php echo __('Note Type'); ?></th>
                                                     <th data-breakpoints="xs"><?php echo __n('Fraction', 'Fractions', 1); ?></th>
-                                                    <th data-breakpoints="xs"><?php echo __('Client'); ?></th>
+                                                    <th data-breakpoints="xs"><?php echo __n('Entity', 'Entities', 1); ?></th>
                                                     <th data-breakpoints="xs"><?php echo __('Amount'); ?></th>
                                                     <th data-breakpoints="xs"><?php echo __('Due Date'); ?></th>
                                                     <th class="actions"><?php echo __('Pick'); ?></th>

@@ -1040,7 +1040,7 @@ msgstr "Não foi possivel apagar pedido de suporte"
 #: View/Themed/Phkondo/Supports/view.ctp:24
 msgid "Support"
 msgid_plural "Supports"
-msgstr[0] "Suporte ao Cliente"
+msgstr[0] "Pedido de Suporte"
 msgstr[1] "Pedidos de Suporte"
 
 #: Controller/UsersController.php:67;103;138;182
@@ -2281,7 +2281,7 @@ msgstr "Obter plugin"
 #: View/Themed/Phkondo/Receipts/send_receipt.ctp:9
 #: View/Themed/Phkondo/Receipts/pdf/print_receipt.ctp:9
 #: View/Themed/Phkondo/Reports/notfound.ctp:9
-msgid "http://phalkaline.net"
+msgid "https://www.phalkaline.net"
 msgstr "https://phalkaline.net"
 
 #: View/Themed/Phkondo/BudgetNotes/add.ctp:9
@@ -2993,16 +2993,6 @@ msgstr "Estado"
 #: View/Themed/Phkondo/Receipts/view.ctp:104
 msgid "Receipt Payment Type"
 msgstr "Forma de Pagamento"
-
-#: View/Themed/Phkondo/Income/receipts.ctp:81
-#: View/Themed/Phkondo/OwnerReceipts/edit.ctp:132
-#: View/Themed/Phkondo/OwnerReceipts/view.ctp:89
-#: View/Themed/Phkondo/Receipts/edit.ctp:128
-#: View/Themed/Phkondo/Receipts/index.ctp:28
-#: View/Themed/Phkondo/Receipts/view.ctp:84
-#: View/Themed/Phkondo/Supports/view.ctp:37
-msgid "Client"
-msgstr "Cliente"
 
 #: View/Themed/Phkondo/Income/receipts.ctp:144
 #: View/Themed/Phkondo/OwnerReceipts/view.ctp:95;173
