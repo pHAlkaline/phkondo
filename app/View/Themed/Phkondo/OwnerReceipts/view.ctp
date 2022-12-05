@@ -91,7 +91,7 @@ if (!Configure::check('CakePdf.phkondo.active') || Configure::read('CakePdf.phko
                                 <tr>
                                     <td><strong><?php echo __n('Entity', 'Entities', 1); ?></strong></td>
                                     <td>
-                                        <?php echo h($receipt['Client']['name']); ?>
+                                        <?php echo h($receipt['Entity']['name']); ?>
                                         &nbsp;
                                     </td>
                                 </tr>

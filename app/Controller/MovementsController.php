@@ -63,7 +63,7 @@ class MovementsController extends AppController
                 'Movement.fiscal_year_id' => $this->getPhkRequestVar('fiscal_year_id')
             )
         ));
-        $this->setFilter(array('Movement.description', 'Movement.amount', 'Movement.document', 'Movement.document', 'MovementCategory.name', 'MovementType.name', 'MovementOperation.name'));
+        $this->setFilter(array('Movement.description', 'Movement.amount', 'Movement.document', 'MovementCategory.name', 'MovementType.name', 'MovementOperation.name'));
         $this->set('movements', $this->Paginator->paginate('Movement'));
     }
 

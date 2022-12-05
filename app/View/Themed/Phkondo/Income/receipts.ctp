@@ -121,7 +121,7 @@
                                         <?php echo h($receipt['ReceiptPaymentType']['name']); ?>
                                     </td>
                                     <td>
-                                        <?php echo h($receipt['Client']['name']); ?>
+                                        <?php echo h($receipt['Entity']['name']); ?>
                                     </td>
                                     <td>
 

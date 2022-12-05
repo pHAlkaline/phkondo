@@ -57,14 +57,14 @@ class OwnerReceiptsController extends AppController {
      * @return void
      */
     public function index() {
-        $this->Receipt->contain('Client', 'ReceiptStatus', 'ReceiptPaymentType');
+        $this->Receipt->contain('Entity', 'ReceiptStatus', 'ReceiptPaymentType');
         $this->Paginator->settings = array_replace_recursive($this->Paginator->settings, array(
-            'contain' => array('Client', 'ReceiptStatus', 'ReceiptPaymentType'),
+            'contain' => array('Entity', 'ReceiptStatus', 'ReceiptPaymentType'),
             'conditions' => array(
-                'Receipt.client_id' => $this->getPhkRequestVar('owner_id'),
+                'Receipt.entity_id' => $this->getPhkRequestVar('owner_id'),
                 'Receipt.fraction_id' => $this->getPhkRequestVar('fraction_id'))
         ));
-        $this->setFilter(array('Receipt.document', 'Client.name', 'ReceiptStatus.name', 'ReceiptPaymentType.name', 'Receipt.total_amount'));
+        $this->setFilter(array('Receipt.document', 'Entity.name', 'ReceiptStatus.name', 'ReceiptPaymentType.name', 'Receipt.total_amount'));
 
         $this->set('receipts', $this->Paginator->paginate('Receipt'));
     }
@@ -83,16 +83,16 @@ class OwnerReceiptsController extends AppController {
         }
         $this->Receipt->contain(array(
             'Fraction',
-            'Client',
+            'Entity',
             'ReceiptStatus',
             'ReceiptPaymentType',
             'ReceiptNote' => array('NoteType', 'Fraction'),
             'Note' => array('NoteType', 'Fraction')
         ));
-        $options = array('conditions' => array('Receipt.id' => $id, 'Receipt.client_id' => $this->getPhkRequestVar('owner_id'), 'Receipt.fraction_id' => $this->getPhkRequestVar('fraction_id')));
+        $options = array('conditions' => array('Receipt.id' => $id, 'Receipt.entity_id' => $this->getPhkRequestVar('owner_id'), 'Receipt.fraction_id' => $this->getPhkRequestVar('fraction_id')));
         $receipt = $this->Receipt->find('first', $options);
-        $this->Receipt->Client->order = 'Client.name';
-        $notificationEntities = $this->Receipt->Client->find('list', array('fields' => array('Client.email', 'Client.email'), 'conditions' => array('id' => $receipt['Client']['id'])));
+        $this->Receipt->Entity->order = 'Entity.name';
+        $notificationEntities = $this->Receipt->Entity->find('list', array('fields' => array('Entity.email', 'Entity.email'), 'conditions' => array('id' => $receipt['Entity']['id'])));
 
         $emailNotifications = Configure::read('EmailNotifications');
 
@@ -152,9 +152,9 @@ class OwnerReceiptsController extends AppController {
     public function add() {
         if ($this->request->is('post')) {
             $this->Receipt->create();
-            $this->Receipt->Client->id = $this->request->data['Receipt']['client_id'];
-            $this->Receipt->Client->order = 'Client.name';
-            $this->request->data['Receipt']['address'] = $this->Receipt->Client->field('address');
+            $this->Receipt->Entity->id = $this->request->data['Receipt']['entity_id'];
+            $this->Receipt->Entity->order = 'Entity.name';
+            $this->request->data['Receipt']['address'] = $this->Receipt->Entity->field('address');
             $number = $this->_getNextReceiptIndex($this->getPhkRequestVar('condo_id'));
             $this->request->data['Receipt']['document'] = $this->getPhkRequestVar('condo_id') . Date('Y') . '-' . sprintf('%06d', $number);
             if ($this->request->data['Receipt']['document_date'] == '') {
@@ -172,7 +172,7 @@ class OwnerReceiptsController extends AppController {
             }
         }
         $condos = $this->Receipt->Condo->find('list', array('conditions' => array('Condo.id' => $this->getPhkRequestVar('condo_id'))));
-        $clients = $this->Receipt->Client->find('list', array('order' => 'Client.name', 'conditions' => array('Client.id' => $this->getPhkRequestVar('owner_id'))));
+        $clients = $this->Receipt->Entity->find('list', array('order' => 'Entity.name', 'conditions' => array('Entity.id' => $this->getPhkRequestVar('owner_id'))));
         $fractions = $this->Receipt->Fraction->find('list', array('conditions' => array('Fraction.id' => $this->getPhkRequestVar('fraction_id'))));
         $receiptStatuses = $this->Receipt->ReceiptStatus->find('list', array('conditions' => array('id' => array('1', '2'), 'active' => '1')));
         $receiptPaymentTypes = $this->Receipt->ReceiptPaymentType->find('list', array('conditions' => array('active' => '1')));
@@ -198,7 +198,7 @@ class OwnerReceiptsController extends AppController {
                         'Note.pending_amount' => 0
                     ), array(
                 'Note.fraction_id' => $this->getPhkRequestVar('fraction_id'),
-                'Note.entity_id' => $this->Receipt->field('client_id'),
+                'Note.entity_id' => $this->Receipt->field('entity_id'),
                 'Note.note_status_id' => array(1, 2),
                 'Note.receipt_id' => $id)
             );
@@ -224,7 +224,7 @@ class OwnerReceiptsController extends AppController {
         }
         $this->redirect(array('action' => 'edit', $id, '?' => $this->request->query, '#' => 'AddNotes'));
         //$this->Receipt->Note->contain(array('NoteType', 'Entity', 'Fraction'));
-        //$notes = $this->Receipt->Note->find('all', array('conditions' => array('Note.fraction_id' => $this->getPhkRequestVar('fraction_id'), 'Note.entity_id' => $this->Receipt->field('client_id'), 'Note.note_status_id' => array(1, 2), 'Note.receipt_id' => '')));
+        //$notes = $this->Receipt->Note->find('all', array('conditions' => array('Note.fraction_id' => $this->getPhkRequestVar('fraction_id'), 'Note.entity_id' => $this->Receipt->field('entity_id'), 'Note.note_status_id' => array(1, 2), 'Note.receipt_id' => '')));
         //$receiptAmount = $this->Receipt->field('total_amount');
         //$receiptId = $this->Receipt->field('document');
         //$this->set(compact('notes', 'receiptAmount', 'receiptId', 'id'));
@@ -297,7 +297,7 @@ class OwnerReceiptsController extends AppController {
 
         $condos = $this->Receipt->Condo->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('condo_id'))));
         $fractions = $this->Receipt->Fraction->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('fraction_id'))));
-        $clients = $this->Receipt->Client->find('list', array('order' => 'Client.name', 'conditions' => array('id' => $this->getPhkRequestVar('owner_id'))));
+        $clients = $this->Receipt->Entity->find('list', array('order' => 'Entity.name', 'conditions' => array('id' => $this->getPhkRequestVar('owner_id'))));
         $receiptStatuses = $this->Receipt->ReceiptStatus->find('list', array('conditions' => array('id' => array('3'), 'active' => '1')));
         $receiptPaymentTypes = $this->Receipt->ReceiptPaymentType->find('list', array('conditions' => array('active' => '1')));
 
@@ -306,7 +306,7 @@ class OwnerReceiptsController extends AppController {
             'conditions' => array(
                 'Note.receipt_id' => $id,
                 'Note.fraction_id' => $this->getPhkRequestVar('fraction_id'),
-                'Note.entity_id' => $this->request->data['Receipt']['client_id'],
+                'Note.entity_id' => $this->request->data['Receipt']['entity_id'],
             ))
         );
         $this->set(compact('condos', 'fractions', 'clients', 'receiptStatuses', 'receiptPaymentTypes', 'notes'));
@@ -342,7 +342,7 @@ class OwnerReceiptsController extends AppController {
         } else {
             $options = array('conditions' => array(
                     'Receipt.' . $this->Receipt->primaryKey => $id,
-                    'Receipt.client_id' => $this->getPhkRequestVar('owner_id'),
+                    'Receipt.entity_id' => $this->getPhkRequestVar('owner_id'),
                     'Receipt.fraction_id' => $this->getPhkRequestVar('fraction_id'),
                     'AND' => array(
                         'Receipt.receipt_status_id' => array('1', '2'))
@@ -362,7 +362,7 @@ class OwnerReceiptsController extends AppController {
 
         $condos = $this->Receipt->Condo->find('list', array('conditions' => array('id' => $this->request->data['Receipt']['condo_id'])));
         $fractions = $this->Receipt->Fraction->find('list', array('conditions' => array('Fraction.id' => $this->request->data['Receipt']['fraction_id'])));
-        $clients = $this->Receipt->Client->find('list', array('order' => 'Client.name', 'conditions' => array('id' => $this->request->data['Receipt']['client_id'])));
+        $clients = $this->Receipt->Entity->find('list', array('order' => 'Entity.name', 'conditions' => array('id' => $this->request->data['Receipt']['entity_id'])));
         $receiptStatuses = $this->Receipt->ReceiptStatus->find('list', array('conditions' => array('id' => array('1', '2'), 'active' => '1')));
         $receiptPaymentTypes = $this->Receipt->ReceiptPaymentType->find('list', array('conditions' => array('active' => '1')));
 
@@ -372,7 +372,7 @@ class OwnerReceiptsController extends AppController {
                 'OR' => array('Note.receipt_id IS NULL', 'Note.receipt_id' => $id),
                 'AND' => array(
                     'Note.fraction_id' => $this->getPhkRequestVar('fraction_id'),
-                    'Note.entity_id' => $this->Receipt->field('client_id'),
+                    'Note.entity_id' => $this->Receipt->field('entity_id'),
                     'Note.note_status_id' => array(1, 2)),
             ))
         );
@@ -481,7 +481,7 @@ class OwnerReceiptsController extends AppController {
 
         $condos = $this->Receipt->Condo->find('list', array('conditions' => array('id' => $this->request->data['Receipt']['condo_id'])));
         $fractions = $this->Receipt->Fraction->find('list', array('conditions' => array('id' => $this->request->data['Receipt']['fraction_id'])));
-        $clients = $this->Receipt->Client->find('list', array('order' => 'Client.name', 'conditions' => array('id' => $this->request->data['Receipt']['client_id'])));
+        $clients = $this->Receipt->Entity->find('list', array('order' => 'Entity.name', 'conditions' => array('id' => $this->request->data['Receipt']['entity_id'])));
         $receiptStatuses = $this->Receipt->ReceiptStatus->find('list', array('conditions' => array('id' => array('4'), 'active' => '1')));
         $receiptPaymentTypes = $this->Receipt->ReceiptPaymentType->find('list', array('conditions' => array('active' => '1')));
         $notes = $this->Receipt->Note->find('all', array(
@@ -489,7 +489,7 @@ class OwnerReceiptsController extends AppController {
             'conditions' => array(
                 'Note.receipt_id' => $id,
                 'Note.fraction_id' => $this->getPhkRequestVar('fraction_id'),
-                'Note.entity_id' => $this->request->data['Receipt']['client_id'],
+                'Note.entity_id' => $this->request->data['Receipt']['entity_id'],
             ))
         );
 

@@ -307,7 +307,7 @@ class AppController extends Controller
             if (count($result)) {
                 $this->phkRequestData['receipt_id'] = $result['Receipt']['id'];
                 $this->phkRequestData['receipt_text'] = $result['Receipt']['document'];
-                $this->phkRequestData['owner_id'] = $result['Receipt']['client_id'];
+                $this->phkRequestData['owner_id'] = $result['Receipt']['entity_id'];
                 $this->phkRequestData['fraction_id'] = $result['Receipt']['fraction_id'];
                 $this->phkRequestData['condo_id'] = $result['Receipt']['condo_id'];
             }

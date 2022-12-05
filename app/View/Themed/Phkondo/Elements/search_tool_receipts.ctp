@@ -15,7 +15,7 @@ if ($hasAdvSearch) {
         <div class="input-group">
             <?php
             foreach ($this->request->query as $key => $value) :
-                $formKeys = ['keyword', 'page', 'movement_category_id', 'movement_type_id', 'start_date', 'close_date'];
+                $formKeys = ['keyword', 'page', 'receipt_status_id', 'entity_id', 'start_date', 'close_date'];
                 if (!in_array($key, $formKeys)) :
                     echo $this->Form->hidden($key, array('value' => $value));
                 endif;
@@ -63,10 +63,10 @@ if ($hasAdvSearch) {
                         )); ?>
                     </div><!-- .form-group -->
                     <div class="col-xs-12 col-md-6 ">
-                        <?php echo $this->Form->input('Movement.movement_category_id', array('empty' => __('All'), 'class' => 'form-control')); ?>
+                        <?php echo $this->Form->input('Receipt.entity_id', array('empty' => __('All'), 'class' => 'form-control')); ?>
                     </div><!-- .form-group -->
                     <div class="col-xs-12 col-md-6">
-                        <?php echo $this->Form->input('Movement.movement_type_id', array('empty' => __('All'), 'class' => 'form-control')); ?>
+                        <?php echo $this->Form->input('Receipt.receipt_status_id', array('empty' => __('All'), 'class' => 'form-control')); ?>
                     </div><!-- .form-group -->
                    
                 </div>

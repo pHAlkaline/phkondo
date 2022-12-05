@@ -88,7 +88,7 @@ $this->Html->script('footable', false);
                                 </tr>
                                 <tr>
                                     <td><strong><?php echo __n('Entity', 'Entities', 1); ?></strong></td>
-                                    <td><?php echo h($receipt['Client']['name']); ?>&nbsp;</td>
+                                    <td><?php echo h($receipt['Entity']['name']); ?>&nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td><strong><?php echo __('Total Amount'); ?></strong></td>

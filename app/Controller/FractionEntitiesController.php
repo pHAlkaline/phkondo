@@ -79,7 +79,7 @@ class FractionEntitiesController extends AppController {
         }
         if ($this->request->is('post')) {
             $this->Entity->create();
-            //$this->request->data['Entity']['entity_type_id'] = 1; // Client Type
+            //$this->request->data['Entity']['entity_type_id'] = 1; // Entity Type
             if ($this->Entity->save($this->request->data)) {
                 $this->Flash->success(__('The entity has been saved'));
                 if ($fractionId != null) {

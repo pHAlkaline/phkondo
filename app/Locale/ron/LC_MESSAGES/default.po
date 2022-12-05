@@ -2998,16 +2998,6 @@ msgstr ""
 msgid "Receipt Payment Type"
 msgstr ""
 
-#: View/Themed/Phkondo/Income/receipts.ctp:81
-#: View/Themed/Phkondo/OwnerReceipts/edit.ctp:132
-#: View/Themed/Phkondo/OwnerReceipts/view.ctp:89
-#: View/Themed/Phkondo/Receipts/edit.ctp:128
-#: View/Themed/Phkondo/Receipts/index.ctp:28
-#: View/Themed/Phkondo/Receipts/view.ctp:84
-#: View/Themed/Phkondo/Supports/view.ctp:37
-msgid "Client"
-msgstr ""
-
 #: View/Themed/Phkondo/Income/receipts.ctp:144
 #: View/Themed/Phkondo/OwnerReceipts/view.ctp:95;173
 #: View/Themed/Phkondo/Receipts/view.ctp:88;160

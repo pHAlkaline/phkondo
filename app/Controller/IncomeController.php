@@ -77,7 +77,7 @@ class IncomeController extends AppController {
                 $close_date = date(Configure::read('Application.databaseDateFormat'), strtotime($model->data['IncomeReceipt']['close_date']));
 
                 $conditions['conditions']['And'] = ['payment_date BETWEEN ? AND ?' => array($open_date, $close_date)];
-                $Receipt->contain(array('PaymentUser', 'ReceiptStatus', 'ReceiptPaymentType', 'Client', 'Condo', 'CancelUser'));
+                $Receipt->contain(array('PaymentUser', 'ReceiptStatus', 'ReceiptPaymentType', 'Entity', 'Condo', 'CancelUser'));
                 $this->set('receipts', $Receipt->find('all', $conditions));
                 $this->set('hasData', true);
             } else {

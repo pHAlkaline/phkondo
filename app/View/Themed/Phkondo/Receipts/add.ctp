@@ -30,7 +30,7 @@
                     <?php echo $this->Form->input('fraction_id', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
-                    <?php echo $this->Form->input('client_id', array('class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('entity_id', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
                     <?php echo $this->Form->input('document_date', array('type' => 'text', 'class' => 'form-control datefield')); ?>

@@ -176,7 +176,7 @@ class Entity extends AppModel {
             return false;
         }
         $this->alias = 'Entity';
-        $result = ClassRegistry::init('Receipt')->find('count', array('conditions' => array('Receipt.client_id' => $id)));
+        $result = ClassRegistry::init('Receipt')->find('count', array('conditions' => array('Receipt.entity_id' => $id)));
         return ($result > 0) ? true : false;
     }
 

@@ -13,7 +13,7 @@
                 <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> '.__('New Receipt'), array('action' => 'add','?'=>$this->request->query), array('class' => 'btn btn-primary','style' => 'margin: 8px 0; float: right;', 'escape' => false));
                 ?>
             </div><!-- /.actions -->
-             <?php echo $this->element('search_tool'); ?>
+             <?php echo $this->element('search_tool_receipts'); ?>
             <div class="row text-center loading">
                 <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate" style="font-size: 40px;"></span>
             </div>
@@ -25,7 +25,7 @@
                             <th><?php echo $this->Paginator->sort('document'); ?></th>
                             <th data-breakpoints="xs"><?php echo $this->Paginator->sort('document_date'); ?></th>
                             <th><?php echo $this->Paginator->sort('Fraction.fraction',__n('Fraction','Fractions',1)); ?></th>
-                            <th data-breakpoints="xs"><?php echo $this->Paginator->sort('Client.name',__n('Entity', 'Entities', 1)); ?></th>
+                            <th data-breakpoints="xs"><?php echo $this->Paginator->sort('Entity.name',__n('Entity', 'Entities', 1)); ?></th>
                             <th data-breakpoints="xs"><?php echo $this->Paginator->sort('ReceiptStatus.name',__('Receipt Status')); ?></th>
                             <th data-breakpoints="xs"><?php echo $this->Paginator->sort('ReceiptPaymentType.name',__('Receipt Payment Type')); ?></th>
                             <th data-breakpoints="xs"><?php echo $this->Paginator->sort('payment_date'); ?></th>
@@ -43,7 +43,7 @@
                                     <?php echo h($receipt['Fraction']['fraction']);?>
                                 </td>
                                 <td>
-                                    <?php echo h($receipt['Client']['name']);?>
+                                    <?php echo h($receipt['Entity']['name']);?>
                                 </td>
                                 <td>
                                     <?php echo h($receipt['ReceiptStatus']['name']); ?>

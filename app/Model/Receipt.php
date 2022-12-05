@@ -33,7 +33,7 @@ App::uses('CakeTime', 'Utility');
  * Receipt Model
  *
  * @property Condo $Condo
- * @property Client $Client
+ * @property Entity $Entity
  * @property ReceiptStatus $ReceiptStatus
  * @property Note $Note
  */
@@ -89,7 +89,7 @@ class Receipt extends AppModel {
             //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
-        'client_id' => array(
+        'entity_id' => array(
             'numeric' => array(
                 'rule' => array('numeric'),
             //'message' => 'Your custom message here',
@@ -193,9 +193,9 @@ class Receipt extends AppModel {
             'fields' => '',
             'order' => ''
         ),
-        'Client' => array(
+        'Entity' => array(
             'className' => 'Entity',
-            'foreignKey' => 'client_id',
+            'foreignKey' => 'entity_id',
             'conditions' => '',
             'fields' => '',
             'order' => ''
