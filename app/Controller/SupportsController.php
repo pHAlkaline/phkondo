@@ -110,7 +110,7 @@ class SupportsController extends AppController {
         $this->Support->Fraction->contain(array('Entity'));
         $fractionsForClients = $this->Support->Fraction->find('all', array('conditions' => array('Fraction.id' => $firstFraction)));
 
-        $clients = $this->Support->Entity->find('list', array('order' => 'Entity.name', 'conditions' => array('Entity.id' => Set::extract('/Entity/id', $fractionsForClients))));
+        $entities = $this->Support->Entity->find('list', array('order' => 'Entity.name', 'conditions' => array('Entity.id' => Set::extract('/Entity/id', $fractionsForClients))));
         $supportCategories = $this->Support->SupportCategory->find('list', array('conditions' => array('active' => 1)));
         $supportPriorities = $this->Support->SupportPriority->find('list', array('conditions' => array('active' => 1)));
         $supportStatuses = $this->Support->SupportStatus->find('list', array('conditions' => array('active' => 1)));
@@ -146,7 +146,7 @@ class SupportsController extends AppController {
         $supportCategories = $this->Support->SupportCategory->find('list', array('conditions' => array('OR' => array('active' => 1, 'SupportCategory.id' => $this->request->data['Support']['support_category_id']))));
         $supportPriorities = $this->Support->SupportPriority->find('list', array('conditions' => array('OR' => array('active' => 1, 'SupportPriority.id' => $this->request->data['Support']['support_priority_id']))));
         $supportStatuses = $this->Support->SupportStatus->find('list', array('conditions' => array('OR' => array('active' => 1, 'SupportStatus.id' => $this->request->data['Support']['support_status_id']))));
-        $clients = $this->Support->Entity->find('list', array('order' => array('Entity.name'), 'conditions' => array('Entity.id' => $this->request->data['Support']['entity_id'])));
+        $entities = $this->Support->Entity->find('list', array('order' => array('Entity.name'), 'conditions' => array('Entity.id' => $this->request->data['Support']['entity_id'])));
         $assignedUsers = $this->Support->AssignedUser->find('list', array('order' => array('AssignedUser.name'), 'conditions' => array('active' => 1)));
         $this->set(compact('condos', 'fractions', 'supportCategories', 'supportPriorities', 'supportStatuses', 'clients', 'assignedUsers'));
         $this->setPhkRequestVar('support_id', $id);

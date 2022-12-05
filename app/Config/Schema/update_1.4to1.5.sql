@@ -54,7 +54,7 @@ ADD CONSTRAINT `fk_receipts_1`
   ON DELETE CASCADE
   ON UPDATE CASCADE,
 ADD CONSTRAINT `receipts_ibfk_2`
-  FOREIGN KEY (`client_id`)
+  FOREIGN KEY (`entity_id`)
   REFERENCES `entities` (`id`)
   ON DELETE CASCADE
   ON UPDATE CASCADE;

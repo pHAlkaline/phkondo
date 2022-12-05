@@ -2,6 +2,8 @@
 <?php $this->Html->script('moment-with-locales', false); ?>
 <?php $this->Html->script('libs/footable/footable', false); ?>
 <?php $this->Html->script('footable', false); ?>
+<?php $this->Html->script('libs/table2csv/table2csv.min', false); ?>
+<?php $this->Html->script('table2csv', false); ?>
 <div id="page-container" class="row">
    
     <div id="page-content" class="col-sm-12">
@@ -19,7 +21,7 @@
             </div>
             <div class="col-sm-12 hidden">
 
-                <table data-empty="<?= __('Empty'); ?>"  class="footable table table-hover table-condensed">
+                <table data-empty="<?= __('Empty'); ?>"  class="footable table table-hover table-condensed table-export">
                     <thead>
                         <tr>
                             <th><?php echo $this->Paginator->sort('document'); ?></th>

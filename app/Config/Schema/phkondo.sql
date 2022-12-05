@@ -614,7 +614,7 @@ CREATE TABLE IF NOT EXISTS `receipts` (
   `total_amount` decimal(10,2) NOT NULL DEFAULT '0.00',
   `condo_id` int(11) NOT NULL,
   `fraction_id` int(11) DEFAULT NULL,
-  `client_id` int(11) NOT NULL,
+  `entity_id` int(11) NOT NULL,
   `address` text,
   `observations` text,
   `cancel_user_id` int(11) DEFAULT NULL,
@@ -623,7 +623,7 @@ CREATE TABLE IF NOT EXISTS `receipts` (
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `CONDO` (`condo_id`),
-  KEY `CLIENT` (`client_id`),
+  KEY `CLIENT` (`entity_id`),
   KEY `RECEIPTSTATUS` (`receipt_status_id`),
   KEY `PaymentUser` (`payment_user_id`),
   KEY `PaymentType` (`receipt_payment_type_id`),
@@ -781,7 +781,7 @@ CREATE TABLE IF NOT EXISTS `supports` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `condo_id` int(11) NOT NULL,
   `fraction_id` int(11) NOT NULL,
-  `client_id` int(11) NOT NULL,
+  `entity_id` int(11) NOT NULL,
   `subject` varchar(45) DEFAULT NULL,
   `description` text,
   `notes` text,
@@ -797,7 +797,7 @@ CREATE TABLE IF NOT EXISTS `supports` (
   KEY `fk_support_3_idx` (`support_status_id`),
   KEY `fk_support_4_idx` (`condo_id`),
   KEY `fk_support_5_idx` (`fraction_id`),
-  KEY `fk_support_6_idx` (`client_id`),
+  KEY `fk_support_6_idx` (`entity_id`),
   KEY `fk_support_7_idx` (`assigned_user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -981,7 +981,7 @@ ALTER TABLE `notes`
 ALTER TABLE `receipts`
   ADD CONSTRAINT `fk_receipts_1` FOREIGN KEY (`fraction_id`) REFERENCES `fractions` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `receipts_ibfk_1` FOREIGN KEY (`condo_id`) REFERENCES `condos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `receipts_ibfk_2` FOREIGN KEY (`client_id`) REFERENCES `entities` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `receipts_ibfk_2` FOREIGN KEY (`entity_id`) REFERENCES `entities` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `receipts_ibfk_3` FOREIGN KEY (`receipt_status_id`) REFERENCES `receipt_statuses` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `receipts_ibfk_4` FOREIGN KEY (`receipt_payment_type_id`) REFERENCES `receipt_payment_types` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `receipts_ibfk_5` FOREIGN KEY (`payment_user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE,
@@ -1005,7 +1005,7 @@ ALTER TABLE `receipt_notes`
 ALTER TABLE `supports`
   ADD CONSTRAINT `fk_support_4` FOREIGN KEY (`condo_id`) REFERENCES `condos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_support_5` FOREIGN KEY (`fraction_id`) REFERENCES `fractions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_support_6` FOREIGN KEY (`client_id`) REFERENCES `entities` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_support_6` FOREIGN KEY (`entity_id`) REFERENCES `entities` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_support_1` FOREIGN KEY (`support_category_id`) REFERENCES `support_categories` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_support_2` FOREIGN KEY (`support_priority_id`) REFERENCES `support_priorities` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_support_3` FOREIGN KEY (`support_status_id`) REFERENCES `support_statuses` (`id`) ON UPDATE CASCADE,

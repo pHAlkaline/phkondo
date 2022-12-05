@@ -50,16 +50,16 @@ if ($hasAdvSearch) {
                     <?php echo $this->Form->input('start_date', array(
                         'type' => 'text', 
                         'class' => 'form-control datefield',
-                        'data-date-start-date'=>$fiscalYearData['FiscalYear']['open_date'],
-                        'data-date-end-date'=>$fiscalYearData['FiscalYear']['close_date'],
+                        'data-date-start-date'=>isset($receiptDates['start_date'])?$receiptDates['start_date']:'',
+                        'data-date-end-date'=>isset($receiptDates['close_date'])?$receiptDates['close_date']:'',
                         )); ?>
                     </div><!-- .form-group -->
                     <div class="col-sm-6">
                     <?php echo $this->Form->input('close_date', array(
                         'type' => 'text', 
                         'class' => 'form-control datefield',
-                        'data-date-start-date'=>$fiscalYearData['FiscalYear']['open_date'],
-                        'data-date-end-date'=>$fiscalYearData['FiscalYear']['close_date'],
+                        'data-date-start-date'=>isset($receiptDates['start_date'])?$receiptDates['start_date']:'',
+                        'data-date-end-date'=>isset($receiptDates['close_date'])?$receiptDates['close_date']:'',
                         )); ?>
                     </div><!-- .form-group -->
                     <div class="col-xs-12 col-md-6 ">

@@ -585,7 +585,7 @@ class AppSchema extends CakeSchema {
 		'total_amount' => array('type' => 'decimal', 'null' => false, 'default' => '0.00', 'length' => '10,2', 'unsigned' => false),
 		'condo_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'index'),
 		'fraction_id' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false, 'key' => 'index'),
-		'client_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'index'),
+		'entity_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'index'),
 		'address' => array('type' => 'text', 'null' => true, 'default' => null, 'collate' => 'utf8mb3_general_ci', 'charset' => 'utf8mb3'),
 		'observations' => array('type' => 'text', 'null' => true, 'default' => null, 'collate' => 'utf8mb3_general_ci', 'charset' => 'utf8mb3'),
 		'cancel_user_id' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false, 'key' => 'index'),
@@ -595,7 +595,7 @@ class AppSchema extends CakeSchema {
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1),
 			'CONDO' => array('column' => 'condo_id', 'unique' => 0),
-			'CLIENT' => array('column' => 'client_id', 'unique' => 0),
+			'CLIENT' => array('column' => 'entity_id', 'unique' => 0),
 			'RECEIPTSTATUS' => array('column' => 'receipt_status_id', 'unique' => 0),
 			'PaymentUser' => array('column' => 'payment_user_id', 'unique' => 0),
 			'PaymentType' => array('column' => 'receipt_payment_type_id', 'unique' => 0),
@@ -700,7 +700,7 @@ class AppSchema extends CakeSchema {
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
 		'condo_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'index'),
 		'fraction_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'index'),
-		'client_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'index'),
+		'entity_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'index'),
 		'subject' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 45, 'collate' => 'utf8mb3_general_ci', 'charset' => 'utf8mb3'),
 		'description' => array('type' => 'text', 'null' => true, 'default' => null, 'collate' => 'utf8mb3_general_ci', 'charset' => 'utf8mb3'),
 		'notes' => array('type' => 'text', 'null' => true, 'default' => null, 'collate' => 'utf8mb3_general_ci', 'charset' => 'utf8mb3'),
@@ -717,7 +717,7 @@ class AppSchema extends CakeSchema {
 			'fk_support_3_idx' => array('column' => 'support_status_id', 'unique' => 0),
 			'fk_support_4_idx' => array('column' => 'condo_id', 'unique' => 0),
 			'fk_support_5_idx' => array('column' => 'fraction_id', 'unique' => 0),
-			'fk_support_6_idx' => array('column' => 'client_id', 'unique' => 0),
+			'fk_support_6_idx' => array('column' => 'entity_id', 'unique' => 0),
 			'fk_support_7_idx' => array('column' => 'assigned_user_id', 'unique' => 0)
 		),
 		'tableParameters' => array('charset' => 'utf8mb3', 'collate' => 'utf8mb3_general_ci', 'engine' => 'InnoDB')

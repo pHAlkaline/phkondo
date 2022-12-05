@@ -707,7 +707,7 @@ TRUNCATE TABLE `receipts`;
 -- Extraindo dados da tabela `receipts`
 --
 
-INSERT INTO `receipts` (`id`, `document`, `document_date`, `receipt_status_id`, `payment_user_id`, `receipt_payment_type_id`, `payment_date`, `total_amount`, `condo_id`, `fraction_id`, `client_id`, `address`, `observations`, `cancel_user_id`, `cancel_motive`, `modified`, `created`) VALUES
+INSERT INTO `receipts` (`id`, `document`, `document_date`, `receipt_status_id`, `payment_user_id`, `receipt_payment_type_id`, `payment_date`, `total_amount`, `condo_id`, `fraction_id`, `entity_id`, `address`, `observations`, `cancel_user_id`, `cancel_motive`, `modified`, `created`) VALUES
 (1, '12021-000001', '2021-01-01', 3, 1, 1, '2021-01-08', '15.00', 1, 1, 1, 'Rua da Escola Primária N51 1ºDto', '', NULL, NULL, '2021-09-26 19:52:14', '2021-09-26 19:47:08'),
 (2, '12021-000002', '2021-02-01', 3, 1, 3, '2021-02-08', '15.00', 1, 1, 1, 'Rua da Escola Primária N51 1ºDto', '', NULL, NULL, '2021-09-26 19:53:51', '2021-09-26 19:52:45'),
 (3, '12021-000003', '2021-03-01', 3, 1, 3, '2021-09-26', '15.00', 1, 1, 1, 'Rua da Escola Primária N51 1ºDto', '', NULL, NULL, '2021-09-26 20:04:10', '2021-09-26 19:54:16'),
@@ -762,7 +762,7 @@ TRUNCATE TABLE `supports`;
 -- Extraindo dados da tabela `supports`
 --
 
-INSERT INTO `supports` (`id`, `condo_id`, `fraction_id`, `client_id`, `subject`, `description`, `notes`, `support_category_id`, `support_priority_id`, `support_status_id`, `assigned_user_id`, `created`, `modified`) VALUES
+INSERT INTO `supports` (`id`, `condo_id`, `fraction_id`, `entity_id`, `subject`, `description`, `notes`, `support_category_id`, `support_priority_id`, `support_status_id`, `assigned_user_id`, `created`, `modified`) VALUES
 (1, 1, 14, 15, 'Limpeza das Escadas', 'As Escadas estão a ser mal limpas', '', 3, 2, 2, 2, '2021-09-27 15:22:10', '2021-09-27 15:22:10');
 
 -- --------------------------------------------------------

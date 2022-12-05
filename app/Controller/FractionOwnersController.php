@@ -330,7 +330,7 @@ class FractionOwnersController extends AppController {
         );
         $entitiesInFraction = Set::extract('/Entity/id', $fraction);
 
-        $clients = $this->Fraction->Entity->find('all', array(
+        $entities = $this->Fraction->Entity->find('all', array(
             'fields' => array('Entity.id', 'Entity.name', 'Entity.address'),
             'conditions' => array(
                 'Entity.name LIKE' => $term . '%',
@@ -341,7 +341,7 @@ class FractionOwnersController extends AppController {
         ));
 
         $result = array();
-        foreach ($clients as $key => $client) {
+        foreach ($entities as $key => $client) {
             $result[$key] = $client['Entity'];
         }
 
