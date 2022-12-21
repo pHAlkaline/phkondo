@@ -150,11 +150,11 @@ class Support extends AppModel {
             'fields' => '',
             'order' => ''
         ),
-        'Client' => array(
+        'Entity' => array(
             'className' => 'Entity',
-            'foreignKey' => 'client_id',
+            'foreignKey' => 'entity_id',
             'fields' => array('id', 'name'),
-            'order' => array('Client.name ASC')
+            'order' => array('Entity.name ASC')
         ),
         'AssignedUser' => array(
             'className' => 'User',

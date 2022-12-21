@@ -3583,3 +3583,6 @@ msgstr "Limba"
 
 msgid "Theme"
 msgstr "Temă"
+
+msgid "Subject"
+msgstr "Subiectul"

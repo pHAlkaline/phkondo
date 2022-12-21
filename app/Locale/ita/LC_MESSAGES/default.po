@@ -2778,3 +2778,6 @@ msgid "Manager"
 msgid_plural "Managers"
 msgstr[0] "Gestore"
 msgstr[1] "Gestore"
+
+msgid "Subject"
+msgstr "Assunto"

@@ -2774,3 +2774,6 @@ msgstr "Limba"
 
 msgid "Theme"
 msgstr "Tema"
+
+msgid "Subject"
+msgstr "Asunto"

@@ -36,7 +36,7 @@
                     <tr>
                         <td><strong><?php echo __n('Entity', 'Entities', 1); ?></strong></td>
                         <td>
-                            <?php echo h($support['Client']['name']); ?>
+                            <?php echo h($support['Entity']['name']); ?>
                             &nbsp;
                         </td>
                     </tr>

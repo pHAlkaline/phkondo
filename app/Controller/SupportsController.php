@@ -116,7 +116,7 @@ class SupportsController extends AppController {
         $supportStatuses = $this->Support->SupportStatus->find('list', array('conditions' => array('active' => 1)));
         $assignedUsers = $this->Support->AssignedUser->find('list', array('order' => array('AssignedUser.name'), 'conditions' => array('active' => 1)));
         $this->request->data['Support']['change_filter'] = 0;
-        $this->set(compact('condos', 'fractions', 'supportCategories', 'supportPriorities', 'supportStatuses', 'clients', 'assignedUsers'));
+        $this->set(compact('condos', 'fractions', 'supportCategories', 'supportPriorities', 'supportStatuses', 'entities', 'assignedUsers'));
     }
 
     /**
@@ -148,7 +148,7 @@ class SupportsController extends AppController {
         $supportStatuses = $this->Support->SupportStatus->find('list', array('conditions' => array('OR' => array('active' => 1, 'SupportStatus.id' => $this->request->data['Support']['support_status_id']))));
         $entities = $this->Support->Entity->find('list', array('order' => array('Entity.name'), 'conditions' => array('Entity.id' => $this->request->data['Support']['entity_id'])));
         $assignedUsers = $this->Support->AssignedUser->find('list', array('order' => array('AssignedUser.name'), 'conditions' => array('active' => 1)));
-        $this->set(compact('condos', 'fractions', 'supportCategories', 'supportPriorities', 'supportStatuses', 'clients', 'assignedUsers'));
+        $this->set(compact('condos', 'fractions', 'supportCategories', 'supportPriorities', 'supportStatuses', 'entities', 'assignedUsers'));
         $this->setPhkRequestVar('support_id', $id);
         $this->setPhkRequestVar('support_text', $this->request->data['Support']['subject']);
     }

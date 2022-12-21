@@ -3685,3 +3685,6 @@ msgstr "As dimensões permitidas são largura <= 380 e altura <= 65"
 
 msgid "Language"
 msgstr "Linguagem"
+
+msgid "Subject"
+msgstr "Assunto"

@@ -44,7 +44,7 @@
                     <?php echo $this->Form->input('fraction_id',  array('class' => 'form-control')); ?>
                 </div>
                 <div class="form-group">
-                    <?php echo $this->Form->input('client_id',  array('class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('entity_id',  array('class' => 'form-control')); ?>
                 </div>
                 <div class="form-group">
                     <?php echo $this->Form->input('subject',  array('class' => 'form-control')); ?>
@@ -53,7 +53,7 @@
                     <?php echo $this->Form->input('description',  array('class' => 'form-control')); ?>
                 </div>
                 <div class="form-group">
-                    <?php echo $this->Form->input('notes',  array('class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('notes',  array('label' => array('text'=>__('Comments'),'class' => 'col-sm-2 control-label'),'class' => 'form-control')); ?>
                 </div>
                 <div class="form-group">
                     <?php echo $this->Form->input('support_category_id',  array('label' => array('text'=>__('Category'),'class' => 'col-sm-2 control-label'),'class' => 'form-control')); ?>
