@@ -565,7 +565,7 @@ class InstallController extends AppController
             if (Configure::read('Application.stage') == 'saas' && Configure::read('Application.mode')) {
                 $application_mode = Configure::read('Application.mode');
             }
-            Configure::write('BoostrapApp.Application.mode', $application_mode);
+            Configure::write('BootstrapApp.Application.mode', $application_mode);
             Configure::write('BootstrapApp.Application.currencySign', '\'' . Configure::read('BootstrapApp.Application.currencySign') . '\'');
 
             if (!Configure::dump('bootstrap_app.ini', 'BootstrapApp', array('BootstrapApp'))) {

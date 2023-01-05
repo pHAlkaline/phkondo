@@ -16,10 +16,10 @@
                 <?php echo $this->Form->input('installed_key', array('class' => 'form-control', 'maxLength' => '40', 'label' =>  __d('install', 'Installed Key'), 'value' => null)); ?>
             </div><!-- .form-group -->
         </fieldset>
-        <div class="form-group">
-            <div class="col-sm-6">
-                <?php echo $this->Form->button(__('Submit'), array('class' => 'btn btn-large btn-primary pull-right')); ?>
-            </div>
+        <div class="form-group  col-sm-12 col-md-10">
+
+            <?php echo $this->Form->button(__('Submit'), array('class' => 'btn btn-large btn-primary pull-right')); ?>
+
         </div>
         <?php echo $this->Form->end(); ?>
     </div>

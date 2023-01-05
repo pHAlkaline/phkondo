@@ -26,7 +26,7 @@
  */
 
  $(function () {
-    $("#InstallLanguage").on('change',function(evt){
+    $("#InstallLanguage, #InstallMode").on('change',function(evt){
         $("form").trigger('submit');
     })
 

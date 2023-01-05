@@ -1,8 +1,8 @@
 $(function () {
 
-    $("#table-export-bttn").on('click',function(evt){
-        var tablesel=$(this).data('table');
-        $(tablesel).table2csv({
+    $(".table-export-btn").on('click',function(evt){
+        var tableelem=$(this).data('table');
+        $(tableelem).table2csv({
             separator:',',
             newline:'\n',
             quoteFields:true,

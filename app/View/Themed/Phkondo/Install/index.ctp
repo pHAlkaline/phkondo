@@ -1,30 +1,8 @@
 <?php $this->Html->script('install', false); ?>
 <h2><?php echo $title_for_step; ?></h2>
 <div id="page-content" class="col-sm-10">
-
-    <div class="install form">
-        <?php echo $this->Form->create('Install', array('id' => 'languageFrm')); ?>
-
-        <fieldset>
-            <legend><?php echo __d('install', 'pHKondo'); ?></legend>
-            <div class="form-group">
-                <?php
-                echo $this->Form->input('mode', array('class' => 'form-control', 'label' => false, 'value' => Configure::read('Application.mode'), 'options' => $packList, 'empty' => '(choose one)'));
-                ?>
-
-            </div><!-- .form-group -->
-            <legend><?php echo __d('install', 'Language'); ?></legend>
-            <div class="form-group">
-                <?php
-                echo $this->Form->input('language', array('class' => 'form-control', 'label' => false, 'value' => Configure::read('Config.language'), 'options' => Configure::read('Language.list'), 'empty' => '(choose one)'));
-                ?>
-
-            </div><!-- .form-group -->
-
-        </fieldset>
-    </div>
     <div class="row">
-        <?php echo $this->Form->end(); ?>
+
         <div class="install index">
             <?php
             $check = true;
@@ -49,7 +27,7 @@
                 echoError($message);
             }
 
-            
+
             // php version
             if (version_compare(phpversion(), 5.6, '>=') && version_compare(phpversion(), 8.0, '<')) {
                 $message = sprintf(__d('install', 'PHP version %s >= 5.6 and <8.0.0'), phpversion());
@@ -72,6 +50,35 @@
                 echoError($message);
             }
 
+           
+            ?>
+        </div>
+    </div>
+    <div class="install form">
+        <?php echo $this->Form->create('Install', array('id' => 'settingsFrm')); ?>
+
+        <fieldset>
+            <legend><?php echo __d('install', 'pHKondo'); ?></legend>
+            <div class="form-group">
+                <?php
+                echo $this->Form->input('mode', array('class' => 'form-control', 'label' => false, 'value' => Configure::read('Application.mode'), 'options' => $packList, 'empty' => '(choose one)'));
+                ?>
+
+            </div><!-- .form-group -->
+            <legend><?php echo __d('install', 'Language'); ?></legend>
+            <div class="form-group">
+                <?php
+                echo $this->Form->input('language', array('class' => 'form-control', 'label' => false, 'value' => Configure::read('Config.language'), 'options' => Configure::read('Language.list'), 'empty' => '(choose one)'));
+                ?>
+
+            </div><!-- .form-group -->
+
+        </fieldset>
+        <?php echo $this->Form->end(); ?>
+    </div>
+    <div class="row">
+        <div class="install index">
+            <?php
             if ($check) {
                 $message = $this->Html->link(__d('install', 'Click here to begin installation'), array('action' => 'database'), ['class' => 'alert-link']);
                 echoBeginMessage($message);
@@ -85,27 +92,30 @@
 </div>
 <?php
 
-function echoBeginMessage($message) {
-    ?>
+function echoBeginMessage($message)
+{
+?>
     <div class="alert alert-info" role="alert">
         <?php echo $message; ?>
     </div>
 
-    <?php
+<?php
 }
 
-function echoMessage($message) {
-    ?>
+function echoMessage($message)
+{
+?>
     <div class="alert alert-success" role="alert">
         <?php echo $message; ?>
     </div>
-    <?php
+<?php
 }
 
-function echoError($message) {
-    ?>
+function echoError($message)
+{
+?>
     <div class="alert alert-error" role="alert">
         <?php echo $message; ?>
-    </div>  <?php
-}
-?>
+    </div> <?php
+        }
+            ?>

@@ -35,7 +35,7 @@ if ($hasAdvSearch) {
                 <button type="button" id="searchFormFilter" class="btn btn-default" aria-label="<?php echo __('More options'); ?>">
                     <span class="glyphicon glyphicon-filter"></span>
                 </button>
-                <button type="button" class="btn btn-default table-export-bttn" data-table=".table-export" aria-label="<?php echo __('CSV'); ?>">
+                <button type="button" class="btn btn-default table-export-btn" data-table=".table-export" aria-label="<?php echo __('CSV'); ?>">
                     <span class="glyphicon glyphicon-download"></span>
                 </button>
             </div>
