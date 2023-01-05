@@ -48,9 +48,8 @@ Enter Account Details
 
 Inside Account Go to Movements
 Add account movements -> New Movement
-* Every movement must belong to the active accounting period
 * For every accounting period you must create the first and last movement described below, this will allow pHKondo to make account reports based on accounting period.
-* The first movement should be:
+* At the begin of Accounting Period must open account movements, a first movement is required:
 Initial amount for opening balance
 Choose Opening / Closing on Category
 Choose Opening Balance on Movement Operation
@@ -59,6 +58,7 @@ Movement type: Credit if open balance is 0 or superior, Debit if open balance is
 For this last movement: ( Closing accounting period )
 Choose Opening / Closing on Category
 Chosse Closing Balance on Movement Operation
+* Every movement must belong to the active accounting period
 
 Go back to condo details
 Go to Budgets

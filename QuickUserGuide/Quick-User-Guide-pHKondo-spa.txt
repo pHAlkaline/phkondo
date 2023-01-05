@@ -49,17 +49,16 @@ Ver detalles de la cuenta
 
 Dentro de la cuenta, introduzca los movimientos
 Añadir movimientos de la cuenta -> Crear movimiento
-* Cada transacción debe pertenecer al período contable activo
 * Para cada periodo contable se debe crear el primer movimiento ( al inicio del periodo contable - apertura ) y el último movimiento ( al final del periodo contable - cierre ) , esto permitirá a pHKondo ejecutar los informes en base a los intervalos ( inicio / final ) del periodo contable.
 * El primer movimiento debería ser:
 El importe inicial del balance de apertura en el período contable
 Seleccione Apertura / Cierre en el campo Categoría
 Seleccione Balance de apertura en el campo Movimiento de transacciones
 Tipo de operación: Crédito si el saldo de la cuenta al inicio del periodo contable es 0 o superior, Débito si el saldo de la cuenta al inicio del periodo contable es < 0
-
 * El último movimiento debe ser: ( al cerrar el periodo contable )
 Seleccione Balance de apertura/cierre en el campo Categoría
 Seleccione Cerrar Balance en el campo Operación Movimiento
+* Cada transacción debe pertenecer al período contable activo
 
 Volver a los detalles del condominio
 Introducir en los presupuestos

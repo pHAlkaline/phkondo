@@ -149,11 +149,10 @@ if (!isset($headerTitle)) {
             }
 
             $('.datefield').attr('autocomplete', 'off');
-
             $('select').select2({
                 language: phkondolang,
-                theme: "bootstrap"}
-            );
+                theme: "bootstrap"
+            });
             $("li.disabled").find('a').removeAttr("href");
             $("li.disabled").find('a').removeAttr("onclick");
         });

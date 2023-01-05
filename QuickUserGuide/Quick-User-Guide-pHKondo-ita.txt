@@ -47,7 +47,6 @@ Inserisci i dettagli del conto
 
 Vai alla sezione Movimenti Conto
 Inserisci un Movimento Conto -> Nuovo Movimento
-* Ogni movimento deve far riferimento all'intervallo date dell'anno fiscale attivo
 * Per ciascun anno fiscale devi creare il primo e l'ultimo movimento così come descritto di seguito. Questo permetterà a pHKondo di realizzare report per il conto che si basano sull'anno fiscale.
 * Il primo movimento deve essere: 
 Importo iniziale per apertura bilancio su anno fiscale attivo
@@ -57,7 +56,7 @@ Tipo Movimento: Dare se il Saldo Apertura è 0 o superiore, Avere se il saldo è
 * L'ultimo movimento deve essere ( concludere Anni Fiscali )
 Categoria: Apertura / Chiusura
 Operazione Movimento: Saldo Chiusura
-
+* Ogni movimento deve far riferimento all'intervallo date dell'anno fiscale attivo
 
 Torna a Dettagli Condominio
 Vai alla sezione Budget

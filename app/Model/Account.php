@@ -33,7 +33,8 @@ App::uses('AppModel', 'Model');
  *
  * @property Condo $Condo
  */
-class Account extends AppModel {
+class Account extends AppModel
+{
 
     /**
      * Display field
@@ -58,21 +59,21 @@ class Account extends AppModel {
         'condo_id' => array(
             'numeric' => array(
                 'rule' => array('numeric'),
-            //'message' => 'Your custom message here',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'message' => 'Your custom message here',
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
         'title' => array(
             'notBlank' => array(
                 'rule' => array('notBlank'),
-            //'message' => 'Your custom message here',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'message' => 'Your custom message here',
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
         'bank' => array(
@@ -80,9 +81,9 @@ class Account extends AppModel {
                 'rule' => array('notBlank'),
                 //'message' => 'Your custom message here',
                 'allowEmpty' => true,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
         'balcony' => array(
@@ -90,9 +91,9 @@ class Account extends AppModel {
                 'rule' => array('notBlank'),
                 //'message' => 'Your custom message here',
                 'allowEmpty' => true,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
         'contacts' => array(
@@ -100,9 +101,9 @@ class Account extends AppModel {
                 'rule' => array('notBlank'),
                 //'message' => 'Your custom message here',
                 'allowEmpty' => true,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
         'account_number' => array(
@@ -110,9 +111,9 @@ class Account extends AppModel {
                 'rule' => array('isUnique'),
                 //'message' => 'Your custom message here',
                 'allowEmpty' => true,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
         'nib' => array(
@@ -120,19 +121,19 @@ class Account extends AppModel {
                 'rule' => array('isUnique'),
                 //'message' => 'Your custom message here',
                 'allowEmpty' => true,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
         'main_account' => array(
             'boolean' => array(
                 'rule' => array('boolean'),
-            //'message' => 'Your custom message here',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'message' => 'Your custom message here',
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
     );
@@ -171,7 +172,9 @@ class Account extends AppModel {
             'offset' => '',
             'exclusive' => '',
             'finderQuery' => '',
-            'counterQuery' => ''));
+            'counterQuery' => ''
+        )
+    );
 
     /**
      * hasAndBelongsToMany associations
@@ -195,22 +198,29 @@ class Account extends AppModel {
         )
     );
 
-    public function setAccountBalanceByFiscalYear($id = null, $fiscal_year_id = null) {
+    public function setAccountBalanceByFiscalYear($id = null, $fiscal_year_id = null)
+    {
         if ($id != null && $fiscal_year_id != null) {
             $this->Movement = ClassRegistry::init('Movement');
-            $totalDebit = $this->Movement->find('first', array('fields' =>
-                array('SUM(amount) AS total'),
-                'conditions' => array('account_id' => $id, 'fiscal_year_id' => $fiscal_year_id, 'movement_type_id' => '1')
-                    )
+            $totalDebit = $this->Movement->find(
+                'first',
+                array(
+                    'fields' =>
+                    array('SUM(amount) AS total'),
+                    'conditions' => array('account_id' => $id, 'fiscal_year_id' => $fiscal_year_id, 'movement_type_id' => '1')
+                )
             );
-            $totalCredit = $this->Movement->find('first', array('fields' =>
-                array('SUM(amount) AS total'),
-                'conditions' => array('account_id' => $id, 'fiscal_year_id' => $fiscal_year_id, 'movement_type_id' => '2')
-                    )
+            $totalCredit = $this->Movement->find(
+                'first',
+                array(
+                    'fields' =>
+                    array('SUM(amount) AS total'),
+                    'conditions' => array('account_id' => $id, 'fiscal_year_id' => $fiscal_year_id, 'movement_type_id' => '2')
+                )
             );
             $total = $totalDebit[0]['total'] - $totalCredit[0]['total'];
             $accountBalance = $this->AccountsFiscalYear->find('first', array('conditions' =>
-                array('account_id' => $id, 'fiscal_year_id' => $fiscal_year_id)));
+            array('account_id' => $id, 'fiscal_year_id' => $fiscal_year_id)));
             if (count($accountBalance) == 0) {
                 $accountBalance['AccountsFiscalYear']['account_id'] = $id;
                 $accountBalance['AccountsFiscalYear']['fiscal_year_id'] = $fiscal_year_id;
@@ -224,6 +234,42 @@ class Account extends AppModel {
         }
     }
 
+    public function getAccountBalanceByFiscalYearDate($date = null, $id = null, $fiscal_year_id = null)
+    {
+        if ($date != null && $id != null && $fiscal_year_id != null) {
+            $this->Movement = ClassRegistry::init('Movement');
+            $totalDebit = $this->Movement->find(
+                'first',
+                array(
+                    'fields' =>
+                    array('SUM(amount) AS total'),
+                    'conditions' => array(
+                        'account_id' => $id,
+                        'fiscal_year_id' => $fiscal_year_id,
+                        'movement_type_id' => '1',
+                        'movement_date <=' => $date,
+                    )
+                )
+            );
+            $totalCredit = $this->Movement->find(
+                'first',
+                array(
+                    'fields' =>
+                    array('SUM(amount) AS total'),
+                    'conditions' => array(
+                        'account_id' => $id,
+                        'fiscal_year_id' => $fiscal_year_id,
+                        'movement_type_id' => '2',
+                        'movement_date <=' => $date,
+                    )
+                )
+            );
+            $total = $totalDebit[0]['total'] - $totalCredit[0]['total'];
+            return $total;
+        }
+    }
+
+
     /**
      * afterFind callback
      * 
@@ -232,7 +278,8 @@ class Account extends AppModel {
      * @access public
      * @return array
      */
-    public function afterFind($results, $primary = false) {
+    public function afterFind($results, $primary = false)
+    {
         if (isset($results[0][$this->alias])) {
             foreach ($results as $key => $val) {
                 if (isset($results[$key][$this->alias]['main_account'])) {
@@ -247,5 +294,4 @@ class Account extends AppModel {
 
         return $results;
     }
-
 }

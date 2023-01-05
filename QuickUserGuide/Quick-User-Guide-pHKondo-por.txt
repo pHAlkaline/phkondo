@@ -50,17 +50,19 @@ Ver detalhes da conta
 
 Dentro da Conta Entrar nos Movimentos
 Adicionar movimentos de conta -> Criar Movimento
-* Cada movimento tem de pertencer ao período contabilístico ativo
 * Para cada período contabilístico é necessário criar o primeiro movimento ( no inicio do período contabilístico - abertura ) e o último movimento ( no final do período contabilístico - fecho ) , isso permitirá que o pHKondo possa realizar os relatórios baseados nos intervalos ( inicio / fim ) do período contabilístico.
+
 * O primeiro movimento deve ser:
 O montante inicial no balanço de abertura no período contabilístico
 Escolha Abertura / Fecho no campo Categoria
 Escolha Abertura Balancete no campo Operação Movimento
 Tipo de movimento: Crédito se saldo de conta no inicio do período contabilístico é 0 ou superior, Débito se saldo de conta no inicio do período contabilístico é < 0
 
-* O último movimento deve ser: ( ao fechar Período Contabilístico )
+* Deve ser inserido um útimo movimento ao fechar Período Contabilístico:
 Escolha Abertura / Fecho no campo Categoria
 Escolha Fecho Balancete no campo Operação Movimento
+
+* Cada movimento tem de pertencer ao período contabilístico ativo
 
 Regresse ao detalhes do condomínio
 Entrar nos Orçamentos
