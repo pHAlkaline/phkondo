@@ -136,7 +136,7 @@ class MovementOperation extends AppModel {
     
     function beforeDelete($cascade = true) {
         $result = true;
-        if (in_array($this->field('id'),array('1','2'))){
+        if (in_array($this->field('id'),array(1,2,3))){
             $result = false;
         }
         if ($this->hasMovements($this->id)) {

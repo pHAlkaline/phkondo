@@ -68,7 +68,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <?php echo $this->Form->input('main_account', array('class' => 'checkbox styled', 'label' => __('Active'), 'div' => array('class' => 'checkbox checkbox-success'), 'between' => '', 'after' => '')); ?>
+                        <?php echo $this->Form->input('main_account', array('class' => 'checkbox styled', 'label' => __('Main Account'), 'div' => array('class' => 'checkbox checkbox-success'), 'between' => '', 'after' => '')); ?>
                     </div>
                 </div><!-- .form-group -->
 

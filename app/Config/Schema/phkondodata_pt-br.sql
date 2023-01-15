@@ -141,9 +141,10 @@ LOCK TABLES `movement_operations` WRITE;
 /*!40000 ALTER TABLE `movement_operations` DISABLE KEYS */;
 INSERT INTO `movement_operations` (`id`, `name`, `active`, `modified`, `created`) VALUES (1,'Abertura Balancete',1,NOW(),NOW());
 INSERT INTO `movement_operations` (`id`, `name`, `active`, `modified`, `created`) VALUES (2,'Fecho Balancete',1,NOW(),NOW());
-INSERT INTO `movement_operations` (`id`, `name`, `active`, `modified`, `created`) VALUES (3,'Transferências',1,NOW(),NOW());
-INSERT INTO `movement_operations` (`id`, `name`, `active`, `modified`, `created`) VALUES (4,'Numerário',1,NOW(),NOW());
-INSERT INTO `movement_operations` (`id`, `name`, `active`, `modified`, `created`) VALUES (5,'Cheque',1,NOW(),NOW());
+INSERT INTO `movement_operations` (`id`, `name`, `active`, `modified`, `created`) VALUES (3,'Operação Interna',1,NOW() ,NOW());
+INSERT INTO `movement_operations` (`id`, `name`, `active`, `modified`, `created`) VALUES (4,'Transferências',1,NOW(),NOW());
+INSERT INTO `movement_operations` (`id`, `name`, `active`, `modified`, `created`) VALUES (5,'Numerário',1,NOW(),NOW());
+INSERT INTO `movement_operations` (`id`, `name`, `active`, `modified`, `created`) VALUES (6,'Cheque',1,NOW(),NOW());
 /*!40000 ALTER TABLE `movement_operations` ENABLE KEYS */;
 UNLOCK TABLES;
 
