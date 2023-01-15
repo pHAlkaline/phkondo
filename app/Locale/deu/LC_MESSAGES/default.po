@@ -3558,3 +3558,6 @@ msgstr "Thema"
 
 msgid "Subject"
 msgstr "Betreff"
+
+msgid "Storage exceeds maximum limit."
+msgstr "Der Speicher überschreitet die maximale Grenze."

@@ -3560,3 +3560,6 @@ msgstr ""
 
 msgid "Subject"
 msgstr ""
+
+msgid "Storage exceeds maximum limit."
+msgstr ""

@@ -2777,3 +2777,6 @@ msgstr "Tema"
 
 msgid "Subject"
 msgstr "Asunto"
+
+msgid "Storage exceeds maximum limit."
+msgstr "El almacenamiento supera el límite máximo."

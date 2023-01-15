@@ -3690,3 +3690,6 @@ msgstr "Linguagem"
 
 msgid "Subject"
 msgstr "Assunto"
+
+msgid "Storage exceeds maximum limit."
+msgstr "O armazenamento excede o limite máximo."

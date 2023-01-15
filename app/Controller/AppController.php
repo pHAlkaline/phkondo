@@ -61,6 +61,8 @@ class AppController extends Controller
         }
         $this->rememberMe();
         $this->setPhkRequestVars($this->request->query);
+
+
     }
 
     public function beforeRender()
@@ -151,7 +153,6 @@ class AppController extends Controller
         $this->setCondoData();
         $this->setFiscalYearData();
     }
-
 
     private function configure()
     {
@@ -391,5 +392,23 @@ class AppController extends Controller
         $base64 = base64_encode($logo_src_data);
 
         return $logo_image_src = 'data: ' . mime_content_type($img_logo_src) . ';base64,' . $base64;
+    }
+
+    protected function hasStorage()
+    {
+        $this->loadModel('User');
+        $result = $this->User->getDataSource()->fetchAll('SHOW TABLE STATUS');
+        $bytes = 0;
+        foreach ($result as $row) {
+            $bytes += $row['TABLES']["Data_length"] + $row['TABLES']["Index_length"];
+        }
+        $folder = new Folder(APP . 'files');
+        if (!is_null($folder->path)) {
+            $bytes = $bytes + $folder->dirsize();
+        }
+        if ($bytes < Configure::read('Application.storage')*1000000000){
+            return true;
+        }
+        return false;
     }
 }

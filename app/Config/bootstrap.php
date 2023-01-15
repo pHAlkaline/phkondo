@@ -190,6 +190,7 @@ $allows_keys = [
     'Config.timezone',
     'Application.stage',
     'Application.mode',
+    'Application.storage',
     'Application.databaseDateFormat',
     'Application.dateFormat',
     'Application.dateFormatSimple',

@@ -37,6 +37,7 @@ Config.timezone = Europe/Lisbon
 
 ; saas, normal, demo
 Application.stage = normal
+Application.storage = 1
 
 ; free, full, one, pro
 Application.mode = free
