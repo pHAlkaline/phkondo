@@ -2992,7 +2992,7 @@ msgstr "Estado"
 #: View/Themed/Phkondo/Receipts/index.ctp:30
 #: View/Themed/Phkondo/Receipts/view.ctp:104
 msgid "Receipt Payment Type"
-msgstr "Forma de Pagamento"
+msgstr "Método de Pagamento"
 
 #: View/Themed/Phkondo/Income/receipts.ctp:144
 #: View/Themed/Phkondo/OwnerReceipts/view.ctp:95;173
@@ -3302,7 +3302,7 @@ msgstr "Pago"
 #: View/Themed/Phkondo/Receipts/view.ctp:36
 msgid "Are you sure you want to set receipt # %s as paid? - Payment as %s"
 msgstr ""
-"Tem a certeza que quer colocar o recibo # %s como pago? - Forma de Pagamento "
+"Tem a certeza que quer colocar o recibo # %s como pago? - Método de Pagamento "
 "%s"
 
 #: View/Themed/Phkondo/OwnerReceipts/index.ctp:76

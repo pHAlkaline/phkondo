@@ -37,7 +37,8 @@ App::uses('CakeTime', 'Utility');
  * @property ReceiptStatus $ReceiptStatus
  * @property Note $Note
  */
-class Receipt extends AppModel {
+class Receipt extends AppModel
+{
 
     /**
      * Display field
@@ -62,51 +63,51 @@ class Receipt extends AppModel {
         'document' => array(
             'notBlank' => array(
                 'rule' => array('notBlank'),
-            //'message' => 'Your custom message here',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'message' => 'Your custom message here',
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
         'condo_id' => array(
             'numeric' => array(
                 'rule' => array('numeric'),
-            //'message' => 'Your custom message here',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'message' => 'Your custom message here',
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
         'fraction_id' => array(
             'numeric' => array(
                 'rule' => array('numeric'),
-            //'message' => 'Your custom message here',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'message' => 'Your custom message here',
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
         'entity_id' => array(
             'numeric' => array(
                 'rule' => array('numeric'),
-            //'message' => 'Your custom message here',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'message' => 'Your custom message here',
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
         'total_amount' => array(
             'money' => array(
                 'rule' => array('money'),
-            //'message' => 'Your custom message here',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'message' => 'Your custom message here',
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
         'document_date' => array(
@@ -115,18 +116,18 @@ class Receipt extends AppModel {
                 //'message' => 'Your custom message here',
                 //'allowEmpty' => false,
                 'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
         'receipt_status_id' => array(
             'numeric' => array(
                 'rule' => array('numeric'),
-            //'message' => 'Your custom message here',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'message' => 'Your custom message here',
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
         'receipt_payment_type_id' => array(
@@ -135,8 +136,8 @@ class Receipt extends AppModel {
                 //'message' => 'Your custom message here',
                 'allowEmpty' => true,
                 'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
         'payment_date' => array(
@@ -145,29 +146,30 @@ class Receipt extends AppModel {
                 //'message' => 'Your custom message here',
                 'allowEmpty' => true,
                 'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
             'checkPastDate' => array(
                 'rule' => array('checkPastDate'),
                 'message' => 'invalid date',
                 'allowEmpty' => true,
                 'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
             'checkDocumentDate' => array(
                 'rule' => array('checkDocumentDate'),
                 'message' => 'payment date must be at or after document date',
                 'allowEmpty' => true,
                 'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
     );
 
-    function isNotPaid($data, $field) {
+    function isNotPaid($data, $field)
+    {
         return $this->data[$this->name]['receipt_status_id'] != 3;
     }
 
@@ -228,6 +230,7 @@ class Receipt extends AppModel {
             'fields' => '',
             'order' => ''
         )
+
     );
 
     /**
@@ -261,6 +264,19 @@ class Receipt extends AppModel {
             'exclusive' => '',
             'finderQuery' => '',
             'counterQuery' => ''
+        ),
+        'Movement' => array(
+            'className' => 'Movement',
+            'foreignKey' => 'document_id',
+            'dependent' => false,
+            'conditions' => '',
+            'fields' => '',
+            'order' => '',
+            'limit' => '',
+            'offset' => '',
+            'exclusive' => '',
+            'finderQuery' => '',
+            'counterQuery' => ''
         )
     );
 
@@ -272,7 +288,8 @@ class Receipt extends AppModel {
      * @param array $check Contains the value passed from the view to be validated
      * @return bool True if in the past or today, False otherwise
      */
-    public function checkDocumentDate($check) {
+    public function checkDocumentDate($check)
+    {
         if (!isset($this->data[$this->alias]['document_date'])) {
             $this->data[$this->alias]['document_date'] = $this->field('document_date');
         }
@@ -288,7 +305,8 @@ class Receipt extends AppModel {
      * @param array $check Contains the value passed from the view to be validated
      * @return bool True if in the past or today, False otherwise
      */
-    public function checkPastDate($check) {
+    public function checkPastDate($check)
+    {
         $value = array_values($check);
         return (CakeTime::fromString($value[0]) <= CakeTime::fromString(date(Configure::read('Application.databaseDateFormat'))));
     }
@@ -301,7 +319,8 @@ class Receipt extends AppModel {
      * @access public
      * @return array
      */
-    public function afterFind($results, $primary = false) {
+    public function afterFind($results, $primary = false)
+    {
         if ($this->noAfterFind) {
             $this->noAfterFind = false;
             return $results;
@@ -332,7 +351,8 @@ class Receipt extends AppModel {
         return $results;
     }
 
-    function beforeDelete($cascade = true) {
+    function beforeDelete($cascade = true)
+    {
 
         if ($this->field('receipt_status_id') == '3')
             return false;
@@ -340,10 +360,14 @@ class Receipt extends AppModel {
         if ($this->hasPaidNotes($this->id))
             return false;
 
+        if ($this->hasMovements($this->id))
+            return false;
+
         return true;
     }
 
-    function hasPaidNotes($id = null) {
+    function hasPaidNotes($id = null)
+    {
         $this->noAfterFind = true;
         if (!empty($id)) {
             $this->id = $id;
@@ -358,7 +382,24 @@ class Receipt extends AppModel {
         return ($notes > 0) ? true : false;
     }
 
-    public function payable($id = null) {
+    function hasMovements($id = null)
+    {
+        $this->noAfterFind = true;
+        if (!empty($id)) {
+            $this->id = $id;
+        }
+
+        $id = $this->id;
+        if (!$this->exists()) {
+            return false;
+        }
+
+        $movements = $this->Movement->find('count', array('conditions' => array('Movement.document_id' => $id)));
+        return ($movements > 0) ? true : false;
+    }
+
+    public function payable($id = null)
+    {
         $this->noAfterFind = true;
         if (!empty($id)) {
             $this->id = $id;
@@ -374,7 +415,8 @@ class Receipt extends AppModel {
         return false;
     }
 
-    public function editable($id = null) {
+    public function editable($id = null)
+    {
         $this->noAfterFind = true;
         if (!empty($id)) {
             $this->id = $id;
@@ -390,7 +432,8 @@ class Receipt extends AppModel {
         return true;
     }
 
-    public function deletable($id = null) {
+    public function deletable($id = null)
+    {
         $this->noAfterFind = true;
         if (!empty($id)) {
             $this->id = $id;
@@ -403,7 +446,8 @@ class Receipt extends AppModel {
         return $this->beforeDelete();
     }
 
-    public function closeable($id = null) {
+    public function closeable($id = null)
+    {
         $this->noAfterFind = true;
         if (!empty($id)) {
             $this->id = $id;
@@ -425,7 +469,8 @@ class Receipt extends AppModel {
         return true;
     }
 
-    public function cancelable($id = null) {
+    public function cancelable($id = null)
+    {
         $this->noAfterFind = true;
         if (!empty($id)) {
             $this->id = $id;
@@ -439,7 +484,7 @@ class Receipt extends AppModel {
         if (in_array($this->field('receipt_status_id'), array('1', '2', '4'))) {
             return false;
         }
+
         return true;
     }
-
 }

@@ -168,7 +168,7 @@ LOCK TABLES `note_statuses` WRITE;
 INSERT INTO `note_statuses` (`id`, `name`, `active`, `modified`, `created`) VALUES (1,'Aguarda Pagamento',1,NOW(),NOW());
 INSERT INTO `note_statuses` (`id`, `name`, `active`, `modified`, `created`) VALUES (2,'Pago Parcial',0,NOW(),NOW());
 INSERT INTO `note_statuses` (`id`, `name`, `active`, `modified`, `created`) VALUES (3,'Pago',1,NOW(),NOW());
-INSERT INTO `note_statuses` (`id`, `name`, `active`, `modified`, `created`) VALUES (4,'Cancelado',1,NOW(),NOW());
+INSERT INTO `note_statuses` (`id`, `name`, `active`, `modified`, `created`) VALUES (4,'Anulado',1,NOW(),NOW());
 /*!40000 ALTER TABLE `note_statuses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -203,7 +203,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `receipt_statuses` WRITE;
 /*!40000 ALTER TABLE `receipt_statuses` DISABLE KEYS */;
-INSERT INTO `receipt_statuses` (`id`, `name`, `active`, `modified`, `created`) VALUES (1,'Pendente',1,NOW(),NOW());
+INSERT INTO `receipt_statuses` (`id`, `name`, `active`, `modified`, `created`) VALUES (1,'Rascunho',1,NOW(),NOW());
 INSERT INTO `receipt_statuses` (`id`, `name`, `active`, `modified`, `created`) VALUES (2,'Aguarda Pagamento',1,NOW(),NOW());
 INSERT INTO `receipt_statuses` (`id`, `name`, `active`, `modified`, `created`) VALUES (3,'Pago',1,NOW(),NOW());
 INSERT INTO `receipt_statuses` (`id`, `name`, `active`, `modified`, `created`) VALUES (4,'Anulado',1,NOW(),NOW());

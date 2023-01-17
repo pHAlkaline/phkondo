@@ -2972,7 +2972,7 @@ msgstr ""
 #: View/Themed/Phkondo/Receipts/index.ctp:30
 #: View/Themed/Phkondo/Receipts/view.ctp:104
 msgid "Receipt Payment Type"
-msgstr ""
+msgstr "Payment Method"
 
 #: View/Themed/Phkondo/Income/receipts.ctp:144
 #: View/Themed/Phkondo/OwnerReceipts/view.ctp:95;173

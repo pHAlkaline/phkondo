@@ -2277,7 +2277,7 @@ msgstr "Estado del recibo"
 #: View/Themed/Phkondo/OwnerReceipts/view.ctp:125 View/Themed/Phkondo/Receipts/index.ctp:30
 #: View/Themed/Phkondo/Receipts/view.ctp:104
 msgid "Receipt Payment Type"
-msgstr "Tipo de recibo de pago"
+msgstr "Método de pago"
 
 #: View/Themed/Phkondo/Income/receipts.ctp:144 View/Themed/Phkondo/OwnerReceipts/view.ctp:95;173
 #: View/Themed/Phkondo/Receipts/view.ctp:88;160

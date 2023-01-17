@@ -51,7 +51,7 @@
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-                    <?php echo $this->Form->input('amount', array('class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('amount', array('class' => 'form-control',  'min'=>0, 'step'=>'0.01')); ?>
                 </div><!-- .form-group -->
 
                 <div class="form-group">

@@ -203,7 +203,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `receipt_statuses` WRITE;
 /*!40000 ALTER TABLE `receipt_statuses` DISABLE KEYS */;
-INSERT INTO `receipt_statuses` (`id`, `name`, `active`, `modified`, `created`) VALUES (1,'Pendente',1,NOW(),NOW());
+INSERT INTO `receipt_statuses` (`id`, `name`, `active`, `modified`, `created`) VALUES (1,'Borrador',1,NOW(),NOW());
 INSERT INTO `receipt_statuses` (`id`, `name`, `active`, `modified`, `created`) VALUES (2,'Pendiente de Pago',1,NOW(),NOW());
 INSERT INTO `receipt_statuses` (`id`, `name`, `active`, `modified`, `created`) VALUES (3,'Pagado',1,NOW(),NOW());
 INSERT INTO `receipt_statuses` (`id`, `name`, `active`, `modified`, `created`) VALUES (4,'Anulado',1,NOW(),NOW());
