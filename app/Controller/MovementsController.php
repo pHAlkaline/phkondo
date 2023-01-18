@@ -57,7 +57,6 @@ class MovementsController extends AppController
                 'MovementType',
                 'Account' => array('fields' => array('title', 'balance'))
             ),
-            'limit' => 100,
             'conditions' => array(
                 'Movement.account_id' => $this->getPhkRequestVar('account_id'),
                 'Movement.fiscal_year_id' => $this->getPhkRequestVar('fiscal_year_id')
@@ -117,6 +116,10 @@ class MovementsController extends AppController
             $this->Paginator->settings['conditions'] = array_replace_recursive($this->Paginator->settings['conditions'], $filterOptions['conditions']);
         } else {
             $this->Paginator->settings['conditions'] = $filterOptions['conditions'];
+        }
+        $this->Paginator->settings['limit']=100;
+        if ($hasAdvSearch){
+            $this->Paginator->settings['limit']=9999999999;
         }
     }
 
@@ -266,16 +269,16 @@ class MovementsController extends AppController
         $this->Movement->id = $id;
         if (!$this->Movement->exists()) {
             $this->Flash->error(__('Invalid movement'));
-            $this->redirect(array('action' => 'index', '?' => $this->request->query));
+            $this->redirect( Router::url( $this->referer(), true ) );
         }
 
         $this->Movement->read();
         if ($this->Movement->deletable() && $this->Movement->delete()) {
             $this->Flash->success(__('Movement deleted'));
-            $this->redirect(array('action' => 'index', '?' => $this->request->query));
+            $this->redirect( Router::url( $this->referer(), true ) );
         }
         $this->Flash->error(__('Movement can not be deleted'));
-        $this->redirect(array('action' => 'index', '?' => $this->request->query));
+        $this->redirect( Router::url( $this->referer(), true ) );
     }
 
     public function beforeFilter()

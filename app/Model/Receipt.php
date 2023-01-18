@@ -353,8 +353,8 @@ class Receipt extends AppModel
 
     public function beforeSave($options = array())
     {
-        if (isset($this->request->data['Receipt']['add_movement']) && $this->request->data['Receipt']['add_movement'] == 0) {
-            unset($this->request->data['Movement']);
+        if (isset($this->data['Receipt']['add_movement']) && $this->data['Receipt']['add_movement'] == 0) {
+            unset($this->data['Movement']);
         }
         return true;
     }
@@ -362,19 +362,19 @@ class Receipt extends AppModel
     public function afterSave($created, $options = array())
     {
         $result = true;
-        if ($created && isset($this->request->data['Receipt']['condo_id'])) {
-            $number = $this->getNextReceiptIndex($this->request->data['Receipt']['condo_id']);
-            $result = $result & $this->Receipt->setReceiptIndex($this->request->data['Receipt']['condo_id'], $number);
+        if ($created && isset($this->data['Receipt']['condo_id'])) {
+            $number = $this->getNextReceiptIndex($this->data['Receipt']['condo_id']);
+            $result = $result & $this->Receipt->setReceiptIndex($this->data['Receipt']['condo_id'], $number);
         }
-        if (isset($this->request->data['Receipt']['remove_movements']) && $this->request->data['Receipt']['remove_movements'] == 1) {
-            $result = $result & $this->RemoveMovements($this->request->data['Receipt']['id']);
+        if (isset($this->data['Receipt']['remove_movements']) && $this->data['Receipt']['remove_movements'] == 1) {
+            $result = $result & $this->removeMovements($this->data['Receipt']['id']);
         }
-        if ($this->Receipt->closeable() && isset($this->request->data['Receipt']['receipt_status_id']) && $this->request->data['Receipt']['receipt_status_id'] == 3) {
-            $result = $result & $this->setNotesStatus($this->request->data['Receipt']['id']);
+        if ($this->Receipt->closeable() && isset($this->data['Receipt']['receipt_status_id']) && $this->data['Receipt']['receipt_status_id'] == 3) {
+            $result = $result & $this->setNotesStatus($this->data['Receipt']['id']);
          }
-        if (isset($this->request->data['Receipt']['receipt_status_id']) && $this->request->data['Receipt']['receipt_status_id'] == 4) {
-            $result = $result & $this->transferNotes($this->request->data['Receipt']['id']);
-            $result = $result & $this->removeFromNote($this->request->data['Receipt']['id']);
+        if (isset($this->data['Receipt']['receipt_status_id']) && $this->data['Receipt']['receipt_status_id'] == 4) {
+            $result = $result & $this->transferNotes($this->data['Receipt']['id']);
+            $result = $result & $this->removeFromNote($this->data['Receipt']['id']);
         }
   
         return $result;
@@ -397,8 +397,8 @@ class Receipt extends AppModel
 
     public function afterDelete()
     {
-        $this->removeMovements($this->request->data['Receipt']['id']);
-        $this->removeFromNote($this->request->data['Receipt']['id']);
+        $this->removeMovements($this->data['Receipt']['id']);
+        $this->removeFromNote($this->data['Receipt']['id']);
     }
 
     function hasPaidNotes($id = null)

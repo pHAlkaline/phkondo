@@ -319,21 +319,28 @@ class InvoiceConference extends AppModel
 
     public function beforeSave($options = array())
     {
-        if (isset($this->request->data['InvoiceConference']['add_movement']) && $this->request->data['InvoiceConference']['add_movement'] == 0) {
-            unset($this->request->data['Movement']);
+        if (isset($this->data['InvoiceConference']['add_movement']) && $this->data['InvoiceConference']['add_movement'] == 0) {
+            unset($this->data['Movement']);
         }
         return true;
     }
 
     public function afterSave($created, $options = array())
     {
-        if (isset($this->request->data['InvoiceConference']['invoice_conference_status_id']) && $this->request->data['InvoiceConference']['invoice_conference_status_id'] != 5) {
-            $this->Movements->deleteAll(['Movements.document_model'=>'InvoiceConference','Movements.id'=>$this->request->data['InvoiceConference']['id']]);
-        }
-        return true;
+        
     }
 
     public function afterDelete()
     {
+        $result=true;
+        if (isset($this->data['InvoiceConference']['invoice_conference_status_id']) && $this->data['InvoiceConference']['invoice_conference_status_id'] == 5) {
+            $result = $result & $this->RemoveMovements($this->data['InvoiceConference']['id']);
+        }
+        return $result;
+    }
+
+    public function removeMovements($id)
+    {
+        return $this->Movement->deleteAll(array('Movement.document_id' => $id, 'Movement.document_model' => 'InvoiceConference'));
     }
 }
