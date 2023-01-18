@@ -29,12 +29,9 @@
                         <a href="#details" aria-controls="details" role="tab" data-toggle="tab"><?= __('Details'); ?></a>
                     </li>
                     <li role="presentation">
-                        <a href="#movements" aria-controls="movements" role="tab" data-toggle="tab"><?= __n('Movement', 'Movements', 2); ?></a>
+                        <a href="#movements" aria-controls="movements" role="tab" data-toggle="tab"><?= __n('Movement', 'Movements', 2); ?> ( <?php count($invoice_conference['Movement']); ?> ) </a>
                     </li>
-                    <li role="presentation">
-                        <a href="#send-by-email" aria-controls="send-by-email" role="tab" data-toggle="tab"><?= __d('email', 'Send By Email'); ?></a>
-                    </li>
-
+                  
                 </ul>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="details" aria-labelledby="details-tab">
@@ -183,53 +180,7 @@
                         </div>
 
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="send-by-email" aria-labelledby="send-by-email-tab">
-
-                        <div class="receipts form">
-                            <br />
-                            <?php echo $this->Form->create(
-                                'InvoiceConference',
-                                array(
-                                    'url' => array('controller' => 'InvoiceConferences', 'action' => 'send_receipt', $invoice_conference['InvoiceConference']['id'], '?' => $this->request->query),
-                                    'class' => 'form-horizontal',
-                                    'role' => 'form',
-                                    'inputDefaults' => array(
-                                        'class' => 'form-control',
-                                        'label' => array('class' => 'col-sm-2 control-label'),
-                                        'between' => '<div class="col-sm-6">',
-                                        'after' => '</div>'
-                                    )
-                                )
-                            ); ?>
-                            <fieldset>
-                                <?php echo $this->Form->input('id'); ?>
-
-                                <div class="form-group">
-                                    <?php echo $this->Form->input('send_to', ['type' => 'select', 'label' => array('text' => __d('email', 'Send To'), 'class' => 'col-sm-2 control-label'), 'class' => 'form-control select2-phkondo', 'options' => $notificationEntities, 'multiple' => true, 'value' => $notificationEntities, 'data-allow-clear' => true, 'data-tags' => true, 'data-maximum-selection-length' => 5, 'required' => 'required']); ?>
-                                </div>
-                                <div class="form-group">
-                                    <?php echo $this->Form->input('subject', array('label' => array('text' => __d('email', 'Subject'), 'class' => 'col-sm-2 control-label'), 'required' => 'required', 'class' => 'form-control', 'default' => $emailNotifications['receipt_subject'])); ?>
-                                </div><!-- .form-group -->
-
-                                <div class="form-group">
-                                    <?php echo $this->Form->input('message', array('label' => array('text' => __d('email', 'Message'), 'class' => 'col-sm-2 control-label'), 'required' => 'required', 'type' => 'textarea', 'class' => 'form-control', 'default' => $emailNotifications['receipt_message'])); ?>
-                                </div><!-- .form-group -->
-                                <div class="form-group">
-                                    <?php echo $this->Form->input('attachment_format', ['type' => 'select', 'label' => array('text' => __d('email', 'Format'), 'class' => 'col-sm-2 control-label'), 'class' => 'form-control select2-phkondo', 'options' => $attachmentFormats, 'value' => $emailNotifications['receipt_attachment_format'], 'required' => 'required']); ?>
-                                </div>
-
-                                <!-- .form-group -->
-
-                            </fieldset>
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-6">
-                                    <?php echo $this->Form->button(__d('email', 'Send'), array('class' => 'btn btn-large btn-primary pull-right')); ?>
-                                </div>
-                            </div>
-                            <?php echo $this->Form->end(); ?>
-                        </div>
-                    </div>
-
+                 
                 </div>
             </section>
 
