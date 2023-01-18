@@ -114,7 +114,7 @@ class MovementCategory extends AppModel {
     }
     
     function deletable($id = null) {
-        $this->noAfterFind = true;
+        $this->no_after_find = true;
 
         if (!empty($id)) {
             $this->id = $id;
@@ -137,7 +137,7 @@ class MovementCategory extends AppModel {
     }
     
     public function hasMovements($id = null) {
-        $this->noAfterFind = true;
+        $this->no_after_find = true;
         if (!empty($id)) {
             $this->id = $id;
         }

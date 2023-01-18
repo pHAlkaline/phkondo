@@ -293,9 +293,9 @@ class Note extends AppModel {
      * @return array
      */
     public function afterFind($results, $primary = false) {
-        //debug($this->noAfterFind);
-        if ($this->noAfterFind) {
-            $this->noAfterFind = false;
+        //debug($this->no_after_find);
+        if ($this->no_after_find) {
+            $this->no_after_find = false;
             return $results;
         }
 
@@ -337,7 +337,7 @@ class Note extends AppModel {
     }
 
     function deletable($id = null) {
-        $this->noAfterFind = true;
+        $this->no_after_find = true;
 
         if (!empty($id)) {
             $this->id = $id;

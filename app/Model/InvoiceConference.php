@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * pHKondo : pHKondo software for condominium property managers (https://www.phalkaline.net)
@@ -37,7 +38,8 @@ App::uses('CakeTime', 'Utility');
  * @property Entity $Entity
  * @property InvoiceConferenceStatus $InvoiceConferenceStatus
  */
-class InvoiceConference extends AppModel {
+class InvoiceConference extends AppModel
+{
 
     /**
      * Display field
@@ -45,13 +47,13 @@ class InvoiceConference extends AppModel {
      * @var string
      */
     public $displayField = 'description';
-    
+
     /**
      * Order
      *
      * @var string
      */
-    public $order = array('InvoiceConference.payment_due_date'=>'ASC', 'InvoiceConference.document_date'=>'ASC');
+    public $order = array('InvoiceConference.payment_due_date' => 'ASC', 'InvoiceConference.document_date' => 'ASC');
 
     /**
      * Validation rules
@@ -62,133 +64,133 @@ class InvoiceConference extends AppModel {
         'condo_id' => array(
             'numeric' => array(
                 'rule' => array('numeric'),
-            //'message' => 'Your custom message here',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'message' => 'Your custom message here',
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
         'fiscal_year_id' => array(
             'numeric' => array(
                 'rule' => array('numeric'),
-            //'message' => 'Your custom message here',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'message' => 'Your custom message here',
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
         'supplier_id' => array(
             'numeric' => array(
                 'rule' => array('numeric'),
-            //'message' => 'Your custom message here',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'message' => 'Your custom message here',
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
-        
+
         'description' => array(
             'notBlank' => array(
                 'rule' => array('notBlank'),
-            //'message' => 'Your custom message here',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'message' => 'Your custom message here',
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
         'amount' => array(
             'money' => array(
                 'rule' => array('money'),
-            //'message' => 'Your custom message here',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'message' => 'Your custom message here',
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
         'document_date' => array(
             'date' => array(
                 'rule' => array('date'),
-            //'message' => 'Your custom message here',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'message' => 'Your custom message here',
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
             'validInterval' => array(
                 'rule' => array('validInterval'),
                 'message' => 'invalid date, do not match active fiscal year dates',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
-            
+
         ),
         'payment_due_date' => array(
             'date' => array(
                 'rule' => array('date'),
-            //'message' => 'Your custom message here',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'message' => 'Your custom message here',
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
             'validInterval' => array(
                 'rule' => array('checkFutureDate'),
                 'message' => 'due date must be after document date',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
-            
+
         ),
         'payment_date' => array(
             'date' => array(
                 'rule' => array('date'),
-            //'message' => 'Your custom message here',
-            'allowEmpty' => true,
-            'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'message' => 'Your custom message here',
+                'allowEmpty' => true,
+                'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
             'checkPastDate' => array(
                 'rule' => array('checkPastDate'),
                 'message' => 'invalid date.',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
-            
-           
+
+
         ),
         'invoice_conference_status_id' => array(
             'numeric' => array(
                 'rule' => array('numeric'),
-            //'message' => 'Your custom message here',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'message' => 'Your custom message here',
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
             'closedStatus' => array(
                 'rule' => array('checkPaymentDate'),
                 'message' => 'This status requires payment date',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
-            
+
         ),
-        
-        
+
+
     );
 
     //The Associations below have been created with all possible keys, those that are not needed can be removed
@@ -227,11 +229,32 @@ class InvoiceConference extends AppModel {
             'fields' => '',
             'order' => ''
         ),
-        
+
     );
-    
-    
-    
+
+    /**
+     * hasMany associations
+     *
+     * @var array
+     */
+    public $hasMany = array(
+        'Movement' => array(
+            'className' => 'Movement',
+            'foreignKey' => 'document_id',
+            'dependent' => true,
+            'conditions' => ['Movement.document_model' => 'InvoiceConference'],
+            'fields' => '',
+            'order' => '',
+            'limit' => '',
+            'offset' => '',
+            'exclusive' => '',
+            'finderQuery' => '',
+            'counterQuery' => ''
+        )
+    );
+
+
+
     /**
      * validInterval
      * Custom Validation Rule: Ensures a selected date is in valid interval
@@ -239,10 +262,11 @@ class InvoiceConference extends AppModel {
      * @param array $data Contains the value passed from the view to be validated
      * @return bool True if in interval, False otherwise
      */
-    function validInterval($data) {
+    function validInterval($data)
+    {
         $fiscalYear = ClassRegistry::init('FiscalYear');
         $fiscalYearCount = $fiscalYear->find('count', array('conditions' => array('and' => array('FiscalYear.open_date <=' => $data['document_date'], 'FiscalYear.close_date >=' => $data['document_date'], 'FiscalYear.id' => $this->data[$this->alias]['fiscal_year_id']))));
-        
+
         return $fiscalYearCount > 0;
     }
 
@@ -254,12 +278,13 @@ class InvoiceConference extends AppModel {
      * @param array $check Contains the value passed from the view to be validated
      * @return bool True if in the past or today, False otherwise
      */
-    public function checkPastDate($check) {
-        
+    public function checkPastDate($check)
+    {
+
         $value = array_values($check);
         return (CakeTime::fromString($this->data[$this->alias]['document_date']) <= CakeTime::fromString($value[0]) && CakeTime::fromString($value[0]) <= CakeTime::fromString(date(Configure::read('Application.databaseDateFormat'))));
     }
-    
+
     /**
      * checkFutureDate
      * Custom Validation Rule: Ensures a selected date is either the
@@ -268,12 +293,13 @@ class InvoiceConference extends AppModel {
      * @param array $check Contains the value passed from the view to be validated
      * @return bool True if in the past or today, False otherwise
      */
-    public function checkFutureDate($check) {
-        
+    public function checkFutureDate($check)
+    {
+
         $value = array_values($check);
         return (CakeTime::fromString($this->data[$this->alias]['document_date']) <= CakeTime::fromString($value[0]));
     }
-    
+
     /**
      * checkPaymentDate
      * Custom Validation Rule: Ensures when selected status ( 5 Paid ) is selected that
@@ -282,14 +308,32 @@ class InvoiceConference extends AppModel {
      * @param array $check Contains the value passed from the view to be validated
      * @return bool True if in the past or today, False otherwise
      */
-    public function checkPaymentDate($check) {
-        
-        if ($check['invoice_conference_status_id']==5 && $this->data[$this->alias]['payment_date']==''){
+    public function checkPaymentDate($check)
+    {
+
+        if ($check['invoice_conference_status_id'] == 5 && $this->data[$this->alias]['payment_date'] == '') {
             return false;
         }
         return true;
     }
-    
-    
 
+    public function beforeSave($options = array())
+    {
+        if (isset($this->request->data['InvoiceConference']['add_movement']) && $this->request->data['InvoiceConference']['add_movement'] == 0) {
+            unset($this->request->data['Movement']);
+        }
+        return true;
+    }
+
+    public function afterSave($created, $options = array())
+    {
+        if (isset($this->request->data['InvoiceConference']['invoice_conference_status_id']) && $this->request->data['InvoiceConference']['invoice_conference_status_id'] != 5) {
+            $this->Movements->deleteAll(['Movements.document_model'=>'InvoiceConference','Movements.id'=>$this->request->data['InvoiceConference']['id']]);
+        }
+        return true;
+    }
+
+    public function afterDelete()
+    {
+    }
 }

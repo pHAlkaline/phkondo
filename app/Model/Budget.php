@@ -40,8 +40,6 @@ App::uses('AppModel', 'Model');
  */
 class Budget extends AppModel {
 
-    private $noAfterFind = false;
-
     /**
      * Display field
      *

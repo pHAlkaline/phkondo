@@ -57,8 +57,8 @@ class SupportCategory extends AppModel {
      * @return array
      */
     public function afterFind($results, $primary = false) {
-        if ($this->noAfterFind) {
-            $this->noAfterFind=false;
+        if ($this->no_after_find) {
+            $this->no_after_find=false;
             return $results;
         }
        if (isset($results[0][$this->alias])) {
@@ -83,7 +83,7 @@ class SupportCategory extends AppModel {
     
     
     function deletable($id = null) {
-        $this->noAfterFind = true;
+        $this->no_after_find = true;
 
         if (!empty($id)) {
             $this->id = $id;

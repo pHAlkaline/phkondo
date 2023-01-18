@@ -28,6 +28,7 @@
 App::uses('Model', 'Model');
 
 class AppModel extends Model {
+    public $no_after_find = false;
     public $recursive = -1;
     public $actsAs = array('DateFormat' => array(
             'dateFormat' => 'Y-m-d',

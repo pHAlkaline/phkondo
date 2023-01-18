@@ -269,7 +269,7 @@ class Receipt extends AppModel
             'className' => 'Movement',
             'foreignKey' => 'document_id',
             'dependent' => false,
-            'conditions' => '',
+            'conditions' => ['Movement.document_model' => 'Receipt'],
             'fields' => '',
             'order' => '',
             'limit' => '',
@@ -321,8 +321,8 @@ class Receipt extends AppModel
      */
     public function afterFind($results, $primary = false)
     {
-        if ($this->noAfterFind) {
-            $this->noAfterFind = false;
+        if ($this->no_after_find) {
+            $this->no_after_find = false;
             return $results;
         }
 
@@ -351,6 +351,35 @@ class Receipt extends AppModel
         return $results;
     }
 
+    public function beforeSave($options = array())
+    {
+        if (isset($this->request->data['Receipt']['add_movement']) && $this->request->data['Receipt']['add_movement'] == 0) {
+            unset($this->request->data['Movement']);
+        }
+        return true;
+    }
+
+    public function afterSave($created, $options = array())
+    {
+        $result = true;
+        if ($created && isset($this->request->data['Receipt']['condo_id'])) {
+            $number = $this->getNextReceiptIndex($this->request->data['Receipt']['condo_id']);
+            $result = $result & $this->Receipt->setReceiptIndex($this->request->data['Receipt']['condo_id'], $number);
+        }
+        if (isset($this->request->data['Receipt']['remove_movements']) && $this->request->data['Receipt']['remove_movements'] == 1) {
+            $result = $result & $this->RemoveMovements($this->request->data['Receipt']['id']);
+        }
+        if ($this->Receipt->closeable() && isset($this->request->data['Receipt']['receipt_status_id']) && $this->request->data['Receipt']['receipt_status_id'] == 3) {
+            $result = $result & $this->setNotesStatus($this->request->data['Receipt']['id']);
+         }
+        if (isset($this->request->data['Receipt']['receipt_status_id']) && $this->request->data['Receipt']['receipt_status_id'] == 4) {
+            $result = $result & $this->transferNotes($this->request->data['Receipt']['id']);
+            $result = $result & $this->removeFromNote($this->request->data['Receipt']['id']);
+        }
+  
+        return $result;
+    }
+
     function beforeDelete($cascade = true)
     {
 
@@ -366,9 +395,15 @@ class Receipt extends AppModel
         return true;
     }
 
+    public function afterDelete()
+    {
+        $this->removeMovements($this->request->data['Receipt']['id']);
+        $this->removeFromNote($this->request->data['Receipt']['id']);
+    }
+
     function hasPaidNotes($id = null)
     {
-        $this->noAfterFind = true;
+        $this->no_after_find = true;
         if (!empty($id)) {
             $this->id = $id;
         }
@@ -384,7 +419,7 @@ class Receipt extends AppModel
 
     function hasMovements($id = null)
     {
-        $this->noAfterFind = true;
+        $this->no_after_find = true;
         if (!empty($id)) {
             $this->id = $id;
         }
@@ -400,7 +435,7 @@ class Receipt extends AppModel
 
     public function payable($id = null)
     {
-        $this->noAfterFind = true;
+        $this->no_after_find = true;
         if (!empty($id)) {
             $this->id = $id;
         }
@@ -417,7 +452,7 @@ class Receipt extends AppModel
 
     public function editable($id = null)
     {
-        $this->noAfterFind = true;
+        $this->no_after_find = true;
         if (!empty($id)) {
             $this->id = $id;
         }
@@ -434,7 +469,7 @@ class Receipt extends AppModel
 
     public function deletable($id = null)
     {
-        $this->noAfterFind = true;
+        $this->no_after_find = true;
         if (!empty($id)) {
             $this->id = $id;
         }
@@ -448,7 +483,7 @@ class Receipt extends AppModel
 
     public function closeable($id = null)
     {
-        $this->noAfterFind = true;
+        $this->no_after_find = true;
         if (!empty($id)) {
             $this->id = $id;
         }
@@ -462,7 +497,7 @@ class Receipt extends AppModel
             return false;
         }
 
-        $this->noAfterFind = true;
+        $this->no_after_find = true;
         if ($this->field('receipt_payment_type_id') == '') {
             return false;
         }
@@ -471,7 +506,7 @@ class Receipt extends AppModel
 
     public function cancelable($id = null)
     {
-        $this->noAfterFind = true;
+        $this->no_after_find = true;
         if (!empty($id)) {
             $this->id = $id;
         }
@@ -486,5 +521,92 @@ class Receipt extends AppModel
         }
 
         return true;
+    }
+
+    public function removeMovements($id)
+    {
+        return $this->Movement->deleteAll(array('Movement.document_id' => $id, 'Movement.document_model' => 'Receipt'));
+    }
+
+    public function transferNotes($id)
+    {
+        $options = array('conditions' => array('Note.receipt_id' => $id));
+        $notes = $this->Note->find('all', $options);
+        if (count($notes) == 0) {
+            return true;
+        }
+        foreach ($notes as $key => $note) {
+            unset($notes[$key]['Note']['id']);
+            $notes[$key]['Note']['note_status_id'] = 4;
+            $receiptNotes[]['ReceiptNote'] = $notes[$key]['Note'];
+        }
+        if ($this->ReceiptNote->saveAll($receiptNotes)) {
+            return true;
+        }
+        return false;
+    }
+
+    public function removeFromNote($id)
+    {
+        return $this->Note->updateAll(array('Note.receipt_id' => null, 'Note.note_status_id' => '1', 'Note.pending_amount' => 'Note.amount', 'Note.payment_date' => null), array('Note.receipt_id' => $id));
+    }
+
+    public function setNotesStatus($id)
+    {
+        return $this->Note->updateAll(array('Note.note_status_id' => '3', 'Note.pending_amount' => '0', 'Note.payment_date' => 'Receipt.payment_date'), array('Note.receipt_id' => $id));
+    }
+
+    public function setReceiptAmount($id)
+    {
+        $totalDebit = $this->Note->find(
+            'first',
+            array(
+                'fields' =>
+                array('SUM(Note.amount) AS total'),
+                'conditions' => array('Note.receipt_id' => $id, 'Note.note_type_id' => '2')
+            )
+        );
+        $totalCredit = $this->Note->find(
+            'first',
+            array(
+                'fields' =>
+                array('SUM(Note.amount) AS total'),
+                'conditions' => array('Note.receipt_id' => $id, 'Note.note_type_id' => '1')
+            )
+        );
+        $total = $totalDebit[0]['total'] - $totalCredit[0]['total'];
+        $this->id = $id;
+        return $this->saveField('total_amount', $total);
+    }
+
+    public function getNextReceiptIndex($id)
+    {
+        $this->loadModel("ReceiptCounters");
+        $index = $this->ReceiptCounters->find('first', array('conditions' => array('condo_id' => $id)));
+
+        if (!isset($index['ReceiptCounters']['counter'])) {
+            $this->ReceiptCounters->create();
+            $this->ReceiptCounters->save(array('ReceiptCounters' => array('condo_id' => $id, 'counter' => 1)));
+            return $index = 1;
+        }
+
+        return $index['ReceiptCounters']['counter'] + 1;
+    }
+
+    public function setReceiptIndex($condo_id, $index)
+    {
+        $this->loadModel("ReceiptCounters");
+        $rcpIndex = $this->ReceiptCounters->find('first', array('conditions' => array('condo_id' => $condo_id)));
+        if (!isset($rcpIndex['ReceiptCounters']['counter'])) {
+            $this->ReceiptCounters->create();
+            $this->ReceiptCounters->save(array('ReceiptCounters' => array('condo_id' => $id, 'counter' => 1)));
+            $index = 1;
+            $id = $this->ReceiptCounters->id;
+        } else {
+            $id = $rcpIndex['ReceiptCounters']['id'];
+        }
+        $this->ReceiptCounters->read(null, $id);
+        $this->ReceiptCounters->set('counter', $index);
+        return $this->ReceiptCounters->save();
     }
 }

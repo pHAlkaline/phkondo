@@ -58,7 +58,7 @@
                         <?php echo $this->Form->input('add_movement', array('type' => 'checkbox', 'class' => 'checkbox styled', 'label' => __('New Movement'), 'div' => array('class' => 'checkbox checkbox-success'), 'between' => '', 'after' => '')); ?>
                     </div>
                 </div><!-- .form-group -->
-                <div id="new-movement" >
+                <div id="new-movement">
                     <hr />
                     <legend><?php echo __('New Movement'); ?></legend>
                     <?php
@@ -80,6 +80,7 @@
                     $documentDate = $hasDate ? date(Configure::read('Application.dateFormatSimple')) : null;
                     $documentDate = isset($this->request->data['Movement'][0]['movement_date']) ? $this->request->data['Movement'][0]['movement_date'] : $documentDate;
                     ?>
+                    <?php echo $this->Form->hidden('Movement.0.document_model', array('value' => 'Receipt')); ?>
                     <div class="form-group">
                         <?php echo $this->Form->input('Movement.0.account_id', array('class' => 'form-control')); ?>
                     </div><!-- .form-group -->

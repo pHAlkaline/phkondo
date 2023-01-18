@@ -34,7 +34,7 @@ App::uses('AppModel', 'Model');
  */
 class FractionType extends AppModel {
     
-    public $noAfterFind = false;
+    public $no_after_find = false;
 
     /**
      * Display field
@@ -136,7 +136,7 @@ class FractionType extends AppModel {
     }
     
     function deletable($id = null) {
-        $this->noAfterFind = true;
+        $this->no_after_find = true;
 
         if (!empty($id)) {
             $this->id = $id;

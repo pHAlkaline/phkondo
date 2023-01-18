@@ -110,7 +110,7 @@ class AdministratorsController extends AppController {
         
         $this->Fraction = $this->Administrator->Condo->Fraction;
         $this->Fraction->contain('Entity');
-        $this->Fraction->noAfterFind=true;
+        $this->Fraction->no_after_find=true;
         $fractions = $this->Fraction->find('all', array('conditions' => array('condo_id' => $this->getPhkRequestVar('condo_id'))));
         $entities = $this->Administrator->Entity->find('list', array('conditions' => array('id' => Set::extract('/Entity/id', $fractions),'NOT'=>array('id'=>Set::extract('/Entity/id', $administrators)))));
         $fiscalYears = $this->Administrator->FiscalYear->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('fiscal_year_id'))));
@@ -150,7 +150,7 @@ class AdministratorsController extends AppController {
         
         $this->Fraction = $this->Administrator->Condo->Fraction;
         $this->Fraction->contain('Entity');
-        $this->Fraction->noAfterFind=true;
+        $this->Fraction->no_after_find=true;
         $fractions = $this->Fraction->find('all', array('conditions' => array('condo_id' => $this->getPhkRequestVar('condo_id'))));
         
         $entities = $this->Administrator->Entity->find('list', array('conditions' => array('id' => Set::extract('/Entity/id', $fractions),'NOT'=>array('id'=>Set::extract('/Entity/id', $administrators)))));

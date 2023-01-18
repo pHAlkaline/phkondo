@@ -27,27 +27,32 @@
 
 $(function () {
     $("#InvoiceConferenceInvoiceConferenceStatusId").change(function () {
-        $("#elem_payment_date").removeClass("hidden");
+
         switch ($(this).val()) {
             case '5':
-//               $("#InvoiceConferencePaymentDateDay").prop('disabled', false);
-//                $("#InvoiceConferencePaymentDateMonth").prop('disabled', false);
-//                $("#InvoiceConferencePaymentDateYear").prop('disabled', false);
-                $("#InvoiceConferencePaymentDate").prop('disabled', false);
-                $("#elem_payment_date").show('slow');
+                $("#elem_payment_date, #elem_add_movement").removeClass('hidden');
+                $("#InvoiceConferenceAddMovement").prop( "checked", false );
+                $("#InvoiceConferencePaymentDate, #InvoiceConferenceAddMovement").prop('disabled', false);
+                $("#elem_payment_date, #elem_add_movement").fadeIn('slow');
+                $('#new-movement').is(':checked') ? $('#new-movement').removeClass('hidden').fadeIn('slow').find('input, textarea, button, select').prop('disabled', null) : null;
                 break;
             default:
-//                $("#InvoiceConferencePaymentDateDay").prop('disabled', true);
-//                $("#InvoiceConferencePaymentDateDay").prop('disabled', true);
-//                $("#InvoiceConferencePaymentDateYear").prop('disabled', true);
-                $("#InvoiceConferencePaymentDate").prop('disabled', true);
-                $("#elem_payment_date").hide('fast');
+                $("#InvoiceConferenceAddMovement").prop( "checked", false );
+                $("#InvoiceConferencePaymentDate, #InvoiceConferenceAddMovement").prop('disabled', true);
+                $("#elem_payment_date, #elem_add_movement").fadeOut();
+                $('#new-movement').fadeOut('fast').find('input, textarea, button, select').prop('disabled', 'disabled');
 
         }
 
 
     });
+  
+    $("#InvoiceConferenceAddMovement").on("change", function (event) {
 
+        $(this).is(':checked') ? $('#new-movement').removeClass('hidden').fadeIn('slow').find('input, textarea, button, select').prop('disabled', null) : $('#new-movement').fadeOut('fast').find('input, textarea, button, select').prop('disabled', 'disabled');
+
+    });
+    $("#InvoiceConferenceInvoiceConferenceStatusId, #InvoiceConferenceAddMovement").trigger('change');
 
 });
 

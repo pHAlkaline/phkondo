@@ -143,7 +143,7 @@ class InvoiceConferenceController extends AppController {
         if ($this->request->is('post')) {
 
             $this->InvoiceConference->create();
-            if ($this->InvoiceConference->save($this->request->data)) {
+            if ($this->InvoiceConference->saveAssociated($this->request->data)) {
                 $this->Flash->success(__('The invoice has been saved'));
                 $this->redirect(array('action' => 'view', $this->InvoiceConference->id, '?' => $this->request->query));
             } else {
@@ -163,6 +163,9 @@ class InvoiceConferenceController extends AppController {
 
         $suppliers = $this->InvoiceConference->Supplier->find('list', array('order' => 'Supplier.name', 'conditions' => $supplier_conditions));
         $this->set(compact('condos', 'invoiceConferenceStatuses', 'fiscalYears', 'suppliers', 'fiscalYearData'));
+
+        $this->setMovementViewVars();
+
     }
 
     /**
@@ -180,7 +183,7 @@ class InvoiceConferenceController extends AppController {
         }
         if ($this->request->is('post') || $this->request->is('put')) {
 
-            if ($this->InvoiceConference->save($this->request->data)) {
+            if ($this->InvoiceConference->saveAssociated($this->request->data)) {
                 $this->Flash->success(__('The invoice has been saved'));
                 $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
                 //$this->redirect(array('action' => 'index_by_supplier', $this->request->data['InvoiceConference']['supplier_id'],'?'=>$this->request->query));
@@ -202,6 +205,8 @@ class InvoiceConferenceController extends AppController {
         $suppliers = $this->InvoiceConference->Supplier->find('list', array('order' => 'name'));
         $this->set(compact('condos', 'invoiceConferenceStatuses', 'fiscalYears', 'suppliers', 'fiscalYearData'));
         $this->setPhkRequestVar('invoice_id', $id);
+
+        $this->setMovementViewVars();
     }
 
     /**
@@ -266,4 +271,27 @@ class InvoiceConferenceController extends AppController {
         $this->set(compact('breadcrumbs', 'headerTitle'));
     }
 
+    private function setMovementViewVars(){
+        $accounts = $this->InvoiceConference->Movement->Account->find('list', array('conditions' => array('condo_id' => $this->getPhkRequestVar('condo_id'))));
+        foreach ($accounts as $idx => $account) {
+            $closeMovement = $this->InvoiceConference->Movement->find('count', array(
+                'conditions' =>
+                array(
+                    'Movement.fiscal_year_id' => $this->getPhkRequestVar('fiscal_year_id'),
+                    'Movement.account_id' => $idx,
+                    'Movement.movement_operation_id' => '2'
+                ),
+            ));
+            if ($closeMovement) {
+                unset($accounts[$idx]);
+            }
+        }
+        $movementTypes = $this->InvoiceConference->Movement->MovementType->find('list', array('conditions' => array('active' => '1','id' => '2')));
+        $movementCategories = $this->InvoiceConference->Movement->MovementCategory->find('list', array('conditions' => array('active' => '1')));
+        $movementOperations = $this->InvoiceConference->Movement->MovementOperation->find('list', array('conditions' => array('MovementOperation.id NOT IN' => [1, 2, 3], 'active' => '1')));
+        $this->set(compact('accounts', 'movementTypes', 'movementCategories', 'movementOperations'));
+        
+    }
+
+  
 }

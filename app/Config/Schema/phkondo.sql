@@ -454,6 +454,7 @@ CREATE TABLE IF NOT EXISTS `movements` (
   `movement_operation_id` int(11) NOT NULL,
   `document` varchar(20) DEFAULT NULL,
   `document_id` int(11) NOT NULL,
+  `document_model` VARCHAR(50) NULL,
   `modified` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -461,8 +462,7 @@ CREATE TABLE IF NOT EXISTS `movements` (
   KEY `ACCOUNT` (`account_id`),
   KEY `FISCALYEAR` (`fiscal_year_id`),
   KEY `MOVEMENTCATEGORY` (`movement_category_id`),
-  KEY `MOVEMENTOPERATION` (`movement_operation_id`),
-  KEY `DOCUMENT` (`document_id`)
+  KEY `MOVEMENTOPERATION` (`movement_operation_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -964,7 +964,7 @@ ALTER TABLE `movements`
   ADD CONSTRAINT `movements_ibfk_4` FOREIGN KEY (`movement_category_id`) REFERENCES `movement_categories` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `movements_ibfk_5` FOREIGN KEY (`movement_operation_id`) REFERENCES `movement_operations` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `movements_ibfk_6` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-  ADD CONSTRAINT `movements_ibfk_7` FOREIGN KEY (`document_id`) REFERENCES `receipts`(`id`) ON UPDATE CASCADE;
+
 --
 -- Limitadores para a tabela `notes`
 --
