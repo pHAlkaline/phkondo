@@ -350,6 +350,9 @@ class ReceiptsController extends AppController
         }
 
         if (!empty($this->request->data) && ($this->request->is('post') || $this->request->is('put'))) {
+            if (isset($this->request->data['Receipt']['add_movement'])&&$this->request->data['Receipt']['add_movement']==0){
+                unset($this->request->data['Movement']);
+            }
             if ($this->Receipt->saveAssociated($this->request->data)) {
                 $this->close($id);
                 $this->Flash->success(__('The receipt has been saved'));

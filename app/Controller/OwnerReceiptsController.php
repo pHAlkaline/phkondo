@@ -35,7 +35,8 @@ App::uses('CakeEvent', 'Event');
  * @property Receipt $Receipt
  * @property PaginatorComponent $Paginator
  */
-class OwnerReceiptsController extends AppController {
+class OwnerReceiptsController extends AppController
+{
 
     /**
      * Components
@@ -56,13 +57,15 @@ class OwnerReceiptsController extends AppController {
      *
      * @return void
      */
-    public function index() {
+    public function index()
+    {
         $this->Receipt->contain('Entity', 'ReceiptStatus', 'ReceiptPaymentType');
         $this->Paginator->settings = array_replace_recursive($this->Paginator->settings, array(
             'contain' => array('Entity', 'ReceiptStatus', 'ReceiptPaymentType'),
             'conditions' => array(
                 'Receipt.entity_id' => $this->getPhkRequestVar('owner_id'),
-                'Receipt.fraction_id' => $this->getPhkRequestVar('fraction_id'))
+                'Receipt.fraction_id' => $this->getPhkRequestVar('fraction_id')
+            )
         ));
         $this->setFilter(array('Receipt.document', 'Entity.name', 'ReceiptStatus.name', 'ReceiptPaymentType.name', 'Receipt.total_amount'));
 
@@ -76,7 +79,8 @@ class OwnerReceiptsController extends AppController {
      * @param string $id
      * @return void
      */
-    public function view($id = null) {
+    public function view($id = null)
+    {
         if (!$this->Receipt->exists($id)) {
             $this->Flash->error(__('Invalid receipt'));
             $this->redirect(array('action' => 'index', '?' => $this->request->query));
@@ -108,7 +112,8 @@ class OwnerReceiptsController extends AppController {
      * @param string $id
      * @return void
      */
-    public function print_receipt($id) {
+    public function print_receipt($id)
+    {
         if (!$this->Receipt->exists($id)) {
             $this->Flash->error(__('Invalid receipt'));
             $this->redirect(array('action' => 'index', '?' => $this->request->query));
@@ -127,7 +132,8 @@ class OwnerReceiptsController extends AppController {
      * @param string $id
      * @return void
      */
-    public function send_owner_receipt($id) {
+    public function send_owner_receipt($id)
+    {
         if (Configure::read('Application.stage') == 'demo') {
             $this->Flash->success(__d('email', 'Email sent with success.'));
             $this->Flash->warning(__d('email', 'In Demo Sessions this feature is disbled to avoid spam!!.'));
@@ -149,7 +155,8 @@ class OwnerReceiptsController extends AppController {
      *
      * @return void
      */
-    public function add() {
+    public function add()
+    {
         if ($this->request->is('post')) {
             $this->Receipt->create();
             $this->Receipt->Entity->id = $this->request->data['Receipt']['entity_id'];
@@ -184,7 +191,8 @@ class OwnerReceiptsController extends AppController {
      *
      * @return void
      */
-    public function add_notes($id) {
+    public function add_notes($id)
+    {
         if (!$this->Receipt->editable($id)) {
             $this->Flash->error(__('Invalid receipt'));
             $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
@@ -193,14 +201,16 @@ class OwnerReceiptsController extends AppController {
         if ($this->request->is('post') && isset($this->request->data['Note'])) {
 
             $this->Receipt->Note->updateAll(
-                    array(
-                        'Note.receipt_id' => null,
-                        'Note.pending_amount' => 0
-                    ), array(
-                'Note.fraction_id' => $this->getPhkRequestVar('fraction_id'),
-                'Note.entity_id' => $this->Receipt->field('entity_id'),
-                'Note.note_status_id' => array(1, 2),
-                'Note.receipt_id' => $id)
+                array(
+                    'Note.receipt_id' => null,
+                    'Note.pending_amount' => 0
+                ),
+                array(
+                    'Note.fraction_id' => $this->getPhkRequestVar('fraction_id'),
+                    'Note.entity_id' => $this->Receipt->field('entity_id'),
+                    'Note.note_status_id' => array(1, 2),
+                    'Note.receipt_id' => $id
+                )
             );
             $this->_setReceiptAmount($id);
             foreach ($this->request->data['Note'] as $key => $note) {
@@ -263,7 +273,8 @@ class OwnerReceiptsController extends AppController {
      * @param string $id
      * @return void
      */
-    public function pay_receipt($id = null) {
+    public function pay_receipt($id = null)
+    {
 
         if (!$this->Receipt->exists($id)) {
             $this->Flash->error(__('Invalid receipt'));
@@ -277,7 +288,10 @@ class OwnerReceiptsController extends AppController {
         }
 
         if (!empty($this->request->data) && ($this->request->is('post') || $this->request->is('put'))) {
-            if ($this->Receipt->save($this->request->data)) {
+            if (isset($this->request->data['Receipt']['add_movement']) && $this->request->data['Receipt']['add_movement'] == 0) {
+                unset($this->request->data['Movement']);
+            }
+            if ($this->Receipt->saveAssociated($this->request->data)) {
                 $this->close($id);
                 $this->Flash->success(__('The receipt has been saved'));
                 $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
@@ -292,24 +306,47 @@ class OwnerReceiptsController extends AppController {
                 $this->redirect(array('action' => 'index', '?' => $this->request->query));
             }
         }
-
-
-
         $condos = $this->Receipt->Condo->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('condo_id'))));
         $fractions = $this->Receipt->Fraction->find('list', array('conditions' => array('id' => $this->getPhkRequestVar('fraction_id'))));
         $entities = $this->Receipt->Entity->find('list', array('order' => 'Entity.name', 'conditions' => array('id' => $this->getPhkRequestVar('owner_id'))));
         $receiptStatuses = $this->Receipt->ReceiptStatus->find('list', array('conditions' => array('id' => array('3'), 'active' => '1')));
         $receiptPaymentTypes = $this->Receipt->ReceiptPaymentType->find('list', array('conditions' => array('active' => '1')));
 
-        $notes = $this->Receipt->Note->find('all', array(
-            'contain' => array('NoteType', 'Fraction'),
-            'conditions' => array(
-                'Note.receipt_id' => $id,
-                'Note.fraction_id' => $this->getPhkRequestVar('fraction_id'),
-                'Note.entity_id' => $this->request->data['Receipt']['entity_id'],
-            ))
+        $notes = $this->Receipt->Note->find(
+            'all',
+            array(
+                'contain' => array('NoteType', 'Fraction'),
+                'conditions' => array(
+                    'Note.receipt_id' => $id,
+                    'Note.fraction_id' => $this->getPhkRequestVar('fraction_id'),
+                    'Note.entity_id' => $this->request->data['Receipt']['entity_id'],
+                )
+            )
         );
         $this->set(compact('condos', 'fractions', 'entities', 'receiptStatuses', 'receiptPaymentTypes', 'notes'));
+
+        $fiscalYears = $this->Receipt->Movement->FiscalYear->find('list', array('conditions' => array('active' => '1', 'condo_id' => $this->getPhkRequestVar('condo_id'), 'id' => $this->getPhkRequestVar('fiscal_year_id'))));
+        $fiscalYearData = $this->Receipt->Movement->FiscalYear->find('first', array('fields' => array('open_date', 'close_date'), 'conditions' => array('active' => '1', 'condo_id' => $this->getPhkRequestVar('condo_id'), 'id' => $this->getPhkRequestVar('fiscal_year_id'))));
+        $accounts = $this->Receipt->Movement->Account->find('list', array('conditions' => array('condo_id' => $this->getPhkRequestVar('condo_id'))));
+        foreach ($accounts as $idx => $account) {
+            $closeMovement = $this->Receipt->Movement->find('count', array(
+                'conditions' =>
+                array(
+                    'Movement.fiscal_year_id' => $this->getPhkRequestVar('fiscal_year_id'),
+                    'Movement.account_id' => $idx,
+                    'Movement.movement_operation_id' => '2'
+                ),
+            ));
+            if ($closeMovement) {
+                unset($accounts[$idx]);
+            }
+        }
+        $movementTypes = $this->Receipt->Movement->MovementType->find('list', array('conditions' => array('active' => '1')));
+        $movementCategories = $this->Receipt->Movement->MovementCategory->find('list', array('conditions' => array('active' => '1')));
+        $movementOperations = $this->Receipt->Movement->MovementOperation->find('list', array('conditions' => array('MovementOperation.id NOT IN' => [1, 2, 3], 'active' => '1')));
+        $this->set(compact('accounts', 'fiscalYears', 'fiscalYearData', 'movementTypes', 'movementCategories', 'movementOperations'));
+
+
         $this->setPhkRequestVar('receipt_id', $id);
         $this->setPhkRequestVar('receipt_text', $this->request->data['Receipt']['document']);
     }
@@ -321,7 +358,8 @@ class OwnerReceiptsController extends AppController {
      * @param string $id
      * @return void
      */
-    public function edit($id = null) {
+    public function edit($id = null)
+    {
         if (!$this->Receipt->exists($id)) {
             $this->Flash->error(__('Invalid receipt'));
             $this->redirect(array('action' => 'index', '?' => $this->request->query));
@@ -341,11 +379,12 @@ class OwnerReceiptsController extends AppController {
             }
         } else {
             $options = array('conditions' => array(
-                    'Receipt.' . $this->Receipt->primaryKey => $id,
-                    'Receipt.entity_id' => $this->getPhkRequestVar('owner_id'),
-                    'Receipt.fraction_id' => $this->getPhkRequestVar('fraction_id'),
-                    'AND' => array(
-                        'Receipt.receipt_status_id' => array('1', '2'))
+                'Receipt.' . $this->Receipt->primaryKey => $id,
+                'Receipt.entity_id' => $this->getPhkRequestVar('owner_id'),
+                'Receipt.fraction_id' => $this->getPhkRequestVar('fraction_id'),
+                'AND' => array(
+                    'Receipt.receipt_status_id' => array('1', '2')
+                )
             ));
             $this->Receipt->contain(array('Note' => array('NoteType', 'Fraction')));
             $receipt = $this->Receipt->find('first', $options);
@@ -367,14 +406,18 @@ class OwnerReceiptsController extends AppController {
         $receiptPaymentTypes = $this->Receipt->ReceiptPaymentType->find('list', array('conditions' => array('active' => '1')));
 
         $this->Receipt->Note->contain(array('NoteType', 'Entity', 'Fraction'));
-        $notes = $this->Receipt->Note->find('all', array(
-            'conditions' => array(
-                'OR' => array('Note.receipt_id IS NULL', 'Note.receipt_id' => $id),
-                'AND' => array(
-                    'Note.fraction_id' => $this->getPhkRequestVar('fraction_id'),
-                    'Note.entity_id' => $this->Receipt->field('entity_id'),
-                    'Note.note_status_id' => array(1, 2)),
-            ))
+        $notes = $this->Receipt->Note->find(
+            'all',
+            array(
+                'conditions' => array(
+                    'OR' => array('Note.receipt_id IS NULL', 'Note.receipt_id' => $id),
+                    'AND' => array(
+                        'Note.fraction_id' => $this->getPhkRequestVar('fraction_id'),
+                        'Note.entity_id' => $this->Receipt->field('entity_id'),
+                        'Note.note_status_id' => array(1, 2)
+                    ),
+                )
+            )
         );
         $receiptAmount = 0; //$this->Receipt->field('total_amount');
         $receiptId = $this->Receipt->field('document');
@@ -393,7 +436,8 @@ class OwnerReceiptsController extends AppController {
      * @param string $id
      * @return void
      */
-    public function delete($id = null) {
+    public function delete($id = null)
+    {
         if (!$this->request->is('post')) {
             throw new MethodNotAllowedException();
         }
@@ -408,6 +452,7 @@ class OwnerReceiptsController extends AppController {
             $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
         }
         $this->_removeFromNote($id);
+        $this->_removeMovements($id);
         if ($this->Receipt->delete()) {
 
             $this->Flash->success(__('Receipt deleted'));
@@ -424,7 +469,8 @@ class OwnerReceiptsController extends AppController {
      * @param string $id
      * @return void
      */
-    public function close($id = null) {
+    public function close($id = null)
+    {
         if (!$this->Receipt->exists($id)) {
             $this->Flash->error(__('Invalid receipt'));
             $this->redirect(array('action' => 'index', '?' => $this->request->query));
@@ -448,7 +494,8 @@ class OwnerReceiptsController extends AppController {
      * @param string $id
      * @return void
      */
-    public function cancel($id = null) {
+    public function cancel($id = null)
+    {
         if (!$this->Receipt->exists($id)) {
             $this->Flash->error(__('Invalid receipt'));
             $this->redirect(array('action' => 'index', '?' => $this->request->query));
@@ -465,6 +512,9 @@ class OwnerReceiptsController extends AppController {
                 $this->Receipt->saveField('cancel_user_id', AuthComponent::user('id'));
                 $this->_transferNotes($id);
                 $this->_removeFromNote($id);
+                if ($this->request->data['Receipt']['remove_movements'] == 1) {
+                    $this->_removeMovements($id);
+                }
                 $this->Flash->success(__('The receipt has been saved'));
                 $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
             } else {
@@ -484,13 +534,16 @@ class OwnerReceiptsController extends AppController {
         $entities = $this->Receipt->Entity->find('list', array('order' => 'Entity.name', 'conditions' => array('id' => $this->request->data['Receipt']['entity_id'])));
         $receiptStatuses = $this->Receipt->ReceiptStatus->find('list', array('conditions' => array('id' => array('4'), 'active' => '1')));
         $receiptPaymentTypes = $this->Receipt->ReceiptPaymentType->find('list', array('conditions' => array('active' => '1')));
-        $notes = $this->Receipt->Note->find('all', array(
-            'contain' => array('NoteType', 'Fraction'),
-            'conditions' => array(
-                'Note.receipt_id' => $id,
-                'Note.fraction_id' => $this->getPhkRequestVar('fraction_id'),
-                'Note.entity_id' => $this->request->data['Receipt']['entity_id'],
-            ))
+        $notes = $this->Receipt->Note->find(
+            'all',
+            array(
+                'contain' => array('NoteType', 'Fraction'),
+                'conditions' => array(
+                    'Note.receipt_id' => $id,
+                    'Note.fraction_id' => $this->getPhkRequestVar('fraction_id'),
+                    'Note.entity_id' => $this->request->data['Receipt']['entity_id'],
+                )
+            )
         );
 
         $this->set(compact('condos', 'fractions', 'entities', 'receiptStatuses', 'receiptPaymentTypes', 'notes'));
@@ -499,7 +552,8 @@ class OwnerReceiptsController extends AppController {
         $this->setPhkRequestVar('receipt_text', $this->request->data['Receipt']['document']);
     }
 
-    private function _transferNotes($id) {
+    private function _transferNotes($id)
+    {
         $options = array('conditions' => array('Note.receipt_id' => $id));
         $notes = $this->Receipt->Note->find('all', $options);
         if (count($notes) == 0) {
@@ -516,31 +570,46 @@ class OwnerReceiptsController extends AppController {
         return false;
     }
 
-    private function _removeFromNote($id) {
+    private function _removeFromNote($id)
+    {
         return $this->Receipt->Note->updateAll(array('Note.receipt_id' => null, 'Note.note_status_id' => '1', 'Note.pending_amount' => 'Note.amount', 'Note.payment_date' => null), array('Note.receipt_id' => $id));
     }
 
-    private function _setNotesStatus($id) {
+    private function _removeMovements($id)
+    {
+        return $this->Receipt->Movement->deleteAll(array('Movement.document_id' => $id));
+    }
+
+    private function _setNotesStatus($id)
+    {
         return $this->Receipt->Note->updateAll(array('Note.note_status_id' => '3', 'Note.pending_amount' => '0', 'Note.payment_date' => 'Receipt.payment_date'), array('Note.receipt_id' => $id));
     }
 
-    private function _setReceiptAmount($id) {
-        $totalDebit = $this->Receipt->Note->find('first', array('fields' =>
-            array('SUM(Note.amount) AS total'),
-            'conditions' => array('Note.receipt_id' => $id, 'Note.note_type_id' => '2')
-                )
+    private function _setReceiptAmount($id)
+    {
+        $totalDebit = $this->Receipt->Note->find(
+            'first',
+            array(
+                'fields' =>
+                array('SUM(Note.amount) AS total'),
+                'conditions' => array('Note.receipt_id' => $id, 'Note.note_type_id' => '2')
+            )
         );
-        $totalCredit = $this->Receipt->Note->find('first', array('fields' =>
-            array('SUM(Note.amount) AS total'),
-            'conditions' => array('Note.receipt_id' => $id, 'Note.note_type_id' => '1')
-                )
+        $totalCredit = $this->Receipt->Note->find(
+            'first',
+            array(
+                'fields' =>
+                array('SUM(Note.amount) AS total'),
+                'conditions' => array('Note.receipt_id' => $id, 'Note.note_type_id' => '1')
+            )
         );
         $total = $totalDebit[0]['total'] - $totalCredit[0]['total'];
         $this->Receipt->id = $id;
         $this->Receipt->saveField('total_amount', $total);
     }
 
-    private function _getNextReceiptIndex($id) {
+    private function _getNextReceiptIndex($id)
+    {
         $this->loadModel("ReceiptCounters");
         $index = $this->ReceiptCounters->find('first', array('conditions' => array('condo_id' => $id)));
 
@@ -553,7 +622,8 @@ class OwnerReceiptsController extends AppController {
         return $index['ReceiptCounters']['counter'] + 1;
     }
 
-    private function _setReceiptIndex($condo_id, $index) {
+    private function _setReceiptIndex($condo_id, $index)
+    {
         $this->loadModel("ReceiptCounters");
         $rcpIndex = $this->ReceiptCounters->find('first', array('conditions' => array('condo_id' => $condo_id)));
         if (!isset($rcpIndex['ReceiptCounters']['counter'])) {
@@ -569,7 +639,8 @@ class OwnerReceiptsController extends AppController {
         $this->ReceiptCounters->save();
     }
 
-    public function beforeFilter() {
+    public function beforeFilter()
+    {
         parent::beforeFilter();
         if (!$this->getPhkRequestVar('fraction_id')) {
             $this->Flash->error(__('Invalid fraction'));
@@ -577,7 +648,8 @@ class OwnerReceiptsController extends AppController {
         }
     }
 
-    public function beforeRender() {
+    public function beforeRender()
+    {
         parent::beforeRender();
         $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text') . ' ( ' . $this->phkRequestData['fiscal_year_text'] . ' ) ', 'active' => ''),
@@ -613,5 +685,4 @@ class OwnerReceiptsController extends AppController {
         $headerTitle = __n('Receipt', 'Receipts', 2);
         $this->set(compact('breadcrumbs', 'headerTitle'));
     }
-
 }

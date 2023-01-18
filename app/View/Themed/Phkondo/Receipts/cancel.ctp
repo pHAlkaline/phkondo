@@ -50,7 +50,7 @@
                 </div><!-- .form-group -->
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <?php echo $this->Form->input('remove_movements', array('type'=>'checkbox', 'class' => 'checkbox styled', 'label' => __('Remove Movements'), 'div' => array('class' => 'checkbox checkbox-success'), 'between' => '', 'after' => '')); ?>
+                        <?php echo $this->Form->input('remove_movements', array('type'=>'checkbox', 'class' => 'checkbox styled', 'label' => __('Remove').' '.__n('Movement', 'Movements', 2), 'div' => array('class' => 'checkbox checkbox-success'), 'between' => '', 'after' => '')); ?>
                     </div>
                 </div><!-- .form-group -->
             </fieldset>
