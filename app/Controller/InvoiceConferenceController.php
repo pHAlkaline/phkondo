@@ -115,7 +115,11 @@ class InvoiceConferenceController extends AppController {
      * @return void
      */
     public function view($id = null) {
-        $this->InvoiceConference->contain(array('Supplier', 'InvoiceConferenceStatus', 'Movement'=>['Account','MovementCategory','MovementOperation','MovementType']));
+        $this->InvoiceConference->contain(array(
+            'Supplier', 
+            'InvoiceConferenceStatus',
+            'Movement'=>['Account','MovementCategory','MovementOperation','MovementType']
+        ));
         if (!$this->InvoiceConference->exists($id)) {
             $this->Flash->error(__('Invalid invoice'));
             $this->redirect(array('action' => 'index', '?' => $this->request->query));

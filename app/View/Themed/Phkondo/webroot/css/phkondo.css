@@ -47,11 +47,15 @@ border-top: none;
 }
 .view tr td:first-child{
     text-align: right;
-
 }
-
+.view .table tr td:first-child{
+  text-align: left;
+}
 .view tr td:first-child:after{
     content:":";
+}
+.view .table tr td:first-child:after{
+  content:none;
 }
 
 .error-message {

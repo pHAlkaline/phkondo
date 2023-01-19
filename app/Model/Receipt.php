@@ -364,12 +364,12 @@ class Receipt extends AppModel
         $result = true;
         if ($created && isset($this->data['Receipt']['condo_id'])) {
             $number = $this->getNextReceiptIndex($this->data['Receipt']['condo_id']);
-            $result = $result & $this->Receipt->setReceiptIndex($this->data['Receipt']['condo_id'], $number);
+            $result = $result & $this->setReceiptIndex($this->data['Receipt']['condo_id'], $number);
         }
         if (isset($this->data['Receipt']['remove_movements']) && $this->data['Receipt']['remove_movements'] == 1) {
             $result = $result & $this->removeMovements($this->data['Receipt']['id']);
         }
-        if ($this->Receipt->closeable() && isset($this->data['Receipt']['receipt_status_id']) && $this->data['Receipt']['receipt_status_id'] == 3) {
+        if ($this->closeable() && isset($this->data['Receipt']['receipt_status_id']) && $this->data['Receipt']['receipt_status_id'] == 3) {
             $result = $result & $this->setNotesStatus($this->data['Receipt']['id']);
          }
         if (isset($this->data['Receipt']['receipt_status_id']) && $this->data['Receipt']['receipt_status_id'] == 4) {

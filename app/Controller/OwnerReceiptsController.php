@@ -86,6 +86,7 @@ class OwnerReceiptsController extends AppController
             $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
         $this->Receipt->contain(array(
+            'Movement'=>['Account','MovementCategory','MovementOperation','MovementType'],
             'Fraction',
             'Entity',
             'ReceiptStatus',

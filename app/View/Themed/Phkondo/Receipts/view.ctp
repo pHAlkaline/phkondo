@@ -1,8 +1,8 @@
 <?php
-$attachmentFormats=['pdf' => __d('email', 'PDF'), 'html' => __d('html', 'HTML')];
+$attachmentFormats = ['pdf' => __d('email', 'PDF'), 'html' => __d('html', 'HTML')];
 if (!Configure::check('CakePdf.phkondo.active') || Configure::read('CakePdf.phkondo.active') == false) {
     unset($attachmentFormats['pdf']);
- }
+}
 ?>
 <?php
 $this->Html->css('footable/footable.bootstrap.min', false);
@@ -65,6 +65,9 @@ $this->Html->script('footable', false);
                     </li>
                     <li role="presentation">
                         <a href="#notes" aria-controls="notes" role="tab" data-toggle="tab"><?= __n('Note', 'Notes', 2); ?></a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#movements" aria-controls="movements" role="tab" data-toggle="tab"><?= __n('Movement', 'Movements', 2); ?> ( <?= count($receipt['Movement']); ?> ) </a>
                     </li>
                     <li role="presentation">
                         <a href="#send-by-email" aria-controls="send-by-email" role="tab" data-toggle="tab"><?= __d('email', 'Send By Email'); ?></a>
@@ -218,6 +221,50 @@ $this->Html->script('footable', false);
                             </div>
 
                         <?php endif; ?>
+
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="movements" aria-labelledby="movements-tab">
+
+                        <br />
+                        <div class="col-sm-12">
+                            <table data-empty="<?= __('Empty'); ?>" class="footable table table-hover table-condensed table-export">
+                                <thead>
+                                    <tr>
+
+                                        <th><?php echo $this->Paginator->sort('movement_date'); ?></th>
+                                        <th><?php echo $this->Paginator->sort('description'); ?></th>
+                                        <th data-breakpoints="xs"><?php echo $this->Paginator->sort('MovementCategory.name', __('Movement Category')); ?></th>
+                                        <th data-breakpoints="xs"><?php echo $this->Paginator->sort('MovementOperation.name', __('Movement Operation')); ?></th>
+                                        <th data-breakpoints="xs"><?php echo $this->Paginator->sort('MovementType.name', __('Movement Type')); ?></th>
+                                        <th class="amount"><?php echo $this->Paginator->sort('amount'); ?></th>
+                                        <th data-breakpoints="xs" class="actions hidden-print"><?php //echo __('Actions');
+                                                                                                ?></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($receipt['Movement'] as $movement) : ?>
+                                        <tr>
+
+                                            <td><?php echo h($movement['movement_date']); ?>&nbsp;</td>
+                                            <td><?php echo h($movement['description']); ?>&nbsp;</td>
+                                            <td><?php echo h($movement['MovementCategory']['name']); ?></td>
+                                            <td><?php echo h($movement['MovementOperation']['name']); ?></td>
+                                            <td><?php echo h($movement['MovementType']['name']); ?></td>
+                                            <td class="amount"><?php if ($movement['MovementType']['id'] == 2) echo '-';
+                                                                echo number_format($movement['amount'], 2); ?>&nbsp;<?php echo Configure::read('Application.currencySign'); ?></td>
+
+                                            <td class="actions hidden-print">
+                                                <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('controller' => 'movements', 'action' => 'view', $movement['id'], '?' => array('condo_id' => $movement['Account']['condo_id'], 'account_id' => $movement['Account']['id'])), array('title' => __('Details'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
+                                                <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('controller' => 'movements', 'action' => 'edit', $movement['id'], '?' => array('condo_id' => $movement['Account']['condo_id'], 'account_id' => $movement['Account']['id'])), array('title' => __('Edit'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
+                                                <?php if ($movement['MovementOperation']['id'] != '1' || ($movement['MovementOperation']['id'] == '1' && count($movements) == 1)) { ?>
+                                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('controller' => 'movements', 'action' => 'delete', $movement['id'], '?' => array('condo_id' => $movement['Account']['condo_id'], 'account_id' => $movement['Account']['id'])), array('title' => __('Remove'), 'class' => 'btn btn-default btn-xs', 'escape' => false, 'confirm' => __('Are you sure you want to delete # %s?', $movement['description']))); ?>
+                                                <?php } ?>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
 
                     </div>
                     <div role="tabpanel" class="tab-pane" id="send-by-email" aria-labelledby="send-by-email-tab">

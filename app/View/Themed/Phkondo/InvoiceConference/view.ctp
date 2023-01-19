@@ -29,7 +29,7 @@
                         <a href="#details" aria-controls="details" role="tab" data-toggle="tab"><?= __('Details'); ?></a>
                     </li>
                     <li role="presentation">
-                        <a href="#movements" aria-controls="movements" role="tab" data-toggle="tab"><?= __n('Movement', 'Movements', 2); ?> ( <?php count($invoice_conference['Movement']); ?> ) </a>
+                        <a href="#movements" aria-controls="movements" role="tab" data-toggle="tab"><?= __n('Movement', 'Movements', 2); ?> ( <?= count($invoice_conference['Movement']); ?> ) </a>
                     </li>
                   
                 </ul>
