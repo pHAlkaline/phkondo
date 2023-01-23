@@ -33,6 +33,8 @@ App::uses('AppModel', 'Model');
  */
 class IncomeReceipt extends AppModel {
 
+    public $useTable = false; 
+
     public $_schema = array(
         'condo_id' => array(
             'type' => 'integer',

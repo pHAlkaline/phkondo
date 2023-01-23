@@ -1,34 +1,28 @@
--- phpMyAdmin SQL Dump
--- version 4.1.12
--- http://www.phpmyadmin.net
+-- MySQL dump 10.13  Distrib 8.0.19, for Win64 (x86_64)
 --
--- Host: localhost
--- Generation Time: 21-Dez-2022 às 17:23
--- Versão do servidor: 5.6.16
--- PHP Version: 5.5.11
-
-SET FOREIGN_KEY_CHECKS=0;
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
+-- Host: 127.0.0.1    Database: phkondo
+-- ------------------------------------------------------
+-- Server version	5.5.5-10.9.3-MariaDB-1:10.9.3+maria~ubu2204
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Database: `phkondo`
---
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `accounts`
+-- Table structure for table `accounts`
 --
 
 DROP TABLE IF EXISTS `accounts`;
-CREATE TABLE IF NOT EXISTS `accounts` (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `accounts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `condo_id` int(11) NOT NULL,
   `title` varchar(50) NOT NULL,
@@ -40,80 +34,146 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `iban` varchar(36) DEFAULT NULL,
   `swift` varchar(36) DEFAULT NULL,
   `main_account` tinyint(1) NOT NULL,
-  `comments` text,
-  `balance` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `comments` text DEFAULT NULL,
+  `balance` decimal(10,2) NOT NULL DEFAULT 0.00,
   `modified` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `CONDO` (`condo_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+  KEY `CONDO` (`condo_id`),
+  CONSTRAINT `accounts_ibfk_1` FOREIGN KEY (`condo_id`) REFERENCES `condos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estrutura da tabela `accounts_fiscal_years`
+-- Table structure for table `accounts_fiscal_years`
 --
 
 DROP TABLE IF EXISTS `accounts_fiscal_years`;
-CREATE TABLE IF NOT EXISTS `accounts_fiscal_years` (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `accounts_fiscal_years` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `account_id` int(11) NOT NULL,
   `fiscal_year_id` int(11) NOT NULL,
-  `balance` decimal(11,2) NOT NULL DEFAULT '0.00',
+  `balance` decimal(11,2) NOT NULL DEFAULT 0.00,
   `modified` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `ENTITY` (`account_id`),
-  KEY `FRACTION` (`fiscal_year_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+  KEY `FRACTION` (`fiscal_year_id`),
+  CONSTRAINT `accounts_fiscal_years_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `accounts_fiscal_years_ibfk_2` FOREIGN KEY (`fiscal_year_id`) REFERENCES `fiscal_years` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estrutura da tabela `administrators`
+-- Table structure for table `administrators`
 --
 
 DROP TABLE IF EXISTS `administrators`;
-CREATE TABLE IF NOT EXISTS `administrators` (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `administrators` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `condo_id` int(11) NOT NULL,
   `entity_id` int(11) NOT NULL,
   `fiscal_year_id` int(11) NOT NULL,
   `title` varchar(50) DEFAULT NULL,
-  `functions` text,
+  `functions` text DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `CONDO` (`condo_id`),
   KEY `ENTITY` (`entity_id`),
-  KEY `FISCALYEAR` (`fiscal_year_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+  KEY `FISCALYEAR` (`fiscal_year_id`),
+  CONSTRAINT `administrators_ibfk_1` FOREIGN KEY (`condo_id`) REFERENCES `condos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `administrators_ibfk_2` FOREIGN KEY (`entity_id`) REFERENCES `entities` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `administrators_ibfk_3` FOREIGN KEY (`fiscal_year_id`) REFERENCES `fiscal_years` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estrutura da tabela `budgets`
+-- Table structure for table `attachments`
+--
+
+DROP TABLE IF EXISTS `attachments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `attachments` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `model` varchar(20) NOT NULL,
+  `foreign_key` int(11) NOT NULL,
+  `name` varchar(32) NOT NULL,
+  `attachment` varchar(255) NOT NULL,
+  `dir` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `size` int(11) DEFAULT 0,
+  `active` tinyint(1) DEFAULT 1,
+  `modified` datetime DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `budget_statuses`
+--
+
+DROP TABLE IF EXISTS `budget_statuses`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `budget_statuses` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL DEFAULT '',
+  `active` tinyint(1) NOT NULL DEFAULT 1,
+  `modified` datetime DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `budget_types`
+--
+
+DROP TABLE IF EXISTS `budget_types`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `budget_types` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL DEFAULT '',
+  `active` tinyint(1) NOT NULL DEFAULT 1,
+  `modified` datetime DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `budgets`
 --
 
 DROP TABLE IF EXISTS `budgets`;
-CREATE TABLE IF NOT EXISTS `budgets` (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `budgets` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `condo_id` int(11) NOT NULL,
   `fiscal_year_id` int(11) NOT NULL,
   `budget_type_id` int(11) NOT NULL,
-  `budget_status_id` int(11) NOT NULL DEFAULT '1',
+  `budget_status_id` int(11) NOT NULL DEFAULT 1,
   `title` varchar(40) NOT NULL,
   `budget_date` date NOT NULL,
   `requested_amount` decimal(10,2) DEFAULT NULL,
   `amount` decimal(10,2) NOT NULL,
-  `common_reserve_fund` decimal(5,2) NOT NULL DEFAULT '0.00',
+  `common_reserve_fund` decimal(5,2) NOT NULL DEFAULT 0.00,
   `begin_date` date NOT NULL,
   `shares` smallint(6) NOT NULL,
   `share_periodicity_id` int(11) NOT NULL,
   `share_distribution_id` int(11) NOT NULL,
   `due_days` smallint(6) NOT NULL,
   `meeting_draft` varchar(100) DEFAULT NULL,
-  `comments` text,
+  `comments` text DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -122,49 +182,24 @@ CREATE TABLE IF NOT EXISTS `budgets` (
   KEY `BUDGETYPE` (`budget_type_id`),
   KEY `BUDGETSTATUS` (`budget_status_id`),
   KEY `SHAREPERIODICITY` (`share_periodicity_id`),
-  KEY `SHAREDISTRIBUTION` (`share_distribution_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `budget_statuses`
---
-
-DROP TABLE IF EXISTS `budget_statuses`;
-CREATE TABLE IF NOT EXISTS `budget_statuses` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL DEFAULT '',
-  `active` tinyint(1) NOT NULL DEFAULT '1',
-  `modified` datetime DEFAULT NULL,
-  `created` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+  KEY `SHAREDISTRIBUTION` (`share_distribution_id`),
+  CONSTRAINT `budgets_ibfk_1` FOREIGN KEY (`condo_id`) REFERENCES `condos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `budgets_ibfk_2` FOREIGN KEY (`fiscal_year_id`) REFERENCES `fiscal_years` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `budgets_ibfk_3` FOREIGN KEY (`budget_type_id`) REFERENCES `budget_types` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `budgets_ibfk_4` FOREIGN KEY (`budget_status_id`) REFERENCES `budget_statuses` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `budgets_ibfk_5` FOREIGN KEY (`share_periodicity_id`) REFERENCES `share_periodicities` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `budgets_ibfk_6` FOREIGN KEY (`share_distribution_id`) REFERENCES `share_distributions` (`id`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estrutura da tabela `budget_types`
---
-
-DROP TABLE IF EXISTS `budget_types`;
-CREATE TABLE IF NOT EXISTS `budget_types` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL DEFAULT '',
-  `active` tinyint(1) NOT NULL DEFAULT '1',
-  `modified` datetime DEFAULT NULL,
-  `created` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `comments`
+-- Table structure for table `comments`
 --
 
 DROP TABLE IF EXISTS `comments`;
-CREATE TABLE IF NOT EXISTS `comments` (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `comments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `foreign_model` varchar(100) NOT NULL,
   `foreign_id` int(11) NOT NULL,
@@ -176,159 +211,208 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `content` text NOT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `ix_comments_foreign_data` (`foreign_id`,`foreign_model`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+  KEY `COMMENTS_FOREIGN_ID_MODEL` (`foreign_id`,`foreign_model`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estrutura da tabela `condos`
+-- Table structure for table `condos`
 --
 
 DROP TABLE IF EXISTS `condos`;
-CREATE TABLE IF NOT EXISTS `condos` (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `condos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(50) NOT NULL,
   `taxpayer_number` varchar(9) NOT NULL,
   `address` text NOT NULL,
   `email` varchar(50) DEFAULT NULL,
   `land_registry_year` int(11) DEFAULT NULL,
-  `comments` text,
-  `active` tinyint(1) NOT NULL DEFAULT '1',
+  `comments` text DEFAULT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT 1,
   `modified` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `matrix_registration` varchar(45) DEFAULT NULL,
   `land_registry` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estrutura da tabela `entities`
+-- Table structure for table `drafts`
+--
+
+DROP TABLE IF EXISTS `drafts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `drafts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) NOT NULL,
+  `content` text NOT NULL,
+  `content_model` text DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `entities`
 --
 
 DROP TABLE IF EXISTS `entities`;
-CREATE TABLE IF NOT EXISTS `entities` (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `entities` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `vat_number` varchar(9) DEFAULT NULL,
   `representative` varchar(50) DEFAULT NULL,
-  `address` text,
+  `address` text DEFAULT NULL,
   `contacts` varchar(100) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `bank` varchar(50) DEFAULT NULL,
   `nib` varchar(24) DEFAULT NULL,
-  `comments` text,
+  `comments` text DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estrutura da tabela `entities_fractions`
+-- Table structure for table `entities_fractions`
 --
 
 DROP TABLE IF EXISTS `entities_fractions`;
-CREATE TABLE IF NOT EXISTS `entities_fractions` (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `entities_fractions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `entity_id` int(11) NOT NULL,
   `fraction_id` int(11) NOT NULL,
-  `owner_percentage` decimal(5,2) NOT NULL DEFAULT '0.00',
+  `owner_percentage` decimal(5,2) NOT NULL DEFAULT 0.00,
   `modified` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `ENTITY` (`entity_id`),
-  KEY `FRACTION` (`fraction_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+  KEY `FRACTION` (`fraction_id`),
+  CONSTRAINT `entities_fractions_ibfk_1` FOREIGN KEY (`entity_id`) REFERENCES `entities` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `entities_fractions_ibfk_2` FOREIGN KEY (`fraction_id`) REFERENCES `fractions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estrutura da tabela `entity_types`
+-- Table structure for table `entity_types`
 --
 
 DROP TABLE IF EXISTS `entity_types`;
-CREATE TABLE IF NOT EXISTS `entity_types` (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `entity_types` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL DEFAULT '',
-  `active` tinyint(1) NOT NULL DEFAULT '1',
+  `active` tinyint(1) NOT NULL DEFAULT 1,
   `modified` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estrutura da tabela `fiscal_years`
+-- Table structure for table `fiscal_years`
 --
 
 DROP TABLE IF EXISTS `fiscal_years`;
-CREATE TABLE IF NOT EXISTS `fiscal_years` (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `fiscal_years` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `condo_id` int(11) NOT NULL,
   `title` varchar(40) NOT NULL,
   `open_date` date NOT NULL,
   `close_date` date DEFAULT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT '1',
+  `active` tinyint(1) NOT NULL DEFAULT 1,
   `modified` datetime NOT NULL,
   `created` datetime NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `CondoID` (`condo_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+  KEY `CONDO` (`condo_id`),
+  CONSTRAINT `fiscal_years_ibfk_1` FOREIGN KEY (`condo_id`) REFERENCES `condos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estrutura da tabela `fractions`
+-- Table structure for table `fraction_types`
+--
+
+DROP TABLE IF EXISTS `fraction_types`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `fraction_types` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL DEFAULT '',
+  `active` tinyint(1) NOT NULL DEFAULT 1,
+  `modified` datetime DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `fractions`
 --
 
 DROP TABLE IF EXISTS `fractions`;
-CREATE TABLE IF NOT EXISTS `fractions` (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `fractions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `condo_id` int(11) NOT NULL,
   `manager_id` int(11) DEFAULT NULL,
   `fraction` varchar(10) NOT NULL,
-  `fraction_type_id` int(11) NOT NULL DEFAULT '1',
+  `fraction_type_id` int(11) NOT NULL DEFAULT 1,
   `location` varchar(100) NOT NULL,
   `description` varchar(50) DEFAULT NULL,
   `permillage` decimal(6,2) DEFAULT NULL,
-  `comments` text,
+  `comments` text DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `MANAGER` (`manager_id`),
   KEY `CONDO` (`condo_id`),
-  KEY `fk_fractions_1_idx` (`fraction_type_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+  KEY `FRACTIONTYPE` (`fraction_type_id`),
+  CONSTRAINT `fk_fractions_1` FOREIGN KEY (`fraction_type_id`) REFERENCES `fraction_types` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `fractions_ibfk_1` FOREIGN KEY (`manager_id`) REFERENCES `entities` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `fractions_ibfk_2` FOREIGN KEY (`condo_id`) REFERENCES `condos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estrutura da tabela `fraction_types`
+-- Table structure for table `insurance_types`
 --
 
-DROP TABLE IF EXISTS `fraction_types`;
-CREATE TABLE IF NOT EXISTS `fraction_types` (
+DROP TABLE IF EXISTS `insurance_types`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `insurance_types` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL DEFAULT '',
-  `active` tinyint(1) NOT NULL DEFAULT '1',
+  `active` tinyint(1) NOT NULL DEFAULT 1,
   `modified` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estrutura da tabela `insurances`
+-- Table structure for table `insurances`
 --
 
 DROP TABLE IF EXISTS `insurances`;
-CREATE TABLE IF NOT EXISTS `insurances` (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `insurances` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `condo_id` int(11) DEFAULT NULL,
   `fraction_id` int(11) DEFAULT NULL,
@@ -344,33 +428,38 @@ CREATE TABLE IF NOT EXISTS `insurances` (
   PRIMARY KEY (`id`),
   KEY `CONDO` (`condo_id`),
   KEY `FRACTION` (`fraction_id`),
-  KEY `INSURANCETYPE` (`insurance_type_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+  KEY `INSURANCETYPE` (`insurance_type_id`),
+  CONSTRAINT `insurances_ibfk_1` FOREIGN KEY (`condo_id`) REFERENCES `condos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `insurances_ibfk_2` FOREIGN KEY (`fraction_id`) REFERENCES `fractions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `insurances_ibfk_3` FOREIGN KEY (`insurance_type_id`) REFERENCES `insurance_types` (`id`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estrutura da tabela `insurance_types`
+-- Table structure for table `invoice_conference_statuses`
 --
 
-DROP TABLE IF EXISTS `insurance_types`;
-CREATE TABLE IF NOT EXISTS `insurance_types` (
+DROP TABLE IF EXISTS `invoice_conference_statuses`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `invoice_conference_statuses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL DEFAULT '',
-  `active` tinyint(1) NOT NULL DEFAULT '1',
+  `active` tinyint(1) NOT NULL DEFAULT 1,
   `modified` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estrutura da tabela `invoice_conferences`
+-- Table structure for table `invoice_conferences`
 --
 
 DROP TABLE IF EXISTS `invoice_conferences`;
-CREATE TABLE IF NOT EXISTS `invoice_conferences` (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `invoice_conferences` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `condo_id` int(11) NOT NULL,
   `fiscal_year_id` int(11) NOT NULL,
@@ -382,40 +471,29 @@ CREATE TABLE IF NOT EXISTS `invoice_conferences` (
   `payment_due_date` date NOT NULL,
   `payment_date` date DEFAULT NULL,
   `invoice_conference_status_id` int(11) NOT NULL,
-  `comments` text,
+  `comments` text DEFAULT NULL,
   `modified` datetime NOT NULL,
   `created` datetime NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `condo_id` (`condo_id`),
-  KEY `fiscal_year_id` (`fiscal_year_id`),
-  KEY `status_id` (`invoice_conference_status_id`),
-  KEY `supplier_id` (`supplier_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `invoice_conference_statuses`
---
-
-DROP TABLE IF EXISTS `invoice_conference_statuses`;
-CREATE TABLE IF NOT EXISTS `invoice_conference_statuses` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL DEFAULT '',
-  `active` tinyint(1) NOT NULL DEFAULT '1',
-  `modified` datetime DEFAULT NULL,
-  `created` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+  KEY `CONDO` (`condo_id`),
+  KEY `FISCALYEAR` (`fiscal_year_id`),
+  KEY `STATUS` (`invoice_conference_status_id`),
+  KEY `SUPPLIER` (`supplier_id`),
+  CONSTRAINT `invoice_conferences_ibfk_1` FOREIGN KEY (`condo_id`) REFERENCES `condos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `invoice_conferences_ibfk_2` FOREIGN KEY (`invoice_conference_status_id`) REFERENCES `invoice_conference_statuses` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `invoice_conferences_ibfk_3` FOREIGN KEY (`fiscal_year_id`) REFERENCES `fiscal_years` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `invoice_conferences_ibfk_4` FOREIGN KEY (`supplier_id`) REFERENCES `suppliers` (`id`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estrutura da tabela `maintenances`
+-- Table structure for table `maintenances`
 --
 
 DROP TABLE IF EXISTS `maintenances`;
-CREATE TABLE IF NOT EXISTS `maintenances` (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `maintenances` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `condo_id` int(11) NOT NULL,
   `title` varchar(50) NOT NULL,
@@ -426,23 +504,77 @@ CREATE TABLE IF NOT EXISTS `maintenances` (
   `last_inspection` date DEFAULT NULL,
   `next_inspection` date DEFAULT NULL,
   `supplier_id` int(11) DEFAULT NULL,
-  `comments` text,
-  `active` tinyint(1) DEFAULT '1',
+  `comments` text DEFAULT NULL,
+  `active` tinyint(1) DEFAULT 1,
   `modified` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `CONDO` (`condo_id`),
-  KEY `supplier_id` (`supplier_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+  KEY `SUPPLIER` (`supplier_id`),
+  CONSTRAINT `maintenances_ibfk_1` FOREIGN KEY (`condo_id`) REFERENCES `condos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `maintenances_ibfk_2` FOREIGN KEY (`supplier_id`) REFERENCES `suppliers` (`id`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estrutura da tabela `movements`
+-- Table structure for table `movement_categories`
+--
+
+DROP TABLE IF EXISTS `movement_categories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `movement_categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL DEFAULT '',
+  `active` tinyint(1) NOT NULL DEFAULT 1,
+  `modified` datetime DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `movement_operations`
+--
+
+DROP TABLE IF EXISTS `movement_operations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `movement_operations` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL DEFAULT '',
+  `active` tinyint(1) NOT NULL DEFAULT 1,
+  `modified` datetime DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `movement_types`
+--
+
+DROP TABLE IF EXISTS `movement_types`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `movement_types` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL DEFAULT '',
+  `active` tinyint(1) NOT NULL DEFAULT 1,
+  `modified` datetime DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `movements`
 --
 
 DROP TABLE IF EXISTS `movements`;
-CREATE TABLE IF NOT EXISTS `movements` (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `movements` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `movement_type_id` int(11) NOT NULL,
   `account_id` int(11) NOT NULL,
@@ -454,7 +586,7 @@ CREATE TABLE IF NOT EXISTS `movements` (
   `movement_operation_id` int(11) NOT NULL,
   `document` varchar(20) DEFAULT NULL,
   `document_id` int(11) NOT NULL,
-  `document_model` VARCHAR(50) NULL,
+  `document_model` varchar(50) DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -462,65 +594,57 @@ CREATE TABLE IF NOT EXISTS `movements` (
   KEY `ACCOUNT` (`account_id`),
   KEY `FISCALYEAR` (`fiscal_year_id`),
   KEY `MOVEMENTCATEGORY` (`movement_category_id`),
-  KEY `MOVEMENTOPERATION` (`movement_operation_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+  KEY `MOVEMENTOPERATION` (`movement_operation_id`),
+  CONSTRAINT `movements_ibfk_1` FOREIGN KEY (`movement_type_id`) REFERENCES `movement_types` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `movements_ibfk_3` FOREIGN KEY (`fiscal_year_id`) REFERENCES `fiscal_years` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `movements_ibfk_4` FOREIGN KEY (`movement_category_id`) REFERENCES `movement_categories` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `movements_ibfk_5` FOREIGN KEY (`movement_operation_id`) REFERENCES `movement_operations` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `movements_ibfk_6` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estrutura da tabela `movement_categories`
+-- Table structure for table `note_statuses`
 --
 
-DROP TABLE IF EXISTS `movement_categories`;
-CREATE TABLE IF NOT EXISTS `movement_categories` (
+DROP TABLE IF EXISTS `note_statuses`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `note_statuses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL DEFAULT '',
-  `active` tinyint(1) NOT NULL DEFAULT '1',
+  `active` tinyint(1) NOT NULL DEFAULT 1,
   `modified` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estrutura da tabela `movement_operations`
+-- Table structure for table `note_types`
 --
 
-DROP TABLE IF EXISTS `movement_operations`;
-CREATE TABLE IF NOT EXISTS `movement_operations` (
+DROP TABLE IF EXISTS `note_types`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `note_types` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL DEFAULT '',
-  `active` tinyint(1) NOT NULL DEFAULT '1',
+  `active` tinyint(1) NOT NULL DEFAULT 1,
   `modified` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `movement_types`
---
-
-DROP TABLE IF EXISTS `movement_types`;
-CREATE TABLE IF NOT EXISTS `movement_types` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL DEFAULT '',
-  `active` tinyint(1) NOT NULL DEFAULT '1',
-  `modified` datetime DEFAULT NULL,
-  `created` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estrutura da tabela `notes`
+-- Table structure for table `notes`
 --
 
 DROP TABLE IF EXISTS `notes`;
-CREATE TABLE IF NOT EXISTS `notes` (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `notes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `note_type_id` int(11) NOT NULL,
   `document` varchar(25) DEFAULT NULL,
@@ -528,8 +652,8 @@ CREATE TABLE IF NOT EXISTS `notes` (
   `entity_id` int(11) DEFAULT NULL,
   `fiscal_year_id` int(11) DEFAULT NULL,
   `budget_id` int(11) DEFAULT NULL,
-  `amount` decimal(10,2) NOT NULL DEFAULT '0.00',
-  `pending_amount` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `amount` decimal(10,2) NOT NULL DEFAULT 0.00,
+  `pending_amount` decimal(10,2) NOT NULL DEFAULT 0.00,
   `title` varchar(100) NOT NULL,
   `document_date` date NOT NULL,
   `due_date` date DEFAULT NULL,
@@ -545,49 +669,25 @@ CREATE TABLE IF NOT EXISTS `notes` (
   KEY `FISCALYEAR` (`fiscal_year_id`),
   KEY `BUDGET` (`budget_id`),
   KEY `NOTESTATUS` (`note_status_id`),
-  KEY `RECEIPT` (`receipt_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `note_statuses`
---
-
-DROP TABLE IF EXISTS `note_statuses`;
-CREATE TABLE IF NOT EXISTS `note_statuses` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL DEFAULT '',
-  `active` tinyint(1) NOT NULL DEFAULT '1',
-  `modified` datetime DEFAULT NULL,
-  `created` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+  KEY `RECEIPT` (`receipt_id`),
+  CONSTRAINT `notes_ibfk_1` FOREIGN KEY (`note_type_id`) REFERENCES `note_types` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `notes_ibfk_2` FOREIGN KEY (`fraction_id`) REFERENCES `fractions` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `notes_ibfk_3` FOREIGN KEY (`entity_id`) REFERENCES `entities` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `notes_ibfk_4` FOREIGN KEY (`fiscal_year_id`) REFERENCES `fiscal_years` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `notes_ibfk_5` FOREIGN KEY (`budget_id`) REFERENCES `budgets` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `notes_ibfk_6` FOREIGN KEY (`note_status_id`) REFERENCES `note_statuses` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `notes_ibfk_7` FOREIGN KEY (`receipt_id`) REFERENCES `receipts` (`id`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estrutura da tabela `note_types`
---
-
-DROP TABLE IF EXISTS `note_types`;
-CREATE TABLE IF NOT EXISTS `note_types` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL DEFAULT '',
-  `active` tinyint(1) NOT NULL DEFAULT '1',
-  `modified` datetime DEFAULT NULL,
-  `created` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `ratings`
+-- Table structure for table `ratings`
 --
 
 DROP TABLE IF EXISTS `ratings`;
-CREATE TABLE IF NOT EXISTS `ratings` (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `ratings` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `foreign_model` varchar(100) NOT NULL,
   `foreign_id` int(11) NOT NULL,
@@ -595,69 +695,37 @@ CREATE TABLE IF NOT EXISTS `ratings` (
   `rating` float NOT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `ix_ratings_foreign_data` (`foreign_id`,`foreign_model`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `receipts`
---
-
-DROP TABLE IF EXISTS `receipts`;
-CREATE TABLE IF NOT EXISTS `receipts` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `document` varchar(25) DEFAULT NULL,
-  `document_date` date NOT NULL,
-  `receipt_status_id` int(11) NOT NULL,
-  `payment_user_id` int(11) DEFAULT NULL,
-  `receipt_payment_type_id` int(11) DEFAULT NULL,
-  `payment_date` date DEFAULT NULL,
-  `total_amount` decimal(10,2) NOT NULL DEFAULT '0.00',
-  `condo_id` int(11) NOT NULL,
-  `fraction_id` int(11) DEFAULT NULL,
-  `entity_id` int(11) NOT NULL,
-  `address` text,
-  `observations` text,
-  `cancel_user_id` int(11) DEFAULT NULL,
-  `cancel_motive` text,
-  `modified` datetime DEFAULT NULL,
-  `created` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `CONDO` (`condo_id`),
-  KEY `CLIENT` (`entity_id`),
-  KEY `RECEIPTSTATUS` (`receipt_status_id`),
-  KEY `PaymentUser` (`payment_user_id`),
-  KEY `PaymentType` (`receipt_payment_type_id`),
-  KEY `FRACTION` (`fraction_id`),
-  KEY `CancelUser` (`cancel_user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+  KEY `RATINGSFOREIGNIDMODEL` (`foreign_id`,`foreign_model`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estrutura da tabela `receipt_counters`
+-- Table structure for table `receipt_counters`
 --
 
 DROP TABLE IF EXISTS `receipt_counters`;
-CREATE TABLE IF NOT EXISTS `receipt_counters` (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `receipt_counters` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `condo_id` int(11) NOT NULL,
   `counter` int(11) NOT NULL,
   `modified` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `CondoID` (`condo_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+  KEY `CONDO` (`condo_id`),
+  CONSTRAINT `receipt_counters_ibfk_1` FOREIGN KEY (`condo_id`) REFERENCES `condos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estrutura da tabela `receipt_notes`
+-- Table structure for table `receipt_notes`
 --
 
 DROP TABLE IF EXISTS `receipt_notes`;
-CREATE TABLE IF NOT EXISTS `receipt_notes` (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `receipt_notes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `note_type_id` int(11) NOT NULL,
   `document` varchar(25) DEFAULT NULL,
@@ -665,8 +733,8 @@ CREATE TABLE IF NOT EXISTS `receipt_notes` (
   `entity_id` int(11) DEFAULT NULL,
   `fiscal_year_id` int(11) DEFAULT NULL,
   `budget_id` int(11) DEFAULT NULL,
-  `amount` decimal(10,2) NOT NULL DEFAULT '0.00',
-  `pending_amount` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `amount` decimal(10,2) NOT NULL DEFAULT 0.00,
+  `pending_amount` decimal(10,2) NOT NULL DEFAULT 0.00,
   `title` varchar(100) NOT NULL,
   `document_date` date NOT NULL,
   `due_date` date DEFAULT NULL,
@@ -682,111 +750,229 @@ CREATE TABLE IF NOT EXISTS `receipt_notes` (
   KEY `FISCALYEAR` (`fiscal_year_id`),
   KEY `BUDGET` (`budget_id`),
   KEY `NOTESTATUS` (`note_status_id`),
-  KEY `RECEIPT` (`receipt_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+  KEY `RECEIPT` (`receipt_id`),
+  CONSTRAINT `receipt_notes_ibfk_1` FOREIGN KEY (`receipt_id`) REFERENCES `receipts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estrutura da tabela `receipt_payment_types`
+-- Table structure for table `receipt_payment_types`
 --
 
 DROP TABLE IF EXISTS `receipt_payment_types`;
-CREATE TABLE IF NOT EXISTS `receipt_payment_types` (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `receipt_payment_types` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL DEFAULT '',
-  `active` tinyint(1) NOT NULL DEFAULT '1',
+  `active` tinyint(1) NOT NULL DEFAULT 1,
   `modified` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estrutura da tabela `receipt_statuses`
+-- Table structure for table `receipt_statuses`
 --
 
 DROP TABLE IF EXISTS `receipt_statuses`;
-CREATE TABLE IF NOT EXISTS `receipt_statuses` (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `receipt_statuses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL DEFAULT '',
-  `active` tinyint(1) NOT NULL DEFAULT '1',
+  `active` tinyint(1) NOT NULL DEFAULT 1,
   `modified` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estrutura da tabela `share_distributions`
+-- Table structure for table `receipts`
+--
+
+DROP TABLE IF EXISTS `receipts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `receipts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `document` varchar(25) DEFAULT NULL,
+  `document_date` date NOT NULL,
+  `receipt_status_id` int(11) NOT NULL,
+  `payment_user_id` int(11) DEFAULT NULL,
+  `receipt_payment_type_id` int(11) DEFAULT NULL,
+  `payment_date` date DEFAULT NULL,
+  `total_amount` decimal(10,2) NOT NULL DEFAULT 0.00,
+  `condo_id` int(11) NOT NULL,
+  `fraction_id` int(11) DEFAULT NULL,
+  `entity_id` int(11) NOT NULL,
+  `address` text DEFAULT NULL,
+  `observations` text DEFAULT NULL,
+  `cancel_user_id` int(11) DEFAULT NULL,
+  `cancel_motive` text DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `CONDO` (`condo_id`),
+  KEY `CLIENT` (`entity_id`),
+  KEY `RECEIPTSTATUS` (`receipt_status_id`),
+  KEY `PAYMENTUSER` (`payment_user_id`),
+  KEY `PAYMENTTYPE` (`receipt_payment_type_id`),
+  KEY `FRACTION` (`fraction_id`),
+  KEY `CANCELUSER` (`cancel_user_id`),
+  CONSTRAINT `fk_receipts_1` FOREIGN KEY (`fraction_id`) REFERENCES `fractions` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `receipts_ibfk_1` FOREIGN KEY (`condo_id`) REFERENCES `condos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `receipts_ibfk_2` FOREIGN KEY (`entity_id`) REFERENCES `entities` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `receipts_ibfk_3` FOREIGN KEY (`receipt_status_id`) REFERENCES `receipt_statuses` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `receipts_ibfk_4` FOREIGN KEY (`receipt_payment_type_id`) REFERENCES `receipt_payment_types` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `receipts_ibfk_5` FOREIGN KEY (`payment_user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `receipts_ibfk_6` FOREIGN KEY (`cancel_user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `schema_migrations`
+--
+
+DROP TABLE IF EXISTS `schema_migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `schema_migrations` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `class` varchar(255) NOT NULL,
+  `type` varchar(50) NOT NULL,
+  `created` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `share_distributions`
 --
 
 DROP TABLE IF EXISTS `share_distributions`;
-CREATE TABLE IF NOT EXISTS `share_distributions` (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `share_distributions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL DEFAULT '',
-  `active` tinyint(1) NOT NULL DEFAULT '1',
+  `active` tinyint(1) NOT NULL DEFAULT 1,
   `modified` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estrutura da tabela `share_periodicities`
+-- Table structure for table `share_periodicities`
 --
 
 DROP TABLE IF EXISTS `share_periodicities`;
-CREATE TABLE IF NOT EXISTS `share_periodicities` (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `share_periodicities` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL DEFAULT '',
-  `active` tinyint(1) NOT NULL DEFAULT '1',
+  `active` tinyint(1) NOT NULL DEFAULT 1,
   `modified` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estrutura da tabela `suppliers`
+-- Table structure for table `suppliers`
 --
 
 DROP TABLE IF EXISTS `suppliers`;
-CREATE TABLE IF NOT EXISTS `suppliers` (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `suppliers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `vat_number` varchar(9) DEFAULT NULL,
   `representative` varchar(50) DEFAULT NULL,
-  `address` text,
+  `address` text DEFAULT NULL,
   `contacts` varchar(100) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `bank` varchar(50) DEFAULT NULL,
   `nib` varchar(24) DEFAULT NULL,
-  `comments` text,
+  `comments` text DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estrutura da tabela `supports`
+-- Table structure for table `support_categories`
+--
+
+DROP TABLE IF EXISTS `support_categories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `support_categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL DEFAULT '',
+  `active` tinyint(1) NOT NULL DEFAULT 1,
+  `modified` datetime DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `support_priorities`
+--
+
+DROP TABLE IF EXISTS `support_priorities`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `support_priorities` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL DEFAULT '',
+  `order` int(11) NOT NULL DEFAULT 0,
+  `active` tinyint(1) NOT NULL DEFAULT 1,
+  `modified` datetime DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `support_statuses`
+--
+
+DROP TABLE IF EXISTS `support_statuses`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `support_statuses` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL DEFAULT '',
+  `active` tinyint(1) NOT NULL DEFAULT 1,
+  `modified` datetime DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `supports`
 --
 
 DROP TABLE IF EXISTS `supports`;
-CREATE TABLE IF NOT EXISTS `supports` (
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `supports` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `condo_id` int(11) NOT NULL,
   `fraction_id` int(11) NOT NULL,
   `entity_id` int(11) NOT NULL,
   `subject` varchar(45) DEFAULT NULL,
-  `description` text,
-  `notes` text,
+  `description` text DEFAULT NULL,
+  `notes` text DEFAULT NULL,
   `support_category_id` int(11) NOT NULL,
   `support_priority_id` int(11) NOT NULL,
   `support_status_id` int(11) NOT NULL,
@@ -794,242 +980,66 @@ CREATE TABLE IF NOT EXISTS `supports` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_support_1_idx` (`support_category_id`),
-  KEY `fk_support_2_idx` (`support_priority_id`),
-  KEY `fk_support_3_idx` (`support_status_id`),
-  KEY `fk_support_4_idx` (`condo_id`),
-  KEY `fk_support_5_idx` (`fraction_id`),
-  KEY `fk_support_6_idx` (`entity_id`),
-  KEY `fk_support_7_idx` (`assigned_user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `support_categories`
---
-
-DROP TABLE IF EXISTS `support_categories`;
-CREATE TABLE IF NOT EXISTS `support_categories` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL DEFAULT '',
-  `active` tinyint(1) NOT NULL DEFAULT '1',
-  `modified` datetime DEFAULT NULL,
-  `created` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+  KEY `SUPPORTCATEGORY` (`support_category_id`),
+  KEY `SUPPORTPRIORITY` (`support_priority_id`),
+  KEY `SUPPORTSTATUS` (`support_status_id`),
+  KEY `CONDO` (`condo_id`),
+  KEY `FRACTION` (`fraction_id`),
+  KEY `ENTITY` (`entity_id`),
+  KEY `ASSIGNEDUSER` (`assigned_user_id`),
+  CONSTRAINT `fk_support_1` FOREIGN KEY (`support_category_id`) REFERENCES `support_categories` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `fk_support_2` FOREIGN KEY (`support_priority_id`) REFERENCES `support_priorities` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `fk_support_3` FOREIGN KEY (`support_status_id`) REFERENCES `support_statuses` (`id`) ON UPDATE CASCADE,
+  CONSTRAINT `fk_support_4` FOREIGN KEY (`condo_id`) REFERENCES `condos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_support_5` FOREIGN KEY (`fraction_id`) REFERENCES `fractions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_support_6` FOREIGN KEY (`entity_id`) REFERENCES `entities` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_support_7` FOREIGN KEY (`assigned_user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Estrutura da tabela `support_priorities`
---
-
-DROP TABLE IF EXISTS `support_priorities`;
-CREATE TABLE IF NOT EXISTS `support_priorities` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL DEFAULT '',
-  `order` int(11) NOT NULL DEFAULT '0',
-  `active` tinyint(1) NOT NULL DEFAULT '1',
-  `modified` datetime DEFAULT NULL,
-  `created` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `support_statuses`
---
-
-DROP TABLE IF EXISTS `support_statuses`;
-CREATE TABLE IF NOT EXISTS `support_statuses` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL DEFAULT '',
-  `active` tinyint(1) NOT NULL DEFAULT '1',
-  `modified` datetime DEFAULT NULL,
-  `created` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `users`
+-- Table structure for table `users`
 --
 
 DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(40) NOT NULL,
   `username` varchar(40) DEFAULT NULL,
   `password` varchar(50) DEFAULT NULL,
   `role` varchar(20) DEFAULT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT '1',
+  `active` tinyint(1) NOT NULL DEFAULT 1,
   `modified` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `model` varchar(45) DEFAULT NULL,
   `foreign_key` int(11) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
-
---
--- Constraints for dumped tables
---
-
---
--- Limitadores para a tabela `accounts`
---
-ALTER TABLE `accounts`
-  ADD CONSTRAINT `accounts_ibfk_1` FOREIGN KEY (`condo_id`) REFERENCES `condos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Limitadores para a tabela `accounts_fiscal_years`
---
-ALTER TABLE `accounts_fiscal_years`
-  ADD CONSTRAINT `accounts_fiscal_years_ibfk_2` FOREIGN KEY (`fiscal_year_id`) REFERENCES `fiscal_years` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `accounts_fiscal_years_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Limitadores para a tabela `administrators`
---
-ALTER TABLE `administrators`
-  ADD CONSTRAINT `administrators_ibfk_2` FOREIGN KEY (`entity_id`) REFERENCES `entities` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `administrators_ibfk_1` FOREIGN KEY (`condo_id`) REFERENCES `condos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `administrators_ibfk_3` FOREIGN KEY (`fiscal_year_id`) REFERENCES `fiscal_years` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Limitadores para a tabela `budgets`
---
-ALTER TABLE `budgets`
-  ADD CONSTRAINT `budgets_ibfk_2` FOREIGN KEY (`fiscal_year_id`) REFERENCES `fiscal_years` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `budgets_ibfk_1` FOREIGN KEY (`condo_id`) REFERENCES `condos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `budgets_ibfk_3` FOREIGN KEY (`budget_type_id`) REFERENCES `budget_types` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `budgets_ibfk_4` FOREIGN KEY (`budget_status_id`) REFERENCES `budget_statuses` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `budgets_ibfk_5` FOREIGN KEY (`share_periodicity_id`) REFERENCES `share_periodicities` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `budgets_ibfk_6` FOREIGN KEY (`share_distribution_id`) REFERENCES `share_distributions` (`id`) ON UPDATE CASCADE;
-
---
--- Limitadores para a tabela `entities_fractions`
---
-ALTER TABLE `entities_fractions`
-  ADD CONSTRAINT `entities_fractions_ibfk_1` FOREIGN KEY (`entity_id`) REFERENCES `entities` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `entities_fractions_ibfk_2` FOREIGN KEY (`fraction_id`) REFERENCES `fractions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Limitadores para a tabela `fiscal_years`
---
-ALTER TABLE `fiscal_years`
-  ADD CONSTRAINT `fiscal_years_ibfk_1` FOREIGN KEY (`condo_id`) REFERENCES `condos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Limitadores para a tabela `fractions`
---
-ALTER TABLE `fractions`
-  ADD CONSTRAINT `fk_fractions_1` FOREIGN KEY (`fraction_type_id`) REFERENCES `fraction_types` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `fractions_ibfk_1` FOREIGN KEY (`manager_id`) REFERENCES `entities` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `fractions_ibfk_2` FOREIGN KEY (`condo_id`) REFERENCES `condos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Limitadores para a tabela `insurances`
---
-ALTER TABLE `insurances`
-  ADD CONSTRAINT `insurances_ibfk_1` FOREIGN KEY (`condo_id`) REFERENCES `condos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `insurances_ibfk_2` FOREIGN KEY (`fraction_id`) REFERENCES `fractions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `insurances_ibfk_3` FOREIGN KEY (`insurance_type_id`) REFERENCES `insurance_types` (`id`) ON UPDATE CASCADE;
-
---
--- Limitadores para a tabela `invoice_conferences`
---
-ALTER TABLE `invoice_conferences`
-  ADD CONSTRAINT `invoice_conferences_ibfk_4` FOREIGN KEY (`supplier_id`) REFERENCES `suppliers` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `invoice_conferences_ibfk_1` FOREIGN KEY (`condo_id`) REFERENCES `condos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `invoice_conferences_ibfk_2` FOREIGN KEY (`invoice_conference_status_id`) REFERENCES `invoice_conference_statuses` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `invoice_conferences_ibfk_3` FOREIGN KEY (`fiscal_year_id`) REFERENCES `fiscal_years` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Limitadores para a tabela `maintenances`
---
-ALTER TABLE `maintenances`
-  ADD CONSTRAINT `maintenances_ibfk_2` FOREIGN KEY (`supplier_id`) REFERENCES `suppliers` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `maintenances_ibfk_1` FOREIGN KEY (`condo_id`) REFERENCES `condos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Limitadores para a tabela `movements`
---
-ALTER TABLE `movements`
-  ADD CONSTRAINT `movements_ibfk_1` FOREIGN KEY (`movement_type_id`) REFERENCES `movement_types` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `movements_ibfk_3` FOREIGN KEY (`fiscal_year_id`) REFERENCES `fiscal_years` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `movements_ibfk_4` FOREIGN KEY (`movement_category_id`) REFERENCES `movement_categories` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `movements_ibfk_5` FOREIGN KEY (`movement_operation_id`) REFERENCES `movement_operations` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `movements_ibfk_6` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Limitadores para a tabela `notes`
---
-ALTER TABLE `notes`
-  ADD CONSTRAINT `notes_ibfk_1` FOREIGN KEY (`note_type_id`) REFERENCES `note_types` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `notes_ibfk_2` FOREIGN KEY (`fraction_id`) REFERENCES `fractions` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `notes_ibfk_3` FOREIGN KEY (`entity_id`) REFERENCES `entities` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `notes_ibfk_4` FOREIGN KEY (`fiscal_year_id`) REFERENCES `fiscal_years` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `notes_ibfk_5` FOREIGN KEY (`budget_id`) REFERENCES `budgets` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `notes_ibfk_6` FOREIGN KEY (`note_status_id`) REFERENCES `note_statuses` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `notes_ibfk_7` FOREIGN KEY (`receipt_id`) REFERENCES `receipts` (`id`) ON UPDATE CASCADE;
-
---
--- Limitadores para a tabela `receipts`
---
-ALTER TABLE `receipts`
-  ADD CONSTRAINT `fk_receipts_1` FOREIGN KEY (`fraction_id`) REFERENCES `fractions` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `receipts_ibfk_1` FOREIGN KEY (`condo_id`) REFERENCES `condos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `receipts_ibfk_2` FOREIGN KEY (`entity_id`) REFERENCES `entities` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `receipts_ibfk_3` FOREIGN KEY (`receipt_status_id`) REFERENCES `receipt_statuses` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `receipts_ibfk_4` FOREIGN KEY (`receipt_payment_type_id`) REFERENCES `receipt_payment_types` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `receipts_ibfk_5` FOREIGN KEY (`payment_user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `receipts_ibfk_6` FOREIGN KEY (`cancel_user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE;
-
---
--- Limitadores para a tabela `receipt_counters`
---
-ALTER TABLE `receipt_counters`
-  ADD CONSTRAINT `receipt_counters_ibfk_1` FOREIGN KEY (`condo_id`) REFERENCES `condos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Limitadores para a tabela `receipt_notes`
---
-ALTER TABLE `receipt_notes`
-  ADD CONSTRAINT `receipt_notes_ibfk_1` FOREIGN KEY (`receipt_id`) REFERENCES `receipts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Limitadores para a tabela `supports`
---
-ALTER TABLE `supports`
-  ADD CONSTRAINT `fk_support_4` FOREIGN KEY (`condo_id`) REFERENCES `condos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_support_5` FOREIGN KEY (`fraction_id`) REFERENCES `fractions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_support_6` FOREIGN KEY (`entity_id`) REFERENCES `entities` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_support_1` FOREIGN KEY (`support_category_id`) REFERENCES `support_categories` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_support_2` FOREIGN KEY (`support_priority_id`) REFERENCES `support_priorities` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_support_3` FOREIGN KEY (`support_status_id`) REFERENCES `support_statuses` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_support_7` FOREIGN KEY (`assigned_user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE;
-
-ALTER TABLE `users`
-  ADD UNIQUE KEY `email` (`email`);
-
-SET FOREIGN_KEY_CHECKS=1;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `EMAIL` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 -- 
 -- Dumping Date is table `users`
 --
 
-LOCK tables `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` ( `name`, `username`, `password`, `role`, `active`, `modified`, `created`) VALUES ( 'Administrator' , 'admin' , '37a2954e802ce7e3e22fc8ba556482e0dba52d45' , 'admin',1,NOW() ,NOW());
 INSERT INTO `users` ( `name`, `username`, `password`, `role`, `active`, `modified`, `created`) VALUES ( 'Demonstration' , 'demo' , '4be522cbc9828be322575cc78952e24f01c2dabd' , 'colaborator',1,NOW() ,NOW());
 
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK tables;
+--
+-- Dumping routines for database 'phkondo'
+--
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2023-01-23 20:44:09

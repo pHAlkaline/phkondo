@@ -1,12 +1,12 @@
 <?php
-class PHKondo202211181824 extends CakeMigration {
+class Phkondo2023030123 extends CakeMigration {
 
 /**
  * Migration description
  *
  * @var string
  */
-	public $description = 'pHKondo202211181824';
+	public $description = 'phkondo2023030123';
 
 /**
  * Actions to be performed
@@ -152,7 +152,7 @@ class PHKondo202211181824 extends CakeMigration {
 					'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
 					'indexes' => array(
 						'PRIMARY' => array('column' => 'id', 'unique' => 1),
-						'ix_comments_foreign_data' => array('column' => array('foreign_id', 'foreign_model'), 'unique' => 0),
+						'COMMENTS_FOREIGN_ID_MODEL' => array('column' => array('foreign_id', 'foreign_model'), 'unique' => 0),
 					),
 					'tableParameters' => array('charset' => 'utf8mb3', 'collate' => 'utf8mb3_general_ci', 'engine' => 'InnoDB'),
 				),
@@ -240,7 +240,7 @@ class PHKondo202211181824 extends CakeMigration {
 					'created' => array('type' => 'datetime', 'null' => false, 'default' => null),
 					'indexes' => array(
 						'PRIMARY' => array('column' => 'id', 'unique' => 1),
-						'CondoID' => array('column' => 'condo_id', 'unique' => 0),
+						'CONDO' => array('column' => 'condo_id', 'unique' => 0),
 					),
 					'tableParameters' => array('charset' => 'utf8mb3', 'collate' => 'utf8mb3_general_ci', 'engine' => 'InnoDB'),
 				),
@@ -271,7 +271,7 @@ class PHKondo202211181824 extends CakeMigration {
 						'PRIMARY' => array('column' => 'id', 'unique' => 1),
 						'MANAGER' => array('column' => 'manager_id', 'unique' => 0),
 						'CONDO' => array('column' => 'condo_id', 'unique' => 0),
-						'fk_fractions_1_idx' => array('column' => 'fraction_type_id', 'unique' => 0),
+						'FRACTIONTYPE' => array('column' => 'fraction_type_id', 'unique' => 0),
 					),
 					'tableParameters' => array('charset' => 'utf8mb3', 'collate' => 'utf8mb3_general_ci', 'engine' => 'InnoDB'),
 				),
@@ -335,10 +335,10 @@ class PHKondo202211181824 extends CakeMigration {
 					'created' => array('type' => 'datetime', 'null' => false, 'default' => null),
 					'indexes' => array(
 						'PRIMARY' => array('column' => 'id', 'unique' => 1),
-						'condo_id' => array('column' => 'condo_id', 'unique' => 0),
-						'fiscal_year_id' => array('column' => 'fiscal_year_id', 'unique' => 0),
-						'status_id' => array('column' => 'invoice_conference_status_id', 'unique' => 0),
-						'supplier_id' => array('column' => 'supplier_id', 'unique' => 0),
+						'CONDO' => array('column' => 'condo_id', 'unique' => 0),
+						'FISCALYEAR' => array('column' => 'fiscal_year_id', 'unique' => 0),
+						'STATUS' => array('column' => 'invoice_conference_status_id', 'unique' => 0),
+						'SUPPLIER' => array('column' => 'supplier_id', 'unique' => 0),
 					),
 					'tableParameters' => array('charset' => 'utf8mb3', 'collate' => 'utf8mb3_general_ci', 'engine' => 'InnoDB'),
 				),
@@ -360,7 +360,7 @@ class PHKondo202211181824 extends CakeMigration {
 					'indexes' => array(
 						'PRIMARY' => array('column' => 'id', 'unique' => 1),
 						'CONDO' => array('column' => 'condo_id', 'unique' => 0),
-						'supplier_id' => array('column' => 'supplier_id', 'unique' => 0),
+						'SUPPLIER' => array('column' => 'supplier_id', 'unique' => 0),
 					),
 					'tableParameters' => array('charset' => 'utf8mb3', 'collate' => 'utf8mb3_general_ci', 'engine' => 'InnoDB'),
 				),
@@ -408,6 +408,8 @@ class PHKondo202211181824 extends CakeMigration {
 					'movement_category_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'index'),
 					'movement_operation_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'index'),
 					'document' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 20, 'collate' => 'utf8mb3_general_ci', 'charset' => 'utf8mb3'),
+					'document_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false),
+					'document_model' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 50, 'collate' => 'utf8mb3_general_ci', 'charset' => 'utf8mb3'),
 					'modified' => array('type' => 'datetime', 'null' => true, 'default' => null),
 					'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
 					'indexes' => array(
@@ -481,7 +483,7 @@ class PHKondo202211181824 extends CakeMigration {
 					'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
 					'indexes' => array(
 						'PRIMARY' => array('column' => 'id', 'unique' => 1),
-						'ix_ratings_foreign_data' => array('column' => array('foreign_id', 'foreign_model'), 'unique' => 0),
+						'RATINGSFOREIGNIDMODEL' => array('column' => array('foreign_id', 'foreign_model'), 'unique' => 0),
 					),
 					'tableParameters' => array('charset' => 'utf8mb3', 'collate' => 'utf8mb3_general_ci', 'engine' => 'InnoDB'),
 				),
@@ -493,7 +495,7 @@ class PHKondo202211181824 extends CakeMigration {
 					'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
 					'indexes' => array(
 						'PRIMARY' => array('column' => 'id', 'unique' => 1),
-						'CondoID' => array('column' => 'condo_id', 'unique' => 0),
+						'CONDO' => array('column' => 'condo_id', 'unique' => 0),
 					),
 					'tableParameters' => array('charset' => 'utf8mb3', 'collate' => 'utf8mb3_general_ci', 'engine' => 'InnoDB'),
 				),
@@ -560,7 +562,7 @@ class PHKondo202211181824 extends CakeMigration {
 					'total_amount' => array('type' => 'decimal', 'null' => false, 'default' => '0.00', 'length' => '10,2', 'unsigned' => false),
 					'condo_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'index'),
 					'fraction_id' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false, 'key' => 'index'),
-					'client_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'index'),
+					'entity_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'index'),
 					'address' => array('type' => 'text', 'null' => true, 'default' => null, 'collate' => 'utf8mb3_general_ci', 'charset' => 'utf8mb3'),
 					'observations' => array('type' => 'text', 'null' => true, 'default' => null, 'collate' => 'utf8mb3_general_ci', 'charset' => 'utf8mb3'),
 					'cancel_user_id' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false, 'key' => 'index'),
@@ -570,12 +572,12 @@ class PHKondo202211181824 extends CakeMigration {
 					'indexes' => array(
 						'PRIMARY' => array('column' => 'id', 'unique' => 1),
 						'CONDO' => array('column' => 'condo_id', 'unique' => 0),
-						'CLIENT' => array('column' => 'client_id', 'unique' => 0),
+						'CLIENT' => array('column' => 'entity_id', 'unique' => 0),
 						'RECEIPTSTATUS' => array('column' => 'receipt_status_id', 'unique' => 0),
-						'PaymentUser' => array('column' => 'payment_user_id', 'unique' => 0),
-						'PaymentType' => array('column' => 'receipt_payment_type_id', 'unique' => 0),
+						'PAYMENTUSER' => array('column' => 'payment_user_id', 'unique' => 0),
+						'PAYMENTTYPE' => array('column' => 'receipt_payment_type_id', 'unique' => 0),
 						'FRACTION' => array('column' => 'fraction_id', 'unique' => 0),
-						'CancelUser' => array('column' => 'cancel_user_id', 'unique' => 0),
+						'CANCELUSER' => array('column' => 'cancel_user_id', 'unique' => 0),
 					),
 					'tableParameters' => array('charset' => 'utf8mb3', 'collate' => 'utf8mb3_general_ci', 'engine' => 'InnoDB'),
 				),
@@ -657,7 +659,7 @@ class PHKondo202211181824 extends CakeMigration {
 					'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
 					'condo_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'index'),
 					'fraction_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'index'),
-					'client_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'index'),
+					'entity_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'index'),
 					'subject' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 45, 'collate' => 'utf8mb3_general_ci', 'charset' => 'utf8mb3'),
 					'description' => array('type' => 'text', 'null' => true, 'default' => null, 'collate' => 'utf8mb3_general_ci', 'charset' => 'utf8mb3'),
 					'notes' => array('type' => 'text', 'null' => true, 'default' => null, 'collate' => 'utf8mb3_general_ci', 'charset' => 'utf8mb3'),
@@ -669,13 +671,13 @@ class PHKondo202211181824 extends CakeMigration {
 					'modified' => array('type' => 'datetime', 'null' => true, 'default' => null),
 					'indexes' => array(
 						'PRIMARY' => array('column' => 'id', 'unique' => 1),
-						'fk_support_1_idx' => array('column' => 'support_category_id', 'unique' => 0),
-						'fk_support_2_idx' => array('column' => 'support_priority_id', 'unique' => 0),
-						'fk_support_3_idx' => array('column' => 'support_status_id', 'unique' => 0),
-						'fk_support_4_idx' => array('column' => 'condo_id', 'unique' => 0),
-						'fk_support_5_idx' => array('column' => 'fraction_id', 'unique' => 0),
-						'fk_support_6_idx' => array('column' => 'client_id', 'unique' => 0),
-						'fk_support_7_idx' => array('column' => 'assigned_user_id', 'unique' => 0),
+						'SUPPORTCATEGORY' => array('column' => 'support_category_id', 'unique' => 0),
+						'SUPPORTPRIORITY' => array('column' => 'support_priority_id', 'unique' => 0),
+						'SUPPORTSTATUS' => array('column' => 'support_status_id', 'unique' => 0),
+						'CONDO' => array('column' => 'condo_id', 'unique' => 0),
+						'FRACTION' => array('column' => 'fraction_id', 'unique' => 0),
+						'ENTITY' => array('column' => 'entity_id', 'unique' => 0),
+						'ASSIGNEDUSER' => array('column' => 'assigned_user_id', 'unique' => 0),
 					),
 					'tableParameters' => array('charset' => 'utf8mb3', 'collate' => 'utf8mb3_general_ci', 'engine' => 'InnoDB'),
 				),
@@ -693,7 +695,7 @@ class PHKondo202211181824 extends CakeMigration {
 					'email' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 50, 'key' => 'unique', 'collate' => 'utf8mb3_general_ci', 'charset' => 'utf8mb3'),
 					'indexes' => array(
 						'PRIMARY' => array('column' => 'id', 'unique' => 1),
-						'email' => array('column' => 'email', 'unique' => 1),
+						'EMAIL' => array('column' => 'email', 'unique' => 1),
 					),
 					'tableParameters' => array('charset' => 'utf8mb3', 'collate' => 'utf8mb3_general_ci', 'engine' => 'InnoDB'),
 				),

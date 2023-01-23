@@ -31,8 +31,6 @@ class ResetPasswordsShell extends AppShell {
                 $this->log($this->User->validationErrors);
             }
         }
-
-
         return true;
     }
 

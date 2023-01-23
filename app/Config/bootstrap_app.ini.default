@@ -37,7 +37,7 @@ Config.timezone = Europe/Lisbon
 
 ; saas, normal, demo
 Application.stage = normal
-Application.storage = 1
+Application.storage = 0.50
 
 ; free, full, one, pro
 Application.mode = free
@@ -69,7 +69,7 @@ CakePdf.phkondo.active = false
 CakePdf.binary = /usr/local/bin/wkhtmltopdf
 
 MaintenanceManager.start = 01-01-2000 00:00:00
-MaintenanceManager.duration = 1
+MaintenanceManager.duration = 30
 MaintenanceManager.site_offline_url = /pages/maintenance_offline
 MaintenanceManager.offline_destroy_session=true
 

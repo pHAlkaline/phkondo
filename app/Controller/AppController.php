@@ -406,7 +406,7 @@ class AppController extends Controller
         if (!is_null($folder->path)) {
             $bytes = $bytes + $folder->dirsize();
         }
-        if ($bytes < Configure::read('Application.storage')*1000000000){
+        if ($bytes < floatval(Configure::read('Application.storage'))*1000000000){
             return true;
         }
         return false;
