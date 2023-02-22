@@ -2,14 +2,14 @@ pHKondo Guia Rápido
 
 Iniciar Sessão com a conta administrador
 
-Adicionar usuário(s) em Configuração -> Usuários
+Adicionar utilizador(s) em Configuração -> Utilizadores
 * 3 níveis de acesso
 ** Administrador (Controle total sobre pHKONDO)
-** Manager (controle total sobre o pHKONDO, exceto gerenciamento de usuários e configurações do sistema)
+** Gestor (controle total sobre o pHKONDO, exceto gestão de utilizadores e configurações do sistema)
 ** Funcionário (sem acesso às opções de configuração e manutenção)
 
-Atualize sua organização em Configuração -> Organização
-Configure seu sistema em Configuração -> Grupo de sistemas
+Atualize a sua organização em Configuração -> Organização
+Configure o seu sistema em Configuração -> Grupo de sistemas
 Configure tabelas auxiliares em Configuração -> Geral, Contabilidade, Minutas
 
 
@@ -23,26 +23,26 @@ Adicionar período contabilístico -> Criar período contabilístico
 * Período Contabilístico é usado para configurar períodos de gestão
 * Pode criar o período que entender, não necessariamente um ano.
 É usado para controlar e agrupar dados em:
-- Saldos de contas, Orçamentos...
+- Saldos de contas. Orçamentos...
 - Relatórios para Balancete, receitas, despesas, em dívida, mapa de quotas
-* IMPORTANTE: Atenção, os dados apresentados são agrupados conforme o período contabilístico ativo, para ver dados de outro execicio contabilistico este deve ser ativado posteriormente.
+* IMPORTANTE: Atenção, os dados apresentados são agrupados conforme o período contabilístico ativo, para ver dados de outro exercício contabilístico este deve ser ativado posteriormente.
 
-Regresse ao detalhes do condomínio
+Regresse aos detalhes do condomínio
 Entrar nas Frações
 Adicionar propriedades -> Criar Fração
 Ver detalhes da fração
 
-Dentro da Fracção Entrar nos Proprietários
+Dentro da Fração Entrar nos Proprietários
 Adicionar proprietários -> Criar Proprietário
 Ou use Adicionar Proprietário para pesquisar proprietários já registados na sua base de dados
 
-Regresse ao detalhes do condomínio
-Entar nos Administradores
+Regresse aos detalhes do condomínio
+Entrar nos Administradores
 Adicionar administradores -> Adicionar Administrador
-* Administrador é o proprietário(s) selecionado que serve de elo de ligação/representante entre a gestão do Condomínio/empresa/serviço e todos os proprietários.
+* Administrador é o proprietário(s) selecionado que serve de elo/representante entre a gestão do Condomínio/empresa/serviço e todos os proprietários.
 
 
-Regresse ao detalhes do condomínio
+Regresse aos detalhes do condomínio
 Gestão de contas bancárias e/ou internas
 Entrar nas contas
 Adicionar conta -> Nova Conta
@@ -50,48 +50,48 @@ Ver detalhes da conta
 
 Dentro da Conta Entrar nos Movimentos
 Adicionar movimentos de conta -> Criar Movimento
-* Para cada período contabilístico é necessário criar o primeiro movimento ( no inicio do período contabilístico - abertura ) e o último movimento ( no final do período contabilístico - fecho ) , isso permitirá que o pHKondo possa realizar os relatórios baseados nos intervalos ( inicio / fim ) do período contabilístico.
+* Para cada período contabilístico é necessário criar o primeiro movimento (no início do período contabilístico - abertura) e o último movimento (no final do período contabilístico - fecho), isso permitirá que o pHKondo possa realizar os relatórios baseados nos intervalos (inicio / fim) do período contabilístico.
 
 * O primeiro movimento deve ser:
 O montante inicial no balanço de abertura no período contabilístico
 Escolha Abertura / Fecho no campo Categoria
 Escolha Abertura Balancete no campo Operação Movimento
-Tipo de movimento: Crédito se saldo de conta no inicio do período contabilístico é 0 ou superior, Débito se saldo de conta no inicio do período contabilístico é < 0
+Tipo de movimento: Crédito se saldo de conta no início do período contabilístico é 0 ou superior, Débito se saldo de conta no início do período contabilístico é < 0
 
-* Deve ser inserido um útimo movimento ao fechar Período Contabilístico:
+* Deve ser inserido um último movimento ao fechar Período Contabilístico:
 Escolha Abertura / Fecho no campo Categoria
 Escolha Fecho Balancete no campo Operação Movimento
 
 * Cada movimento tem de pertencer ao período contabilístico ativo
 
-Regresse ao detalhes do condomínio
+Regresse aos detalhes do condomínio
 Entrar nos Orçamentos
 Adicionar orçamentos -> Criar Orçamento
 Defina os seus orçamentos.
 Defina bem os campos de Valor, Fundo de Reserva (%), Data de Início, Quotas, Periodicidade, Distribuição, Prazo de pagamento. 
 Estes campos vão possibilitar criar quotas de forma automática.
-Ir para criar quotas para criação automática de quotas relacionadas com o respectivo orçamento, atenção que o orçamento deve estar no estado ativo.
+Ir para criar quotas para criação automática de quotas relacionadas com o respetivo orçamento, atenção que o orçamento deve estar no estado ativo.
 
 
-... regras importantes a ter em conta
+... Regras importantes a ter em conta
 O recibo deve estar no estado aguarda pagamento para poder defini-lo como pago.
 O recibo deve estar no estado pendente para poder defini-lo como cancelado.
-Quotas não podem ser alteradas ou eliminadas quando associadas a um recibo. ( retirar associação para poder editar )
+Quotas não podem ser alteradas ou eliminadas quando associadas a um recibo. (retirar associação para poder editar)
 Orçamentos só podem ser eliminados no estado pendente.
 Orçamentos não podem ser eliminados quando tem associado quotas pagas.
-Fracção não podem ser eliminadas quando tem associado quotas pagas.
+Fração não podem ser eliminadas quando tem associado quotas pagas.
 Outras tabelas com registos associados não podem sem eliminados. 
 
-.. extras
+.. Extras
 Entrar em Recibos para gerir Pagamentos/Recibos.
 Entrar em Conferência de faturas para gerir dívidas do condomínio / pagamentos a fornecedores.
 Entrar em Manutenções para gerir as programações de manutenção ao condomínio.
 Entrar em Seguros de gerir seguros de condomínio e frações.
-Entrar em Anexos para gerir os documentos anexados.
-Entrar em os relatórios para Balancete, Receitas, Despesas, Conta Corrente, Mapas.
+Entrar nos Anexos para gerir os documentos anexados.
+Entrar nos relatórios para Balancete, Receitas, Despesas, Conta Corrente, Mapas.
 Entrar em Minutas para imprimir alguns documentos usados na gestão do condomínio.
 ... 
 e outras funcionalidades que o pHKondo possa disponibilizar
 
-NOTA FINAL :
-Se você estiver interese em outras funções que o pHKondo possa não ter disponível, mas quer adquirir , não hesite ->  contact@phalkaline.net
+NOTA FINAL:
+Se você estiver interesse em outras funções que o pHKondo possa não ter disponível, mas quer adquirir, não hesite ->  contact@phalkaline.net
