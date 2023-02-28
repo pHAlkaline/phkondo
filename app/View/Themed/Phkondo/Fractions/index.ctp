@@ -40,7 +40,7 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
                             <th data-breakpoints="xs" ><?php echo $this->Paginator->sort('description'); ?></th>
                             <th data-breakpoints="xs" ><?php echo $this->Paginator->sort('permillage'); ?></th>
                             <th><?php echo $this->Paginator->sort('Manager.name', __n('Manager', 'Managers', 1)); ?></th>
-                            <th data-breakpoints="xs"><?php echo $this->Paginator->sort('FractionType.name', __('Fraction Type')); ?></th>
+                            <th data-breakpoints="xs"><?php echo $this->Paginator->sort('FractionType.name', __('Type')); ?></th>
                             <th data-breakpoints="xs" class="text-right"><?php echo __('Current Account'); ?></th>
                             <th class="actions hidden-print" data-breakpoints="xs"><?php //echo __('Actions');            ?></th>
                         </tr>
@@ -62,7 +62,7 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
                                     }
                                  ?>
                             </td>
-                            <td><?php echo h($fraction['Fraction']['permillage']); ?>&nbsp;</td>
+                            <td><?php echo h($fraction['FractionType']['name']); ?>&nbsp;</td>
                             <td class="text-right"><?php echo number_format($fraction['Fraction']['current_account'], 2); ?>&nbsp;<?php echo Configure::read('Application.currencySign'); ?></td>
                             <td class="actions hidden-print">
                                     <?php  $deleteDisabled = '';

@@ -581,12 +581,12 @@ class Receipt extends AppModel
 
     public function getNextReceiptIndex($id)
     {
-        $this->loadModel("ReceiptCounters");
-        $index = $this->ReceiptCounters->find('first', array('conditions' => array('condo_id' => $id)));
+        $ReceiptCounters = ClassRegistry::init('ReceiptCounters');
+        $index = $ReceiptCounters->find('first', array('conditions' => array('condo_id' => $id)));
 
         if (!isset($index['ReceiptCounters']['counter'])) {
-            $this->ReceiptCounters->create();
-            $this->ReceiptCounters->save(array('ReceiptCounters' => array('condo_id' => $id, 'counter' => 1)));
+            $ReceiptCounters->create();
+            $ReceiptCounters->save(array('ReceiptCounters' => array('condo_id' => $id, 'counter' => 1)));
             return $index = 1;
         }
 
@@ -595,18 +595,18 @@ class Receipt extends AppModel
 
     public function setReceiptIndex($condo_id, $index)
     {
-        $this->loadModel("ReceiptCounters");
-        $rcpIndex = $this->ReceiptCounters->find('first', array('conditions' => array('condo_id' => $condo_id)));
+        $ReceiptCounters = ClassRegistry::init('ReceiptCounters');
+        $rcpIndex = $ReceiptCounters->find('first', array('conditions' => array('condo_id' => $condo_id)));
         if (!isset($rcpIndex['ReceiptCounters']['counter'])) {
-            $this->ReceiptCounters->create();
-            $this->ReceiptCounters->save(array('ReceiptCounters' => array('condo_id' => $id, 'counter' => 1)));
+            $ReceiptCounters->create();
+            $ReceiptCounters->save(array('ReceiptCounters' => array('condo_id' => $id, 'counter' => 1)));
             $index = 1;
-            $id = $this->ReceiptCounters->id;
+            $id = $ReceiptCounters->id;
         } else {
             $id = $rcpIndex['ReceiptCounters']['id'];
         }
-        $this->ReceiptCounters->read(null, $id);
-        $this->ReceiptCounters->set('counter', $index);
-        return $this->ReceiptCounters->save();
+        $ReceiptCounters->read(null, $id);
+        $ReceiptCounters->set('counter', $index);
+        return $ReceiptCounters->save();
     }
 }

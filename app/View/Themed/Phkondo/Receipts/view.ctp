@@ -224,21 +224,21 @@ $this->Html->script('footable', false);
 
                     </div>
                     <div role="tabpanel" class="tab-pane" id="movements" aria-labelledby="movements-tab">
-
                         <br />
                         <div class="col-sm-12">
                             <table data-empty="<?= __('Empty'); ?>" class="footable table table-hover table-condensed table-export">
                                 <thead>
                                     <tr>
 
-                                        <th><?php echo $this->Paginator->sort('movement_date'); ?></th>
-                                        <th><?php echo $this->Paginator->sort('description'); ?></th>
-                                        <th data-breakpoints="xs"><?php echo $this->Paginator->sort('MovementCategory.name', __('Movement Category')); ?></th>
-                                        <th data-breakpoints="xs"><?php echo $this->Paginator->sort('MovementOperation.name', __('Movement Operation')); ?></th>
-                                        <th data-breakpoints="xs"><?php echo $this->Paginator->sort('MovementType.name', __('Movement Type')); ?></th>
-                                        <th class="amount"><?php echo $this->Paginator->sort('amount'); ?></th>
-                                        <th data-breakpoints="xs" class="actions hidden-print"><?php //echo __('Actions');
-                                                                                                ?></th>
+                                        <th><?= __('Movement Date'); ?></th>
+                                        <th><?= __('Description'); ?></th>
+                                        <th data-breakpoints="xs"><?= __('Movement Category'); ?></th>
+                                        <th data-breakpoints="xs"><?= __('MovementOperation.name'); ?></th>
+                                        <th data-breakpoints="xs"><?= __('Movement Type'); ?></th>
+                                        <th class="amount"><?= __('Amount'); ?></th>
+                                        <th data-breakpoints="xs" class="actions hidden-print">
+                                            <?php //echo __('Actions'); 
+                                            ?></th>
                                     </tr>
                                 </thead>
                                 <tbody>
