@@ -36,7 +36,8 @@ App::uses('AppModel', 'Model');
  * @property FiscalYear $FiscalYear
  * @property NoteStatus $NoteStatus
  */
-class Note extends AppModel {
+class Note extends AppModel
+{
 
     public $actsAs = array('Containable');
 
@@ -63,11 +64,11 @@ class Note extends AppModel {
         'note_type_id' => array(
             'numeric' => array(
                 'rule' => array('numeric'),
-            //'message' => 'Your custom message here',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'message' => 'Your custom message here',
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
         'document' => array(
@@ -76,18 +77,18 @@ class Note extends AppModel {
                 //'message' => 'Your custom message here',
                 //'allowEmpty' => true,
                 'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
         'fraction_id' => array(
             'numeric' => array(
                 'rule' => array('numeric'),
-            //'message' => 'Your custom message here',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'message' => 'Your custom message here',
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
         'fiscal_year_id' => array(
@@ -95,9 +96,9 @@ class Note extends AppModel {
                 'rule' => array('numeric'),
                 //'message' => 'Your custom message here',
                 'allowEmpty' => true,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
         'entity_id' => array(
@@ -105,9 +106,9 @@ class Note extends AppModel {
                 'rule' => array('numeric'),
                 //'message' => 'Your custom message here',
                 'allowEmpty' => true,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
         'budget_id' => array(
@@ -116,82 +117,84 @@ class Note extends AppModel {
                 //'message' => 'Your custom message here',
                 'allowEmpty' => true,
                 'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
         'amount' => array(
             'money' => array(
                 'rule' => array('money'),
-            //'message' => 'Your custom message here',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'message' => 'Your custom message here',
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
         'pending_amount' => array(
             'money' => array(
                 'rule' => array('money'),
-            //'message' => 'Your custom message here',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'message' => 'Your custom message here',
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
         'title' => array(
             'notBlank' => array(
                 'rule' => array('notBlank'),
-            //'message' => 'Your custom message here',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'message' => 'Your custom message here',
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
         'document_date' => array(
             'date' => array(
                 'rule' => array('date'),
-            //'message' => 'Your custom message here',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'message' => 'Your custom message here',
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
         'due_date' => array(
             'date' => array(
                 'rule' => array('date'),
-            //'message' => 'Your custom message here',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'message' => 'Your custom message here',
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
             'afterDocumentDate' => array(
                 'rule' => array('compareDates', 'due_date'),
-                'message' => 'due date must be after document date'),
+                'message' => 'due date must be after document date'
+            ),
         ),
         'payment_date' => array(
             'date' => array(
                 'rule' => array('date'),
-            //'message' => 'Your custom message here',
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'message' => 'Your custom message here',
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
             'pastDate' => array(
                 'rule' => array('checkPastDate', 'payment_date'),
-                'message' => 'invalid date.')
+                'message' => 'invalid date.'
+            )
         ),
         'note_status_id' => array(
             'numeric' => array(
                 'rule' => array('numeric'),
-            //'message' => 'Your custom message here',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                //'message' => 'Your custom message here',
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
         ),
         'receipt_id' => array(
@@ -263,19 +266,22 @@ class Note extends AppModel {
         ),
     );
 
-    public function beforeDelete($cascade = true) {
+    public function beforeDelete($cascade = true)
+    {
         if ($this->field('receipt_id') != null) {
             return false;
         }
         /* if (in_array($this->field('note_status_id'), array(2, 3))) {
           return false;
           } */
-        $this->receipt_id = $this->field('note_status_id');
-        $this->budget_id = $this->field('budget_id');
+        $this->data['Note']['receipt_id'] = $this->field('receipt_id');
+        $this->data['Note']['budget_id'] = $this->field('budget_id');
+
         return true;
     }
 
-    public function beforeSave($options = array()) {
+    public function beforeSave($options = array())
+    {
         if (!empty($this->data['Note']['note_status_id']) && $this->data['Note']['note_status_id'] == 1) {
             $this->data['Note']['payment_date'] = null;
             $this->data['Note']['receipt_id'] = null;
@@ -292,7 +298,8 @@ class Note extends AppModel {
      * @access public
      * @return array
      */
-    public function afterFind($results, $primary = false) {
+    public function afterFind($results, $primary = false)
+    {
         //debug($this->no_after_find);
         if ($this->no_after_find) {
             $this->no_after_find = false;
@@ -323,7 +330,8 @@ class Note extends AppModel {
      * @access public
      * @return null
      */
-    public function afterSave($created = null, $options = array()) {
+    public function afterSave($created = null, $options = array())
+    {
 
         if ($created == null) {
             $this->_updateReceiptAmount($this->field('receipt_id'));
@@ -331,12 +339,14 @@ class Note extends AppModel {
         $this->_updateBudgetAmount($this->field('budget_id'));
     }
 
-    public function afterDelete() {
-        $this->_updateReceiptAmount($this->receipt_id);
-        $this->_updateBudgetAmount($this->budget_id);
+    public function afterDelete()
+    {
+        $this->_updateReceiptAmount($this->data['Note']['receipt_id']);
+        $this->_updateBudgetAmount($this->data['Note']['budget_id']);
     }
 
-    function deletable($id = null) {
+    function deletable($id = null)
+    {
         $this->no_after_find = true;
 
         if (!empty($id)) {
@@ -353,7 +363,8 @@ class Note extends AppModel {
         return $this->beforeDelete(false);
     }
 
-    function editable($record = null) {
+    function editable($record = null)
+    {
         if (isset($record['receipt_id']) && $record['receipt_id'] != '') {
             return false;
         }
@@ -365,17 +376,24 @@ class Note extends AppModel {
     }
 
     // Update Receipt Amount
-    private function _updateReceiptAmount($id = null) {
+    private function _updateReceiptAmount($id = null)
+    {
 
 
         if ($id != null) {
-            $totalDebit = $this->find('first', array(
-                'fields' => array('SUM(Note.amount) AS total'),
-                'conditions' => array('Note.receipt_id' => $id, 'Note.note_type_id' => '2'))
+            $totalDebit = $this->find(
+                'first',
+                array(
+                    'fields' => array('SUM(Note.amount) AS total'),
+                    'conditions' => array('Note.receipt_id' => $id, 'Note.note_type_id' => '2')
+                )
             );
-            $totalCredit = $this->find('first', array(
-                'fields' => array('SUM(Note.amount) AS total'),
-                'conditions' => array('Note.receipt_id' => $id, 'Note.note_type_id' => '1'))
+            $totalCredit = $this->find(
+                'first',
+                array(
+                    'fields' => array('SUM(Note.amount) AS total'),
+                    'conditions' => array('Note.receipt_id' => $id, 'Note.note_type_id' => '1')
+                )
             );
             $total = $totalDebit[0]['total'] - $totalCredit[0]['total'];
             $this->Receipt->id = $id;
@@ -384,17 +402,24 @@ class Note extends AppModel {
     }
 
     // Update Budget Amount
-    private function _updateBudgetAmount($id = null) {
+    private function _updateBudgetAmount($id = null)
+    {
 
 
         if ($id != null) {
-            $totalDebit = $this->find('first', array(
-                'fields' => array('SUM(Note.amount) AS total'),
-                'conditions' => array('Note.budget_id' => $id, 'Note.note_type_id' => '2'))
+            $totalDebit = $this->find(
+                'first',
+                array(
+                    'fields' => array('SUM(Note.amount) AS total'),
+                    'conditions' => array('Note.budget_id' => $id, 'Note.note_type_id' => '2')
+                )
             );
-            $totalCredit = $this->find('first', array(
-                'fields' => array('SUM(Note.amount) AS total'),
-                'conditions' => array('Note.budget_id' => $id, 'Note.note_type_id' => '1'))
+            $totalCredit = $this->find(
+                'first',
+                array(
+                    'fields' => array('SUM(Note.amount) AS total'),
+                    'conditions' => array('Note.budget_id' => $id, 'Note.note_type_id' => '1')
+                )
             );
             $total = $totalDebit[0]['total'] - $totalCredit[0]['total'];
             $this->Budget->id = $id;
@@ -402,21 +427,23 @@ class Note extends AppModel {
         }
     }
 
-    function sumDebitNotes($owner_id, $fraction_id) {
+    function sumDebitNotes($owner_id, $fraction_id)
+    {
         $tmpVirtualFields = $this->virtualFields;
         $this->virtualFields = array(
             'amount' => 'SUM(Note.amount)',
         );
         $conditions = [];
-        array_push($conditions,[
+        array_push($conditions, [
             'Note.note_type_id =' => 2,
             'Note.note_status_id <' => 3,
-            'Note.due_date < NOW()']);
+            'Note.due_date < NOW()'
+        ]);
         if ($owner_id) {
-            array_push($conditions,['Note.entity_id' => $owner_id]);
+            array_push($conditions, ['Note.entity_id' => $owner_id]);
         }
         if ($fraction_id) {
-            array_push($conditions,['Note.fraction_id' => $fraction_id]);
+            array_push($conditions, ['Note.fraction_id' => $fraction_id]);
         }
         $debt_amount = $this->find('first', array(
             'order' => array('Note.document_date'),
@@ -428,21 +455,23 @@ class Note extends AppModel {
         return $debt_amount;
     }
 
-    function sumCreditNotes($owner_id, $fraction_id) {
+    function sumCreditNotes($owner_id, $fraction_id)
+    {
         $tmpVirtualFields = $this->virtualFields;
         $this->virtualFields = array(
             'amount' => 'SUM(Note.amount)',
         );
         $conditions = [];
-        array_push($conditions,[
+        array_push($conditions, [
             'Note.note_type_id =' => 1,
             'Note.note_status_id <' => 3,
-            'Note.due_date < NOW()']);
+            'Note.due_date < NOW()'
+        ]);
         if ($owner_id) {
-            array_push($conditions,['Note.entity_id' => $owner_id]);
+            array_push($conditions, ['Note.entity_id' => $owner_id]);
         }
         if ($fraction_id) {
-            array_push($conditions,['Note.fraction_id' => $fraction_id]);
+            array_push($conditions, ['Note.fraction_id' => $fraction_id]);
         }
         $credit_amount = $this->find('first', array(
             'order' => array('Note.document_date'),
@@ -454,7 +483,8 @@ class Note extends AppModel {
         return $credit_amount;
     }
 
-    function compareDates($data, $key) {
+    function compareDates($data, $key)
+    {
         return CakeTime::fromString($data[$key]) >= CakeTime::fromString($this->data[$this->alias]['document_date']);
     }
 
@@ -466,8 +496,8 @@ class Note extends AppModel {
      * @param array $check Contains the value passed from the view to be validated
      * @return bool True if in the past or today, False otherwise
      */
-    public function checkPastDate($data, $key) {
+    public function checkPastDate($data, $key)
+    {
         return CakeTime::fromString($data[$key]) <= CakeTime::fromString(date(Configure::read('Application.databaseDateFormat')));
     }
-
 }

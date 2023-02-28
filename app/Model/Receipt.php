@@ -371,12 +371,12 @@ class Receipt extends AppModel
         }
         if ($this->closeable() && isset($this->data['Receipt']['receipt_status_id']) && $this->data['Receipt']['receipt_status_id'] == 3) {
             $result = $result & $this->setNotesStatus($this->data['Receipt']['id']);
-         }
+        }
         if (isset($this->data['Receipt']['receipt_status_id']) && $this->data['Receipt']['receipt_status_id'] == 4) {
             $result = $result & $this->transferNotes($this->data['Receipt']['id']);
             $result = $result & $this->removeFromNote($this->data['Receipt']['id']);
         }
-  
+
         return $result;
     }
 
@@ -391,7 +391,8 @@ class Receipt extends AppModel
 
         if ($this->hasMovements($this->id))
             return false;
-
+            
+        $this->data['Receipt']['id'] = $this->id;
         return true;
     }
 
