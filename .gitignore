@@ -107,9 +107,11 @@ nbproject/*
 
 
 # Docker
-Dockerfile
+#Dockerfile
 docker-compose.yml
 docker/*
+!docker/.gitkeep
+!docker/images
 
 # Eclipse project files
 .cache

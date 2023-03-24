@@ -1,0 +1,49 @@
+FROM php:7.4-apache
+	
+RUN apt-get -y update && apt-get upgrade -y
+
+# Install tools && libraries
+RUN apt-get -y install --fix-missing apt-utils nano wget dialog build-essential git libicu-dev && rm -rf /var/lib/apt/lists/*
+
+# Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# PHP7 Extensions
+RUN docker-php-ext-configure intl && docker-php-ext-install intl
+#RUN docker-php-ext-install curl
+#RUN docker-php-ext-install tokenizer
+#RUN docker-php-ext-install json
+RUN docker-php-ext-install pdo_mysql
+#RUN docker-php-ext-install pdo_sqlite
+#RUN docker-php-ext-install mysqli
+#RUN docker-php-ext-install zip
+#RUN docker-php-ext-install -j$(nproc) intl
+#RUN docker-php-ext-install mbstring
+#RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
+#RUN docker-php-ext-install -j$(nproc) gd
+RUN pecl install xdebug && docker-php-ext-enable xdebug
+RUN echo "xdebug.remote_enable=on" >> /usr/local/etc/php/php.ini \
+	&& echo "xdebug.remote_handler=dbgp " >> /usr/local/etc/php/php.ini \
+	&& echo "xdebug.remote_host=host.docker.internal " >> /usr/local/etc/php/php.ini \
+	&& echo "xdebug.remote_port=9000 " >> /usr/local/etc/php/php.ini \
+	&& echo "xdebug.idekey='local-xdebug' " >> /usr/local/etc/php/php.ini 
+
+# Insure an SSL directory exists
+COPY server.crt /etc/apache2/ssl/server.crt
+COPY server.key /etc/apache2/ssl/server.key
+RUN chmod 600 /etc/apache2/ssl/*
+COPY default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
+
+
+# Enable SSL support
+RUN a2enmod ssl && a2ensite default-ssl
+
+# Enable apache modules
+RUN a2enmod rewrite headers
+
+EXPOSE 80
+EXPOSE 443
+EXPOSE 9000
+
+ENTRYPOINT ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+#RUN service apache2 restart
