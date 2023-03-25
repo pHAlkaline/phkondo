@@ -29,12 +29,12 @@
 
 
             // php version
-            if (version_compare(phpversion(), 5.6, '>=') && version_compare(phpversion(), 8.0, '<')) {
-                $message = sprintf(__d('install', 'PHP version %s >= 5.6 and <8.0.0'), phpversion());
+            if (version_compare(phpversion(), 7 , '>=') && version_compare(phpversion(), 8.0, '<')) {
+                $message = sprintf(__d('install', 'PHP version %s >= 7 and <8.0.0'), phpversion());
                 echoMessage($message);
             } else {
                 $check = false;
-                $message = sprintf(__d('install', 'PHP version %s < 5.6 or =>8.0.0'), phpversion());
+                $message = sprintf(__d('install', 'PHP version %s < 7 or =>8.0.0'), phpversion());
                 echoError($message);
             }
 

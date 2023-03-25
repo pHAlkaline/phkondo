@@ -21,12 +21,12 @@ RUN docker-php-ext-install pdo_mysql
 #RUN docker-php-ext-install mbstring
 #RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
 #RUN docker-php-ext-install -j$(nproc) gd
-RUN pecl install xdebug-3.1.5 && docker-php-ext-enable xdebug
-RUN echo "xdebug.remote_enable=on" >> /usr/local/etc/php/php.ini \
-	&& echo "xdebug.remote_handler=dbgp " >> /usr/local/etc/php/php.ini \
-	&& echo "xdebug.remote_host=host.docker.internal " >> /usr/local/etc/php/php.ini \
-	&& echo "xdebug.remote_port=9000 " >> /usr/local/etc/php/php.ini \
-	&& echo "xdebug.idekey='local-xdebug' " >> /usr/local/etc/php/php.ini 
+#RUN pecl install xdebug-3.1.5 && docker-php-ext-enable xdebug
+#RUN echo "xdebug.remote_enable=on" >> /usr/local/etc/php/php.ini \
+#	&& echo "xdebug.remote_handler=dbgp " >> /usr/local/etc/php/php.ini \
+#	&& echo "xdebug.remote_host=host.docker.internal " >> /usr/local/etc/php/php.ini \
+#	&& echo "xdebug.remote_port=9000 " >> /usr/local/etc/php/php.ini \
+#	&& echo "xdebug.idekey='local-xdebug' " >> /usr/local/etc/php/php.ini 
 
 # Insure an SSL directory exists
 COPY server.crt /etc/apache2/ssl/server.crt

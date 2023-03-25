@@ -230,11 +230,11 @@ msgid "Your Config/core_app.php file is NOT writable."
 msgstr "A ficheiro Config/core_app.php não tem permisão de escrita."
 
 #: View/Themed/Phkondo/Install/index.ctp:56
-msgid "PHP version %s >= 5.6 and <8.0.0"
+msgid "PHP version %s >= 7 and <8.0.0"
 msgstr ""
 
 #: View/Themed/Phkondo/Install/index.ctp:60
-msgid "PHP version %s < 5.6 or =>8.0.0"
+msgid "PHP version %s < 7 or =>8.0.0"
 msgstr ""
 
 #: View/Themed/Phkondo/Install/index.ctp:68

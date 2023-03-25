@@ -226,12 +226,12 @@ msgid "Your Config/core_app.php file is NOT writable."
 msgstr "Il tuo file Config/core_app.php NON è scrivibile."
 
 #: View/Themed/Phkondo/Install/index.ctp:56
-msgid "PHP version %s >= 5.6 and <8.0.0"
-msgstr "Versione PHP %s >= 5.6 e <8.0.0"
+msgid "PHP version %s >= 7 and <8.0.0"
+msgstr "Versione PHP %s >= 7 e <8.0.0"
 
 #: View/Themed/Phkondo/Install/index.ctp:60
-msgid "PHP version %s < 5.6 or =>8.0.0"
-msgstr "Versione PHP %s < 5.6 o =>8.0.0"
+msgid "PHP version %s < 7 or =>8.0.0"
+msgstr "Versione PHP %s < 7 o =>8.0.0"
 
 #: View/Themed/Phkondo/Install/index.ctp:68
 msgid "CakePhp version %s >= %s"
