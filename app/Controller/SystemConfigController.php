@@ -145,11 +145,11 @@ class SystemConfigController extends AppController
     {
         parent::beforeRender();
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'system-config', 'action' => 'email')), 'text' => __('Email'), 'active' => 'active')
+            array('link' => Router::url(array('controller' => 'system_config', 'action' => 'email')), 'text' => __('Email'), 'active' => 'active')
         );
         switch ($this->action) {
             case 'email':
-                $breadcrumbs[0] = array('link' => Router::url(array('controller' => 'system-config', 'action' => 'email')), 'text' => __('Email'), 'active' => 'active');
+                $breadcrumbs[0] = array('link' => Router::url(array('controller' => 'system_config', 'action' => 'email')), 'text' => __('Email'), 'active' => 'active');
                 $headerTitle = __('Email');
                 $Email = new CakeEmail();
                 $Email->config('default');
@@ -158,7 +158,7 @@ class SystemConfigController extends AppController
                 $this->set(compact('breadcrumbs', 'headerTitle', 'emailClient', 'emailNotifications'));
                 break;
             case 'general':
-                $breadcrumbs[0] = array('link' => Router::url(array('controller' => 'system-config', 'action' => 'general')), 'text' => __('General'), 'active' => 'active');
+                $breadcrumbs[0] = array('link' => Router::url(array('controller' => 'system_config', 'action' => 'general')), 'text' => __('General'), 'active' => 'active');
                 $headerTitle = __('General');
                 $this->set(compact('breadcrumbs', 'headerTitle'));
                 break;
