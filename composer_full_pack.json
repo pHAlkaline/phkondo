@@ -47,10 +47,10 @@
         "friendsofcake/cakepdf": "1.0.*",
         "josegonzalez/cakephp-upload": "2.x-dev",
         "phalkaline/cakephp-feedback-plugin": "dev-master",
-        "phalkaline/phkondo-attachments": "^1.8",
+        "phalkaline/phkondo-attachments": "^1.9",
         "phalkaline/phkondo-drafts": "^1.8",
-        "phalkaline/phkondo-print-receipt": "^1.8",
-        "phalkaline/phkondo-reports": "^1.8"
+        "phalkaline/phkondo-print-receipt": "^1.9",
+        "phalkaline/phkondo-reports": "^1.9"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
