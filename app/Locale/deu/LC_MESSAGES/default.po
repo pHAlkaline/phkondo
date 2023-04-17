@@ -2270,7 +2270,7 @@ msgstr ""
 #: View/Themed/Phkondo/Receipts/send_receipt.ctp:9
 #: View/Themed/Phkondo/Receipts/pdf/print_receipt.ctp:9
 #: View/Themed/Phkondo/Reports/notfound.ctp:9
-msgid "https://www.phalkaline.net"
+msgid "https://phalkaline.net"
 msgstr ""
 
 #: View/Themed/Phkondo/BudgetNotes/add.ctp:9

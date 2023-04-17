@@ -2,8 +2,8 @@
 
 /**
  *
- * pHKondo : pHKondo software for condominium property managers (https://www.phalkaline.net)
- * Copyright (c) pHAlkaline . (https://www.phalkaline.net)
+ * pHKondo : pHKondo software for condominium hoa association management (https://phalkaline.net)
+ * Copyright (c) pHAlkaline . (https://phalkaline.net)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
- * @copyright     Copyright (c) pHAlkaline . (https://www.phalkaline.net)
+ * @copyright     Copyright (c) pHAlkaline . (https://phalkaline.net)
  * @link          https://phkondo.net pHKondo Project
  * @@package      app.View.Themed.Layouts
  * @since         pHKondo v 1.6.2
@@ -38,6 +38,24 @@ if (!isset($headerTitle)) {
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php echo $this->Html->charset(); ?>
+    <meta name="author" content="pHAlkaline">
+    <meta name="generator" content="pHAlkaline">
+    <meta name="robots" content="index, folow">
+    <meta name="revisit-after" content="7 days">
+    <meta name="rating" content="general">
+    <meta name="keywords" content="software, HOA, property, condo, condominium, association, managers, management, free, opensource, white labelling">
+    <meta name="description" content="pHKondo Condominium Hoa Association Management Software Includes Free and Open Source Version">
+    <meta property="og:title" content="pHKondo Condominium Hoa Association Management Software">
+    <meta property="og:site_name" content="pHKondo">
+    <meta property="og:url" content="https://phkondo.net">
+    <meta property="og:description" content="pHKondo Condominium Hoa Association Management Software Includes Free and Open Source Version">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://phkondo.net/img/logo_phkondo_flat.svg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@http://phkondo.net">
+    <meta name="twitter:title" content="pHKondo Condominium Hoa Association Management Software">
+    <meta name="twitter:description" content="pHKondo Condominium Hoa Association Management Software Includes Free and Open Source Version">
+    <meta name="twitter:image" content="https://phkondo.net/img/logo_phkondo_flat.svg">
     <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
@@ -102,7 +120,7 @@ if (!isset($headerTitle)) {
         </div><!-- #header .container -->
 
         <div id="footer" class="container hidden-print">
-            <div style="text-align: center;">Copyright (c) pHAlkaline (<a href="https://www.phalkaline.net" target="_blank">https://www.phalkaline.net</a>)</div>
+            <div style="text-align: center;">Copyright (c) pHAlkaline (<a href="https://phalkaline.net" target="_blank">https://phalkaline.net</a>)</div>
             <?php //Silence is golden      
             ?>
         </div><!-- #footer .container -->

@@ -2,8 +2,8 @@
 
 /**
  *
- * pHKondo : pHKondo software for condominium property managers (https://www.phalkaline.net)
- * Copyright (c) pHAlkaline . (https://www.phalkaline.net)
+ * pHKondo : pHKondo software for condominium hoa association management (https://phalkaline.net)
+ * Copyright (c) pHAlkaline . (https://phalkaline.net)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
- * @copyright     Copyright (c) pHAlkaline . (https://www.phalkaline.net)
+ * @copyright     Copyright (c) pHAlkaline . (https://phalkaline.net)
  * @link          https://phkondo.net pHKondo Project
  * @package       app.Controller
  * @since         pHKondo v 1.6.3
