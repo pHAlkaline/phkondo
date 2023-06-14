@@ -31,6 +31,11 @@ $(function () {
         $('.loading').remove();
         $('.footable').parent().removeClass('hidden').fadeIn('slow');
        
+        $("input[data-context=disenline]").change(function () {
+            $(this).closest('tr').find("input[data-context=note]").attr('disabled',!$(this).is(':checked')).css({ 'opacity' : !$(this).is(':checked')?0.5:1 });
+            $(this).closest('tr').find("input[type=text]").css({ 'opacity' : !$(this).is(':checked')?0.5:1 }).first().trigger('change');  
+        });
+        
         $("input[data-context=note]").change(function () {
 
             var isShare = this.id.match(/Shares/);
@@ -56,8 +61,6 @@ $(function () {
             var shares = parseFloat($("#Note" + index + "Shares").val());
 
 
-
-
             var total = ((amount + commonReserveFund) * shares).toFixed(2);
             //alert(total);
             $("#Note" + index + "Total").val(total);
@@ -66,7 +69,12 @@ $(function () {
             $('input').filter(function () {
                 return this.id.match(/Total/);
             }).each(function (index) {
-                notesTotal = parseFloat(notesTotal) + parseFloat($(this).val());
+                var val=0;
+                var checked=$(this).closest('tr').find("input[data-context=disenline]").is(':checked'); 
+                if (checked){
+                    val=$(this).val();
+                } 
+                notesTotal = parseFloat(notesTotal) + parseFloat(val);
                 notesTotal = notesTotal.toFixed(2);
                 //console.log( notesTotal );
             });

@@ -57,7 +57,8 @@ foreach ($fractions as $fraction) {
                             <th data-breakpoints="xs"><?php echo __('Common Reserve Fund'); ?></th>
                             <th data-breakpoints="xs"><?php echo __n('Share', 'Shares', 2); ?></th>
                             <th><?php echo __('Total'); ?></th>
-
+                            <th>&nbsp;</th>
+                           
                         </tr>
                     </thead>
                     <tbody>
@@ -113,8 +114,8 @@ foreach ($fractions as $fraction) {
                                     <td data-type="html" data-editable="true"><?php echo $this->Form->input('Note.' . $row . '.common_reserve_fund', array('class' => 'form-control', 'value' => $commonReserveFundByShare, 'type' => 'text', 'data-context' => 'note', 'label' => false)); ?>&nbsp;</td>
                                     <td data-type="html" data-editable="true"><?php echo $this->Form->input('Note.' . $row . '.shares', array('class' => 'form-control', 'value' => $numOfShares, 'type' => 'text', 'data-context' => 'note', 'label' => false)); ?>&nbsp;</td>
                                     <td data-type="html" ><?php echo $this->Form->input('Note.' . $row . '.total', array('class' => 'form-control', 'value' => $total, 'type' => 'text', 'disabled' => 'disabled', 'label' => false)); ?>&nbsp;</td>
+                                    <td data-type="html" ><?php echo $this->Form->checkbox('Note.' . $row . '.selected', array('checked'=>'checked', 'value'=>'1', 'data-context' => 'disenline', 'label'=>false)); ?>&nbsp;</td>
                                 </tr>
-
                                 <?php
                                 $row++;
                             endforeach;

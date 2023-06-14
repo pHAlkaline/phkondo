@@ -283,6 +283,7 @@ class BudgetNotesController extends AppController {
             App::uses('CakeTime', 'Utility');
             foreach ($notes as $key => $note) {
                 // check fraction please
+                if ($note['selected']==0){ continue; }
                 $this->request->data['Note'] = $note;
                 $this->request->data['Note']['budget_id'] = $budget['Budget']['id'];
                 $this->request->data['Note']['note_type_id'] = '2';
