@@ -251,7 +251,7 @@ if (!Configure::check('CakePdf.phkondo.active') || Configure::read('CakePdf.phko
                                     <th><?= __('Movement Date'); ?></th>
                                         <th><?= __('Description'); ?></th>
                                         <th data-breakpoints="xs"><?=  __('Movement Category'); ?></th>
-                                        <th data-breakpoints="xs"><?= __('MovementOperation.name'); ?></th>
+                                        <th data-breakpoints="xs"><?= __('Movement Operation'); ?></th>
                                         <th data-breakpoints="xs"><?= __('Movement Type'); ?></th>
                                         <th class="amount"><?= __('Amount'); ?></th>
                                         <th data-breakpoints="xs" class="actions hidden-print">
