@@ -57,8 +57,7 @@ foreach ($fractions as $fraction) {
                             <th data-breakpoints="xs"><?php echo __('Common Reserve Fund'); ?></th>
                             <th data-breakpoints="xs"><?php echo __n('Share', 'Shares', 2); ?></th>
                             <th><?php echo __('Total'); ?></th>
-                            <th>&nbsp;</th>
-                           
+                            <th style="text-align: center; vertical-align:middle;"><?php echo $this->Form->checkbox('NoteSelection', array('checked'=>'checked', 'value'=>'1', 'data-context' => 'disenalllines', 'label'=>false)); ?></td>
                         </tr>
                     </thead>
                     <tbody>
@@ -106,15 +105,15 @@ foreach ($fractions as $fraction) {
                                 $totalShares += $total;
                                 ?>
                                 <tr>
-                                    <td><?php echo h($entity['name']); ?>&nbsp;</td>
-                                    <td><?php echo h($fraction['Fraction']['fraction']); ?>&nbsp;</td>
-                                    <td><?php echo h($fraction['Fraction']['description']); ?>&nbsp;</td>
-                                    <td><?php echo h($fraction['Fraction']['permillage']); ?>&nbsp;</td>
+                                    <td style="text-align: center; vertical-align:middle;"><?php echo h($entity['name']); ?>&nbsp;</td>
+                                    <td style="text-align: center; vertical-align:middle;"><?php echo h($fraction['Fraction']['fraction']); ?>&nbsp;</td>
+                                    <td style="text-align: center; vertical-align:middle;"><?php echo h($fraction['Fraction']['description']); ?>&nbsp;</td>
+                                    <td style="text-align: center; vertical-align:middle;"><?php echo h($fraction['Fraction']['permillage']); ?>&nbsp;</td>
                                     <td data-type="html" data-editable="true"><?php echo $this->Form->input('Note.' . $row . '.amount', array('class' => 'form-control', 'value' => $amountByShare, 'type' => 'text', 'data-context' => 'note', 'label' => false)); ?>&nbsp;</td>
                                     <td data-type="html" data-editable="true"><?php echo $this->Form->input('Note.' . $row . '.common_reserve_fund', array('class' => 'form-control', 'value' => $commonReserveFundByShare, 'type' => 'text', 'data-context' => 'note', 'label' => false)); ?>&nbsp;</td>
                                     <td data-type="html" data-editable="true"><?php echo $this->Form->input('Note.' . $row . '.shares', array('class' => 'form-control', 'value' => $numOfShares, 'type' => 'text', 'data-context' => 'note', 'label' => false)); ?>&nbsp;</td>
                                     <td data-type="html" ><?php echo $this->Form->input('Note.' . $row . '.total', array('class' => 'form-control', 'value' => $total, 'type' => 'text', 'disabled' => 'disabled', 'label' => false)); ?>&nbsp;</td>
-                                    <td data-type="html" ><?php echo $this->Form->checkbox('Note.' . $row . '.selected', array('checked'=>'checked', 'value'=>'1', 'data-context' => 'disenline', 'label'=>false)); ?>&nbsp;</td>
+                                    <td data-type="html" style="text-align: center; vertical-align:middle;" ><?php echo $this->Form->checkbox('Note.' . $row . '.selected', array('checked'=>'checked', 'value'=>'1', 'data-context' => 'disenline', 'label'=>false)); ?>&nbsp;</td>
                                 </tr>
                                 <?php
                                 $row++;

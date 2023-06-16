@@ -30,12 +30,21 @@ $(function () {
     $('.footable').footable().on('ready.ft.table', function (e, ft) {
         $('.loading').remove();
         $('.footable').parent().removeClass('hidden').fadeIn('slow');
-       
-        $("input[data-context=disenline]").change(function () {
-            $(this).closest('tr').find("input[data-context=note]").attr('disabled',!$(this).is(':checked')).css({ 'opacity' : !$(this).is(':checked')?0.5:1 });
-            $(this).closest('tr').find("input[type=text]").css({ 'opacity' : !$(this).is(':checked')?0.5:1 }).first().trigger('change');  
+
+        $("input[data-context=disenalllines]").change(function () {
+            var status = $(this).is(":checked") ? true : false;
+            $("input[data-context=disenline]").prop("checked", status).trigger('change');
         });
-        
+
+        $("input[data-context=disenline]").change(function () {
+            var line = $(this).closest('tr');
+            line.find("input[data-context=note]").attr('disabled', !$(this).is(':checked')).css({ 'opacity': !$(this).is(':checked') ? 0.5 : 1 });
+            line.find("input[type=text]").css({ 'opacity': !$(this).is(':checked') ? 0.5 : 1 }).first().trigger('change');
+            var lineResponsive = line.next('.footable-detail-row');
+            lineResponsive.find("input[data-context=note]").attr('disabled', !$(this).is(':checked')).css({ 'opacity': !$(this).is(':checked') ? 0.5 : 1 });
+            lineResponsive.find("input[type=text]").css({ 'opacity': !$(this).is(':checked') ? 0.5 : 1 }).first().trigger('change');
+        });
+
         $("input[data-context=note]").change(function () {
 
             var isShare = this.id.match(/Shares/);
@@ -69,11 +78,11 @@ $(function () {
             $('input').filter(function () {
                 return this.id.match(/Total/);
             }).each(function (index) {
-                var val=0;
-                var checked=$(this).closest('tr').find("input[data-context=disenline]").is(':checked'); 
-                if (checked){
-                    val=$(this).val();
-                } 
+                var val = 0;
+                var checked = $(this).closest('tr').find("input[data-context=disenline]").is(':checked');
+                if (checked) {
+                    val = $(this).val();
+                }
                 notesTotal = parseFloat(notesTotal) + parseFloat(val);
                 notesTotal = notesTotal.toFixed(2);
                 //console.log( notesTotal );
