@@ -55,7 +55,7 @@ msgstr "Conta apagada"
 
 #: Controller/AccountsController.php:157
 msgid "Account can not be deleted"
-msgstr "Não foi possível apagar Conta"
+msgstr "Não foi possível eliminar Conta"
 
 #: Controller/AccountsController.php:164
 #: Controller/BudgetNotesController.php:392
@@ -98,7 +98,7 @@ msgstr "Administrador apagado"
 
 #: Controller/AdministratorsController.php:184
 msgid "Administrator can not be deleted"
-msgstr "Não foi possível apagar Administrador"
+msgstr "Não foi possível eliminar Administrador"
 
 #: Controller/AdministratorsController.php:192
 #: Plugin/Attachments/Controller/AttachmentsAppController.php:17
@@ -246,7 +246,7 @@ msgstr "Quota apagada"
 #: Controller/FractionNotesController.php:227
 #: Controller/OwnerNotesController.php:229
 msgid "Note can not be deleted"
-msgstr "Não foi possível apagar Quota"
+msgstr "Não foi possível eliminar Quota"
 
 #: Controller/BudgetNotesController.php:248
 #: Controller/BudgetsController.php:72;121;146;176;200
@@ -255,11 +255,11 @@ msgstr "Orçamento inválido"
 
 #: Controller/BudgetNotesController.php:252
 msgid "Notes deleted"
-msgstr "Quotas apagadas"
+msgstr "Quotas eliminadas"
 
 #: Controller/BudgetNotesController.php:255
 msgid "Notes can not be deleted"
-msgstr "Não foi possível apagar Quotas"
+msgstr "Não foi possível eliminar Quotas"
 
 #: Controller/BudgetNotesController.php:271;275
 msgid "Invalid Budget"
@@ -355,7 +355,7 @@ msgstr "Orçamento apagado"
 
 #: Controller/BudgetsController.php:189
 msgid "Budget can not be deleted"
-msgstr "Não foi possível apagar Orçamento"
+msgstr "Não foi possível eliminar Orçamento"
 
 #: Controller/CondosController.php:122;151
 msgid "The condo has been saved"
@@ -441,7 +441,7 @@ msgstr "Entidade apagada"
 
 #: Controller/EntitiesController.php:167
 msgid "Entity can not be deleted"
-msgstr "Não foi possível apagar Entidade"
+msgstr "Não foi possível eliminar Entidade"
 
 #: Controller/EntitiesController.php:178;182;186;191
 #: Plugin/Drafts/View/CondoDrafts/draft_presence.ctp:35
@@ -499,7 +499,7 @@ msgstr "Período Contabilístico apagado"
 
 #: Controller/FiscalYearsController.php:185
 msgid "Fiscal Year can not be deleted"
-msgstr "Não foi possivel apagar Período Contabilístico"
+msgstr "Não foi possivel eliminar Período Contabilístico"
 
 #: Controller/FiscalYearsController.php:214;219;223;227
 #: View/Themed/Phkondo/Administrators/index.ctp:27
@@ -542,7 +542,7 @@ msgstr "Seguro apagado"
 #: Controller/FractionInsurancesController.php:165
 #: Controller/InsurancesController.php:156
 msgid "Insurance can not be deleted"
-msgstr "Não foi possível apagar Seguro"
+msgstr "Não foi possível eliminar Seguro"
 
 #: Controller/FractionOwnersController.php:77;140;173;222;243;273
 msgid "Invalid owner"
@@ -613,7 +613,7 @@ msgstr "Tipo de Fração apagada"
 
 #: Controller/FractionTypesController.php:144
 msgid "Fraction type can not be deleted"
-msgstr "Não foi possível apagar Tipo de Fração"
+msgstr "Não foi possível eliminar Tipo de Fração"
 
 #: Controller/FractionTypesController.php:155;159;163;168
 #: View/Themed/Phkondo/Elements/menu/top_menu.ctp:65
@@ -647,7 +647,7 @@ msgstr "Fração apagada"
 
 #: Controller/FractionsController.php:197
 msgid "Fraction can not be deleted"
-msgstr "Não foi possível apagar Fração"
+msgstr "Não foi possível eliminar Fração"
 
 #: Controller/IncomeController.php:97;105
 #: View/Themed/Phkondo/Elements/menu/top_menu.ctp:36
@@ -705,7 +705,7 @@ msgstr "Tipo de Seguro apagado"
 
 #: Controller/InsuranceTypesController.php:143
 msgid "Insurance type can not be deleted"
-msgstr "Não foi possivel apagar tipo de seguro"
+msgstr "Não foi possivel eliminar tipo de seguro"
 
 #: Controller/InsuranceTypesController.php:154;158;162;167
 #: View/Themed/Phkondo/Elements/menu/top_menu.ctp:68
@@ -731,7 +731,7 @@ msgstr "Fatura apagada"
 
 #: Controller/InvoiceConferenceController.php:230
 msgid "Invoice can not be deleted"
-msgstr "Não foi possível apagar Quota"
+msgstr "Não foi possível eliminar Quota"
 
 #: Controller/InvoiceConferenceController.php:248;253;257;262;267
 #: Controller/SuppliersController.php:181
@@ -760,7 +760,7 @@ msgstr "Manutenção apagada"
 
 #: Controller/MaintenancesController.php:154
 msgid "Maintenance can not be deleted"
-msgstr "Não foi possível apagar Manutenção"
+msgstr "Não foi possível eliminar Manutenção"
 
 #: Controller/MaintenancesController.php:172;176;180;185
 #: Controller/SuppliersController.php:137
@@ -795,7 +795,7 @@ msgstr "Categoria apagada"
 
 #: Controller/MovementCategoriesController.php:185
 msgid "Movement category can not be deleted"
-msgstr "Não foi possível apagar Movimento"
+msgstr "Não foi possível eliminar Movimento"
 
 #: Controller/MovementCategoriesController.php:196;200;204;209
 #: View/Themed/Phkondo/Elements/menu/top_menu.ctp:78
@@ -837,7 +837,7 @@ msgstr "Operação apagada"
 
 #: Controller/MovementOperationsController.php:187
 msgid "Movement operation can not be deleted"
-msgstr "Não foi possível apagar Operação"
+msgstr "Não foi possível eliminar Operação"
 
 #: Controller/MovementOperationsController.php:198;202;206;211
 #: View/Themed/Phkondo/Elements/menu/top_menu.ctp:83
@@ -867,7 +867,7 @@ msgstr "Movimento apagado"
 
 #: Controller/MovementsController.php:204
 msgid "Movement can not be deleted"
-msgstr "Não foi possível apagar Movimento"
+msgstr "Não foi possível eliminar Movimento"
 
 #: Controller/MovementsController.php:211
 msgid "Invalid account or fiscal year"
@@ -901,7 +901,7 @@ msgstr "Recibo apagado"
 #: Controller/OwnerReceiptsController.php:415
 #: Controller/ReceiptsController.php:410
 msgid "Receipt can not be deleted"
-msgstr "Não foi possível apagar Recibo"
+msgstr "Não foi possível eliminar Recibo"
 
 #: Controller/OwnerReceiptsController.php:595
 #: Controller/ReceiptsController.php:584
@@ -969,7 +969,7 @@ msgstr "Fornecedor apagado"
 
 #: Controller/SuppliersController.php:236
 msgid "Supplier can not be deleted"
-msgstr "Não foi possível apagar Fornecedor"
+msgstr "Não foi possível eliminar Fornecedor"
 
 #: Controller/SuppliersController.php:138;140;182;184;247;251;255;260
 #: View/Themed/Phkondo/Elements/menu/top_menu.ctp:61
@@ -1003,7 +1003,7 @@ msgstr "Categoria de Suporte apagado"
 
 #: Controller/SupportCategoriesController.php:121
 msgid "Support category can not be deleted"
-msgstr "Não foi possivel apagar categoria de suporte"
+msgstr "Não foi possivel eliminar categoria de suporte"
 
 #: Controller/SupportCategoriesController.php:132;136;140;145
 #: View/Themed/Phkondo/Elements/menu/top_menu.ctp:71
@@ -1032,7 +1032,7 @@ msgstr "Suporte apagado"
 
 #: Controller/SupportsController.php:179
 msgid "Support can not be deleted"
-msgstr "Não foi possivel apagar pedido de suporte"
+msgstr "Não foi possivel eliminar pedido de suporte"
 
 #: Controller/SupportsController.php:197;202;206;210
 #: View/Themed/Phkondo/Condos/view.ctp:31
@@ -1061,7 +1061,7 @@ msgstr "Utilizador apagado"
 
 #: Controller/UsersController.php:145
 msgid "User can not be deleted"
-msgstr "Não foi possível apagar Utilizador"
+msgstr "Não foi possível eliminar Utilizador"
 
 #: Controller/UsersController.php:158
 msgid "Invalid username or password, try again"
@@ -1294,7 +1294,7 @@ msgstr "Registar"
 #: View/Themed/Phkondo/Users/edit.ctp:19 View/Themed/Phkondo/Users/index.ctp:50
 #: View/Themed/Phkondo/Users/view.ctp:10
 msgid "Are you sure you want to delete # %s?"
-msgstr "Tem a certeza que quer apagar # %s?"
+msgstr "Tem a certeza que quer eliminar # %s?"
 
 #: Plugin/Attachments/View/Attachments/index.ctp:22
 #: Plugin/Attachments/View/FractionAttachments/index.ctp:23
@@ -2091,7 +2091,7 @@ msgstr "Ver %s"
 #: View/Themed/Phkondo/Accounts/edit.ctp:8
 #: View/Themed/Phkondo/Accounts/view.ctp:8
 msgid "Delete Account"
-msgstr "Apagar Conta"
+msgstr "Eliminar Conta"
 
 #: View/Themed/Phkondo/Accounts/edit.ctp:33
 #: View/Themed/Phkondo/Accounts/view.ctp:7
@@ -2349,7 +2349,7 @@ msgstr "Total"
 #: View/Themed/Phkondo/OwnerNotes/edit.ctp:16
 #: View/Themed/Phkondo/OwnerNotes/view.ctp:17
 msgid "Delete Note"
-msgstr "Apagar Quota"
+msgstr "Eliminar Quota"
 
 #: View/Themed/Phkondo/BudgetNotes/edit.ctp:31
 #: View/Themed/Phkondo/BudgetNotes/view.ctp:28
@@ -2362,7 +2362,7 @@ msgstr "Editar Quota"
 
 #: View/Themed/Phkondo/BudgetNotes/index.ctp:24
 msgid "Delete All"
-msgstr "Remover todos"
+msgstr "Eliminar todas"
 
 #: View/Themed/Phkondo/BudgetNotes/index.ctp:24
 #: View/Themed/Phkondo/Condos/index.ctp:98
@@ -2370,11 +2370,11 @@ msgstr "Remover todos"
 #: View/Themed/Phkondo/OwnerReceipts/index.ctp:74
 #: View/Themed/Phkondo/Receipts/index.ctp:82
 msgid "Delete"
-msgstr "Apagar"
+msgstr "Eliminar"
 
 #: View/Themed/Phkondo/BudgetNotes/index.ctp:24
 msgid "Are you sure you want to delete all # %s?"
-msgstr "Tem a certeza que quer apagar # %s?"
+msgstr "Tem a certeza que quer eliminar # %s?"
 
 #: View/Themed/Phkondo/BudgetNotes/index.ctp:41
 #: View/Themed/Phkondo/BudgetNotes/view.ctp:66
@@ -2414,7 +2414,7 @@ msgstr "Criar Orçamento"
 #: View/Themed/Phkondo/Budgets/edit.ctp:36
 #: View/Themed/Phkondo/Budgets/view.ctp:27
 msgid "Delete Budget"
-msgstr "Apagar Orçamento"
+msgstr "Eliminar Orçamento"
 
 #: View/Themed/Phkondo/Budgets/edit.ctp:48
 msgid ""
@@ -2535,7 +2535,7 @@ msgstr "Seleccionar"
 
 #: View/Themed/Phkondo/Condos/view.ctp:15
 msgid "Delete Condo"
-msgstr "Apagar Condomínio"
+msgstr "Eliminar Condomínio"
 
 #: View/Themed/Phkondo/Condos/view.ctp:70
 msgid "Alerts"
@@ -2724,7 +2724,7 @@ msgstr "Criar Gestor"
 #: View/Themed/Phkondo/MovementOperations/edit.ctp:16
 #: View/Themed/Phkondo/Suppliers/edit.ctp:17
 msgid "Delete %s"
-msgstr "Apagar %s"
+msgstr "Eliminar %s"
 
 #: View/Themed/Phkondo/Entities/edit.ctp:32
 #: View/Themed/Phkondo/Entities/view.ctp:11
@@ -2733,7 +2733,7 @@ msgstr "Editar Entidade"
 
 #: View/Themed/Phkondo/Entities/view.ctp:20
 msgid "Delete Entity"
-msgstr "Apagar Entidade"
+msgstr "Eliminar Entidade"
 
 #: View/Themed/Phkondo/Entities/view.ctp:46
 #: View/Themed/Phkondo/FractionEntities/view.ctp:34
@@ -2761,7 +2761,7 @@ msgstr "Criar Período Contabilístico"
 #: View/Themed/Phkondo/FiscalYears/edit.ctp:17
 #: View/Themed/Phkondo/FiscalYears/view.ctp:20
 msgid "Delete Fiscal Year"
-msgstr "Apagar Período Contabilístico"
+msgstr "Eliminar Período Contabilístico"
 
 #: View/Themed/Phkondo/FiscalYears/edit.ctp:32
 #: View/Themed/Phkondo/FiscalYears/view.ctp:19
@@ -2813,7 +2813,7 @@ msgstr "Ver Seguro"
 #: View/Themed/Phkondo/Insurances/edit.ctp:10
 #: View/Themed/Phkondo/Insurances/view.ctp:9
 msgid "Delete Insurance"
-msgstr "Apagar Seguro"
+msgstr "Eliminar Seguro"
 
 #: View/Themed/Phkondo/FractionInsurances/edit.ctp:26
 #: View/Themed/Phkondo/FractionInsurances/view.ctp:8
@@ -2942,7 +2942,7 @@ msgstr "Editar Tipo de Fração"
 
 #: View/Themed/Phkondo/FractionTypes/view.ctp:14
 msgid "Delete Fraction Type"
-msgstr "Apagar Tipo de Fração"
+msgstr "Eliminar Tipo de Fração"
 
 #: View/Themed/Phkondo/Fractions/add.ctp:9
 #: View/Themed/Phkondo/Fractions/edit.ctp:17
@@ -2959,7 +2959,7 @@ msgstr "Criar Fração"
 #: View/Themed/Phkondo/Fractions/edit.ctp:16
 #: View/Themed/Phkondo/Fractions/view.ctp:17
 msgid "Delete Fraction"
-msgstr "Apagar Fração"
+msgstr "Eliminar Fração"
 
 #: View/Themed/Phkondo/Fractions/edit.ctp:41
 #: View/Themed/Phkondo/Fractions/view.ctp:10
@@ -3031,7 +3031,7 @@ msgstr "Editar Tipo de Seguro"
 
 #: View/Themed/Phkondo/InsuranceTypes/view.ctp:14
 msgid "Delete Insurance Type"
-msgstr "Apagar Tipo de Seguro"
+msgstr "Eliminar Tipo de Seguro"
 
 #: View/Themed/Phkondo/InvoiceConference/add.ctp:10;12
 #: View/Themed/Phkondo/InvoiceConference/edit.ctp:12
@@ -3064,7 +3064,7 @@ msgstr "Ver Fatura"
 #: View/Themed/Phkondo/InvoiceConference/edit.ctp:11
 #: View/Themed/Phkondo/InvoiceConference/view.ctp:9
 msgid "Delete Invoice"
-msgstr "Apagar Fatura"
+msgstr "Eliminar Fatura"
 
 #: View/Themed/Phkondo/InvoiceConference/edit.ctp:26
 #: View/Themed/Phkondo/InvoiceConference/view.ctp:8
@@ -3108,7 +3108,7 @@ msgstr "Ver Manutenção"
 #: View/Themed/Phkondo/Maintenances/edit.ctp:11
 #: View/Themed/Phkondo/Maintenances/view.ctp:9
 msgid "Delete Maintenance"
-msgstr "Apagar Manutenção"
+msgstr "Eliminar Manutenção"
 
 #: View/Themed/Phkondo/Maintenances/edit.ctp:34
 #: View/Themed/Phkondo/Maintenances/view.ctp:8
@@ -3169,7 +3169,7 @@ msgstr "Editar Categoria"
 
 #: View/Themed/Phkondo/MovementCategories/view.ctp:15
 msgid "Delete Movement Category"
-msgstr "Apagar Categoria"
+msgstr "Eliminar Categoria"
 
 #: View/Themed/Phkondo/MovementOperations/add.ctp:9
 #: View/Themed/Phkondo/MovementOperations/edit.ctp:17
@@ -3197,7 +3197,7 @@ msgstr "Editar Operação"
 
 #: View/Themed/Phkondo/MovementOperations/view.ctp:16
 msgid "Delete Movement Operation"
-msgstr "Apagar Operação"
+msgstr "Eliminar Operação"
 
 #: View/Themed/Phkondo/MovementOperations/view.ctp:32
 #: View/Themed/Phkondo/Movements/index.ctp:33
@@ -3220,7 +3220,7 @@ msgstr "Criar Movimento"
 #: View/Themed/Phkondo/Movements/edit.ctp:11
 #: View/Themed/Phkondo/Movements/view.ctp:10
 msgid "Delete Movement"
-msgstr "Apagar Movimento"
+msgstr "Eliminar Movimento"
 
 #: View/Themed/Phkondo/Movements/edit.ctp:28
 #: View/Themed/Phkondo/Movements/view.ctp:8
@@ -3270,7 +3270,7 @@ msgstr "Anular Recibo"
 #: View/Themed/Phkondo/Receipts/edit.ctp:22
 #: View/Themed/Phkondo/Receipts/view.ctp:33
 msgid "Delete Receipt"
-msgstr "Apagar Recibo"
+msgstr "Eliminar Recibo"
 
 #: View/Themed/Phkondo/OwnerReceipts/edit.ctp:28
 #: View/Themed/Phkondo/OwnerReceipts/view.ctp:32
@@ -3416,7 +3416,7 @@ msgstr "Editar Fornecedor"
 
 #: View/Themed/Phkondo/Suppliers/view.ctp:16
 msgid "Delete Supplier"
-msgstr "Apagar Fornecedor"
+msgstr "Eliminar Fornecedor"
 
 #: View/Themed/Phkondo/SupportCategories/add.ctp:8
 #: View/Themed/Phkondo/SupportCategories/edit.ctp:16
@@ -3437,7 +3437,7 @@ msgstr "Ver Categoria de Suporte"
 #: View/Themed/Phkondo/SupportCategories/edit.ctp:15
 #: View/Themed/Phkondo/SupportCategories/view.ctp:16
 msgid "Delete Support Category"
-msgstr "Apagar Categoria de Suporte"
+msgstr "Eliminar Categoria de Suporte"
 
 #: View/Themed/Phkondo/SupportCategories/edit.ctp:40
 #: View/Themed/Phkondo/SupportCategories/view.ctp:8
@@ -3482,7 +3482,7 @@ msgstr "Ver Pedido de Suporte"
 #: View/Themed/Phkondo/Supports/edit.ctp:9
 #: View/Themed/Phkondo/Supports/view.ctp:9
 msgid "Delete Support"
-msgstr "Apagar Pedido"
+msgstr "Eliminar Pedido"
 
 #: View/Themed/Phkondo/Supports/edit.ctp:36
 #: View/Themed/Phkondo/Supports/view.ctp:8
@@ -3510,7 +3510,7 @@ msgstr "Criar Utilizador"
 
 #: View/Themed/Phkondo/Users/edit.ctp:19 View/Themed/Phkondo/Users/view.ctp:10
 msgid "Delete User"
-msgstr "Apagar Utilizador"
+msgstr "Eliminar Utilizador"
 
 #: View/Themed/Phkondo/Users/edit.ctp:41 View/Themed/Phkondo/Users/view.ctp:9
 msgid "Edit User"

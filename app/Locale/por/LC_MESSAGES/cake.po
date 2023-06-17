@@ -84,7 +84,7 @@ msgid "April"
 msgstr "Abril"
 
 msgid "Are you sure you want to delete # %s?"
-msgstr "Tem a certeza que quer apagar # %s?"
+msgstr "Tem a certeza que quer eliminar # %s?"
 
 msgid "August"
 msgstr "Agosto"
@@ -93,10 +93,10 @@ msgid "December"
 msgstr "Dezembro"
 
 msgid "Delete"
-msgstr "Apagar"
+msgstr "Eliminar"
 
 msgid "Delete %s"
-msgstr "Apagar %s"
+msgstr "Eliminar %s"
 
 msgid "Edit"
 msgstr "Editar"
@@ -198,7 +198,7 @@ msgid "The requested file was not found"
 msgstr "O ficheiro pedido não foi encontrado"
 
 msgid "There was an error deleting the %1$s with id: %2$s"
-msgstr "Houve um erro ao apagar o %1$s com o id: %2$s"
+msgstr "Houve um erro ao eliminar o %1$s com o id: %2$s"
 
 msgid "This field cannot be left blank"
 msgstr "Este campo não pode ser vazio"

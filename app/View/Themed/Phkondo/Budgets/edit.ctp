@@ -98,6 +98,17 @@ $this->Html->script('budget_edit', false);
                 </div><!-- .form-group -->
 
                 <div class="form-group">
+                    <?php echo $this->Form->input('meeting_draft', array('class' => 'form-control')); ?>
+                </div><!-- .form-group -->
+
+                <div class="form-group">
+                    <?php echo $this->Form->input('comments', ['label' => ['text' => __('Observations'), 'class' => 'col-sm-2 control-label'], 'class' => 'form-control']); ?>
+                </div><!-- .form-group -->
+                <hr/>
+                <div class="col-sm-2"></div><p><strong><?= __('Share Distribution') ?></strong></p> 
+                <hr/>
+                
+                <div class="form-group">
                     <?php
                     echo $this->Form->input('begin_date', array(
                         'type' => 'text',
@@ -109,7 +120,7 @@ $this->Html->script('budget_edit', false);
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-                    <?php echo $this->Form->input('shares', array($readonlyDisabled, 'label'=>['text' => __n('Share','Shares',2), 'class' => 'col-sm-2 control-label'], 'class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('shares', array($readonlyDisabled, 'label'=>['text' => __n('Share','Shares',2).' '.__('Qnt'), 'class' => 'col-sm-2 control-label'], 'class' => 'form-control')); ?>
                 </div><!-- .form-group -->
 
                 <div class="form-group">
@@ -122,14 +133,6 @@ $this->Html->script('budget_edit', false);
 
                 <div class="form-group">
                     <?php echo $this->Form->input('due_days', array( $readonlyDisabled, 'class' => 'form-control')); ?>
-                </div><!-- .form-group -->
-
-                <div class="form-group">
-                    <?php echo $this->Form->input('meeting_draft', array('class' => 'form-control')); ?>
-                </div><!-- .form-group -->
-
-                <div class="form-group">
-                    <?php echo $this->Form->input('comments', ['label' => ['text' => __('Observations'), 'class' => 'col-sm-2 control-label'], 'class' => 'form-control']); ?>
                 </div><!-- .form-group -->
 
             </fieldset>
