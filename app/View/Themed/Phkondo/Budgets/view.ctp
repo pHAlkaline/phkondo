@@ -48,7 +48,7 @@
                         <a href="#details" aria-controls="details" role="tab" data-toggle="tab"><?= __('Details'); ?></a>
                     </li>
                     <li role="presentation">
-                        <a href="#notes-distribution" aria-controls="notes-distribution" role="tab" data-toggle="tab"><?= __('Share Distribution'); ?></a>
+                        <a href="#shares-distribution" aria-controls="shares-distribution" role="tab" data-toggle="tab"><?= __('Share Distribution'); ?></a>
                     </li>
 
                 </ul>
@@ -144,7 +144,7 @@
                             </tbody>
                         </table><!-- /.table table-hover table-condensed -->
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="notes-distribution" aria-labelledby="notes-distribution-tab">
+                    <div role="tabpanel" class="tab-pane" id="shares-distribution" aria-labelledby="shares-distribution-tab">
                         <br />
                         <table class="table table-hover table-condensed">
                             <tbody>
