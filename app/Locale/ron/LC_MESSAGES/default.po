@@ -3590,3 +3590,6 @@ msgstr "Subiectul"
 
 msgid "Storage exceeds maximum limit."
 msgstr "Stocarea depășește limita maximă."
+
+msgid "Calculate"
+msgstr "Calculati"

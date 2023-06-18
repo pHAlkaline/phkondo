@@ -257,7 +257,7 @@ class BudgetNotesController extends AppController {
     }
 
     /**
-     * delete create
+     * create method
      *
      * @throws NotFoundException
      * @throws MethodNotAllowedException
@@ -341,7 +341,7 @@ class BudgetNotesController extends AppController {
 
         $totalMilRate = 0;
         $budgetAmount = $budget['Budget']['amount'] ? $budget['Budget']['amount'] : 0;
-        $numOfShares = $budget ['Budget']['shares'] ? $budget ['Budget']['shares'] : 0;
+        $numOfShares = $budget['Budget']['shares'] ? $budget['Budget']['shares'] : 0;
         $numOfFractions = count($fractions);
         foreach ($fractions as $fraction) {
             $totalMilRate += $fraction['Fraction']['permillage'];

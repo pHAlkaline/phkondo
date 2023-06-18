@@ -3561,3 +3561,6 @@ msgstr "Betreff"
 
 msgid "Storage exceeds maximum limit."
 msgstr "Der Speicher überschreitet die maximale Grenze."
+
+msgid "Calculate"
+msgstr "Berechnung"

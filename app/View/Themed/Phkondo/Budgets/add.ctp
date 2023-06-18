@@ -60,14 +60,23 @@
                         'data-date-end-date' => $fiscalYearData['FiscalYear']['close_date'],));
                     ?>
                 </div><!-- .form-group -->
-
                 <div class="form-group">
                     <?php echo $this->Form->input('amount', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
                     <?php echo $this->Form->input('common_reserve_fund', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
+                <div class="form-group">
+                    <?php echo $this->Form->input('meeting_draft', array('class' => 'form-control')); ?>
+                </div><!-- .form-group -->
 
+                <div class="form-group">
+                    <?php echo $this->Form->input('comments', ['label' => ['text' => __('Observations'), 'class' => 'col-sm-2 control-label'], 'class' => 'form-control']); ?>
+                </div><!-- .form-group -->
+ 
+                <hr/>
+                <div class="col-sm-2"></div><p><strong><?= __('Share Distribution') ?></strong></p> 
+                <hr/>
                 <div class="form-group">
                     <?php
                     echo $this->Form->input('begin_date', array(
@@ -94,14 +103,7 @@
                     <?php echo $this->Form->input('due_days', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
 
-                <div class="form-group">
-                    <?php echo $this->Form->input('meeting_draft', array('class' => 'form-control')); ?>
-                </div><!-- .form-group -->
-
-                <div class="form-group">
-                    <?php echo $this->Form->input('comments', ['label' => ['text' => __('Observations'), 'class' => 'col-sm-2 control-label'], 'class' => 'form-control']); ?>
-                </div><!-- .form-group -->
-
+              
             </fieldset>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-6">

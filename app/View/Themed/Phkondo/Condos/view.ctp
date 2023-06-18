@@ -11,6 +11,7 @@ $administrators = implode(", ", $administrators);
         <div id="sidebar" class="hidden-print actions sidebar-offcanvas">
             <ul class="nav nav-pills nav-stacked nav-stacked">
                 <li><?php echo $this->Html->link(__('Edit Condo'), array('action' => 'edit', $condo['Condo']['id']), array('class' => 'btn ', 'escape' => false)); ?></li>
+                <li><?php echo $this->Html->link(__('Share Distribution'), array('action' => 'shares_distribution', $condo['Condo']['id']), array('class' => 'btn ', 'escape' => false)); ?> </li>
                 <?php if (in_array(AuthComponent::user('role'), array('admin', 'store_admin'))) : ?>
                     <li><?php echo $this->Form->postLink(__('Delete Condo'), array('action' => 'delete', $condo['Condo']['id']), array('class' => 'btn ', 'escape' => false, 'confirm' => __('Are you sure you want to delete # %s?', $condo['Condo']['title']))); ?> </li>
                 <?php endif; ?>
@@ -22,7 +23,6 @@ $administrators = implode(", ", $administrators);
               
                 <li class="divider">&nbsp;</li>
                 <?php if ($has_fiscal_year) : ?>
-                    <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __('Share Distribution'), array('controller' => 'notes', 'action' => 'create', '?' => array('condo_id' => $condo['Condo']['id'])), array('class' => 'btn ', 'escape' => false)); ?> </li>
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Budget', 'Budgets', 2), array('controller' => 'budgets', 'action' => 'index', '?' => array('condo_id' => $condo['Condo']['id'])), array('class' => 'btn ', 'escape' => false)); ?> </li>
                 <?php endif; ?>
                 <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Receipt', 'Receipts', 2), array('controller' => 'receipts', 'action' => 'index', '?' => array('condo_id' => $condo['Condo']['id'])), array('class' => 'btn ', 'escape' => false)); ?> </li>

@@ -2784,3 +2784,6 @@ msgstr "Assunto"
 
 msgid "Storage exceeds maximum limit."
 msgstr "Lo spazio di archiviazione supera il limite massimo."
+
+msgid "Calculate"
+msgstr "Calcolare"

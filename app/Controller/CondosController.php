@@ -206,6 +206,150 @@ class CondosController extends AppController {
         
     }
 
+
+    /**
+     * shares_distribution method
+     *
+     * @throws NotFoundException
+     * @throws MethodNotAllowedException
+     * @param string $id
+     * @return void
+     */
+    public function shares_distribution($id) {
+        if (!$this->Condo->exists($id)) {
+            $this->Flash->error(__('Invalid condo'));
+            $this->redirect(array('action' => 'index'));
+        }
+        $this->setPhkRequestVar('condo_id', $id);
+        
+        if ($this->request->is('post') && $this->request->data['Note']['calculate']==0) {
+            set_time_limit(90); 
+            $title=$this->request->data['Note']['title'];
+            unset($this->request->data['Note']['title']);
+            $distribution_id = $this->request->data['Note']['share_distribution_id'];
+            unset($this->request->data['Note']['share_distribution_id']);
+            $periodicity_id = $this->request->data['Note']['share_periodicity_id'];
+            unset($this->request->data['Note']['share_periodicity_id']);
+            $begin_date = $this->request->data['Note']['begin_date'];
+            unset($this->request->data['Note']['begin_date']);
+            $due_days = $this->request->data['Note']['due_days'];
+            unset($this->request->data['Note']['due_days']); 
+            $shares = $this->request->data['Note']['shares'];
+            unset($this->request->data['Note']['shares']); 
+            $amount = $this->request->data['Note']['amount'];
+            unset($this->request->data['Note']['amount']);
+            unset($this->request->data['Note']['calculate']); 
+            unset($this->request->data['Note']['NoteSelection']); 
+ 
+
+            $notes = $this->request->data['Note'];
+            App::uses('CakeTime', 'Utility');
+            foreach ($notes as $key => $note) {
+                // check fraction please
+                if ($note['selected']==0){ continue; }
+                $this->request->data['Note'] = $note;
+                $this->request->data['Note']['note_type_id'] = '2';
+                $this->request->data['Note']['pending_amount'] = $note['amount'];
+                $shares = 1;
+                $tmpDate = $begin_date;
+                while ($shares <= $note['shares']):
+                    $month = CakeTime::format('F', $tmpDate);
+                    $this->request->data['Note']['title'] = __n('Share', 'Shares', 1) . ' ' . $shares . ' ' . __($month) . ' ' . $title;
+                    $this->request->data['Note']['document_date'] = $tmpDate;
+                    $this->request->data['Note']['due_date'] = date(Configure::read('Application.dateFormatSimple'), strtotime($tmpDate . ' +' . $due_days . ' days'));
+                    $this->request->data['Note']['note_status_id'] = '1';
+                    switch ($periodicity_id):
+                        case 1:
+                            $tmpDate = $tmpDate;
+                            break;
+                        case 2:
+                            $tmpDate = date(Configure::read('Application.dateFormatSimple'), strtotime($tmpDate . ' +1 year'));
+                            break;
+                        case 3:
+                            $tmpDate = date(Configure::read('Application.dateFormatSimple'), strtotime($tmpDate . ' +6 months'));
+                            break;
+                        case 4:
+                            $tmpDate = date(Configure::read('Application.dateFormatSimple'), strtotime($tmpDate . ' +3 months'));
+                            break;
+                        case 5:
+                            $tmpDate = date(Configure::read('Application.dateFormatSimple'), strtotime($tmpDate . ' +1 month'));
+                            break;
+                        case 6:
+                            $tmpDate = date(Configure::read('Application.dateFormatSimple'), strtotime($tmpDate . ' +1 week'));
+                            break;
+                        default:
+                            break;
+                    endswitch;
+                    $this->_addNote();
+                    
+                    $this->request->data['Note']['amount'] = $note['amount'];
+                    $this->request->data['Note']['pending_amount'] = $note['amount'];
+
+                    $shares++;
+                endwhile;
+            }
+            $this->Flash->success(__('The notes has been created'));
+            $this->redirect(array('action' => 'view', $id));
+        }
+
+        $this->Condo->Fraction->contain(array('Entity'));
+        $fractions = $this->Condo->Fraction->find('all', array('order' => array('Fraction.fraction' => 'asc'), 'conditions' => array('condo_id' => $id)));
+        $distribution['amount']=0;
+        $distribution['shares']=12;
+        $distribution['title']=null;
+        $distribution['begin_date']=date('Y-m-d');
+        $distribution['share_periodicity_id']=1;
+        $distribution['share_distribution_id']=1;
+        $totalMilRate = 0;
+        $budgetAmount = $distribution['amount'] ? $distribution['amount'] : 0;
+        $numOfShares = $distribution['shares'] ? $distribution['shares'] : 0;
+        $numOfFractions = count($fractions);
+        foreach ($fractions as $fraction) {
+            $totalMilRate += $fraction['Fraction']['permillage'];
+        }
+
+        $this->Condo->contain(array('FiscalYear'));
+        $options = array('conditions' => array('Condo.' . $this->Condo->primaryKey => $id));
+        $condo = $this->Condo->find('first', $options);
+        
+        $this->loadModel('SharePeriodicity');
+        $this->loadModel('ShareDistribution');
+        
+        $sharePeriodicities = $this->SharePeriodicity->find('list');
+        $shareDistributions = $this->ShareDistribution->find('list');
+     
+    
+        $this->set(compact('fractions', 'distribution', 'condo', 'sharePeriodicities', 'shareDistributions'));
+    }
+
+    private function _addNote() {
+        $this->loadModel('Note');
+        $this->Note->create();
+        $this->request->data['Note']['fiscal_year_id'] = $this->getPhkRequestVar('fiscal_year_id');
+        if ($this->Note->save($this->request->data)) {
+            $this->_setDocument();
+        } 
+    }
+
+    /* private function _getFiscalYear() {
+      $this->Note->Budget->id = $this->request->data['Note']['budget_id'];
+      $fiscalYear = $this->Note->Budget->field('fiscal_year_id');
+      return $fiscalYear;
+      } */
+
+    private function _setDocument() {
+        if (is_array($this->request->data['Note']['document_date'])) {
+            $dateTmp = $this->request->data['Note']['document_date']['day'] . '-' . $this->request->data['Note']['document_date']['month'] . '-' . $this->request->data['Note']['document_date']['year'];
+            $this->request->data['Note']['document_date'] = $dateTmp;
+        };
+        //debug($this->request->data['Note']['document_date']);
+        $date = new DateTime($this->request->data['Note']['document_date']);
+        $dateResult = $date->format('Y');
+        $document = $this->Note->id . '-' . $this->request->data['Note']['note_type_id'];
+        $this->Note->saveField('document', $document);
+        return true;
+    }
+
     public function beforeRender() {
         parent::beforeRender();
         if (!isset($this->phkRequestData['condo_id'])) {
