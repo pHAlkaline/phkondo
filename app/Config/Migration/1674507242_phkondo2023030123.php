@@ -408,7 +408,7 @@ class Phkondo2023030123 extends CakeMigration {
 					'movement_category_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'index'),
 					'movement_operation_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'index'),
 					'document' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 20, 'collate' => 'utf8mb3_general_ci', 'charset' => 'utf8mb3'),
-					'document_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false),
+					'document_id' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
 					'document_model' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 50, 'collate' => 'utf8mb3_general_ci', 'charset' => 'utf8mb3'),
 					'modified' => array('type' => 'datetime', 'null' => true, 'default' => null),
 					'created' => array('type' => 'datetime', 'null' => true, 'default' => null),

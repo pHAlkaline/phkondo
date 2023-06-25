@@ -585,7 +585,7 @@ CREATE TABLE `movements` (
   `movement_category_id` int(11) NOT NULL,
   `movement_operation_id` int(11) NOT NULL,
   `document` varchar(20) DEFAULT NULL,
-  `document_id` int(11) NOT NULL,
+  `document_id` int(11) NULL,
   `document_model` varchar(50) DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
