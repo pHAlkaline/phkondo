@@ -62,7 +62,8 @@
                     <hr />
                     <legend><?php echo __('New Movement'); ?></legend>
                     <?php
-                    $amount = isset($this->request->data['Movement'][0]['amount']) ? $this->request->data['Movement'][0]['amount'] : $this->request->data['Receipt']['total_amount'];
+                    $total_amount=isset($this->request->data['Receipt']['total_amount'])?$this->request->data['Receipt']['total_amount']:0;
+                    $amount = isset($this->request->data['Movement'][0]['amount']) ? $this->request->data['Movement'][0]['amount'] : $total_amount;
                     $document = isset($this->request->data['Movement'][0]['document']) ? $this->request->data['Movement'][0]['document'] : $this->request->data['Receipt']['document'];
                     $description = isset($this->request->data['Movement'][0]['description']) ? $this->request->data['Movement'][0]['description'] : __('Receipt') . ' ' . $document;
 
