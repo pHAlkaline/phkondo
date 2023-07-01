@@ -29,7 +29,7 @@
 ?>
 <?php
 if (!isset($headerTitle)) {
-    $headerTitle = '';
+    $headerTitle =  Configure::read('Organization.name');
 }
 ?>
 <!DOCTYPE html>
@@ -43,7 +43,7 @@ if (!isset($headerTitle)) {
     <meta name="robots" content="index, folow">
     <meta name="revisit-after" content="7 days">
     <meta name="rating" content="general">
-    <meta name="keywords" content="software, HOA, property, condo, condominium, association, managers, management, free, opensource, white labelling">
+    <meta name="keywords" content="pHKondo, software, HOA, property, condo, condominium, association, managers, management, free, opensource, white labelling">
     <meta name="description" content="pHKondo Condominium Hoa Association Management Software Includes Free and Open Source Version">
     <meta property="og:title" content="pHKondo Condominium Hoa Association Management Software">
     <meta property="og:site_name" content="pHKondo">
