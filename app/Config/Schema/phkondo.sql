@@ -1042,4 +1042,4 @@ INSERT INTO `users` ( `name`, `username`, `password`, `role`, `active`, `modifie
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-23 20:44:09
+-- Dump completed on 2022-01-23 20:44:09

@@ -6,7 +6,7 @@ class Phkondo2023030123 extends CakeMigration {
  *
  * @var string
  */
-	public $description = 'phkondo2023030123';
+	public $description = 'phkondo2022030123';
 
 /**
  * Actions to be performed

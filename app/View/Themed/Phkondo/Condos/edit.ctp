@@ -2,8 +2,8 @@
     <div class="col-sm-2">
         <div id="sidebar" class="hidden-print actions sidebar-offcanvas">
             <ul class="nav nav-pills nav-stacked">
-                <li ><?php echo $this->Html->link(__('View Condo'), array('action' => 'view', $this->Form->value('Condo.id'))); ?></li>
-                <li ><?php echo $this->Html->link(__('List Condos'), array('action' => 'index')); ?></li>
+                <li><?php echo $this->Html->link(__('View Condo'), array('action' => 'view', $this->Form->value('Condo.id'))); ?></li>
+                <li><?php echo $this->Html->link(__('List Condos'), array('action' => 'index')); ?></li>
             </ul><!-- /.list-group -->
         </div><!-- /.actions -->
     </div><!-- /#sidebar .col-sm-3 -->
@@ -18,18 +18,20 @@
                 <div class="form-group">
                     <?php echo $this->Form->input('title', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
-
-                <div class="form-group">
-                    <?php echo $this->Form->input('taxpayer_number', array('class' => 'form-control')); ?>
-                </div><!-- .form-group -->
-
                 <div class="form-group">
                     <?php echo $this->Form->input('address', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
-
+                
+                <div class="form-group">
+                    <?php echo $this->Form->input('taxpayer_number', array('class' => 'form-control')); ?>
+                </div><!-- .form-group -->
                 <div class="form-group">
                     <?php echo $this->Form->input('email', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
+                <div class="form-group ">
+                    <?php echo $this->Form->input('comments', ['label' => ['text' => __('Observations'), 'class' => 'col-sm-2 control-label'], 'class' => 'form-control']); ?>
+                </div>
+                <hr />
                 <div class="form-group ">
                     <?php echo $this->Form->input('matrix_registration', array('class' => 'form-control')); ?>
                 </div>
@@ -38,9 +40,6 @@
                 </div>
                 <div class="form-group ">
                     <?php echo $this->Form->input('land_registry_year', array('class' => 'form-control')); ?>
-                </div>
-                <div class="form-group ">
-                    <?php echo $this->Form->input('comments', ['label'=>['text'=>__('Observations'),'class'=>'col-sm-2 control-label'],'class' => 'form-control']); ?>
                 </div>
             </fieldset>
             <div class="form-group">

@@ -20,7 +20,7 @@ $administrators = implode(", ", $administrators);
                 <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Fraction', 'Fractions', 2), array('controller' => 'fractions', 'action' => 'index', '?' => array('condo_id' => $condo['Condo']['id'])), array('class' => 'btn ', 'escape' => false)); ?> </li>
                 <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Fiscal Year', 'Fiscal Years', 2), array('controller' => 'fiscal_years', 'action' => 'index', '?' => array('condo_id' => $condo['Condo']['id'])), array('class' => 'btn ', 'escape' => false)); ?> </li>
                 <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Administrator', 'Administrators', 2), array('controller' => 'administrators', 'action' => 'index', '?' => array('condo_id' => $condo['Condo']['id'])), array('class' => 'btn ', 'escape' => false)); ?> </li>
-              
+
                 <li class="divider">&nbsp;</li>
                 <?php if ($has_fiscal_year) : ?>
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Budget', 'Budgets', 2), array('controller' => 'budgets', 'action' => 'index', '?' => array('condo_id' => $condo['Condo']['id'])), array('class' => 'btn ', 'escape' => false)); ?> </li>
@@ -88,16 +88,43 @@ $administrators = implode(", ", $administrators);
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><strong><?php echo __('Taxpayer Number'); ?></strong></td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td><strong><?php echo __n('Fiscal Year', 'Fiscal Years', 1); ?></strong></td>
                                     <td>
-                                        <?php echo h($condo['Condo']['taxpayer_number']); ?>
+                                        <?php
+                                        if ($has_fiscal_year) {
+                                            echo h($condo['FiscalYear'][0]['title'] . ' ( ' . h($condo['FiscalYear'][0]['open_date']) . ' a ' . h($condo['FiscalYear'][0]['close_date']) . ' ) ');
+                                        }
+                                        ?>
                                         &nbsp;
+
                                     </td>
                                 </tr>
+                                
+                                <tr>
+                                    <td><strong><?php echo __n('Administrator', 'Administrator', 2); ?></strong></td>
+                                    <td>
+                                        <?php echo h($administrators); ?>&nbsp;
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                
                                 <tr>
                                     <td><strong><?php echo __('Address'); ?></strong></td>
                                     <td>
                                         <?php echo nl2br(h($condo['Condo']['address'])); ?>
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong><?php echo __('Taxpayer Number'); ?></strong></td>
+                                    <td>
+                                        <?php echo h($condo['Condo']['taxpayer_number']); ?>
                                         &nbsp;
                                     </td>
                                 </tr>
@@ -107,6 +134,17 @@ $administrators = implode(", ", $administrators);
                                         <?php echo h($condo['Condo']['email']); ?>
                                         &nbsp;
                                     </td>
+                                </tr>
+                              
+                                <tr>
+                                    <td><strong><?php echo __('Observations'); ?></strong></td>
+                                    <td>
+                                        <?php echo nl2br(h($condo['Condo']['comments'])); ?>
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td><strong><?php echo __('Matrix Registration'); ?></strong></td>
@@ -129,32 +167,6 @@ $administrators = implode(", ", $administrators);
                                         &nbsp;
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td><strong><?php echo __n('Fiscal Year', 'Fiscal Years', 1); ?></strong></td>
-                                    <td>
-                                        <?php
-                                        if ($has_fiscal_year) {
-                                            echo h($condo['FiscalYear'][0]['title'] . ' ( ' . h($condo['FiscalYear'][0]['open_date']) . ' a ' . h($condo['FiscalYear'][0]['close_date']) . ' ) ');
-                                        }
-                                        ?>
-                                        &nbsp;
-
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><strong><?php echo __n('Administrator', 'Administrator', 2); ?></strong></td>
-                                    <td>
-                                        <?php echo h($administrators); ?>&nbsp;
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><strong><?php echo __('Observations'); ?></strong></td>
-                                    <td>
-                                        <?php echo nl2br(h($condo['Condo']['comments'])); ?>
-                                        &nbsp;
-                                    </td>
-                                </tr>
-
                                 <tr>
                                     <td><strong><?php echo __('Created'); ?></strong></td>
                                     <td>
