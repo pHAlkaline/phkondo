@@ -25,9 +25,10 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
                     <thead>
                         <tr>
                             <th><?php echo $this->Paginator->sort('name'); ?></th>
-                            <th><?php echo $this->Paginator->sort('email'); ?></th>
                             <th data-breakpoints="xs"><?php echo $this->Paginator->sort('role'); ?></th>
+                            <th><?php echo $this->Paginator->sort('email'); ?></th>
                             <th><?php echo $this->Paginator->sort('username'); ?></th>
+                            <th><?php echo $this->Paginator->sort('active'); ?></th>
                             <th data-breakpoints="xs" class="actions hidden-print"><?php //echo __('Actions');    ?></th>
                         </tr>
                     </thead>
@@ -41,10 +42,10 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
                             ?>
                         <tr>
                             <td><?php echo h($user['User']['name']); ?>&nbsp;</td>
-                            <td><?php echo h($user['User']['email']); ?>&nbsp;</td>
                             <td><?php echo h(__($roles[$user['User']['role']])); ?>&nbsp;</td>
-
+                            <td><?php echo h($user['User']['email']); ?>&nbsp;</td>
                             <td><?php echo h($user['User']['username']); ?>&nbsp;</td>
+                            <td><?php echo h($user['User']['active_string']); ?>&nbsp;</td>
                             <td class="actions hidden-print">
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $user['User']['id']), array('class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $user['User']['id']), array('class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
