@@ -1027,7 +1027,7 @@ CREATE TABLE `users` (
 
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` ( `name`, `username`, `password`, `role`, `active`, `modified`, `created`) VALUES ( 'Administrator' , 'admin' , '37a2954e802ce7e3e22fc8ba556482e0dba52d45' , 'admin',1,NOW() ,NOW());
-INSERT INTO `users` ( `name`, `username`, `password`, `role`, `active`, `modified`, `created`) VALUES ( 'Demonstration' , 'demo' , '4be522cbc9828be322575cc78952e24f01c2dabd' , 'colaborator',1,NOW() ,NOW());
+INSERT INTO `users` ( `name`, `username`, `password`, `role`, `active`, `modified`, `created`) VALUES ( 'Demonstration' , 'demo' , '4be522cbc9828be322575cc78952e24f01c2dabd' , 'colaborator',0,NOW() ,NOW());
 
 --
 -- Dumping routines for database 'phkondo'
