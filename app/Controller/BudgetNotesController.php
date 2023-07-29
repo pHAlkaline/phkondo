@@ -280,6 +280,7 @@ class BudgetNotesController extends AppController {
             set_time_limit(90); 
             $notes = $this->request->data['Note'];
             unset($notes['Budget']);
+            unset($notes['NoteSelection']);
             App::uses('CakeTime', 'Utility');
             foreach ($notes as $key => $note) {
                 // check fraction please
