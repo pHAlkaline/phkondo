@@ -42,14 +42,13 @@ class EmailConfig {
         'from' => array('{default_email}' => '{default_name}'),
         'subject' => '{default_subject}',
         'charset' => 'utf-8',
-	'headerCharset' => 'utf-8',
+	    'headerCharset' => 'utf-8',
         'host' => '{default_host}',
         'port' => '{default_port}',
         'username' => '{default_username}',
         'password' => '{default_password}',
         'transport' => 'Smtp',
         'tls' => true,
-
-);
-
+        'ssl_cafile' => APP. 'Config' . DS . 'cacert.pem'
+    );
 }
