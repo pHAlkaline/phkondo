@@ -122,14 +122,15 @@ class SystemConfigController extends AppController
         }
         $data = $this->request->data;
         //$data['BootstrapApp']['Attachment']['attachment']['extensions'] = explode(',', trim($data['BootstrapApp']['Attachment']['attachment']['extensions']));
-       // $data['BootstrapApp']['Attachment']['attachment']['extensions'] = $data['BootstrapApp']['Attachment']['attachment']['extensions'];
-        
+        // $data['BootstrapApp']['Attachment']['attachment']['extensions'] = $data['BootstrapApp']['Attachment']['attachment']['extensions'];
+        $maximumUploadSize=$this->getMaximumFileUploadSize();
+        $data['BootstrapApp']['Attachment']['attachment']['maxSize']=$data['BootstrapApp']['Attachment']['attachment']['maxSize']<$maximumUploadSize?$data['BootstrapApp']['Attachment']['attachment']['maxSize']:$maximumUploadSize;
 
-        Configure::write('BootstrapApp.Application.currencySign','\''.$data['BootstrapApp']['Application']['currencySign'].'\'');
-        Configure::write('BootstrapApp.Application.calendarDateFormat',$data['BootstrapApp']['Application']['calendarDateFormat'] );
-        Configure::write('BootstrapApp.Config.timezone',$data['BootstrapApp']['Config']['timezone'] );
-        Configure::write('BootstrapApp.Attachment.attachment.maxSize',$data['BootstrapApp']['Attachment']['attachment']['maxSize'] );
-        Configure::write('BootstrapApp.Attachment.attachment.extensions',$data['BootstrapApp']['Attachment']['attachment']['extensions'] );
+        Configure::write('BootstrapApp.Application.currencySign', '\'' . $data['BootstrapApp']['Application']['currencySign'] . '\'');
+        Configure::write('BootstrapApp.Application.calendarDateFormat', $data['BootstrapApp']['Application']['calendarDateFormat']);
+        Configure::write('BootstrapApp.Config.timezone', $data['BootstrapApp']['Config']['timezone']);
+        Configure::write('BootstrapApp.Attachment.attachment.maxSize', $data['BootstrapApp']['Attachment']['attachment']['maxSize']);
+        Configure::write('BootstrapApp.Attachment.attachment.extensions', $data['BootstrapApp']['Attachment']['attachment']['extensions']);
 
         if (!Configure::dump('bootstrap_app.ini', 'BootstrapApp', array('BootstrapApp'))) {
             $this->Flash->error(__d('install', 'Unable to config your application, your Config %s bootstrap_app.ini file is not writable. Please check the permissions.', DS));
@@ -202,5 +203,49 @@ class SystemConfigController extends AppController
         } catch (\Exception $e) {
             $this->Flash->error($e->getMessage());
         }
+    }
+
+    /**
+     * This function returns the maximum files size that can be uploaded 
+     * in PHP
+     * @returns int File size in bytes
+     **/
+    private function getMaximumFileUploadSize()
+    {
+        return min($this->convertPHPSizeToBytes(ini_get('post_max_size')), $this->convertPHPSizeToBytes(ini_get('upload_max_filesize')));
+    }
+
+    /**
+     * This function transforms the php.ini notation for numbers (like '2M') to an integer (2*1024*1024 in this case)
+     * 
+     * @param string $sSize
+     * @return integer The value in bytes
+     */
+    private function convertPHPSizeToBytes($sSize)
+    {
+        //
+        $sSuffix = strtoupper(substr($sSize, -1));
+        if (!in_array($sSuffix, array('P', 'T', 'G', 'M', 'K'))) {
+            return (int)$sSize;
+        }
+        $iValue = substr($sSize, 0, -1);
+        switch ($sSuffix) {
+            case 'P':
+                $iValue *= 1024;
+                // Fallthrough intended
+            case 'T':
+                $iValue *= 1024;
+                // Fallthrough intended
+            case 'G':
+                $iValue *= 1024;
+                // Fallthrough intended
+            case 'M':
+                $iValue *= 1024;
+                // Fallthrough intended
+            case 'K':
+                $iValue *= 1024;
+                break;
+        }
+        return (int)$iValue;
     }
 }

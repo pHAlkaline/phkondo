@@ -226,15 +226,18 @@ class InstallController extends AppController
             Configure::write('Application.mode', $this->request->data['Install']['mode']);
         }
 
-        if (Configure::read('Application.stage') == 'saas' && file_exists(APP . 'Config' . DS . 'database.php')) {
-            $db = ConnectionManager::getDataSource('default');
-            if (!$db->isConnected()) {
-                $this->Flash->error(__d('install', 'Could not connect to database.'));
-                return;
+        try {
+            if (Configure::read('Application.stage') == 'saas' && file_exists(APP . 'Config' . DS . 'database.php')) {
+                $db = ConnectionManager::getDataSource('default');
+                if ($db->isConnected()) {
+                    $this->Flash->info(__d('install', 'Database connection file already exists'));
+                    return $this->redirect(array('action' => 'data'));
+                }
             }
-            $this->Flash->info(__d('install', 'Database connection file already exists'));
-            return $this->redirect(array('action' => 'data'));
+        } catch (Exception $e) {
+            //$this->Flash->info(__d('install', 'Could not connect to database: %s', $e->getMessage()));
         }
+
 
         if (file_exists(APP . 'Config' . DS . 'database.php')) {
             unlink(APP . 'Config' . DS . 'database.php');
@@ -253,9 +256,10 @@ class InstallController extends AppController
             }
         }
         try {
+            ConnectionManager::drop('default');
             ConnectionManager::create('default', $config);
             $db = ConnectionManager::getDataSource('default');
-        } catch (MissingConnectionException $e) {
+        } catch (Exception $e) {
 
             $this->Flash->info(__d('install', 'Could not connect to database: %s', $e->getMessage()));
             return;
