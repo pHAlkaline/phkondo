@@ -2742,6 +2742,9 @@ msgstr "Símbolo de moneda"
 msgid "Calendar Date Format"
 msgstr "Formato de fecha del calendario"
 
+msgid "Date Format"
+msgstr "Formato de Fecha"
+
 msgid "Time Zone"
 msgstr "Zona horaria"
 

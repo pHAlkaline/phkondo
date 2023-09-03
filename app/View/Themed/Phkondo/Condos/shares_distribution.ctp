@@ -73,7 +73,7 @@ $has_fiscal_year = (isset($condo['FiscalYear'][0]['title'])) ? true : false;
                     </div><!-- .form-group -->
 
                     <div class="form-group">
-                        <?php echo $this->Form->input('amount', array('class' => 'form-control', 'type' => 'number', 'min' => '1', 'step' => '0.01', 'required' => 'required')); ?>
+                        <?php echo $this->Form->input('amount', array('class' => 'form-control', 'type' => 'number', 'min' => '1',  'step' => '0.01', 'required' => 'required')); ?>
                     </div><!-- .form-group -->
                     <div class="form-group">
                         <?php
@@ -88,7 +88,7 @@ $has_fiscal_year = (isset($condo['FiscalYear'][0]['title'])) ? true : false;
                     </div><!-- .form-group -->
 
                     <div class="form-group">
-                        <?php echo $this->Form->input('shares', array('type' => 'number', 'required' => 'required', 'min' => 1, 'label' => ['text' => __n('Share', 'Shares', 2), 'class' => 'col-sm-2 control-label'], 'class' => 'form-control')); ?>
+                        <?php echo $this->Form->input('shares', array('type' => 'number', 'required' => 'required', 'min' => 1, 'max'=>104, 'label' => ['text' => __n('Share', 'Shares', 2).' '.__('Qnt'), 'class' => 'col-sm-2 control-label'], 'class' => 'form-control')); ?>
                     </div><!-- .form-group -->
 
                     <div class="form-group">

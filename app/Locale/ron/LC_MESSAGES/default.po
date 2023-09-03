@@ -3552,6 +3552,9 @@ msgstr "Simbol Valută"
 msgid "Calendar Date Format"
 msgstr "Format data calendarului"
 
+msgid "Date Format"
+msgstr "Format data"
+
 msgid "Time Zone"
 msgstr "Fus orar"
 

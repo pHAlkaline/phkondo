@@ -127,7 +127,13 @@ class SystemConfigController extends AppController
         $data['BootstrapApp']['Attachment']['attachment']['maxSize']=$data['BootstrapApp']['Attachment']['attachment']['maxSize']<$maximumUploadSize?$data['BootstrapApp']['Attachment']['attachment']['maxSize']:$maximumUploadSize;
 
         Configure::write('BootstrapApp.Application.currencySign', '\'' . $data['BootstrapApp']['Application']['currencySign'] . '\'');
+        Configure::write('BootstrapApp.Application.dateFormat', $data['BootstrapApp']['Application']['calendarDateFormat'].' H:i:s');
+        Configure::write('BootstrapApp.Application.dateFormatSimple', $data['BootstrapApp']['Application']['calendarDateFormat']);
+        
+        $dateFormatMap=['d-m-Y'=>'dd-mm-yyyy','Y-m-d'=>'yyyy-mm-dd', 'm/d/Y'=>'mm/dd/yyyy', 'Y/m/d'=>'yyyy/mm/dd'];
+        $data['BootstrapApp']['Application']['calendarDateFormat']=$dateFormatMap[$data['BootstrapApp']['Application']['calendarDateFormat']];
         Configure::write('BootstrapApp.Application.calendarDateFormat', $data['BootstrapApp']['Application']['calendarDateFormat']);
+        
         Configure::write('BootstrapApp.Config.timezone', $data['BootstrapApp']['Config']['timezone']);
         Configure::write('BootstrapApp.Attachment.attachment.maxSize', $data['BootstrapApp']['Attachment']['attachment']['maxSize']);
         Configure::write('BootstrapApp.Attachment.attachment.extensions', $data['BootstrapApp']['Attachment']['attachment']['extensions']);

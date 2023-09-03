@@ -945,23 +945,23 @@ msgstr ""
 
 #: Controller/SuppliersController.php:72;109;153;197;229
 msgid "Invalid supplier"
-msgstr ""
+msgstr "Invalid vendor"
 
 #: Controller/SuppliersController.php:92;115;159;202
 msgid "The supplier has been saved"
-msgstr ""
+msgstr "The vendor has been saved"
 
 #: Controller/SuppliersController.php:95;122;166;205
 msgid "The supplier could not be saved. Please, try again."
-msgstr ""
+msgstr "The vendor could not be saved. Please, try again."
 
 #: Controller/SuppliersController.php:233
 msgid "Supplier deleted"
-msgstr ""
+msgstr "Vendor deleted"
 
 #: Controller/SuppliersController.php:236
 msgid "Supplier can not be deleted"
-msgstr ""
+msgstr "Vendor can not be deleted"
 
 #: Controller/SuppliersController.php:138;140;182;184;247;251;255;260
 #: View/Themed/Phkondo/Elements/menu/top_menu.ctp:61
@@ -974,8 +974,8 @@ msgstr ""
 #: View/Themed/Phkondo/Suppliers/view.ctp:31
 msgid "Supplier"
 msgid_plural "Suppliers"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Vendor"
+msgstr[1] "Vendors"
 
 #: Controller/SupportCategoriesController.php:44;82;114
 msgid "Invalid support category"
@@ -2578,7 +2578,7 @@ msgstr ""
 
 #: View/Themed/Phkondo/Condos/view.ctp:268
 msgid "Suppliers with arrears"
-msgstr ""
+msgstr "Vendor with arrears"
 
 #: View/Themed/Phkondo/Condos/view.ctp:44;46
 #: View/Themed/Phkondo/Elements/menu/top_menu.ctp:90;91;93
@@ -3028,7 +3028,7 @@ msgstr ""
 #: View/Themed/Phkondo/Suppliers/index.ctp:12
 #: View/Themed/Phkondo/Suppliers/view.ctp:17
 msgid "New Supplier"
-msgstr ""
+msgstr "New Vendor"
 
 #: View/Themed/Phkondo/InvoiceConference/add.ctp:27
 #: View/Themed/Phkondo/InvoiceConference/index.ctp:13
@@ -3393,11 +3393,11 @@ msgstr ""
 #: View/Themed/Phkondo/Suppliers/edit.ctp:32
 #: View/Themed/Phkondo/Suppliers/view.ctp:7
 msgid "Edit Supplier"
-msgstr ""
+msgstr "Edit Vendor"
 
 #: View/Themed/Phkondo/Suppliers/view.ctp:16
 msgid "Delete Supplier"
-msgstr ""
+msgstr "Delete Vendor"
 
 #: View/Themed/Phkondo/SupportCategories/add.ctp:8
 #: View/Themed/Phkondo/SupportCategories/edit.ctp:16
@@ -3523,6 +3523,9 @@ msgid "Currency Symbol"
 msgstr ""
 
 msgid "Calendar Date Format"
+msgstr ""
+
+msgid "Date Format"
 msgstr ""
 
 msgid "Time Zone"

@@ -3656,6 +3656,9 @@ msgstr "Símbolo de moeda"
 msgid "Calendar Date Format"
 msgstr "Formato de data do calendário"
 
+msgid "Date Format"
+msgstr "Formato de data"
+
 msgid "Time Zone"
 msgstr "Fuso horário"
 

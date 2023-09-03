@@ -946,23 +946,23 @@ msgstr ""
 
 #: Controller/SuppliersController.php:72;109;153;197;229
 msgid "Invalid supplier"
-msgstr ""
+msgstr "Ungültiger Anbieter"
 
 #: Controller/SuppliersController.php:92;115;159;202
 msgid "The supplier has been saved"
-msgstr ""
+msgstr "Der Lieferant wurde gespeichert"
 
 #: Controller/SuppliersController.php:95;122;166;205
 msgid "The supplier could not be saved. Please, try again."
-msgstr ""
+msgstr "Der Anbieter konnte nicht gespeichert werden. Bitte versuche es erneut."
 
 #: Controller/SuppliersController.php:233
 msgid "Supplier deleted"
-msgstr ""
+msgstr "Anbieter löscht"
 
 #: Controller/SuppliersController.php:236
 msgid "Supplier can not be deleted"
-msgstr ""
+msgstr "Der Anbieter kann nicht gelöscht werden"
 
 #: Controller/SuppliersController.php:138;140;182;184;247;251;255;260
 #: View/Themed/Phkondo/Elements/menu/top_menu.ctp:61
@@ -975,8 +975,8 @@ msgstr ""
 #: View/Themed/Phkondo/Suppliers/view.ctp:31
 msgid "Supplier"
 msgid_plural "Suppliers"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Verkäufer"
+msgstr[1] "Anbieter"
 
 #: Controller/SupportCategoriesController.php:44;82;114
 msgid "Invalid support category"
@@ -2579,7 +2579,7 @@ msgstr ""
 
 #: View/Themed/Phkondo/Condos/view.ctp:268
 msgid "Suppliers with arrears"
-msgstr ""
+msgstr "Lieferanten mit Zahlungsrückständen"
 
 #: View/Themed/Phkondo/Condos/view.ctp:44;46
 #: View/Themed/Phkondo/Elements/menu/top_menu.ctp:90;91;93
@@ -3386,16 +3386,16 @@ msgstr ""
 #: View/Themed/Phkondo/Suppliers/edit.ctp:18
 #: View/Themed/Phkondo/Suppliers/view.ctp:18
 msgid "List Suppliers"
-msgstr ""
+msgstr "Anbieter auflisten"
 
 #: View/Themed/Phkondo/Suppliers/edit.ctp:32
 #: View/Themed/Phkondo/Suppliers/view.ctp:7
 msgid "Edit Supplier"
-msgstr ""
+msgstr "Anbieter bearbeiten"
 
 #: View/Themed/Phkondo/Suppliers/view.ctp:16
 msgid "Delete Supplier"
-msgstr ""
+msgstr "Anbieter löschen"
 
 #: View/Themed/Phkondo/SupportCategories/add.ctp:8
 #: View/Themed/Phkondo/SupportCategories/edit.ctp:16
@@ -3522,6 +3522,9 @@ msgstr "Währungszeichen"
 
 msgid "Calendar Date Format"
 msgstr "Kalenderdatumsformat"
+
+msgid "Date Format"
+msgstr "Datumsformat"
 
 msgid "Time Zone"
 msgstr "Zeitzone"

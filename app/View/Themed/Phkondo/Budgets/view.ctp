@@ -192,7 +192,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                <td class='col-sm-2'><strong><?php echo __n('Share', 'Shares', 2); ?></strong></td>
+                                <td class='col-sm-2'><strong><?php echo __n('Share', 'Shares', 2).' '.__('Qnt'); ?></strong></td>
                                     <td>
                                         <?php echo h($budget['Budget']['shares']); ?>
                                         &nbsp;

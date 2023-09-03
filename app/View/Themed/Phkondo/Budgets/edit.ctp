@@ -120,7 +120,7 @@ $this->Html->script('budget_edit', false);
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-                    <?php echo $this->Form->input('shares', array($readonlyDisabled, 'label'=>['text' => __n('Share','Shares',2).' '.__('Qnt'), 'class' => 'col-sm-2 control-label'], 'class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('shares', array($readonlyDisabled, 'min'=>1,'max'=>104, 'label'=>['text' => __n('Share','Shares',2).' '.__('Qnt'), 'class' => 'col-sm-2 control-label'], 'class' => 'form-control')); ?>
                 </div><!-- .form-group -->
 
                 <div class="form-group">
