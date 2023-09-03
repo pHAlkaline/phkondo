@@ -3388,7 +3388,7 @@ msgstr ""
 #: View/Themed/Phkondo/Suppliers/edit.ctp:18
 #: View/Themed/Phkondo/Suppliers/view.ctp:18
 msgid "List Suppliers"
-msgstr ""
+msgstr "List Vendors"
 
 #: View/Themed/Phkondo/Suppliers/edit.ctp:32
 #: View/Themed/Phkondo/Suppliers/view.ctp:7

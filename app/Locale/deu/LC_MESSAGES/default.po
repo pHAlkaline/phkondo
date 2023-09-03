@@ -3029,7 +3029,7 @@ msgstr ""
 #: View/Themed/Phkondo/Suppliers/index.ctp:12
 #: View/Themed/Phkondo/Suppliers/view.ctp:17
 msgid "New Supplier"
-msgstr ""
+msgstr "Neuer Lieferant"
 
 #: View/Themed/Phkondo/InvoiceConference/add.ctp:27
 #: View/Themed/Phkondo/InvoiceConference/index.ctp:13
