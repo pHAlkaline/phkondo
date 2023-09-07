@@ -165,7 +165,7 @@ UNLOCK tables;
 
 LOCK tables `note_statuses` WRITE;
 /*!40000 ALTER TABLE `note_statuses` DISABLE KEYS */;
-INSERT INTO `note_statuses` ( `id`, `name`, `active`, `modified`, `created`) VALUES (1, 'Awaiting Payment',1,NOW() ,NOW());
+INSERT INTO `note_statuses` ( `id`, `name`, `active`, `modified`, `created`) VALUES (1, 'Waiting For Payment',1,NOW() ,NOW());
 INSERT INTO `note_statuses` ( `id`, `name`, `active`, `modified`, `created`) VALUES (2, 'Paid Partial',0,NOW() ,NOW());
 INSERT INTO `note_statuses` ( `id`, `name`, `active`, `modified`, `created`) VALUES (3, 'Paid',1,NOW() ,NOW());
 INSERT INTO `note_statuses` ( `ID`, `name`, `active`, `modified`, `created`) VALUES (4, 'Canceled',1,NOW() ,NOW()); 
@@ -204,7 +204,7 @@ UNLOCK tables;
 LOCK tables `receipt_statuses` WRITE;
 /*!40000 ALTER TABLE `receipt_statuses` DISABLE KEYS */;
 INSERT INTO `receipt_statuses` ( `id`, `name`, `active`, `modified`, `created`) VALUES (1, 'Draft',1,NOW() ,NOW());
-INSERT INTO `receipt_statuses` ( `id`, `name`, `active`, `modified`, `created`) VALUES (2, 'Awaiting Payment',1,NOW() ,NOW());
+INSERT INTO `receipt_statuses` ( `id`, `name`, `active`, `modified`, `created`) VALUES (2, 'Waiting For Payment',1,NOW() ,NOW());
 INSERT INTO `receipt_statuses` ( `id`, `name`, `active`, `modified`, `created`) VALUES (3, 'Paid',1,NOW() ,NOW());
 INSERT INTO `receipt_statuses` ( `id`, `name`, `active`, `modified`, `created`) VALUES (4, 'Canceled',1,NOW() ,NOW()); 
 /*!40000 ALTER TABLE `receipt_statuses` ENABLE KEYS */;
