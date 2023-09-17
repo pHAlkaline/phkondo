@@ -465,6 +465,7 @@ class InstallController extends AppController
         if (file_exists(APP . 'Config' . DS . 'email_notifications.php')) {
             unlink(APP . 'Config' . DS . 'email_notifications.php');
             copy(APP . 'Config' . DS . 'email_notifications.php.default', APP . 'Config' . DS . 'email_notifications.php');
+            Configure::load('email_notifications');
         }
 
         if (empty($this->request->data)) {
