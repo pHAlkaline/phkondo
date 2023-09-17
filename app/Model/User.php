@@ -166,6 +166,10 @@ class User extends AppModel {
         if (isset($this->data[$this->alias]['username'])) {
             $this->data[$this->alias]['username'] = substr($this->data[$this->alias]['username'], 0, 32);
         }
+
+        if (isset($this->data[$this->alias]['email']) && $this->data[$this->alias]['email']=='') {
+            $this->data[$this->alias]['email']=null;
+        }
         return true;
     }
 

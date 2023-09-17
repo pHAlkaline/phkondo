@@ -43,7 +43,7 @@ Configure::load('email_notifications');
             <table class="table table-hover table-condensed">
                 <tbody>
                     <tr>
-                        <td class='col-sm-2'><strong><?php echo __('Title'); ?></strong></td>
+                        <td class='col-sm-2'><strong><?php echo __n('Condo', 'Condos', 1); ?></strong></td>
                         <td>
                             <?php echo h($condo['Condo']['title']); ?>&nbsp;
                         </td>
