@@ -3,6 +3,7 @@
 <?php $this->Html->script('libs/footable/footable', false); ?>
 <?php $this->Html->script('shares_distribution', false); ?>
 <?php
+$has_fiscal_year = (isset($condo['FiscalYear'][0]['title'])) ? true : false;
 $totalShares = 0;
 $totalMilRate = 0;
 $sharesAmount = isset($this->request->data['Note']['amount']) ? $this->request->data['Note']['amount'] : 0;
@@ -11,7 +12,7 @@ $numOfFractions = count($fractions);
 foreach ($fractions as $fraction) {
     $totalMilRate += $fraction['Fraction']['permillage'];
 }
-$has_fiscal_year = (isset($condo['FiscalYear'][0]['title'])) ? true : false;
+Configure::load('email_notifications');
 ?>
 <div id="page-container" class="row row-offcanvas row-offcanvas-left">
     <div class="col-sm-2">

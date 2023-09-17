@@ -220,6 +220,16 @@ class CondosController extends AppController {
             $this->Flash->error(__('Invalid condo'));
             $this->redirect(array('action' => 'index'));
         }
+        
+        $this->Condo->contain(array('FiscalYear'));
+        $options = array('conditions' => array('Condo.' . $this->Condo->primaryKey => $id));
+        $condo = $this->Condo->find('first', $options);
+        $has_fiscal_year = (isset($condo['FiscalYear'][0]['title'])) ? true : false;
+        if (!$has_fiscal_year){
+            $this->Flash->error(__('Invalid request'));
+            $this->redirect(array('action' => 'index'));
+        }
+
         $this->setPhkRequestVar('condo_id', $id);
         
         if ($this->request->is('post') && $this->request->data['Note']['calculate']==0) {
@@ -308,9 +318,6 @@ class CondosController extends AppController {
             $totalMilRate += $fraction['Fraction']['permillage'];
         }
 
-        $this->Condo->contain(array('FiscalYear'));
-        $options = array('conditions' => array('Condo.' . $this->Condo->primaryKey => $id));
-        $condo = $this->Condo->find('first', $options);
         
         $this->loadModel('SharePeriodicity');
         $this->loadModel('ShareDistribution');
