@@ -105,7 +105,7 @@ class SystemConfigController extends AppController
             return;
         }
 
-
+        Configure::load('email_notifications');
         $this->Flash->success(__d('email', 'Config saved with success.'));
         if ($this->request->data['test']) {
             $this->_sendTest();
