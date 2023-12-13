@@ -57,6 +57,7 @@ Tipo Movimento: Dare se il Saldo Apertura è 0 o superiore, Avere se il saldo è
 Categoria: Apertura / Chiusura
 Operazione Movimento: Saldo Chiusura
 * Ogni movimento deve far riferimento all'intervallo date dell'anno fiscale attivo
+* Utilizzare il movimento interno per trasferire importi tra conti. Il movimento interno non viene utilizzato nei report come spese o ricavi
 
 Torna a Dettagli Condominio
 Vai alla sezione Budget

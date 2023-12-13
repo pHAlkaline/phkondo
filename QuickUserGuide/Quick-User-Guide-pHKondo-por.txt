@@ -61,7 +61,7 @@ Tipo de movimento: Crédito se saldo de conta no início do período contabilís
 * Deve ser inserido um último movimento ao fechar Período Contabilístico:
 Escolha Abertura / Fecho no campo Categoria
 Escolha Fecho Balancete no campo Operação Movimento
-
+* Use o Movimento Interno para transferir valores entre contas. Movimento Interno não é usado nos relatórios como despesa ou Receitas
 * Cada movimento tem de pertencer ao período contabilístico ativo
 
 Regresse aos detalhes do condomínio

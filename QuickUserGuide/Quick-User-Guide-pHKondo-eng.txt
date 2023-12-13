@@ -57,7 +57,8 @@ Movement type: Credit if open balance is 0 or superior, Debit if open balance is
 * At the end of Accounting Period must close account movements, a last movement is required:
 For this last movement: ( Closing accounting period )
 Choose Opening / Closing on Category
-Chosse Closing Balance on Movement Operation
+Choose Closing Balance on Movement Operation
+* Use Internal Movement to transfer amounts between accounts. Internal Movement is not used in reports as expenses or Revenues
 * Every movement must belong to the active accounting period
 
 Go back to condo details

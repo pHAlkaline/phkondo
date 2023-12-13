@@ -59,6 +59,7 @@ Tipo de operación: Crédito si el saldo de la cuenta al inicio del periodo cont
 Seleccione Balance de apertura/cierre en el campo Categoría
 Seleccione Cerrar Balance en el campo Operación Movimiento
 * Cada transacción debe pertenecer al período contable activo
+* Utilice Movimiento Interno para transferir montos entre cuentas. El Movimiento Interno no se utiliza en informes como Gastos o Ingresos
 
 Volver a los detalles del condominio
 Introducir en los presupuestos
