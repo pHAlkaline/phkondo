@@ -34,7 +34,8 @@ App::uses('AppController', 'Controller');
  * @property Entity $Entity
  * @property PaginatorComponent $Paginator
  */
-class OrganizationController extends AppController {
+class OrganizationController extends AppController
+{
 
     public $useModel = false;
 
@@ -45,7 +46,8 @@ class OrganizationController extends AppController {
      */
     public $components = array('RequestHandler');
 
-    public function config() {
+    public function config()
+    {
         $this->set('title_for_layout', __('Organization'));
         $this->set('title_for_step', __('Organization'));
         if (empty($this->request->data)) {
@@ -54,7 +56,7 @@ class OrganizationController extends AppController {
 
         if ($this->request->is('post')) {
             //Check if image was sent
-            if (!$this->request->data['logo']['size']==0) {
+            if (!$this->request->data['logo']['size'] == 0) {
                 $file = $this->request->data['logo'];
                 $validImage = true;
                 //if extension is valid
@@ -93,26 +95,28 @@ class OrganizationController extends AppController {
                     Configure::write('Organization.' . $key, $value);
                 }
             }
-            if (!Configure::dump('organization.php', 'default', array('Organization'))) {
+            if (Configure::dump('organization.php', 'default', array('Organization'))) {
+                $this->Flash->success(__('Saved with success.'));
+            } else {
                 $this->Flash->error(__('Could not be saved. Please, try again.'));
-                return;
             }
-            $this->Flash->success(__('Saved with success.'));
         }
-        $this->redirect(array('action' => 'config'));
     }
 
-    public function beforeRender() {
+    public function beforeRender()
+    {
         parent::beforeRender();
         $breadcrumbs = array(
-            array('link' => Router::url(array('controller' => 'organization', 'action' => 'config')), 'text' => __('Organization'), 'active' => 'active'));
+            array('link' => Router::url(array('controller' => 'organization', 'action' => 'config')), 'text' => __('Organization'), 'active' => 'active')
+        );
 
         $headerTitle = __('Organization');
         $organization = Configure::read('Organization');
         $this->set(compact('breadcrumbs', 'headerTitle', 'organization'));
     }
 
-    public function isAuthorized($user) {
+    public function isAuthorized($user)
+    {
 
         if (isset($user['role'])) {
             switch ($user['role']) {
@@ -131,5 +135,4 @@ class OrganizationController extends AppController {
 
         return parent::isAuthorized($user);
     }
-
 }

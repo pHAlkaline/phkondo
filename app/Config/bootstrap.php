@@ -235,3 +235,4 @@ Configure::load('email_notifications');
 if (!file_exists(APP . 'Config' . DS . 'organization.php')) {
     copy(APP . 'Config' . DS . 'organization.php.default', APP . 'Config' . DS . 'organization.php');
 }
+Configure::load('organization.php', 'default',false);

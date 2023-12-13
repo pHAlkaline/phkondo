@@ -174,7 +174,6 @@ class AppController extends Controller
         date_default_timezone_set(Configure::read('Config.server_timezone'));
 
         $this->theme =  Configure::read('Application.theme');
-        Configure::load('organization.php', 'default');
     }
 
     private function rememberMe()

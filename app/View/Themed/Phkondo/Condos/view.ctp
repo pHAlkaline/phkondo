@@ -199,7 +199,6 @@ $administrators = implode(", ", $administrators);
                         foreach ($condo['Insurance'] as $insurance) {
 
                             if ($insurance['expire_out'] > -30) {
-
                                 $viewGlyphiconState[] = 'info';
                             }
                             if ($insurance['expire_out'] > -15) {
@@ -227,19 +226,19 @@ $administrators = implode(", ", $administrators);
                         <?php
                         $viewGlyphiconState = array();
                         foreach ($condo['Maintenance'] as $maintenance) {
-                            if ($maintenance['expire_out'] > -10) {
+                            if ($maintenance['expire_out'] > -30) {
                                 $viewGlyphiconState[] = 'info';
                             }
-                            if ($maintenance['expire_out'] > -5) {
+                            if ($maintenance['expire_out'] > -15) {
                                 $viewGlyphiconState[] = 'warning';
                             }
                             if ($maintenance['expire_out'] > 0) {
                                 $viewGlyphiconState[] = 'danger';
                             }
-                            if ($maintenance['next_inspection_out'] > -10) {
+                            if ($maintenance['next_inspection_out'] > -30) {
                                 $viewGlyphiconState[] = 'info';
                             }
-                            if ($maintenance['next_inspection_out'] > -5) {
+                            if ($maintenance['next_inspection_out'] > -15) {
                                 $viewGlyphiconState[] = 'warning';
                             }
                             if ($maintenance['next_inspection_out'] > 0) {

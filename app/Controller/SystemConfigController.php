@@ -100,17 +100,17 @@ class SystemConfigController extends AppController
         }
 
         Configure::write('EmailNotifications.active', true);
-        if (!Configure::dump('email_notifications.php', 'default', array('EmailNotifications'))) {
+        if (Configure::dump('email_notifications.php', 'default', array('EmailNotifications'))) {
+            $this->Flash->success(__d('email', 'Config saved with success.'));
+            if ($this->request->data['test']) {
+                $this->_sendTest();
+            }
+        } else {
             $this->Flash->error(__d('email', 'Could not save notification settings.'));
-            return;
         }
 
-        Configure::load('email_notifications');
-        $this->Flash->success(__d('email', 'Config saved with success.'));
-        if ($this->request->data['test']) {
-            $this->_sendTest();
-        }
-        $this->redirect(array('action' => 'email'));
+        //Configure::load('email_notifications');
+        //$this->redirect(array('action' => 'email'));
     }
 
     public function general()
@@ -123,17 +123,17 @@ class SystemConfigController extends AppController
         $data = $this->request->data;
         //$data['BootstrapApp']['Attachment']['attachment']['extensions'] = explode(',', trim($data['BootstrapApp']['Attachment']['attachment']['extensions']));
         // $data['BootstrapApp']['Attachment']['attachment']['extensions'] = $data['BootstrapApp']['Attachment']['attachment']['extensions'];
-        $maximumUploadSize=$this->getMaximumFileUploadSize();
-        $data['BootstrapApp']['Attachment']['attachment']['maxSize']=$data['BootstrapApp']['Attachment']['attachment']['maxSize']<$maximumUploadSize?$data['BootstrapApp']['Attachment']['attachment']['maxSize']:$maximumUploadSize;
+        $maximumUploadSize = $this->getMaximumFileUploadSize();
+        $data['BootstrapApp']['Attachment']['attachment']['maxSize'] = $data['BootstrapApp']['Attachment']['attachment']['maxSize'] < $maximumUploadSize ? $data['BootstrapApp']['Attachment']['attachment']['maxSize'] : $maximumUploadSize;
 
         Configure::write('BootstrapApp.Application.currencySign', '\'' . $data['BootstrapApp']['Application']['currencySign'] . '\'');
-        Configure::write('BootstrapApp.Application.dateFormat', $data['BootstrapApp']['Application']['calendarDateFormat'].' H:i:s');
+        Configure::write('BootstrapApp.Application.dateFormat', $data['BootstrapApp']['Application']['calendarDateFormat'] . ' H:i:s');
         Configure::write('BootstrapApp.Application.dateFormatSimple', $data['BootstrapApp']['Application']['calendarDateFormat']);
-        
-        $dateFormatMap=['d-m-Y'=>'dd-mm-yyyy','Y-m-d'=>'yyyy-mm-dd', 'm/d/Y'=>'mm/dd/yyyy', 'Y/m/d'=>'yyyy/mm/dd'];
-        $data['BootstrapApp']['Application']['calendarDateFormat']=$dateFormatMap[$data['BootstrapApp']['Application']['calendarDateFormat']];
+
+        $dateFormatMap = ['d-m-Y' => 'dd-mm-yyyy', 'Y-m-d' => 'yyyy-mm-dd', 'm/d/Y' => 'mm/dd/yyyy', 'Y/m/d' => 'yyyy/mm/dd'];
+        $data['BootstrapApp']['Application']['calendarDateFormat'] = $dateFormatMap[$data['BootstrapApp']['Application']['calendarDateFormat']];
         Configure::write('BootstrapApp.Application.calendarDateFormat', $data['BootstrapApp']['Application']['calendarDateFormat']);
-        
+
         Configure::write('BootstrapApp.Config.timezone', $data['BootstrapApp']['Config']['timezone']);
         Configure::write('BootstrapApp.Attachment.attachment.maxSize', $data['BootstrapApp']['Attachment']['attachment']['maxSize']);
         Configure::write('BootstrapApp.Attachment.attachment.extensions', $data['BootstrapApp']['Attachment']['attachment']['extensions']);
