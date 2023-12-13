@@ -240,13 +240,13 @@ msgstr "Pedido inválido"
 #: Controller/FractionNotesController.php:224
 #: Controller/OwnerNotesController.php:226
 msgid "Note deleted"
-msgstr "Quota apagada"
+msgstr "Tarifa eliminada"
 
 #: Controller/BudgetNotesController.php:238
 #: Controller/FractionNotesController.php:227
 #: Controller/OwnerNotesController.php:229
 msgid "Note can not be deleted"
-msgstr "Não foi possível eliminar Quota"
+msgstr "Não foi possível eliminar tarifa"
 
 #: Controller/BudgetNotesController.php:248
 #: Controller/BudgetsController.php:72;121;146;176;200
@@ -330,8 +330,8 @@ msgstr[1] "Orçamentos"
 #: View/Themed/Phkondo/Receipts/view.ctp:61
 msgid "Note"
 msgid_plural "Notes"
-msgstr[0] "Quota"
-msgstr[1] "Quotas"
+msgstr[0] "Tarifa"
+msgstr[1] "Tarifas"
 
 #: Controller/BudgetsController.php:96;136
 msgid "The budget has been saved"
@@ -2306,7 +2306,7 @@ msgstr "Listar Quotas"
 #: View/Themed/Phkondo/OwnerNotes/index.ctp:13
 #: View/Themed/Phkondo/OwnerNotes/view.ctp:18
 msgid "New Note"
-msgstr "Criar Quota"
+msgstr "Criar Tarifa"
 
 #: View/Themed/Phkondo/BudgetNotes/create.ctp:21
 #: View/Themed/Phkondo/Budgets/add.ctp:9
@@ -2349,7 +2349,7 @@ msgstr "Total"
 #: View/Themed/Phkondo/OwnerNotes/edit.ctp:16
 #: View/Themed/Phkondo/OwnerNotes/view.ctp:17
 msgid "Delete Note"
-msgstr "Eliminar Quota"
+msgstr "Eliminar Tarifa"
 
 #: View/Themed/Phkondo/BudgetNotes/edit.ctp:31
 #: View/Themed/Phkondo/BudgetNotes/view.ctp:28
@@ -2358,7 +2358,7 @@ msgstr "Eliminar Quota"
 #: View/Themed/Phkondo/OwnerNotes/edit.ctp:43
 #: View/Themed/Phkondo/OwnerNotes/view.ctp:16
 msgid "Edit Note"
-msgstr "Editar Quota"
+msgstr "Editar Tarifa"
 
 #: View/Themed/Phkondo/BudgetNotes/index.ctp:24
 msgid "Delete All"
