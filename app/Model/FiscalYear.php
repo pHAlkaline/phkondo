@@ -76,7 +76,7 @@ class FiscalYear extends AppModel {
             ),
         ),
         'open_date' => array(
-            'date' => array(
+           'checkDate' => array(
                 'rule' => array('date'),
             //'message' => 'Your custom message here',
             //'allowEmpty' => false,
@@ -94,7 +94,7 @@ class FiscalYear extends AppModel {
             ),
         ),
         'close_date' => array(
-            'date' => array(
+           'checkDate' => array(
                 'rule' => array('date'),
             //'message' => 'Your custom message here',
             //'allowEmpty' => false,

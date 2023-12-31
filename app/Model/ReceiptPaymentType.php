@@ -20,6 +20,6 @@ class ReceiptPaymentType extends AppModel {
      *
      * @var string
      */
-    public $order = array("ReceiptPaymentType.name" => "ASC");
+    public $order = array("name" => "ASC");
 
 }

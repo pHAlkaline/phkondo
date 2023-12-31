@@ -63,7 +63,7 @@ class Insurance extends AppModel {
      */
     public $validate = array(
         'expiration_date' => array(
-            'date' => array(
+           'checkDate' => array(
                 'rule' => array('date'),
             //'message' => 'Your custom message here',
             //'allowEmpty' => false,

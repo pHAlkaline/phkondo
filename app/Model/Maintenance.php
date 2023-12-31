@@ -82,7 +82,7 @@ class Maintenance extends AppModel {
             ),
         ),
         'start_date' => array(
-            'date' => array(
+           'checkDate' => array(
                 'rule' => array('date'),
             //'message' => 'Your custom message here',
             //'allowEmpty' => false,
@@ -92,7 +92,7 @@ class Maintenance extends AppModel {
             ),
         ),
         'renewal_date' => array(
-            'date' => array(
+           'checkDate' => array(
                 'rule' => array('date'),
                 'allowEmpty' => true,
                 'required' => false,
@@ -105,7 +105,7 @@ class Maintenance extends AppModel {
             ),
         ),
         'last_inspection' => array(
-            'date' => array(
+           'checkDate' => array(
                 'rule' => array('date'),
                 'allowEmpty' => true,
                 'required' => false,
@@ -118,7 +118,7 @@ class Maintenance extends AppModel {
             ),
         ),
         'next_inspection' => array(
-            'date' => array(
+           'checkDate' => array(
                 'rule' => array('date'),
                 'allowEmpty' => true,
                 'required' => false,

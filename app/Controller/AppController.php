@@ -144,6 +144,7 @@ class AppController extends Controller
         $this->setMaintenanceData();
         $this->setNoteData();
         $this->setReceiptData();
+        $this->setPaymentAdviceData();
         $this->setOwnerData();
         $this->setSupplierData();
         $this->setFractionData();
@@ -310,6 +311,22 @@ class AppController extends Controller
                 $this->phkRequestData['owner_id'] = $result['Receipt']['entity_id'];
                 $this->phkRequestData['fraction_id'] = $result['Receipt']['fraction_id'];
                 $this->phkRequestData['condo_id'] = $result['Receipt']['condo_id'];
+            }
+        }
+    }
+
+    private function setPaymentAdviceData()
+    {
+        if (isset($this->phkRequestData['payment_advice_id']) && !isset($this->phkRequestData['payment_advice_text'])) {
+            App::import("Model", "PaymentAdvice");
+            $paymentAdvice = new PaymentAdvice();
+            $result = $paymentAdvice->find("first", array('conditions' => array('PaymentAdvice.id' => $this->phkRequestData['payment_advice_id'])));
+            if (count($result)) {
+                $this->phkRequestData['payment_advice_id'] = $result['PaymentAdvice']['id'];
+                $this->phkRequestData['payment_advice_text'] = $result['PaymentAdvice']['document'];
+                $this->phkRequestData['owner_id'] = $result['PaymentAdvice']['entity_id'];
+                $this->phkRequestData['fraction_id'] = $result['PaymentAdvice']['fraction_id'];
+                $this->phkRequestData['condo_id'] = $result['PaymentAdvice']['condo_id'];
             }
         }
     }

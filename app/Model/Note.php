@@ -152,7 +152,7 @@ class Note extends AppModel
             ),
         ),
         'document_date' => array(
-            'date' => array(
+           'checkDate' => array(
                 'rule' => array('date'),
                 //'message' => 'Your custom message here',
                 //'allowEmpty' => false,
@@ -162,7 +162,7 @@ class Note extends AppModel
             ),
         ),
         'due_date' => array(
-            'date' => array(
+           'checkDate' => array(
                 'rule' => array('date'),
                 //'message' => 'Your custom message here',
                 //'allowEmpty' => false,
@@ -176,7 +176,7 @@ class Note extends AppModel
             ),
         ),
         'payment_date' => array(
-            'date' => array(
+           'checkDate' => array(
                 'rule' => array('date'),
                 //'message' => 'Your custom message here',
                 //'last' => false, // Stop validation after this rule
@@ -198,6 +198,14 @@ class Note extends AppModel
             ),
         ),
         'receipt_id' => array(
+            'empty' => array(
+                'allowEmpty' => true
+            ),
+            'numeric' => array(
+                'rule' => array('numeric'),
+            ),
+        ),
+        'payment_advice_id' => array(
             'empty' => array(
                 'allowEmpty' => true
             ),
@@ -264,11 +272,18 @@ class Note extends AppModel
             'fields' => '',
             'order' => ''
         ),
+        'PaymentAdvice' => array(
+            'className' => 'PaymentAdvice',
+            'foreignKey' => 'payment_advice_id',
+            'conditions' => '',
+            'fields' => '',
+            'order' => ''
+        ),
     );
 
     public function beforeDelete($cascade = true)
     {
-        if ($this->field('receipt_id') != null) {
+        if ($this->field('receipt_id') != null || $this->field('payment_advice_id') != null) {
             return false;
         }
         /* if (in_array($this->field('note_status_id'), array(2, 3))) {
@@ -276,7 +291,7 @@ class Note extends AppModel
           } */
         $this->data['Note']['receipt_id'] = $this->field('receipt_id');
         $this->data['Note']['budget_id'] = $this->field('budget_id');
-
+        $this->data['Note']['payment_advice_id'] = $this->field('payment_advice_id');  
         return true;
     }
 
@@ -335,6 +350,7 @@ class Note extends AppModel
 
         if ($created == null) {
             $this->_updateReceiptAmount($this->field('receipt_id'));
+            $this->_updatePaymentAdviceAmount($this->field('receipt_id'));
         }
         $this->_updateBudgetAmount($this->field('budget_id'));
     }
@@ -342,6 +358,7 @@ class Note extends AppModel
     public function afterDelete()
     {
         $this->_updateReceiptAmount($this->data['Note']['receipt_id']);
+        $this->_updatePaymentAdviceAmount($this->data['Note']['receipt_id']);
         $this->_updateBudgetAmount($this->data['Note']['budget_id']);
     }
 
@@ -366,6 +383,9 @@ class Note extends AppModel
     function editable($record = null)
     {
         if (isset($record['receipt_id']) && $record['receipt_id'] != '') {
+            return false;
+        }
+        if (isset($record['payment_advice_id']) && $record['payment_advice_id'] != '') {
             return false;
         }
         /* if (isset($record['note_status_id']) && in_array($record['note_status_id'], array(2, 3))) {
@@ -400,6 +420,32 @@ class Note extends AppModel
             $this->Receipt->saveField('total_amount', $total, false);
         }
     }
+
+     // Update Receipt Amount
+     private function _updatePaymentAdviceAmount($id = null)
+     {
+ 
+ 
+         if ($id != null) {
+             $totalDebit = $this->find(
+                 'first',
+                 array(
+                     'fields' => array('SUM(Note.amount) AS total'),
+                     'conditions' => array('Note.payment_advice_id' => $id, 'Note.note_type_id' => '2')
+                 )
+             );
+             $totalCredit = $this->find(
+                 'first',
+                 array(
+                     'fields' => array('SUM(Note.amount) AS total'),
+                     'conditions' => array('Note.payment_advice_id' => $id, 'Note.note_type_id' => '1')
+                 )
+             );
+             $total = $totalDebit[0]['total'] - $totalCredit[0]['total'];
+             $this->PaymentAdvice->id = $id;
+             $this->PaymentAdvice->saveField('total_amount', $total, false);
+         }
+     }
 
     // Update Budget Amount
     private function _updateBudgetAmount($id = null)

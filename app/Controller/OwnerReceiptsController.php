@@ -163,7 +163,7 @@ class OwnerReceiptsController extends AppController
             $this->Receipt->Entity->id = $this->request->data['Receipt']['entity_id'];
             $this->Receipt->Entity->order = 'Entity.name';
             $this->request->data['Receipt']['address'] = $this->Receipt->Entity->field('address');
-            
+            $number = $this->Receipt->getNextReceiptIndex($this->getPhkRequestVar('condo_id')); 
             $this->request->data['Receipt']['document'] = $this->getPhkRequestVar('condo_id') . Date('Y') . '-' . sprintf('%06d', $number);
             if ($this->request->data['Receipt']['document_date'] == '') {
                 $this->request->data['Receipt']['document_date'] = date(Configure::read('Application.dateFormatSimple'));
@@ -229,6 +229,7 @@ class OwnerReceiptsController extends AppController
                     $this->Receipt->Note->saveField('pending_amount', '0', array('callbacks' => false));
                 }
             }
+            $this->Flash->success(__('The receipt has been saved'));
             $this->Receipt->setReceiptAmount($id);
             //$this->redirect(array('action' => 'edit', $id, '?' => $this->request->query, '#' => 'AddNotes'));
         }
@@ -419,7 +420,7 @@ class OwnerReceiptsController extends AppController
             $this->Flash->error(__('Invalid receipt'));
             $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
         }
-        
+        $this->Receipt->read();
         if ($this->Receipt->delete()) {
 
             $this->Flash->success(__('Receipt deleted'));

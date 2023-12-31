@@ -111,7 +111,7 @@ class Budget extends AppModel {
             ),
         ),
         'budget_date' => array(
-            'date' => array(
+            'checkDate' => array(
                 'rule' => array('date'),
             //'message' => 'Your custom message here',
             //'allowEmpty' => false,
@@ -146,7 +146,7 @@ class Budget extends AppModel {
             )
         ),
         'begin_date' => array(
-            'date' => array(
+           'checkDate' => array(
                 'rule' => array('date'),
             //'message' => 'Your custom message here',
             //'allowEmpty' => false,

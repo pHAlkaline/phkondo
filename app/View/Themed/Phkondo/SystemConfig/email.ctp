@@ -31,7 +31,10 @@ if (!Configure::check('CakePdf.phkondo.active') || Configure::read('CakePdf.phko
                     <a href="#connection" aria-controls="details" role="tab" data-toggle="tab"><?= __d('email', 'Connection'); ?></a>
                 </li>
                 <li role="presentation">
-                    <a href="#receipt" aria-controls="receipt" role="tab" data-toggle="tab"><?= __('Receipts'); ?></a>
+                    <a href="#payment-advice" aria-controls="payment-advice" role="tab" data-toggle="tab"><?= __n('Payment Advice','Payment Advices',1); ?></a>
+                </li>
+                <li role="presentation">
+                    <a href="#receipt" aria-controls="receipt" role="tab" data-toggle="tab"><?= __n('Receipt','Receipts',1); ?></a>
                 </li>
                 <li role="presentation">
                     <a href="#current-account" aria-controls="current-account" role="tab" data-toggle="tab"><?= __('Current Account'); ?></a>
@@ -100,6 +103,21 @@ if (!Configure::check('CakePdf.phkondo.active') || Configure::read('CakePdf.phko
                         </div><!-- .form-group -->
 
                     </fieldset>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="payment-advice" aria-labelledby="payment-advice-tab">
+                    <h2>&nbsp;</h2>
+
+                    <div class="form-group">
+                        <?php echo $this->Form->input('payment_advice_subject', array('label' => __d('email', 'Subject'), 'class' => 'form-control', 'default' => $emailNotifications['payment_advice_subject'])); ?>
+                    </div><!-- .form-group -->
+
+                    <div class="form-group">
+                        <?php echo $this->Form->input('payment_advice_message', array('label' => __d('email', 'Message'), 'type' => 'textarea', 'class' => 'form-control', 'default' => $emailNotifications['payment_advice_message'])); ?>
+                    </div><!-- .form-group -->
+
+                    <div class="form-group">
+                        <?php echo $this->Form->input('payment_advice_attachment_format', ['type' => 'select', 'label' => __d('email', 'Format'), 'class' => 'form-control select2-phkondo', 'options' => $attachmentFormats, 'value' => $emailNotifications['payment_advice_attachment_format'], 'required' => 'required']); ?>
+                    </div>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="receipt" aria-labelledby="receipt-tab">
                     <h2>&nbsp;</h2>

@@ -111,7 +111,7 @@ class Receipt extends AppModel
             ),
         ),
         'document_date' => array(
-            'date' => array(
+           'checkDate' => array(
                 'rule' => array('date'),
                 //'message' => 'Your custom message here',
                 //'allowEmpty' => false,
@@ -141,7 +141,7 @@ class Receipt extends AppModel
             ),
         ),
         'payment_date' => array(
-            'date' => array(
+           'checkDate' => array(
                 'rule' => array('date'),
                 //'message' => 'Your custom message here',
                 'allowEmpty' => true,
@@ -277,6 +277,19 @@ class Receipt extends AppModel
             'exclusive' => '',
             'finderQuery' => '',
             'counterQuery' => ''
+        ),
+        'PaymentAdvice' => array(
+            'className' => 'PaymentAdvice',
+            'foreignKey' => 'receipt_id',
+            'dependent' => false,
+            'conditions' => '',
+            'fields' => '',
+            'order' => '',
+            'limit' => '',
+            'offset' => '',
+            'exclusive' => '',
+            'finderQuery' => '',
+            'counterQuery' => ''
         )
     );
 
@@ -392,7 +405,7 @@ class Receipt extends AppModel
         if ($this->hasMovements($this->id))
             return false;
             
-        $this->data['Receipt']['id'] = $this->id;
+        //$this->data['Receipt']['id'] = $this->id;
         return true;
     }
 
@@ -600,7 +613,7 @@ class Receipt extends AppModel
         $rcpIndex = $ReceiptCounters->find('first', array('conditions' => array('condo_id' => $condo_id)));
         if (!isset($rcpIndex['ReceiptCounters']['counter'])) {
             $ReceiptCounters->create();
-            $ReceiptCounters->save(array('ReceiptCounters' => array('condo_id' => $id, 'counter' => 1)));
+            $ReceiptCounters->save(array('ReceiptCounters' => array('condo_id' => $condo_id, 'counter' => 1)));
             $index = 1;
             $id = $ReceiptCounters->id;
         } else {
@@ -610,4 +623,8 @@ class Receipt extends AppModel
         $ReceiptCounters->set('counter', $index);
         return $ReceiptCounters->save();
     }
+
+    public function addFromPaymentAdvice() {
+
+	}
 }

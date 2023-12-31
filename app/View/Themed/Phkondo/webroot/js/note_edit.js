@@ -28,6 +28,7 @@
 $(function () {
     $("#NoteFractionId").on("change", function (event) {
         $("#NoteChangeFilter").val('1');
+        $(this).closest("form").find('*').prop('disabled','disabled');
         $(this).closest("form").submit();
         return false;
     });

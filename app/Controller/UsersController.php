@@ -204,7 +204,7 @@ class UsersController extends AppController {
     public function rememberMe() {
         if (isset($this->request->data['User']['rememberMe']) && $this->request->data['User']['rememberMe']) {
             // After what time frame should the cookie expire
-            $cookieTime = "12 months"; // You can do e.g: 1 week, 17 weeks, 14 days
+            $cookieTime = "1 day"; // You can do e.g: 1 week, 17 weeks, 14 days
             // remove "remember me checkbox"
             unset($this->request->data['User']['rememberMe']);
 

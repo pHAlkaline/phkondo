@@ -79,7 +79,7 @@ class Movement extends AppModel {
             ),
         ),
         'movement_date' => array(
-            'date' => array(
+           'checkDate' => array(
                 'rule' => array('date'),
             //'message' => 'Your custom message here',
             //'allowEmpty' => false,

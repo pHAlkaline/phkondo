@@ -37,7 +37,7 @@
  */
 Configure::write('debug',0);
 Configure::write('Exception.handler', 'AppExceptionHandler::handleException');
-Configure::write('Session', array('defaults' => 'php','cookie' => 'pHKondoSession'));
+Configure::write('Session', array('defaults' => 'php','cookie' => 'pHKondoSession','timeout'=>30,'cookieTimeout'=>30));
 Configure::write('Cookie', array('name' => 'pHKondoCookie'));
 
 /**

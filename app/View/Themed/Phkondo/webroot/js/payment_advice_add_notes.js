@@ -20,7 +20,7 @@
  * @copyright     Copyright (c) pHAlkaline . (https://phalkaline.net)
  * @link          https://phkondo.net pHKondo Project
  * @package       app.View.Themed.webroot.js
- * @since         pHKondo v 0.0.1
+ * @since         pHKondo v 10.1.3
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
@@ -32,19 +32,20 @@ $(function () {
     });
     $('a[data-toggle="tab"]').trigger('shown.bs.tab');
     $("#addNotesTotalAmount").html(' ' + totalAmount());
-    $('.footable').on('ready.ft.table', function (e, ft) {
+
+    $('.footable').on('ready.ft.table',function(e, ft){
         $("#addNotesTotalAmount").html(' ' + totalAmount());
         $("form#NoteAddNotesForm").find('input[type="checkbox"]').off('change').on('change', function (evt) {
             $("#addNotesTotalAmount").html(' ' + totalAmount());
         });
-    })
+    });
 
+    
 });
-
 
 function totalAmount() {
     var totalAmount = 0;
-    var boxes = $(":checkbox:checked");
+    var boxes = $("form#NoteAddNotesForm :checkbox:checked");
     boxes.each(function () {
         var index = $(this).attr('id').replace(/[^0-9]/g, '');
         var type = $("#Note" + index + "Type").val();
@@ -68,5 +69,5 @@ function totalAmount() {
 
 
     });
-    return (parseFloat($("#ReceiptAmount").val()) + parseFloat(totalAmount)).toFixed(2);
+    return (parseFloat($("#PaymentAdviceAmount").val()) + parseFloat(totalAmount)).toFixed(2);
 }

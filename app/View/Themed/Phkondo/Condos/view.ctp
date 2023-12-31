@@ -12,7 +12,7 @@ $administrators = implode(", ", $administrators);
             <ul class="nav nav-pills nav-stacked nav-stacked">
                 <li><?php echo $this->Html->link(__('Edit Condo'), array('action' => 'edit', $condo['Condo']['id']), array('class' => 'btn ', 'escape' => false)); ?></li>
                 <?php if ($has_fiscal_year) : ?>
-                <li><?php echo $this->Html->link(__('Share Distribution'), array('action' => 'shares_distribution', $condo['Condo']['id']), array('class' => 'btn ', 'escape' => false)); ?> </li>
+                    <li><?php echo $this->Html->link(__('Share Distribution'), array('action' => 'shares_distribution', $condo['Condo']['id']), array('class' => 'btn ', 'escape' => false)); ?> </li>
                 <?php endif; ?>
                 <?php if (in_array(AuthComponent::user('role'), array('admin', 'store_admin'))) : ?>
                     <li><?php echo $this->Form->postLink(__('Delete Condo'), array('action' => 'delete', $condo['Condo']['id']), array('class' => 'btn ', 'escape' => false, 'confirm' => __('Are you sure you want to delete # %s?', $condo['Condo']['title']))); ?> </li>
@@ -27,7 +27,9 @@ $administrators = implode(", ", $administrators);
                 <?php if ($has_fiscal_year) : ?>
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Budget', 'Budgets', 2), array('controller' => 'budgets', 'action' => 'index', '?' => array('condo_id' => $condo['Condo']['id'])), array('class' => 'btn ', 'escape' => false)); ?> </li>
                 <?php endif; ?>
+                <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Payment Advice', 'Payment Advices', 2), array('controller' => 'payment_advices', 'action' => 'index', '?' => array('condo_id' => $condo['Condo']['id'])), array('class' => 'btn ', 'escape' => false)); ?> </li>
                 <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Receipt', 'Receipts', 2), array('controller' => 'receipts', 'action' => 'index', '?' => array('condo_id' => $condo['Condo']['id'])), array('class' => 'btn ', 'escape' => false)); ?> </li>
+                
                 <?php if ($has_fiscal_year) : ?>
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Invoice Conference', 'Invoices Conference', 2), array('controller' => 'invoice_conference', 'action' => 'index', '?' => array('condo_id' => $condo['Condo']['id'])), array('class' => 'btn ', 'escape' => false)); ?> </li>
                     <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Account', 'Accounts', 2), array('controller' => 'accounts', 'action' => 'index', '?' => array('condo_id' => $condo['Condo']['id'])), array('class' => 'btn ', 'escape' => false)); ?> </li>
@@ -92,7 +94,7 @@ $administrators = implode(", ", $administrators);
                                 <tr>
                                     <td>&nbsp;</td>
                                 </tr>
-                                
+
                                 <tr>
                                     <td><strong><?php echo __n('Fiscal Year', 'Fiscal Years', 1); ?></strong></td>
                                     <td>
@@ -105,7 +107,7 @@ $administrators = implode(", ", $administrators);
 
                                     </td>
                                 </tr>
-                                
+
                                 <tr>
                                     <td><strong><?php echo __n('Administrator', 'Administrator', 2); ?></strong></td>
                                     <td>
@@ -115,7 +117,7 @@ $administrators = implode(", ", $administrators);
                                 <tr>
                                     <td>&nbsp;</td>
                                 </tr>
-                                
+
                                 <tr>
                                     <td><strong><?php echo __('Address'); ?></strong></td>
                                     <td>
@@ -137,7 +139,7 @@ $administrators = implode(", ", $administrators);
                                         &nbsp;
                                     </td>
                                 </tr>
-                              
+
                                 <tr>
                                     <td><strong><?php echo __('Observations'); ?></strong></td>
                                     <td>

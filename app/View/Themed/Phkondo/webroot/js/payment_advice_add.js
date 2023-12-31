@@ -20,14 +20,14 @@
  * @copyright     Copyright (c) pHAlkaline . (https://phalkaline.net)
  * @link          https://phkondo.net pHKondo Project
  * @package       app.View.Themed.webroot.js
- * @since         pHKondo v 0.0.1
+ * @since         pHKondo v 10.1.3
  * @license       http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  * 
  */
 $(function(){
 
-$("#ReceiptFractionId").on("change", function (event) {
-        $("#ReceiptChangeFilter").val('1');
+$("#PaymentAdviceFractionId").on("change", function (event) {
+        $("#ChangeFilter").val('1');
         $(this).closest("form").find('*').prop('disabled','disabled');
         $(this).closest("form").submit();
         return false;

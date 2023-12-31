@@ -139,7 +139,7 @@ class ReceiptsController extends AppController
             $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
         $this->Receipt->contain(array(
-            'Movement'=>['Account','MovementCategory','MovementOperation','MovementType'],
+            'Movement' => ['Account', 'MovementCategory', 'MovementOperation', 'MovementType'],
             'Fraction',
             'Entity',
             'ReceiptStatus',
@@ -150,7 +150,8 @@ class ReceiptsController extends AppController
         $options = array('conditions' => array('Receipt.' . $this->Receipt->primaryKey => $id, 'Receipt.condo_id' => $this->getPhkRequestVar('condo_id')));
         $receipt = $this->Receipt->find('first', $options);
         $this->Receipt->Entity->order = 'Entity.name';
-        $notificationEntities = $condos = $this->Receipt->Entity->find('list', array('fields' => array('Entity.email', 'Entity.email'), 'conditions' => array('id' => $receipt['Entity']['id'])));
+        //$notificationEntities = $this->Receipt->Entity->find('list', array('fields' => array('Entity.email', 'Entity.email'), 'conditions' => array('id' => $receipt['Entity']['id'])));
+        $notificationEntities = $this->Session->read('NotificationEntities') ? $this->Session->consume('NotificationEntities') : $this->Receipt->Entity->find('list', array('fields' => array('Entity.email', 'Entity.email'), 'conditions' => array('id' => $receipt['Entity']['id'])));
 
         $emailNotifications = Configure::read('EmailNotifications');
 
@@ -197,6 +198,8 @@ class ReceiptsController extends AppController
             $this->Flash->error(__('Invalid receipt'));
             $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
+        $notificationEntities = array_combine($this->request->data['Receipt']['send_to'], $this->request->data['Receipt']['send_to']);
+        $this->Session->write('NotificationEntities', $notificationEntities);
 
         $event = new CakeEvent('Phkondo.Receipt.send_receipt', $this, array(
             'id' => $id,
@@ -292,11 +295,11 @@ class ReceiptsController extends AppController
                     $this->Receipt->Note->saveField('pending_amount', '0', array('callbacks' => false));
                 }
             }
+            $this->Flash->success(__('The receipt has been saved'));
             $this->Receipt->setReceiptAmount($id);
             //$this->redirect(array('action' => 'edit', $id, '#' => 'AddNotes'));
         }
         $this->redirect(array('action' => 'edit', $id, '?' => $this->request->query, '#' => 'AddNotes'));
-   
     }
 
     /**
@@ -320,7 +323,7 @@ class ReceiptsController extends AppController
         }
 
         if (!empty($this->request->data) && ($this->request->is('post') || $this->request->is('put'))) {
-            $this->request->data['Receipt']['payment_user_id']=AuthComponent::user('id');
+            $this->request->data['Receipt']['payment_user_id'] = AuthComponent::user('id');
             if ($this->Receipt->saveAssociated($this->request->data)) {
                 $this->Flash->success(__('The receipt has been saved'));
                 $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
@@ -460,17 +463,17 @@ class ReceiptsController extends AppController
         if (!$this->request->is('post')) {
             throw new MethodNotAllowedException();
         }
-        if (!$this->Receipt->exists($id)) {
+        $this->Receipt->id = $id;
+        if (!$this->Receipt->exists()) {
             $this->Flash->error(__('Invalid receipt'));
             $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
 
-
-        if (!$this->Receipt->deletable($id)) {
+        if (!$this->Receipt->deletable()) {
             $this->Flash->error(__('Invalid receipt'));
             $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
         }
-       
+        $this->Receipt->read();
         if ($this->Receipt->delete()) {
 
             $this->Flash->success(__('Receipt deleted'));
@@ -480,7 +483,7 @@ class ReceiptsController extends AppController
         $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
     }
 
-   
+
     /**
      * cancel method
      *
@@ -502,7 +505,7 @@ class ReceiptsController extends AppController
         }
 
         if (!empty($this->request->data) && ($this->request->is('post') || $this->request->is('put'))) {
-            $this->request->data['Receipt']['cancel_user_id']=AuthComponent::user('id');
+            $this->request->data['Receipt']['cancel_user_id'] = AuthComponent::user('id');
             if ($this->Receipt->save($this->request->data)) {
                 $this->Flash->success(__('The receipt has been saved'));
                 $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
@@ -537,6 +540,84 @@ class ReceiptsController extends AppController
         $this->set(compact('condos', 'fractions', 'entities', 'receiptStatuses', 'receiptPaymentTypes', 'notes'));
         $this->setPhkRequestVar('receipt_id', $id);
     }
+
+
+    public function addFromPaymentAdvice($payment_advice_id = null)
+    {
+        if ($this->request->is('post')) {
+            $this->Receipt->create();
+            
+            // setup receipt
+            $this->Receipt->PaymentAdvice->id = $payment_advice_id;
+            $paymentAdvice = $this->Receipt->PaymentAdvice->read();
+            $number = $this->Receipt->getNextReceiptIndex($this->getPhkRequestVar('condo_id'));
+            $this->request->data['Receipt']['document'] = $this->getPhkRequestVar('condo_id') . Date('Y') . '-' . sprintf('%06d', $number);
+            $this->request->data['Receipt']['document_date'] = date(Configure::read('Application.dateFormatSimple'));
+            $this->request->data['Receipt']['receipt_status_id'] = 1;
+            $this->request->data['Receipt']['condo_id'] = $paymentAdvice['PaymentAdvice']['condo_id'];
+            $this->request->data['Receipt']['fraction_id'] = $paymentAdvice['PaymentAdvice']['fraction_id'];
+            $this->request->data['Receipt']['receipt_payment_type_id'] = $paymentAdvice['PaymentAdvice']['payment_type_id'];
+            $this->Receipt->Entity->id = $paymentAdvice['PaymentAdvice']['entity_id'];
+            $this->Receipt->Entity->order = 'Entity.name';
+            $this->request->data['Receipt']['entity_id'] = $paymentAdvice['PaymentAdvice']['entity_id'];
+            $this->request->data['Receipt']['address'] = $this->Receipt->Entity->field('address');
+            // save receipt
+            if ($this->Receipt->save($this->request->data)) {
+                $this->Receipt->PaymentAdvice->saveField('receipt_id', $this->Receipt->id, array('callbacks' => false));
+                $this->Receipt->setReceiptIndex($this->getPhkRequestVar('condo_id'), $number);
+                
+                $this->Receipt->Note->updateAll(
+                    array(
+                        'Note.receipt_id' => null,
+                        'Note.pending_amount' => 0
+                    ),
+                    array(
+                        'Note.fraction_id' => $this->request->data['Receipt']['fraction_id'],
+                        'Note.entity_id' => $this->request->data['Receipt']['entity_id'],
+                        'Note.note_status_id' => array(1, 2),
+                        'Note.receipt_id' => $this->Receipt->id
+                    )
+                );
+                $this->Receipt->setReceiptAmount($this->Receipt->id);
+                
+                $notes = $this->Receipt->PaymentAdvice->Note->find(
+                    'all',
+                    array(
+                        'conditions' => array(
+                            'Note.receipt_id' => null,
+                            'Note.payment_advice_id' => $payment_advice_id,
+                            'Note.fraction_id' => $this->request->data['Receipt']['fraction_id'],
+                            'Note.entity_id' => $this->request->data['Receipt']['entity_id'],
+                        )
+                    )
+                );
+                $this->request->data['Note'] = Hash::extract($notes, '{n}.Note.id');
+                foreach ($this->request->data['Note'] as $key => $note) {
+
+                    $noteOk = $this->Receipt->Note->find('count', array('conditions' => array('Note.id' => $note, 'Note.receipt_id' => null)));
+
+                    if ($noteOk == 0) {
+                        $this->Flash->error(__('The note could not be saved. Please, try again.'));
+                        $this->redirect(array('controller' => 'payment_advices', 'action' => 'view', $payment_advice_id, '?' => $this->request->query));
+                        return;
+                    }
+                    $this->Receipt->Note->id = $note;
+                    $this->Receipt->Note->saveField('receipt_id', $this->Receipt->id, array('callbacks' => false));
+                    $this->Receipt->Note->saveField('pending_amount', '0', array('callbacks' => false));
+                }
+
+                $this->Receipt->setReceiptAmount($this->Receipt->id);
+                $this->Flash->success(__('The receipt has been saved'));
+                $this->redirect(array('action' => 'edit', $this->Receipt->id, '?' => $this->request->query, '#' => 'AddNotes'));
+            } else {
+                //debug($this->Receipt->validationErrors);
+                $this->Flash->error(__('The receipt could not be saved. Please, try again.'));
+                $this->redirect(array('controller' => 'payment_advices', 'action' => 'view', $payment_advice_id, '?' => $this->request->query));
+            }
+        }
+        $this->redirect(array('controller' => 'payment_advices', 'action' => 'view', $payment_advice_id, '?' => $this->request->query));
+    }
+
     public function beforeFilter()
     {
         parent::beforeFilter();

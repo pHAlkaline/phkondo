@@ -75,7 +75,7 @@ class IncomeReceipt extends AppModel {
             ),
         ),
         'open_date' => array(
-            'date' => array(
+           'checkDate' => array(
                 'rule' => array('date'),
             //'message' => 'Your custom message here',
             //'allowEmpty' => false,
@@ -85,7 +85,7 @@ class IncomeReceipt extends AppModel {
             )
         ),
         'close_date' => array(
-            'date' => array(
+           'checkDate' => array(
                 'rule' => array('date'),
             //'message' => 'Your custom message here',
             //'allowEmpty' => false,

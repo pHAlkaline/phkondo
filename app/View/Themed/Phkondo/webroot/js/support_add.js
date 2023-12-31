@@ -28,6 +28,7 @@ $(function(){
 
 $("#SupportFractionId").on("change", function (event) {
         $("#SupportChangeFilter").val('1');
+        $(this).closest("form").find('*').prop('disabled','disabled');
         $(this).closest("form").submit();
         return false;
     });

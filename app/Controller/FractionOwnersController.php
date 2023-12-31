@@ -91,8 +91,9 @@ class FractionOwnersController extends AppController {
         $entity = $this->Fraction->Entity->find('first', $options);
         $totalDebit = $this->Fraction->Note->sumDebitNotes($this->getPhkRequestVar('fraction_id'), $id);
         $totalCredit = $this->Fraction->Note->sumCreditNotes($this->getPhkRequestVar('fraction_id'), $id);
-        $notificationEntities = $this->Fraction->Entity->find('list', array('fields' => array('Entity.email', 'Entity.email'), 'conditions' => array('id' => $id)));
-
+        //$notificationEntities = $this->Fraction->Entity->find('list', array('fields' => array('Entity.email', 'Entity.email'), 'conditions' => array('id' => $id)));
+        $notificationEntities = $this->Session->read('NotificationEntities')?$this->Session->consume('NotificationEntities'):$this->Fraction->Entity->find('list', array('fields' => array('Entity.email', 'Entity.email'), 'conditions' => array('id' => $id)));
+        
         $emailNotifications = Configure::read('EmailNotifications');
 
         $this->set(compact('entity', 'entitiesFraction', 'totalDebit', 'totalCredit', 'notificationEntities', 'emailNotifications'));
@@ -223,7 +224,9 @@ class FractionOwnersController extends AppController {
             $this->Flash->error(__('Invalid owner'));
             $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
-
+        $notificationEntities=array_combine($this->request->data['Entity']['send_to'], $this->request->data['Entity']['send_to']);
+        $this->Session->write('NotificationEntities',$notificationEntities);
+        
         $event = new CakeEvent('Phkondo.FractionOwner.send_current_account', $this, array(
             'id' => $id,
         ));
