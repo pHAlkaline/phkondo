@@ -16,7 +16,13 @@
     <div id="page-content" class="col-sm-10">
 
         <div class="payment_advices form">
+           
+                <div id="cancelWarning" class="alert alert-warning">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <?php echo __('Warning: when a payment advice is generated, ALL PAYMENT ADVICES previously created will be removed, EXCEPT those that have already been paid.'); ?>
+                </div>
 
+          
             <?php echo $this->Form->create(
                 'PaymentAdvice',
                 array(
@@ -36,7 +42,7 @@
 
             <?php echo $this->Form->hidden('change_filter'); ?>
             <fieldset>
-                <legend><?php echo __('New Payment Advice'); ?></legend>
+                <legend><?php echo __('Generate All'); ?></legend>
                 <div class="form-group">
                     <?php echo $this->Form->input('condo_id', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
@@ -53,7 +59,8 @@
                     <?php echo $this->Form->input('due_date', array('type' => 'text', 'class' => 'form-control datefield')); ?>
                 </div><!-- .form-group -->
                 <!--div class="form-group">
-                    <?php //echo $this->Form->input('status_id', array('class' => 'form-control')); ?>
+                    <?php //echo $this->Form->input('status_id', array('class' => 'form-control')); 
+                    ?>
                 </div--><!-- .form-group -->
                 <!--div class="form-group">
                     <?php //echo $this->Form->input('receipt_payment_type_id', array('class' => 'form-control')); 
@@ -67,7 +74,7 @@
             </fieldset>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-6">
-                    <?php echo $this->Form->button(__('Submit'), array('class' => 'btn btn-large btn-primary pull-right')); ?>
+                    <?php echo $this->Form->button(__('Generate All'), array('class' => 'btn btn-large btn-primary pull-right')); ?>
                 </div>
             </div>
             <?php echo $this->Form->end(); ?>

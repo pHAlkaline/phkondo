@@ -27,8 +27,8 @@
 $(function(){
 
 $("#PaymentAdviceFractionId").on("change", function (event) {
-        $("#ChangeFilter").val('1');
-        $(this).closest("form").find('*').prop('disabled','disabled');
+        $("#PaymentAdviceChangeFilter").val('1');
+        $(this).closest("form").find('*').prop('readonly','readonly');
         $(this).closest("form").submit();
         return false;
     });

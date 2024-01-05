@@ -3596,3 +3596,6 @@ msgstr "Stocarea depășește limita maximă."
 
 msgid "Calculate"
 msgstr "Calculati"
+
+msgid "Warning: when a payment advice is generated, ALL PAYMENT ADVICES previously created will be removed, EXCEPT those that have already been paid."
+msgstr "Atenție: atunci când se generează un aviz de plată, TOATE SFATURI DE PLATĂ create anterior vor fi eliminate, CU EXCEPȚIA celor care au fost deja plătite."

@@ -40,8 +40,8 @@ $this->Html->script('footable', false);
                 <li><?php echo $this->Html->link(__('List'), array('action' => 'index', '?' => $this->request->query), array('class' => 'btn ')); ?> </li>
                 <!--li><?php //echo $this->Form->postLink(__('Cancel'), array('action' => 'cancel', $paymentAdvice['PaymentAdvice']['id'], '?' => $this->request->query), array('class' => 'btn ' . $cancelDisabled, 'confirm' => __('Are you sure you want to cancel # %s?', $paymentAdvice['PaymentAdvice']['document'])));  
                         ?> </li-->
-                <li><?php echo $this->Html->link(__('Print'), array('action' => 'print', $paymentAdvice['PaymentAdvice']['id'], '?' => $this->request->query), array('target' => '_blank', 'class' => '', 'escape' => false)); ?> </li>
-                <li><?php echo $this->Form->postLink(__('Create Receipt'), array('controller' => 'Receipts', 'action' => 'addFromPaymentAdvice', $paymentAdvice['PaymentAdvice']['id'], '?' => $this->request->query), array('target'=>'_blank','class' => 'btn ' . $payDisabled, 'confirm' => __('Are you sure you want to set paymentAdvice # %s as paid? - Payment as %s', $paymentAdvice['PaymentAdvice']['document'], $paymentAdvice['PaymentType']['name']))); ?></li>
+                <li><?php echo $this->Html->link(__('Print'), array('action' => 'print', $paymentAdvice['PaymentAdvice']['id'], '?' => ['condo_id'=> $paymentAdvice['PaymentAdvice']['condo_id']]), array('target' => '_blank', 'class' => '', 'escape' => false)); ?> </li>
+                <li><?php echo $this->Form->postLink(__('Create Receipt'), array('controller' => 'Receipts', 'action' => 'addFromPaymentAdvice', $paymentAdvice['PaymentAdvice']['id'], '?' => ['condo_id'=> $paymentAdvice['PaymentAdvice']['condo_id']]), array('target' => '_blank', 'class' => 'btn ' . $payDisabled)); ?></li>
 
             </ul><!-- /.list-group -->
 
@@ -56,7 +56,7 @@ $this->Html->script('footable', false);
             <legend><?php echo __n('Payment Advice', 'Payment Advices', 1); ?>&nbsp;<?php echo h($paymentAdvice['PaymentAdvice']['document']); ?>&nbsp;</legend>
             <div class="actions col-sm-12">
                 <div class="float-right text-right">
-                <h4 class="text-right"><?php echo __('Total Amount') . ' : ' . number_format($paymentAdvice['PaymentAdvice']['total_amount'], 2) . ' ' . Configure::read('Application.currencySign'); ?></h4>
+                    <h4 class="text-right"><?php echo __('Total Amount') . ' : ' . number_format($paymentAdvice['PaymentAdvice']['total_amount'], 2) . ' ' . Configure::read('Application.currencySign'); ?></h4>
 
                 </div>
 
@@ -87,8 +87,12 @@ $this->Html->script('footable', false);
                                     <td><?php echo h($paymentAdvice['PaymentAdvice']['document']); ?>&nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <td><strong><?php echo __('Date'); ?></strong></td>
+                                    <td><strong><?php echo __('Document Date'); ?></strong></td>
                                     <td><?php echo h($paymentAdvice['PaymentAdvice']['document_date']); ?>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td><strong><?php echo __('Due Date'); ?></strong></td>
+                                    <td><?php echo h($paymentAdvice['PaymentAdvice']['due_date']); ?>&nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td><strong><?php echo __n('Fraction', 'Fractions', 1); ?></strong></td>
@@ -188,8 +192,7 @@ $this->Html->script('footable', false);
                                 <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate" style="font-size: 40px;"></span>
                             </div>
                             <div class="col-sm-12 hidden">
-                                <h4 class="text-right"><?php echo __('Total Amount') . ' : ' . number_format($paymentAdvice['PaymentAdvice']['total_amount'], 2) . ' ' . Configure::read('Application.currencySign'); ?></h4>
-
+                               
                                 <table data-empty="<?= __('Empty'); ?>" class="footable table table-hover table-condensed">
                                     <thead>
                                         <tr>

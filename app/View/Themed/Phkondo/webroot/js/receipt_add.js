@@ -28,7 +28,7 @@ $(function(){
 
 $("#ReceiptFractionId").on("change", function (event) {
         $("#ReceiptChangeFilter").val('1');
-        $(this).closest("form").find('*').prop('disabled','disabled');
+        $(this).closest("form").find('*').prop('readonly','readonly');
         $(this).closest("form").submit();
         return false;
     });

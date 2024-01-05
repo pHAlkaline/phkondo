@@ -3567,3 +3567,6 @@ msgstr "Der Speicher überschreitet die maximale Grenze."
 
 msgid "Calculate"
 msgstr "Berechnung"
+
+msgid "Warning: when a payment advice is generated, ALL PAYMENT ADVICES previously created will be removed, EXCEPT those that have already been paid."
+msgstr "Achtung: Wenn eine Zahlungsanweisung erstellt wird, werden ALLE zuvor erstellten ZAHLUNGSANWEISUNGEN entfernt, MIT AUSNAHME derjenigen, die bereits bezahlt wurden."

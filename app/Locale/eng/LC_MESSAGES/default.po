@@ -3569,3 +3569,6 @@ msgstr ""
 
 msgid "Calculate"
 msgstr ""
+
+msgid "Warning: when a payment advice is generated, ALL PAYMENT ADVICES previously created will be removed, EXCEPT those that have already been paid."
+msgstr ""

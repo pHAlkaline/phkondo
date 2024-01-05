@@ -26,10 +26,9 @@
                         <tr>
                             <th><?php echo $this->Paginator->sort('document'); ?></th>
                             <th data-breakpoints="xs"><?php echo $this->Paginator->sort('document_date'); ?></th>
-                            <th><?php echo $this->Paginator->sort('Fraction.fraction', __n('Fraction', 'Fractions', 1)); ?></th>
-                            <th data-breakpoints="xs"><?php echo $this->Paginator->sort('Entity.name', __n('Entity', 'Entities', 1)); ?></th>
-                            <!--th data-breakpoints="xs"><?php //echo $this->Paginator->sort('Status.name',__('Status')); 
-                                                            ?></th-->
+                            <th data-breakpoints="xs"><?php echo $this->Paginator->sort('Fraction.fraction', __n('Fraction', 'Fractions', 1)); ?></th>
+                            <th><?php echo $this->Paginator->sort('Entity.name', __n('Entity', 'Entities', 1)); ?></th>
+                            <!--th data-breakpoints="xs"><?php //echo $this->Paginator->sort('Status.name',__('Status')); ?></th-->
                             <th data-breakpoints="xs"><?php echo $this->Paginator->sort('PaymentType.name', __('Payment Type')); ?></th>
                             <th data-breakpoints="xs"><?php echo $this->Paginator->sort('payment_date'); ?></th>
                             <th class="amount"><?php echo $this->Paginator->sort('total_amount'); ?></th>
@@ -49,10 +48,6 @@
                                 <td>
                                     <?php echo h($payment_advice['Entity']['name']); ?>
                                 </td>
-                                <!--td>
-                                    <?php //echo h($payment_advice['ReceiptStatus']['name']); 
-                                    ?>
-                                </td-->
                                 <td>
                                     <?php echo h($payment_advice['PaymentType']['name']); ?>
                                 </td>

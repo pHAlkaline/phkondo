@@ -2790,3 +2790,6 @@ msgstr "Lo spazio di archiviazione supera il limite massimo."
 
 msgid "Calculate"
 msgstr "Calcolare"
+
+msgid "Warning: when a payment advice is generated, ALL PAYMENT ADVICES previously created will be removed, EXCEPT those that have already been paid."
+msgstr "Attenzione: quando viene generato un avviso di pagamento, TUTTI GLI AVVISI DI PAGAMENTO precedentemente creati verranno rimossi, TRANNE quelli già pagati."

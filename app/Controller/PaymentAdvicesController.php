@@ -196,10 +196,11 @@ class PaymentAdvicesController extends AppController
         if ($this->request->is('post') && isset($this->request->data['PaymentAdvice']['change_filter']) && $this->request->data['PaymentAdvice']['change_filter'] != '1') {
             $this->PaymentAdvice->create();
             $this->PaymentAdvice->Entity->id = $this->request->data['PaymentAdvice']['entity_id'];
-            $this->PaymentAdvice->Entity->order = 'Entity.name';
-            $this->request->data['PaymentAdvice']['address'] = $this->PaymentAdvice->Entity->field('address');
+            $entity=$this->PaymentAdvice->Entity->read();
+        
+            $this->request->data['PaymentAdvice']['address'] = $entity['Entity']['address'];
             //$number = $this->PaymentAdvice->getNextIndex($this->getPhkRequestVar('condo_id'));
-            $this->request->data['PaymentAdvice']['document'] = $this->getPhkRequestVar('condo_id') . '-' . Date('YmdHis');
+            $this->request->data['PaymentAdvice']['document'] =$this->getPhkRequestVar('condo_id') .$this->request->data['PaymentAdvice']['fraction_id'] .$entity['id'].'-'.Date('YmdHis');
             if ($this->request->data['PaymentAdvice']['document_date'] == '') {
                 $this->request->data['PaymentAdvice']['document_date'] = date(Configure::read('Application.dateFormatSimple'));
             }
@@ -280,6 +281,109 @@ class PaymentAdvicesController extends AppController
         $this->redirect(array('action' => 'edit', $id, '?' => $this->request->query, '#' => 'AddNotes'));
     }
 
+    /**
+     * generate method
+     *
+     * @return void
+     */
+    public function generate()
+    {
+        if ($this->request->is('post')) {
+            set_time_limit(90);
+            $result = true;
+            $dataSource = $this->PaymentAdvice->getDataSource();
+            $dataSource->begin();
+            try {
+                $this->PaymentAdvice->Condo->contain('Fraction.Entity');
+                $condo = $this->PaymentAdvice->Condo->find('first', array('conditions' => array('Condo.id' => $this->request->data['PaymentAdvice']['condo_id'])));
+                if (isset($condo['Fraction']) && count($condo['Fraction']) > 0) {
+                    foreach ($condo['Fraction'] as $fraction) {
+                        if (isset($fraction['Entity']) && count($fraction['Entity']) > 0) {
+                            foreach ($fraction['Entity'] as $entity) {
+                                /*$this->PaymentAdvice->Note->updateAll(
+                                    array(
+                                        'Note.payment_advice_id' => null,
+                                        'Note.pending_amount' => 0
+                                    ),
+                                    array(
+                                        'Note.fraction_id' => $fraction['id'],
+                                        'Note.entity_id' => $entity['id'],
+                                        'Note.note_status_id' => array(1, 2),
+                                        'Note.receipt_id' => null
+                                    )
+                                );*/
+                                $this->PaymentAdvice->deleteAll(array(
+                                    'PaymentAdvice.fraction_id' => $fraction['id'],
+                                    'PaymentAdvice.entity_id' => $entity['id'],
+                                    'PaymentAdvice.payment_date'=> null,
+                                    'PaymentAdvice.receipt_id'=> null
+                                ), true);
+                                $notes = $this->PaymentAdvice->Note->find(
+                                    'all',
+                                    array(
+                                        'conditions' => array(
+                                            'AND' => array(
+                                                'Note.payment_advice_id IS NULL',
+                                                'Note.receipt_id IS NULL',
+                                                'Note.fraction_id' => $fraction['id'],
+                                                'Note.entity_id' => $entity['id'],
+                                                'Note.note_status_id' => array(1, 2),
+                                                'Note.due_date <=' => $this->request->data['PaymentAdvice']['due_date']
+                                            ),
+                                        )
+                                    )
+                                );
+                                if (count($notes) > 0) {
+                                    $this->PaymentAdvice->create();
+                                    $this->PaymentAdvice->Entity->id = $entity['id'];
+                                    $this->PaymentAdvice->Entity->order = 'Entity.name';
+                                    $this->request->data['PaymentAdvice']['fraction_id']=$fraction['id'];
+                                    $this->request->data['PaymentAdvice']['entity_id']=$entity['id'];
+                                    $this->request->data['PaymentAdvice']['address'] = $this->PaymentAdvice->Entity->field('address');
+                                    $this->request->data['PaymentAdvice']['document'] = $this->getPhkRequestVar('condo_id') . $fraction['id'] .$entity['id'].'-'.Date('YmdHis');
+                                    if ($this->request->data['PaymentAdvice']['document_date'] == '') {
+                                        $this->request->data['PaymentAdvice']['document_date'] = date(Configure::read('Application.dateFormatSimple'));
+                                    }
+                                    if ($this->PaymentAdvice->save($this->request->data)) {
+                                        $this->PaymentAdvice->setAmount($this->PaymentAdvice->id);
+                                        foreach ($notes as $note) {
+                                           
+                                                $noteOk = $this->PaymentAdvice->Note->find('count', array('conditions' => array('Note.id' => $note['Note']['id'], 'Note.receipt_id' => null)));
+                                                if ($noteOk == 0) {
+                                                    $this->Flash->error(__('The notes could not be saved. Please, try again.'));
+                                                }
+                                                $this->PaymentAdvice->Note->id = $note['Note']['id'];
+                                                $this->PaymentAdvice->Note->saveField('payment_advice_id', $this->PaymentAdvice->id, array('callbacks' => false));
+                                                $this->PaymentAdvice->Note->saveField('pending_amount', '0', array('callbacks' => false));
+                                    
+                                        }
+                                        $this->PaymentAdvice->setAmount($this->PaymentAdvice->id);
+                                    } else {
+                                        $result = false;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } catch (Exception $e) {
+                echo 'Caught exception: ',  $e->getMessage(), "\n";
+                $result = false;
+            }
+            if ($result) {
+                $dataSource->commit();
+                $this->Flash->success(__('The payment advices has been created'));
+            } else {
+                $dataSource->rollback();
+                $this->Flash->error(__('The payment advices could not be created. Please, try again.'));
+            }
+            $this->redirect(array('action' => 'index', '?' => $this->request->query));
+        }
+        $condos = $this->PaymentAdvice->Condo->find('list', array('conditions' => array('Condo.id' => $this->getPhkRequestVar('condo_id'))));
+        $fractions[0] = __('All');
+        $entities[0] = __('All');
+        $this->set(compact('condos', 'fractions', 'entities'));
+    }
 
     /**
      * edit method
@@ -301,8 +405,8 @@ class PaymentAdvicesController extends AppController
         }
 
         if ($this->request->is('post') || $this->request->is('put')) {
-            if (isset($this->request->data['PaymentAdvice']['payment_date']) && $this->request->data['PaymentAdvice']['payment_date']==''){
-                $this->request->data['PaymentAdvice']['payment_date']=null;
+            if (isset($this->request->data['PaymentAdvice']['payment_date']) && $this->request->data['PaymentAdvice']['payment_date'] == '') {
+                $this->request->data['PaymentAdvice']['payment_date'] = null;
             }
             if ($this->PaymentAdvice->save($this->request->data)) {
                 $this->Flash->success(__('The payment advice has been saved'));
@@ -312,7 +416,7 @@ class PaymentAdvicesController extends AppController
             }
         } else {
             $options = array('conditions' => array('PaymentAdvice.' . $this->PaymentAdvice->primaryKey => $id));
-            $this->PaymentAdvice->contain(array('Note' => array('NoteType', 'Fraction')));
+            //$this->PaymentAdvice->contain(array('Note' => array('NoteType', 'Fraction')));
 
             $this->request->data = $this->PaymentAdvice->find('first', $options);
             if (empty($this->request->data)) {
@@ -336,7 +440,8 @@ class PaymentAdvicesController extends AppController
                         'Note.receipt_id IS NULL',
                         'Note.fraction_id' => $this->PaymentAdvice->field('fraction_id'),
                         'Note.entity_id' => $this->PaymentAdvice->field('entity_id'),
-                        'Note.note_status_id' => array(1, 2)
+                        'Note.note_status_id' => array(1, 2),
+                        'Note.due_date <=' => $this->PaymentAdvice->field('due_date')
                     ),
                 )
             )
@@ -375,7 +480,7 @@ class PaymentAdvicesController extends AppController
         $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
     }
 
-    
+
     public function beforeFilter()
     {
         parent::beforeFilter();

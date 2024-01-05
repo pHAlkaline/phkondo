@@ -39,3 +39,4 @@ ALTER TABLE `notes` ADD `payment_advice_id` int(11) NULL;
 ALTER TABLE `notes` ADD CONSTRAINT `notes_ibfk_8` FOREIGN KEY (`payment_advice_id`) REFERENCES `payment_advices`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 ALTER TABLE `notes` DROP FOREIGN KEY `notes_ibfk_7`;
 ALTER TABLE `notes` ADD CONSTRAINT `notes_ibfk_7` FOREIGN KEY (`receipt_id`) REFERENCES `receipts`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `payment_advices` ADD `due_date` DATE NULL AFTER `document_date`;

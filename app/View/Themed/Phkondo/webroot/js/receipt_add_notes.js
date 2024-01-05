@@ -27,11 +27,7 @@
 
 
 $(function () {
-    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-
-    });
-    $('a[data-toggle="tab"]').trigger('shown.bs.tab');
-    $("#addNotesTotalAmount").html(' ' + totalAmount());
+     $("#addNotesTotalAmount").html(' ' + totalAmount());
     $('.footable').on('ready.ft.table', function (e, ft) {
         $("#addNotesTotalAmount").html(' ' + totalAmount());
         $("form#NoteAddNotesForm").find('input[type="checkbox"]').off('change').on('change', function (evt) {

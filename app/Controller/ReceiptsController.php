@@ -558,9 +558,9 @@ class ReceiptsController extends AppController
             $this->request->data['Receipt']['fraction_id'] = $paymentAdvice['PaymentAdvice']['fraction_id'];
             $this->request->data['Receipt']['receipt_payment_type_id'] = $paymentAdvice['PaymentAdvice']['payment_type_id'];
             $this->Receipt->Entity->id = $paymentAdvice['PaymentAdvice']['entity_id'];
-            $this->Receipt->Entity->order = 'Entity.name';
+            $entity = $this->Receipt->Entity->read();
             $this->request->data['Receipt']['entity_id'] = $paymentAdvice['PaymentAdvice']['entity_id'];
-            $this->request->data['Receipt']['address'] = $this->Receipt->Entity->field('address');
+            $this->request->data['Receipt']['address'] = $entity['Entity']['address'];
             // save receipt
             if ($this->Receipt->save($this->request->data)) {
                 $this->Receipt->PaymentAdvice->saveField('receipt_id', $this->Receipt->id, array('callbacks' => false));
