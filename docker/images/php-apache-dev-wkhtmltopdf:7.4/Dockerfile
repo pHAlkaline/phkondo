@@ -1,9 +1,9 @@
-#docker build . -t phalkaline/php-apache-dev-wkhtmltopdf:7.4
-
 #prod
+#docker build . -t phalkaline/php-apache-wkhtmltopdf:7.4
 #FROM webdevops/php-apache:7.4
 
 # dev
+#docker build . -t phalkaline/php-apache-dev-wkhtmltopdf:7.4
 FROM webdevops/php-apache-dev:7.4
 
 # persistent / runtime deps
