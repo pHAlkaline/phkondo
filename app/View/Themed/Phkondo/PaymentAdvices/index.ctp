@@ -3,17 +3,23 @@
 <?php $this->Html->script('libs/footable/footable', false); ?>
 <?php $this->Html->script('footable', false); ?>
 <?php $this->Html->script('libs/table2csv/table2csv.min', false); ?>
+<?php $this->Html->script('libs/jquery.ajax.queue', false); ?>
 <?php $this->Html->script('table2csv', false); ?>
+<?php $this->Html->script('payment_advice_index', false); ?>
+
+
 <div id="page-container" class="row">
 
     <div id="page-content" class="col-sm-12">
 
         <div class="index">
 
-            <h2 class="col-sm-9"><?php echo __n('Payment Advice', 'Payment Advices', 2); ?></h2>
-            <div class="actions hidden-print col-sm-3">
-                <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('Generate All'), array('action' => 'generate', '?' => $this->request->query), array('class' => 'btn btn-primary', 'style' => 'margin: 8px 2px; float: right;', 'escape' => false)); ?>
-                <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New'), array('action' => 'add', '?' => $this->request->query), array('class' => 'btn btn-primary', 'style' => 'margin: 8px 0; float: right;', 'escape' => false)); ?>
+            <h2 class="col-sm-8"><?php echo __n('Payment Advice', 'Payment Advices', 2); ?></h2>
+            <div class="actions hidden-print col-sm-4">
+                <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('Generate All'), array('action' => 'generate', '?' => $this->request->query), array('class' => 'btn btn-primary', 'style' => 'margin: 8px 1px; float: right;', 'escape' => false)); ?>
+                <?php echo $this->Html->link('<span class="glyphicon glyphicon-plus-sign"></span> ' . __('New'), array('action' => 'add', '?' => $this->request->query), array('class' => 'btn btn-primary', 'style' => 'margin: 8px 1px; float: right;', 'escape' => false)); ?>
+                <?php echo $this->Html->link('<span class="glyphicon glyphicon-send"></span> ' . __('Send All'), '#', array('id'=>'send-all-btn', 'class' => 'btn btn-primary', 'style' => 'margin: 8px 1px; float: right;', 'escape' => false)); ?>
+
             </div><!-- /.actions -->
             <?php echo $this->element('search_tool_payment_advices'); ?>
             <div class="row text-center loading">
@@ -28,7 +34,8 @@
                             <th data-breakpoints="xs"><?php echo $this->Paginator->sort('document_date'); ?></th>
                             <th data-breakpoints="xs"><?php echo $this->Paginator->sort('Fraction.fraction', __n('Fraction', 'Fractions', 1)); ?></th>
                             <th><?php echo $this->Paginator->sort('Entity.name', __n('Entity', 'Entities', 1)); ?></th>
-                            <!--th data-breakpoints="xs"><?php //echo $this->Paginator->sort('Status.name',__('Status')); ?></th-->
+                            <!--th data-breakpoints="xs"><?php //echo $this->Paginator->sort('Status.name',__('Status')); 
+                                                            ?></th-->
                             <th data-breakpoints="xs"><?php echo $this->Paginator->sort('PaymentType.name', __('Payment Type')); ?></th>
                             <th data-breakpoints="xs"><?php echo $this->Paginator->sort('payment_date'); ?></th>
                             <th class="amount"><?php echo $this->Paginator->sort('total_amount'); ?></th>
@@ -78,10 +85,11 @@
 
 
                                     ?>
+                                    <?php echo $payment_advice['Entity']['email']!=''? $this->Html->link('<span class="glyphicon glyphicon-send"></span> ', array('action' => 'ajax_send', $payment_advice['PaymentAdvice']['id'],'?' => $this->request->query), array('title' => __('Send Email'), 'class' => 'btn btn-default btn-xs send-ajax-btn', 'escape' => false)):''; ?>
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $payment_advice['PaymentAdvice']['id'], '?' => $this->request->query), array('title' => __('Details'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $payment_advice['PaymentAdvice']['id'], '?' => $this->request->query), array('title' => __('Edit'), 'class' => 'btn btn-default btn-xs ' . $editDisabled, 'escape' => false)); ?>
                                     <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'delete', $payment_advice['PaymentAdvice']['id'], '?' => $this->request->query), array('title' => __('Delete'), 'class' => 'btn btn-default btn-xs ' . $deleteDisabled, 'escape' => false, 'confirm' => __('Are you sure you want to delete # %s?', $payment_advice['PaymentAdvice']['document']))); ?>
-                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-euro"></span> ', array('controller' => 'Receipts', 'action' => 'addFromPaymentAdvice', $payment_advice['PaymentAdvice']['id'], '?' => $this->request->query), array('title' => __('Create Receipt'), 'target'=>'_blank','class' => 'btn btn-default btn-xs ' . $payDisabled, 'escape' => false, 'confirm' => __('Are you sure you want to set paymentAdvice # %s as paid? - Payment as %s', $payment_advice['PaymentAdvice']['document'], $payment_advice['PaymentType']['name']))); ?>
+                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-euro"></span> ', array('controller' => 'Receipts', 'action' => 'addFromPaymentAdvice', $payment_advice['PaymentAdvice']['id'], '?' => $this->request->query), array('title' => __('Create Receipt'), 'target' => '_blank', 'class' => 'btn btn-default btn-xs ' . $payDisabled, 'escape' => false, 'confirm' => __('Are you sure you want to set paymentAdvice # %s as paid? - Payment as %s', $payment_advice['PaymentAdvice']['document'], $payment_advice['PaymentType']['name']))); ?>
                                     <!--?php //echo $this->Form->postLink('<span class="glyphicon glyphicon-ban-circle"></span> ', array('action' => 'cancel', $payment_advice['PaymentAdvice']['id'],'?'=>$this->request->query), array('title' => __('Cancel'), 'class' => 'btn btn-default btn-xs '.$cancelDisabled, 'escape' => false, 'confirm' => __('Are you sure you want to cancel # %s?', $payment_advice['PaymentAdvice']['document']))); ?-->
                                     <?php echo $this->Html->link('<span class="glyphicon glyphicon-save-file"></span> ', array('action' => 'print', $payment_advice['PaymentAdvice']['id'], 'ext' => 'pdf', '?' => $this->request->query), array('target' => '_blank', 'title' => __('Print'), 'class' => 'btn btn-default btn-xs', 'escape' => false)) ?>
                                 </td>

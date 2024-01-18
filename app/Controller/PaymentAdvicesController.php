@@ -187,6 +187,35 @@ class PaymentAdvicesController extends AppController
     }
 
     /**
+     * bulk_send method
+     *
+     * @throws NotFoundException
+     * @param string $id
+     * @return void
+     */
+    public function ajax_send($id)
+    {
+        $this->request->onlyAllow('ajax');
+        $this->autoRender = false;
+        if (Configure::read('Application.stage') == 'demo') {
+            echo json_encode(array('result' => false, 'error' =>__d('email', 'In Demo Sessions this feature is disbled to avoid spam!!.')));
+            return;
+        }
+
+        if (!$this->PaymentAdvice->exists($id)) {
+            echo json_encode(array('result' => false, 'error' =>__('Invalid payment advice!!.')));
+            return;
+        }
+        
+        $event = new CakeEvent('Phkondo.PaymentAdvice.ajax_send', $this, array(
+            'id' => $id,
+        ));
+        $result=$this->getEventManager()->dispatch($event);
+
+        echo json_encode(array('result' => $result['result']));
+    }
+
+    /**
      * add method
      *
      * @return void
