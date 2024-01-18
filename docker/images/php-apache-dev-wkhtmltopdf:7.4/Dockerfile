@@ -1,3 +1,5 @@
+#docker build . -t phalkaline/php-apache-dev-wkhtmltopdf:7.4
+
 #prod
 #FROM webdevops/php-apache:7.4
 
