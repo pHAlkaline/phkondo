@@ -1,3 +1,7 @@
+#prod
+#FROM webdevops/php-apache:7.4
+
+# dev
 FROM webdevops/php-apache-dev:7.4
 
 # persistent / runtime deps
