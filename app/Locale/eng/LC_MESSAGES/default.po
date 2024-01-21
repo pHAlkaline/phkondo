@@ -3572,3 +3572,53 @@ msgstr ""
 
 msgid "Warning: when a payment advice is generated, ALL PAYMENT ADVICES previously created will be removed, EXCEPT those that have already been paid."
 msgstr ""
+
+
+msgid "Payment Advice"
+msgid_plural "Payment Advices"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Payment Type"
+msgid_plural "Payment Types"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Send All"
+msgstr ""
+
+msgid "New"
+msgstr ""
+
+msgid "New Payment Advice"
+msgstr ""
+
+msgid "Create Receipt"
+msgstr ""
+
+msgid "Generate All"
+msgstr ""
+
+msgid "View"
+msgstr ""
+
+msgid "Invalid payment advice"
+msgstr ""
+
+msgid "Saved with success."
+msgstr ""
+
+msgid "Could not be saved. Please, try again."
+msgstr ""
+
+msgid "Created With Success."
+msgstr ""
+
+msgid "Could not be created. Please, try again."
+msgstr ""
+
+msgid "Deleted With Success."
+msgstr ""
+
+msgid "Can not be deleted, please try again."
+msgstr ""

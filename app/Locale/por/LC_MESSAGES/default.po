@@ -240,7 +240,7 @@ msgstr "Pedido inválido"
 #: Controller/FractionNotesController.php:224
 #: Controller/OwnerNotesController.php:226
 msgid "Note deleted"
-msgstr "Tarifa eliminada"
+msgstr "Quota eliminado"
 
 #: Controller/BudgetNotesController.php:238
 #: Controller/FractionNotesController.php:227
@@ -330,8 +330,8 @@ msgstr[1] "Orçamentos"
 #: View/Themed/Phkondo/Receipts/view.ctp:61
 msgid "Note"
 msgid_plural "Notes"
-msgstr[0] "Tarifa"
-msgstr[1] "Tarifas"
+msgstr[0] "Quota"
+msgstr[1] "Quotas"
 
 #: Controller/BudgetsController.php:96;136
 msgid "The budget has been saved"
@@ -2306,7 +2306,7 @@ msgstr "Listar Quotas"
 #: View/Themed/Phkondo/OwnerNotes/index.ctp:13
 #: View/Themed/Phkondo/OwnerNotes/view.ctp:18
 msgid "New Note"
-msgstr "Criar Tarifa"
+msgstr "Criar Quota"
 
 #: View/Themed/Phkondo/BudgetNotes/create.ctp:21
 #: View/Themed/Phkondo/Budgets/add.ctp:9
@@ -2349,7 +2349,7 @@ msgstr "Total"
 #: View/Themed/Phkondo/OwnerNotes/edit.ctp:16
 #: View/Themed/Phkondo/OwnerNotes/view.ctp:17
 msgid "Delete Note"
-msgstr "Eliminar Tarifa"
+msgstr "Eliminar Quota"
 
 #: View/Themed/Phkondo/BudgetNotes/edit.ctp:31
 #: View/Themed/Phkondo/BudgetNotes/view.ctp:28
@@ -2358,7 +2358,7 @@ msgstr "Eliminar Tarifa"
 #: View/Themed/Phkondo/OwnerNotes/edit.ctp:43
 #: View/Themed/Phkondo/OwnerNotes/view.ctp:16
 msgid "Edit Note"
-msgstr "Editar Tarifa"
+msgstr "Editar Quota"
 
 #: View/Themed/Phkondo/BudgetNotes/index.ctp:24
 msgid "Delete All"
@@ -3700,3 +3700,52 @@ msgstr "Calcular"
 
 msgid "Warning: when a payment advice is generated, ALL PAYMENT ADVICES previously created will be removed, EXCEPT those that have already been paid."
 msgstr "Aviso: quando se gera um aviso de pagamento, TODOS OS AVISOS DE PAGAMENTO criados anteriormente serão removidos, EXCEPTO os que já foram pagos."
+
+msgid "Payment Advice"
+msgid_plural "Payment Advices"
+msgstr[0] "Aviso de Pagamento"
+msgstr[1] "Avisos de Pagamento"
+
+msgid "Payment Type"
+msgid_plural "Payment Types"
+msgstr[0] "Forma de Pagamento"
+msgstr[1] "Formas de Pagamento"
+
+msgid "Send All"
+msgstr "Enviar Todos"
+
+msgid "New"
+msgstr "Criar"
+
+msgid "New Payment Advice"
+msgstr "Criar Aviso de Pagamento"
+
+msgid "Create Receipt"
+msgstr "Criar Recibo"
+
+msgid "Generate All"
+msgstr "Criar Todos"
+
+msgid "View"
+msgstr "Ver"
+
+msgid "Invalid payment advice"
+msgstr "Aviso de Pagamento Inválido"
+
+msgid "Saved with success."
+msgstr "Registado com Sucesso."
+
+msgid "Could not be saved. Please, try again."
+msgstr "Não foi possível o registo, tente outra vez."
+
+msgid "Created With Success."
+msgstr "Creado com Sucesso."
+
+msgid "Could not be created. Please, try again."
+msgstr "Náo foi possível o registo. tente outra vez."
+
+msgid "Deleted With Success."
+msgstr "Eliminado com Sucesso."
+
+msgid "Can not be deleted, please try again."
+msgstr "Não foi possível eliminar o registo, tente outra vez"

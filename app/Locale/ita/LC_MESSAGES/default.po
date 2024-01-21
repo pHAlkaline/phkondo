@@ -2793,3 +2793,53 @@ msgstr "Calcolare"
 
 msgid "Warning: when a payment advice is generated, ALL PAYMENT ADVICES previously created will be removed, EXCEPT those that have already been paid."
 msgstr "Attenzione: quando viene generato un avviso di pagamento, TUTTI GLI AVVISI DI PAGAMENTO precedentemente creati verranno rimossi, TRANNE quelli già pagati."
+
+
+msgid "Payment Advice"
+msgid_plural "Payment Advices"
+msgstr[0] "Avviso di pagamento"
+msgstr[1] "Consigli per il pagamento"
+
+msgid "Payment Type"
+msgid_plural "Payment Types"
+msgstr[0] "Tipo di pagamento"
+msgstr[1] "Tipi di pagamento"
+
+msgid "Send All"
+msgstr "Invia tutto"
+
+msgid "New"
+msgstr "Nuovo"
+
+msgid "New Payment Advice"
+msgstr "Nuovo avviso di pagamento"
+
+msgid "Create Receipt"
+msgstr "Crea ricevuta"
+
+msgid "Generate All"
+msgstr "Genera tutto"
+
+msgid "View"
+msgstr "Visualizza"
+
+msgid "Invalid payment advice"
+msgstr "Avviso di pagamento non valido"
+
+msgid "Saved with success."
+msgstr "Salvato con successo."
+
+msgid "Could not be saved. Please, try again."
+msgstr "Impossibile salvare. "
+
+msgid "Created With Success."
+msgstr "Creato con successo."
+
+msgid "Could not be created. Please, try again."
+msgstr "Impossibile creare. "
+
+msgid "Deleted With Success."
+msgstr "Eliminato con successo."
+
+msgid "Can not be deleted, please try again."
+msgstr "Impossibile eliminare, riprovare."

@@ -203,7 +203,7 @@ class PaymentAdvicesController extends AppController
         }
 
         if (!$this->PaymentAdvice->exists($id)) {
-            echo json_encode(array('result' => false, 'error' =>__('Invalid payment advice!!.')));
+            echo json_encode(array('result' => false, 'error' =>__('Invalid payment advice')));
             return;
         }
         
@@ -235,11 +235,11 @@ class PaymentAdvicesController extends AppController
             }
             if ($this->PaymentAdvice->save($this->request->data)) {
                 //$this->PaymentAdvice->setPaymentAdviceIndex($this->getPhkRequestVar('condo_id'), $number);
-                $this->Flash->success(__('The payment advice has been saved'));
+                $this->Flash->success(__('Saved with success.'));
                 $this->redirect(array('action' => 'edit', $this->PaymentAdvice->id, '?' => $this->request->query, '#' => 'AddNotes'));
             } else {
                 //debug($this->PaymentAdvice->validationErrors);
-                $this->Flash->error(__('The payment advice could not be saved. Please, try again.'));
+                $this->Flash->error(__('Could not be saved. Please, try again.'));
             }
         }
         $condos = $this->PaymentAdvice->Condo->find('list', array('conditions' => array('Condo.id' => $this->getPhkRequestVar('condo_id'))));
@@ -294,7 +294,7 @@ class PaymentAdvicesController extends AppController
                     $noteOk = $this->PaymentAdvice->Note->find('count', array('conditions' => array('Note.id' => $key, 'Note.receipt_id' => null)));
 
                     if ($noteOk == 0) {
-                        $this->Flash->error(__('The notes could not be saved. Please, try again.'));
+                        $this->Flash->error(__('Could not be saved. Please, try again.'));
                         $this->redirect(array('action' => 'edit', $id, '?' => $this->request->query, '#' => 'AddNotes'));
                         return;
                     }
@@ -304,7 +304,7 @@ class PaymentAdvicesController extends AppController
                 }
             }
             $this->PaymentAdvice->setAmount($id);
-            $this->Flash->success(__('The payment advice has been saved'));
+            $this->Flash->success(__('Saved with success.'));
             //$this->redirect(array('action' => 'edit', $id, '#' => 'AddNotes'));
         }
         $this->redirect(array('action' => 'edit', $id, '?' => $this->request->query, '#' => 'AddNotes'));
@@ -379,7 +379,7 @@ class PaymentAdvicesController extends AppController
                                            
                                                 $noteOk = $this->PaymentAdvice->Note->find('count', array('conditions' => array('Note.id' => $note['Note']['id'], 'Note.receipt_id' => null)));
                                                 if ($noteOk == 0) {
-                                                    $this->Flash->error(__('The notes could not be saved. Please, try again.'));
+                                                    $this->Flash->error(__('Could not be saved. Please, try again.'));
                                                 }
                                                 $this->PaymentAdvice->Note->id = $note['Note']['id'];
                                                 $this->PaymentAdvice->Note->saveField('payment_advice_id', $this->PaymentAdvice->id, array('callbacks' => false));
@@ -401,10 +401,10 @@ class PaymentAdvicesController extends AppController
             }
             if ($result) {
                 $dataSource->commit();
-                $this->Flash->success(__('The payment advices has been created'));
+                $this->Flash->success(__('Created With Success.'));
             } else {
                 $dataSource->rollback();
-                $this->Flash->error(__('The payment advices could not be created. Please, try again.'));
+                $this->Flash->error(__('Could not be created. Please, try again.'));
             }
             $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
@@ -438,10 +438,10 @@ class PaymentAdvicesController extends AppController
                 $this->request->data['PaymentAdvice']['payment_date'] = null;
             }
             if ($this->PaymentAdvice->save($this->request->data)) {
-                $this->Flash->success(__('The payment advice has been saved'));
+                $this->Flash->success(__('Saved With Success'));
                 $this->redirect(array('action' => 'edit', $id, '?' => $this->request->query, '#' => 'Details'));
             } else {
-                $this->Flash->error(__('The payment advice could not be saved. Please, try again.'));
+                $this->Flash->error(__('Could not be saved. Please, try again.'));
             }
         } else {
             $options = array('conditions' => array('PaymentAdvice.' . $this->PaymentAdvice->primaryKey => $id));
@@ -502,10 +502,10 @@ class PaymentAdvicesController extends AppController
         }
         $this->PaymentAdvice->read();
         if ($this->PaymentAdvice->delete()) {
-            $this->Flash->success(__('PaymentAdvice deleted'));
+            $this->Flash->success(__('Deleted With Success.'));
             $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
-        $this->Flash->error(__('PaymentAdvice can not be deleted'));
+        $this->Flash->error(__('Can not be deleted, please try again.'));
         $this->redirect(array('action' => 'view', $id, '?' => $this->request->query));
     }
 
