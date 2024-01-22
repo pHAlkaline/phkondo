@@ -93,14 +93,17 @@ class FractionsController extends AppController {
             $this->Flash->error(__('Invalid fraction'));
             $this->redirect(array('action' => 'index', '?' => $this->request->query));
         }
-        $this->Fraction->contain('Manager', 'Comment', 'FractionType');
+        $this->Fraction->contain('Manager', 'Comment', 'FractionType', 'Entity');
         $options = array('conditions' => array('Fraction.id' => $id));
         $fraction = $this->Fraction->find('first', $options);
         $totalDebit = $this->Fraction->Note->sumDebitNotes(null, $id);
         $totalCredit = $this->Fraction->Note->sumCreditNotes(null, $id);
         //$notificationEntities = ClassRegistry::init('Entity')->find('list', array('fields' => array('Entity.email', 'Entity.email'), 'conditions' => array('id' => $fraction['Manager']['id'])));
-        $notificationEntities = $this->Session->read('NotificationEntities')?$this->Session->consume('NotificationEntities'):ClassRegistry::init('Entity')->find('list', array('fields' => array('Entity.email', 'Entity.email'), 'conditions' => array('id' => $fraction['Manager']['id'])));
-        
+        $entitiesInFraction = Set::extract('/Entity/id', $fraction);
+        if ($fraction['Fraction']['manager_id']){
+            $entitiesInFraction=[$fraction['Fraction']['manager_id']];
+        }
+        $notificationEntities = $this->Session->read('NotificationEntities')?$this->Session->consume('NotificationEntities'):ClassRegistry::init('Entity')->find('list', array('fields' => array('Entity.email', 'Entity.email'), 'conditions' => array('id' =>  $entitiesInFraction)));
         $emailNotifications = Configure::read('EmailNotifications');
         $this->set(compact('fraction', 'totalDebit', 'totalCredit', 'notificationEntities','emailNotifications'));
         $this->setPhkRequestVar('fraction_id', $id);
