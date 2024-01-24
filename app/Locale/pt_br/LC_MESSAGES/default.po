@@ -268,7 +268,7 @@ msgstr "Orçamento Inválido"
 #: Controller/BudgetNotesController.php:325
 #: View/Themed/Phkondo/BudgetNotes/create.ctp:57
 msgid "Common Reserve Fund"
-msgstr "Fundo de Reserva"
+msgstr "FC de Reserva"
 
 #: Controller/BudgetNotesController.php:334
 msgid "The notes has been created"
@@ -2471,7 +2471,7 @@ msgstr "Valor Requisitado"
 
 #: View/Themed/Phkondo/Budgets/view.ctp:87
 msgid "Common Reserve Fund (%)"
-msgstr "Fundo de Reserva (%)"
+msgstr "FC de Reserva (%)"
 
 #: View/Themed/Phkondo/Budgets/view.ctp:93
 msgid "Begin Date"

@@ -68,7 +68,7 @@ Regresse aos detalhes do condomínio
 Entrar nos Orçamentos
 Adicionar orçamentos -> Criar Orçamento
 Defina os seus orçamentos.
-Defina bem os campos de Valor, Fundo de Reserva (%), Data de Início, Quotas, Periodicidade, Distribuição, Prazo de pagamento. 
+Defina bem os campos de Valor, FC de Reserva (%), Data de Início, Quotas, Periodicidade, Distribuição, Prazo de pagamento. 
 Estes campos vão possibilitar criar quotas de forma automática.
 Ir para criar quotas para criação automática de quotas relacionadas com o respetivo orçamento, atenção que o orçamento deve estar no estado ativo.
 
