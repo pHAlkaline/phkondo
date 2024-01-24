@@ -12,6 +12,7 @@ $numOfFractions = count($fractions);
 foreach ($fractions as $fraction) {
     $totalMilRate += $fraction['Fraction']['permillage'];
 }
+        
 Configure::load('email_notifications');
 ?>
 <div id="page-container" class="row row-offcanvas row-offcanvas-left">
@@ -27,7 +28,7 @@ Configure::load('email_notifications');
     </div><!-- /#sidebar .col-sm-3 -->
     <div id="page-content" class="col-sm-10">
         <?php
-        if ($distribution['share_distribution_id'] == 2 && $totalMilRate <> 1000) :
+        if ($this->request->data['Note']['share_distribution_id'] == 2 && $totalMilRate <> 1000) :
         ?>
             <div class="alert alert-warning alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -136,7 +137,7 @@ Configure::load('email_notifications');
                                 <th><?php echo __n('Entity', 'Entities', 1); ?></th>
                                 <th><?php echo __n('Fraction', 'Fractions', 1); ?></th>
                                 <th data-breakpoints="xs"><?php echo __('Description'); ?></th>
-                                <th data-breakpoints="xs"><?php echo __('permillage'); ?></th>
+                                <th data-breakpoints="xs"><?php echo __('Permillage'); ?></th>
                                 <th data-breakpoints="xs"><?php echo __('Amount'); ?></th>
                                 <th data-breakpoints="xs"><?php echo __n('Share', 'Shares', 2); ?></th>
                                 <th><?php echo __('Total'); ?></th>
@@ -164,7 +165,7 @@ Configure::load('email_notifications');
                                     <?php
                                     $commonReserveFundByShare = 0;
                                     $amountByShare = 0;
-                                    switch ($distribution['share_distribution_id']) {
+                                    switch ($this->request->data['Note']['share_distribution_id']) {
                                         case 2:
                                             if ($totalMilRate == 0 || $numOfShares == 0) {
                                                 $amountByShare = 0;

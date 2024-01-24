@@ -304,20 +304,6 @@ class CondosController extends AppController {
 
         $this->Condo->Fraction->contain(array('Entity'));
         $fractions = $this->Condo->Fraction->find('all', array('order' => array('Fraction.fraction' => 'asc'), 'conditions' => array('condo_id' => $id)));
-        $distribution['amount']=0;
-        $distribution['shares']=12;
-        $distribution['title']=null;
-        $distribution['begin_date']=date('Y-m-d');
-        $distribution['share_periodicity_id']=1;
-        $distribution['share_distribution_id']=1;
-        $totalMilRate = 0;
-        $budgetAmount = $distribution['amount'] ? $distribution['amount'] : 0;
-        $numOfShares = $distribution['shares'] ? $distribution['shares'] : 0;
-        $numOfFractions = count($fractions);
-        foreach ($fractions as $fraction) {
-            $totalMilRate += $fraction['Fraction']['permillage'];
-        }
-
         
         $this->loadModel('SharePeriodicity');
         $this->loadModel('ShareDistribution');
@@ -326,7 +312,7 @@ class CondosController extends AppController {
         $shareDistributions = $this->ShareDistribution->find('list');
      
     
-        $this->set(compact('fractions', 'distribution', 'condo', 'sharePeriodicities', 'shareDistributions'));
+        $this->set(compact('fractions',  'condo', 'sharePeriodicities', 'shareDistributions'));
     }
 
     private function _addNote() {

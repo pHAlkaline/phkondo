@@ -1398,10 +1398,6 @@ msgstr "Crea Quote"
 msgid "Description"
 msgstr "Descrizione"
 
-#: View/Themed/Phkondo/BudgetNotes/create.ctp:55
-msgid "permillage"
-msgstr "millesimi (percentuale)"
-
 #: View/Themed/Phkondo/BudgetNotes/create.ctp:133
 msgid "Total notes"
 msgstr "Incasso Totale"

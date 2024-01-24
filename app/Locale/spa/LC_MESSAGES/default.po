@@ -1723,10 +1723,6 @@ msgstr "Crear Notas"
 msgid "Description"
 msgstr "Descripción"
 
-#: View/Themed/Phkondo/BudgetNotes/create.ctp:55
-msgid "permillage"
-msgstr "millaje"
-
 #: View/Themed/Phkondo/BudgetNotes/create.ctp:133
 msgid "Total notes"
 msgstr "Total cuotas"

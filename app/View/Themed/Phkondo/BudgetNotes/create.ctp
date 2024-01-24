@@ -3,14 +3,15 @@
 <?php $this->Html->script('libs/footable/footable', false); ?>
 <?php $this->Html->script('note_create', false); ?>
 <?php
-$totalShares = 0;
+/*$totalShares = 0;
 $totalMilRate = 0;
 $budgetAmount = $budget['Budget']['amount'];
 $numOfShares = $budget['Budget']['shares'];
 $numOfFractions = count($fractions);
 foreach ($fractions as $fraction) {
     $totalMilRate += $fraction['Fraction']['permillage'];
-}
+}*/
+
 ?>
 <div id="page-container" class="row row-offcanvas row-offcanvas-left">
     <div class="col-sm-2">
@@ -132,7 +133,7 @@ foreach ($fractions as $fraction) {
                             <th><?php echo __n('Owner', 'Owners', 1); ?></th>
                             <th><?php echo __n('Fraction', 'Fractions', 1); ?></th>
                             <th data-breakpoints="xs"><?php echo __('Description'); ?></th>
-                            <th data-breakpoints="xs"><?php echo __('permillage'); ?></th>
+                            <th data-breakpoints="xs"><?php echo __('Permillage'); ?></th>
                             <th data-breakpoints="xs"><?php echo __('Amount'); ?></th>
                             <th data-breakpoints="xs"><?php echo __('Common Reserve Fund'); ?></th>
                             <th data-breakpoints="xs"><?php echo __n('Share', 'Shares', 2); ?></th>

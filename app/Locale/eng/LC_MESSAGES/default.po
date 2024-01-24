@@ -2323,8 +2323,8 @@ msgid "Description"
 msgstr ""
 
 #: View/Themed/Phkondo/BudgetNotes/create.ctp:55
-msgid "permillage"
-msgstr ""
+msgid "Permillage"
+msgstr "Mil Rate"
 
 #: View/Themed/Phkondo/BudgetNotes/create.ctp:133
 msgid "Total notes"
@@ -2945,10 +2945,6 @@ msgstr "Delete Property"
 #: View/Themed/Phkondo/Fractions/view.ctp:10
 msgid "Edit Fraction"
 msgstr "Edit Property"
-
-#: View/Themed/Phkondo/Fractions/view.ctp:90
-msgid "Permillage"
-msgstr ""
 
 #: View/Themed/Phkondo/Income/receipts.ctp:54
 msgid "List"

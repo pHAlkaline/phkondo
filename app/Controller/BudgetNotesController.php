@@ -354,7 +354,7 @@ class BudgetNotesController extends AppController {
         }
 
 
-        $this->set(compact('fractions', 'budget'));
+        $this->set(compact('fractions', 'budget', 'totalMilRate', 'budgetAmount', 'numOfShares', 'numOfFrations'));
     }
 
     private function _addNote() {
@@ -363,7 +363,7 @@ class BudgetNotesController extends AppController {
         if ($this->Note->save($this->request->data)) {
             $this->_setDocument();
         } else {
-            $this->Note->deleteAll(array('Note.budget_id' => $budget['Budget']['id']), false);
+            $this->Note->deleteAll(array('Note.budget_id' => $this->request->data['Note']['budget_id']), false);
             $this->Flash->error(__('The notes could not be created. Please, try again.'));
             $this->redirect(array('action' => 'create', '?' => $this->request->query));
         }

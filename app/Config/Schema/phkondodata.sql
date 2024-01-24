@@ -217,7 +217,7 @@ UNLOCK tables;
 LOCK tables `share_distributions` WRITE;
 /*!40000 ALTER TABLE `share_distributions` DISABLE KEYS */;
 INSERT INTO `share_distributions` ( `id`, `name`, `active`, `modified`, `created`) VALUES (1, 'Equal',1,NOW() ,NOW());
-INSERT INTO `share_distributions` ( `id`, `name`, `active`, `modified`, `created`) VALUES (2, 'Percentage',1,NOW() ,NOW());
+INSERT INTO `share_distributions` ( `id`, `name`, `active`, `modified`, `created`) VALUES (2, 'Mil Rate',1,NOW() ,NOW());
 INSERT INTO `share_distributions` ( `id`, `name`, `active`, `modified`, `created`) VALUES (3, 'Manual',1,NOW() ,NOW()); 
 /*!40000 ALTER TABLE `share_distributions` ENABLE KEYS */;
 UNLOCK tables;
