@@ -2806,6 +2806,9 @@ msgstr "Invia tutto"
 msgid "New"
 msgstr "Nuovo"
 
+msgid "Edit Payment Advice"
+msgstr "Modifica avviso di pagamento"
+
 msgid "New Payment Advice"
 msgstr "Nuovo avviso di pagamento"
 

@@ -144,7 +144,6 @@ class SystemConfigController extends AppController
         } else {
             $this->Flash->success(__d('email', 'Config saved with success.'));
         }
-
         $this->redirect(array('action' => 'general'));
     }
 

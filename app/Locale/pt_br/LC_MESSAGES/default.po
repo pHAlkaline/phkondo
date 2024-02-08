@@ -3716,6 +3716,9 @@ msgstr "Enviar Todos"
 msgid "New"
 msgstr "Criar"
 
+msgid "Edit Payment Advice"
+msgstr "Editar Aviso de Pagamento"
+
 msgid "New Payment Advice"
 msgstr "Criar Aviso de Pagamento"
 

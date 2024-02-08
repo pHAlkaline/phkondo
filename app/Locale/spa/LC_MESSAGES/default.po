@@ -2806,6 +2806,10 @@ msgstr "Nuevo"
 msgid "New Payment Advice"
 msgstr "Nuevo aviso de pago"
 
+
+msgid "Edit Payment Advice"
+msgstr "Editar aviso de pago"
+
 msgid "Create Receipt"
 msgstr "Crear recibo"
 

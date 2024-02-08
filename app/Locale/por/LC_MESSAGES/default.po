@@ -3713,6 +3713,9 @@ msgstr "Enviar Todos"
 msgid "New"
 msgstr "Criar"
 
+msgid "Edit Payment Advice"
+msgstr "Editar Aviso de Pagamento"
+
 msgid "New Payment Advice"
 msgstr "Criar Aviso de Pagamento"
 
@@ -3735,7 +3738,7 @@ msgid "Could not be saved. Please, try again."
 msgstr "Não foi possível o registo, tente outra vez."
 
 msgid "Created With Success."
-msgstr "Creado com Sucesso."
+msgstr "Criado com Sucesso."
 
 msgid "Could not be created. Please, try again."
 msgstr "Náo foi possível o registo. tente outra vez."

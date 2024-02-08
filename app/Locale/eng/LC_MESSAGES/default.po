@@ -3586,6 +3586,10 @@ msgstr ""
 msgid "New"
 msgstr ""
 
+
+msgid "Edit Payment Advice"
+msgstr ""
+
 msgid "New Payment Advice"
 msgstr ""
 
