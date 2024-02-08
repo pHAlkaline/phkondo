@@ -1,12 +1,12 @@
 <?php
-class Phkondo2023030123 extends CakeMigration {
+class Phkondo111 extends CakeMigration {
 
 /**
  * Migration description
  *
  * @var string
  */
-	public $description = 'phkondo2022030123';
+	public $description = 'phkondo_1_11';
 
 /**
  * Actions to be performed
@@ -152,7 +152,7 @@ class Phkondo2023030123 extends CakeMigration {
 					'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
 					'indexes' => array(
 						'PRIMARY' => array('column' => 'id', 'unique' => 1),
-						'COMMENTS_FOREIGN_ID_MODEL' => array('column' => array('foreign_id', 'foreign_model'), 'unique' => 0),
+						'ix_comments_foreign_data' => array('column' => array('foreign_id', 'foreign_model'), 'unique' => 0),
 					),
 					'tableParameters' => array('charset' => 'utf8mb3', 'collate' => 'utf8mb3_general_ci', 'engine' => 'InnoDB'),
 				),
@@ -462,6 +462,7 @@ class Phkondo2023030123 extends CakeMigration {
 					'receipt_id' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false, 'key' => 'index'),
 					'modified' => array('type' => 'datetime', 'null' => true, 'default' => null),
 					'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
+					'payment_advice_id' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false, 'key' => 'index'),
 					'indexes' => array(
 						'PRIMARY' => array('column' => 'id', 'unique' => 1),
 						'NOTETYPE' => array('column' => 'note_type_id', 'unique' => 0),
@@ -471,6 +472,32 @@ class Phkondo2023030123 extends CakeMigration {
 						'BUDGET' => array('column' => 'budget_id', 'unique' => 0),
 						'NOTESTATUS' => array('column' => 'note_status_id', 'unique' => 0),
 						'RECEIPT' => array('column' => 'receipt_id', 'unique' => 0),
+						'notes_ibfk_8' => array('column' => 'payment_advice_id', 'unique' => 0),
+					),
+					'tableParameters' => array('charset' => 'utf8mb3', 'collate' => 'utf8mb3_general_ci', 'engine' => 'InnoDB'),
+				),
+				'payment_advices' => array(
+					'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
+					'document' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 25, 'collate' => 'utf8mb3_general_ci', 'charset' => 'utf8mb3'),
+					'document_date' => array('type' => 'date', 'null' => false, 'default' => null),
+					'due_date' => array('type' => 'date', 'null' => true, 'default' => null),
+					'condo_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'index'),
+					'fraction_id' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false, 'key' => 'index'),
+					'entity_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'index'),
+					'observations' => array('type' => 'text', 'null' => true, 'default' => null, 'collate' => 'utf8mb3_general_ci', 'charset' => 'utf8mb3'),
+					'total_amount' => array('type' => 'decimal', 'null' => false, 'default' => '0.00', 'length' => '10,2', 'unsigned' => false),
+					'payment_date' => array('type' => 'date', 'null' => true, 'default' => null),
+					'payment_type_id' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false, 'key' => 'index'),
+					'receipt_id' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false, 'key' => 'index'),
+					'modified' => array('type' => 'datetime', 'null' => true, 'default' => null),
+					'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
+					'indexes' => array(
+						'PRIMARY' => array('column' => 'id', 'unique' => 1),
+						'CONDO' => array('column' => 'condo_id', 'unique' => 0),
+						'CLIENT' => array('column' => 'entity_id', 'unique' => 0),
+						'PAYMENTTYPE' => array('column' => 'payment_type_id', 'unique' => 0),
+						'FRACTION' => array('column' => 'fraction_id', 'unique' => 0),
+						'payment_advices_ibfk_5' => array('column' => 'receipt_id', 'unique' => 0),
 					),
 					'tableParameters' => array('charset' => 'utf8mb3', 'collate' => 'utf8mb3_general_ci', 'engine' => 'InnoDB'),
 				),
@@ -483,7 +510,7 @@ class Phkondo2023030123 extends CakeMigration {
 					'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
 					'indexes' => array(
 						'PRIMARY' => array('column' => 'id', 'unique' => 1),
-						'RATINGSFOREIGNIDMODEL' => array('column' => array('foreign_id', 'foreign_model'), 'unique' => 0),
+						'ix_ratings_foreign_data' => array('column' => array('foreign_id', 'foreign_model'), 'unique' => 0),
 					),
 					'tableParameters' => array('charset' => 'utf8mb3', 'collate' => 'utf8mb3_general_ci', 'engine' => 'InnoDB'),
 				),
@@ -703,7 +730,7 @@ class Phkondo2023030123 extends CakeMigration {
 		),
 		'down' => array(
 			'drop_table' => array(
-				'accounts', 'accounts_fiscal_years', 'administrators', 'attachments', 'budget_statuses', 'budget_types', 'budgets', 'comments', 'condos', 'drafts', 'entities', 'entities_fractions', 'entity_types', 'fiscal_years', 'fraction_types', 'fractions', 'insurance_types', 'insurances', 'invoice_conference_statuses', 'invoice_conferences', 'maintenances', 'movement_categories', 'movement_operations', 'movement_types', 'movements', 'note_statuses', 'note_types', 'notes', 'ratings', 'receipt_counters', 'receipt_notes', 'receipt_payment_types', 'receipt_statuses', 'receipts', 'share_distributions', 'share_periodicities', 'suppliers', 'support_categories', 'support_priorities', 'support_statuses', 'supports', 'users'
+				'accounts', 'accounts_fiscal_years', 'administrators', 'attachments', 'budget_statuses', 'budget_types', 'budgets', 'comments', 'condos', 'drafts', 'entities', 'entities_fractions', 'entity_types', 'fiscal_years', 'fraction_types', 'fractions', 'insurance_types', 'insurances', 'invoice_conference_statuses', 'invoice_conferences', 'maintenances', 'movement_categories', 'movement_operations', 'movement_types', 'movements', 'note_statuses', 'note_types', 'notes', 'payment_advices', 'ratings', 'receipt_counters', 'receipt_notes', 'receipt_payment_types', 'receipt_statuses', 'receipts', 'share_distributions', 'share_periodicities', 'suppliers', 'support_categories', 'support_priorities', 'support_statuses', 'supports', 'users'
 			),
 		),
 	);
