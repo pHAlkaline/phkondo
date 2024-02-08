@@ -46,17 +46,20 @@ class OrganizationController extends AppController
      */
     public $components = array('RequestHandler');
 
-    public function config()
+    public function config($context='Organization')
     {
         $this->set('title_for_layout', __('Organization'));
         $this->set('title_for_step', __('Organization'));
+        $this->loadModel('ReceiptPaymentType');
+        $paymentTypes = $this->ReceiptPaymentType->find('list', array('conditions' => array('active' => '1')));
+        $this->set('paymentTypes', $paymentTypes);
         if (empty($this->request->data)) {
             return;
         }
-
+        
         if ($this->request->is('post')) {
             //Check if image was sent
-            if (!$this->request->data['logo']['size'] == 0) {
+            if (isset($this->request->data['logo']) && !$this->request->data['logo']['size'] == 0) {
                 $file = $this->request->data['logo'];
                 $validImage = true;
                 //if extension is valid
@@ -90,12 +93,15 @@ class OrganizationController extends AppController
             }
             foreach ($this->request->data as $key => $value) {
                 $key = substr(h($key), 0, 30);
-                $value = substr(h($value), 0, 100);
                 if (Configure::check('Organization.' . $key)) {
+                    $value = substr(h($value), 0, 100);
                     Configure::write('Organization.' . $key, $value);
                 }
+                if (Configure::check('PaymentAdvices.' . $key)) {
+                    Configure::write('PaymentAdvices.' . $key, $value);
+                }
             }
-            if (Configure::dump('organization.php', 'default', array('Organization'))) {
+            if (Configure::dump('organization.php', 'default', array('Organization','PaymentAdvices'))) {
                 $this->Flash->success(__('Saved with success.'));
             } else {
                 $this->Flash->error(__('Could not be saved. Please, try again.'));
@@ -112,7 +118,8 @@ class OrganizationController extends AppController
 
         $headerTitle = __('Organization');
         $organization = Configure::read('Organization');
-        $this->set(compact('breadcrumbs', 'headerTitle', 'organization'));
+        $paymentAdvices = Configure::read('PaymentAdvices');
+        $this->set(compact('breadcrumbs', 'headerTitle', 'organization','paymentAdvices'));
     }
 
     public function isAuthorized($user)

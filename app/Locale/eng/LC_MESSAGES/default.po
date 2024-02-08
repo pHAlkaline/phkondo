@@ -3586,7 +3586,6 @@ msgstr ""
 msgid "New"
 msgstr ""
 
-
 msgid "Edit Payment Advice"
 msgstr ""
 
@@ -3621,4 +3620,7 @@ msgid "Deleted With Success."
 msgstr ""
 
 msgid "Can not be deleted, please try again."
+msgstr ""
+
+msgid "If you have made the payment, consider this notice to be ineffective. We also take this opportunity to remind you that payments made by bank transfer must be communicated to our services through the means made available."
 msgstr ""

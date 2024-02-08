@@ -40,3 +40,14 @@ ALTER TABLE `notes` ADD CONSTRAINT `notes_ibfk_8` FOREIGN KEY (`payment_advice_i
 ALTER TABLE `notes` DROP FOREIGN KEY `notes_ibfk_7`;
 ALTER TABLE `notes` ADD CONSTRAINT `notes_ibfk_7` FOREIGN KEY (`receipt_id`) REFERENCES `receipts`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 ALTER TABLE `payment_advices` ADD `due_date` DATE NULL AFTER `document_date`;
+
+-- eng
+UPDATE `receipt_statuses` SET `name` = 'Issued' WHERE `receipt_statuses`.`id` = 2;
+-- ita
+UPDATE `receipt_statuses` SET `name` = 'Emesso' WHERE `receipt_statuses`.`id` = 2;
+-- spa
+UPDATE `receipt_statuses` SET `name` = 'Emitido' WHERE `receipt_statuses`.`id` = 2;
+-- por
+UPDATE `receipt_statuses` SET `name` = 'Emitido' WHERE `receipt_statuses`.`id` = 2;
+-- pt_br
+UPDATE `receipt_statuses` SET `name` = 'Emitido' WHERE `receipt_statuses`.`id` = 2;

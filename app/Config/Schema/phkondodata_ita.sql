@@ -203,8 +203,8 @@ UNLOCK tables;
 
 LOCK tables `receipt_statuses` WRITE;
 /*!40000 ALTER TABLE `receipt_statuses` DISABLE KEYS */;
-INSERT INTO `receipt_statuses` ( `id`, `name`, `active`, `modified`, `created`) VALUES (1, 'Brutta copia',1,NOW() ,NOW());
-INSERT INTO `receipt_statuses` ( `id`, `name`, `active`, `modified`, `created`) VALUES (2, 'In attesa di pagamento',1,NOW() ,NOW());
+INSERT INTO `receipt_statuses` ( `id`, `name`, `active`, `modified`, `created`) VALUES (1, 'Rascunho',1,NOW() ,NOW());
+INSERT INTO `receipt_statuses` ( `id`, `name`, `active`, `modified`, `created`) VALUES (2, 'Emesso',1,NOW() ,NOW());
 INSERT INTO `receipt_statuses` ( `id`, `name`, `active`, `modified`, `created`) VALUES (3, 'Pagato',1,NOW() ,NOW());
 INSERT INTO `receipt_statuses` ( `id`, `name`, `active`, `modified`, `created`) VALUES (4, 'Cancellato',1,NOW() ,NOW()); 
 /*!40000 ALTER TABLE `receipt_statuses` ENABLE KEYS */;

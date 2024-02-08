@@ -60,7 +60,7 @@
                     ?>
                 </div--><!-- .form-group -->
                 <div class="form-group">
-                    <?php echo $this->Form->input('observations', array('class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('observations', array('default'=>Configure::read('PaymentAdvices.observations'),'class' => 'form-control')); ?>
                 </div><!-- .form-group -->
 
 

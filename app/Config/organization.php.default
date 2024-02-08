@@ -7,7 +7,12 @@ $config = array (
     'representative' => 'Administrator',
     'address' => 'Xxx xx Xxxxxx Xxxxxxxx NXX XDto XXXX-XXX Xxxxx',
     'contact' => '+(xxx) xx xxx xx xx , +(xxx) xx xxxx xx xx ',
-    'email' => 'email@email.net',
+    'email' => 'email@email.com',
     'logo' => '',
+  ),
+   'PaymentAdvices' => 
+  array (
+    'payment_gateway' => '_default_',
+    'observations' => '_default_',
   ),
 );
