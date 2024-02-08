@@ -33,7 +33,7 @@ CREATE TABLE `payment_advices` (
   CONSTRAINT `payment_advices_ibfk_5` FOREIGN KEY (`payment_user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE,
   CONSTRAINT `payment_advices_ibfk_6` FOREIGN KEY (`cancel_user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE,
   CONSTRAINT `payment_advicesibfk_1` FOREIGN KEY (`fraction_id`) REFERENCES `fractions` (`id`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB;
 
 ALTER TABLE `notes` ADD `payment_advice_id` int(11) NULL;
 ALTER TABLE `notes` ADD CONSTRAINT `notes_ibfk_8` FOREIGN KEY (`payment_advice_id`) REFERENCES `payment_advices`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
@@ -51,3 +51,6 @@ UPDATE `receipt_statuses` SET `name` = 'Emitido' WHERE `receipt_statuses`.`id` =
 UPDATE `receipt_statuses` SET `name` = 'Emitido' WHERE `receipt_statuses`.`id` = 2;
 -- pt_br
 UPDATE `receipt_statuses` SET `name` = 'Emitido' WHERE `receipt_statuses`.`id` = 2;
+
+// suggestion ( Danger be very careful )
+// set DEFAULT CHARSET=utf8mb4_general_ci to database , all tables and all fields 
