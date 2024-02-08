@@ -18,4 +18,4 @@ CREATE TABLE `payment_note_items` (
   PRIMARY KEY (`id`),
   KEY `NOTE` (`note_id`),
   CONSTRAINT `payment_note_items_ibfk_1` FOREIGN KEY (`note_id`) REFERENCES `notes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
