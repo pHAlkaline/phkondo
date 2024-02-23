@@ -117,7 +117,7 @@ $this->Html->script('footable', false);
                                         ?>&nbsp;</td>
                                 </tr-->
                                 <tr>
-                                    <td><strong><?php echo __('Payment Method'); ?></strong></td>
+                                    <td><strong><?php echo __('Payment Type'); ?></strong></td>
                                     <td><?php echo h($paymentAdvice['PaymentType']['name']); ?>&nbsp;</td>
                                 </tr>
 

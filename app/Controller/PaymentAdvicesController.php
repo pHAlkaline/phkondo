@@ -370,6 +370,7 @@ class PaymentAdvicesController extends AppController
                                     $this->request->data['PaymentAdvice']['entity_id']=$entity['id'];
                                     $this->request->data['PaymentAdvice']['address'] = $this->PaymentAdvice->Entity->field('address');
                                     $this->request->data['PaymentAdvice']['document'] = $this->getPhkRequestVar('condo_id') . $fraction['id'] .$entity['id'].'-'.Date('YmdHis');
+                                    $this->request->data['PaymentAdvice']['observations']=Configure::read('PaymentAdvices.observations');
                                     if ($this->request->data['PaymentAdvice']['document_date'] == '') {
                                         $this->request->data['PaymentAdvice']['document_date'] = date(Configure::read('Application.dateFormatSimple'));
                                     }
