@@ -207,12 +207,12 @@ class PaymentAdvicesController extends AppController
             return;
         }
         
-        $event = new CakeEvent('Phkondo.PaymentAdvice.ajax_send', $this, array(
+        $event = new CakeEvent('Phkondo.PaymentAdvice.send', $this, array(
             'id' => $id,
         ));
         $result=$this->getEventManager()->dispatch($event);
 
-        echo json_encode(array('result' => $result['result']));
+        echo json_encode(array('result' => $result->result));
     }
 
     /**
@@ -513,6 +513,9 @@ class PaymentAdvicesController extends AppController
     public function beforeFilter()
     {
         parent::beforeFilter();
+        if ($this->RequestHandler->isAjax()) {
+            Configure::write('debug', 0);
+        }
         if (!$this->getPhkRequestVar('condo_id')) {
             $this->Flash->error(__('Invalid condo'));
             $this->redirect(array('controller' => 'condos', 'action' => 'index'));
