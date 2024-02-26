@@ -104,8 +104,8 @@ DROP TABLE IF EXISTS `drafts`;
 CREATE TABLE `drafts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
-  `content` text NOT NULL,
-  `content_model` text DEFAULT NULL,
+  `content` longtext NOT NULL,
+  `content_model` longtext DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)

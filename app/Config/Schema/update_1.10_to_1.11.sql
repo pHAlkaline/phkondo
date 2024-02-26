@@ -41,6 +41,9 @@ ALTER TABLE `notes` DROP FOREIGN KEY `notes_ibfk_7`;
 ALTER TABLE `notes` ADD CONSTRAINT `notes_ibfk_7` FOREIGN KEY (`receipt_id`) REFERENCES `receipts`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 ALTER TABLE `payment_advices` ADD `due_date` DATE NULL AFTER `document_date`;
 
+ALTER TABLE `drafts` CHANGE `content` `content` LONGTEXT NOT NULL;
+ALTER TABLE `drafts` CHANGE `content_model` `content_model` LONGTEXT NOT NULL;
+
 -- eng
 UPDATE `receipt_statuses` SET `name` = 'Issued' WHERE `receipt_statuses`.`id` = 2;
 -- ita
