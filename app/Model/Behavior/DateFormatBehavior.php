@@ -77,6 +77,10 @@ class DateformatBehavior extends ModelBehavior {
             if (!is_null($rule)) {
                 $field->setRule('date', array('rule' => array('date', strtolower(str_replace(array('-', '/'), '', $this->dateFormat)))));
             }
+            $rule = $field->getRule('checkDate');
+            if (!is_null($rule)) {
+                $field->setRule('checkDate', array('rule' => array('date', strtolower(str_replace(array('-', '/'), '', $this->dateFormat)))));
+            }
         }
     }
 
