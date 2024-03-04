@@ -25,11 +25,11 @@ After fresh install you need to
 Restore your database
 Goto app/Config directory and update your files with previous values .
 Take very special attention to salt and cipherSeed values.
-Take very special attention to database.php, email.php, bootstrap_app.ini , email_notifications.php, organization.php files, edit and update to your previous values.
+Take very special attention to database.php, email.php, bootstrap_app.ini , email_notifications.php, organization.php files, edit and update with your previous values.
 Take very special attention to database schema, also look at app/Config/Schema for schema updates.
 
 Clear cache , clear all cached files and configured engines at app/tmp/cache subdirectories except .gitkeep files
-or use your console shell running from your APP folder:
+or use your console shell running from your app folder:
 
 Console/cake ClearCache.clear_cache
 
