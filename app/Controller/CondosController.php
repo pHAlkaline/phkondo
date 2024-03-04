@@ -220,7 +220,6 @@ class CondosController extends AppController {
             $this->Flash->error(__('Invalid condo'));
             $this->redirect(array('action' => 'index'));
         }
-        
         $this->Condo->contain(array('FiscalYear'));
         $options = array('conditions' => array('Condo.' . $this->Condo->primaryKey => $id));
         $condo = $this->Condo->find('first', $options);

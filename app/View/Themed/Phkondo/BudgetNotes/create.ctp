@@ -3,8 +3,8 @@
 <?php $this->Html->script('libs/footable/footable', false); ?>
 <?php $this->Html->script('note_create', false); ?>
 <?php
-/*$totalShares = 0;
-$totalMilRate = 0;
+$totalShares = 0;
+/*$totalMilRate = 0;
 $budgetAmount = $budget['Budget']['amount'];
 $numOfShares = $budget['Budget']['shares'];
 $numOfFractions = count($fractions);

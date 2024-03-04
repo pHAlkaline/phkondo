@@ -1,3 +1,4 @@
+### Complete update
 WARNING
 When you are using a customized version pHAlkaline strongly suggest the use of a diff software, like winmerge , melddiff or similar to see code and db schema changes.
 
@@ -8,22 +9,9 @@ Make database backup.
 
 Download Last Version.
 Uncompress and upload files and directories to a directory of your choice on your server or upload the content zip to your server, and extract the archive.
-pHKondo installer needs to be able to write and modify the app/Config , app/files and app/tmp directories .
-Once all of the above steps are complete, you are ready to run installer in your web browser.
-You can invoke the installer by simply browsing the pHKondo URL e.g http://{your-url-for-pHKondo}/install
 
-pHKondo installation script will attempt to auto-detect paths and any permission issues.
-Please follow the instructions to finish up the installation process.
-If the script spots any configuration errors, will not allow you to continue until the errors are corrected.
-If everything checks out, you will be presented with a form to fill in the information that pHKondo now requires.
-If any errors occurs, go back and check the data entered.
-On valid data the script will create and populate the database and write a configuration file.
-If the setup script has finished running with no errors, then congratulations pHKondo is installed.
-If you dont have Web Installer please goto Manual Installation.
-
-After fresh install you need to 
-Restore your database
-Goto app/Config directory and update your files with previous values .
+Goto app/Config directory and update or add new configuration files found , with your with previous values.
+Take very special attention to *.default files they may have new settings added, or new config files can be added.
 Take very special attention to salt and cipherSeed values.
 Take very special attention to database.php, email.php, bootstrap_app.ini , email_notifications.php, organization.php files, edit and update with your previous values.
 Take very special attention to database schema, also look at app/Config/Schema for schema updates.

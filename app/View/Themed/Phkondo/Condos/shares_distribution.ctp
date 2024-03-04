@@ -28,7 +28,7 @@ Configure::load('email_notifications');
     </div><!-- /#sidebar .col-sm-3 -->
     <div id="page-content" class="col-sm-10">
         <?php
-        if ($this->request->data['Note']['share_distribution_id'] == 2 && $totalMilRate <> 1000) :
+        if (isset($this->request->data['Note']['share_distribution_id']) && $this->request->data['Note']['share_distribution_id'] == 2 && $totalMilRate <> 1000) :
         ?>
             <div class="alert alert-warning alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>

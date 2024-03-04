@@ -348,13 +348,13 @@ class BudgetNotesController extends AppController {
             $totalMilRate += $fraction['Fraction']['permillage'];
         }
 
-        if ($budget['Budget']['amount'] == 0 || $numOfShares == 0) {
+        if ($budgetAmount == 0 || $numOfShares == 0 || $numOfFractions==0) {
             $this->Flash->error(__('Invalid Budget values, check amount, total sum of properties mill rate and number of shares'));
             $this->redirect(array('controller' => 'budgets', 'action' => 'view', $this->getPhkRequestVar('budget_id'), '?' => array('condo_id' => $this->getPhkRequestVar('condo_id'))));
         }
 
 
-        $this->set(compact('fractions', 'budget', 'totalMilRate', 'budgetAmount', 'numOfShares', 'numOfFrations'));
+        $this->set(compact('fractions', 'budget', 'totalMilRate', 'budgetAmount', 'numOfShares', 'numOfFractions'));
     }
 
     private function _addNote() {
