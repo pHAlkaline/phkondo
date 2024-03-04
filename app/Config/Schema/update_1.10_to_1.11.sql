@@ -1,7 +1,7 @@
 -- phkondo.payment_advices definition
 
 -- phkondo_agenciafatima.payment_advices definition
-
+SET FOREIGN_KEY_CHECKS=0;
 CREATE TABLE `payment_advices` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `document` varchar(25) DEFAULT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE `payment_advices` (
 
 ALTER TABLE `notes` ADD `payment_advice_id` int(11) NULL;
 ALTER TABLE `notes` ADD CONSTRAINT `notes_ibfk_8` FOREIGN KEY (`payment_advice_id`) REFERENCES `payment_advices`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
-ALTER TABLE `notes` DROP FOREIGN KEY `notes_ibfk_7`;
+ALTER TABLE `notes` DROP FOREIGN KEY `notes_ibfk_7`; 
 ALTER TABLE `notes` ADD CONSTRAINT `notes_ibfk_7` FOREIGN KEY (`receipt_id`) REFERENCES `receipts`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 ALTER TABLE `drafts` CHANGE `content` `content` LONGTEXT NOT NULL;
@@ -49,5 +49,7 @@ UPDATE `receipt_statuses` SET `name` = 'Emitido' WHERE `receipt_statuses`.`id` =
 -- pt_br
 UPDATE `receipt_statuses` SET `name` = 'Emitido' WHERE `receipt_statuses`.`id` = 2;
 
-// suggestion ( Danger be very careful )
-// set DEFAULT CHARSET=utf8mb4_general_ci to database , all tables and all fields 
+-- suggestion ( Danger be very careful )
+-- set DEFAULT CHARSET=utf8mb4_general_ci to database , all tables and all fields 
+
+SET FOREIGN_KEY_CHECKS=1;
