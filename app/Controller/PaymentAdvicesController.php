@@ -402,7 +402,7 @@ class PaymentAdvicesController extends AppController
             }
             if ($result) {
                 $dataSource->commit();
-                $this->Flash->success(__('Created With Success.'));
+                $this->Flash->success(__('Created with success.'));
             } else {
                 $dataSource->rollback();
                 $this->Flash->error(__('Could not be created. Please, try again.'));
@@ -439,7 +439,7 @@ class PaymentAdvicesController extends AppController
                 $this->request->data['PaymentAdvice']['payment_date'] = null;
             }
             if ($this->PaymentAdvice->save($this->request->data)) {
-                $this->Flash->success(__('Saved With Success'));
+                $this->Flash->success(__('Saved with success.'));
                 $this->redirect(array('action' => 'edit', $id, '?' => $this->request->query, '#' => 'Details'));
             } else {
                 $this->Flash->error(__('Could not be saved. Please, try again.'));

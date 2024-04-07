@@ -2828,7 +2828,7 @@ msgstr "Salvado con éxito."
 msgid "Could not be saved. Please, try again."
 msgstr "No se pudo salvar. "
 
-msgid "Created With Success."
+msgid "Created with success."
 msgstr "Creado con éxito."
 
 msgid "Could not be created. Please, try again."

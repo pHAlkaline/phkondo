@@ -3610,7 +3610,7 @@ msgstr ""
 msgid "Could not be saved. Please, try again."
 msgstr ""
 
-msgid "Created With Success."
+msgid "Created with success."
 msgstr ""
 
 msgid "Could not be created. Please, try again."

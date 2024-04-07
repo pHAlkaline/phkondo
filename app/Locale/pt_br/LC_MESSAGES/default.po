@@ -3740,7 +3740,7 @@ msgstr "Registado com Sucesso."
 msgid "Could not be saved. Please, try again."
 msgstr "Não foi possível o registo, tente outra vez."
 
-msgid "Created With Success."
+msgid "Created with success."
 msgstr "Creado com Sucesso."
 
 msgid "Could not be created. Please, try again."
