@@ -213,6 +213,7 @@ class PaymentAdvicesController extends AppController
         $result=$this->getEventManager()->dispatch($event);
 
         echo json_encode(array('result' => $result->result));
+       
     }
 
     /**

@@ -2790,6 +2790,9 @@ msgstr "Calcolare"
 msgid "Warning: when a payment advice is generated, ALL PAYMENT ADVICES previously created will be removed, EXCEPT those that have already been paid."
 msgstr "Attenzione: quando viene generato un avviso di pagamento, TUTTI GLI AVVISI DI PAGAMENTO precedentemente creati verranno rimossi, TRANNE quelli già pagati."
 
+msgid "Are you sure you want to set paymentAdvice # %s as paid? - Payment as %s"
+msgstr "Sei sicuro di voler inserire l'avviso di pagamento # %s come pagamento? - Metodo %s"
+
 msgid "Payment Advice"
 msgid_plural "Payment Advices"
 msgstr[0] "Avviso di pagamento"
