@@ -195,25 +195,27 @@ class PaymentAdvicesController extends AppController
      */
     public function ajax_send($id)
     {
+       
         $this->request->onlyAllow('ajax');
+        $this->layout = 'ajax';
         $this->autoRender = false;
         if (Configure::read('Application.stage') == 'demo') {
-            echo json_encode(array('result' => false, 'error' =>__d('email', 'In Demo Sessions this feature is disbled to avoid spam!!.')));
+            echo json_encode(array('result' => false, 'error' => __d('email', 'In Demo Sessions this feature is disbled to avoid spam!!.')));
             return;
         }
 
         if (!$this->PaymentAdvice->exists($id)) {
-            echo json_encode(array('result' => false, 'error' =>__('Invalid payment advice')));
+            echo json_encode(array('result' => false, 'error' => __('Invalid payment advice')));
             return;
         }
-        
+       
         $event = new CakeEvent('Phkondo.PaymentAdvice.send', $this, array(
             'id' => $id,
         ));
-        $result=$this->getEventManager()->dispatch($event);
-
-        echo json_encode(array('result' => $result->result));
-       
+        $eventResult = $this->getEventManager()->dispatch($event);
+        $result=$eventResult->result['result'];
+        $error=$eventResult->result['error'];
+        echo json_encode(array('result' => $result, 'error'=>$error));
     }
 
     /**
@@ -226,11 +228,11 @@ class PaymentAdvicesController extends AppController
         if ($this->request->is('post') && isset($this->request->data['PaymentAdvice']['change_filter']) && $this->request->data['PaymentAdvice']['change_filter'] != '1') {
             $this->PaymentAdvice->create();
             $this->PaymentAdvice->Entity->id = $this->request->data['PaymentAdvice']['entity_id'];
-            $entity=$this->PaymentAdvice->Entity->read();
-        
+            $entity = $this->PaymentAdvice->Entity->read();
+
             $this->request->data['PaymentAdvice']['address'] = $entity['Entity']['address'];
             //$number = $this->PaymentAdvice->getNextIndex($this->getPhkRequestVar('condo_id'));
-            $this->request->data['PaymentAdvice']['document'] =$this->getPhkRequestVar('condo_id') .$this->request->data['PaymentAdvice']['fraction_id'] .$entity['id'].'-'.Date('YmdHis');
+            $this->request->data['PaymentAdvice']['document'] = $this->getPhkRequestVar('condo_id') . $this->request->data['PaymentAdvice']['fraction_id'] . $entity['id'] . '-' . Date('YmdHis');
             if ($this->request->data['PaymentAdvice']['document_date'] == '') {
                 $this->request->data['PaymentAdvice']['document_date'] = date(Configure::read('Application.dateFormatSimple'));
             }
@@ -345,8 +347,8 @@ class PaymentAdvicesController extends AppController
                                 $this->PaymentAdvice->deleteAll(array(
                                     'PaymentAdvice.fraction_id' => $fraction['id'],
                                     'PaymentAdvice.entity_id' => $entity['id'],
-                                    'PaymentAdvice.payment_date'=> null,
-                                    'PaymentAdvice.receipt_id'=> null
+                                    'PaymentAdvice.payment_date' => null,
+                                    'PaymentAdvice.receipt_id' => null
                                 ), true);
                                 $notes = $this->PaymentAdvice->Note->find(
                                     'all',
@@ -367,26 +369,25 @@ class PaymentAdvicesController extends AppController
                                     $this->PaymentAdvice->create();
                                     $this->PaymentAdvice->Entity->id = $entity['id'];
                                     $this->PaymentAdvice->Entity->order = 'Entity.name';
-                                    $this->request->data['PaymentAdvice']['fraction_id']=$fraction['id'];
-                                    $this->request->data['PaymentAdvice']['entity_id']=$entity['id'];
+                                    $this->request->data['PaymentAdvice']['fraction_id'] = $fraction['id'];
+                                    $this->request->data['PaymentAdvice']['entity_id'] = $entity['id'];
                                     $this->request->data['PaymentAdvice']['address'] = $this->PaymentAdvice->Entity->field('address');
-                                    $this->request->data['PaymentAdvice']['document'] = $this->getPhkRequestVar('condo_id') . $fraction['id'] .$entity['id'].'-'.Date('YmdHis');
-                                    $this->request->data['PaymentAdvice']['observations']=Configure::read('PaymentAdvices.observations');
+                                    $this->request->data['PaymentAdvice']['document'] = $this->getPhkRequestVar('condo_id') . $fraction['id'] . $entity['id'] . '-' . Date('YmdHis');
+                                    $this->request->data['PaymentAdvice']['observations'] = Configure::read('PaymentAdvices.observations');
                                     if ($this->request->data['PaymentAdvice']['document_date'] == '') {
                                         $this->request->data['PaymentAdvice']['document_date'] = date(Configure::read('Application.dateFormatSimple'));
                                     }
                                     if ($this->PaymentAdvice->save($this->request->data)) {
                                         $this->PaymentAdvice->setAmount($this->PaymentAdvice->id);
                                         foreach ($notes as $note) {
-                                           
-                                                $noteOk = $this->PaymentAdvice->Note->find('count', array('conditions' => array('Note.id' => $note['Note']['id'], 'Note.receipt_id' => null)));
-                                                if ($noteOk == 0) {
-                                                    $this->Flash->error(__('Could not be saved. Please, try again.'));
-                                                }
-                                                $this->PaymentAdvice->Note->id = $note['Note']['id'];
-                                                $this->PaymentAdvice->Note->saveField('payment_advice_id', $this->PaymentAdvice->id, array('callbacks' => false));
-                                                $this->PaymentAdvice->Note->saveField('pending_amount', '0', array('callbacks' => false));
-                                    
+
+                                            $noteOk = $this->PaymentAdvice->Note->find('count', array('conditions' => array('Note.id' => $note['Note']['id'], 'Note.receipt_id' => null)));
+                                            if ($noteOk == 0) {
+                                                $this->Flash->error(__('Could not be saved. Please, try again.'));
+                                            }
+                                            $this->PaymentAdvice->Note->id = $note['Note']['id'];
+                                            $this->PaymentAdvice->Note->saveField('payment_advice_id', $this->PaymentAdvice->id, array('callbacks' => false));
+                                            $this->PaymentAdvice->Note->saveField('pending_amount', '0', array('callbacks' => false));
                                         }
                                         $this->PaymentAdvice->setAmount($this->PaymentAdvice->id);
                                     } else {

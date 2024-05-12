@@ -13,7 +13,7 @@ $(function () {
             var options = {
                 cache: false,
                 type: 'get',
-                dataType: 'HTML',
+                dataType: 'json',
                 url: target_href,
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -21,9 +21,10 @@ $(function () {
 
                 },
                 success: function (response) {
-                    response = JSON.parse(response);
+                    //response = JSON.parse(response);
                     if (response.error) {
                         alert(response.error);
+                        target.removeClass('btn-primary').addClass('btn-danger').removeClass('disabled').prop('disabled', false);
                         console.log(response.error);
                     }
                     if (response.result) {
