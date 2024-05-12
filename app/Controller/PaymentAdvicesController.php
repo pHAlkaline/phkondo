@@ -232,7 +232,7 @@ class PaymentAdvicesController extends AppController
 
             $this->request->data['PaymentAdvice']['address'] = $entity['Entity']['address'];
             //$number = $this->PaymentAdvice->getNextIndex($this->getPhkRequestVar('condo_id'));
-            $this->request->data['PaymentAdvice']['document'] = $this->getPhkRequestVar('condo_id') . $this->request->data['PaymentAdvice']['fraction_id'] . $entity['id'] . '-' . Date('YmdHis');
+            $this->request->data['PaymentAdvice']['document'] = $this->getPhkRequestVar('condo_id') . $this->request->data['PaymentAdvice']['fraction_id'] . $entity['Entity']['id'] . '-' . Date('YmdHis');
             if ($this->request->data['PaymentAdvice']['document_date'] == '') {
                 $this->request->data['PaymentAdvice']['document_date'] = date(Configure::read('Application.dateFormatSimple'));
             }

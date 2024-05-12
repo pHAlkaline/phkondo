@@ -13,6 +13,7 @@ Uncompress and upload files and directories to a directory of your choice on you
 Goto app/Config directory and update or add new configuration files found , with your with previous values.
 Take very special attention to *.default files they may have new settings added, or new config files can be added.
 Take very special attention to salt and cipherSeed values.
+Take very special attention to database.php.default, email.php.default, bootstrap_app.ini.default , email_notifications.php.default, organization.php.default files, compare with pHKondo config files ( the same name without .default ) to update with new config values.
 Take very special attention to database.php, email.php, bootstrap_app.ini , email_notifications.php, organization.php files, edit and update with your previous values.
 Take very special attention to database schema, also look at app/Config/Schema for schema updates.
 
