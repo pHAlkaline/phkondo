@@ -1,3 +1,5 @@
+-- exposalao_epc.visitor_statuses definition
+
 -- MySQL dump 10.13  Distrib 8.0.19, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: phkondo
@@ -752,7 +754,7 @@ CREATE TABLE `notes` (
   KEY `BUDGET` (`budget_id`),
   KEY `NOTESTATUS` (`note_status_id`),
   KEY `RECEIPT` (`receipt_id`),
-  KEY `notes_ibfk_8` (`payment_advice_id`),
+  KEY `PAYMENTADVICE` (`payment_advice_id`),
   CONSTRAINT `notes_ibfk_1` FOREIGN KEY (`note_type_id`) REFERENCES `note_types` (`id`) ON UPDATE CASCADE,
   CONSTRAINT `notes_ibfk_2` FOREIGN KEY (`fraction_id`) REFERENCES `fractions` (`id`) ON UPDATE CASCADE,
   CONSTRAINT `notes_ibfk_3` FOREIGN KEY (`entity_id`) REFERENCES `entities` (`id`) ON UPDATE CASCADE,
@@ -791,7 +793,7 @@ CREATE TABLE `payment_advices` (
   KEY `CLIENT` (`entity_id`),
   KEY `PAYMENTTYPE` (`payment_type_id`),
   KEY `FRACTION` (`fraction_id`),
-  KEY `payment_advices_ibfk_5` (`receipt_id`),
+  KEY `RECEIPT` (`receipt_id`),
   CONSTRAINT `payment_advices_ibfk_1` FOREIGN KEY (`condo_id`) REFERENCES `condos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `payment_advices_ibfk_2` FOREIGN KEY (`entity_id`) REFERENCES `entities` (`id`) ON UPDATE CASCADE,
   CONSTRAINT `payment_advices_ibfk_3` FOREIGN KEY (`payment_type_id`) REFERENCES `receipt_payment_types` (`id`) ON UPDATE CASCADE,

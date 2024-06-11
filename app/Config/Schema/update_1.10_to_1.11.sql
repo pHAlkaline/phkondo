@@ -22,7 +22,7 @@ CREATE TABLE `payment_advices` (
   KEY `CLIENT` (`entity_id`),
   KEY `PAYMENTTYPE` (`payment_type_id`),
   KEY `FRACTION` (`fraction_id`),
-  KEY `payment_advices_ibfk_5` (`receipt_id`),
+  KEY `RECEIPT` (`receipt_id`),
   CONSTRAINT `payment_advices_ibfk_1` FOREIGN KEY (`condo_id`) REFERENCES `condos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `payment_advices_ibfk_2` FOREIGN KEY (`entity_id`) REFERENCES `entities` (`id`) ON UPDATE CASCADE,
   CONSTRAINT `payment_advices_ibfk_3` FOREIGN KEY (`payment_type_id`) REFERENCES `receipt_payment_types` (`id`) ON UPDATE CASCADE,
