@@ -175,11 +175,17 @@ foreach ($fractions as $fraction) {
                                         $amountByShare = $budgetAmount / $numOfShares / $numOfFractions;
                                         break;
                                 }
+                                // 10% of value
                                 if ($budget['Budget']['common_reserve_fund'] > 0) {
+                                    $shareTax=($budget['Budget']['common_reserve_fund'] / 100);
+                                    $amountByShare = $amountByShare/(1+$shareTax);
+                                    $commonReserveFundByShare = $amountByShare*$shareTax;
+                                }
+                                // 10% of total
+                                /*if ($budget['Budget']['common_reserve_fund'] > 0) {
                                     $commonReserveFundByShare = $amountByShare * ($budget['Budget']['common_reserve_fund'] / 100);
                                     $amountByShare = $amountByShare - $commonReserveFundByShare;
-                                }
-                                //debug($amountByShare);
+                                }*/
                                 $amountByShare = $this->Number->precision($amountByShare * $ownerPercentage, 2);
                                 $commonReserveFundByShare = $this->Number->precision($commonReserveFundByShare * $ownerPercentage, 2);
                                 $total = $this->Number->precision(($commonReserveFundByShare + $amountByShare) * $numOfShares, 2);
