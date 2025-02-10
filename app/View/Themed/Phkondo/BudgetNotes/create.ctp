@@ -26,7 +26,7 @@ foreach ($fractions as $fraction) {
     </div><!-- /#sidebar .col-sm-3 -->
     <div id="page-content" class="col-sm-10">
         <?php
-        if ($budget['Budget']['share_distribution_id'] == 2 && $totalMilRate <> 1000) :
+        if ($budget['Budget']['share_distribution_id'] == 2 && bccomp($totalMilRate,1000,2)) :
         ?>
             <div class="alert alert-warning alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
