@@ -34,7 +34,8 @@ App::uses('AppController', 'Controller');
  * @property Budget $Budget
  * @property PaginatorComponent $Paginator
  */
-class BudgetsController extends AppController {
+class BudgetsController extends AppController
+{
 
     /**
      * Components
@@ -48,12 +49,14 @@ class BudgetsController extends AppController {
      *
      * @return void
      */
-    public function index() {
+    public function index()
+    {
 
         $this->Paginator->settings = array_replace_recursive($this->Paginator->settings, array(
             'contain' => array('BudgetType', 'BudgetStatus'),
             'conditions' => array(
-                'Budget.condo_id' => $this->getPhkRequestVar('condo_id'))
+                'Budget.condo_id' => $this->getPhkRequestVar('condo_id')
+            )
         ));
         $this->setFilter(array('Budget.title', 'BudgetType.name'));
         $this->set('budgets', $this->Paginator->paginate('Budget'));
@@ -66,7 +69,8 @@ class BudgetsController extends AppController {
      * @param string $id
      * @return void
      */
-    public function view($id = null) {
+    public function view($id = null)
+    {
         $this->Budget->contain(array('Note', 'BudgetStatus', 'FiscalYear', 'BudgetType', 'SharePeriodicity', 'ShareDistribution'));
         if (!$this->Budget->exists($id)) {
             $this->Flash->error(__('Invalid budget'));
@@ -85,13 +89,14 @@ class BudgetsController extends AppController {
      *
      * @return void
      */
-    public function add() {
+    public function add()
+    {
         if ($this->request->is('post')) {
             if ($this->request->data['Budget']['share_periodicity_id'] == 1) {
                 $this->request->data['Budget']['shares'] = 1;
             }
             $this->Budget->create();
-            $this->request->data['Budget']['requested_amount'] = $this->request->data['Budget']['amount'];
+            $this->request->data['Budget']['amount'] = $this->request->data['Budget']['requested_amount'] * (1 + ($this->request->data['Budget']['common_reserve_fund'] / 100));
             if ($this->Budget->save($this->request->data)) {
                 $this->Flash->success(__('The budget has been saved'));
                 $this->redirect(array('action' => 'view', $this->Budget->id, '?' => $this->request->query));
@@ -116,7 +121,8 @@ class BudgetsController extends AppController {
      * @param string $id
      * @return void
      */
-    public function edit($id = null) {
+    public function edit($id = null)
+    {
         if (!$this->Budget->exists($id)) {
             $this->Flash->error(__('Invalid budget'));
             $this->redirect(array('action' => 'index', '?' => $this->request->query));
@@ -128,9 +134,10 @@ class BudgetsController extends AppController {
         if ($this->request->is('post') || $this->request->is('put')) {
             if (isset($this->request->data['Budget']['share_periodicity_id']) && $this->request->data['Budget']['share_periodicity_id'] == 1) {
                 $this->request->data['Budget']['shares'] = 1;
-                $this->request->data['Budget']['requested_amount'] = $this->request->data['Budget']['amount'];
             }
-
+            if ($budget['Note'] == []) {
+                $this->request->data['Budget']['amount'] = $this->request->data['Budget']['requested_amount'] * (1 + ($this->request->data['Budget']['common_reserve_fund'] / 100));
+            }
             if ($this->Budget->save($this->request->data)) {
                 $this->_setNotesStatus();
                 $this->Flash->success(__('The budget has been saved'));
@@ -167,7 +174,8 @@ class BudgetsController extends AppController {
      * @param string $id
      * @return void
      */
-    public function delete($id = null) {
+    public function delete($id = null)
+    {
         if (!$this->request->is('post')) {
             throw new MethodNotAllowedException();
         }
@@ -195,7 +203,8 @@ class BudgetsController extends AppController {
      *
      * @return void
      */
-    public function shares_map($id = null) {
+    public function shares_map($id = null)
+    {
         if (!$this->Budget->exists($id)) {
             $this->Flash->error(__('Invalid budget'));
             $this->redirect(array('action' => 'index', '?' => $this->request->query));
@@ -207,7 +216,8 @@ class BudgetsController extends AppController {
         $this->getEventManager()->dispatch($event);
     }
 
-    public function beforeFilter() {
+    public function beforeFilter()
+    {
         parent::beforeFilter();
         if (!$this->getPhkRequestVar('condo_id') || !$this->getPhkRequestVar('fiscal_year_id')) {
             $this->Flash->error(__('Invalid condo or fiscal year'));
@@ -215,7 +225,8 @@ class BudgetsController extends AppController {
         }
     }
 
-    public function beforeRender() {
+    public function beforeRender()
+    {
         parent::beforeRender();
         $breadcrumbs = array(
             array('link' => Router::url(array('controller' => 'condos', 'action' => 'view', $this->getPhkRequestVar('condo_id'))), 'text' => $this->getPhkRequestVar('condo_text') . ' ( ' . $this->phkRequestData['fiscal_year_text'] . ' ) ', 'active' => ''),
@@ -235,26 +246,29 @@ class BudgetsController extends AppController {
         $this->set(compact('breadcrumbs', 'headerTitle'));
     }
 
-    private function _setNotesStatus() {
+    private function _setNotesStatus()
+    {
         $db = $this->Budget->getDataSource();
         $now = $db->value(date(Configure::read('Application.databaseDateFormat') . ' H:i:s'), 'string');
         switch ($this->request->data['Budget']['budget_status_id']) {
             case '1':
                 $this->Budget->Note->updateAll(
-                        array('Note.note_status_id' => '1', 'Note.modified' => $now), array('Note.budget_id' => $this->Budget->id, 'Note.note_status_id' => '4')
+                    array('Note.note_status_id' => '1', 'Note.modified' => $now),
+                    array('Note.budget_id' => $this->Budget->id, 'Note.note_status_id' => '4')
                 );
                 break;
             case '2':
                 $this->Budget->Note->updateAll(
-                        array('Note.note_status_id' => '1', 'Note.modified' => $now), array('Note.budget_id' => $this->Budget->id, 'Note.note_status_id' => '4')
+                    array('Note.note_status_id' => '1', 'Note.modified' => $now),
+                    array('Note.budget_id' => $this->Budget->id, 'Note.note_status_id' => '4')
                 );
                 break;
             case '4':
                 $this->Budget->Note->updateAll(
-                        array('Note.note_status_id' => '4', 'Note.modified' => $now), array('Note.budget_id' => $this->Budget->id, 'Note.note_status_id' => '1')
+                    array('Note.note_status_id' => '4', 'Note.modified' => $now),
+                    array('Note.budget_id' => $this->Budget->id, 'Note.note_status_id' => '1')
                 );
                 break;
         }
     }
-
 }

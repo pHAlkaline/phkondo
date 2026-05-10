@@ -40,11 +40,11 @@
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-                    <?php echo $this->Form->input('budget_type_id', array('class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('budget_type_id', array('value'=>1,'class' => 'form-control')); ?>
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-                    <?php echo $this->Form->input('budget_status_id', array('class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('budget_status_id', array('value'=>1,'class' => 'form-control')); ?>
                 </div><!-- .form-group -->
 
                 <div class="form-group">
@@ -61,7 +61,7 @@
                     ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
-                    <?php echo $this->Form->input('amount', array('class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('requested_amount', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
                     <?php echo $this->Form->input('common_reserve_fund', array('class' => 'form-control')); ?>
@@ -92,11 +92,11 @@
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-                    <?php echo $this->Form->input('share_periodicity_id', array('class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('share_periodicity_id', array('value'=>5, 'class' => 'form-control')); ?>
                 </div><!-- .form-group -->
 
                 <div class="form-group">
-                    <?php echo $this->Form->input('share_distribution_id', array('class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('share_distribution_id', array('value'=>2,'class' => 'form-control')); ?>
                 </div><!-- .form-group -->
 
                 <div class="form-group">

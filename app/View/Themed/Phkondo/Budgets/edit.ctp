@@ -91,12 +91,14 @@ $this->Html->script('budget_edit', false);
                     ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
-                    <?php echo $this->Form->input('amount', array($readonlyDisabled, 'class' => 'form-control')); ?>
+                    <?php echo $this->Form->input('requested_amount', array($readonlyDisabled, 'class' => 'form-control')); ?>
                 </div><!-- .form-group -->
                 <div class="form-group">
                     <?php echo $this->Form->input('common_reserve_fund', array($readonlyDisabled, 'class' => 'form-control')); ?>
                 </div><!-- .form-group -->
-
+                <div class="form-group">
+                    <?php echo $this->Form->input('amount', array('class' => 'form-control disabled', 'disabled'=>true)); ?>
+                </div><!-- .form-group -->
                 <div class="form-group">
                     <?php echo $this->Form->input('meeting_draft', array('class' => 'form-control')); ?>
                 </div><!-- .form-group -->

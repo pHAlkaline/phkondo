@@ -100,17 +100,17 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><strong><?php echo __('Amount'); ?></strong></td>
-                                    <td>
-                                        <?php echo h($budget['Budget']['amount']); ?>
-                                        &nbsp;<?php echo Configure::read('Application.currencySign'); ?>
-                                    </td>
-                                </tr>
-                                <tr>
                                     <td><strong><?php echo __('Common Reserve Fund (%)'); ?></strong></td>
                                     <td>
                                         <?php echo h($budget['Budget']['common_reserve_fund']); ?>
                                         &nbsp;&percnt;
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong><?php echo __('Total'); ?></strong></td>
+                                    <td>
+                                        <?php echo h($budget['Budget']['amount']); ?>
+                                        &nbsp;<?php echo Configure::read('Application.currencySign'); ?>
                                     </td>
                                 </tr>
                                 <tr>
@@ -170,19 +170,20 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                <td class='col-sm-2'><strong><?php echo __('Amount'); ?></strong></td>
-                                    <td>
-                                        <?php echo h($budget['Budget']['amount']); ?>
-                                        &nbsp;<?php echo Configure::read('Application.currencySign'); ?>
-                                    </td>
-                                </tr>
-                                <tr>
                                 <td class='col-sm-2'><strong><?php echo __('Common Reserve Fund (%)'); ?></strong></td>
                                     <td>
                                         <?php echo h($budget['Budget']['common_reserve_fund']); ?>
                                         &nbsp;&percnt;
                                     </td>
                                 </tr>
+                                <tr>
+                                <td class='col-sm-2'><strong><?php echo __('Total'); ?></strong></td>
+                                    <td>
+                                        <?php echo h($budget['Budget']['amount']); ?>
+                                        &nbsp;<?php echo Configure::read('Application.currencySign'); ?>
+                                    </td>
+                                </tr>
+                                
                                 <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
                                 <tr>
                                 <td class='col-sm-2'><strong><?php echo __('Begin Date'); ?></strong></td>

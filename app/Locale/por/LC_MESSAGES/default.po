@@ -2467,7 +2467,7 @@ msgstr "Data do Orçamento"
 
 #: View/Themed/Phkondo/Budgets/view.ctp:76
 msgid "Requested Amount"
-msgstr "Valor Requisitado"
+msgstr "Valor Orçamento"
 
 #: View/Themed/Phkondo/Budgets/view.ctp:87
 msgid "Common Reserve Fund (%)"

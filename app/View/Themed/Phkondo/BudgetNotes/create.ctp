@@ -62,17 +62,17 @@ foreach ($fractions as $fraction) {
                         </td>
                     </tr>
                     <tr>
-                        <td class='col-sm-2'><strong><?php echo __('Amount'); ?></strong></td>
-                        <td>
-                            <?php echo h($budget['Budget']['amount']); ?>
-                            &nbsp;<?php echo Configure::read('Application.currencySign'); ?>
-                        </td>
-                    </tr>
-                    <tr>
                         <td class='col-sm-2'><strong><?php echo __('Common Reserve Fund (%)'); ?></strong></td>
                         <td>
                             <?php echo h($budget['Budget']['common_reserve_fund']); ?>
                             &nbsp;&percnt;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class='col-sm-2'><strong><?php echo __('Total'); ?></strong></td>
+                        <td>
+                            <span class="notesTotal"><?php echo h($budget['Budget']['amount']); ?></span>
+                            &nbsp;<?php echo Configure::read('Application.currencySign'); ?>
                         </td>
                     </tr>
                     <tr>
@@ -167,25 +167,27 @@ foreach ($fractions as $fraction) {
                                         if ($totalMilRate == 0 || $numOfShares == 0) {
                                             $amountByShare = 0;
                                         } else {
-                                            $amountByShare = $budgetAmount * ($fraction['Fraction']['permillage'] / $totalMilRate) / $numOfShares;
+                                            $amountByShare = $requestedBudgetAmount * ($fraction['Fraction']['permillage'] / $totalMilRate) / $numOfShares;
                                         }
                                         break;
 
                                     default:
-                                        $amountByShare = $budgetAmount / $numOfShares / $numOfFractions;
+                                        $amountByShare = $requestedBudgetAmount / $numOfShares / $numOfFractions;
                                         break;
                                 }
                                 // 10% of value - 10% do valor
-                                if ($budget['Budget']['common_reserve_fund'] > 0) {
+                                /*if ($budget['Budget']['common_reserve_fund'] > 0) {
                                     $shareTax=($budget['Budget']['common_reserve_fund'] / 100);
                                     $amountByShare = $amountByShare/(1+$shareTax);
                                     $commonReserveFundByShare = $amountByShare*$shareTax;
-                                }
-                                // 10% of total - 10% do total
-                                /*if ($budget['Budget']['common_reserve_fund'] > 0) {
-                                    $commonReserveFundByShare = $amountByShare * ($budget['Budget']['common_reserve_fund'] / 100);
-                                    $amountByShare = $amountByShare - $commonReserveFundByShare;
                                 }*/
+                                // 10% of total + 10% do total
+                                if ($budget['Budget']['common_reserve_fund'] > 0) {
+                                    $shareTax = $budget['Budget']['common_reserve_fund'] / 100;
+                                    $commonReserveFundByShare = $amountByShare * $shareTax;
+                                    $totalAmountByShare = $amountByShare + $commonReserveFundByShare;
+                                }
+
                                 $amountByShare = $this->Number->precision($amountByShare * $ownerPercentage, 2);
                                 $commonReserveFundByShare = $this->Number->precision($commonReserveFundByShare * $ownerPercentage, 2);
                                 $total = $this->Number->precision(($commonReserveFundByShare + $amountByShare) * $numOfShares, 2);
@@ -212,12 +214,14 @@ foreach ($fractions as $fraction) {
             </div>
             <div class="col-sm-12">
                 <div class="pull-right">
+                    <p ><?php echo ' ( ' . __('Requested Amount') . ' ' . $this->Number->precision($requestedBudgetAmount, 2) . ' ) '; ?></p>
+
                     <?php
                     $pclass = "";
                     if ($this->Number->precision($totalShares, 2) != $this->Number->precision($budgetAmount, 2))
                         $pclass = 'text-danger';
                     ?>
-                    <p class="<?php echo $pclass ?>"><?php echo ' ( ' . __('Budget') . ' ' . $this->Number->precision($budgetAmount, 2) . ' ) ' . __('Total notes') . ': <span id="notesTotal">' . $this->Number->precision($totalShares, 2) . ' </span>'; ?></p>
+                    <p class="<?php echo $pclass ?>"><?php echo ' ( ' .  $this->Number->precision($budgetAmount, 2) . ' ) ' . __('Total notes') . ': <span class="notesTotal">' . $this->Number->precision($totalShares, 2) . ' </span>'; ?></p>
 
                     <?php echo $this->Form->button(__('Submit'), array('class' => 'btn btn-large btn-primary pull-right')); ?>
                 </div>

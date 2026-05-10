@@ -87,13 +87,13 @@ $(function () {
                 notesTotal = notesTotal.toFixed(2);
                 //console.log( notesTotal );
             });
-            $('#notesTotal').html(notesTotal);
-            $('#notesTotal').removeClass('text-danger');
+            $('.notesTotal').html(notesTotal);
+            $('.notesTotal').removeClass('text-danger');
             $('input[type="submit"]').prop('disabled', false).find('.fa-spinner').first().remove();
             if (notesTotal != $("#NoteBudgetAmount").val()) {
                 $("#NoteBudgetNotesAmount").val(notesTotal);
                 //$('input[type="submit"]').prop('disabled', true);  
-                $('#notesTotal').parent().addClass('text-danger');
+                $('.notesTotal').parent().addClass('text-danger');
             }
             ;
 

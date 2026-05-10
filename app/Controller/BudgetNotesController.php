@@ -341,6 +341,7 @@ class BudgetNotesController extends AppController {
         $fractions = $this->Note->Fraction->find('all', array('order' => array('Fraction.fraction' => 'asc'), 'conditions' => array('condo_id' => $this->getPhkRequestVar('condo_id'))));
 
         $totalMilRate = 0;
+        $requestedBudgetAmount = $budget['Budget']['requested_amount'] ? $budget['Budget']['requested_amount'] : 0;
         $budgetAmount = $budget['Budget']['amount'] ? $budget['Budget']['amount'] : 0;
         $numOfShares = $budget['Budget']['shares'] ? $budget['Budget']['shares'] : 0;
         $numOfFractions = count($fractions);
@@ -354,7 +355,7 @@ class BudgetNotesController extends AppController {
         }
 
 
-        $this->set(compact('fractions', 'budget', 'totalMilRate', 'budgetAmount', 'numOfShares', 'numOfFractions'));
+        $this->set(compact('fractions', 'budget', 'totalMilRate', 'requestedBudgetAmount', 'budgetAmount', 'numOfShares', 'numOfFractions'));
     }
 
     private function _addNote() {
