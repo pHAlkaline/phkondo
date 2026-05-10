@@ -3627,3 +3627,10 @@ msgstr ""
 
 msgid "If you have made the payment, consider this notice to be ineffective. We also take this opportunity to remind you that payments made by bank transfer must be communicated to our services through the means made available."
 msgstr ""
+
+msgid "Exempt from VAT under the terms of Article 9, paragraph 21 of the VAT Code."
+msgstr ""
+
+
+msgid "Legal Notice"
+msgstr ""

@@ -378,7 +378,7 @@ class PaymentAdvice extends AppModel
 
     public function removeFromNote($id)
     {
-        return $this->Note->updateAll(array('Note.payment_advice_id' => null, 'Note.note_status_id' => '1', 'Note.pending_amount' => 'Note.amount', 'Note.payment_date' => null), array('Note.payment_advice_id' => $id));
+        return $this->Note->updateAll(array('Note.payment_advice_id' => null), array('Note.payment_advice_id' => $id));
     }
 
     public function setAmount($id)

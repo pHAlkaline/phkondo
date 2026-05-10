@@ -10,7 +10,7 @@
                 <a href="#details" aria-controls="details" role="tab" data-toggle="tab"><?= __('Details'); ?></a>
             </li>
             <li role="presentation">
-                <a href="#payment-advice" aria-controls="notes" role="tab" data-toggle="tab"><?= __n('Payment Advice', 'Payemnt Advices', 1); ?></a>
+                <a href="#config" aria-controls="notes" role="tab" data-toggle="tab"><?php echo __('Config'); ?></a>
             </li>
 
         </ul>
@@ -70,12 +70,11 @@
                     </div>
                 </div>
             </div>
-            <div role="tabpanel" class="tab-pane" id="payment-advice" aria-labelledby="payment-advice-tab">
+            <div role="tabpanel" class="tab-pane" id="config" aria-labelledby="config-tab">
                 <div class="organization form">
                     <div class="row">
                         <br />
                         <?php echo $this->Form->create(false, array(
-                            'type' => 'file',
                             'class' => 'form-horizontal',
                             'role' => 'form',
                             'inputDefaults' => array(
@@ -86,10 +85,11 @@
                             )
                         )); ?>
                         <fieldset>
-                            <?php 
-                            $paymentAdvices['observations']=$paymentAdvices['observations']=='_default_'? __('If you have made the payment, consider this notice to be ineffective. We also take this opportunity to remind you that payments made by bank transfer must be communicated to our services through the means made available.'):$paymentAdvices['observations'];
-                            $paymentAdvices['payment_gateway']=$paymentAdvices['payment_gateway']=='_default_'? '':$paymentAdvices['payment_gateway'];
-                            
+                            <legend><?= __n('Payment Advice', 'Payemnt Advices', 1); ?></legend>
+                            <?php
+                            $paymentAdvices['observations'] = $paymentAdvices['observations'] == '_default_' ? __('If you have made the payment, consider this notice to be ineffective. We also take this opportunity to remind you that payments made by bank transfer must be communicated to our services through the means made available.') : $paymentAdvices['observations'];
+                            $paymentAdvices['payment_gateway'] = $paymentAdvices['payment_gateway'] == '_default_' ? '' : $paymentAdvices['payment_gateway'];
+
                             ?>
                             <div class="form-group">
                                 <?php echo $this->Form->input('observations', array('default' => $paymentAdvices['observations'], 'class' => 'form-control', 'type' => 'textarea')); ?>
@@ -98,6 +98,16 @@
                                 <?php echo $this->Form->input('payment_gateway', array('default' => $paymentAdvices['payment_gateway'], 'class' => 'form-control')); ?>
                             </div><!-- .form-group -->
 
+                        </fieldset>
+                         <fieldset>
+                            <legend><?= __n('Receipt', 'Receipts', 1); ?></legend>
+                            <?php
+                            $receipts['legal_notice'] = $receipts['legal_notice'] == '_default_' ? __('Exempt from VAT under the terms of Article 9, paragraph 21 of the VAT Code.') : $receipts['legal_notice'];
+                            ?>
+                            <div class="form-group">
+                                <?php echo $this->Form->input('legal_notice', array('default' => $receipts['legal_notice'], 'class' => 'form-control', 'type' => 'textarea')); ?>
+                            </div><!-- .form-group -->
+                       
                         </fieldset>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-6">

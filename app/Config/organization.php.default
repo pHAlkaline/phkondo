@@ -1,7 +1,7 @@
 <?php
-$config = array (
+$config = array(
   'Organization' =>
-  array (
+  array(
     'name' => 'pHKondo',
     'vat_number' => 'xxxxxxxxx',
     'representative' => 'Administrator',
@@ -10,9 +10,13 @@ $config = array (
     'email' => 'email@email.com',
     'logo' => '',
   ),
-   'PaymentAdvices' => 
-  array (
+  'PaymentAdvices' =>
+  array(
     'payment_gateway' => '_default_',
     'observations' => '_default_',
+  ),
+  'Receipts' =>
+  array(
+    'legal_notice' => '_default_'
   ),
 );

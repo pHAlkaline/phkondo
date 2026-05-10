@@ -100,8 +100,11 @@ class OrganizationController extends AppController
                 if (Configure::check('PaymentAdvices.' . $key)) {
                     Configure::write('PaymentAdvices.' . $key, $value);
                 }
+                if (Configure::check('Receipts.' . $key)) {
+                    Configure::write('Receipts.' . $key, $value);
+                }
             }
-            if (Configure::dump('organization.php', 'default', array('Organization','PaymentAdvices'))) {
+            if (Configure::dump('organization.php', 'default', array('Organization','PaymentAdvices', 'Receipts'))) {
                 $this->Flash->success(__('Saved with success.'));
             } else {
                 $this->Flash->error(__('Could not be saved. Please, try again.'));
@@ -119,7 +122,8 @@ class OrganizationController extends AppController
         $headerTitle = __('Organization');
         $organization = Configure::read('Organization');
         $paymentAdvices = Configure::read('PaymentAdvices');
-        $this->set(compact('breadcrumbs', 'headerTitle', 'organization','paymentAdvices'));
+        $receipts = Configure::read('Receipts');
+        $this->set(compact('breadcrumbs', 'headerTitle', 'organization','paymentAdvices', 'receipts'));
     }
 
     public function isAuthorized($user)

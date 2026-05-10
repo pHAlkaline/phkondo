@@ -3755,3 +3755,9 @@ msgstr "Não foi possível eliminar o registo, tente outra vez"
 
 msgid "If you have made the payment, consider this notice to be ineffective. We also take this opportunity to remind you that payments made by bank transfer must be communicated to our services through the means made available."
 msgstr "Caso tenha efectuado o pagamento, considere o presente aviso sem efeito. Aproveitamos ainda para relembrar, que os pagamentos efetuados por transferência bancária deverão ser comunicados aos nossos serviços pelos meios colocados ao dispor."
+
+msgid "Exempt from VAT under the terms of Article 9, paragraph 21 of the VAT Code."
+msgstr "Isento de IVA nos termos do artigo 9.º, n.º 21, do Código do IVA."
+
+msgid "Legal Notice"
+msgstr "Aviso Legal"

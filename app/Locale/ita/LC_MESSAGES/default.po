@@ -2847,3 +2847,10 @@ msgstr "Impossibile eliminare, riprovare."
 
 msgid "If you have made the payment, consider this notice to be ineffective. We also take this opportunity to remind you that payments made by bank transfer must be communicated to our services through the means made available."
 msgstr "Se hai effettuato il pagamento, considera inefficace la presente comunicazione. Cogliamo inoltre l'occasione per ricordarvi che i pagamenti effettuati tramite bonifico bancario dovranno essere comunicati al ns servizi attraverso i mezzi messi a disposizione."
+
+msgid "Exempt from VAT under the terms of Article 9, paragraph 21 of the VAT Code."
+msgstr "Esente da IVA ai sensi dell'articolo 9, comma 21, del Codice IVA."
+
+
+msgid "Legal Notice"
+msgstr "Avviso legale"

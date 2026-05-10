@@ -175,13 +175,13 @@ foreach ($fractions as $fraction) {
                                         $amountByShare = $budgetAmount / $numOfShares / $numOfFractions;
                                         break;
                                 }
-                                // 10% of value
+                                // 10% of value - 10% do valor
                                 if ($budget['Budget']['common_reserve_fund'] > 0) {
                                     $shareTax=($budget['Budget']['common_reserve_fund'] / 100);
                                     $amountByShare = $amountByShare/(1+$shareTax);
                                     $commonReserveFundByShare = $amountByShare*$shareTax;
                                 }
-                                // 10% of total
+                                // 10% of total - 10% do total
                                 /*if ($budget['Budget']['common_reserve_fund'] > 0) {
                                     $commonReserveFundByShare = $amountByShare * ($budget['Budget']['common_reserve_fund'] / 100);
                                     $amountByShare = $amountByShare - $commonReserveFundByShare;
