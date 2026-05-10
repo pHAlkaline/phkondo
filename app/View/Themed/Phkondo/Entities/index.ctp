@@ -44,7 +44,7 @@
                                     ?>
 
 
-                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'delete', $entity['Entity']['id']), array('title' => __('Remove'), 'class' => 'btn btn-default btn-xs '.$deleteDisabled, 'escape' => false, 'confirm' => __('Are you sure you want to delete # %s?', $entity['Entity']['name']))); ?>
+                                    <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'delete', $entity['Entity']['id']), array('title' => __('Remove'), 'class' => 'btn btn-default btn-xs '.$deleteDisabled, 'escape' => false, 'confirm' => __('DANGER!!! ALL ASSOCIATED DATA WILL BE LOST!').PHP_EOL.__('Are you sure you want to delete # %s?', $entity['Entity']['name']))); ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

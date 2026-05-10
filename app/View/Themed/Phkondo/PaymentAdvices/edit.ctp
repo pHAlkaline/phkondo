@@ -19,7 +19,7 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
                     $deleteDisabled = 'disabled';
                 }*/
                 ?>
-                <li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('PaymentAdvice.id'), '?' => $this->request->query), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $this->Form->value('PaymentAdvice.id')))); ?></li>
+                <li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('PaymentAdvice.id'), '?' => $this->request->query), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('DANGER!!! ALL ASSOCIATED DATA WILL BE LOST!').PHP_EOL.__('Are you sure you want to delete # %s?', $this->Form->value('PaymentAdvice.id')))); ?></li>
                 <li><?php echo $this->Html->link(__('List'), array('action' => 'index', '?' => $this->request->query), array('class' => 'btn')); ?></li>
                 <!--li ><?php //echo $this->Html->link(__('Add Note'), array('action' => 'add_notes', $this->Form->value('PaymentAdvice.id'), '?' => $this->request->query), array('class' => 'btn ', 'escape' => false)); 
                         ?> </li-->

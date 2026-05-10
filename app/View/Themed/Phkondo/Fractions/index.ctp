@@ -71,7 +71,7 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
                                     }
                                     echo $this->Html->link('<span class="glyphicon glyphicon-list"></span> ', array('action' => 'view', $fraction['Fraction']['id'], '?' => $this->request->query), array('title' => __('Details'), 'class' => 'btn btn-default btn-xs', 'escape' => false));
                                     echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $fraction['Fraction']['id'], '?' => $this->request->query), array('title' => __('Edit'), 'class' => 'btn btn-default btn-xs', 'escape' => false));
-                                    echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'delete', $fraction['Fraction']['id'], '?' => $this->request->query), array('title' => __('Remove'), 'class' => 'btn btn-default btn-xs' . $deleteDisabled, 'escape' => false, 'confirm' => __('Are you sure you want to delete # %s?', $fraction['Fraction']['fraction']))); 
+                                    echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span> ', array('action' => 'delete', $fraction['Fraction']['id'], '?' => $this->request->query), array('title' => __('Remove'), 'class' => 'btn btn-default btn-xs' . $deleteDisabled, 'escape' => false, 'confirm' => __('DANGER!!! ALL ASSOCIATED DATA WILL BE LOST!').PHP_EOL.__('Are you sure you want to delete # %s?', $fraction['Fraction']['fraction']))); 
                                     ?>
                             </td>
                         </tr>

@@ -5,7 +5,7 @@
         <div id="sidebar" class="hidden-print actions sidebar-offcanvas">
             <ul class="nav nav-pills nav-stacked">			
                 <li ><?php echo $this->Html->link(__('Edit Administrator'), array('action' => 'edit', $administrator['Administrator']['id'],'?'=>$this->request->query), array('class' => 'btn ')); ?> </li>
-                <li ><?php echo $this->Form->postLink(__('Delete Administrator'), array('action' => 'delete', $administrator['Administrator']['id'],'?'=>$this->request->query), array('class' => 'btn ','confirm'=> __('Are you sure you want to delete # %s?' , $administrator['Administrator']['title'] ))); ?> </li>
+                <li ><?php echo $this->Form->postLink(__('Delete Administrator'), array('action' => 'delete', $administrator['Administrator']['id'],'?'=>$this->request->query), array('class' => 'btn ','confirm'=> __('DANGER!!! ALL ASSOCIATED DATA WILL BE LOST!').PHP_EOL.__('Are you sure you want to delete # %s?' , $administrator['Administrator']['title'] ))); ?> </li>
                  <li ><?php echo $this->Html->link(__('New Administrator'), array('action' => 'add', '?' => $this->request->query), array('class' => 'btn ')); ?> </li>
                
                 <li ><?php echo $this->Html->link(__('List Administrators'), array('action' => 'index','?'=>$this->request->query), array('class' => 'btn ')); ?> </li>

@@ -183,7 +183,6 @@ class Account extends AppModel
      */
     public $hasAndBelongsToMany = array(
         'FiscalYear' => array(
-            'dependent' => true,
             'className' => 'FiscalYear',
             'joinTable' => 'accounts_fiscal_years',
             'foreignKey' => 'account_id',
@@ -195,6 +194,7 @@ class Account extends AppModel
             'limit' => '',
             'offset' => '',
             'finderQuery' => '',
+            'dependent' => true
         )
     );
 

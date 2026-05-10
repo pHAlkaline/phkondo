@@ -241,7 +241,7 @@ class InvoiceConference extends AppModel
         'Movement' => array(
             'className' => 'Movement',
             'foreignKey' => 'document_id',
-            'dependent' => true,
+            'dependent' => false,
             'conditions' => ['Movement.document_model' => 'InvoiceConference'],
             'fields' => '',
             'order' => '',

@@ -17,7 +17,7 @@
                 ?>
 
 
-                <li ><?php echo $this->Form->postLink(__('Delete Entity'), array('action' => 'delete', $entity['Entity']['id']), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $entity['Entity']['name']))); ?> </li>
+                <li ><?php echo $this->Form->postLink(__('Delete Entity'), array('action' => 'delete', $entity['Entity']['id']), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('DANGER!!! ALL ASSOCIATED DATA WILL BE LOST!').PHP_EOL.__('Are you sure you want to delete # %s?', $entity['Entity']['name']))); ?> </li>
                 <li ><?php echo $this->Html->link(__('New Entity'), array('action' => 'add'), array('class' => 'btn ')); ?> </li>
                 <li ><?php echo $this->Html->link(__('List Entities'), array('action' => 'index'), array('class' => 'btn ')); ?> </li>
 

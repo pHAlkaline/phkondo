@@ -3634,3 +3634,6 @@ msgstr ""
 
 msgid "Legal Notice"
 msgstr ""
+
+msgid "DANGER!!! ALL ASSOCIATED DATA WILL BE LOST!"
+msgstr ""

@@ -2854,3 +2854,6 @@ msgstr "Esente da IVA ai sensi dell'articolo 9, comma 21, del Codice IVA."
 
 msgid "Legal Notice"
 msgstr "Avviso legale"
+
+msgid "DANGER!!! ALL ASSOCIATED DATA WILL BE LOST!"
+msgstr "PERICOLO!!! TUTTI I DATI ASSOCIATI ANDRANNO PERSI!"

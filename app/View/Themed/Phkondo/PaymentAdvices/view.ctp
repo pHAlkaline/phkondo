@@ -35,7 +35,7 @@ $this->Html->script('footable', false);
                 }
                 ?>
                 <li><?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $paymentAdvice['PaymentAdvice']['id'], '?' => $this->request->query), array('class' => 'btn ' . $editDisabled)); ?> </li>
-                <li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $paymentAdvice['PaymentAdvice']['id'], '?' => $this->request->query), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $paymentAdvice['PaymentAdvice']['document']))); ?> </li>
+                <li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $paymentAdvice['PaymentAdvice']['id'], '?' => $this->request->query), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('DANGER!!! ALL ASSOCIATED DATA WILL BE LOST!').PHP_EOL.__('Are you sure you want to delete # %s?', $paymentAdvice['PaymentAdvice']['document']))); ?> </li>
                 <li><?php echo $this->Html->link(__('New'), array('action' => 'add', '?' => $this->request->query), array('class' => 'btn ')); ?> </li>
                 <li><?php echo $this->Html->link(__('List'), array('action' => 'index', '?' => $this->request->query), array('class' => 'btn ')); ?> </li>
                 <!--li><?php //echo $this->Form->postLink(__('Cancel'), array('action' => 'cancel', $paymentAdvice['PaymentAdvice']['id'], '?' => $this->request->query), array('class' => 'btn ' . $cancelDisabled, 'confirm' => __('Are you sure you want to cancel # %s?', $paymentAdvice['PaymentAdvice']['document'])));  

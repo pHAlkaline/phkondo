@@ -95,7 +95,7 @@ $this->Html->css('footable/footable.bootstrap.min', false); ?>
                                     <?php if (Configure::read('Application.stage') != 'demo') : ?>
                                         <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span> ', array('action' => 'edit', $condo['Condo']['id']), array('title' => __('Edit'), 'class' => 'btn btn-default btn-xs', 'escape' => false)); ?>
                                         <?php if (in_array(AuthComponent::user('role'), array('admin', 'store_admin'))) : ?>
-                                            <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span>', array('action' => 'delete', $condo['Condo']['id']), array('title' => __('Delete'), 'class' => 'btn btn-default btn-xs', 'escape' => false, 'confirm' => __('Are you sure you want to delete # %s?', $condo['Condo']['title']))); ?>
+                                            <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span>', array('action' => 'delete', $condo['Condo']['id']), array('title' => __('Delete'), 'class' => 'btn btn-default btn-xs', 'escape' => false, 'confirm' => __('DANGER!!! ALL ASSOCIATED DATA WILL BE LOST!').PHP_EOL.__('Are you sure you want to delete # %s?', $condo['Condo']['title']))); ?>
                                         <?php endif; ?>
                                     <?php endif; ?>
                                 </td>

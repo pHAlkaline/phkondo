@@ -13,7 +13,7 @@
                     $deleteDisabled = ' disabled';
                 }
                 ?>
-                <li ><?php echo $this->Form->postLink(__('Delete Fraction'), array('action' => 'delete', $this->Form->value('Fraction.id'),'?'=>$this->request->query), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $this->Form->value('Fraction.description')))); ?></li>
+                <li ><?php echo $this->Form->postLink(__('Delete Fraction'), array('action' => 'delete', $this->Form->value('Fraction.id'),'?'=>$this->request->query), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('DANGER!!! ALL ASSOCIATED DATA WILL BE LOST!').PHP_EOL.__('Are you sure you want to delete # %s?', $this->Form->value('Fraction.description')))); ?></li>
                 <li ><?php echo $this->Html->link(__('List Fractions'), array('action' => 'index','?'=>$this->request->query), array('class' => 'btn')); ?></li>
 
             </ul><!-- /.list-group -->

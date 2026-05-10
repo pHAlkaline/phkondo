@@ -34,7 +34,7 @@ if (!Configure::check('CakePdf.phkondo.active') || Configure::read('CakePdf.phko
                 }
                 ?>
                 <li><?php echo $this->Html->link(__('Edit Receipt'), array('action' => 'edit', $receipt['Receipt']['id'], '?' => $this->request->query), array('class' => 'btn ' . $editDisabled)); ?> </li>
-                <li><?php echo $this->Form->postLink(__('Delete Receipt'), array('action' => 'delete', $receipt['Receipt']['id'], '?' => $this->request->query), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $receipt['Receipt']['document']))); ?> </li>
+                <li><?php echo $this->Form->postLink(__('Delete Receipt'), array('action' => 'delete', $receipt['Receipt']['id'], '?' => $this->request->query), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('DANGER!!! ALL ASSOCIATED DATA WILL BE LOST!').PHP_EOL.__('Are you sure you want to delete # %s?', $receipt['Receipt']['document']))); ?> </li>
                 <li><?php echo $this->Html->link(__('New Receipt'), array('action' => 'add', '?' => $this->request->query), array('class' => 'btn ')); ?> </li>
                 <li><?php echo $this->Html->link(__('List Receipts'), array('action' => 'index', '?' => $this->request->query), array('class' => 'btn ')); ?> </li>
                 <li><?php echo $this->Form->postLink(__('Pay Receipt'), array('action' => 'pay_receipt', $receipt['Receipt']['id'], '?' => $this->request->query), array('class' => 'btn ' . $payDisabled, 'confirm' => __('Are you sure you want to set receipt # %s as paid? - Payment as %s', $receipt['Receipt']['document'], $receipt['ReceiptPaymentType']['name']))); ?></li>

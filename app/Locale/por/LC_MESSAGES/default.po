@@ -3761,3 +3761,6 @@ msgstr "Isento de IVA nos termos do artigo 9.º, n.º 21, do Código do IVA."
 
 msgid "Legal Notice"
 msgstr "Aviso Legal"
+
+msgid "DANGER!!! ALL ASSOCIATED DATA WILL BE LOST!"
+msgstr "PERIGO!!! TODOS OS DADOS ASSOCIADOS SERÃO PERDIDOS!"

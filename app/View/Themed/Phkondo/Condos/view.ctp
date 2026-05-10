@@ -15,7 +15,7 @@ $administrators = implode(", ", $administrators);
                     <li><?php echo $this->Html->link(__('Share Distribution'), array('action' => 'shares_distribution', $condo['Condo']['id']), array('class' => 'btn ', 'escape' => false)); ?> </li>
                 <?php endif; ?>
                 <?php if (in_array(AuthComponent::user('role'), array('admin', 'store_admin'))) : ?>
-                    <li><?php echo $this->Form->postLink(__('Delete Condo'), array('action' => 'delete', $condo['Condo']['id']), array('class' => 'btn ', 'escape' => false, 'confirm' => __('Are you sure you want to delete # %s?', $condo['Condo']['title']))); ?> </li>
+                    <li><?php echo $this->Form->postLink(__('Delete Condo'), array('action' => 'delete', $condo['Condo']['id']), array('class' => 'btn ', 'escape' => false, 'confirm' => __('DANGER!!! ALL ASSOCIATED DATA WILL BE LOST!').PHP_EOL.__('Are you sure you want to delete # %s?', $condo['Condo']['title']))); ?> </li>
                 <?php endif; ?>
                 <li><?php echo $this->Html->link(__('List Condos'), array('action' => 'index'), array('class' => 'btn ', 'escape' => false)); ?> </li>
                 <li class="divider">&nbsp;</li>

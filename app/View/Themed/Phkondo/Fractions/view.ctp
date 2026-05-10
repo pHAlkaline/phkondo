@@ -18,7 +18,7 @@ if (!Configure::check('CakePdf.phkondo.active') || Configure::read('CakePdf.phko
                     $deleteDisabled = ' disabled';
                 }
                 ?>
-                <li><?php echo $this->Form->postLink(__('Delete Fraction'), array('action' => 'delete', $fraction['Fraction']['id'], '?' => $this->request->query), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('Are you sure you want to delete # %s?', $fraction['Fraction']['fraction']))); ?> </li>
+                <li><?php echo $this->Form->postLink(__('Delete Fraction'), array('action' => 'delete', $fraction['Fraction']['id'], '?' => $this->request->query), array('class' => 'btn ' . $deleteDisabled, 'confirm' => __('DANGER!!! ALL ASSOCIATED DATA WILL BE LOST!').PHP_EOL.__('Are you sure you want to delete # %s?', $fraction['Fraction']['fraction']))); ?> </li>
                 <li><?php echo $this->Html->link(__('New Fraction'), array('action' => 'add', '?' => $this->request->query), array('class' => 'btn ')); ?> </li>
                 <li><?php echo $this->Html->link(__('List Fractions'), array('action' => 'index', '?' => $this->request->query), array('class' => 'btn ')); ?> </li>
                 <li><?php echo $this->Html->link('<span class="glyphicon glyphicon-chevron-right"></span> ' . __n('Owner', 'Owners', 2), array('controller' => 'fraction_owners', 'action' => 'index', '?' => array_merge(array('fraction_id' => $fraction['Fraction']['id']), $this->request->query)), array('class' => 'btn ', 'escape' => false)); ?></li>

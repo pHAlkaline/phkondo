@@ -267,7 +267,7 @@ class Budget extends AppModel {
         'Note' => array(
             'className' => 'Note',
             'foreignKey' => 'budget_id',
-            'dependent' => true,
+            'dependent' => false,
             'conditions' => '',
             'fields' => '',
             'order' => '',

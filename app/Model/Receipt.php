@@ -255,7 +255,7 @@ class Receipt extends AppModel
         'ReceiptNote' => array(
             'className' => 'ReceiptNote',
             'foreignKey' => 'receipt_id',
-            'dependent' => false,
+            'dependent' => true,
             'conditions' => '',
             'fields' => '',
             'order' => '',
